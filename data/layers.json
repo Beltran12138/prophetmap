@@ -1,0 +1,523 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2026-05-04",
+  "description": "ProphetMap AI产业链传导层级定义",
+  "terminationBoundary": 14,
+  "chains": {
+    "A": "算力→物理基础设施主链",
+    "B": "能源→物理资源主链",
+    "experimental": "实验层（待验证）"
+  },
+  "timeToRealizeDefinitions": {
+    "immediate": "0-6个月",
+    "near": "6-18个月",
+    "medium": "18-36个月",
+    "long": "36个月以上"
+  },
+  "physicalConstraintScale": {
+    "5": "物理不可绕过，无替代方案",
+    "4": "高度依赖，替代方案成本极高",
+    "3": "中度依赖，替代方案存在但不成熟",
+    "2": "低度依赖，有可行替代",
+    "1": "可选，便利性需求"
+  },
+  "layers": [
+    {
+      "id": "L0",
+      "name": "AI基础模型/平台层",
+      "nameEn": "AI Foundation Model & Platform",
+      "chain": "A",
+      "position": 0,
+      "description": "AI capex直接发起者，超大规模云商与模型提供商，整条传导链第一推动力",
+      "physicalConstraintDesc": "Hyperscaler capex决策驱动L1-L14全链需求，其capex指引为领先指标",
+      "basePhysicalConstraint": 4,
+      "typicalTimeToRealize": "immediate",
+      "status": "active",
+      "isLeadingIndicator": true,
+      "parallel": false,
+      "sublayers": null,
+      "auditCriteria": {
+        "mergeCondition": "N/A - foundational layer",
+        "splitCondition": "Cloud AI infrastructure separates from model inference at capex level",
+        "deleteCondition": "AI hyperscaler capex declines >20% for 2+ consecutive quarters",
+        "falsificationSignals": [
+          "Mag7 collective AI capex guidance cut >15% YoY",
+          "Open-source models structurally eliminate need for proprietary cloud AI infrastructure"
+        ]
+      }
+    },
+    {
+      "id": "L1",
+      "name": "AI需求/应用层",
+      "nameEn": "AI Demand & Application",
+      "chain": "A",
+      "position": 1,
+      "description": "AI算法应用与企业级AI平台，直接消耗算力资源",
+      "physicalConstraintDesc": "企业AI应用规模化→算力订单，间接但量大",
+      "basePhysicalConstraint": 3,
+      "typicalTimeToRealize": "immediate",
+      "status": "active",
+      "isLeadingIndicator": false,
+      "parallel": false,
+      "sublayers": null,
+      "auditCriteria": {
+        "mergeCondition": "L0与L1标的走势相关系数>0.85持续2个季度",
+        "splitCondition": "Enterprise AI与Consumer AI形成独立市场估值体系",
+        "deleteCondition": "企业AI SaaS渗透率停滞<5%持续2年",
+        "falsificationSignals": [
+          "AI应用ROI被企业大规模否定（>40%企业削减AI预算）",
+          "开源模型使企业AI commodity化，定价权消失"
+        ]
+      }
+    },
+    {
+      "id": "L2",
+      "name": "AI训练算力层",
+      "nameEn": "AI Training Compute",
+      "chain": "A",
+      "position": 2,
+      "description": "大模型训练核心硬件GPU/加速器，AI超级周期中枢",
+      "physicalConstraintDesc": "大模型训练无法绕过高并行度GPU，物理约束极强",
+      "basePhysicalConstraint": 5,
+      "typicalTimeToRealize": "immediate",
+      "status": "active",
+      "isLeadingIndicator": false,
+      "parallel": false,
+      "sublayers": null,
+      "auditCriteria": {
+        "mergeCondition": "训练与推理芯片重新合并（单一架构同时最优）",
+        "splitCondition": "N/A - 已足够具体",
+        "deleteCondition": "Custom ASIC占据>50%超大云商训练workload",
+        "falsificationSignals": [
+          "Google TPU/Amazon Trainium成本效率超越NVDA GPU >30%",
+          "AI模型规模缩减趋势（效率提升压制算力需求）持续>18个月"
+        ]
+      }
+    },
+    {
+      "id": "L2_5",
+      "name": "AI推理/边缘芯片层",
+      "nameEn": "AI Inference & Edge Silicon",
+      "chain": "A",
+      "position": 2.5,
+      "description": "推理专用芯片与边缘AI芯片，AI从训练转向推理阶段的独立需求节点",
+      "physicalConstraintDesc": "推理需求与训练需求在功耗/延迟/成本维度完全分离，产生独立芯片市场",
+      "basePhysicalConstraint": 4,
+      "typicalTimeToRealize": "near",
+      "status": "active",
+      "isLeadingIndicator": false,
+      "parallel": false,
+      "sublayers": null,
+      "auditCriteria": {
+        "mergeCondition": "NVDA推理市场份额>70%（训推不分离）→并回L2",
+        "splitCondition": "移动端AI与数据中心推理形成完全不同的产业链",
+        "deleteCondition": "边缘AI芯片市场2028年仍<$15B",
+        "falsificationSignals": [
+          "NVDA推理GPU保持>65%市场份额至2027",
+          "Agentic AI落地不及预期，推理需求增速<训练需求增速"
+        ]
+      }
+    },
+    {
+      "id": "L3",
+      "name": "芯片设计工具层",
+      "nameEn": "EDA & Chip Design Tools",
+      "chain": "A",
+      "position": 3,
+      "description": "EDA软件与芯片IP，所有AI芯片设计的必经工具层",
+      "physicalConstraintDesc": "无EDA工具无法进行先进制程芯片设计，客户切换成本极高",
+      "basePhysicalConstraint": 5,
+      "typicalTimeToRealize": "immediate",
+      "status": "active",
+      "isLeadingIndicator": false,
+      "parallel": false,
+      "sublayers": null,
+      "auditCriteria": {
+        "mergeCondition": "EDA工具与半导体设备商深度垂直整合",
+        "splitCondition": "AI原生EDA形成独立市场（AI自动芯片设计商业化）",
+        "deleteCondition": "AI自动设计工具使传统EDA商品化（<5年概率极低）",
+        "falsificationSignals": [
+          "开源EDA工具在先进制程（<5nm）取得突破",
+          "主要AI芯片商内化EDA能力减少第三方依赖"
+        ]
+      }
+    },
+    {
+      "id": "L3_5",
+      "name": "半导体材料层",
+      "nameEn": "Semiconductor Materials & Specialty Gases",
+      "chain": "A",
+      "position": 3.5,
+      "description": "芯片制造必需特种化学品与气体，严重被市场低估的物理约束层",
+      "physicalConstraintDesc": "光刻胶/CMP浆料/特种气体等无可替代，设备无此类材料无法运作",
+      "basePhysicalConstraint": 5,
+      "typicalTimeToRealize": "near",
+      "status": "active",
+      "isLeadingIndicator": false,
+      "parallel": false,
+      "sublayers": null,
+      "auditCriteria": {
+        "mergeCondition": "主要设备商垂直整合材料供应（AMAT收购ENTG类事件）→并入L4",
+        "splitCondition": "生物基/合成材料形成替代供应链",
+        "deleteCondition": "合成替代材料规模化替代>40%特种化学品需求",
+        "falsificationSignals": [
+          "ENTG被大型设备商收购私有化",
+          "中国本土材料商在先进制程实现>30%渗透率影响西方供应商定价权"
+        ]
+      }
+    },
+    {
+      "id": "L4",
+      "name": "半导体制造设备层",
+      "nameEn": "Semiconductor Manufacturing Equipment",
+      "chain": "A",
+      "position": 4,
+      "description": "晶圆制造关键设备，AI芯片产能扩张的直接受益层",
+      "physicalConstraintDesc": "先进制程扩产必须采购新设备，设备不可租用/共享，物理约束极强",
+      "basePhysicalConstraint": 5,
+      "typicalTimeToRealize": "near",
+      "status": "active",
+      "isLeadingIndicator": false,
+      "parallel": false,
+      "sublayers": null,
+      "auditCriteria": {
+        "mergeCondition": "与L3_5材料层相关系数>0.85持续4季度",
+        "splitCondition": "EUV设备与成熟制程设备形成完全不同的需求周期",
+        "deleteCondition": "AI芯片需求停滞导致设备book-to-bill<0.8持续3季度",
+        "falsificationSignals": [
+          "对华出口管制导致设备商收入损失>25%",
+          "TSMC capex指引连续两季下调"
+        ]
+      }
+    },
+    {
+      "id": "L5",
+      "name": "先进封装层",
+      "nameEn": "Advanced Packaging",
+      "chain": "A",
+      "position": 5,
+      "description": "CoWoS/HBM等先进封装技术，AI芯片性能突破的关键瓶颈",
+      "physicalConstraintDesc": "HBM与GPU集成必须通过CoWoS等先进封装，无可替代，产能极度紧张",
+      "basePhysicalConstraint": 4,
+      "typicalTimeToRealize": "near",
+      "status": "active",
+      "isLeadingIndicator": false,
+      "parallel": false,
+      "sublayers": null,
+      "auditCriteria": {
+        "mergeCondition": "台积电完全内化封装产能，第三方封测失去竞争力",
+        "splitCondition": "基板封装与光子封装形成独立市场",
+        "deleteCondition": "新互联技术（光子互联）完全替代实体封装",
+        "falsificationSignals": [
+          "台积电CoWoS自建产能满足>80%需求",
+          "2.5D封装被3D IC stack完全替代"
+        ]
+      }
+    },
+    {
+      "id": "L6",
+      "name": "存储层",
+      "nameEn": "Memory & Storage (HBM/DRAM)",
+      "chain": "A",
+      "position": 6,
+      "description": "HBM与DRAM是AI算力的带宽瓶颈，存储超级周期已启动",
+      "physicalConstraintDesc": "GPU算力需要等量HBM带宽，存储是AI性能的硬性瓶颈",
+      "basePhysicalConstraint": 5,
+      "typicalTimeToRealize": "near",
+      "status": "active",
+      "isLeadingIndicator": false,
+      "parallel": false,
+      "sublayers": null,
+      "auditCriteria": {
+        "mergeCondition": "存储与封装合并（HBM直接集成进封装层）",
+        "splitCondition": "HBM与DRAM形成完全独立的定价周期",
+        "deleteCondition": "新型存储技术使HBM需求停滞",
+        "falsificationSignals": [
+          "AI模型显存效率提升>50%（KV cache压缩等）降低HBM需求",
+          "三星/SK Hynix大幅扩产导致HBM供过于求"
+        ]
+      }
+    },
+    {
+      "id": "L7",
+      "name": "服务器/EMS层",
+      "nameEn": "Server OEM & EMS",
+      "chain": "A",
+      "position": 7,
+      "description": "AI服务器系统集成，GPU Rack级解决方案最终组装与交付",
+      "physicalConstraintDesc": "GPU必须集成进服务器系统方可使用，系统集成需求随GPU出货同步增长",
+      "basePhysicalConstraint": 4,
+      "typicalTimeToRealize": "immediate",
+      "status": "active",
+      "isLeadingIndicator": false,
+      "parallel": false,
+      "sublayers": null,
+      "auditCriteria": {
+        "mergeCondition": "NVDA完全垂直整合至系统层（DGX工厂化）",
+        "splitCondition": "液冷Rack系统与标准服务器形成独立市场",
+        "deleteCondition": "Hyperscaler完全自建服务器生产，EMS市场消失",
+        "falsificationSignals": [
+          "主要AI芯片商GPU分配完全绕过第三方EMS",
+          "服务器毛利率<5%持续2个季度"
+        ]
+      }
+    },
+    {
+      "id": "L8",
+      "name": "数据中心内部基础设施层",
+      "nameEn": "Data Center Internal Infrastructure",
+      "chain": "A",
+      "position": 8,
+      "description": "数据中心内部平行基础设施：网络互联、液冷/电源、光纤/光模块",
+      "physicalConstraintDesc": "三个子层平行存在，均为数据中心必备，传导速度相近",
+      "basePhysicalConstraint": 4,
+      "typicalTimeToRealize": "near",
+      "status": "active",
+      "isLeadingIndicator": false,
+      "parallel": true,
+      "sublayers": ["L8_NET", "L8_COOL", "L8_OPT"],
+      "auditCriteria": {
+        "splitCondition": "三子层传导时滞差异>6个月 → 独立成层",
+        "deleteCondition": "N/A - 分解到子层判断"
+      }
+    },
+    {
+      "id": "L8_NET",
+      "name": "数据中心网络互联",
+      "nameEn": "Data Center Network Interconnect",
+      "chain": "A",
+      "position": 8.1,
+      "parentLayer": "L8",
+      "description": "AI集群内部400G/800G高速网络交换",
+      "physicalConstraintDesc": "GPU集群必须通过高速交换机互联，带宽需求随GPU数量指数增长",
+      "basePhysicalConstraint": 4,
+      "typicalTimeToRealize": "near",
+      "status": "active",
+      "isLeadingIndicator": false,
+      "parallel": false,
+      "sublayers": null,
+      "auditCriteria": {
+        "mergeCondition": "与L8_OPT融合（光交换替代电交换，CPO商业化）",
+        "deleteCondition": "直接光互联完全替代电交换",
+        "falsificationSignals": [
+          "CPO光交换2026年规模商业化",
+          "自研交换机蚕食Arista市场份额>30%"
+        ]
+      }
+    },
+    {
+      "id": "L8_COOL",
+      "name": "数据中心液冷/电源",
+      "nameEn": "Data Center Cooling & Power",
+      "chain": "A",
+      "position": 8.2,
+      "parentLayer": "L8",
+      "description": "高密度AI机柜液冷系统与精密配电，功耗密度↑强制需求",
+      "physicalConstraintDesc": "AI GPU功耗密度>50kW/rack，风冷物理极限已到，液冷不可绕过",
+      "basePhysicalConstraint": 5,
+      "typicalTimeToRealize": "near",
+      "status": "active",
+      "isLeadingIndicator": false,
+      "parallel": false,
+      "sublayers": null,
+      "auditCriteria": {
+        "splitCondition": "服务器侧液冷与数据中心侧液冷供应商完全分化",
+        "deleteCondition": "新型散热技术使液冷商品化，毛利<10%",
+        "falsificationSignals": [
+          "AI芯片功耗效率突破导致液冷渗透率停止增长",
+          "竞争对手大量涌入压缩VRT毛利至<15%"
+        ]
+      }
+    },
+    {
+      "id": "L8_OPT",
+      "name": "光纤/光模块层",
+      "nameEn": "Optical Fiber & Transceiver",
+      "chain": "A",
+      "position": 8.3,
+      "parentLayer": "L8",
+      "description": "AI集群高带宽光互联，1.6T+光模块需求爆发",
+      "physicalConstraintDesc": "超长距离/高密度数据中心互联必须用光，铜缆物理极限已到",
+      "basePhysicalConstraint": 4,
+      "typicalTimeToRealize": "near",
+      "status": "active",
+      "isLeadingIndicator": false,
+      "parallel": false,
+      "sublayers": null,
+      "auditCriteria": {
+        "mergeCondition": "与L8_NET合并（CPO使光电一体化）",
+        "deleteCondition": "无线/新型互联技术替代光纤在数据中心内的使用",
+        "falsificationSignals": [
+          "光纤/光模块完全商品化，毛利率<10%",
+          "CPO直接内化光模块功能，独立光模块市场萎缩"
+        ]
+      }
+    },
+    {
+      "id": "L9",
+      "name": "数据中心建设/地产层",
+      "nameEn": "Data Center Construction & Real Estate",
+      "chain": "A",
+      "position": 9,
+      "description": "数据中心物理建设与运营，土地+电力双稀缺资产",
+      "physicalConstraintDesc": "所有AI算力必须有物理机房容纳，土地+电力审批成为新瓶颈",
+      "basePhysicalConstraint": 4,
+      "typicalTimeToRealize": "medium",
+      "status": "active",
+      "isLeadingIndicator": false,
+      "parallel": false,
+      "sublayers": null,
+      "auditCriteria": {
+        "mergeCondition": "数据中心REIT与电力公用事业合并估值（PPA绑定）",
+        "splitCondition": "Hyperscaler自建VS第三方colocation形成完全不同的估值体系",
+        "deleteCondition": "Hyperscaler转向100%自建，colocation需求消失",
+        "falsificationSignals": [
+          "主要市场电力审批停滞>18个月导致大量项目取消",
+          "Hyperscaler自建率超过80%"
+        ]
+      }
+    },
+    {
+      "id": "L10",
+      "name": "网络安全层",
+      "nameEn": "Cybersecurity",
+      "chain": "A",
+      "position": 10,
+      "description": "AI扩大攻击面，数据中心+AI系统安全支出强制增长",
+      "physicalConstraintDesc": "AI数据中心规模扩张→攻击面扩大→合规强制安全支出",
+      "basePhysicalConstraint": 3,
+      "typicalTimeToRealize": "immediate",
+      "status": "active",
+      "isLeadingIndicator": false,
+      "parallel": false,
+      "sublayers": null,
+      "auditCriteria": {
+        "mergeCondition": "安全功能完全内化进AI平台层，独立安全公司失去市场",
+        "splitCondition": "AI原生安全与传统安全形成完全不同的市场",
+        "deleteCondition": "AI安全支出占比下降至<2%的AI总支出",
+        "falsificationSignals": [
+          "MSFT/GOOG内化安全功能替代独立安全产品>30%市场",
+          "重大安全事件导致特定平台监管锁定"
+        ]
+      }
+    },
+    {
+      "id": "L11",
+      "name": "清洁基荷/核电层",
+      "nameEn": "Clean Baseload & Nuclear Power",
+      "chain": "B",
+      "position": 11,
+      "description": "AI数据中心24/7稳定电力需求→核电/可再生能源复兴",
+      "physicalConstraintDesc": "数据中心需要可靠基荷电力，核电是唯一24/7零碳基荷方案",
+      "basePhysicalConstraint": 4,
+      "typicalTimeToRealize": "medium",
+      "status": "active",
+      "isLeadingIndicator": false,
+      "parallel": false,
+      "sublayers": null,
+      "auditCriteria": {
+        "mergeCondition": "与L12电网设备层高度相关（>0.8）持续4季度",
+        "splitCondition": "核电与可再生能源在AI数据中心供电市场中分化",
+        "deleteCondition": "SMR商业化延期>2030年，核电新增产能落空",
+        "falsificationSignals": [
+          "主要市场核电监管收紧",
+          "储能技术突破使间歇性可再生能源可替代核电基荷"
+        ]
+      }
+    },
+    {
+      "id": "L12",
+      "name": "电网设备层",
+      "nameEn": "Grid Equipment & Electrical Infrastructure",
+      "chain": "B",
+      "position": 12,
+      "description": "变压器/开关柜/电网施工，AI用电激增的电网升级受益层",
+      "physicalConstraintDesc": "新增电力必须通过电网传输，电网升级是物理必然",
+      "basePhysicalConstraint": 4,
+      "typicalTimeToRealize": "medium",
+      "status": "active",
+      "isLeadingIndicator": false,
+      "parallel": false,
+      "sublayers": null,
+      "auditCriteria": {
+        "mergeCondition": "与L11传导时滞差异<3个月持续2季度",
+        "splitCondition": "BTM与电网扩张形成完全不同的投资逻辑",
+        "deleteCondition": "AI数据中心全部转向BTM，公共电网需求停滞",
+        "falsificationSignals": [
+          "主要市场电网审批时间>5年（项目经济性恶化）",
+          "BTM占新增数据中心电力>60%"
+        ]
+      }
+    },
+    {
+      "id": "L13",
+      "name": "能源生产层",
+      "nameEn": "Energy Production (Natural Gas E&P)",
+      "chain": "B",
+      "position": 13,
+      "description": "天然气勘探生产，数据中心BTM/发电厂的燃料供应层",
+      "physicalConstraintDesc": "天然气为数据中心现场发电主要燃料，AI增量用电带来结构性需求增长",
+      "basePhysicalConstraint": 3,
+      "typicalTimeToRealize": "long",
+      "status": "active",
+      "isLeadingIndicator": false,
+      "parallel": false,
+      "sublayers": null,
+      "auditCriteria": {
+        "mergeCondition": "AI贡献天然气增量需求降至<15%（其他因素主导）",
+        "deleteCondition": "核电/可再生完全取代天然气发电",
+        "falsificationSignals": [
+          "天然气价格暴跌>40%使AI需求溢价消失",
+          "核电/清洁能源快速占据BTM市场>50%"
+        ]
+      }
+    },
+    {
+      "id": "L14",
+      "name": "大宗资源层",
+      "nameEn": "Critical Commodities (Copper/Aluminum)",
+      "chain": "B",
+      "position": 14,
+      "description": "铜/铝是电网升级和数据中心建设的物理基础，AI驱动结构性需求",
+      "physicalConstraintDesc": "电网传输/数据中心布线/散热系统大量用铜，传导链终止层",
+      "basePhysicalConstraint": 4,
+      "typicalTimeToRealize": "long",
+      "status": "active",
+      "isLeadingIndicator": false,
+      "parallel": false,
+      "sublayers": null,
+      "auditCriteria": {
+        "mergeCondition": "N/A - 传导链终止层",
+        "splitCondition": "铜矿与铝形成完全独立的AI需求逻辑",
+        "deleteCondition": "铜替代材料规模化替代>30%用铜场景",
+        "falsificationSignals": [
+          "铜矿新矿大规模投产导致价格下跌>30%",
+          "AI capex周期逆转导致电网投资削减"
+        ]
+      }
+    },
+    {
+      "id": "L_EXP_QC",
+      "name": "量子计算层（实验）",
+      "nameEn": "Quantum Computing (Experimental)",
+      "chain": "experimental",
+      "position": 99,
+      "description": "量子计算长期可能优化AI训练/材料发现，当前为独立thesis，非AI传导",
+      "physicalConstraintDesc": "与AI传导无直接物理约束关系，为独立投资thesis",
+      "basePhysicalConstraint": 2,
+      "typicalTimeToRealize": "long",
+      "status": "experimental",
+      "isLeadingIndicator": false,
+      "parallel": false,
+      "sublayers": null,
+      "promotionCriteria": "量子纠错错误率<0.1%商业化实现，且AI workload可量子加速验证",
+      "auditCriteria": {
+        "deleteCondition": "量子计算商业化时间线推迟至2035+",
+        "falsificationSignals": [
+          "IBM/Google放弃近期量子商业化路线图",
+          "主流机构报告量子计算AI应用<5年无法实现"
+        ]
+      }
+    }
+  ]
+}

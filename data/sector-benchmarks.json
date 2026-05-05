@@ -1,0 +1,309 @@
+{
+  "_meta": {
+    "version": "1.0.0",
+    "lastUpdated": "2026-05-05",
+    "updateCadence": "quarterly — every earnings season (Jan/Apr/Jul/Oct)",
+    "note": "Sector median P/E and EV/Revenue used for pricing score computation. Update by running scripts/update-sector-benchmarks.js or manually after quarterly earnings.",
+    "lastComputedBy": "update-benchmarks.js"
+  },
+  "benchmarks": {
+    "L0": {
+      "label": "Hyperscaler / Foundation Models",
+      "medianForwardPE": 21.9,
+      "medianEVRevenue": 8.5,
+      "peers": [
+        "MSFT",
+        "AMZN",
+        "META",
+        "ORCL"
+      ],
+      "_computedForwardPE": 21.9,
+      "_computedEVRevenue": 8.5,
+      "_lastComputed": "2026-05-05",
+      "_sampleSize": 4
+    },
+    "L1": {
+      "label": "AI Infrastructure Software",
+      "medianForwardPE": 52.4,
+      "medianEVRevenue": 43.7,
+      "peers": [
+        "GOOG",
+        "PLTR",
+        "NOW",
+        "CRM"
+      ],
+      "_computedForwardPE": 52.4,
+      "_computedEVRevenue": 43.7,
+      "_lastComputed": "2026-05-05",
+      "_sampleSize": 2
+    },
+    "L2": {
+      "label": "Training Silicon",
+      "medianForwardPE": 24.2,
+      "medianEVRevenue": 19,
+      "peers": [
+        "NVDA",
+        "AMD",
+        "INTC"
+      ],
+      "_computedForwardPE": 24.2,
+      "_computedEVRevenue": 19,
+      "_lastComputed": "2026-05-05",
+      "_sampleSize": 2
+    },
+    "L2_5": {
+      "label": "Inference / Edge Silicon",
+      "medianForwardPE": 30.2,
+      "medianEVRevenue": 17.7,
+      "peers": [
+        "QCOM",
+        "ARM",
+        "MRVL",
+        "MTSI"
+      ],
+      "_computedForwardPE": 30.2,
+      "_computedEVRevenue": 17.7,
+      "_lastComputed": "2026-05-05",
+      "_sampleSize": 3
+    },
+    "L3": {
+      "label": "EDA / IP",
+      "medianForwardPE": 33.2,
+      "medianEVRevenue": 15.3,
+      "peers": [
+        "SNPS",
+        "CDNS",
+        "ANSS"
+      ],
+      "_computedForwardPE": 33.2,
+      "_computedEVRevenue": 15.3,
+      "_lastComputed": "2026-05-05",
+      "_sampleSize": 2
+    },
+    "L3_5": {
+      "label": "Semiconductor Materials",
+      "medianForwardPE": 25.6,
+      "medianEVRevenue": 7.3,
+      "peers": [
+        "ENTG",
+        "APD",
+        "CMC",
+        "AZTA"
+      ],
+      "_computedForwardPE": 25.6,
+      "_computedEVRevenue": 7.3,
+      "_lastComputed": "2026-05-05",
+      "_sampleSize": 2
+    },
+    "L4": {
+      "label": "Semiconductor Equipment",
+      "medianForwardPE": 32.7,
+      "medianEVRevenue": 14.9,
+      "peers": [
+        "AMAT",
+        "LRCX",
+        "KLAC",
+        "ASML",
+        "ONTO"
+      ],
+      "_computedForwardPE": 32.7,
+      "_computedEVRevenue": 14.9,
+      "_lastComputed": "2026-05-05",
+      "_sampleSize": 3
+    },
+    "L5": {
+      "label": "Advanced Packaging / Foundry",
+      "medianForwardPE": 24.9,
+      "medianEVRevenue": 2.2,
+      "peers": [
+        "TSM",
+        "AMKR",
+        "ASX",
+        "UMC"
+      ],
+      "_computedForwardPE": 24.9,
+      "_computedEVRevenue": 2.2,
+      "_lastComputed": "2026-05-05",
+      "_sampleSize": 2
+    },
+    "L6": {
+      "label": "Memory / Storage",
+      "medianForwardPE": 5.7,
+      "medianEVRevenue": 11.1,
+      "peers": [
+        "MU",
+        "WDC",
+        "STX"
+      ],
+      "_computedForwardPE": 5.7,
+      "_computedEVRevenue": 11.1,
+      "_lastComputed": "2026-05-05",
+      "_sampleSize": 1
+    },
+    "L7": {
+      "label": "AI Servers / EMS",
+      "medianForwardPE": 14.4,
+      "medianEVRevenue": 1.4,
+      "peers": [
+        "DELL",
+        "HPE",
+        "CLS",
+        "SMCI"
+      ],
+      "_computedForwardPE": 14.4,
+      "_computedEVRevenue": 1.4,
+      "_lastComputed": "2026-05-05",
+      "_sampleSize": 3
+    },
+    "L8_NET": {
+      "label": "AI Networking",
+      "medianForwardPE": 40,
+      "medianEVRevenue": 22.9,
+      "peers": [
+        "ANET",
+        "CSCO",
+        "JNPR"
+      ],
+      "_computedForwardPE": 40,
+      "_computedEVRevenue": 22.9,
+      "_lastComputed": "2026-05-05",
+      "_sampleSize": 1
+    },
+    "L8_COOL": {
+      "label": "Thermal / Power Distribution",
+      "medianForwardPE": 32.9,
+      "medianEVRevenue": 9.1,
+      "peers": [
+        "VRT",
+        "ETN",
+        "GNRC",
+        "IR"
+      ],
+      "_computedForwardPE": 32.9,
+      "_computedEVRevenue": 9.1,
+      "_lastComputed": "2026-05-05",
+      "_sampleSize": 2
+    },
+    "L8_OPT": {
+      "label": "Optical Interconnect",
+      "medianForwardPE": 41.4,
+      "medianEVRevenue": 9.6,
+      "peers": [
+        "GLW",
+        "COHR",
+        "LITE",
+        "IIVI"
+      ],
+      "_computedForwardPE": 41.4,
+      "_computedEVRevenue": 9.6,
+      "_lastComputed": "2026-05-05",
+      "_sampleSize": 2
+    },
+    "L9": {
+      "label": "Datacenter Real Estate",
+      "medianForwardPE": 57.5,
+      "medianEVRevenue": 13.5,
+      "peers": [
+        "EQIX",
+        "DLR",
+        "AMT",
+        "CCI"
+      ],
+      "_computedForwardPE": 57.5,
+      "_computedEVRevenue": 13.5,
+      "_lastComputed": "2026-05-05",
+      "_sampleSize": 3
+    },
+    "L10": {
+      "label": "Cybersecurity",
+      "medianForwardPE": 61.3,
+      "medianEVRevenue": 19.3,
+      "peers": [
+        "CRWD",
+        "PANW",
+        "ZS",
+        "FTNT"
+      ],
+      "_computedForwardPE": 61.3,
+      "_computedEVRevenue": 19.3,
+      "_lastComputed": "2026-05-05",
+      "_sampleSize": 2
+    },
+    "L11": {
+      "label": "Nuclear / Clean Baseload Power",
+      "medianForwardPE": 23.6,
+      "medianEVRevenue": 4.8,
+      "peers": [
+        "CEG",
+        "VST",
+        "CCJ",
+        "NRG"
+      ],
+      "_computedForwardPE": 23.6,
+      "_computedEVRevenue": 4.8,
+      "_lastComputed": "2026-05-05",
+      "_sampleSize": 3
+    },
+    "L12": {
+      "label": "Grid / Power Infrastructure",
+      "medianForwardPE": 45.7,
+      "medianEVRevenue": 5.6,
+      "peers": [
+        "GEV",
+        "PWR",
+        "EMR",
+        "ROK"
+      ],
+      "_computedForwardPE": 45.7,
+      "_computedEVRevenue": 5.6,
+      "_lastComputed": "2026-05-05",
+      "_sampleSize": 2
+    },
+    "L13": {
+      "label": "Natural Gas",
+      "medianForwardPE": 11.3,
+      "medianEVRevenue": 4.3,
+      "peers": [
+        "EOG",
+        "EQT",
+        "AR",
+        "CRK"
+      ],
+      "_computedForwardPE": 11.3,
+      "_computedEVRevenue": 4.3,
+      "_lastComputed": "2026-05-05",
+      "_sampleSize": 2
+    },
+    "L14": {
+      "label": "Physical Resources / Commodities",
+      "medianForwardPE": 15.1,
+      "medianEVRevenue": 3.7,
+      "peers": [
+        "FCX",
+        "SCCO",
+        "AA",
+        "NUE"
+      ],
+      "_computedForwardPE": 15.1,
+      "_computedEVRevenue": 3.7,
+      "_lastComputed": "2026-05-05",
+      "_sampleSize": 3
+    },
+    "L_EXP_QC": {
+      "label": "Quantum Computing (Experimental)",
+      "medianForwardPE": null,
+      "medianEVRevenue": 80,
+      "peers": [
+        "IONQ",
+        "RGTI",
+        "QUBT"
+      ],
+      "note": "Pre-revenue category — EV/Revenue is the only meaningful comparable"
+    },
+    "default": {
+      "label": "Fallback",
+      "medianForwardPE": 22,
+      "medianEVRevenue": 5
+    }
+  }
+}

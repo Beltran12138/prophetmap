@@ -1,0 +1,103 @@
+name: Daily ProphetMap Update
+
+on:
+  schedule:
+    # Daily: 14:30 UTC Mon-Fri (after US market close, data ready)
+    - cron: '30 14 * * 1-5'
+    # Weekly benchmarks: 12:00 UTC Monday (before market open, fresh weekly data)
+    - cron: '0 12 * * 1'
+  workflow_dispatch:
+    inputs:
+      skip_signals:
+        description: 'Skip DeepSeek signal analysis (save API cost)'
+        required: false
+        default: 'false'
+      run_benchmarks:
+        description: 'Force sector benchmark update'
+        required: false
+        default: 'false'
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  update-benchmarks:
+    # Runs only on Monday trigger or manual force
+    if: >
+      github.event_name == 'workflow_dispatch' && github.event.inputs.run_benchmarks == 'true' ||
+      github.event.schedule == '0 12 * * 1'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+      - run: npm ci
+      - name: Update sector benchmarks
+        run: node scripts/update-benchmarks.js
+      - name: Commit updated benchmarks
+        run: |
+          git config user.name "prophetmap-bot"
+          git config user.email "bot@prophetmap.dev"
+          git add data/sector-benchmarks.json
+          git diff --staged --quiet || git commit -m "chore: weekly benchmark update $(date -u +%Y-%m-%d)"
+          git push
+
+  update-daily:
+    # Runs Mon-Fri after market close
+    if: >
+      github.event_name == 'workflow_dispatch' ||
+      github.event.schedule == '30 14 * * 1-5'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Update valuations
+        run: node scripts/update-valuations.js
+        env:
+          NODE_OPTIONS: '--max-old-space-size=512'
+
+      - name: Analyze thesis signals
+        if: ${{ github.event.inputs.skip_signals != 'true' }}
+        id: signals
+        run: node scripts/analyze-signals.js
+        env:
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+
+      - name: Commit updated scores
+        run: |
+          git config user.name "prophetmap-bot"
+          git config user.email "bot@prophetmap.dev"
+          git add data/scores/ data/alerts/
+          git diff --staged --quiet || git commit -m "chore: daily score update $(date -u +%Y-%m-%d)"
+          git push
+
+      - name: Notify on critical signals
+        if: ${{ steps.signals.outputs.has_critical == 'true' }}
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const symbols = '${{ steps.signals.outputs.critical_symbols }}';
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `⚠️ Critical thesis signal — ${symbols} — ${new Date().toISOString().slice(0,10)}`,
+              body: `ProphetMap detected HIGH/CRITICAL falsification signal proximity for: **${symbols}**\n\nSee \`data/alerts/${new Date().toISOString().slice(0,10)}.json\` for details.\n\nReview required before next trading session.`,
+              labels: ['critical-signal'],
+            });

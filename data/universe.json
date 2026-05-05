@@ -1,0 +1,898 @@
+{
+  "_meta": {
+    "version": "1.0.0",
+    "date": "2026-05-04",
+    "description": "ProphetMap stock universe — manually-defined static fields only. Dynamic pricing scores written to data/scores/YYYY-MM-DD.json by scripts/update-valuations.js",
+    "fieldGuide": {
+      "physicalConstraint": "1=pure software, 5=hard physical monopoly with multi-year lead times",
+      "aiContribution": "0.0-1.0, estimated % of forward revenue/earnings growth attributable to AI thesis",
+      "timeToRealize": "near=<12m, mid=12-36m, far=36+m",
+      "layerRole": "primary=core layer representative, secondary=partial exposure, bridge=spans multiple layers"
+    },
+    "funnelPassCriteria": {
+      "physicalConstraint": ">=4",
+      "aiContribution": ">=0.30",
+      "timeToRealize": "near or mid",
+      "pricingScore": "<=3 (computed at runtime)"
+    }
+  },
+  "tickers": [
+    {
+      "symbol": "MSFT",
+      "name": "Microsoft",
+      "layer": "L0",
+      "layerRole": "primary",
+      "physicalConstraint": 1,
+      "aiContribution": 0.45,
+      "timeToRealize": "near",
+      "thesis": "Azure AI consumption + Copilot enterprise penetration drives hyperscaler differentiation as the primary OpenAI distribution channel",
+      "thesisFalsification": [
+        "OpenAI terminates or materially renegotiates Microsoft partnership",
+        "Azure loses AI market share to GCP/AWS by >10 percentage points in two consecutive quarters",
+        "Copilot enterprise seat growth falls below 5M new seats in any 12-month window"
+      ],
+      "marketCap": 3100,
+      "status": "active",
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "AMZN",
+      "name": "Amazon",
+      "layer": "L0",
+      "layerRole": "primary",
+      "physicalConstraint": 1,
+      "aiContribution": 0.40,
+      "timeToRealize": "near",
+      "thesis": "AWS Bedrock + Trainium custom silicon creates proprietary AI moat while e-commerce AI personalization improves conversion rates",
+      "thesisFalsification": [
+        "AWS AI revenue growth decelerates below 30% YoY for two consecutive quarters",
+        "Trainium underperforms NVDA H100 on cost-per-FLOP by >40% in third-party benchmarks",
+        "AWS market share in cloud falls below 28%"
+      ],
+      "marketCap": 2200,
+      "status": "active",
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "META",
+      "name": "Meta Platforms",
+      "layer": "L0",
+      "layerRole": "primary",
+      "physicalConstraint": 2,
+      "aiContribution": 0.50,
+      "timeToRealize": "near",
+      "thesis": "Llama open-source strategy locks in ecosystem while ad-targeting AI lifts ARPU through superior recommendation models",
+      "thesisFalsification": [
+        "EU regulators ban Meta AI training on EU user data, affecting >400M MAU",
+        "Llama ecosystem fails to reach 1M enterprise deployments by end-2026",
+        "Ad ARPU growth decelerates below 8% despite AI targeting improvements"
+      ],
+      "marketCap": 1500,
+      "status": "active",
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "ORCL",
+      "name": "Oracle",
+      "layer": "L0",
+      "layerRole": "secondary",
+      "physicalConstraint": 1,
+      "aiContribution": 0.35,
+      "timeToRealize": "near",
+      "thesis": "OCI wins AI workload contracts via low-latency GPU cluster architecture and long-term hyperscaler-alternative positioning",
+      "thesisFalsification": [
+        "OCI GPU capacity expansion stalls — GPU cluster waitlist exceeds 6 months",
+        "Microsoft/AWS win >80% of new enterprise AI workload contracts in 2025",
+        "OCI revenue growth falls below 30% YoY for two consecutive quarters"
+      ],
+      "marketCap": 500,
+      "status": "active",
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "GOOG",
+      "name": "Alphabet",
+      "layer": "L1",
+      "layerRole": "primary",
+      "physicalConstraint": 2,
+      "aiContribution": 0.55,
+      "timeToRealize": "near",
+      "thesis": "TPU v5 + Gemini integration creates vertically integrated AI stack defending search dominance while GCP AI services expand",
+      "thesisFalsification": [
+        "Search market share falls below 85% globally due to AI search substitutes",
+        "TPU fails to challenge NVDA on software ecosystem breadth — internal teams defect back to CUDA",
+        "Gemini Ultra underperforms GPT-5 on third-party benchmarks by >15% on enterprise tasks"
+      ],
+      "marketCap": 2000,
+      "status": "active",
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "PLTR",
+      "name": "Palantir",
+      "layer": "L1",
+      "layerRole": "primary",
+      "physicalConstraint": 1,
+      "aiContribution": 0.70,
+      "timeToRealize": "mid",
+      "thesis": "AIP platform converts AI capability into operational systems-of-record for government and enterprise with high switching costs",
+      "thesisFalsification": [
+        "Federal budget sequestration cuts defense AI spending by >20%",
+        "AIP commercial ARR growth falls below 40% YoY for two consecutive quarters",
+        "Microsoft Copilot for Government achieves FedRAMP High equivalency — directly substitutes AIP for classified workloads"
+      ],
+      "marketCap": 280,
+      "status": "active",
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "NVDA",
+      "name": "NVIDIA",
+      "layer": "L2",
+      "layerRole": "primary",
+      "physicalConstraint": 5,
+      "aiContribution": 0.85,
+      "timeToRealize": "near",
+      "thesis": "CUDA ecosystem lock-in and leading H100/H200/B200 architecture sustains 70%+ AI accelerator market share through 2027",
+      "thesisFalsification": [
+        "Custom silicon (Google TPU, AWS Trainium, Meta MTIA) collectively captures >30% of training compute workloads by 2027",
+        "DeepSeek-style efficiency gains reduce aggregate training FLOP demand by >50% vs 2024 trajectory",
+        "ROCm achieves >90% CUDA ecosystem compatibility, enabling AMD to substitute at large hyperscalers"
+      ],
+      "marketCap": 2800,
+      "status": "active",
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "AMD",
+      "name": "Advanced Micro Devices",
+      "layer": "L2",
+      "layerRole": "secondary",
+      "physicalConstraint": 4,
+      "aiContribution": 0.65,
+      "timeToRealize": "mid",
+      "thesis": "MI300X + ROCm ecosystem maturation captures overflow demand as NVDA supply-constrained and hyperscalers diversify AI chip vendors",
+      "thesisFalsification": [
+        "ROCm software compatibility remains >20% worse than CUDA on key model libraries by end-2025",
+        "MI300X shipments miss consensus targets by >30% for two consecutive quarters",
+        "NVDA eliminates supply constraints — TSMC CoWoS fully catches up to demand"
+      ],
+      "marketCap": 290,
+      "status": "active",
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "QCOM",
+      "name": "Qualcomm",
+      "layer": "L2_5",
+      "layerRole": "primary",
+      "physicalConstraint": 3,
+      "aiContribution": 0.45,
+      "timeToRealize": "mid",
+      "thesis": "Snapdragon X Elite on-device AI inference captures edge compute demand as model compression drives sub-10B param deployment",
+      "thesisFalsification": [
+        "Apple Silicon M4 maintains >30% performance-per-watt advantage on on-device AI benchmarks",
+        "On-device AI fails to reach commercial tipping point — <10% of enterprise apps deploy edge inference by 2026",
+        "QCOM loses Apple modem contract, removing scale economics for advanced node procurement"
+      ],
+      "marketCap": 185,
+      "status": "active",
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "ARM",
+      "name": "Arm Holdings",
+      "layer": "L2_5",
+      "layerRole": "primary",
+      "physicalConstraint": 4,
+      "aiContribution": 0.60,
+      "timeToRealize": "mid",
+      "thesis": "ARM ISA dominates all edge compute categories via royalty model on every AI chip — mobile, PC, server, and automotive",
+      "thesisFalsification": [
+        "RISC-V achieves >15% edge silicon market share by 2027, compressing ARM royalty rates",
+        "Hyperscaler in-house ISA development (Amazon Graviton fork) reduces per-chip royalty obligations",
+        "ARM annual royalty revenue growth falls below 20% YoY for two consecutive quarters"
+      ],
+      "marketCap": 165,
+      "status": "active",
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "MRVL",
+      "name": "Marvell Technology",
+      "layer": "L2_5",
+      "layerRole": "primary",
+      "physicalConstraint": 4,
+      "aiContribution": 0.60,
+      "timeToRealize": "mid",
+      "thesis": "Custom ASIC design wins for hyperscaler AI chips (Google TPU, Amazon Trainium, Microsoft Maia) provide durable design services revenue",
+      "thesisFalsification": [
+        "Hyperscalers bring ASIC design fully in-house, cutting Marvell out of design services",
+        "Marvell loses two of its top three custom chip customers within 18 months",
+        "AI custom silicon revenue misses 40% YoY growth for two consecutive quarters"
+      ],
+      "marketCap": 75,
+      "status": "active",
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "SNPS",
+      "name": "Synopsys",
+      "layer": "L3",
+      "layerRole": "primary",
+      "physicalConstraint": 5,
+      "aiContribution": 0.40,
+      "timeToRealize": "near",
+      "thesis": "EDA duopoly + Synopsys.ai tools are physical prerequisite for every custom AI chip design — no tapeout possible without EDA",
+      "thesisFalsification": [
+        "Open-source EDA (OpenROAD/SKY130) achieves production-quality tapeout for 3nm-class nodes",
+        "AI-native EDA startup achieves 10x productivity advantage and captures >10% market share",
+        "Antitrust action forces Synopsys-Ansys merger breakup, reducing pricing power"
+      ],
+      "marketCap": 80,
+      "status": "active",
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "CDNS",
+      "name": "Cadence Design Systems",
+      "layer": "L3",
+      "layerRole": "primary",
+      "physicalConstraint": 5,
+      "aiContribution": 0.40,
+      "timeToRealize": "near",
+      "thesis": "Cadence verification tools required for HBM/chiplet design sign-off — complexity of 3D IC increases verification hours and pricing power",
+      "thesisFalsification": [
+        "Open-source EDA breakthrough eliminates Cadence's verification monopoly at advanced nodes",
+        "AI-automated chip design reduces human-EDA-tool interaction by >70%, commoditizing license revenue",
+        "Revenue growth falls below 12% YoY for two consecutive quarters"
+      ],
+      "marketCap": 85,
+      "status": "active",
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "ENTG",
+      "name": "Entegris",
+      "layer": "L3_5",
+      "layerRole": "primary",
+      "physicalConstraint": 5,
+      "aiContribution": 0.25,
+      "timeToRealize": "far",
+      "thesis": "CMP slurries and advanced process chemicals face no substitution for sub-3nm node manufacturing — physical chemistry prerequisite",
+      "thesisFalsification": [
+        "Alternative planarization techniques (dry polishing) eliminate CMP requirement at 2nm nodes",
+        "TSMC qualifies competing chemical supplier for >30% of advanced node volumes",
+        "Node advancement slows — 2nm ramp delayed beyond 2027"
+      ],
+      "marketCap": 14,
+      "status": "active",
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "APD",
+      "name": "Air Products",
+      "layer": "L3_5",
+      "layerRole": "secondary",
+      "physicalConstraint": 4,
+      "aiContribution": 0.20,
+      "timeToRealize": "far",
+      "thesis": "Ultra-high purity industrial gases (N2, H2, O2, NF3) are physical prerequisites for semiconductor fab operations with long-term supply agreements",
+      "thesisFalsification": [
+        "On-site gas generation technology matures — fabs install own nitrogen/oxygen generation reducing APD dependency",
+        "TSMC/Samsung qualify alternative industrial gas supplier for >25% of fab volumes",
+        "New fab construction slows — CHIPS Act funding disbursement delayed beyond 2026"
+      ],
+      "marketCap": 55,
+      "status": "watchlist",
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "AMAT",
+      "name": "Applied Materials",
+      "layer": "L4",
+      "layerRole": "primary",
+      "physicalConstraint": 5,
+      "aiContribution": 0.30,
+      "timeToRealize": "near",
+      "thesis": "Deposition and etch equipment required for every advanced node — equipment cycle leads silicon cycle by 12-18 months",
+      "thesisFalsification": [
+        "China export controls permanently impair >25% of annual revenue with no substitute market",
+        "Extended equipment cycles at 2nm+ nodes reduce replacement demand by >30% vs prior cycle",
+        "TSMC pushes back N2 ramp timeline beyond Q4 2025, delaying equipment orders"
+      ],
+      "marketCap": 180,
+      "status": "active",
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "LRCX",
+      "name": "Lam Research",
+      "layer": "L4",
+      "layerRole": "primary",
+      "physicalConstraint": 5,
+      "aiContribution": 0.30,
+      "timeToRealize": "near",
+      "thesis": "Etch equipment is critical chokepoint for 3D NAND layer stacking and HBM memory manufacturing",
+      "thesisFalsification": [
+        "3D NAND layer count growth plateaus below 300 layers — reducing etch complexity and tool demand",
+        "HBM capacity overbuild cycle causes 12-18 months of equipment order pause",
+        "China export controls impair >30% of annual revenue"
+      ],
+      "marketCap": 105,
+      "status": "active",
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "KLAC",
+      "name": "KLA Corporation",
+      "layer": "L4",
+      "layerRole": "primary",
+      "physicalConstraint": 5,
+      "aiContribution": 0.35,
+      "timeToRealize": "near",
+      "thesis": "Process control and metrology becomes MORE critical as nodes shrink — defect density requirements tighten exponentially at each node",
+      "thesisFalsification": [
+        "In-situ metrology (integrated into deposition tools) eliminates need for standalone inspection tools",
+        "AI-based virtual metrology achieves <1% prediction error, reducing physical measurement frequency by >60%",
+        "Node advancement halts — no new advanced nodes beyond 2nm through 2028"
+      ],
+      "marketCap": 95,
+      "status": "active",
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "AMKR",
+      "name": "Amkor Technology",
+      "layer": "L5",
+      "layerRole": "primary",
+      "physicalConstraint": 4,
+      "aiContribution": 0.35,
+      "timeToRealize": "mid",
+      "thesis": "Advanced packaging (SiP, HBM stacking, fan-out) is physical bottleneck for AI GPU assembly outside TSMC's captive CoWoS capacity",
+      "thesisFalsification": [
+        "TSMC CoWoS capacity expands fast enough to eliminate third-party packaging bottleneck by 2026",
+        "AI chip architectures shift to monolithic designs reducing advanced packaging complexity",
+        "Samsung and Intel Foundry Services CoWoS-equivalent capacity ramps — AMKR loses pricing power"
+      ],
+      "marketCap": 7,
+      "status": "active",
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "TSM",
+      "name": "Taiwan Semiconductor (ADR)",
+      "layer": "L5",
+      "layerRole": "primary",
+      "physicalConstraint": 5,
+      "aiContribution": 0.50,
+      "timeToRealize": "near",
+      "thesis": "Only foundry capable of N3/N2 node production + CoWoS packaging monopoly for HBM+GPU integration — physical chokepoint for all AI hardware",
+      "thesisFalsification": [
+        "Intel 18A yield reaches TSMC N3 parity by end-2026 with customer qualification wins",
+        "Taiwan Strait military escalation triggers customer emergency dual-sourcing orders to Samsung/Intel",
+        "CoWoS capacity fails to double by end-2025, causing NVDA H200 shipment misses"
+      ],
+      "marketCap": 970,
+      "status": "active",
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "MU",
+      "name": "Micron Technology",
+      "layer": "L6",
+      "layerRole": "primary",
+      "physicalConstraint": 4,
+      "aiContribution": 0.55,
+      "timeToRealize": "near",
+      "thesis": "HBM3E production ramp is physically constrained AI memory — only three global suppliers with 18-month lead times and TSV stacking complexity",
+      "thesisFalsification": [
+        "HBM capacity overbuild in 2026 — SK Hynix/Samsung/Micron collectively deliver >30% more HBM than demand",
+        "DDR5 commodity DRAM ASPs collapse below $4/GB, dragging blended margins below 30%",
+        "HBM4 spec requires new tool investment beyond Micron's current 1β node capability"
+      ],
+      "marketCap": 120,
+      "status": "active",
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "CLS",
+      "name": "Celestica",
+      "layer": "L7",
+      "layerRole": "primary",
+      "physicalConstraint": 3,
+      "aiContribution": 0.70,
+      "timeToRealize": "near",
+      "thesis": "EMS for hyperscaler custom AI servers (Google, AWS, Meta) with AI mix rising from 40% toward 70%+ of revenue at improving margins",
+      "thesisFalsification": [
+        "Hyperscalers shift AI server assembly in-house — Google or Amazon announces manufacturing subsidiary",
+        "ODM competitors (Quanta, Foxconn) undercut Celestica margin by >3 percentage points on AI server contracts",
+        "AI server mix growth stalls below 55% of revenue by end-2025"
+      ],
+      "marketCap": 10,
+      "status": "active",
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "DELL",
+      "name": "Dell Technologies",
+      "layer": "L7",
+      "layerRole": "secondary",
+      "physicalConstraint": 2,
+      "aiContribution": 0.45,
+      "timeToRealize": "near",
+      "thesis": "PowerEdge AI server backlog provides multi-quarter visibility — enterprise AI refresh cycle benefits established channel relationships",
+      "thesisFalsification": [
+        "AI server mix fails to offset PC/client division revenue decline — ISG growth below 20% YoY",
+        "Enterprise AI CapEx freeze — IT spending surveys show >30% of CIOs delaying AI infrastructure",
+        "AI server backlog normalizes below 2x quarterly run-rate"
+      ],
+      "marketCap": 60,
+      "status": "watchlist",
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "SMCI",
+      "name": "Super Micro Computer",
+      "layer": "L7",
+      "layerRole": "primary",
+      "physicalConstraint": 3,
+      "aiContribution": 0.75,
+      "timeToRealize": "near",
+      "thesis": "Direct liquid cooling designs and NVIDIA OEM partnership capture GPU server rack market — first-mover on high-density thermal solutions",
+      "thesisFalsification": [
+        "Accounting irregularities resurface — SEC investigation reopened or auditor resignation",
+        "NVIDIA shifts preferred partner designation to Dell/HPE for Blackwell rack deployments",
+        "Revenue growth decelerates below 60% YoY as channel inventory normalizes"
+      ],
+      "marketCap": 40,
+      "status": "active",
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0",
+      "_note": "Accounting risk elevated — position sizing should reflect binary tail risk"
+    },
+    {
+      "symbol": "ANET",
+      "name": "Arista Networks",
+      "layer": "L8_NET",
+      "layerRole": "primary",
+      "physicalConstraint": 4,
+      "aiContribution": 0.70,
+      "timeToRealize": "near",
+      "thesis": "Ethernet switching for AI clusters (400G/800G) displaces InfiniBand as scale-out fabric due to cost and ecosystem advantages",
+      "thesisFalsification": [
+        "NVIDIA InfiniBand maintains >60% AI cluster networking share through 2026",
+        "Ethernet all-reduce latency fails to match InfiniBand for 10,000+ GPU cluster workloads",
+        "Meta/Google build proprietary switching ASICs — ANET loses two top-5 customers"
+      ],
+      "marketCap": 130,
+      "status": "active",
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "VRT",
+      "name": "Vertiv Holdings",
+      "layer": "L8_COOL",
+      "layerRole": "primary",
+      "physicalConstraint": 4,
+      "aiContribution": 0.65,
+      "timeToRealize": "near",
+      "thesis": "Liquid cooling infrastructure is physical constraint for >1kW/rack GPU density — no AI datacenter buildout possible without thermal management",
+      "thesisFalsification": [
+        "Immersion cooling commoditizes via 3M/Engineered Fluids — VRT loses pricing power on liquid cooling",
+        "GPU TDP growth plateaus at 700W and air cooling suffices through 2027",
+        "Vertiv loses >2 of top-5 hyperscaler accounts to in-house cooling solutions"
+      ],
+      "marketCap": 40,
+      "status": "active",
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "ETN",
+      "name": "Eaton Corporation",
+      "layer": "L8_COOL",
+      "layerRole": "secondary",
+      "physicalConstraint": 3,
+      "aiContribution": 0.40,
+      "timeToRealize": "mid",
+      "thesis": "Power distribution units and UPS systems are required for every MW of new datacenter capacity — backlog growth tracks AI CapEx cycle",
+      "thesisFalsification": [
+        "Modular/containerized datacenter design bypasses traditional PDU vendors for >40% of new builds",
+        "Utility-scale direct-connect reduces UPS tier requirements for hyperscaler mega-campuses",
+        "Eaton electrical orders growth falls below 10% YoY for two consecutive quarters"
+      ],
+      "marketCap": 110,
+      "status": "active",
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "GLW",
+      "name": "Corning",
+      "layer": "L8_OPT",
+      "layerRole": "primary",
+      "physicalConstraint": 4,
+      "aiContribution": 0.35,
+      "timeToRealize": "mid",
+      "thesis": "Optical fiber is physical constraint for datacenter interconnect AND telecom AI traffic growth — 5-year supply agreements insulate from spot pricing",
+      "thesisFalsification": [
+        "Short-reach silicon photonics eliminates multi-mode fiber requirement in datacenter spine",
+        "Fiber supply glut from Chinese manufacturers compresses GLW pricing by >20%",
+        "Springboard plan fiber revenue falls below $1.5B annualized run-rate by end-2025"
+      ],
+      "marketCap": 40,
+      "status": "active",
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "COHR",
+      "name": "Coherent Corp",
+      "layer": "L8_OPT",
+      "layerRole": "primary",
+      "physicalConstraint": 4,
+      "aiContribution": 0.55,
+      "timeToRealize": "mid",
+      "thesis": "800G/1.6T transceiver production is physical bottleneck for AI cluster interconnect bandwidth — only 3-4 qualified global suppliers",
+      "thesisFalsification": [
+        "Co-packaged optics (CPO) fully integrates into NVIDIA switch ASICs by 2027 — discrete transceiver market collapses",
+        "Chinese competitors (InnoLight, HG Genuinelight) achieve 800G qualification at hyperscalers — >30% market share",
+        "AI cluster interconnect shifts to electrical (copper) at shorter distances — transceiver TAM shrinks"
+      ],
+      "marketCap": 10,
+      "status": "active",
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "EQIX",
+      "name": "Equinix",
+      "layer": "L9",
+      "layerRole": "primary",
+      "physicalConstraint": 3,
+      "aiContribution": 0.30,
+      "timeToRealize": "far",
+      "thesis": "Colocation and interconnection hubs benefit from AI traffic growth — xScale campus buildout serves hyperscaler overflow demand",
+      "thesisFalsification": [
+        "Hyperscaler build-vs-buy shifts to 100% owned capacity — EQIX loses xScale renewal pipeline",
+        "AI inference moves to edge/on-device, reducing centralized colocation demand growth below 5% YoY",
+        "EQIX loses >3 of top-10 hyperscaler colocation customers in any 12-month period"
+      ],
+      "marketCap": 80,
+      "status": "watchlist",
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "DLR",
+      "name": "Digital Realty",
+      "layer": "L9",
+      "layerRole": "primary",
+      "physicalConstraint": 3,
+      "aiContribution": 0.30,
+      "timeToRealize": "far",
+      "thesis": "Land + power + permits = AI datacenter physical prerequisites — supply constrained in Tier 1 MSAs with 36-48 month development timelines",
+      "thesisFalsification": [
+        "Power grid constraints prevent new datacenter permits in top-10 MSAs through 2028 — DLR development pipeline halted",
+        "Rising interest rates compress REIT capitalization rates — DLR cannot fund new development at acceptable returns",
+        "Hyperscaler owned campuses capture >70% of new AI datacenter demand"
+      ],
+      "marketCap": 55,
+      "status": "watchlist",
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "FLR",
+      "name": "Fluor Corporation",
+      "layer": "L9",
+      "layerRole": "secondary",
+      "physicalConstraint": 2,
+      "aiContribution": 0.25,
+      "timeToRealize": "far",
+      "thesis": "EPC contractor for hyperscaler mega-campus construction — backlog growth tracks AI CapEx cycle with 18-24 month revenue recognition lag",
+      "thesisFalsification": [
+        "Hyperscaler construction pauses due to macro downturn or AI ROI disappointment — project cancellation rate exceeds 15%",
+        "Labor/materials cost inflation erodes EPC margins below 3%",
+        "FLR loses two of top-5 hyperscaler EPC contracts to Turner/McCarthy"
+      ],
+      "marketCap": 8,
+      "status": "watchlist",
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "CRWD",
+      "name": "CrowdStrike",
+      "layer": "L10",
+      "layerRole": "primary",
+      "physicalConstraint": 1,
+      "aiContribution": 0.50,
+      "timeToRealize": "near",
+      "thesis": "AI-accelerated threat landscape creates mandatory security spending — Falcon platform consolidation wins as CISO budgets prioritize fewer vendors",
+      "thesisFalsification": [
+        "Post-July 2024 outage customer churn materializes at >10% of ARR in FY2026",
+        "AI security commodity pricing collapses net revenue retention below 110%",
+        "Microsoft Defender AI achieves Falcon parity on third-party MITRE evaluations"
+      ],
+      "marketCap": 80,
+      "status": "active",
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "PANW",
+      "name": "Palo Alto Networks",
+      "layer": "L10",
+      "layerRole": "primary",
+      "physicalConstraint": 1,
+      "aiContribution": 0.45,
+      "timeToRealize": "near",
+      "thesis": "Platform consolidation strategy (SASE + NGFW + XSOAR) creates sticky enterprise security stack — platformization billings conversion improves unit economics",
+      "thesisFalsification": [
+        "Platformization strategy shows >20% billings deceleration as competitors match bundling — PANW loses pricing anchor",
+        "Free platform trial strategy impairs gross margins below 72% for two consecutive quarters",
+        "CRWD + Okta platform bundle achieves equivalent SASE functionality — displaces PANW at >10% of enterprise accounts"
+      ],
+      "marketCap": 125,
+      "status": "watchlist",
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "CEG",
+      "name": "Constellation Energy",
+      "layer": "L11",
+      "layerRole": "primary",
+      "physicalConstraint": 4,
+      "aiContribution": 0.25,
+      "timeToRealize": "mid",
+      "thesis": "Clean baseload nuclear power is physical constraint for hyperscaler 24/7 carbon-free AI datacenter pledges — Three Mile Island restart sets pricing precedent",
+      "thesisFalsification": [
+        "Grid-scale battery storage achieves <$60/kWh installed cost by 2027, eliminating nuclear baseload premium",
+        "NRC relicensing process for Constellation plants delayed beyond 36 months",
+        "Hyperscalers abandon 24/7 CFE commitments — spot power contracts replace long-term nuclear PPAs"
+      ],
+      "marketCap": 75,
+      "status": "active",
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "VST",
+      "name": "Vistra Energy",
+      "layer": "L11",
+      "layerRole": "secondary",
+      "physicalConstraint": 3,
+      "aiContribution": 0.20,
+      "timeToRealize": "mid",
+      "thesis": "Texas ERCOT power market tightness benefits merchant generator — AI datacenter load growth in Texas outpaces new supply additions",
+      "thesisFalsification": [
+        "New Texas wind/solar additions (20GW by 2026) suppress ERCOT power prices below $35/MWh average",
+        "Texas Governor signs legislation capping merchant power prices — removes ERCOT scarcity pricing",
+        "Vistra's Illinois nuclear plants face stranded asset risk as Illinois grid becomes oversupplied"
+      ],
+      "marketCap": 30,
+      "status": "active",
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "CCJ",
+      "name": "Cameco",
+      "layer": "L11",
+      "layerRole": "bridge",
+      "physicalConstraint": 5,
+      "aiContribution": 0.20,
+      "timeToRealize": "far",
+      "thesis": "Uranium supply is physical constraint for nuclear renaissance driven by AI electricity demand — mine development lead times of 7-10 years create durable scarcity",
+      "thesisFalsification": [
+        "Kazakhstan/Uzbekistan uranium production surges >30% by 2027, breaking $100/lb uranium price narrative",
+        "SMR (small modular reactor) deployment delays push beyond 2030 — removes key demand catalyst",
+        "Cameco Cigar Lake/McArthur River face unexpected production disruptions exceeding 10M lbs U3O8"
+      ],
+      "marketCap": 22,
+      "status": "active",
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "GEV",
+      "name": "GE Vernova",
+      "layer": "L12",
+      "layerRole": "primary",
+      "physicalConstraint": 4,
+      "aiContribution": 0.20,
+      "timeToRealize": "mid",
+      "thesis": "Gas turbines and grid equipment have 3-5 year lead times — physical bottleneck for rapid datacenter power delivery that cannot be short-circuited",
+      "thesisFalsification": [
+        "Turbine order backlog growth decelerates below 15% YoY — utility capital spending freezes",
+        "Permitting reform fails: FERC interconnection queue wait exceeds 5 years, delaying gas turbine projects",
+        "HVDC transmission alternatives displace gas turbine peakers for datacenter power delivery"
+      ],
+      "marketCap": 85,
+      "status": "active",
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "PWR",
+      "name": "Quanta Services",
+      "layer": "L12",
+      "layerRole": "primary",
+      "physicalConstraint": 3,
+      "aiContribution": 0.20,
+      "timeToRealize": "mid",
+      "thesis": "Transmission line construction labor and specialized equipment are physical constraints for datacenter grid connection — 3-5 year backlog visibility",
+      "thesisFalsification": [
+        "Federal permitting reform accelerates interconnection queue, reducing specialist contractor scarcity premium",
+        "Union labor shortage resolves — new entrants capture >20% of transmission construction market",
+        "Quanta loses >3 of top-10 utility relationships to EMCOR/MYR Group"
+      ],
+      "marketCap": 40,
+      "status": "active",
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "EOG",
+      "name": "EOG Resources",
+      "layer": "L13",
+      "layerRole": "primary",
+      "physicalConstraint": 3,
+      "aiContribution": 0.15,
+      "timeToRealize": "far",
+      "thesis": "Natural gas demand pull from AI datacenter power generation provides incremental volume growth for premium Permian/Eagle Ford producer",
+      "thesisFalsification": [
+        "LNG export price premium collapses — Henry Hub natural gas falls below $2.50/MMBtu for extended period",
+        "Renewable + battery cost curve makes gas peaking uneconomical by 2028 — datacenter gas demand growth stops",
+        "EOG break-even rises above $45/bbl due to Permian cost inflation — competitive advantage erodes"
+      ],
+      "marketCap": 70,
+      "status": "watchlist",
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "EQT",
+      "name": "EQT Corporation",
+      "layer": "L13",
+      "layerRole": "secondary",
+      "physicalConstraint": 3,
+      "aiContribution": 0.15,
+      "timeToRealize": "far",
+      "thesis": "Appalachian natural gas proximity to Northeast datacenter cluster provides pipeline arbitrage — lowest-cost Marcellus producer benefits from re-rate",
+      "thesisFalsification": [
+        "Appalachian pipeline capacity expansions approved — basis differential collapses below $0.30/MMBtu",
+        "Mid-Atlantic states pass legislation restricting new gas-powered datacenter interconnections",
+        "Henry Hub long-term curve prices below $3/MMBtu — EQT returns-on-capital unattractive for reinvestment"
+      ],
+      "marketCap": 20,
+      "status": "watchlist",
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "FCX",
+      "name": "Freeport-McMoRan",
+      "layer": "L14",
+      "layerRole": "primary",
+      "physicalConstraint": 4,
+      "aiContribution": 0.12,
+      "timeToRealize": "far",
+      "thesis": "Copper is irreplaceable conductor for AI datacenter wiring, power cables, and grid expansion — no physical substitute at scale",
+      "thesisFalsification": [
+        "Superconducting cable technology achieves commercial deployment at datacenter scale",
+        "Copper recycling efficiency reaches 90%+ reducing primary mine supply demand growth below 1% annually",
+        "Global copper surplus emerges from Zambia/DRC mine expansions exceeding 500K MT incremental supply"
+      ],
+      "marketCap": 65,
+      "status": "watchlist",
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "SCCO",
+      "name": "Southern Copper",
+      "layer": "L14",
+      "layerRole": "primary",
+      "physicalConstraint": 4,
+      "aiContribution": 0.12,
+      "timeToRealize": "far",
+      "thesis": "Lowest-cost copper producer with largest reserve base benefits from structural AI-driven demand — Tia Maria expansion doubles Peru output",
+      "thesisFalsification": [
+        "Copper demand disappoints as DeepSeek-style AI efficiency reduces physical datacenter buildout pace by >40%",
+        "Tia Maria mine expansion blocked by community opposition beyond 2027",
+        "SCCO parent Grupo Mexico faces governance risk — related-party transactions under SEC scrutiny"
+      ],
+      "marketCap": 80,
+      "status": "watchlist",
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "AA",
+      "name": "Alcoa",
+      "layer": "L14",
+      "layerRole": "secondary",
+      "physicalConstraint": 3,
+      "aiContribution": 0.10,
+      "timeToRealize": "far",
+      "thesis": "Aluminum demand for datacenter cooling systems and power infrastructure — lowest-quartile cost producer positioned for commodity re-rate",
+      "thesisFalsification": [
+        "Aluminum spot price collapses below $2,000/ton on China production surge — Alcoa cost advantage irrelevant at these prices",
+        "Carbon border adjustment mechanism fails to pass EU — Alcoa loses green premium pricing",
+        "Alcoa Ma'aden JV faces operational disruptions — Saudi production below nameplate capacity for >6 months"
+      ],
+      "marketCap": 5,
+      "status": "watchlist",
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "IONQ",
+      "name": "IonQ",
+      "layer": "L_EXP_QC",
+      "layerRole": "primary",
+      "physicalConstraint": 5,
+      "aiContribution": 0.10,
+      "timeToRealize": "far",
+      "thesis": "Trapped-ion quantum computing achieves highest gate fidelity of all approaches — potential to break cryptographic assumptions or accelerate optimization",
+      "thesisFalsification": [
+        "Decoherence rates remain >0.5% per gate by 2028 — fault-tolerant quantum compute commercially unviable within 10 years",
+        "Google/IBM achieve quantum advantage on a commercially relevant problem first",
+        "IonQ burns through cash at current rate — dilutive equity raise exceeds 20% of market cap"
+      ],
+      "marketCap": 7,
+      "status": "experimental",
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0",
+      "_note": "Binary outcome — either transformative or zero. Hard cap 0.5% of total portfolio."
+    },
+    {
+      "symbol": "RGTI",
+      "name": "Rigetti Computing",
+      "layer": "L_EXP_QC",
+      "layerRole": "secondary",
+      "physicalConstraint": 5,
+      "aiContribution": 0.10,
+      "timeToRealize": "far",
+      "thesis": "Superconducting qubit approach with full-stack cloud access may achieve quantum advantage for specific optimization problems relevant to logistics/finance",
+      "thesisFalsification": [
+        "No fault-tolerant qubit demonstration (logical error rate <0.01%) by end-2027",
+        "RGTI loses DARPA/DOE grant funding — revenue falls below $15M annualized",
+        "IBM Eagle/Heron architecture demonstrates superior gate fidelity at equivalent qubit count"
+      ],
+      "marketCap": 2,
+      "status": "experimental",
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0",
+      "_note": "Binary outcome. Even smaller position than IONQ — higher risk, less differentiated approach."
+    }
+  ]
+}
