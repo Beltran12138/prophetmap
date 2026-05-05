@@ -88,6 +88,9 @@ jobs:
           git diff --staged --quiet || git commit -m "chore: daily score update $(date -u +%Y-%m-%d)"
           git push
 
+      - name: Trigger Vercel redeploy
+        run: curl -s -X POST "${{ secrets.VERCEL_DEPLOY_HOOK }}"
+
       - name: Notify on critical signals
         if: ${{ steps.signals.outputs.has_critical == 'true' }}
         uses: actions/github-script@v7
