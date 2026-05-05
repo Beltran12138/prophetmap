@@ -251,6 +251,50 @@ async function main() {
   console.log(`\n[ProphetMap] ✅ Written to ${outPath}`);
   console.log(`[ProphetMap] Funnel passes: ${output.funnelPassCount} / ${results.length}`);
   if (errors.length > 0) console.log(`[ProphetMap] Errors: ${errors.map((e) => e.symbol).join(', ')}`);
+
+  // Watchlist promotion check: flag tickers with pricingScore ≤ 2.5 for 5 consecutive trading days
+  const watchlistSymbols = new Set(
+    universe.tickers.filter((t) => t.status === 'watchlist').map((t) => t.symbol)
+  );
+  if (watchlistSymbols.size > 0) {
+    const scoreFiles = fs.readdirSync(SCORES_DIR)
+      .filter((f) => f.endsWith('.json'))
+      .sort()
+      .slice(-5);
+
+    const PROMOTION_THRESHOLD = 2.5;
+    const CONSECUTIVE_DAYS = 5;
+    const promotionCandidates = [];
+
+    for (const sym of watchlistSymbols) {
+      let consecutiveDays = 0;
+      for (const file of scoreFiles) {
+        try {
+          const day = JSON.parse(fs.readFileSync(path.join(SCORES_DIR, file), 'utf8'));
+          const entry = day.results?.find((r) => r.symbol === sym);
+          if (entry?.pricingScore != null && entry.pricingScore <= PROMOTION_THRESHOLD) {
+            consecutiveDays++;
+          } else {
+            consecutiveDays = 0;
+          }
+        } catch { consecutiveDays = 0; }
+      }
+      if (consecutiveDays >= CONSECUTIVE_DAYS) {
+        const todayEntry = results.find((r) => r.symbol === sym);
+        promotionCandidates.push({ symbol: sym, pricingScore: todayEntry?.pricingScore, days: consecutiveDays });
+      }
+    }
+
+    if (promotionCandidates.length > 0) {
+      console.log('\n[ProphetMap] ⬆ WATCHLIST PROMOTION CANDIDATES (pricing ≤ 2.5 for 5+ days):');
+      for (const c of promotionCandidates) {
+        console.log(`  ${c.symbol} — pricingScore ${c.pricingScore?.toFixed(1)} for ${c.days} consecutive days`);
+        console.log(`  Action: set status="active" in universe.json to begin signal analysis`);
+      }
+      // Emit for GitHub Actions annotation
+      process.stdout.write(`\n::notice::Watchlist promotion candidates: ${promotionCandidates.map((c) => c.symbol).join(', ')}\n`);
+    }
+  }
 }
 
 main().catch((err) => {

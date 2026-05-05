@@ -129,23 +129,32 @@ Return ONLY valid JSON matching this exact schema:
 }
 Proximity scale: 0=no evidence, 1=early signs, 2=strong evidence/approaching, 3=confirmed/falsified.`;
 
-  try {
-    const response = await deepseek.chat.completions.create({
-      model: 'deepseek-v4-flash',
-      messages: [
-        { role: 'system', content: systemMsg },
-        { role: 'user', content: JSON.stringify(prompt, null, 2) },
-      ],
-      response_format: { type: 'json_object' },
-      temperature: 0.1,
-      max_tokens: 800,
-    });
+  const MAX_RETRIES = 3;
+  for (let attempt = 1; attempt <= MAX_RETRIES; attempt++) {
+    try {
+      const response = await deepseek.chat.completions.create({
+        model: 'deepseek-v4-flash',
+        messages: [
+          { role: 'system', content: systemMsg },
+          { role: 'user', content: JSON.stringify(prompt, null, 2) },
+        ],
+        response_format: { type: 'json_object' },
+        temperature: 0.1,
+        max_tokens: 800,
+      });
 
-    const content = response.choices[0]?.message?.content;
-    if (!content) return null;
-    return JSON.parse(content);
-  } catch (err) {
-    return { error: err.message };
+      const content = response.choices[0]?.message?.content;
+      if (!content) return null;
+
+      const parsed = JSON.parse(content);
+      if (!parsed.overallRisk || !Array.isArray(parsed.signals)) {
+        throw new Error('Schema validation failed: missing overallRisk or signals');
+      }
+      return parsed;
+    } catch (err) {
+      if (attempt === MAX_RETRIES) return { error: err.message };
+      await sleep(1000 * attempt);
+    }
   }
 }
 
