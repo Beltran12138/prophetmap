@@ -73,6 +73,9 @@ jobs:
         env:
           NODE_OPTIONS: '--max-old-space-size=512'
 
+      - name: Update crypto valuations
+        run: node scripts/update-crypto-valuations.js
+
       - name: Analyze thesis signals
         if: ${{ github.event.inputs.skip_signals != 'true' }}
         id: signals

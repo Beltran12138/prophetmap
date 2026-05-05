@@ -4,6 +4,7 @@ import path from 'path';
 export type TickerScore = {
   symbol: string;
   layer: string;
+  assetClass?: 'equity' | 'crypto';
   physicalConstraint: number;
   aiContribution: number;
   timeToRealize: string;
@@ -13,14 +14,24 @@ export type TickerScore = {
   funnelPass: boolean;
   funnelFailReasons: string[];
   components: {
+    // Equity components
     forwardPE?: { value: number; benchmark: number; score: number };
     evRevenue?: { value: number; benchmark: number; score: number };
     analystUpside?: { targetPrice: number; currentPrice: number; upside: number; score: number };
-    momentum6m?: { ticker6m: number; spy6m: number; relative: number; score: number };
+    momentum6m?: { ticker6m?: number; spy6m?: number; relative?: number; ownReturn?: number; ethReturn?: number; relReturn?: number; score: number };
+    // Crypto components
+    pRev?: { value: number; benchmark: number; score: number };
+    pTvl?: { value: number; benchmark: number; score: number };
   };
   dataQuality: string;
   analystRecommendMean: number | null;
   numberOfAnalysts: number | null;
+  cryptoMetrics?: {
+    tvlUSD: number | null;
+    annualRevenueUSD: number | null;
+    volume24hUSD: number | null;
+    priceChange6mPct: number | null;
+  };
 };
 
 export type ScoresFile = {

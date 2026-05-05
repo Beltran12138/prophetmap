@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "version": "1.0.0",
+    "version": "1.1.0",
     "date": "2026-05-04",
     "description": "ProphetMap stock universe — manually-defined static fields only. Dynamic pricing scores written to data/scores/YYYY-MM-DD.json by scripts/update-valuations.js",
     "fieldGuide": {
@@ -1235,6 +1235,152 @@
         ],
         "demotion": "Remove from universe if revenue misses 4 consecutive quarters or IBM/Google dominate quantum cloud"
       }
+    },
+    {
+      "symbol": "RNDR",
+      "name": "Render Network",
+      "layer": "L_DCOMP",
+      "layerRole": "primary",
+      "assetClass": "crypto",
+      "coingeckoId": "render-token",
+      "defiLlamaSlug": null,
+      "physicalConstraint": 3,
+      "aiContribution": 0.65,
+      "timeToRealize": "near",
+      "thesis": "Distributed GPU marketplace directly absorbs AI inference and 3D rendering overflow demand — price follows GPU utilization rates",
+      "thesisFalsification": [
+        "AWS/GCP spot GPU pricing falls below RNDR network rates for 3 consecutive quarters",
+        "Token emission rate exceeds network demand growth — inflationary dilution",
+        "Major AI lab explicitly deprecates RNDR in favor of proprietary compute"
+      ],
+      "marketCap": 2,
+      "status": "active",
+      "addedDate": "2026-05-06",
+      "addedVersion": "1.1.0",
+      "_changeLog": [
+        {
+          "date": "2026-05-06",
+          "version": "1.1.0",
+          "change": "Added to universe — decentralized GPU compute, AI aiContribution=0.65"
+        }
+      ]
+    },
+    {
+      "symbol": "TAO",
+      "name": "Bittensor",
+      "layer": "L_DCOMP",
+      "layerRole": "primary",
+      "assetClass": "crypto",
+      "coingeckoId": "bittensor",
+      "defiLlamaSlug": null,
+      "physicalConstraint": 2,
+      "aiContribution": 0.9,
+      "timeToRealize": "mid",
+      "thesis": "Decentralized machine learning network — subnet architecture commoditizes model training and inference, TAO emission rewards best-performing AI models",
+      "thesisFalsification": [
+        "Subnet validator collusion breaks meritocratic reward mechanism",
+        "OpenAI/Anthropic API pricing falls below TAO network inference cost",
+        "Regulatory action targets decentralized AI training as unlicensed model deployment"
+      ],
+      "marketCap": 4,
+      "status": "active",
+      "addedDate": "2026-05-06",
+      "addedVersion": "1.1.0",
+      "_changeLog": [
+        {
+          "date": "2026-05-06",
+          "version": "1.1.0",
+          "change": "Added to universe — pure-play decentralized ML, aiContribution=0.90"
+        }
+      ]
+    },
+    {
+      "symbol": "FIL",
+      "name": "Filecoin",
+      "layer": "L_DCOMP",
+      "layerRole": "primary",
+      "assetClass": "crypto",
+      "coingeckoId": "filecoin",
+      "defiLlamaSlug": "filecoin",
+      "physicalConstraint": 3,
+      "aiContribution": 0.3,
+      "timeToRealize": "mid",
+      "thesis": "Decentralized storage layer for AI training datasets and model checkpoints — storage demand grows with model parameter count",
+      "thesisFalsification": [
+        "S3/GCS pricing falls below Filecoin retrieval cost — no economic incentive to migrate",
+        "FIL storage deal count stagnates for 4 consecutive quarters despite AI dataset growth",
+        "Token emission rate creates structural supply excess vs storage demand"
+      ],
+      "marketCap": 2,
+      "status": "active",
+      "addedDate": "2026-05-06",
+      "addedVersion": "1.1.0",
+      "_changeLog": [
+        {
+          "date": "2026-05-06",
+          "version": "1.1.0",
+          "change": "Added to universe — decentralized AI storage layer, aiContribution=0.30"
+        }
+      ]
+    },
+    {
+      "symbol": "LINK",
+      "name": "Chainlink",
+      "layer": "L_DCOMP",
+      "layerRole": "primary",
+      "assetClass": "crypto",
+      "coingeckoId": "chainlink",
+      "defiLlamaSlug": "chainlink",
+      "physicalConstraint": 4,
+      "aiContribution": 0.35,
+      "timeToRealize": "near",
+      "thesis": "Oracle monopoly for AI×DeFi integrations — DECO protocol enables verifiable AI inference results on-chain, first-mover with 10+ year network effect",
+      "thesisFalsification": [
+        "Pyth Network captures >30% of oracle market share from LINK in TVL secured",
+        "DECO/verifiable AI inference adoption stalls — no major DeFi protocol integrates by 2027",
+        "LINK staking yields fail to attract institutional validators — security budget shrinks"
+      ],
+      "marketCap": 9,
+      "status": "active",
+      "addedDate": "2026-05-06",
+      "addedVersion": "1.1.0",
+      "_changeLog": [
+        {
+          "date": "2026-05-06",
+          "version": "1.1.0",
+          "change": "Added to universe — oracle monopoly, AI×DeFi bridge, physicalConstraint=4"
+        }
+      ]
+    },
+    {
+      "symbol": "ETH",
+      "name": "Ethereum",
+      "layer": "L_DCOMP",
+      "layerRole": "bridge",
+      "assetClass": "crypto",
+      "coingeckoId": "ethereum",
+      "defiLlamaSlug": "ethereum",
+      "physicalConstraint": 4,
+      "aiContribution": 0.2,
+      "timeToRealize": "near",
+      "thesis": "Settlement and programmable money layer for decentralized AI economy — AI agent payment rails require trustless micropayment infrastructure; EIP-1559 burn creates deflationary pressure proportional to on-chain AI activity",
+      "thesisFalsification": [
+        "AI agent payment volumes migrate entirely to L2s — ETH L1 fee revenue structurally falls",
+        "Solana/other L1 captures >40% of AI agent transaction volume",
+        "EIP-1559 burn falls below issuance for 6 consecutive months — ETH becomes inflationary"
+      ],
+      "marketCap": 310,
+      "status": "active",
+      "addedDate": "2026-05-06",
+      "addedVersion": "1.1.0",
+      "_note": "Bridge role — settlement layer for decentralized AI economy. aiContribution=0.20 (below 30% funnel threshold — will not pass funnel)",
+      "_changeLog": [
+        {
+          "date": "2026-05-06",
+          "version": "1.1.0",
+          "change": "Added as bridge role — ETH settlement layer for AI payment rails; aiContribution deliberately below funnel threshold"
+        }
+      ]
     }
   ]
 }

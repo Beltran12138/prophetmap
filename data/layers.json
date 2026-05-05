@@ -15,11 +15,11 @@
     "long": "36个月以上"
   },
   "physicalConstraintScale": {
-    "5": "物理不可绕过，无替代方案",
-    "4": "高度依赖，替代方案成本极高",
-    "3": "中度依赖，替代方案存在但不成熟",
+    "1": "可选，便利性需求",
     "2": "低度依赖，有可行替代",
-    "1": "可选，便利性需求"
+    "3": "中度依赖，替代方案存在但不成熟",
+    "4": "高度依赖，替代方案成本极高",
+    "5": "物理不可绕过，无替代方案"
   },
   "layers": [
     {
@@ -275,7 +275,11 @@
       "status": "active",
       "isLeadingIndicator": false,
       "parallel": true,
-      "sublayers": ["L8_NET", "L8_COOL", "L8_OPT"],
+      "sublayers": [
+        "L8_NET",
+        "L8_COOL",
+        "L8_OPT"
+      ],
       "auditCriteria": {
         "splitCondition": "三子层传导时滞差异>6个月 → 独立成层",
         "deleteCondition": "N/A - 分解到子层判断"
@@ -516,6 +520,29 @@
         "falsificationSignals": [
           "IBM/Google放弃近期量子商业化路线图",
           "主流机构报告量子计算AI应用<5年无法实现"
+        ]
+      }
+    },
+    {
+      "id": "L_DCOMP",
+      "name": "去中心化AI基础设施",
+      "nameEn": "Decentralized AI Infrastructure",
+      "chain": "A",
+      "position": 99,
+      "description": "GPU算力市场/去中心化ML网络/存储/预言机——AI需求的去中心化替代基础设施层",
+      "physicalConstraintDesc": "网络效应护城河，无硬件moat但协议垄断可达4分",
+      "basePhysicalConstraint": 3,
+      "typicalTimeToRealize": "mid",
+      "status": "active",
+      "isLeadingIndicator": false,
+      "parallel": true,
+      "sublayers": null,
+      "auditCriteria": {
+        "mergeCondition": "AI算力需求完全被中心化云吸收，去中心化算力市占率<5%",
+        "deleteCondition": "监管全面封锁去中心化算力网络",
+        "falsificationSignals": [
+          "GPU算力市场价格崩溃——去中心化定价失去竞争力",
+          "主流AI公司明确拒绝使用去中心化基础设施"
         ]
       }
     }

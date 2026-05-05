@@ -1,8 +1,8 @@
 {
   "date": "2026-05-05",
   "spy6mReturn": 5.3,
-  "funnelPassCount": 4,
-  "totalFetched": 44,
+  "funnelPassCount": 5,
+  "totalFetched": 49,
   "errors": [],
   "results": [
     {
@@ -1872,6 +1872,190 @@
       "analystRecommendMean": 1.87179,
       "numberOfAnalysts": 36,
       "fetchedAt": "2026-05-05T03:24:15.734Z"
+    },
+    {
+      "symbol": "RNDR",
+      "layer": "L_DCOMP",
+      "assetClass": "crypto",
+      "physicalConstraint": 3,
+      "aiContribution": 0.65,
+      "timeToRealize": "near",
+      "price": 1.83,
+      "marketCap": 1,
+      "pricingScore": 3.7,
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "PC=3<4",
+        "pricing=3.7>3.0"
+      ],
+      "components": {
+        "momentum6m": {
+          "ownReturn": -5.3,
+          "ethReturn": -28.1,
+          "relReturn": 22.8,
+          "score": 3.7
+        }
+      },
+      "dataQuality": "minimal",
+      "analystRecommendMean": null,
+      "numberOfAnalysts": null,
+      "cryptoMetrics": {
+        "tvlUSD": null,
+        "annualRevenueUSD": null,
+        "volume24hUSD": 57,
+        "priceChange6mPct": -5.3
+      },
+      "fetchedAt": "2026-05-05T05:58:35.199Z"
+    },
+    {
+      "symbol": "TAO",
+      "layer": "L_DCOMP",
+      "assetClass": "crypto",
+      "physicalConstraint": 2,
+      "aiContribution": 0.9,
+      "timeToRealize": "mid",
+      "price": 285.29,
+      "marketCap": 3,
+      "pricingScore": 3,
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "PC=2<4"
+      ],
+      "components": {
+        "momentum6m": {
+          "ownReturn": -27.2,
+          "ethReturn": -28.1,
+          "relReturn": 0.8,
+          "score": 3
+        }
+      },
+      "dataQuality": "minimal",
+      "analystRecommendMean": null,
+      "numberOfAnalysts": null,
+      "cryptoMetrics": {
+        "tvlUSD": null,
+        "annualRevenueUSD": null,
+        "volume24hUSD": 233,
+        "priceChange6mPct": -27.2
+      },
+      "fetchedAt": "2026-05-05T05:58:35.201Z"
+    },
+    {
+      "symbol": "FIL",
+      "layer": "L_DCOMP",
+      "assetClass": "crypto",
+      "physicalConstraint": 3,
+      "aiContribution": 0.3,
+      "timeToRealize": "mid",
+      "price": 0.946568,
+      "marketCap": 1,
+      "pricingScore": 2.68,
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "PC=3<4"
+      ],
+      "components": {
+        "pRev": {
+          "value": 890,
+          "benchmark": 890,
+          "score": 3
+        },
+        "momentum6m": {
+          "ownReturn": -50.5,
+          "ethReturn": -28.1,
+          "relReturn": -22.5,
+          "score": 2.3
+        }
+      },
+      "dataQuality": "partial",
+      "analystRecommendMean": null,
+      "numberOfAnalysts": null,
+      "cryptoMetrics": {
+        "tvlUSD": 0,
+        "annualRevenueUSD": 1,
+        "volume24hUSD": 86,
+        "priceChange6mPct": -50.5
+      },
+      "fetchedAt": "2026-05-05T05:58:35.202Z"
+    },
+    {
+      "symbol": "LINK",
+      "layer": "L_DCOMP",
+      "assetClass": "crypto",
+      "physicalConstraint": 4,
+      "aiContribution": 0.35,
+      "timeToRealize": "near",
+      "price": 9.55,
+      "marketCap": 7,
+      "pricingScore": 2.49,
+      "funnelPass": true,
+      "funnelFailReasons": [],
+      "components": {
+        "pRev": {
+          "value": 117,
+          "benchmark": 890,
+          "score": 1.7
+        },
+        "pTvl": {
+          "value": 8.57,
+          "benchmark": 8.57,
+          "score": 3
+        },
+        "momentum6m": {
+          "ownReturn": -35,
+          "ethReturn": -28.1,
+          "relReturn": -6.9,
+          "score": 2.8
+        }
+      },
+      "dataQuality": "full",
+      "analystRecommendMean": null,
+      "numberOfAnalysts": null,
+      "cryptoMetrics": {
+        "tvlUSD": 810,
+        "annualRevenueUSD": 59,
+        "volume24hUSD": 583,
+        "priceChange6mPct": -35
+      },
+      "fetchedAt": "2026-05-05T05:58:35.202Z"
+    },
+    {
+      "symbol": "ETH",
+      "layer": "L_DCOMP",
+      "assetClass": "crypto",
+      "physicalConstraint": 4,
+      "aiContribution": 0.2,
+      "timeToRealize": "near",
+      "price": 2380.29,
+      "marketCap": 287,
+      "pricingScore": 3,
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "AI=20%<30%"
+      ],
+      "components": {
+        "pRev": {
+          "value": 914,
+          "benchmark": 890,
+          "score": 3
+        },
+        "momentum6m": {
+          "ownReturn": -28.1,
+          "ethReturn": -28.1,
+          "relReturn": 0,
+          "score": 3
+        }
+      },
+      "dataQuality": "partial",
+      "analystRecommendMean": null,
+      "numberOfAnalysts": null,
+      "cryptoMetrics": {
+        "tvlUSD": 0,
+        "annualRevenueUSD": 314,
+        "volume24hUSD": 19552,
+        "priceChange6mPct": -28.1
+      },
+      "fetchedAt": "2026-05-05T05:58:35.202Z"
     }
   ]
 }
