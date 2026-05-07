@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "version": "1.1.0",
-    "date": "2026-05-04",
+    "version": "1.2.0",
+    "date": "2026-05-08",
     "description": "ProphetMap stock universe — manually-defined static fields only. Dynamic pricing scores written to data/scores/YYYY-MM-DD.json by scripts/update-valuations.js",
     "fieldGuide": {
       "physicalConstraint": "1=pure software, 5=hard physical monopoly with multi-year lead times",
@@ -1379,6 +1379,164 @@
           "date": "2026-05-06",
           "version": "1.1.0",
           "change": "Added as bridge role — ETH settlement layer for AI payment rails; aiContribution deliberately below funnel threshold"
+        }
+      ]
+    },
+    {
+      "symbol": "ISRG",
+      "name": "Intuitive Surgical",
+      "layer": "L_EMBI",
+      "layerRole": "primary",
+      "physicalConstraint": 5,
+      "aiContribution": 0.75,
+      "timeToRealize": "near",
+      "thesis": "da Vinci surgical robot platform commands a 10+ year installed base monopoly — AI-guided surgery (IRIS system) upgrades the moat from hardware to intelligence; FDA clearance walls and hospital training lock-in create compounding switching costs",
+      "thesisFalsification": [
+        "Medtronic Hugo or CMR Surgical achieves FDA clearance and captures >15% of soft-tissue robotic surgery market by 2027",
+        "da Vinci procedure volume growth falls below 8% YoY for two consecutive quarters",
+        "AI surgical guidance feature generates meaningful adverse event data triggering FDA regulatory hold"
+      ],
+      "marketCap": 165,
+      "status": "active",
+      "addedDate": "2026-05-08",
+      "addedVersion": "1.2.0",
+      "_changeLog": [
+        {
+          "date": "2026-05-08",
+          "version": "1.2.0",
+          "change": "Added to L_EMBI — surgical robotics AI platform, physicalConstraint=5 (FDA moat), aiContribution=0.75"
+        }
+      ]
+    },
+    {
+      "symbol": "CGNX",
+      "name": "Cognex",
+      "layer": "L_EMBI",
+      "layerRole": "primary",
+      "physicalConstraint": 4,
+      "aiContribution": 0.65,
+      "timeToRealize": "near",
+      "thesis": "Machine vision is the eyes of embodied AI — Cognex deep learning models achieve defect detection accuracy replacing manual inspection in semiconductor and EV factory lines; factory integration lock-in creates multi-year switching costs",
+      "thesisFalsification": [
+        "Chinese machine vision competitors (Hikrobot, Keyence alternatives) capture >25% of semiconductor factory inspection market",
+        "EV and semiconductor factory capex cycle reverses — Cognex revenue declines >15% for two consecutive quarters",
+        "General-purpose vision foundation models commoditize industrial vision at <50% of Cognex cost"
+      ],
+      "marketCap": 7,
+      "status": "active",
+      "addedDate": "2026-05-08",
+      "addedVersion": "1.2.0",
+      "_changeLog": [
+        {
+          "date": "2026-05-08",
+          "version": "1.2.0",
+          "change": "Added to L_EMBI — industrial machine vision, AI defect detection, physicalConstraint=4"
+        }
+      ]
+    },
+    {
+      "symbol": "PH",
+      "name": "Parker Hannifin",
+      "layer": "L_EMBI",
+      "layerRole": "secondary",
+      "physicalConstraint": 3,
+      "aiContribution": 0.15,
+      "timeToRealize": "medium",
+      "thesis": "Industrial electromechanical motion control components serve humanoid robot joints and gripper systems — Parker's product portfolio spans pneumatic and electric actuation used in robot assembly lines",
+      "thesisFalsification": [
+        "Specialized actuator companies (Harmonic Drive, Nabtesco) dominate humanoid robot joint supply chain",
+        "Chinese electromechanical suppliers capture >30% of industrial robot actuation market by 2028",
+        "Humanoid robot commercialization delays beyond 2030 eliminate near-term demand catalyst"
+      ],
+      "marketCap": 75,
+      "status": "watchlist",
+      "_note": "Expected funnel fail: aiContribution=0.15 < 0.30 threshold. Informational coverage of embodied AI supply chain periphery.",
+      "addedDate": "2026-05-08",
+      "addedVersion": "1.2.0",
+      "_changeLog": [
+        {
+          "date": "2026-05-08",
+          "version": "1.2.0",
+          "change": "Added to L_EMBI watchlist — industrial motion control, expected funnel fail (aiContribution=0.15)"
+        }
+      ]
+    },
+    {
+      "symbol": "RKLB",
+      "name": "Rocket Lab",
+      "layer": "L_SPACE",
+      "layerRole": "primary",
+      "physicalConstraint": 4,
+      "aiContribution": 0.45,
+      "timeToRealize": "near",
+      "thesis": "Only vertically integrated small satellite launch plus spacecraft bus provider — Electron rocket is the sole reliable dedicated small launch vehicle, Neutron medium-lift expands TAM, space systems division provides components across the satellite constellation buildout",
+      "thesisFalsification": [
+        "Neutron development delays exceed 18 months from current schedule, burning cash without revenue offset",
+        "SpaceX Falcon 9 rideshare pricing falls below $5,000/kg — eliminates dedicated small launch economics",
+        "Major government contracts (NASA VADR, NRO) not renewed in 2026-2027 rebid cycle"
+      ],
+      "marketCap": 11,
+      "status": "active",
+      "addedDate": "2026-05-08",
+      "addedVersion": "1.2.0",
+      "_changeLog": [
+        {
+          "date": "2026-05-08",
+          "version": "1.2.0",
+          "change": "Added to L_SPACE — small satellite launch monopoly + space systems, physicalConstraint=4, aiContribution=0.45"
+        }
+      ]
+    },
+    {
+      "symbol": "ASTS",
+      "name": "AST SpaceMobile",
+      "layer": "L_SPACE",
+      "layerRole": "primary",
+      "physicalConstraint": 5,
+      "aiContribution": 0.35,
+      "timeToRealize": "medium",
+      "thesis": "FCC spectrum licenses for direct-to-device satellite cellular create a physical monopoly — AT&T and T-Mobile commercial agreements provide revenue floor; elimination of coverage dead zones addresses a structurally irreplaceable market gap",
+      "thesisFalsification": [
+        "Satellite deployment failures reduce constellation below minimum viable coverage — carrier contract breaches",
+        "Starlink Direct to Cell achieves commercial-grade reliability at equivalent or lower cost by 2026",
+        "FCC spectrum reassignment or regulatory challenge invalidates core spectrum licenses"
+      ],
+      "marketCap": 6,
+      "status": "watchlist",
+      "addedDate": "2026-05-08",
+      "addedVersion": "1.2.0",
+      "_changeLog": [
+        {
+          "date": "2026-05-08",
+          "version": "1.2.0",
+          "change": "Added to L_SPACE watchlist — FCC spectrum monopoly, direct-to-device satellite cellular, physicalConstraint=5"
+        }
+      ]
+    },
+    {
+      "symbol": "MOG",
+      "name": "Moog",
+      "layer": "L_SPACE",
+      "layerRole": "secondary",
+      "physicalConstraint": 4,
+      "aiContribution": 0.15,
+      "timeToRealize": "medium",
+      "thesis": "MIL-SPEC certified precision flight control actuation for defense satellites and missile defense systems — defense aerospace spending cycle provides long-duration government contract revenue visibility",
+      "thesisFalsification": [
+        "SpaceX vertical integration expands to commercial satellite actuation, bypassing traditional aerospace suppliers",
+        "Defense budget sequestration reduces satellite and missile program spending >20%",
+        "Next-generation electric propulsion reduces mechanical actuator content per satellite"
+      ],
+      "marketCap": 3,
+      "status": "watchlist",
+      "_note": "Expected funnel fail: aiContribution=0.15 < 0.30 threshold. Informational coverage of defense aerospace supply chain.",
+      "addedDate": "2026-05-08",
+      "addedVersion": "1.2.0",
+      "_changeLog": [
+        {
+          "date": "2026-05-08",
+          "version": "1.2.0",
+          "change": "Added to L_SPACE watchlist — defense aerospace actuation, expected funnel fail (aiContribution=0.15)"
         }
       ]
     }

@@ -1,11 +1,13 @@
 {
-  "version": "1.0.0",
-  "lastUpdated": "2026-05-04",
-  "description": "ProphetMap AI产业链传导层级定义",
+  "version": "1.1.0",
+  "lastUpdated": "2026-05-08",
+  "description": "ProphetMap前沿科技主题层级定义——AI物理供应链、具身智能基础设施、太空基础设施",
   "terminationBoundary": 14,
   "chains": {
     "A": "算力→物理基础设施主链",
     "B": "能源→物理资源主链",
+    "C": "具身智能→物理执行链",
+    "D": "太空基础设施链",
     "experimental": "实验层（待验证）"
   },
   "timeToRealizeDefinitions": {
@@ -543,6 +545,52 @@
         "falsificationSignals": [
           "GPU算力市场价格崩溃——去中心化定价失去竞争力",
           "主流AI公司明确拒绝使用去中心化基础设施"
+        ]
+      }
+    },
+    {
+      "id": "L_EMBI",
+      "name": "具身智能基础设施",
+      "nameEn": "Embodied AI Infrastructure",
+      "chain": "C",
+      "position": 97,
+      "description": "物理AI执行层——手术机器人、工业机器视觉、人形机器人执行器，AI从数字空间延伸至物理世界的关键节点",
+      "physicalConstraintDesc": "FDA/CE认证锁定与工厂集成壁垒，切换成本极高",
+      "basePhysicalConstraint": 4,
+      "typicalTimeToRealize": "near",
+      "status": "active",
+      "isLeadingIndicator": false,
+      "parallel": true,
+      "sublayers": null,
+      "auditCriteria": {
+        "mergeCondition": "具身智能算力需求与L2训练层完全同步，独立层失去意义",
+        "deleteCondition": "人形机器人商业化延期至2030+，具身智能市场规模<$10B",
+        "falsificationSignals": [
+          "低成本中国机器人供应链（宇树/智元/大疆）蚕食美国精密机器人市场份额>30%",
+          "AI手术/工业视觉精度被证伪——FDA召回率上升导致行业监管收紧"
+        ]
+      }
+    },
+    {
+      "id": "L_SPACE",
+      "name": "太空基础设施",
+      "nameEn": "Space Infrastructure",
+      "chain": "D",
+      "position": 98,
+      "description": "商业航天发射、卫星互联网、深空通信——SpaceX带动的商业航天超级周期受益层，轨道频谱与发射认证创造极高准入壁垒",
+      "physicalConstraintDesc": "FCC轨道频谱许可、FAA/MIL-SPEC发射认证，物理壁垒极高",
+      "basePhysicalConstraint": 4,
+      "typicalTimeToRealize": "near",
+      "status": "active",
+      "isLeadingIndicator": false,
+      "parallel": true,
+      "sublayers": null,
+      "auditCriteria": {
+        "mergeCondition": "太空卫星AI边缘计算与L2_5推理层形成直接依赖关系",
+        "deleteCondition": "SpaceX Starlink完全垄断所有轨道层，第三方运营商无生存空间",
+        "falsificationSignals": [
+          "轨道碎片事件触发Kessler效应风险，主要LEO轨道禁用",
+          "美国商业航天监管收紧，FAA发射许可审批时间>3年"
         ]
       }
     }
