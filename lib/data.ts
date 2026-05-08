@@ -11,6 +11,8 @@ export type TickerScore = {
   price: number | null;
   marketCap: number | null;
   pricingScore: number | null;
+  pegRatio?: number | null;
+  pegBand?: 'cheap' | 'fair' | 'rich' | 'overpriced' | 'N/A';
   funnelPass: boolean;
   funnelFailReasons: string[];
   components: {

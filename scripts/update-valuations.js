@@ -201,6 +201,13 @@ async function main() {
 
       const numAnalysts = summary?.financialData?.numberOfAnalystOpinions ?? null;
       const recommendMean = summary?.financialData?.recommendationMean ?? null;
+      const pegRaw = summary?.defaultKeyStatistics?.pegRatio ?? null;
+      const pegRatio = pegRaw != null && isFinite(pegRaw) ? Math.round(pegRaw * 100) / 100 : null;
+      const pegBand = pegRatio == null ? 'N/A'
+        : pegRatio <= 1.0 ? 'cheap'
+        : pegRatio <= 1.5 ? 'fair'
+        : pegRatio <= 2.5 ? 'rich'
+        : 'overpriced';
 
       results.push({
         symbol: sym,
@@ -211,6 +218,8 @@ async function main() {
         price: quote?.regularMarketPrice ?? null,
         marketCap: quote?.marketCap ? Math.round(quote.marketCap / 1e9) : null,
         pricingScore,
+        pegRatio,
+        pegBand,
         funnelPass: funnel.pass,
         funnelFailReasons: funnel.failReasons,
         components,
@@ -221,7 +230,7 @@ async function main() {
       });
 
       const passLabel = funnel.pass ? '✅ PASS' : '  ----';
-      console.log(`${passLabel} (pricing=${pricingScore ?? 'N/A'}, dq=${dataQuality})`);
+      console.log(`${passLabel} (pricing=${pricingScore ?? 'N/A'}, peg=${pegRatio ?? 'N/A'} [${pegBand}], dq=${dataQuality})`);
     } catch (err) {
       console.log(`ERROR: ${err.message}`);
       errors.push({ symbol: sym, error: err.message });
