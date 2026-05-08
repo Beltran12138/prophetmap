@@ -48,8 +48,9 @@ jobs:
           git commit -m "chore: weekly benchmark update $(date -u +%Y-%m-%d)"
           for i in 1 2 3; do
             git push && exit 0
-            echo "Push rejected, attempt $i — pulling rebase and retrying"
-            git pull --rebase origin master
+            echo "Push rejected, attempt $i — pulling rebase (preferring our fresh data on conflicts) and retrying"
+            git fetch origin master
+            git rebase -X theirs origin/master || git rebase --abort
           done
           git push
 
@@ -98,8 +99,9 @@ jobs:
           git commit -m "chore: daily score update $(date -u +%Y-%m-%d)"
           for i in 1 2 3; do
             git push && exit 0
-            echo "Push rejected, attempt $i — pulling rebase and retrying"
-            git pull --rebase origin master
+            echo "Push rejected, attempt $i — pulling rebase (preferring our fresh data on conflicts) and retrying"
+            git fetch origin master
+            git rebase -X theirs origin/master || git rebase --abort
           done
           git push
 
