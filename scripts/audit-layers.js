@@ -23,6 +23,7 @@ const AUDIT_DIR = path.join(__dirname, '../data/audit');
 
 const LOOKBACK_DAYS = 30;
 const TOP_CORRELATIONS = 15;
+const MIN_DAYS_FOR_CORRELATION = 20; // Below this, correlation values are statistical noise
 
 const today = () => new Date().toISOString().slice(0, 10);
 
@@ -89,17 +90,21 @@ function main() {
     };
   }
 
+  const correlationsSkipped = scoreFiles.length < MIN_DAYS_FOR_CORRELATION;
   const correlations = [];
   const layerIds = Object.keys(layerMetrics);
-  for (let i = 0; i < layerIds.length; i++) {
-    for (let j = i + 1; j < layerIds.length; j++) {
-      const a = layerIds[i];
-      const b = layerIds[j];
-      const r = correlation(layerMetrics[a].scoreSeries, layerMetrics[b].scoreSeries);
-      if (r != null) correlations.push({ a, b, r });
+
+  if (!correlationsSkipped) {
+    for (let i = 0; i < layerIds.length; i++) {
+      for (let j = i + 1; j < layerIds.length; j++) {
+        const a = layerIds[i];
+        const b = layerIds[j];
+        const r = correlation(layerMetrics[a].scoreSeries, layerMetrics[b].scoreSeries);
+        if (r != null) correlations.push({ a, b, r });
+      }
     }
+    correlations.sort((x, y) => Math.abs(y.r) - Math.abs(x.r));
   }
-  correlations.sort((x, y) => Math.abs(y.r) - Math.abs(x.r));
 
   // Flag potentially redundant layers (correlation > 0.85)
   const mergeFlags = correlations.filter((c) => Math.abs(c.r) > 0.85);
@@ -124,14 +129,23 @@ function main() {
     '',
     `## Top ${TOP_CORRELATIONS} Inter-Layer Correlations (avg pricingScore, ${LOOKBACK_DAYS}d)`,
     '',
-    `| Layer A | Layer B | Pearson r |`,
-    `| --- | --- | --- |`,
-    ...correlations.slice(0, TOP_CORRELATIONS).map((c) => `| ${c.a} | ${c.b} | ${c.r.toFixed(3)} |`),
+    correlationsSkipped
+      ? `_⚠️ **Correlation analysis skipped** — only ${scoreFiles.length} days of scores available (need ≥${MIN_DAYS_FOR_CORRELATION}). Below this threshold, correlations are statistical noise. Re-run after data accumulation._`
+      : '',
+    ...(correlationsSkipped ? [] : [
+      `| Layer A | Layer B | Pearson r |`,
+      `| --- | --- | --- |`,
+      ...correlations.slice(0, TOP_CORRELATIONS).map((c) => `| ${c.a} | ${c.b} | ${c.r.toFixed(3)} |`),
+    ]),
     '',
     `## ⚠️ Merge Flags (correlation > 0.85)`,
     '',
-    mergeFlags.length === 0 ? '_None — no layer pairs strongly correlated._' : '',
-    ...mergeFlags.map((c) => `- **${c.a}** vs **${c.b}**: r=${c.r.toFixed(3)} — review whether layers are tracking the same underlying signal`),
+    correlationsSkipped
+      ? '_Skipped — insufficient data._'
+      : mergeFlags.length === 0
+      ? '_None — no layer pairs strongly correlated._'
+      : '',
+    ...(correlationsSkipped ? [] : mergeFlags.map((c) => `- **${c.a}** vs **${c.b}**: r=${c.r.toFixed(3)} — review whether layers are tracking the same underlying signal`)),
     '',
     `## Layer Audit Criteria (manual review)`,
     '',

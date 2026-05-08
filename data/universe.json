@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "version": "1.4.0",
+    "version": "1.5.0",
     "date": "2026-05-08",
     "description": "ProphetMap stock universe — manually-defined static fields only. Dynamic pricing scores written to data/scores/YYYY-MM-DD.json by scripts/update-valuations.js",
     "fieldGuide": {
@@ -304,6 +304,33 @@
       ]
     },
     {
+      "symbol": "AVGO",
+      "name": "Broadcom",
+      "layer": "L2_5",
+      "layerRole": "primary",
+      "physicalConstraint": 4,
+      "aiContribution": 0.55,
+      "timeToRealize": "near",
+      "thesis": "Custom AI ASIC design partner to hyperscalers — Google TPU and Meta MTIA design wins, plus Tomahawk networking silicon underpinning Arista/Cisco AI switches; deep multi-year customer integration creates switching cost. VMware software acquisition rounds out hyperscaler relationships. Surfaced as massive omission via 8 peer mentions across L1/L2.5/L4/L5/L6/L7.",
+      "thesisFalsification": [
+        "Hyperscalers internalize ASIC design fully (Google ends Broadcom TPU partnership)",
+        "Tomahawk networking silicon loses share to NVDA Spectrum-X or proprietary hyperscaler designs",
+        "Custom AI silicon revenue misses 40% YoY growth for two consecutive quarters",
+        "VMware customer attrition exceeds 15% annually post-licensing changes"
+      ],
+      "marketCap": 1997,
+      "status": "active",
+      "addedDate": "2026-05-08",
+      "addedVersion": "1.5.0",
+      "_changeLog": [
+        {
+          "date": "2026-05-08",
+          "version": "1.5.0",
+          "change": "Added to L2_5 — custom AI ASIC + networking silicon, surfaced via discover-candidates.js with 8 peer mentions"
+        }
+      ]
+    },
+    {
       "symbol": "SNPS",
       "name": "Synopsys",
       "layer": "L3",
@@ -482,6 +509,33 @@
           "date": "2026-05-04",
           "version": "1.0.0",
           "change": "Initial addition to universe"
+        }
+      ]
+    },
+    {
+      "symbol": "ASML",
+      "name": "ASML Holding",
+      "layer": "L4",
+      "layerRole": "primary",
+      "physicalConstraint": 5,
+      "aiContribution": 0.45,
+      "timeToRealize": "near",
+      "thesis": "Sole global supplier of EUV lithography systems — irreplaceable for advanced nodes 5nm and below; High-NA EUV next-generation extends monopoly through 2030; every leading-edge AI chip (NVDA Blackwell, TSMC N3/N2) requires ASML capacity. Surfaced as massive omission via discover-candidates.js (3 peer mentions: ARM, LRCX, TSM).",
+      "thesisFalsification": [
+        "Canon nano-imprint lithography or Chinese DUV multi-patterning achieves leading-edge node viability",
+        "TSMC capex declines >25% for two consecutive quarters reducing EUV system orders",
+        "China export ban on EUV expands to mature DUV systems impacting >30% of revenue",
+        "High-NA EUV (Twinscan EXE) yield issues delay 2nm ramp by >18 months"
+      ],
+      "marketCap": 599,
+      "status": "active",
+      "addedDate": "2026-05-08",
+      "addedVersion": "1.5.0",
+      "_changeLog": [
+        {
+          "date": "2026-05-08",
+          "version": "1.5.0",
+          "change": "Added to L4 — EUV lithography monopoly, physicalConstraint=5, surfaced via discover-candidates.js"
         }
       ]
     },

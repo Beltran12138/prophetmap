@@ -133,7 +133,7 @@ Proximity scale: 0=no evidence, 1=early signs, 2=strong evidence/approaching, 3=
   for (let attempt = 1; attempt <= MAX_RETRIES; attempt++) {
     try {
       const response = await deepseek.chat.completions.create({
-        model: 'deepseek-v4-flash',
+        model: 'deepseek-chat',
         messages: [
           { role: 'system', content: systemMsg },
           { role: 'user', content: JSON.stringify(prompt, null, 2) },

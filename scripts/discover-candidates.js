@@ -66,7 +66,7 @@ async function draftThesis(candidate, suggestedLayer, layerDescription) {
   if (!deepseek) return null;
   try {
     const response = await deepseek.chat.completions.create({
-      model: 'deepseek-v4-flash',
+      model: 'deepseek-chat',
       messages: [
         {
           role: 'system',
@@ -96,8 +96,14 @@ Falsification signals must be observable, specific events that would invalidate 
       temperature: 0.2,
       max_tokens: 600,
     });
-    return JSON.parse(response.choices[0]?.message?.content || '{}');
+    const content = response.choices[0]?.message?.content;
+    if (!content) {
+      console.warn(`    DeepSeek empty response for ${candidate}`);
+      return { error: 'empty response' };
+    }
+    return JSON.parse(content);
   } catch (e) {
+    console.warn(`    DeepSeek error for ${candidate}: ${e.message}`);
     return { error: e.message };
   }
 }
