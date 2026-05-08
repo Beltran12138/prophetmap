@@ -1,0 +1,95 @@
+name: Audit ProphetMap
+
+on:
+  schedule:
+    # Weekly Sunday 13:00 UTC: universe audit (promotion/demotion check)
+    - cron: '0 13 * * 0'
+    # Monthly 1st 11:00 UTC: candidate discovery + layer audit
+    - cron: '0 11 1 * *'
+  workflow_dispatch:
+    inputs:
+      audit_type:
+        description: 'Audit type to run'
+        required: false
+        default: 'all'
+        type: choice
+        options:
+          - all
+          - universe
+          - candidates
+          - layers
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: Universe audit (weekly Sunday + manual all/universe)
+        if: github.event.schedule == '0 13 * * 0' || github.event.inputs.audit_type == 'all' || github.event.inputs.audit_type == 'universe'
+        id: universe
+        run: node scripts/audit-universe.js
+
+      - name: Candidate discovery (monthly + manual all/candidates)
+        if: github.event.schedule == '0 11 1 * *' || github.event.inputs.audit_type == 'all' || github.event.inputs.audit_type == 'candidates'
+        id: discover
+        run: node scripts/discover-candidates.js
+        env:
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+
+      - name: Layer audit (monthly + manual all/layers)
+        if: github.event.schedule == '0 11 1 * *' || github.event.inputs.audit_type == 'all' || github.event.inputs.audit_type == 'layers'
+        id: layers
+        run: node scripts/audit-layers.js
+
+      - name: Commit audit reports
+        run: |
+          git config user.name "prophetmap-bot"
+          git config user.email "bot@prophetmap.dev"
+          git add data/audit/
+          git diff --staged --quiet || git commit -m "chore: audit report $(date -u +%Y-%m-%d)"
+          git push
+
+      - name: Create issue for promotion/demotion candidates
+        if: ${{ steps.universe.outputs.promotions != '' && (steps.universe.outputs.promotions != '0' || steps.universe.outputs.demotions != '0') }}
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const promotions = '${{ steps.universe.outputs.promotions }}';
+            const demotions = '${{ steps.universe.outputs.demotions }}';
+            const date = new Date().toISOString().slice(0, 10);
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `📋 Universe audit ${date} — ${promotions} promotion, ${demotions} demotion candidates`,
+              body: `Universe audit surfaced status change candidates for review.\n\nSee \`data/audit/${date}-universe.md\` for details.\n\n_Manual approval required before updating universe.json._`,
+              labels: ['audit'],
+            });
+
+      - name: Create issue for layer merge flags
+        if: ${{ steps.layers.outputs.merge_flags != '' && steps.layers.outputs.merge_flags != '0' }}
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const flags = '${{ steps.layers.outputs.merge_flags }}';
+            const date = new Date().toISOString().slice(0, 10);
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `🔀 Layer audit ${date} — ${flags} potential merge flags`,
+              body: `Layer audit found ${flags} layer pair(s) with correlation >0.85, suggesting potential redundancy.\n\nSee \`data/audit/${date}-layers.md\` for details.\n\n_Layer structure changes require manual review._`,
+              labels: ['audit', 'layer-structure'],
+            });
