@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "version": "1.3.0",
+    "version": "1.4.0",
     "date": "2026-05-08",
     "description": "ProphetMap stock universe — manually-defined static fields only. Dynamic pricing scores written to data/scores/YYYY-MM-DD.json by scripts/update-valuations.js",
     "fieldGuide": {
@@ -1510,6 +1510,34 @@
           "date": "2026-05-08",
           "version": "1.2.0",
           "change": "Added to L_EMBI watchlist — industrial motion control, expected funnel fail (aiContribution=0.15)"
+        }
+      ]
+    },
+    {
+      "symbol": "TSLA",
+      "name": "Tesla",
+      "layer": "L_EMBI",
+      "layerRole": "secondary",
+      "physicalConstraint": 3,
+      "aiContribution": 0.4,
+      "timeToRealize": "medium",
+      "thesis": "Optimus humanoid robot mass-production thesis — Tesla's vertical integration spans AI training (Dojo), actuator design, battery systems, and manufacturing scale; if Optimus achieves consumer/industrial deployment by 2028, Tesla becomes the pure-play embodied AI mass-market vendor. FSD/Robotaxi adds optionality. Auto business is current revenue floor but not the embodied AI thesis driver.",
+      "thesisFalsification": [
+        "Optimus production targets miss by >2 years from current schedule (>2030 deployment)",
+        "Chinese humanoid robot makers (Unitree, UBTech, XPeng IronMan) achieve consumer-grade pricing first",
+        "Auto core business margin compression from BYD/legacy EV competition forces capital reallocation away from Optimus R&D",
+        "FSD regulatory approval blocked in major markets eliminating Robotaxi optionality"
+      ],
+      "marketCap": 1100,
+      "status": "watchlist",
+      "_note": "Expected funnel fail: physicalConstraint=3 + pricingScore likely >3 (premium valuation). Informational coverage as primary US-listed humanoid robot mass-production play. Personal portfolio cleared 2026-05-08 under v0.8 framework discipline (Musk admiration is not a thesis).",
+      "addedDate": "2026-05-08",
+      "addedVersion": "1.4.0",
+      "_changeLog": [
+        {
+          "date": "2026-05-08",
+          "version": "1.4.0",
+          "change": "Added to L_EMBI watchlist — Optimus humanoid robot mass-production tracking, expected funnel fail (PC=3 + pricing premium)"
         }
       ]
     },
