@@ -1,7 +1,7 @@
 {
-  "version": "1.1.0",
+  "version": "1.2.0",
   "lastUpdated": "2026-05-08",
-  "description": "ProphetMap前沿科技主题层级定义——AI物理供应链、具身智能基础设施、太空基础设施",
+  "description": "ProphetMap前沿科技主题层级定义——AI物理供应链(含L5.5 PCB/基板)、具身智能基础设施、太空基础设施",
   "terminationBoundary": 14,
   "chains": {
     "A": "算力→物理基础设施主链",
@@ -213,6 +213,30 @@
         "falsificationSignals": [
           "台积电CoWoS自建产能满足>80%需求",
           "2.5D封装被3D IC stack完全替代"
+        ]
+      }
+    },
+    {
+      "id": "L5_5",
+      "name": "PCB/基板层",
+      "nameEn": "PCB & Substrates",
+      "chain": "A",
+      "position": 5.5,
+      "description": "AI服务器32-40层HDI高密度互连板与ABF芯片封装基板，先进封装与服务器组装之间的硬件桥梁层",
+      "physicalConstraintDesc": "高层数HDI制造需要专用产线，ABF基板由味之素等少数日厂垄断，国产替代尚不成熟",
+      "basePhysicalConstraint": 3,
+      "typicalTimeToRealize": "near",
+      "status": "active",
+      "isLeadingIndicator": false,
+      "parallel": false,
+      "sublayers": null,
+      "auditCriteria": {
+        "mergeCondition": "ABF基板与L5先进封装产业链垂直整合（封装厂内化基板）",
+        "splitCondition": "AI服务器PCB与航空防务PCB形成完全独立的定价周期",
+        "deleteCondition": "光子互联或CPO使PCB在AI服务器中地位降级",
+        "falsificationSignals": [
+          "中国本土HDI厂商在AI服务器PCB实现>30%渗透",
+          "ABF基板替代材料商业化导致味之素垄断破裂"
         ]
       }
     },

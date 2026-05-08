@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "version": "1.2.0",
+    "version": "1.3.0",
     "date": "2026-05-08",
     "description": "ProphetMap stock universe — manually-defined static fields only. Dynamic pricing scores written to data/scores/YYYY-MM-DD.json by scripts/update-valuations.js",
     "fieldGuide": {
@@ -408,6 +408,32 @@
       ]
     },
     {
+      "symbol": "LIN",
+      "name": "Linde",
+      "layer": "L3_5",
+      "layerRole": "primary",
+      "physicalConstraint": 5,
+      "aiContribution": 0.4,
+      "timeToRealize": "near",
+      "thesis": "Largest global industrial gas company supplying ultra-high-purity specialty gases (NF3, SiH4, He, Ar, electronic gases) to leading-edge fabs (TSMC/Samsung/Intel) — on-site colocated air separation plants create irreplaceable physical lock-in with multi-decade supply contracts",
+      "thesisFalsification": [
+        "Air Products or Air Liquide captures >20% of leading-edge fab gas market share from Linde at TSMC/Samsung/Intel",
+        "Leading-edge fab capex slows >25% for four consecutive quarters reducing gas consumption growth",
+        "Major fab internalizes industrial gas production breaking on-site supplier lock-in"
+      ],
+      "marketCap": 220,
+      "status": "active",
+      "addedDate": "2026-05-08",
+      "addedVersion": "1.3.0",
+      "_changeLog": [
+        {
+          "date": "2026-05-08",
+          "version": "1.3.0",
+          "change": "Added to L3_5 — global industrial gas supplier with on-site fab plants, physicalConstraint=5 (irreplaceable), aiContribution=0.40 (semi demand primary driver)"
+        }
+      ]
+    },
+    {
       "symbol": "AMAT",
       "name": "Applied Materials",
       "layer": "L4",
@@ -534,6 +560,32 @@
           "date": "2026-05-04",
           "version": "1.0.0",
           "change": "Initial addition to universe"
+        }
+      ]
+    },
+    {
+      "symbol": "TTMI",
+      "name": "TTM Technologies",
+      "layer": "L5_5",
+      "layerRole": "primary",
+      "physicalConstraint": 4,
+      "aiContribution": 0.3,
+      "timeToRealize": "near",
+      "thesis": "Dual-driver thesis — AI server high-density 32-40 layer HDI PCBs (compute boards for AI accelerators) plus aerospace and defense MIL-SPEC PCBs; defense backlog provides revenue floor while AI server demand provides upside; PCB super-cycle driven by ABF substrate shortage cascading into all server PCB layers",
+      "thesisFalsification": [
+        "Taiwanese PCB makers (Tripod, Zhen Ding, Unimicron) capture >25% of US AI server PCB orders breaking domestic supplier preference",
+        "ABF substrate supply normalizes by 2027 eliminating PCB premium pricing tier",
+        "Major defense PCB program cancellations (F-35, NGAD) reduce defense backlog >20%"
+      ],
+      "marketCap": 3,
+      "status": "active",
+      "addedDate": "2026-05-08",
+      "addedVersion": "1.3.0",
+      "_changeLog": [
+        {
+          "date": "2026-05-08",
+          "version": "1.3.0",
+          "change": "Added to L5_5 — primary US-listed PCB play, dual AI server + defense thesis, physicalConstraint=4 (defense MIL-SPEC + AI HDI specialization)"
         }
       ]
     },
