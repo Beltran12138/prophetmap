@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "version": "1.5.0",
+    "version": "1.6.0",
     "date": "2026-05-08",
     "description": "ProphetMap stock universe — manually-defined static fields only. Dynamic pricing scores written to data/scores/YYYY-MM-DD.json by scripts/update-valuations.js",
     "fieldGuide": {
@@ -722,6 +722,33 @@
       ]
     },
     {
+      "symbol": "CRWV",
+      "name": "CoreWeave",
+      "layer": "L7",
+      "layerRole": "primary",
+      "physicalConstraint": 3,
+      "aiContribution": 0.85,
+      "timeToRealize": "near",
+      "thesis": "Pure-play AI cloud compute provider — NVDA-prioritized GPU allocation partner, multi-year enterprise contracts (Microsoft, Meta) provide revenue visibility; specialized AI infrastructure focus differentiates from generic hyperscaler cloud. Surfaced via discover-candidates with 3 peer mentions (ARM, SMCI, VRT).",
+      "thesisFalsification": [
+        "Microsoft, Meta, or other anchor customers reduce CRWV commitments by >25% in renewal cycles",
+        "NVDA grants priority GPU allocation to AWS or competing AI cloud, breaking CRWV preferential supply",
+        "AI compute spot pricing falls below CRWV reserved-capacity contract economics for 4 consecutive quarters",
+        "CRWV debt covenants triggered by AI capex slowdown forcing equity dilution"
+      ],
+      "marketCap": 60,
+      "status": "active",
+      "addedDate": "2026-05-08",
+      "addedVersion": "1.6.0",
+      "_changeLog": [
+        {
+          "date": "2026-05-08",
+          "version": "1.6.0",
+          "change": "Added to L7 — pure-play AI cloud compute, surfaced via discover-candidates.js (3 peer mentions)"
+        }
+      ]
+    },
+    {
       "symbol": "SMCI",
       "name": "Super Micro Computer",
       "layer": "L7",
@@ -1083,6 +1110,62 @@
           "date": "2026-05-04",
           "version": "1.0.0",
           "change": "Initial addition to universe"
+        }
+      ]
+    },
+    {
+      "symbol": "OKLO",
+      "name": "Oklo Inc.",
+      "layer": "L11",
+      "layerRole": "secondary",
+      "physicalConstraint": 3,
+      "aiContribution": 0.2,
+      "timeToRealize": "far",
+      "thesis": "Compact fast reactor (Aurora powerhouse) targets 1.5MW micro-grid power for data centers and remote sites — Sam Altman backing and recent NRC permit progress provide regulatory tailwind. Surfaced via discover-candidates with 4 peer mentions (CEG, VST, GEV, RKLB).",
+      "thesisFalsification": [
+        "NRC license denial or extended review beyond 2027 eliminates 2030 deployment timeline",
+        "First commercial Aurora unit fails to deliver power on schedule (currently 2027-2028 target)",
+        "Data center customers shift to natural gas peakers as faster bridge solution",
+        "Sam Altman OpenAI distraction reduces direct backing or strategic relevance"
+      ],
+      "marketCap": 12,
+      "status": "watchlist",
+      "_note": "Expected funnel fail: timeToRealize=far + aiContribution=0.20. Speculative SMR play with regulatory binary outcome. Informational coverage of advanced nuclear timeline.",
+      "addedDate": "2026-05-08",
+      "addedVersion": "1.6.0",
+      "_changeLog": [
+        {
+          "date": "2026-05-08",
+          "version": "1.6.0",
+          "change": "Added to L11 watchlist — fast reactor SMR, surfaced via discover-candidates.js"
+        }
+      ]
+    },
+    {
+      "symbol": "SMR",
+      "name": "NuScale Power",
+      "layer": "L11",
+      "layerRole": "secondary",
+      "physicalConstraint": 3,
+      "aiContribution": 0.2,
+      "timeToRealize": "far",
+      "thesis": "First and only NRC-certified small modular reactor design (77MW VOYGR) — Carbon Free Power Project failed but design certification remains as competitive moat for SMR commercialization through 2030+. Surfaced via discover-candidates with 3 peer mentions (CEG, VST, CCJ).",
+      "thesisFalsification": [
+        "VOYGR design certification not adopted by any utility customer by end-2027",
+        "Competing SMR designs (Oklo, X-energy, Holtec) achieve NRC certification eliminating NuScale moat",
+        "Cash burn forces dilutive raise without commercial customer commitments",
+        "Standard Power or RoPower contracts cancelled (currently last viable customer pipeline)"
+      ],
+      "marketCap": 4,
+      "status": "watchlist",
+      "_note": "Expected funnel fail: timeToRealize=far + aiContribution=0.20. CFPP cancellation history creates execution risk. Informational coverage of certified SMR commercialization.",
+      "addedDate": "2026-05-08",
+      "addedVersion": "1.6.0",
+      "_changeLog": [
+        {
+          "date": "2026-05-08",
+          "version": "1.6.0",
+          "change": "Added to L11 watchlist — NRC-certified SMR, surfaced via discover-candidates.js"
         }
       ]
     },
@@ -1485,6 +1568,34 @@
           "date": "2026-05-06",
           "version": "1.1.0",
           "change": "Added as bridge role — ETH settlement layer for AI payment rails; aiContribution deliberately below funnel threshold"
+        }
+      ]
+    },
+    {
+      "symbol": "CRCL",
+      "name": "Circle Internet Group",
+      "layer": "L_DCOMP",
+      "layerRole": "bridge",
+      "physicalConstraint": 4,
+      "aiContribution": 0.3,
+      "timeToRealize": "near",
+      "thesis": "USDC stablecoin issuer — primary on-chain dollar settlement rail for AI agent commerce; revenue=USDC reserves×interest rate; regulatory moat (NYDFS BitLicense, MiCA approval) creates compliance barrier; AI agent payment automation drives stablecoin transaction velocity. Rate-sensitive: descending rate cycle compresses revenue mechanically.",
+      "thesisFalsification": [
+        "Federal Reserve target rate falls below 2% for two consecutive quarters compressing reserves yield",
+        "USDT or new stablecoin captures >20% of USDC market cap share through better cross-chain UX",
+        "GENIUS Act implementation forces unfavorable reserve composition or yield-sharing requirements",
+        "Major AI agent platform standardizes on bank-issued tokenized deposits rather than USDC"
+      ],
+      "marketCap": 8,
+      "status": "active",
+      "_note": "Equity ticker, not crypto. Bridge role: stock-equity proxy for stablecoin/AI payment rail thesis. Personal portfolio history: held, sold at >20% profit per investment_framework v0.9 record — flagged as potential T1 discipline slip (price-driven exit vs thesis-driven).",
+      "addedDate": "2026-05-08",
+      "addedVersion": "1.6.0",
+      "_changeLog": [
+        {
+          "date": "2026-05-08",
+          "version": "1.6.0",
+          "change": "Added to L_DCOMP as bridge role — USDC issuer, AI agent payment rail thesis, rate-sensitive"
         }
       ]
     },
