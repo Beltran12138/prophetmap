@@ -31,7 +31,8 @@ function today() {
   return new Date().toISOString().slice(0, 10);
 }
 
-const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+const apiKey = (process.env.GEMINI_API_KEY || '').replace(/^﻿/, '').trim();
+const ai = new GoogleGenAI({ apiKey });
 const MODEL_ID = 'gemini-2.5-flash';
 
 /**

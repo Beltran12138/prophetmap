@@ -32,8 +32,9 @@ const MODEL_ID = 'gemini-2.5-flash';
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const today = () => new Date().toISOString().slice(0, 10);
 
-const useGemini = !!process.env.GEMINI_API_KEY;
-const ai = useGemini ? new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY }) : null;
+const apiKey = (process.env.GEMINI_API_KEY || '').replace(/^﻿/, '').trim();
+const useGemini = !!apiKey;
+const ai = useGemini ? new GoogleGenAI({ apiKey }) : null;
 
 async function getRecommendations(symbol) {
   try {
