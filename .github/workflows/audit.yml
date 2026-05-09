@@ -48,7 +48,7 @@ jobs:
         id: discover
         run: node scripts/discover-candidates.js
         env:
-          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
 
       - name: Layer audit (monthly + manual all/layers)
         if: github.event.schedule == '0 11 1 * *' || github.event.inputs.audit_type == 'all' || github.event.inputs.audit_type == 'layers'

@@ -2,19 +2,22 @@
  * analyze-signals.js
  *
  * For each active ticker, retrieves latest metrics and analyst revisions,
- * then asks DeepSeek V4 Flash to assess proximity of each falsification signal.
+ * then asks Gemini 2.5 Flash to assess proximity of each falsification signal.
  * Writes to data/alerts/YYYY-MM-DD.json.
  *
  * Output risk levels: low | medium | high | critical
  * "critical" triggers GitHub Actions annotation for human review.
  *
+ * Migrated from DeepSeek to Gemini 2.5 Flash on 2026-05-10 due to DeepSeek
+ * API geo-restriction blocking GitHub Actions US runners.
+ *
  * Environment variables required:
- *   DEEPSEEK_API_KEY — DeepSeek API key
+ *   GEMINI_API_KEY — Google Gemini API key
  */
 
 const YahooFinance = require('yahoo-finance2').default;
 const yahooFinance = new YahooFinance({ suppressNotices: ['ripHistorical', 'yahooSurvey'] });
-const OpenAI = require('openai').default;
+const { GoogleGenAI } = require('@google/genai');
 const fs = require('fs');
 const path = require('path');
 
@@ -28,10 +31,8 @@ function today() {
   return new Date().toISOString().slice(0, 10);
 }
 
-const deepseek = new OpenAI({
-  apiKey: process.env.DEEPSEEK_API_KEY,
-  baseURL: 'https://api.deepseek.com',
-});
+const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+const MODEL_ID = 'gemini-2.5-flash';
 
 /**
  * Fetch key metrics and recent news headlines for thesis monitoring.
@@ -132,19 +133,22 @@ Proximity scale: 0=no evidence, 1=early signs, 2=strong evidence/approaching, 3=
   const MAX_RETRIES = 3;
   for (let attempt = 1; attempt <= MAX_RETRIES; attempt++) {
     try {
-      const response = await deepseek.chat.completions.create({
-        model: 'deepseek-chat',
-        messages: [
-          { role: 'system', content: systemMsg },
-          { role: 'user', content: JSON.stringify(prompt, null, 2) },
-        ],
-        response_format: { type: 'json_object' },
-        temperature: 0.1,
-        max_tokens: 800,
+      const response = await ai.models.generateContent({
+        model: MODEL_ID,
+        contents: JSON.stringify(prompt, null, 2),
+        config: {
+          systemInstruction: systemMsg,
+          responseMimeType: 'application/json',
+          temperature: 0.1,
+          maxOutputTokens: 1500,
+          thinkingConfig: { thinkingBudget: 0 },
+        },
       });
 
-      const content = response.choices[0]?.message?.content;
-      if (!content) return null;
+      const content = response.text;
+      if (!content) {
+        throw new Error('Gemini empty response');
+      }
 
       const parsed = JSON.parse(content);
       if (!parsed.overallRisk || !Array.isArray(parsed.signals)) {
@@ -159,8 +163,8 @@ Proximity scale: 0=no evidence, 1=early signs, 2=strong evidence/approaching, 3=
 }
 
 async function main() {
-  if (!process.env.DEEPSEEK_API_KEY) {
-    console.error('[ProphetMap] DEEPSEEK_API_KEY not set');
+  if (!process.env.GEMINI_API_KEY) {
+    console.error('[ProphetMap] GEMINI_API_KEY not set');
     process.exit(1);
   }
 

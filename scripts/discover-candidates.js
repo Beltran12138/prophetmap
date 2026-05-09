@@ -15,7 +15,7 @@
 
 const YahooFinance = require('yahoo-finance2').default;
 const yahooFinance = new YahooFinance({ suppressNotices: ['ripHistorical', 'yahooSurvey'] });
-const OpenAI = require('openai').default;
+const { GoogleGenAI } = require('@google/genai');
 const fs = require('fs');
 const path = require('path');
 
@@ -27,15 +27,13 @@ const RATE_LIMIT_MS = 500;
 const MIN_PEER_MENTIONS = 2;
 const MIN_MARKETCAP_B = 1;
 const TOP_CANDIDATES = 15;
+const MODEL_ID = 'gemini-2.5-flash';
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const today = () => new Date().toISOString().slice(0, 10);
 
-const useDeepSeek = !!process.env.DEEPSEEK_API_KEY;
-const deepseek = useDeepSeek ? new OpenAI({
-  apiKey: process.env.DEEPSEEK_API_KEY,
-  baseURL: 'https://api.deepseek.com',
-}) : null;
+const useGemini = !!process.env.GEMINI_API_KEY;
+const ai = useGemini ? new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY }) : null;
 
 async function getRecommendations(symbol) {
   try {
@@ -63,14 +61,8 @@ async function getQuoteBasic(symbol) {
 }
 
 async function draftThesis(candidate, suggestedLayer, layerDescription) {
-  if (!deepseek) return null;
-  try {
-    const response = await deepseek.chat.completions.create({
-      model: 'deepseek-chat',
-      messages: [
-        {
-          role: 'system',
-          content: `You are a quantitative equity analyst for an AI supply chain investment framework. Draft a concise investment thesis (2-3 sentences) and exactly 3 falsification signals for the given ticker positioned in the given layer.
+  if (!ai) return null;
+  const systemMsg = `You are a quantitative equity analyst for an AI supply chain investment framework. Draft a concise investment thesis (2-3 sentences) and exactly 3 falsification signals for the given ticker positioned in the given layer.
 
 Output strict JSON:
 {
@@ -81,29 +73,32 @@ Output strict JSON:
   "fitConfidence": "<high|medium|low>"
 }
 
-Falsification signals must be observable, specific events that would invalidate the thesis (not generic risks).`,
-        },
-        {
-          role: 'user',
-          content: JSON.stringify({
-            ticker: candidate,
-            suggestedLayer,
-            layerDescription,
-          }),
-        },
-      ],
-      response_format: { type: 'json_object' },
-      temperature: 0.2,
-      max_tokens: 600,
+Falsification signals must be observable, specific events that would invalidate the thesis (not generic risks).`;
+
+  try {
+    const response = await ai.models.generateContent({
+      model: MODEL_ID,
+      contents: JSON.stringify({
+        ticker: candidate,
+        suggestedLayer,
+        layerDescription,
+      }),
+      config: {
+        systemInstruction: systemMsg,
+        responseMimeType: 'application/json',
+        temperature: 0.2,
+        maxOutputTokens: 1200,
+        thinkingConfig: { thinkingBudget: 0 },
+      },
     });
-    const content = response.choices[0]?.message?.content;
+    const content = response.text;
     if (!content) {
-      console.warn(`    DeepSeek empty response for ${candidate}`);
+      console.warn(`    Gemini empty response for ${candidate}`);
       return { error: 'empty response' };
     }
     return JSON.parse(content);
   } catch (e) {
-    console.warn(`    DeepSeek error for ${candidate}: ${e.message}`);
+    console.warn(`    Gemini error for ${candidate}: ${e.message}`);
     return { error: e.message };
   }
 }
@@ -159,11 +154,11 @@ async function main() {
 
     const layerHints = [...info.layers];
     let thesisDraft = null;
-    if (useDeepSeek && layerHints.length > 0) {
+    if (useGemini && layerHints.length > 0) {
       const suggestedLayer = layerHints[0];
       const layerDescription = layerMap[suggestedLayer]?.description || '';
       thesisDraft = await draftThesis(symbol, suggestedLayer, layerDescription);
-      await sleep(RATE_LIMIT_MS);
+      await sleep(RATE_LIMIT_MS * 2);
     }
 
     candidateDetails.push({
@@ -181,7 +176,7 @@ async function main() {
     '',
     `**Method**: Yahoo Finance peer recommendations from each active ticker; aggregated mentions.`,
     `**Filters**: ≥${MIN_PEER_MENTIONS} peer mentions, market cap ≥ $${MIN_MARKETCAP_B}B, not in universe.`,
-    `**DeepSeek thesis drafting**: ${useDeepSeek ? 'enabled' : 'disabled (DEEPSEEK_API_KEY not set)'}`,
+    `**Gemini thesis drafting**: ${useGemini ? 'enabled (gemini-2.5-flash)' : 'disabled (GEMINI_API_KEY not set)'}`,
     '',
     '---',
     '',
