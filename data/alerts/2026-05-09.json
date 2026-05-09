@@ -85,9 +85,28 @@
         ]
       },
       "assessment": {
-        "error": "Cannot convert argument to a ByteString because the character at index 0 has a value of 65279 which is greater than 255."
+        "signals": [
+          {
+            "signal": "OpenAI terminates or materially renegotiates Microsoft partnership",
+            "proximity": 0,
+            "evidence": "Recent news headlines do not indicate any changes to the OpenAI partnership; instead, Microsoft's AI safety role and infrastructure hiring suggest continued investment in AI."
+          },
+          {
+            "signal": "Azure loses AI market share to GCP/AWS by >10 percentage points in two consecutive quarters",
+            "proximity": 0,
+            "evidence": "There is no recent news or current metrics indicating a significant loss of Azure AI market share to competitors. Microsoft is investing in European data centers, suggesting continued expansion."
+          },
+          {
+            "signal": "Copilot enterprise seat growth falls below 5M new seats in any 12-month window",
+            "proximity": 0,
+            "evidence": "Current metrics and recent news do not provide specific data on Copilot enterprise seat growth, making it impossible to assess this signal's proximity."
+          }
+        ],
+        "overallRisk": "low",
+        "keyWatchItem": "Azure AI market share reports in upcoming earnings calls",
+        "thesisIntact": true
       },
-      "analyzedAt": "2026-05-09T19:40:13.663Z"
+      "analyzedAt": "2026-05-09T20:17:19.214Z"
     },
     {
       "symbol": "AMZN",
@@ -169,9 +188,28 @@
         ]
       },
       "assessment": {
-        "error": "Cannot convert argument to a ByteString because the character at index 0 has a value of 65279 which is greater than 255."
+        "signals": [
+          {
+            "signal": "AWS AI revenue growth decelerates below 30% YoY for two consecutive quarters",
+            "proximity": 0,
+            "evidence": "Recent news headlines do not provide specific AWS AI revenue growth figures, making it impossible to assess deceleration."
+          },
+          {
+            "signal": "Trainium underperforms NVDA H100 on cost-per-FLOP by >40% in third-party benchmarks",
+            "proximity": 0,
+            "evidence": "There is no recent news or third-party benchmark data available in the provided headlines to evaluate Trainium's performance against NVDA H100."
+          },
+          {
+            "signal": "AWS market share in cloud falls below 28%",
+            "proximity": 0,
+            "evidence": "The provided news headlines do not contain any information regarding AWS market share data."
+          }
+        ],
+        "overallRisk": "low",
+        "keyWatchItem": "AWS AI revenue growth in the next earnings report.",
+        "thesisIntact": true
       },
-      "analyzedAt": "2026-05-09T19:40:19.021Z"
+      "analyzedAt": "2026-05-09T20:17:23.534Z"
     },
     {
       "symbol": "META",
@@ -253,9 +291,28 @@
         ]
       },
       "assessment": {
-        "error": "Cannot convert argument to a ByteString because the character at index 0 has a value of 65279 which is greater than 255."
+        "signals": [
+          {
+            "signal": "EU regulators ban Meta AI training on EU user data, affecting >400M MAU",
+            "proximity": 1,
+            "evidence": "While not explicitly a ban, recent news indicates Meta is facing scrutiny and potential delays from EU regulators regarding its AI training plans, suggesting early signs of regulatory friction."
+          },
+          {
+            "signal": "Llama ecosystem fails to reach 1M enterprise deployments by end-2026",
+            "proximity": 0,
+            "evidence": "There is no recent news or current metric data to assess the progress of Llama enterprise deployments. The current headlines focus on broader AI infrastructure and investor sentiment."
+          },
+          {
+            "signal": "Ad ARPU growth decelerates below 8% despite AI targeting improvements",
+            "proximity": 0,
+            "evidence": "Current metrics show revenue growth YoY at 33.1%, but specific ad ARPU growth rates are not provided in the recent news or current metrics to assess deceleration below 8%."
+          }
+        ],
+        "overallRisk": "medium",
+        "keyWatchItem": "Regulatory developments regarding Meta's AI training data in the EU.",
+        "thesisIntact": true
       },
-      "analyzedAt": "2026-05-09T19:40:24.289Z"
+      "analyzedAt": "2026-05-09T20:17:29.059Z"
     },
     {
       "symbol": "ORCL",
@@ -337,9 +394,28 @@
         ]
       },
       "assessment": {
-        "error": "Cannot convert argument to a ByteString because the character at index 0 has a value of 65279 which is greater than 255."
+        "signals": [
+          {
+            "signal": "OCI GPU capacity expansion stalls — GPU cluster waitlist exceeds 6 months",
+            "proximity": 0,
+            "evidence": "There is no recent news directly indicating OCI GPU capacity expansion stalls or waitlist issues. News mentions 'AI Focus' but not specific capacity constraints."
+          },
+          {
+            "signal": "Microsoft/AWS win >80% of new enterprise AI workload contracts in 2025",
+            "proximity": 0,
+            "evidence": "Recent news does not provide specific data on market share for new enterprise AI workload contracts between hyperscalers. The 'AI-Trade Boosts Technology' headline is too general."
+          },
+          {
+            "signal": "OCI revenue growth falls below 30% YoY for two consecutive quarters",
+            "proximity": 1,
+            "evidence": "Current reported revenue growth YoY is 21.7%, which is below the 30% threshold. However, this is only one quarter, and the signal requires two consecutive quarters."
+          }
+        ],
+        "overallRisk": "medium",
+        "keyWatchItem": "OCI revenue growth in the next earnings report to assess if it remains below 30% YoY.",
+        "thesisIntact": true
       },
-      "analyzedAt": "2026-05-09T19:40:29.560Z"
+      "analyzedAt": "2026-05-09T20:17:33.318Z"
     },
     {
       "symbol": "GOOG",
@@ -421,9 +497,28 @@
         ]
       },
       "assessment": {
-        "error": "Cannot convert argument to a ByteString because the character at index 0 has a value of 65279 which is greater than 255."
+        "signals": [
+          {
+            "signal": "Search market share falls below 85% globally due to AI search substitutes",
+            "proximity": 0,
+            "evidence": "Recent news headlines do not provide any direct evidence of Google's search market share declining or AI search substitutes gaining significant traction."
+          },
+          {
+            "signal": "TPU fails to challenge NVDA on software ecosystem breadth — internal teams defect back to CUDA",
+            "proximity": 1,
+            "evidence": "While there's no direct evidence of internal defections, the headline about Google building 'OpenClaw Competitor Remy' suggests an ongoing effort to strengthen its software ecosystem, implying a recognition of the need to compete with established players like NVIDIA."
+          },
+          {
+            "signal": "Gemini Ultra underperforms GPT-5 on third-party benchmarks by >15% on enterprise tasks",
+            "proximity": 0,
+            "evidence": "There is no recent news or public third-party benchmark data available to confirm or deny Gemini Ultra's performance relative to GPT-5 on enterprise tasks."
+          }
+        ],
+        "overallRisk": "low",
+        "keyWatchItem": "Development and adoption of Google's AI software ecosystem (e.g., Remy) and its ability to attract and retain developers.",
+        "thesisIntact": true
       },
-      "analyzedAt": "2026-05-09T19:40:34.801Z"
+      "analyzedAt": "2026-05-09T20:17:37.628Z"
     },
     {
       "symbol": "PLTR",
@@ -505,9 +600,28 @@
         ]
       },
       "assessment": {
-        "error": "Cannot convert argument to a ByteString because the character at index 0 has a value of 65279 which is greater than 255."
+        "signals": [
+          {
+            "signal": "Federal budget sequestration cuts defense AI spending by >20%",
+            "proximity": 0,
+            "evidence": "Recent news headlines do not provide any evidence of federal budget sequestration or specific cuts to defense AI spending."
+          },
+          {
+            "signal": "AIP commercial ARR growth falls below 40% YoY for two consecutive quarters",
+            "proximity": 1,
+            "evidence": "While recent news highlights 'Terrific Revenue Growth' and analyst upgrades, specific commercial ARR growth figures are not provided, making it difficult to confirm or deny this signal. The overall revenue growth YoY is 84.7%, but this is not specific to commercial ARR."
+          },
+          {
+            "signal": "Microsoft Copilot for Government achieves FedRAMP High equivalency — directly substitutes AIP for classified workloads",
+            "proximity": 0,
+            "evidence": "There is no recent news indicating that Microsoft Copilot for Government has achieved FedRAMP High equivalency or is directly substituting AIP for classified workloads."
+          }
+        ],
+        "overallRisk": "low",
+        "keyWatchItem": "AIP commercial ARR growth rates in upcoming earnings reports.",
+        "thesisIntact": true
       },
-      "analyzedAt": "2026-05-09T19:40:40.041Z"
+      "analyzedAt": "2026-05-09T20:17:42.809Z"
     },
     {
       "symbol": "NVDA",
@@ -589,9 +703,28 @@
         ]
       },
       "assessment": {
-        "error": "Cannot convert argument to a ByteString because the character at index 0 has a value of 65279 which is greater than 255."
+        "signals": [
+          {
+            "signal": "Custom silicon (Google TPU, AWS Trainium, Meta MTIA) collectively captures >30% of training compute workloads by 2027",
+            "proximity": 1,
+            "evidence": "Recent news mentions a 'challenger' to Nvidia in the AI space, which could imply custom silicon efforts, but no specific evidence of market share capture is provided."
+          },
+          {
+            "signal": "DeepSeek-style efficiency gains reduce aggregate training FLOP demand by >50% vs 2024 trajectory",
+            "proximity": 0,
+            "evidence": "There is no recent news or direct evidence to suggest that efficiency gains are reducing aggregate training FLOP demand."
+          },
+          {
+            "signal": "ROCm achieves >90% CUDA ecosystem compatibility, enabling AMD to substitute at large hyperscalers",
+            "proximity": 0,
+            "evidence": "No recent news indicates progress on ROCm compatibility or AMD's ability to substitute Nvidia at hyperscalers."
+          }
+        ],
+        "overallRisk": "low",
+        "keyWatchItem": "Any specific announcements or reports regarding market share gains by custom AI silicon providers.",
+        "thesisIntact": true
       },
-      "analyzedAt": "2026-05-09T19:40:45.263Z"
+      "analyzedAt": "2026-05-09T20:17:47.056Z"
     },
     {
       "symbol": "AMD",
@@ -673,9 +806,28 @@
         ]
       },
       "assessment": {
-        "error": "Cannot convert argument to a ByteString because the character at index 0 has a value of 65279 which is greater than 255."
+        "signals": [
+          {
+            "signal": "ROCm software compatibility remains >20% worse than CUDA on key model libraries by end-2025",
+            "proximity": 0,
+            "evidence": "Recent news headlines do not provide specific updates on ROCm software compatibility or performance relative to CUDA."
+          },
+          {
+            "signal": "MI300X shipments miss consensus targets by >30% for two consecutive quarters",
+            "proximity": 1,
+            "evidence": "AMD reported Q1 2026 revenue of $10.3B driven by Data Center growth, suggesting strong demand, but specific MI300X shipment figures or consensus targets are not detailed in the provided headlines to confirm or deny a miss."
+          },
+          {
+            "signal": "NVDA eliminates supply constraints — TSMC CoWoS fully catches up to demand",
+            "proximity": 0,
+            "evidence": "There is no recent news indicating that NVIDIA has eliminated supply constraints or that TSMC CoWoS capacity has fully caught up to demand."
+          }
+        ],
+        "overallRisk": "low",
+        "keyWatchItem": "MI300X shipment figures and data center revenue growth in the next earnings report.",
+        "thesisIntact": true
       },
-      "analyzedAt": "2026-05-09T19:40:50.523Z"
+      "analyzedAt": "2026-05-09T20:17:51.299Z"
     },
     {
       "symbol": "QCOM",
@@ -757,9 +909,28 @@
         ]
       },
       "assessment": {
-        "error": "Cannot convert argument to a ByteString because the character at index 0 has a value of 65279 which is greater than 255."
+        "signals": [
+          {
+            "signal": "Apple Silicon M4 maintains >30% performance-per-watt advantage on on-device AI benchmarks",
+            "proximity": 1,
+            "evidence": "A recent headline states, \"Apple dominated the 2026 chip war. Google’s partners are left to buy scraps,\" suggesting Apple's continued strength in chip performance, which could extend to AI benchmarks."
+          },
+          {
+            "signal": "On-device AI fails to reach commercial tipping point — <10% of enterprise apps deploy edge inference by 2026",
+            "proximity": 0,
+            "evidence": "There is no direct evidence in the recent news headlines to suggest a failure or success in the commercial adoption rate of on-device AI for enterprise applications."
+          },
+          {
+            "signal": "QCOM loses Apple modem contract, removing scale economics for advanced node procurement",
+            "proximity": 0,
+            "evidence": "The recent news does not contain any information regarding Qualcomm's modem contract with Apple or its impact on advanced node procurement."
+          }
+        ],
+        "overallRisk": "medium",
+        "keyWatchItem": "Apple's continued chip performance dominance and its impact on Qualcomm's competitive positioning in on-device AI.",
+        "thesisIntact": true
       },
-      "analyzedAt": "2026-05-09T19:40:55.773Z"
+      "analyzedAt": "2026-05-09T20:17:55.358Z"
     },
     {
       "symbol": "ARM",
@@ -841,9 +1012,28 @@
         ]
       },
       "assessment": {
-        "error": "Cannot convert argument to a ByteString because the character at index 0 has a value of 65279 which is greater than 255."
+        "signals": [
+          {
+            "signal": "RISC-V achieves >15% edge silicon market share by 2027, compressing ARM royalty rates",
+            "proximity": 0,
+            "evidence": "Recent news headlines do not mention RISC-V market share or competitive pressure on ARM's royalty rates from alternative ISAs."
+          },
+          {
+            "signal": "Hyperscaler in-house ISA development (Amazon Graviton fork) reduces per-chip royalty obligations",
+            "proximity": 0,
+            "evidence": "There is no recent news indicating hyperscaler in-house ISA development is reducing ARM's per-chip royalty obligations; headlines focus on ARM's AI-driven earnings."
+          },
+          {
+            "signal": "ARM annual royalty revenue growth falls below 20% YoY for two consecutive quarters",
+            "proximity": 1,
+            "evidence": "While recent headlines mention 'record AI-driven earnings' and 'record Q4 earnings,' the provided 'revenueGrowthYoY' is 20.1%, which is barely above the 20% threshold, suggesting potential for a future dip below."
+          }
+        ],
+        "overallRisk": "medium",
+        "keyWatchItem": "ARM's royalty revenue growth rate in the next two earnings reports.",
+        "thesisIntact": true
       },
-      "analyzedAt": "2026-05-09T19:41:01.051Z"
+      "analyzedAt": "2026-05-09T20:17:59.440Z"
     },
     {
       "symbol": "MRVL",
@@ -925,9 +1115,28 @@
         ]
       },
       "assessment": {
-        "error": "Cannot convert argument to a ByteString because the character at index 0 has a value of 65279 which is greater than 255."
+        "signals": [
+          {
+            "signal": "Hyperscalers bring ASIC design fully in-house, cutting Marvell out of design services",
+            "proximity": 0,
+            "evidence": "Recent news headlines do not indicate any hyperscalers bringing ASIC design fully in-house or cutting Marvell out of design services."
+          },
+          {
+            "signal": "Marvell loses two of its top three custom chip customers within 18 months",
+            "proximity": 0,
+            "evidence": "There is no recent news suggesting Marvell has lost any custom chip customers; in fact, headlines mention \"New AI Deals At Marvell Technology (MRVL).\""
+          },
+          {
+            "signal": "AI custom silicon revenue misses 40% YoY growth for two consecutive quarters",
+            "proximity": 0,
+            "evidence": "Current metrics do not provide specific AI custom silicon revenue growth figures, and recent news does not indicate any revenue misses for this segment."
+          }
+        ],
+        "overallRisk": "low",
+        "keyWatchItem": "Marvell's next earnings report for specific AI custom silicon revenue growth figures.",
+        "thesisIntact": true
       },
-      "analyzedAt": "2026-05-09T19:41:06.291Z"
+      "analyzedAt": "2026-05-09T20:18:03.334Z"
     },
     {
       "symbol": "AVGO",
@@ -1009,9 +1218,33 @@
         ]
       },
       "assessment": {
-        "error": "Cannot convert argument to a ByteString because the character at index 0 has a value of 65279 which is greater than 255."
+        "signals": [
+          {
+            "signal": "Hyperscalers internalize ASIC design fully (Google ends Broadcom TPU partnership)",
+            "proximity": 0,
+            "evidence": "There is no recent news indicating hyperscalers are fully internalizing ASIC design or that Google is ending its TPU partnership with Broadcom."
+          },
+          {
+            "signal": "Tomahawk networking silicon loses share to NVDA Spectrum-X or proprietary hyperscaler designs",
+            "proximity": 0,
+            "evidence": "Recent news does not provide evidence of Tomahawk networking silicon losing market share to competitors or proprietary hyperscaler designs."
+          },
+          {
+            "signal": "Custom AI silicon revenue misses 40% YoY growth for two consecutive quarters",
+            "proximity": 0,
+            "evidence": "Current metrics do not provide specific custom AI silicon revenue growth figures, nor do recent headlines indicate a miss on growth targets."
+          },
+          {
+            "signal": "VMware customer attrition exceeds 15% annually post-licensing changes",
+            "proximity": 1,
+            "evidence": "Broadcom is actively launching new VMware Cloud Foundation versions (VCF 9.1) targeting enterprise AI, suggesting ongoing efforts to retain and grow the customer base, but the impact of licensing changes on attrition is not yet clear from headlines."
+          }
+        ],
+        "overallRisk": "low",
+        "keyWatchItem": "VMware customer retention rates and revenue contribution post-licensing changes.",
+        "thesisIntact": true
       },
-      "analyzedAt": "2026-05-09T19:41:11.557Z"
+      "analyzedAt": "2026-05-09T20:18:09.305Z"
     },
     {
       "symbol": "SNPS",
@@ -1093,9 +1326,28 @@
         ]
       },
       "assessment": {
-        "error": "Cannot convert argument to a ByteString because the character at index 0 has a value of 65279 which is greater than 255."
+        "signals": [
+          {
+            "signal": "Open-source EDA (OpenROAD/SKY130) achieves production-quality tapeout for 3nm-class nodes",
+            "proximity": 0,
+            "evidence": "There is no recent news or evidence to suggest open-source EDA has achieved production-quality tapeouts for advanced nodes."
+          },
+          {
+            "signal": "AI-native EDA startup achieves 10x productivity advantage and captures >10% market share",
+            "proximity": 0,
+            "evidence": "No recent news indicates an AI-native EDA startup has achieved significant market share or a 10x productivity advantage."
+          },
+          {
+            "signal": "Antitrust action forces Synopsys-Ansys merger breakup, reducing pricing power",
+            "proximity": 1,
+            "evidence": "Recent headlines from Simply Wall St. discuss the 'Ansys Integration' and 'Ansys Integration Story,' indicating the merger is proceeding and drawing attention, but not yet facing definitive antitrust action for a breakup."
+          }
+        ],
+        "overallRisk": "low",
+        "keyWatchItem": "Progress and regulatory scrutiny of the Synopsys-Ansys merger.",
+        "thesisIntact": true
       },
-      "analyzedAt": "2026-05-09T19:41:16.850Z"
+      "analyzedAt": "2026-05-09T20:18:14.986Z"
     },
     {
       "symbol": "CDNS",
@@ -1177,9 +1429,28 @@
         ]
       },
       "assessment": {
-        "error": "Cannot convert argument to a ByteString because the character at index 0 has a value of 65279 which is greater than 255."
+        "signals": [
+          {
+            "signal": "Open-source EDA breakthrough eliminates Cadence's verification monopoly at advanced nodes",
+            "proximity": 0,
+            "evidence": "There is no recent news or training knowledge indicating an open-source EDA breakthrough that threatens Cadence's market position."
+          },
+          {
+            "signal": "AI-automated chip design reduces human-EDA-tool interaction by >70%, commoditizing license revenue",
+            "proximity": 1,
+            "evidence": "While not directly about Cadence, the PTC Q2 earnings headline mentions 'AI-Led ARR Strength,' suggesting AI's growing influence in related software sectors, which could eventually impact EDA tool interaction."
+          },
+          {
+            "signal": "Revenue growth falls below 12% YoY for two consecutive quarters",
+            "proximity": 0,
+            "evidence": "Current revenue growth is 18.7% YoY, well above the 12% threshold. There is no recent news suggesting a significant slowdown."
+          }
+        ],
+        "overallRisk": "low",
+        "keyWatchItem": "Any news regarding AI's impact on EDA tool usage or design automation efficiency.",
+        "thesisIntact": true
       },
-      "analyzedAt": "2026-05-09T19:41:22.117Z"
+      "analyzedAt": "2026-05-09T20:18:19.118Z"
     },
     {
       "symbol": "ENTG",
@@ -1261,9 +1532,28 @@
         ]
       },
       "assessment": {
-        "error": "Cannot convert argument to a ByteString because the character at index 0 has a value of 65279 which is greater than 255."
+        "signals": [
+          {
+            "signal": "Alternative planarization techniques (dry polishing) eliminate CMP requirement at 2nm nodes",
+            "proximity": 0,
+            "evidence": "There is no recent news or training data indicating the emergence or qualification of dry polishing techniques that would eliminate CMP requirements for sub-3nm nodes."
+          },
+          {
+            "signal": "TSMC qualifies competing chemical supplier for >30% of advanced node volumes",
+            "proximity": 0,
+            "evidence": "No recent news suggests TSMC has qualified a competing chemical supplier for a significant portion of advanced node volumes, nor is there any mention of specific competitor qualifications."
+          },
+          {
+            "signal": "Node advancement slows — 2nm ramp delayed beyond 2027",
+            "proximity": 0,
+            "evidence": "Recent headlines like 'Qnity and the AI Hardware Cycle: Packaging, Nodes, Capacity' and 'ENTG Q1 Deep Dive: Advanced Logic and Memory Demand Drive Results Amid Margin Expansion' suggest continued demand and advancement in advanced logic and memory, not a slowdown in node advancement."
+          }
+        ],
+        "overallRisk": "low",
+        "keyWatchItem": "Any news regarding alternative planarization technologies or new competitor qualifications at leading foundries.",
+        "thesisIntact": true
       },
-      "analyzedAt": "2026-05-09T19:41:27.465Z"
+      "analyzedAt": "2026-05-09T20:18:23.638Z"
     },
     {
       "symbol": "LIN",
@@ -1345,9 +1635,28 @@
         ]
       },
       "assessment": {
-        "error": "Cannot convert argument to a ByteString because the character at index 0 has a value of 65279 which is greater than 255."
+        "signals": [
+          {
+            "signal": "Air Products or Air Liquide captures >20% of leading-edge fab gas market share from Linde at TSMC/Samsung/Intel",
+            "proximity": 0,
+            "evidence": "Recent news headlines do not indicate any market share shifts or competitive gains by Air Products or Air Liquide against Linde in leading-edge fabs."
+          },
+          {
+            "signal": "Leading-edge fab capex slows >25% for four consecutive quarters reducing gas consumption growth",
+            "proximity": 0,
+            "evidence": "There is no direct evidence in the recent news headlines suggesting a significant slowdown in leading-edge fab capex or reduced gas consumption growth. Some headlines discuss data centers and computing power, but not fab capex directly."
+          },
+          {
+            "signal": "Major fab internalizes industrial gas production breaking on-site supplier lock-in",
+            "proximity": 0,
+            "evidence": "No recent news headlines indicate any major fab is internalizing industrial gas production or breaking existing on-site supplier contracts with Linde."
+          }
+        ],
+        "overallRisk": "low",
+        "keyWatchItem": "Any announcements from TSMC, Samsung, or Intel regarding changes in their industrial gas supply strategies or capital expenditure plans.",
+        "thesisIntact": true
       },
-      "analyzedAt": "2026-05-09T19:41:32.716Z"
+      "analyzedAt": "2026-05-09T20:18:27.729Z"
     },
     {
       "symbol": "AMAT",
@@ -1429,9 +1738,28 @@
         ]
       },
       "assessment": {
-        "error": "Cannot convert argument to a ByteString because the character at index 0 has a value of 65279 which is greater than 255."
+        "signals": [
+          {
+            "signal": "China export controls permanently impair >25% of annual revenue with no substitute market",
+            "proximity": 0,
+            "evidence": "Recent news headlines do not provide specific evidence regarding the impact of China export controls on AMAT's revenue or the availability of substitute markets."
+          },
+          {
+            "signal": "Extended equipment cycles at 2nm+ nodes reduce replacement demand by >30% vs prior cycle",
+            "proximity": 0,
+            "evidence": "There is no direct evidence in the provided news headlines to suggest extended equipment cycles or reduced replacement demand at advanced nodes."
+          },
+          {
+            "signal": "TSMC pushes back N2 ramp timeline beyond Q4 2025, delaying equipment orders",
+            "proximity": 0,
+            "evidence": "The recent news headlines do not contain any information about TSMC's N2 ramp timeline or potential delays in equipment orders."
+          }
+        ],
+        "overallRisk": "low",
+        "keyWatchItem": "Any news regarding TSMC's N2 ramp schedule or other major foundry capital expenditure plans.",
+        "thesisIntact": true
       },
-      "analyzedAt": "2026-05-09T19:41:37.940Z"
+      "analyzedAt": "2026-05-09T20:18:33.393Z"
     },
     {
       "symbol": "LRCX",
@@ -1513,9 +1841,28 @@
         ]
       },
       "assessment": {
-        "error": "Cannot convert argument to a ByteString because the character at index 0 has a value of 65279 which is greater than 255."
+        "signals": [
+          {
+            "signal": "3D NAND layer count growth plateaus below 300 layers — reducing etch complexity and tool demand",
+            "proximity": 0,
+            "evidence": "Recent news headlines do not provide specific information regarding 3D NAND layer count growth or plateaus."
+          },
+          {
+            "signal": "HBM capacity overbuild cycle causes 12-18 months of equipment order pause",
+            "proximity": 0,
+            "evidence": "There is no direct evidence in the recent news headlines indicating an HBM capacity overbuild cycle or a pause in equipment orders."
+          },
+          {
+            "signal": "China export controls impair >30% of annual revenue",
+            "proximity": 0,
+            "evidence": "Recent news does not mention any impact from China export controls on Lam Research's revenue."
+          }
+        ],
+        "overallRisk": "low",
+        "keyWatchItem": "Any news regarding 3D NAND layer count trends or HBM capacity expansion/contraction.",
+        "thesisIntact": true
       },
-      "analyzedAt": "2026-05-09T19:41:43.226Z"
+      "analyzedAt": "2026-05-09T20:18:37.329Z"
     },
     {
       "symbol": "ASML",
@@ -1597,9 +1944,33 @@
         ]
       },
       "assessment": {
-        "error": "Cannot convert argument to a ByteString because the character at index 0 has a value of 65279 which is greater than 255."
+        "signals": [
+          {
+            "signal": "Canon nano-imprint lithography or Chinese DUV multi-patterning achieves leading-edge node viability",
+            "proximity": 0,
+            "evidence": "There is no recent news suggesting Canon nano-imprint or Chinese DUV multi-patterning is achieving leading-edge node viability."
+          },
+          {
+            "signal": "TSMC capex declines >25% for two consecutive quarters reducing EUV system orders",
+            "proximity": 0,
+            "evidence": "Recent news does not indicate any significant decline in TSMC capex or reduced EUV system orders. The thesis mentions TSMC N3/N2 requiring ASML capacity."
+          },
+          {
+            "signal": "China export ban on EUV expands to mature DUV systems impacting >30% of revenue",
+            "proximity": 1,
+            "evidence": "ASML's CEO commented on exporting products with an 'eight-generation gap' and denying top chip access to China, indicating ongoing export restrictions, though not explicitly confirming an expansion to mature DUV systems or a 30% revenue impact."
+          },
+          {
+            "signal": "High-NA EUV (Twinscan EXE) yield issues delay 2nm ramp by >18 months",
+            "proximity": 0,
+            "evidence": "There is no recent news indicating High-NA EUV yield issues or delays in the 2nm ramp. One headline mentions ASML benefiting from Low-NA EUV adoption, which is distinct from High-NA."
+          }
+        ],
+        "overallRisk": "low",
+        "keyWatchItem": "Any expansion of export controls to DUV systems or specific revenue impact from China restrictions.",
+        "thesisIntact": true
       },
-      "analyzedAt": "2026-05-09T19:41:48.446Z"
+      "analyzedAt": "2026-05-09T20:18:41.725Z"
     },
     {
       "symbol": "KLAC",
@@ -1681,9 +2052,28 @@
         ]
       },
       "assessment": {
-        "error": "Cannot convert argument to a ByteString because the character at index 0 has a value of 65279 which is greater than 255."
+        "signals": [
+          {
+            "signal": "In-situ metrology (integrated into deposition tools) eliminates need for standalone inspection tools",
+            "proximity": 0,
+            "evidence": "Recent news headlines do not provide any evidence regarding the adoption or impact of in-situ metrology solutions."
+          },
+          {
+            "signal": "AI-based virtual metrology achieves <1% prediction error, reducing physical measurement frequency by >60%",
+            "proximity": 0,
+            "evidence": "There is no recent news or specific metrics indicating advancements in AI-based virtual metrology reaching such high accuracy or significant reduction in physical measurements."
+          },
+          {
+            "signal": "Node advancement halts — no new advanced nodes beyond 2nm through 2028",
+            "proximity": 0,
+            "evidence": "Recent news focuses on KLA's advanced packaging strength and overall market performance, with no headlines suggesting a halt in node advancement beyond 2nm."
+          }
+        ],
+        "overallRisk": "low",
+        "keyWatchItem": "Any announcements or industry reports regarding the progress of advanced node development (e.g., 2nm and beyond) and related capital expenditure plans.",
+        "thesisIntact": true
       },
-      "analyzedAt": "2026-05-09T19:41:53.671Z"
+      "analyzedAt": "2026-05-09T20:18:45.827Z"
     },
     {
       "symbol": "AMKR",
@@ -1765,9 +2155,28 @@
         ]
       },
       "assessment": {
-        "error": "Cannot convert argument to a ByteString because the character at index 0 has a value of 65279 which is greater than 255."
+        "signals": [
+          {
+            "signal": "TSMC CoWoS capacity expands fast enough to eliminate third-party packaging bottleneck by 2026",
+            "proximity": 0,
+            "evidence": "Recent news headlines do not provide specific details on TSMC's CoWoS capacity expansion plans or their potential impact on third-party packaging providers like Amkor Technology."
+          },
+          {
+            "signal": "AI chip architectures shift to monolithic designs reducing advanced packaging complexity",
+            "proximity": 0,
+            "evidence": "There is no recent news or direct evidence suggesting a widespread shift in AI chip architectures towards monolithic designs that would significantly reduce advanced packaging complexity."
+          },
+          {
+            "signal": "Samsung and Intel Foundry Services CoWoS-equivalent capacity ramps — AMKR loses pricing power",
+            "proximity": 0,
+            "evidence": "Recent news does not contain information regarding Samsung or Intel Foundry Services' CoWoS-equivalent capacity ramps or their competitive impact on Amkor Technology's pricing power."
+          }
+        ],
+        "overallRisk": "low",
+        "keyWatchItem": "Any news regarding TSMC, Samsung, or Intel Foundry Services' advanced packaging capacity expansion plans.",
+        "thesisIntact": true
       },
-      "analyzedAt": "2026-05-09T19:41:58.902Z"
+      "analyzedAt": "2026-05-09T20:18:49.818Z"
     },
     {
       "symbol": "TSM",
@@ -1849,9 +2258,28 @@
         ]
       },
       "assessment": {
-        "error": "Cannot convert argument to a ByteString because the character at index 0 has a value of 65279 which is greater than 255."
+        "signals": [
+          {
+            "signal": "Intel 18A yield reaches TSMC N3 parity by end-2026 with customer qualification wins",
+            "proximity": 0,
+            "evidence": "Recent news focuses on TSM's strong demand and new process nodes (A13), with no specific mentions of Intel 18A progress or customer qualifications that would challenge TSM's N3/N2 dominance."
+          },
+          {
+            "signal": "Taiwan Strait military escalation triggers customer emergency dual-sourcing orders to Samsung/Intel",
+            "proximity": 0,
+            "evidence": "There is no recent news indicating military escalation in the Taiwan Strait or customers actively seeking emergency dual-sourcing options due to geopolitical concerns."
+          },
+          {
+            "signal": "CoWoS capacity fails to double by end-2025, causing NVDA H200 shipment misses",
+            "proximity": 1,
+            "evidence": "While recent news states TSM 'have more business than they can handle,' implying high demand, there is no direct evidence confirming CoWoS capacity expansion targets are being missed or that NVDA H200 shipments are at risk."
+          }
+        ],
+        "overallRisk": "low",
+        "keyWatchItem": "TSMC's CoWoS capacity expansion progress and any reports of customer lead times or shipment delays.",
+        "thesisIntact": true
       },
-      "analyzedAt": "2026-05-09T19:42:04.118Z"
+      "analyzedAt": "2026-05-09T20:18:54.366Z"
     },
     {
       "symbol": "TTMI",
@@ -1933,9 +2361,28 @@
         ]
       },
       "assessment": {
-        "error": "Cannot convert argument to a ByteString because the character at index 0 has a value of 65279 which is greater than 255."
+        "signals": [
+          {
+            "signal": "Taiwanese PCB makers (Tripod, Zhen Ding, Unimicron) capture >25% of US AI server PCB orders breaking domestic supplier preference",
+            "proximity": 0,
+            "evidence": "Recent news headlines do not provide any information regarding Taiwanese PCB makers capturing US AI server PCB orders or breaking domestic supplier preference."
+          },
+          {
+            "signal": "ABF substrate supply normalizes by 2027 eliminating PCB premium pricing tier",
+            "proximity": 0,
+            "evidence": "There is no recent news or information available to suggest that ABF substrate supply is normalizing or that premium pricing tiers for PCBs are being eliminated."
+          },
+          {
+            "signal": "Major defense PCB program cancellations (F-35, NGAD) reduce defense backlog >20%",
+            "proximity": 0,
+            "evidence": "Recent news headlines do not indicate any major defense PCB program cancellations or a reduction in the defense backlog for TTM Technologies."
+          }
+        ],
+        "overallRisk": "low",
+        "keyWatchItem": "Any reports or industry news regarding increased competition from Taiwanese PCB manufacturers in the AI server market.",
+        "thesisIntact": true
       },
-      "analyzedAt": "2026-05-09T19:42:09.344Z"
+      "analyzedAt": "2026-05-09T20:18:59.833Z"
     },
     {
       "symbol": "MU",
@@ -2017,9 +2464,28 @@
         ]
       },
       "assessment": {
-        "error": "Cannot convert argument to a ByteString because the character at index 0 has a value of 65279 which is greater than 255."
+        "signals": [
+          {
+            "signal": "HBM capacity overbuild in 2026 — SK Hynix/Samsung/Micron collectively deliver >30% more HBM than demand",
+            "proximity": 0,
+            "evidence": "Recent news headlines do not provide specific data or forecasts regarding HBM capacity versus demand for 2026, focusing more on current stock performance and analyst ratings."
+          },
+          {
+            "signal": "DDR5 commodity DRAM ASPs collapse below $4/GB, dragging blended margins below 30%",
+            "proximity": 0,
+            "evidence": "There is no recent news directly addressing DDR5 ASPs or a collapse below $4/GB. Current gross margins are 58.4%, well above 30%, suggesting no immediate collapse."
+          },
+          {
+            "signal": "HBM4 spec requires new tool investment beyond Micron's current 1β node capability",
+            "proximity": 0,
+            "evidence": "Recent news does not mention HBM4 specifications, new tool investments, or Micron's 1β node capabilities in relation to future HBM generations."
+          }
+        ],
+        "overallRisk": "low",
+        "keyWatchItem": "Any news or analyst reports detailing HBM capacity expansion plans from competitors or changes in HBM demand forecasts for 2026.",
+        "thesisIntact": true
       },
-      "analyzedAt": "2026-05-09T19:42:14.607Z"
+      "analyzedAt": "2026-05-09T20:19:04.190Z"
     },
     {
       "symbol": "CLS",
@@ -2101,9 +2567,28 @@
         ]
       },
       "assessment": {
-        "error": "Cannot convert argument to a ByteString because the character at index 0 has a value of 65279 which is greater than 255."
+        "signals": [
+          {
+            "signal": "Hyperscalers shift AI server assembly in-house — Google or Amazon announces manufacturing subsidiary",
+            "proximity": 0,
+            "evidence": "There is no recent news or public announcement indicating that Google, Amazon, or other hyperscalers are establishing in-house AI server manufacturing subsidiaries."
+          },
+          {
+            "signal": "ODM competitors (Quanta, Foxconn) undercut Celestica margin by >3 percentage points on AI server contracts",
+            "proximity": 0,
+            "evidence": "Recent news headlines do not provide any information regarding competitor pricing strategies or specific AI server contract margins for Celestica or its rivals."
+          },
+          {
+            "signal": "AI server mix growth stalls below 55% of revenue by end-2025",
+            "proximity": 0,
+            "evidence": "Current news focuses on Celestica's raised outlook and strong growth, but does not provide specific details on the current or projected AI server revenue mix, nor does it indicate a stalling of growth."
+          }
+        ],
+        "overallRisk": "low",
+        "keyWatchItem": "Any announcements from hyperscalers regarding their AI server supply chain strategy or in-house manufacturing initiatives.",
+        "thesisIntact": true
       },
-      "analyzedAt": "2026-05-09T19:42:19.826Z"
+      "analyzedAt": "2026-05-09T20:19:08.332Z"
     },
     {
       "symbol": "CRWV",
@@ -2185,9 +2670,33 @@
         ]
       },
       "assessment": {
-        "error": "Cannot convert argument to a ByteString because the character at index 0 has a value of 65279 which is greater than 255."
+        "signals": [
+          {
+            "signal": "Microsoft, Meta, or other anchor customers reduce CRWV commitments by >25% in renewal cycles",
+            "proximity": 1,
+            "evidence": "Recent news mentions 'softer guidance and higher spending plans' and 'Growth-Related Short-Term Revenue Fluctuations,' which could indicate potential customer commitment issues or slower growth than anticipated, though not explicitly a >25% reduction."
+          },
+          {
+            "signal": "NVDA grants priority GPU allocation to AWS or competing AI cloud, breaking CRWV preferential supply",
+            "proximity": 0,
+            "evidence": "There is no direct evidence in the recent news headlines to suggest NVDA has altered its GPU allocation strategy or granted priority to competitors over CRWV."
+          },
+          {
+            "signal": "AI compute spot pricing falls below CRWV reserved-capacity contract economics for 4 consecutive quarters",
+            "proximity": 0,
+            "evidence": "The provided news does not contain information about AI compute spot pricing or its relation to CRWV's contract economics."
+          },
+          {
+            "signal": "CRWV debt covenants triggered by AI capex slowdown forcing equity dilution",
+            "proximity": 1,
+            "evidence": "News mentions 'higher spending plans' and 'profitability concerns,' which, if sustained, could strain finances and potentially lead to covenant issues or the need for future capital raises, though dilution is not explicitly stated."
+          }
+        ],
+        "overallRisk": "medium",
+        "keyWatchItem": "Clarity on the nature and duration of 'Growth-Related Short-Term Revenue Fluctuations' and 'softer guidance' to assess customer commitment stability.",
+        "thesisIntact": false
       },
-      "analyzedAt": "2026-05-09T19:42:25.067Z"
+      "analyzedAt": "2026-05-09T20:19:12.885Z"
     },
     {
       "symbol": "SMCI",
@@ -2269,9 +2778,28 @@
         ]
       },
       "assessment": {
-        "error": "Cannot convert argument to a ByteString because the character at index 0 has a value of 65279 which is greater than 255."
+        "signals": [
+          {
+            "signal": "Accounting irregularities resurface — SEC investigation reopened or auditor resignation",
+            "proximity": 0,
+            "evidence": "There is no recent news or public information suggesting accounting irregularities, SEC investigations, or auditor resignations for SMCI."
+          },
+          {
+            "signal": "NVIDIA shifts preferred partner designation to Dell/HPE for Blackwell rack deployments",
+            "proximity": 0,
+            "evidence": "Recent news headlines do not indicate any shift in NVIDIA's preferred partner designation away from SMCI for Blackwell rack deployments. The thesis relies on SMCI's first-mover advantage in high-density thermal solutions, which is not directly challenged by current news."
+          },
+          {
+            "signal": "Revenue growth decelerates below 60% YoY as channel inventory normalizes",
+            "proximity": 1,
+            "evidence": "The provided `revenueGrowthYoY` is 1.227 (122.7%), which is above 60%. However, the headline \"Super Micro Computer Rises 5% as Margin Beat, Strong Guide Reignite Short Squeeze Debate\" suggests a focus on guidance and margins, which could imply future growth normalization, though not yet below 60%."
+          }
+        ],
+        "overallRisk": "low",
+        "keyWatchItem": "NVIDIA's partnership announcements and SMCI's future revenue guidance for signs of deceleration.",
+        "thesisIntact": true
       },
-      "analyzedAt": "2026-05-09T19:42:30.362Z"
+      "analyzedAt": "2026-05-09T20:19:18.752Z"
     },
     {
       "symbol": "ANET",
@@ -2353,9 +2881,28 @@
         ]
       },
       "assessment": {
-        "error": "Cannot convert argument to a ByteString because the character at index 0 has a value of 65279 which is greater than 255."
+        "signals": [
+          {
+            "signal": "NVIDIA InfiniBand maintains >60% AI cluster networking share through 2026",
+            "proximity": 0,
+            "evidence": "Recent news headlines do not provide specific data on InfiniBand's current or projected market share in AI clusters, nor do they mention NVIDIA's competitive position directly against Arista in this context."
+          },
+          {
+            "signal": "Ethernet all-reduce latency fails to match InfiniBand for 10,000+ GPU cluster workloads",
+            "proximity": 0,
+            "evidence": "There is no recent news or specific performance data provided in the current metrics to assess Ethernet's all-reduce latency performance relative to InfiniBand for large-scale GPU clusters."
+          },
+          {
+            "signal": "Meta/Google build proprietary switching ASICs — ANET loses two top-5 customers",
+            "proximity": 0,
+            "evidence": "Recent news does not indicate that Meta or Google are building proprietary switching ASICs or that Arista Networks is losing these customers. Instead, headlines highlight ANET's strong Q1 AI momentum."
+          }
+        ],
+        "overallRisk": "low",
+        "keyWatchItem": "Any news regarding hyperscaler proprietary ASIC development or large-scale InfiniBand deployments.",
+        "thesisIntact": true
       },
-      "analyzedAt": "2026-05-09T19:42:35.576Z"
+      "analyzedAt": "2026-05-09T20:19:23.075Z"
     },
     {
       "symbol": "VRT",
@@ -2437,9 +2984,28 @@
         ]
       },
       "assessment": {
-        "error": "Cannot convert argument to a ByteString because the character at index 0 has a value of 65279 which is greater than 255."
+        "signals": [
+          {
+            "signal": "Immersion cooling commoditizes via 3M/Engineered Fluids — VRT loses pricing power on liquid cooling",
+            "proximity": 0,
+            "evidence": "Recent news does not mention 3M, Engineered Fluids, or any specific commoditization pressure on liquid cooling solutions for Vertiv."
+          },
+          {
+            "signal": "GPU TDP growth plateaus at 700W and air cooling suffices through 2027",
+            "proximity": 0,
+            "evidence": "There is no recent news indicating a plateau in GPU TDP growth or that air cooling will suffice for future AI datacenter needs through 2027. The thesis relies on continued high-density GPU demand."
+          },
+          {
+            "signal": "Vertiv loses >2 of top-5 hyperscaler accounts to in-house cooling solutions",
+            "proximity": 0,
+            "evidence": "Recent news does not provide any information about Vertiv losing hyperscaler accounts or hyperscalers developing in-house cooling solutions."
+          }
+        ],
+        "overallRisk": "low",
+        "keyWatchItem": "Any news regarding hyperscaler in-house cooling solutions or specific liquid cooling technology commoditization.",
+        "thesisIntact": true
       },
-      "analyzedAt": "2026-05-09T19:42:40.789Z"
+      "analyzedAt": "2026-05-09T20:19:27.089Z"
     },
     {
       "symbol": "ETN",
@@ -2521,9 +3087,28 @@
         ]
       },
       "assessment": {
-        "error": "Cannot convert argument to a ByteString because the character at index 0 has a value of 65279 which is greater than 255."
+        "signals": [
+          {
+            "signal": "Modular/containerized datacenter design bypasses traditional PDU vendors for >40% of new builds",
+            "proximity": 0,
+            "evidence": "Recent news headlines do not provide specific evidence regarding the adoption rate of modular/containerized datacenter designs or their impact on traditional PDU vendors."
+          },
+          {
+            "signal": "Utility-scale direct-connect reduces UPS tier requirements for hyperscaler mega-campuses",
+            "proximity": 0,
+            "evidence": "There is no direct evidence in the provided news headlines about utility-scale direct-connect reducing UPS tier requirements for hyperscaler mega-campuses."
+          },
+          {
+            "signal": "Eaton electrical orders growth falls below 10% YoY for two consecutive quarters",
+            "proximity": 0,
+            "evidence": "A recent headline states 'Eaton Datacenter Orders Surge, Growth Outlook Strengthens Into H2,' suggesting strong order growth, not a decline below 10%."
+          }
+        ],
+        "overallRisk": "low",
+        "keyWatchItem": "Eaton's electrical orders growth rate in upcoming earnings reports, specifically for datacenter segments.",
+        "thesisIntact": true
       },
-      "analyzedAt": "2026-05-09T19:42:46.042Z"
+      "analyzedAt": "2026-05-09T20:19:31.183Z"
     },
     {
       "symbol": "GLW",
@@ -2605,9 +3190,28 @@
         ]
       },
       "assessment": {
-        "error": "Cannot convert argument to a ByteString because the character at index 0 has a value of 65279 which is greater than 255."
+        "signals": [
+          {
+            "signal": "Short-reach silicon photonics eliminates multi-mode fiber requirement in datacenter spine",
+            "proximity": 0,
+            "evidence": "Recent news headlines focus on GLW's partnership with NVIDIA for optical connectivity, suggesting continued relevance of fiber in data centers, rather than its elimination."
+          },
+          {
+            "signal": "Fiber supply glut from Chinese manufacturers compresses GLW pricing by >20%",
+            "proximity": 0,
+            "evidence": "There is no recent news indicating a fiber supply glut or significant pricing pressure from Chinese manufacturers. The NVIDIA partnership suggests strong demand for GLW's optical solutions."
+          },
+          {
+            "signal": "Springboard plan fiber revenue falls below $1.5B annualized run-rate by end-2025",
+            "proximity": 1,
+            "evidence": "While the NVIDIA partnership is positive, there is no specific revenue guidance or confirmation in the recent news to assess the Springboard plan's annualized run-rate. This remains an early-stage risk."
+          }
+        ],
+        "overallRisk": "low",
+        "keyWatchItem": "Specific revenue contributions from the NVIDIA partnership and other AI-driven optical connectivity deals.",
+        "thesisIntact": true
       },
-      "analyzedAt": "2026-05-09T19:42:51.278Z"
+      "analyzedAt": "2026-05-09T20:19:36.705Z"
     },
     {
       "symbol": "COHR",
@@ -2689,9 +3293,28 @@
         ]
       },
       "assessment": {
-        "error": "Cannot convert argument to a ByteString because the character at index 0 has a value of 65279 which is greater than 255."
+        "signals": [
+          {
+            "signal": "Co-packaged optics (CPO) fully integrates into NVIDIA switch ASICs by 2027 — discrete transceiver market collapses",
+            "proximity": 0,
+            "evidence": "There is no recent news directly addressing CPO integration timelines or its impact on the discrete transceiver market. The thesis focuses on current 800G/1.6T transceiver production."
+          },
+          {
+            "signal": "Chinese competitors (InnoLight, HG Genuinelight) achieve 800G qualification at hyperscalers — >30% market share",
+            "proximity": 0,
+            "evidence": "Recent news does not mention any specific Chinese competitors achieving 800G qualification or gaining significant market share at hyperscalers. The headlines are generally positive regarding AI optics demand."
+          },
+          {
+            "signal": "AI cluster interconnect shifts to electrical (copper) at shorter distances — transceiver TAM shrinks",
+            "proximity": 0,
+            "evidence": "No recent news indicates a shift towards electrical (copper) interconnects for AI clusters that would shrink the transceiver Total Addressable Market (TAM). The focus remains on AI optics demand."
+          }
+        ],
+        "overallRisk": "low",
+        "keyWatchItem": "Any news regarding competitor 800G/1.6T qualifications or CPO development timelines from hyperscalers.",
+        "thesisIntact": true
       },
-      "analyzedAt": "2026-05-09T19:42:56.513Z"
+      "analyzedAt": "2026-05-09T20:19:41.143Z"
     },
     {
       "symbol": "CRWD",
@@ -2773,9 +3396,28 @@
         ]
       },
       "assessment": {
-        "error": "Cannot convert argument to a ByteString because the character at index 0 has a value of 65279 which is greater than 255."
+        "signals": [
+          {
+            "signal": "Post-July 2024 outage customer churn materializes at >10% of ARR in FY2026",
+            "proximity": 0,
+            "evidence": "There is no recent news or current metrics indicating a July 2024 outage or subsequent customer churn. The provided news headlines are positive or neutral regarding CrowdStrike's market position."
+          },
+          {
+            "signal": "AI security commodity pricing collapses net revenue retention below 110%",
+            "proximity": 0,
+            "evidence": "Recent news indicates CrowdStrike is expanding its cybersecurity coalition, suggesting continued platform value rather than commoditization. There is no direct evidence of collapsing AI security pricing or declining net revenue retention."
+          },
+          {
+            "signal": "Microsoft Defender AI achieves Falcon parity on third-party MITRE evaluations",
+            "proximity": 0,
+            "evidence": "There is no recent news or current metrics discussing Microsoft Defender AI's performance relative to CrowdStrike's Falcon platform in third-party MITRE evaluations. My training data does not indicate current parity."
+          }
+        ],
+        "overallRisk": "low",
+        "keyWatchItem": "Any reports or rumors of significant customer churn or competitive wins by Microsoft Defender.",
+        "thesisIntact": true
       },
-      "analyzedAt": "2026-05-09T19:43:01.803Z"
+      "analyzedAt": "2026-05-09T20:19:45.226Z"
     },
     {
       "symbol": "CEG",
@@ -2857,9 +3499,28 @@
         ]
       },
       "assessment": {
-        "error": "Cannot convert argument to a ByteString because the character at index 0 has a value of 65279 which is greater than 255."
+        "signals": [
+          {
+            "signal": "Grid-scale battery storage achieves <$60/kWh installed cost by 2027, eliminating nuclear baseload premium",
+            "proximity": 0,
+            "evidence": "Recent news headlines do not provide any information regarding grid-scale battery storage costs or advancements that would threaten nuclear baseload premiums."
+          },
+          {
+            "signal": "NRC relicensing process for Constellation plants delayed beyond 36 months",
+            "proximity": 0,
+            "evidence": "There is no recent news indicating delays in the NRC relicensing process for Constellation plants. The headlines focus on earnings and stock performance."
+          },
+          {
+            "signal": "Hyperscalers abandon 24/7 CFE commitments — spot power contracts replace long-term nuclear PPAs",
+            "proximity": 0,
+            "evidence": "Recent news, including Larry Fink's comments on AI creating a new asset class, suggests continued demand for power, not an abandonment of 24/7 CFE commitments by hyperscalers."
+          }
+        ],
+        "overallRisk": "low",
+        "keyWatchItem": "Any news regarding hyperscaler energy procurement strategies or battery storage cost breakthroughs.",
+        "thesisIntact": true
       },
-      "analyzedAt": "2026-05-09T19:43:07.092Z"
+      "analyzedAt": "2026-05-09T20:19:49.204Z"
     },
     {
       "symbol": "VST",
@@ -2941,9 +3602,28 @@
         ]
       },
       "assessment": {
-        "error": "Cannot convert argument to a ByteString because the character at index 0 has a value of 65279 which is greater than 255."
+        "signals": [
+          {
+            "signal": "New Texas wind/solar additions (20GW by 2026) suppress ERCOT power prices below $35/MWh average",
+            "proximity": 0,
+            "evidence": "Recent news headlines do not provide specific data on new Texas wind/solar additions or their impact on ERCOT power prices."
+          },
+          {
+            "signal": "Texas Governor signs legislation capping merchant power prices — removes ERCOT scarcity pricing",
+            "proximity": 0,
+            "evidence": "There is no recent news indicating that the Texas Governor has signed legislation to cap merchant power prices or remove ERCOT scarcity pricing."
+          },
+          {
+            "signal": "Vistra's Illinois nuclear plants face stranded asset risk as Illinois grid becomes oversupplied",
+            "proximity": 0,
+            "evidence": "Recent news focuses on Vistra's performance and the demand for power generation, with no mention of oversupply in the Illinois grid or stranded asset risk for its nuclear plants."
+          }
+        ],
+        "overallRisk": "low",
+        "keyWatchItem": "Any legislative proposals or actions in Texas related to power market structure or pricing caps.",
+        "thesisIntact": true
       },
-      "analyzedAt": "2026-05-09T19:43:12.310Z"
+      "analyzedAt": "2026-05-09T20:19:53.160Z"
     },
     {
       "symbol": "CCJ",
@@ -3025,9 +3705,28 @@
         ]
       },
       "assessment": {
-        "error": "Cannot convert argument to a ByteString because the character at index 0 has a value of 65279 which is greater than 255."
+        "signals": [
+          {
+            "signal": "Kazakhstan/Uzbekistan uranium production surges >30% by 2027, breaking $100/lb uranium price narrative",
+            "proximity": 0,
+            "evidence": "Recent news headlines do not provide any specific information regarding a surge in uranium production from Kazakhstan or Uzbekistan."
+          },
+          {
+            "signal": "SMR (small modular reactor) deployment delays push beyond 2030 — removes key demand catalyst",
+            "proximity": 0,
+            "evidence": "There is no recent news indicating delays in SMR deployment. Some headlines broadly discuss a 'nuclear boom,' which implies continued SMR development."
+          },
+          {
+            "signal": "Cameco Cigar Lake/McArthur River face unexpected production disruptions exceeding 10M lbs U3O8",
+            "proximity": 0,
+            "evidence": "Recent news mentions Cameco's Q1 earnings beat and director elections, with no reports of unexpected production disruptions at Cigar Lake or McArthur River."
+          }
+        ],
+        "overallRisk": "low",
+        "keyWatchItem": "Any reports on increased uranium supply from major producers like Kazakhstan or new mine developments.",
+        "thesisIntact": true
       },
-      "analyzedAt": "2026-05-09T19:43:17.591Z"
+      "analyzedAt": "2026-05-09T20:19:57.188Z"
     },
     {
       "symbol": "GEV",
@@ -3109,9 +3808,28 @@
         ]
       },
       "assessment": {
-        "error": "Cannot convert argument to a ByteString because the character at index 0 has a value of 65279 which is greater than 255."
+        "signals": [
+          {
+            "signal": "Turbine order backlog growth decelerates below 15% YoY — utility capital spending freezes",
+            "proximity": 0,
+            "evidence": "Recent news headlines do not provide specific data on turbine order backlog growth or utility capital spending trends."
+          },
+          {
+            "signal": "Permitting reform fails: FERC interconnection queue wait exceeds 5 years, delaying gas turbine projects",
+            "proximity": 0,
+            "evidence": "There is no recent news discussing FERC interconnection queue wait times or the status of permitting reform."
+          },
+          {
+            "signal": "HVDC transmission alternatives displace gas turbine peakers for datacenter power delivery",
+            "proximity": 0,
+            "evidence": "Recent news does not mention HVDC transmission alternatives or their impact on gas turbine demand for datacenter power."
+          }
+        ],
+        "overallRisk": "low",
+        "keyWatchItem": "Any company reports or industry news regarding turbine order backlog growth rates.",
+        "thesisIntact": true
       },
-      "analyzedAt": "2026-05-09T19:43:22.813Z"
+      "analyzedAt": "2026-05-09T20:20:01.098Z"
     },
     {
       "symbol": "PWR",
@@ -3193,9 +3911,28 @@
         ]
       },
       "assessment": {
-        "error": "Cannot convert argument to a ByteString because the character at index 0 has a value of 65279 which is greater than 255."
+        "signals": [
+          {
+            "signal": "Federal permitting reform accelerates interconnection queue, reducing specialist contractor scarcity premium",
+            "proximity": 0,
+            "evidence": "Recent news headlines do not mention any federal permitting reform or acceleration of interconnection queues. The focus is on Quanta's strong performance in data center infrastructure."
+          },
+          {
+            "signal": "Union labor shortage resolves — new entrants capture >20% of transmission construction market",
+            "proximity": 0,
+            "evidence": "There is no evidence in the recent news about a resolution to union labor shortages or new entrants capturing significant market share in transmission construction. Headlines highlight Quanta's strength in the construction sector."
+          },
+          {
+            "signal": "Quanta loses >3 of top-10 utility relationships to EMCOR/MYR Group",
+            "proximity": 0,
+            "evidence": "Recent news indicates Quanta is a top choice for data center infrastructure and is outpacing peers, suggesting strong rather than weakening utility relationships. There is no mention of lost contracts to competitors."
+          }
+        ],
+        "overallRisk": "low",
+        "keyWatchItem": "Any legislative movement on federal permitting reform for energy infrastructure projects.",
+        "thesisIntact": true
       },
-      "analyzedAt": "2026-05-09T19:43:28.036Z"
+      "analyzedAt": "2026-05-09T20:20:05.113Z"
     },
     {
       "symbol": "LINK",
@@ -3253,21 +3990,40 @@
             "date": "+058323-07"
           },
           {
-            "title": "'A good scapegoat': Wall Street assesses latest AI-linked job cuts",
-            "publisher": "Yahoo Finance",
-            "date": "+058323-07"
+            "title": "NIRSense Supports the US Army in the Indo-Pacific with Tissue Oxygenation Assessment for Battlefield Casualty Care at Balikatan-26",
+            "publisher": "PR Newswire",
+            "date": "+058323-11"
           },
           {
-            "title": "Here’s Where to Watch WWE Backlash 2026 Live Online",
-            "publisher": "Variety",
+            "title": "'A good scapegoat': Wall Street assesses latest AI-linked job cuts",
+            "publisher": "Yahoo Finance",
             "date": "+058323-07"
           }
         ]
       },
       "assessment": {
-        "error": "Cannot convert argument to a ByteString because the character at index 0 has a value of 65279 which is greater than 255."
+        "signals": [
+          {
+            "signal": "Pyth Network captures >30% of oracle market share from LINK in TVL secured",
+            "proximity": 0,
+            "evidence": "Recent news headlines do not provide any information regarding Pyth Network's market share or TVL secured relative to Chainlink."
+          },
+          {
+            "signal": "DECO/verifiable AI inference adoption stalls — no major DeFi protocol integrates by 2027",
+            "proximity": 0,
+            "evidence": "There is no recent news discussing DECO protocol adoption or verifiable AI inference integrations by major DeFi protocols. The provided headlines are general market news or unrelated to Chainlink's specific technology adoption."
+          },
+          {
+            "signal": "LINK staking yields fail to attract institutional validators — security budget shrinks",
+            "proximity": 0,
+            "evidence": "Recent news does not contain any information about LINK staking yields, institutional validator participation, or the security budget. The headlines are unrelated to these specific operational metrics."
+          }
+        ],
+        "overallRisk": "low",
+        "keyWatchItem": "Adoption metrics for DECO protocol and verifiable AI inference solutions.",
+        "thesisIntact": true
       },
-      "analyzedAt": "2026-05-09T19:43:36.722Z"
+      "analyzedAt": "2026-05-09T20:20:12.916Z"
     },
     {
       "symbol": "ETH",
@@ -3318,9 +4074,28 @@
         ]
       },
       "assessment": {
-        "error": "Cannot convert argument to a ByteString because the character at index 0 has a value of 65279 which is greater than 255."
+        "signals": [
+          {
+            "signal": "AI agent payment volumes migrate entirely to L2s — ETH L1 fee revenue structurally falls",
+            "proximity": 1,
+            "evidence": "The Arbitrum DAO approving a $70M ETH release suggests continued development and usage of L2 solutions, which could draw transaction volume away from the L1."
+          },
+          {
+            "signal": "Solana/other L1 captures >40% of AI agent transaction volume",
+            "proximity": 1,
+            "evidence": "A headline discussing 'The Week Solana Brought Google to x402' indicates Solana's growing enterprise adoption and potential to attract significant transaction volume, including AI-related activity."
+          },
+          {
+            "signal": "EIP-1559 burn falls below issuance for 6 consecutive months — ETH becomes inflationary",
+            "proximity": 0,
+            "evidence": "There is no direct evidence in the provided news headlines regarding EIP-1559 burn rates or ETH's inflationary status."
+          }
+        ],
+        "overallRisk": "medium",
+        "keyWatchItem": "Solana's continued integration with major tech companies and its impact on transaction volume.",
+        "thesisIntact": true
       },
-      "analyzedAt": "2026-05-09T19:43:41.939Z"
+      "analyzedAt": "2026-05-09T20:20:16.963Z"
     },
     {
       "symbol": "CRCL",
@@ -3402,9 +4177,33 @@
         ]
       },
       "assessment": {
-        "error": "Cannot convert argument to a ByteString because the character at index 0 has a value of 65279 which is greater than 255."
+        "signals": [
+          {
+            "signal": "Federal Reserve target rate falls below 2% for two consecutive quarters compressing reserves yield",
+            "proximity": 0,
+            "evidence": "Recent news headlines do not provide any information regarding Federal Reserve target rates or their trajectory."
+          },
+          {
+            "signal": "USDT or new stablecoin captures >20% of USDC market cap share through better cross-chain UX",
+            "proximity": 0,
+            "evidence": "There is no evidence in the recent news headlines about USDT or any new stablecoin gaining significant market share against USDC, nor any mention of cross-chain UX."
+          },
+          {
+            "signal": "GENIUS Act implementation forces unfavorable reserve composition or yield-sharing requirements",
+            "proximity": 0,
+            "evidence": "The recent news headlines do not mention the GENIUS Act or any potential regulatory changes impacting reserve composition or yield-sharing for stablecoins."
+          },
+          {
+            "signal": "Major AI agent platform standardizes on bank-issued tokenized deposits rather than USDC",
+            "proximity": 0,
+            "evidence": "Recent news does not indicate any major AI agent platform standardizing on bank-issued tokenized deposits over USDC. The headlines are primarily focused on CRCL's stock performance and upcoming earnings."
+          }
+        ],
+        "overallRisk": "low",
+        "keyWatchItem": "Upcoming Q1 earnings release and any forward guidance on interest rates or competitive landscape.",
+        "thesisIntact": true
       },
-      "analyzedAt": "2026-05-09T19:43:47.219Z"
+      "analyzedAt": "2026-05-09T20:20:21.247Z"
     },
     {
       "symbol": "ISRG",
@@ -3486,9 +4285,28 @@
         ]
       },
       "assessment": {
-        "error": "Cannot convert argument to a ByteString because the character at index 0 has a value of 65279 which is greater than 255."
+        "signals": [
+          {
+            "signal": "Medtronic Hugo or CMR Surgical achieves FDA clearance and captures >15% of soft-tissue robotic surgery market by 2027",
+            "proximity": 0,
+            "evidence": "Recent news headlines do not provide any information regarding Medtronic Hugo or CMR Surgical's FDA clearance status or market share capture."
+          },
+          {
+            "signal": "da Vinci procedure volume growth falls below 8% YoY for two consecutive quarters",
+            "proximity": 0,
+            "evidence": "The provided currentMetrics do not include da Vinci procedure volume growth data, making it impossible to assess this signal. Revenue growth YoY is 0.23, but this is not a direct proxy for procedure volume."
+          },
+          {
+            "signal": "AI surgical guidance feature generates meaningful adverse event data triggering FDA regulatory hold",
+            "proximity": 0,
+            "evidence": "There is no information in the recent news headlines or currentMetrics regarding adverse events related to ISRG's AI surgical guidance features or any FDA regulatory holds."
+          }
+        ],
+        "overallRisk": "low",
+        "keyWatchItem": "da Vinci procedure volume growth in upcoming earnings reports.",
+        "thesisIntact": true
       },
-      "analyzedAt": "2026-05-09T19:43:52.457Z"
+      "analyzedAt": "2026-05-09T20:20:26.489Z"
     },
     {
       "symbol": "CGNX",
@@ -3570,9 +4388,28 @@
         ]
       },
       "assessment": {
-        "error": "Cannot convert argument to a ByteString because the character at index 0 has a value of 65279 which is greater than 255."
+        "signals": [
+          {
+            "signal": "Chinese machine vision competitors (Hikrobot, Keyence alternatives) capture >25% of semiconductor factory inspection market",
+            "proximity": 0,
+            "evidence": "There is no recent news or current metrics indicating market share shifts to Chinese competitors in the semiconductor factory inspection market."
+          },
+          {
+            "signal": "EV and semiconductor factory capex cycle reverses — Cognex revenue declines >15% for two consecutive quarters",
+            "proximity": 0,
+            "evidence": "Recent news headlines consistently report Cognex exceeding earnings and revenue estimates, citing 'broad-based demand strength,' which contradicts a capex cycle reversal."
+          },
+          {
+            "signal": "General-purpose vision foundation models commoditize industrial vision at <50% of Cognex cost",
+            "proximity": 0,
+            "evidence": "There is no recent news or current metrics suggesting the emergence or adoption of general-purpose vision foundation models that are commoditizing industrial vision at a lower cost."
+          }
+        ],
+        "overallRisk": "low",
+        "keyWatchItem": "Any future reports or analyst commentary on competitive dynamics in China or signs of a slowdown in EV/semiconductor capex.",
+        "thesisIntact": true
       },
-      "analyzedAt": "2026-05-09T19:43:57.676Z"
+      "analyzedAt": "2026-05-09T20:20:30.553Z"
     },
     {
       "symbol": "RKLB",
@@ -3654,9 +4491,28 @@
         ]
       },
       "assessment": {
-        "error": "Cannot convert argument to a ByteString because the character at index 0 has a value of 65279 which is greater than 255."
+        "signals": [
+          {
+            "signal": "Neutron development delays exceed 18 months from current schedule, burning cash without revenue offset",
+            "proximity": 0,
+            "evidence": "Recent news highlights record Q1, backlog surge, and defense wins, suggesting strong current performance and revenue, with no specific mentions of Neutron delays or associated cash burn."
+          },
+          {
+            "signal": "SpaceX Falcon 9 rideshare pricing falls below $5,000/kg — eliminates dedicated small launch economics",
+            "proximity": 0,
+            "evidence": "There is no recent news or specific information provided in the current metrics to suggest a significant drop in SpaceX Falcon 9 rideshare pricing that would impact RKLB's dedicated small launch economics."
+          },
+          {
+            "signal": "Major government contracts (NASA VADR, NRO) not renewed in 2026-2027 rebid cycle",
+            "proximity": 0,
+            "evidence": "Recent headlines mention 'defense wins' and 'biggest launch contract in company's history,' indicating strong government and defense sector engagement, with no immediate concerns about 2026-2027 contract renewals."
+          }
+        ],
+        "overallRisk": "low",
+        "keyWatchItem": "Any specific updates or timelines regarding the Neutron rocket development and its impact on cash flow.",
+        "thesisIntact": true
       },
-      "analyzedAt": "2026-05-09T19:44:02.885Z"
+      "analyzedAt": "2026-05-09T20:20:34.882Z"
     }
   ]
 }
