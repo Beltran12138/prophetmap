@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "version": "1.6.0",
-    "date": "2026-05-08",
+    "version": "1.7.0",
+    "date": "2026-05-11",
     "description": "ProphetMap stock universe — manually-defined static fields only. Dynamic pricing scores written to data/scores/YYYY-MM-DD.json by scripts/update-valuations.js",
     "fieldGuide": {
       "physicalConstraint": "1=pure software, 5=hard physical monopoly with multi-year lead times",
@@ -980,6 +980,32 @@
           "date": "2026-05-04",
           "version": "1.0.0",
           "change": "Initial addition to universe"
+        }
+      ]
+    },
+    {
+      "symbol": "CRH",
+      "name": "CRH plc",
+      "layer": "L9",
+      "layerRole": "secondary",
+      "physicalConstraint": 4,
+      "aiContribution": 0.18,
+      "timeToRealize": "far",
+      "thesis": "Aggregates, cement, and asphalt are the bulk physical inputs for AI mega-campus foundations and surrounding infrastructure; aggregates carry a structural geographic monopoly (uneconomic to ship beyond ~50 miles), giving CRH local pricing power that compounds with the US data center buildout and IIJA infrastructure cycle.",
+      "thesisFalsification": [
+        "US infrastructure/construction spending cycle peaks — CRH Americas Materials organic revenue growth turns negative for two consecutive quarters",
+        "Data center construction shifts to modular/prefabricated designs that cut on-site concrete and aggregate intensity by >30%",
+        "Regional antitrust action forces aggregate-quarry divestitures in key MSAs, eroding CRH local pricing power"
+      ],
+      "marketCap": 65,
+      "status": "watchlist",
+      "addedDate": "2026-05-11",
+      "addedVersion": "1.7.0",
+      "_changeLog": [
+        {
+          "date": "2026-05-11",
+          "version": "1.7.0",
+          "change": "Added to universe (L9 watchlist) — aggregates/cement input to AI datacenter construction; personal-portfolio holding now under ProphetMap monitoring"
         }
       ]
     },
