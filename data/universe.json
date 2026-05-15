@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "version": "1.7.0",
-    "date": "2026-05-11",
+    "version": "1.8.0",
+    "date": "2026-05-15",
     "description": "ProphetMap stock universe — manually-defined static fields only. Dynamic pricing scores written to data/scores/YYYY-MM-DD.json by scripts/update-valuations.js",
     "fieldGuide": {
       "physicalConstraint": "1=pure software, 5=hard physical monopoly with multi-year lead times",
@@ -222,6 +222,33 @@
           "date": "2026-05-04",
           "version": "1.0.0",
           "change": "Initial addition to universe"
+        }
+      ]
+    },
+    {
+      "symbol": "CBRS",
+      "name": "Cerebras Systems",
+      "layer": "L2",
+      "layerRole": "secondary",
+      "physicalConstraint": 3,
+      "aiContribution": 1.0,
+      "timeToRealize": "near",
+      "thesis": "Wafer-scale engine (WSE-3) — unique alt-architecture AI accelerator for inference and select training workloads, monolithic single-die approach circumvents chiplet/interconnect overhead. IPO 2026-05-14 priced $185, opened $385 (+108%), closed $311 (+68%). Status=watch pending pricing rationalization and customer diversification.",
+      "thesisFalsification": [
+        "G42 customer concentration (~85% of revenue) materially reduces — either by diversification toward >50% non-G42 or by CFIUS-driven customer loss",
+        "FY26 revenue exceeds $1B (vs FY24 $78M), validating scale-out beyond single-customer order book",
+        "Stock price reverts below $100 (P/S compresses below 30x) post-lockup unwind, opening reasonable entry"
+      ],
+      "marketCap": 95,
+      "status": "watchlist",
+      "addedDate": "2026-05-15",
+      "addedVersion": "1.8.0",
+      "watchlistReason": "IPO 2026-05-14 priced $185 → closed $311 (+68%) → fully-diluted ~$95B vs FY24 revenue $78M → P/S >1000x (pricingScore funnel-fail). G42 single-customer dependency ~85% unmitigated. NVDA CUDA moat unbroken. Indirect exposure already captured via AMKR/TSM/MU. Re-evaluate when (a) price <$100 OR (b) FY26 revenue >$1B OR (c) G42 dependency <50%. Lockup expiry watch ~2026-11-14.",
+      "_changeLog": [
+        {
+          "date": "2026-05-15",
+          "version": "1.8.0",
+          "change": "Added to L2 watchlist post-IPO. Status=watch — pricing funnel-fail (P/S >1000x), G42 concentration risk, indirect coverage via AMKR/TSM/MU adequate. Per framework v1.6 IPO 首日不建仓 principle."
         }
       ]
     },
