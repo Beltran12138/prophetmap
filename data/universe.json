@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "version": "1.9.0",
+    "version": "2.0.0",
     "date": "2026-05-15",
     "description": "ProphetMap stock universe — manually-defined static fields only. Dynamic pricing scores written to data/scores/YYYY-MM-DD.json by scripts/update-valuations.js",
     "fieldGuide": {
@@ -515,6 +515,33 @@
       ]
     },
     {
+      "symbol": "TSEM",
+      "name": "Tower Semiconductor",
+      "layer": "L3_5",
+      "layerRole": "secondary",
+      "physicalConstraint": 3,
+      "aiContribution": 0.5,
+      "timeToRealize": "mid",
+      "thesis": "Specialty foundry positioned as silicon photonics (SiPh) PIC fab for AI optical interconnect supply chain — agnostic to pluggable / NPO / CPO technology winner. Announced $1.3B silicon photonics contracts for 2027, $290M capacity prepayment received, $920M planned capex earmarked for SiPh expansion. Indirect picks-and-shovels exposure across optical transition without single-customer concentration of pure-play laser suppliers.",
+      "thesisFalsification": [
+        "TSMC or GlobalFoundries achieves volume SiPh foundry capability and captures >30% of merchant silicon photonics PIC production from TSEM",
+        "Capex burden materializes ahead of revenue — capex-to-revenue ratio persists above 1.0x for 3 consecutive quarters (cycle peak signal)",
+        "Pluggable optics dominance extends through 2028 — CPO PIC volume ramp slips reducing TSEM's marginal SiPh growth thesis",
+        "Foundry margins compress below 25% — capacity oversupply or pricing concessions to anchor customers"
+      ],
+      "marketCap": 5,
+      "status": "active",
+      "addedDate": "2026-05-15",
+      "addedVersion": "2.0.0",
+      "_changeLog": [
+        {
+          "date": "2026-05-15",
+          "version": "2.0.0",
+          "change": "Added to L3_5 secondary — silicon photonics foundry indirect exposure to optical superCycle. physicalConstraint=3 (specialty foundry, TSMC/GF can contest), aiContribution=0.50 (SiPh ~15-20% of mix, AI-driven), timeToRealize=mid (2027/28 contract realization). Captures technology-agnostic exposure across pluggable→NPO→CPO without picking laser winner."
+        }
+      ]
+    },
+    {
       "symbol": "AMAT",
       "name": "Applied Materials",
       "layer": "L4",
@@ -956,6 +983,33 @@
           "date": "2026-05-04",
           "version": "1.0.0",
           "change": "Initial addition to universe"
+        }
+      ]
+    },
+    {
+      "symbol": "LITE",
+      "name": "Lumentum Holdings",
+      "layer": "L8_OPT",
+      "layerRole": "primary",
+      "physicalConstraint": 5,
+      "aiContribution": 0.8,
+      "timeToRealize": "near",
+      "thesis": "Only volume-production supplier of 200G-per-lane EML lasers — physical prerequisite for 1.6T transceivers. 20 years of InP fab know-how irreplaceable short-term. NVIDIA $2B strategic investment + multi-year EML capacity lock-in through 2027+. Three-track exposure: (1) EML for pluggable 1.6T era, (2) ELS external laser sources for CPO era, (3) OCS optical circuit switches for future AI fabric routing. Direct beneficiary of optical superCycle across pluggable → NPO → CPO transition.",
+      "thesisFalsification": [
+        "Coherent or Chinese competitor achieves 200G EML qualification at hyperscalers — LITE single-source moat compresses",
+        "NVDA GB300/Rubin scale-up persists with copper through 2028 — CPO external laser revenue ramp slips materially",
+        "Forward P/E exceeds 70x (sustained) — pricing dimension funnel-borderline triggers watch",
+        "Hyperscaler verticalization: Google/Microsoft internalize laser sourcing through M&A, bypassing merchant supplier"
+      ],
+      "marketCap": 5,
+      "status": "active",
+      "addedDate": "2026-05-15",
+      "addedVersion": "2.0.0",
+      "_changeLog": [
+        {
+          "date": "2026-05-15",
+          "version": "2.0.0",
+          "change": "Added to L8_OPT primary — EML monopoly + NVDA $2B lock-in + CPO external laser optionality. Strongest near-term physical moat in optical layer (vs GLW/COHR mid-term thesis). Funnel pre-eval: physicalConstraint=5, aiContribution=0.80, timeToRealize=near. pricingScore awaiting live computation (Fwd PE ~66x watch threshold)."
         }
       ]
     },
