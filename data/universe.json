@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "version": "1.8.0",
+    "version": "1.9.0",
     "date": "2026-05-15",
     "description": "ProphetMap stock universe — manually-defined static fields only. Dynamic pricing scores written to data/scores/YYYY-MM-DD.json by scripts/update-valuations.js",
     "fieldGuide": {
@@ -406,6 +406,33 @@
           "date": "2026-05-04",
           "version": "1.0.0",
           "change": "Initial addition to universe"
+        }
+      ]
+    },
+    {
+      "symbol": "ALAB",
+      "name": "Astera Labs",
+      "layer": "L3",
+      "layerRole": "secondary",
+      "physicalConstraint": 4,
+      "aiContribution": 0.85,
+      "timeToRealize": "near",
+      "thesis": "CXL retimer and smart memory controller monopoly — ~55% market share in CXL/PCIe retimer subsector with IP + qualification lock-in. Memory pooling becomes physical prerequisite as inference KV cache / RAG indices / vector DB exceed single-server DRAM ceiling. Q1 2026 revenue $308M (+93% YoY), non-GAAP gross margin 76.4%, net income +85% YoY. Adjacent to but distinct from L3 EDA layer — represents the interconnect substrate of disaggregated AI memory.",
+      "thesisFalsification": [
+        "CXL 3.x adoption delays beyond 2027 — hyperscalers persist with proprietary interconnects (NVLink Fusion / Infinity Fabric) reducing CXL retimer TAM",
+        "Marvell or Broadcom enters CXL retimer market and captures >25% share, compressing ALAB pricing power",
+        "NVIDIA/AMD integrate retimer logic into GPU package or switch silicon, bypassing standalone retimer requirement",
+        "Forward P/S exceeds 40x (pricing dimension funnel-fail) — re-evaluate entry"
+      ],
+      "marketCap": 18,
+      "status": "active",
+      "addedDate": "2026-05-15",
+      "addedVersion": "1.9.0",
+      "_changeLog": [
+        {
+          "date": "2026-05-15",
+          "version": "1.9.0",
+          "change": "Added to L3 secondary as CXL pooling layer representative. Distinct sub-thesis from SNPS/CDNS (EDA) — captures CXL retimer interconnect substrate per techflowpost storage layer analysis. Funnel pre-eval: physicalConstraint=4, aiContribution=0.85, timeToRealize=near; pricingScore awaiting live computation by update-valuations.js"
         }
       ]
     },
