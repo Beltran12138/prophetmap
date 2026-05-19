@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "version": "2.1.3",
+    "version": "2.1.4",
     "date": "2026-05-19",
     "description": "ProphetMap stock universe — manually-defined static fields only. Dynamic pricing scores written to data/scores/YYYY-MM-DD.json by scripts/update-valuations.js",
     "fieldGuide": {
@@ -1958,6 +1958,63 @@
           "date": "2026-05-08",
           "version": "1.2.0",
           "change": "Added to L_SPACE watchlist — defense aerospace actuation, expected funnel fail (aiContribution=0.15)"
+        }
+      ]
+    },
+    {
+      "symbol": "AVAV",
+      "name": "AeroVironment",
+      "layer": "L_DEF",
+      "layerRole": "primary",
+      "physicalConstraint": 4,
+      "aiContribution": 0.65,
+      "timeToRealize": "near",
+      "thesis": "Tactical drone + loitering munitions market leader — Switchblade 300/600 + Puma + Jump 20 + recently acquired BlueHalo create a vertically integrated portfolio of expendable autonomous weapons. Schmidt framework's White Stork public-equity proxy. Q1 2026 revenue +143% YoY driven by Ukraine/Middle East/Indo-Pacific drone demand. DoD long-cycle contract lock-in + ITAR export control creates ~3-5 year competitive moat. Visual AI + autonomous navigation + battlefield datalink are the AI substrate; revenue mix is shifting toward AI-enabled autonomy generation.",
+      "thesisFalsification": [
+        "Ukraine + Middle East simultaneous de-escalation within 12 months — loitering munitions wartime demand cliff",
+        "China/Russia counter-drone capability deployment achieves >80% intercept rate, eroding Switchblade kill effectiveness",
+        "DoD switches to in-house drone manufacturing (Anduril vertical integration) for >30% of tactical drone procurement",
+        "Forward P/S exceeds 12x (pricing dimension funnel-fail) — re-evaluate entry",
+        "BlueHalo acquisition synergies fail to materialize — EPS dilution persists beyond 18 months without revenue offset"
+      ],
+      "marketCap": 8,
+      "status": "watchlist",
+      "_note": "Added 2026-05-19 to new L_DEF layer (Schmidt 框架 White Stork public-equity proxy). Static funnel passes PC=4/AI=0.65/near, but pricing pre-eval forwardPE=39 borderline rich. Status=watchlist pending update-valuations.js live pricingScore + Buffett bad-news risk monitoring (Switchblade wartime dependency). Re-evaluation to active if: pricingScore ≤3.0 sustained 5 days AND no peace agreement signal AND BlueHalo synergies confirmed in Q2 2026 earnings.",
+      "addedDate": "2026-05-19",
+      "addedVersion": "2.1.4",
+      "_changeLog": [
+        {
+          "date": "2026-05-19",
+          "version": "2.1.4",
+          "change": "Added as L_DEF primary — new layer for defense AI per three-philosophies framing (Schmidt path). Tactical drone + loitering munitions thesis. Funnel pre-eval: PC=4/AI=0.65/near. Status=watchlist pending pricing verification. Sourced via FF manual screen (peer algo did not surface — defense AI is framework blind spot for Yahoo recommendations)."
+        }
+      ]
+    },
+    {
+      "symbol": "KTOS",
+      "name": "Kratos Defense & Security Solutions",
+      "layer": "L_DEF",
+      "layerRole": "secondary",
+      "physicalConstraint": 4,
+      "aiContribution": 0.70,
+      "timeToRealize": "mid",
+      "thesis": "Strategic autonomous systems — XQ-58 Valkyrie loyal wingman combat drone + Mako hypersonic test vehicles + tactical satellite/missile defense systems. Higher-end and longer-cycle than AVAV's tactical drones. AI=0.70 reflects autonomous combat aircraft as core thesis vector. Production scaling targeted 2027+ via CCA (Collaborative Combat Aircraft) program participation. Picks-and-shovels exposure to hypersonics testbeds (Mako/Erinyes) as second leg.",
+      "thesisFalsification": [
+        "CCA program loses funding or shifts to Lockheed/Boeing primes — Valkyrie production volume falls below 50 units/year through 2028",
+        "Hypersonic test vehicle market consolidates to in-house government labs, eliminating Kratos commercial testbed revenue",
+        "Forward P/E sustains above 60x for 6 months — pricing dimension funnel-fail, watchlist demotion",
+        "Anduril/Shield AI capture >40% of autonomous combat aircraft procurement by 2028 — Kratos design wins compress"
+      ],
+      "marketCap": 10,
+      "status": "watchlist",
+      "_note": "Added 2026-05-19 to L_DEF secondary. Static funnel passes PC=4/AI=0.70/mid but pricing pre-eval forwardPE=49 likely funnel-fail on live pricingScore. Status=watchlist; entry triggers: pricingScore ≤3.0 AND CCA program design win for Valkyrie confirmed in DoD contract announcement.",
+      "addedDate": "2026-05-19",
+      "addedVersion": "2.1.4",
+      "_changeLog": [
+        {
+          "date": "2026-05-19",
+          "version": "2.1.4",
+          "change": "Added as L_DEF secondary — strategic autonomous combat aircraft + hypersonics testbed. Complements AVAV (tactical) with longer-cycle CCA program exposure. Funnel pre-eval: PC=4/AI=0.70/mid. Pricing likely fail (fwdPE 49). Sourced via FF manual screen."
         }
       ]
     }

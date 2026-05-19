@@ -1,5 +1,5 @@
 {
-  "version": "1.3.0",
+  "version": "1.4.0",
   "lastUpdated": "2026-05-19",
   "description": "ProphetMap前沿科技主题层级定义——AI物理供应链(含L5.5 PCB/基板)、具身智能基础设施、太空基础设施",
   "terminationBoundary": 14,
@@ -8,6 +8,7 @@
     "B": "能源→物理资源主链",
     "C": "具身智能→物理执行链",
     "D": "太空基础设施链",
+    "E": "国防 AI 链——Schmidt 框架之公开股 proxy（无人机/自主系统/防御软件）",
     "experimental": "实验层（待验证）"
   },
   "timeToRealizeDefinitions": {
@@ -640,6 +641,32 @@
         "falsificationSignals": [
           "轨道碎片事件触发Kessler效应风险，主要LEO轨道禁用",
           "美国商业航天监管收紧，FAA发射许可审批时间>3年"
+        ]
+      }
+    },
+    {
+      "id": "L_DEF",
+      "name": "国防 AI 层",
+      "nameEn": "Defense AI",
+      "chain": "E",
+      "position": 99,
+      "description": "无人机/自主战机/防御软件/loitering munitions——Schmidt 框架之公开股 proxy。乌克兰战场 + 中东冲突 + 印太对抗驱动的国防 AI 装备需求。准入壁垒来自国防合同长期锁定 + 出口管制 + MIL-SPEC 认证。",
+      "physicalConstraintDesc": "国防合同周期 5-10 年 + ITAR 出口管制 + DoD 供应商认证流程——非国防原生企业难以进入",
+      "basePhysicalConstraint": 4,
+      "typicalTimeToRealize": "near",
+      "status": "active",
+      "isLeadingIndicator": false,
+      "parallel": true,
+      "sublayers": null,
+      "auditCriteria": {
+        "mergeCondition": "与 L_SPACE 国防卫星业务相关性>0.85 持续 4 季度——可考虑合并为 L_DEF_SPACE 国防+太空主链",
+        "splitCondition": "战术无人机（消耗品 loitering munitions）与战略自主系统（autonomous combat aircraft）形成完全不同的资本周期",
+        "deleteCondition": "美国国防预算连续 3 年负增长且 Ukraine/Taiwan/Middle East 三条战线同步降温",
+        "falsificationSignals": [
+          "美中达成 AI 治理框架与军控协议——国防 AI demand thesis 削弱",
+          "Ukraine 停战 + 中东和平协议——Switchblade/Valkyrie 类 loitering 武器战时 demand 断崖",
+          "中俄反无人机能力突破——美国战术无人机有效杀伤率<20%",
+          "trump 政府国防预算从 $850B 削减>15% 且持续 2 财年"
         ]
       }
     }
