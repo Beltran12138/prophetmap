@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "version": "2.1.2",
+    "version": "2.1.3",
     "date": "2026-05-19",
     "description": "ProphetMap stock universe — manually-defined static fields only. Dynamic pricing scores written to data/scores/YYYY-MM-DD.json by scripts/update-valuations.js",
     "fieldGuide": {
@@ -425,8 +425,8 @@
         "Forward P/S exceeds 40x (pricing dimension funnel-fail) — re-evaluate entry"
       ],
       "marketCap": 18,
-      "status": "active",
-      "_note": "Funnel-fail on pricing dimension as of 2026-05-19: pricingScore=3.8 (>3.0 cap), peg=N/A (forward EPS uncertain). Static funnel passes (PC=4/AI=0.85/near) but priced-in narrative requires patience for entry — watch for pricingScore ≤3.0.",
+      "status": "watchlist",
+      "_note": "Demoted active → watchlist as of 2026-05-19: thesisFalsification signal #4 (Forward P/S exceeds 40x) triggered with Gemini proximity=2. Framework discipline: pre-declared falsification condition met → must respond. pricingScore=3.8 + peg=N/A reinforces. Static funnel passes (PC=4/AI=0.85/near) so thesis itself remains intact — CXL pooling structural thesis not invalidated, only entry timing failed. Re-evaluate active status if: (a) pricingScore ≤3.0 sustained 5+ days, OR (b) Q2 2026 earnings show Forward P/S compression below 35x via EPS reset upward.",
       "addedDate": "2026-05-15",
       "addedVersion": "1.9.0",
       "_changeLog": [
@@ -439,6 +439,11 @@
           "date": "2026-05-19",
           "version": "2.1.1",
           "change": "Live pricingScore=3.8 funnel-fail. _note added for transparency. Status remains active (thesis intact, awaiting better entry)."
+        },
+        {
+          "date": "2026-05-19",
+          "version": "2.1.3",
+          "change": "Demoted active → watchlist. Gemini signal analysis flagged thesisFalsification signal #4 (Forward P/S >40x) at proximity=2 — pre-declared falsification trigger fired same day. Framework discipline requires response: leaving status=active after explicit falsification trigger would render thesisFalsification field cosmetic. Note distinction: structural thesis intact (CXL pooling, 55% share, $308M Q1 +93% YoY all valid); only entry timing thesis failed. Watchlist retains full informational coverage."
         }
       ]
     },
