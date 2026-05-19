@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "version": "2.0.0",
-    "date": "2026-05-15",
+    "version": "2.1.0",
+    "date": "2026-05-19",
     "description": "ProphetMap stock universe — manually-defined static fields only. Dynamic pricing scores written to data/scores/YYYY-MM-DD.json by scripts/update-valuations.js",
     "fieldGuide": {
       "physicalConstraint": "1=pure software, 5=hard physical monopoly with multi-year lead times",
@@ -1222,32 +1222,6 @@
       ]
     },
     {
-      "symbol": "CCJ",
-      "name": "Cameco",
-      "layer": "L11",
-      "layerRole": "bridge",
-      "physicalConstraint": 5,
-      "aiContribution": 0.2,
-      "timeToRealize": "far",
-      "thesis": "Uranium supply is physical constraint for nuclear renaissance driven by AI electricity demand — mine development lead times of 7-10 years create durable scarcity",
-      "thesisFalsification": [
-        "Kazakhstan/Uzbekistan uranium production surges >30% by 2027, breaking $100/lb uranium price narrative",
-        "SMR (small modular reactor) deployment delays push beyond 2030 — removes key demand catalyst",
-        "Cameco Cigar Lake/McArthur River face unexpected production disruptions exceeding 10M lbs U3O8"
-      ],
-      "marketCap": 22,
-      "status": "active",
-      "addedDate": "2026-05-04",
-      "addedVersion": "1.0.0",
-      "_changeLog": [
-        {
-          "date": "2026-05-04",
-          "version": "1.0.0",
-          "change": "Initial addition to universe"
-        }
-      ]
-    },
-    {
       "symbol": "OKLO",
       "name": "Oklo Inc.",
       "layer": "L11",
@@ -1300,6 +1274,39 @@
           "date": "2026-05-08",
           "version": "1.6.0",
           "change": "Added to L11 watchlist — NRC-certified SMR, surfaced via discover-candidates.js"
+        }
+      ]
+    },
+    {
+      "symbol": "CCJ",
+      "name": "Cameco Corporation",
+      "layer": "L11_FUEL",
+      "layerRole": "primary",
+      "physicalConstraint": 4,
+      "aiContribution": 0.35,
+      "timeToRealize": "mid",
+      "thesis": "Tier-1 uranium miner + vertically integrated conversion/enrichment + 49% Westinghouse JV — physical feedstock layer for nuclear renaissance driven by AI datacenter baseload demand. McArthur River + Cigar Lake among highest-grade uranium mines globally; decade-plus permitting cycles + Kazatomprom supply concentration creates durable scarcity moat. Technology-agnostic exposure: serves existing L11 fleet (CEG/VST) AND next-gen reactors (OKLO/SMR/X-energy) — all require uranium regardless of reactor architecture winner.",
+      "thesisFalsification": [
+        "Uranium spot price sustains below $60/lb for 4+ consecutive quarters — undermines mine economics and forward contracting power",
+        "Kazatomprom (KAP) fully restores production to 25-26k tU/year nameplate — supply glut compresses pricing",
+        "SMR + AP1000 commercial deployment slips beyond 2030 across major utility customers — terminal demand thesis weakens",
+        "Westinghouse JV faces structural setback at flagship AP1000 site (Vogtle-style cost overrun replicated)",
+        "Forward P/E sustains above 45x — pricing dimension funnel-fail triggers watchlist demotion"
+      ],
+      "marketCap": 22,
+      "status": "active",
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0",
+      "_changeLog": [
+        {
+          "date": "2026-05-04",
+          "version": "1.0.0",
+          "change": "Initial addition to universe as L11 bridge role"
+        },
+        {
+          "date": "2026-05-19",
+          "version": "2.1.0",
+          "change": "Migrated L11 bridge → L11_FUEL primary. New layer L11_FUEL created to disambiguate nuclear fuel feedstock from L11 (reactor operators: CEG/VST/OKLO/SMR) and L13 (fossil fuels: EOG/EQT). Thesis deepened: vertical integration via Westinghouse JV (49%) + technology-agnostic exposure across existing fleet + SMR/AP1000 buildout. Funnel re-eval: PC 5→4 (mining moat strong but Westinghouse downstream integration is contract-based not strictly physical monopoly), AI 0.2→0.35 (2026 nuclear-AI PPA narrative crystallization: MSFT Three Mile Island, Meta nuclear RFP, AWS Talen deal), TTR far→mid (PPA commitments 2025-2030 are near/mid horizon, not far). pricingScore awaits update-valuations.js — Forward P/E ~30x borderline. Adopts B-case per anti-sycophancy correction: prior L_PWR proposal rejected after discovering L11/L12 already cover generation+grid; only true gap was fuel feedstock layer."
         }
       ]
     },
