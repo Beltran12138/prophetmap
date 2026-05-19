@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "version": "2.1.0",
+    "version": "2.1.1",
     "date": "2026-05-19",
     "description": "ProphetMap stock universe — manually-defined static fields only. Dynamic pricing scores written to data/scores/YYYY-MM-DD.json by scripts/update-valuations.js",
     "fieldGuide": {
@@ -426,6 +426,7 @@
       ],
       "marketCap": 18,
       "status": "active",
+      "_note": "Funnel-fail on pricing dimension as of 2026-05-19: pricingScore=3.8 (>3.0 cap), peg=N/A (forward EPS uncertain). Static funnel passes (PC=4/AI=0.85/near) but priced-in narrative requires patience for entry — watch for pricingScore ≤3.0.",
       "addedDate": "2026-05-15",
       "addedVersion": "1.9.0",
       "_changeLog": [
@@ -433,6 +434,11 @@
           "date": "2026-05-15",
           "version": "1.9.0",
           "change": "Added to L3 secondary as CXL pooling layer representative. Distinct sub-thesis from SNPS/CDNS (EDA) — captures CXL retimer interconnect substrate per techflowpost storage layer analysis. Funnel pre-eval: physicalConstraint=4, aiContribution=0.85, timeToRealize=near; pricingScore awaiting live computation by update-valuations.js"
+        },
+        {
+          "date": "2026-05-19",
+          "version": "2.1.1",
+          "change": "Live pricingScore=3.8 funnel-fail. _note added for transparency. Status remains active (thesis intact, awaiting better entry)."
         }
       ]
     },
@@ -530,7 +536,8 @@
         "Foundry margins compress below 25% — capacity oversupply or pricing concessions to anchor customers"
       ],
       "marketCap": 5,
-      "status": "active",
+      "status": "watchlist",
+      "_note": "Triple-fail demotion as of 2026-05-19: PC=3 (below ≥4 funnel cap, known at add time), pricingScore=4.1 (>3.0 cap), peg=7.15 [overpriced]. Original static funnel-fail acknowledged but live valuation confirms unfavorable risk/reward. Re-evaluate if pricing ≤3.0 AND peg <2.5 AND TSMC SiPh foundry positioning weakens further (validating PC upgrade case).",
       "addedDate": "2026-05-15",
       "addedVersion": "2.0.0",
       "_changeLog": [
@@ -538,6 +545,11 @@
           "date": "2026-05-15",
           "version": "2.0.0",
           "change": "Added to L3_5 secondary — silicon photonics foundry indirect exposure to optical superCycle. physicalConstraint=3 (specialty foundry, TSMC/GF can contest), aiContribution=0.50 (SiPh ~15-20% of mix, AI-driven), timeToRealize=mid (2027/28 contract realization). Captures technology-agnostic exposure across pluggable→NPO→CPO without picking laser winner."
+        },
+        {
+          "date": "2026-05-19",
+          "version": "2.1.1",
+          "change": "Demoted active → watchlist. Live pricingScore=4.1 + peg=7.15 + PC=3 triple-fail confirms below-funnel risk/reward. Layer L3_5 retains LIN/APD primaries + ENTG; no thesis gap created by TSEM demotion."
         }
       ]
     },
@@ -1003,6 +1015,7 @@
       ],
       "marketCap": 5,
       "status": "active",
+      "_note": "Conflicting signal as of 2026-05-19: pricingScore=3.7 (>3.0 cap) BUT peg=0.63 [cheap]. Indicates forward EPS growth strong enough to offset rich trailing valuation. Hold active status — peg suggests growth path validates pricing, but flag for review if peg deteriorates above 1.5 or pricingScore exceeds 4.0.",
       "addedDate": "2026-05-15",
       "addedVersion": "2.0.0",
       "_changeLog": [
@@ -1010,6 +1023,11 @@
           "date": "2026-05-15",
           "version": "2.0.0",
           "change": "Added to L8_OPT primary — EML monopoly + NVDA $2B lock-in + CPO external laser optionality. Strongest near-term physical moat in optical layer (vs GLW/COHR mid-term thesis). Funnel pre-eval: physicalConstraint=5, aiContribution=0.80, timeToRealize=near. pricingScore awaiting live computation (Fwd PE ~66x watch threshold)."
+        },
+        {
+          "date": "2026-05-19",
+          "version": "2.1.1",
+          "change": "Live pricingScore=3.7 funnel-fail BUT peg=0.63 cheap — conflicting signal. _note added documenting growth-offset rationale. Status remains active."
         }
       ]
     },
@@ -1294,7 +1312,8 @@
         "Forward P/E sustains above 45x — pricing dimension funnel-fail triggers watchlist demotion"
       ],
       "marketCap": 22,
-      "status": "active",
+      "status": "watchlist",
+      "_note": "Demoted active → watchlist as of 2026-05-19: pricingScore=3.8 (>3.0 cap), peg=1.92 [rich]. Funnel-fail on pricing despite static PC/AI/TTR pass. Buffett-rule observation: uranium narrative priced in ahead of fundamentals — VST pricing=1.7 / CEG pricing=2.0 currently offer cheaper picks-and-shovels nuclear exposure than the fuel feedstock layer. Re-evaluate entry if pricingScore ≤3.0 sustained 5+ days OR uranium spot price retraces below $65/lb.",
       "addedDate": "2026-05-04",
       "addedVersion": "1.0.0",
       "_changeLog": [
@@ -1307,6 +1326,11 @@
           "date": "2026-05-19",
           "version": "2.1.0",
           "change": "Migrated L11 bridge → L11_FUEL primary. New layer L11_FUEL created to disambiguate nuclear fuel feedstock from L11 (reactor operators: CEG/VST/OKLO/SMR) and L13 (fossil fuels: EOG/EQT). Thesis deepened: vertical integration via Westinghouse JV (49%) + technology-agnostic exposure across existing fleet + SMR/AP1000 buildout. Funnel re-eval: PC 5→4 (mining moat strong but Westinghouse downstream integration is contract-based not strictly physical monopoly), AI 0.2→0.35 (2026 nuclear-AI PPA narrative crystallization: MSFT Three Mile Island, Meta nuclear RFP, AWS Talen deal), TTR far→mid (PPA commitments 2025-2030 are near/mid horizon, not far). pricingScore awaits update-valuations.js — Forward P/E ~30x borderline. Adopts B-case per anti-sycophancy correction: prior L_PWR proposal rejected after discovering L11/L12 already cover generation+grid; only true gap was fuel feedstock layer."
+        },
+        {
+          "date": "2026-05-19",
+          "version": "2.1.1",
+          "change": "Live pricingScore=3.8 + peg=1.92 confirms pricing fail. Status demoted active → watchlist same day as migration (pre-migration thesis was already known-borderline). Buffett observation: VST/CEG pricing cheaper than CCJ — narrative-priced rather than fundamental-cheap."
         }
       ]
     },
