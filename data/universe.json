@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "version": "2.1.5",
+    "version": "2.1.6",
     "date": "2026-05-19",
     "description": "ProphetMap stock universe — manually-defined static fields only. Dynamic pricing scores written to data/scores/YYYY-MM-DD.json by scripts/update-valuations.js",
     "fieldGuide": {
@@ -1104,6 +1104,7 @@
       ],
       "marketCap": 8,
       "status": "watchlist",
+      "_note": "Audit-vs-framework gap (2026-05-19): pricingScore=1.8-1.9 sustained 5+ days triggers audit promotion candidate, but static funnel rejects on PC=2 (EPC contractor = labor/buildings, no physical chokepoint). Even optimistic re-eval to PC=3 (hyperscaler EPC lock-in) + AI=0.30 (datacenter share of backlog) + TTR=mid still fails PC<4 cap. Framework discipline holds: pricing-only signal insufficient. Watchlist maintained — informational coverage of hyperscaler construction cycle without active position.",
       "addedDate": "2026-05-04",
       "addedVersion": "1.0.0",
       "_changeLog": [
@@ -1111,6 +1112,11 @@
           "date": "2026-05-04",
           "version": "1.0.0",
           "change": "Initial addition to universe"
+        },
+        {
+          "date": "2026-05-19",
+          "version": "2.1.6",
+          "change": "_note added documenting audit-vs-framework gap. Audit promotes (pricing≤2.5 × 5 days), framework rejects (PC=2 structural fail, no G3-style re-eval headroom unlike CRH which had Q1 disclosure)."
         }
       ]
     },
@@ -1267,7 +1273,7 @@
       ],
       "marketCap": 12,
       "status": "watchlist",
-      "_note": "Expected funnel fail: timeToRealize=far + aiContribution=0.20. Speculative SMR play with regulatory binary outcome. Informational coverage of advanced nuclear timeline.",
+      "_note": "Audit-vs-framework gap (2026-05-19): pricingScore=1.3-1.8 sustained 5+ days (downward trend) triggers audit promotion candidate, but static funnel rejects on AI=0.20<0.30 (pre-revenue, LOI not binding PPA) + TTR=far. Honest re-eval: PC=4 (NRC fast reactor IP+regulatory moat) is defensible upgrade, but AI=0.20 reflects actual pre-revenue state — no LOI converted to PPA, no binding hyperscaler commitment. Framework discipline holds: speculative SMR call option with binary regulatory outcome, not picks-and-shovels.",
       "addedDate": "2026-05-08",
       "addedVersion": "1.6.0",
       "_changeLog": [
@@ -1275,6 +1281,11 @@
           "date": "2026-05-08",
           "version": "1.6.0",
           "change": "Added to L11 watchlist — fast reactor SMR, surfaced via discover-candidates.js"
+        },
+        {
+          "date": "2026-05-19",
+          "version": "2.1.6",
+          "change": "_note expanded with audit-vs-framework gap documentation. Pricing 5-day downward trend (1.8→1.3) signals retail bidding in speculative call option, but framework requires binding PPA or hyperscaler commitment for AI≥0.30 upgrade — not yet present. Watchlist maintained."
         }
       ]
     },
@@ -1295,7 +1306,7 @@
       ],
       "marketCap": 4,
       "status": "watchlist",
-      "_note": "Expected funnel fail: timeToRealize=far + aiContribution=0.20. CFPP cancellation history creates execution risk. Informational coverage of certified SMR commercialization.",
+      "_note": "Audit-vs-framework gap (2026-05-19): pricingScore=2.1-2.4 sustained 5+ days triggers audit promotion, but static funnel rejects on AI=0.20<0.30 + TTR=far. CFPP cancellation history compounds execution risk. Standard Power + RoPower pipeline still LOI-stage not binding. Same reasoning as OKLO: pricing-only signal insufficient, framework requires binding PPA or hyperscaler commitment for upgrade. Watchlist maintained.",
       "addedDate": "2026-05-08",
       "addedVersion": "1.6.0",
       "_changeLog": [
@@ -1303,6 +1314,11 @@
           "date": "2026-05-08",
           "version": "1.6.0",
           "change": "Added to L11 watchlist — NRC-certified SMR, surfaced via discover-candidates.js"
+        },
+        {
+          "date": "2026-05-19",
+          "version": "2.1.6",
+          "change": "_note expanded with audit-vs-framework gap documentation. CFPP cancellation history + LOI-stage customer pipeline keeps AI=0.20 honest. Watchlist maintained."
         }
       ]
     },
@@ -1517,6 +1533,7 @@
       ],
       "marketCap": 5,
       "status": "watchlist",
+      "_note": "Audit-vs-framework gap (2026-05-19): pricingScore=2.1-2.3 sustained 5+ days triggers audit promotion, but static funnel rejects on AI=0.10 (datacenter aluminum <5% of total aluminum demand) + PC=3 (cyclic commodity, no chokepoint). No G3-style re-eval headroom — AI exposure is structurally marginal. Framework discipline holds. Watchlist for informational coverage of aluminum commodity cycle; pure commodity play unrelated to AI thesis core.",
       "addedDate": "2026-05-04",
       "addedVersion": "1.0.0",
       "_changeLog": [
@@ -1524,6 +1541,11 @@
           "date": "2026-05-04",
           "version": "1.0.0",
           "change": "Initial addition to universe"
+        },
+        {
+          "date": "2026-05-19",
+          "version": "2.1.6",
+          "change": "_note added documenting audit-vs-framework gap. AI=0.10 reflects actual datacenter aluminum demand share (<5%); no upgrade path. Watchlist maintained as commodity cycle informational coverage."
         }
       ]
     },
