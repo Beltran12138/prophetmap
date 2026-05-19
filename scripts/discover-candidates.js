@@ -48,33 +48,58 @@ async function getRecommendations(symbol) {
 async function getQuoteBasic(symbol) {
   try {
     const q = await yahooFinance.quote(symbol);
+    let sector = null;
+    let industry = null;
+    let businessSummary = null;
+    try {
+      const sum = await yahooFinance.quoteSummary(symbol, { modules: ['summaryProfile'] });
+      sector = sum?.summaryProfile?.sector || null;
+      industry = sum?.summaryProfile?.industry || null;
+      businessSummary = sum?.summaryProfile?.longBusinessSummary?.slice(0, 600) || null;
+    } catch {
+      // summaryProfile fetch optional — quote alone still returns basic data
+    }
     return {
       symbol,
       name: q?.longName || q?.shortName || symbol,
       price: q?.regularMarketPrice,
       marketCap: q?.marketCap ? Math.round(q.marketCap / 1e9) : null,
-      sector: q?.sector,
-      industry: q?.industry,
+      sector: q?.sector || sector,
+      industry: q?.industry || industry,
+      businessSummary,
     };
   } catch {
     return null;
   }
 }
 
-async function draftThesis(candidate, suggestedLayer, layerDescription) {
+async function draftThesis(candidate, suggestedLayer, layerDescription, quoteContext) {
   if (!ai) return null;
-  const systemMsg = `You are a quantitative equity analyst for an AI supply chain investment framework. Draft a concise investment thesis (2-3 sentences) and exactly 3 falsification signals for the given ticker positioned in the given layer.
+  const systemMsg = `You are a quantitative equity analyst for an AI supply chain investment framework.
+
+STEP 1 — INDUSTRY VERIFICATION (mandatory first step):
+Read the provided industry / sector / businessSummary fields carefully. Identify what the company ACTUALLY does in physical/operational terms. Do NOT rely on the peer-suggested layer hint — that hint comes from a Yahoo Finance peer algorithm which has documented mismatch errors (e.g., classifying FPGA makers as materials suppliers, classifying analog IC vendors as EDA, etc.).
+
+STEP 2 — LAYER CORRECTION:
+Compare the suggested layer description against the verified industry. If they mismatch, output a corrected layer in "correctedLayer" and explain in "correctionReason". If they match, set "correctedLayer" equal to the suggested layer.
+
+STEP 3 — THESIS DRAFTING (only on verified layer):
+Draft a 2-3 sentence forward-looking thesis tied to the CORRECTED layer's role, plus exactly 3 falsification signals (observable, specific events — not generic risks).
+
+STEP 4 — METRIC ESTIMATION:
+Be honest about aiContribution. If the company's revenue is primarily driven by non-AI segments (EV/auto/industrial/consumer), aiContribution should reflect actual AI exposure (likely <0.30), not narrative attachment.
 
 Output strict JSON:
 {
-  "thesis": "<2-3 sentence forward-looking thesis tied to the layer's role>",
+  "industryVerified": "<actual industry per business summary>",
+  "correctedLayer": "<layer id matching verified industry>",
+  "correctionReason": "<why corrected, or 'matches suggested' if no change>",
+  "thesis": "<2-3 sentence thesis tied to correctedLayer>",
   "thesisFalsification": ["<signal 1>", "<signal 2>", "<signal 3>"],
   "estimatedPhysicalConstraint": <1-5>,
   "estimatedAiContribution": <0.0-1.0>,
   "fitConfidence": "<high|medium|low>"
-}
-
-Falsification signals must be observable, specific events that would invalidate the thesis (not generic risks).`;
+}`;
 
   try {
     const response = await ai.models.generateContent({
@@ -83,12 +108,15 @@ Falsification signals must be observable, specific events that would invalidate 
         ticker: candidate,
         suggestedLayer,
         layerDescription,
+        industry: quoteContext?.industry || 'unknown',
+        sector: quoteContext?.sector || 'unknown',
+        businessSummary: quoteContext?.businessSummary || 'unavailable',
       }),
       config: {
         systemInstruction: systemMsg,
         responseMimeType: 'application/json',
         temperature: 0.2,
-        maxOutputTokens: 1200,
+        maxOutputTokens: 1500,
         thinkingConfig: { thinkingBudget: 0 },
       },
     });
@@ -158,7 +186,7 @@ async function main() {
     if (useGemini && layerHints.length > 0) {
       const suggestedLayer = layerHints[0];
       const layerDescription = layerMap[suggestedLayer]?.description || '';
-      thesisDraft = await draftThesis(symbol, suggestedLayer, layerDescription);
+      thesisDraft = await draftThesis(symbol, suggestedLayer, layerDescription, quote);
       await sleep(RATE_LIMIT_MS * 2);
     }
 
@@ -194,7 +222,11 @@ async function main() {
       ...(c.thesisDraft && !c.thesisDraft.error
         ? [
             '',
-            `**Draft thesis** (DeepSeek):`,
+            `**Industry verification**: ${c.thesisDraft.industryVerified ?? '?'}`,
+            `**Corrected layer**: ${c.thesisDraft.correctedLayer ?? '?'} ${c.thesisDraft.correctedLayer && c.layerHints[0] && c.thesisDraft.correctedLayer !== c.layerHints[0] ? '⚠️ (differs from suggested)' : ''}`,
+            `**Correction reason**: ${c.thesisDraft.correctionReason ?? '_n/a_'}`,
+            '',
+            `**Draft thesis** (Gemini, on corrected layer):`,
             `> ${c.thesisDraft.thesis || '_no thesis drafted_'}`,
             '',
             `**Estimated metrics**:`,

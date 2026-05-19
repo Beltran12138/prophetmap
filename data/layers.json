@@ -1,6 +1,6 @@
 {
-  "version": "1.2.0",
-  "lastUpdated": "2026-05-08",
+  "version": "1.3.0",
+  "lastUpdated": "2026-05-19",
   "description": "ProphetMap前沿科技主题层级定义——AI物理供应链(含L5.5 PCB/基板)、具身智能基础设施、太空基础设施",
   "terminationBoundary": 14,
   "chains": {
@@ -452,6 +452,31 @@
         "falsificationSignals": [
           "主要市场核电监管收紧",
           "储能技术突破使间歇性可再生能源可替代核电基荷"
+        ]
+      }
+    },
+    {
+      "id": "L11_FUEL",
+      "name": "核燃料 feedstock 层",
+      "nameEn": "Nuclear Fuel Feedstock",
+      "chain": "B",
+      "position": 11.5,
+      "description": "铀矿+转化+富集+燃料制造——L11 反应堆运营之上游 feedstock 层，技术不可知（servicing existing fleet + SMR/AP1000 新建俱需铀）",
+      "physicalConstraintDesc": "铀矿 7-10 年开发周期 + Kazatomprom 全球供应集中度 + Westinghouse 下游燃料制造 JV——形成跨技术架构的物理 chokepoint",
+      "basePhysicalConstraint": 4,
+      "typicalTimeToRealize": "medium",
+      "status": "active",
+      "isLeadingIndicator": false,
+      "parallel": false,
+      "sublayers": null,
+      "auditCriteria": {
+        "mergeCondition": "与 L11 反应堆运营层相关性>0.85 持续 4 季度且 CCJ 估值与 CEG/VST 同步运动",
+        "splitCondition": "铀矿与下游燃料制造（转化/富集/SWU）形成完全独立投资逻辑",
+        "deleteCondition": "铀现货价格<$50/lb 持续 8 季度且 SMR 全部商业化延期>2030",
+        "falsificationSignals": [
+          "Kazatomprom 完全恢复 25-26k tU/年 nameplate 产能——供给端 glut",
+          "AP1000/SMR 部署集体延期 2030+——终端需求 thesis 失效",
+          "铀矿外资本市场出现可信替代燃料（钍/熔盐反应堆）规模化"
         ]
       }
     },
