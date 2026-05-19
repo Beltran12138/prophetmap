@@ -170,14 +170,19 @@ async function main() {
   }
 
   const universe = JSON.parse(fs.readFileSync(UNIVERSE_PATH, 'utf8'));
-  const activeTickers = universe.tickers.filter((t) => t.status === 'active');
+  const includeWatchlist = process.env.INCLUDE_WATCHLIST === 'true';
+  const tickerPool = includeWatchlist
+    ? universe.tickers.filter((t) => t.status === 'active' || t.status === 'watchlist')
+    : universe.tickers.filter((t) => t.status === 'active');
 
-  console.log(`[ProphetMap] Analyzing signals for ${activeTickers.length} active tickers...`);
+  const activeCount = tickerPool.filter((t) => t.status === 'active').length;
+  const watchlistCount = tickerPool.filter((t) => t.status === 'watchlist').length;
+  console.log(`[ProphetMap] Analyzing signals for ${tickerPool.length} tickers (${activeCount} active${includeWatchlist ? ` + ${watchlistCount} watchlist (informational)` : ''})`);
 
   const alerts = [];
   const critical = [];
 
-  for (const ticker of activeTickers) {
+  for (const ticker of tickerPool) {
     const sym = ticker.symbol;
     process.stdout.write(`  ${sym}... `);
 
@@ -195,6 +200,7 @@ async function main() {
     const entry = {
       symbol: sym,
       layer: ticker.layer,
+      analysisScope: ticker.status,
       thesis: ticker.thesis,
       metrics,
       assessment,
@@ -203,7 +209,8 @@ async function main() {
 
     alerts.push(entry);
 
-    if (assessment?.overallRisk === 'critical' || assessment?.overallRisk === 'high') {
+    // Watchlist tickers: informational only — do NOT create critical issues (not held positions)
+    if (ticker.status === 'active' && (assessment?.overallRisk === 'critical' || assessment?.overallRisk === 'high')) {
       critical.push({ symbol: sym, risk: assessment.overallRisk, watch: assessment.keyWatchItem });
     }
 
