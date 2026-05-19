@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "version": "2.1.4",
+    "version": "2.1.5",
     "date": "2026-05-19",
     "description": "ProphetMap stock universe — manually-defined static fields only. Dynamic pricing scores written to data/scores/YYYY-MM-DD.json by scripts/update-valuations.js",
     "fieldGuide": {
@@ -1979,7 +1979,7 @@
       ],
       "marketCap": 8,
       "status": "watchlist",
-      "_note": "Added 2026-05-19 to new L_DEF layer (Schmidt 框架 White Stork public-equity proxy). Static funnel passes PC=4/AI=0.65/near, but pricing pre-eval forwardPE=39 borderline rich. Status=watchlist pending update-valuations.js live pricingScore + Buffett bad-news risk monitoring (Switchblade wartime dependency). Re-evaluation to active if: pricingScore ≤3.0 sustained 5 days AND no peace agreement signal AND BlueHalo synergies confirmed in Q2 2026 earnings.",
+      "_note": "Added 2026-05-19 to new L_DEF layer (Schmidt 框架 White Stork public-equity proxy). Static funnel passes PC=4/AI=0.65/near. **Live pricingScore=2.8 (PASS, 1st day) + peg=1.57 [rich] (acceptable)** — four-dim funnel pass confirmed same-day as addition. Status=watchlist maintained pending self-imposed entry rules: (1) pricingScore ≤3.0 sustained 5 days (1/5 days complete), (2) no Ukraine/Middle East peace agreement signal (intact), (3) Q2 2026 earnings BlueHalo synergies confirmed (~Aug 2026 await). 2/3 conditions met; advancing through framework discipline rather than premature promotion.",
       "addedDate": "2026-05-19",
       "addedVersion": "2.1.4",
       "_changeLog": [
@@ -1987,6 +1987,11 @@
           "date": "2026-05-19",
           "version": "2.1.4",
           "change": "Added as L_DEF primary — new layer for defense AI per three-philosophies framing (Schmidt path). Tactical drone + loitering munitions thesis. Funnel pre-eval: PC=4/AI=0.65/near. Status=watchlist pending pricing verification. Sourced via FF manual screen (peer algo did not surface — defense AI is framework blind spot for Yahoo recommendations)."
+        },
+        {
+          "date": "2026-05-19",
+          "version": "2.1.5",
+          "change": "Live valuation run: pricingScore=2.8 (PASS) + peg=1.57 [rich, acceptable]. Four-dim funnel pass confirmed same day as addition (PC=4/AI=0.65/TTR=near/pricing=2.8). Status remains watchlist per self-imposed _note entry rules (5-day sustained + Q2 synergies)—framework discipline over single-day funnel pass."
         }
       ]
     },
@@ -2007,7 +2012,7 @@
       ],
       "marketCap": 10,
       "status": "watchlist",
-      "_note": "Added 2026-05-19 to L_DEF secondary. Static funnel passes PC=4/AI=0.70/mid but pricing pre-eval forwardPE=49 likely funnel-fail on live pricingScore. Status=watchlist; entry triggers: pricingScore ≤3.0 AND CCA program design win for Valkyrie confirmed in DoD contract announcement.",
+      "_note": "Added 2026-05-19 to L_DEF secondary. Static funnel passes PC=4/AI=0.70/mid. **Live pricingScore=3.0 (borderline PASS) BUT peg=36.41 [SEVERELY OVERPRICED]** — pricing metric passes mechanically but peg signals growth-not-justified valuation. This is a stronger cautionary signal than original forwardPE=49 pre-eval suggested. Status=watchlist; entry triggers tightened: pricingScore ≤3.0 sustained 5 days AND peg <5.0 AND CCA program design win confirmed in DoD contract announcement. Re-evaluation horizon: 2026 Q3 or peg compression event.",
       "addedDate": "2026-05-19",
       "addedVersion": "2.1.4",
       "_changeLog": [
@@ -2015,6 +2020,11 @@
           "date": "2026-05-19",
           "version": "2.1.4",
           "change": "Added as L_DEF secondary — strategic autonomous combat aircraft + hypersonics testbed. Complements AVAV (tactical) with longer-cycle CCA program exposure. Funnel pre-eval: PC=4/AI=0.70/mid. Pricing likely fail (fwdPE 49). Sourced via FF manual screen."
+        },
+        {
+          "date": "2026-05-19",
+          "version": "2.1.5",
+          "change": "Live valuation run: pricingScore=3.0 (borderline PASS) but peg=36.41 [severely overpriced]. Mechanical funnel pass on pricing dimension but peg signals growth not justifying valuation — stronger cautionary than original forwardPE=49 pre-eval. _note entry triggers tightened: added peg <5.0 requirement alongside existing pricingScore + CCA design win conditions. Status remains watchlist."
         }
       ]
     }
