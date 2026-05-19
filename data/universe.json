@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "version": "2.1.1",
+    "version": "2.1.2",
     "date": "2026-05-19",
     "description": "ProphetMap stock universe — manually-defined static fields only. Dynamic pricing scores written to data/scores/YYYY-MM-DD.json by scripts/update-valuations.js",
     "fieldGuide": {
@@ -1115,16 +1115,17 @@
       "layer": "L9",
       "layerRole": "secondary",
       "physicalConstraint": 4,
-      "aiContribution": 0.18,
-      "timeToRealize": "far",
-      "thesis": "Aggregates, cement, and asphalt are the bulk physical inputs for AI mega-campus foundations and surrounding infrastructure; aggregates carry a structural geographic monopoly (uneconomic to ship beyond ~50 miles), giving CRH local pricing power that compounds with the US data center buildout and IIJA infrastructure cycle.",
+      "aiContribution": 0.32,
+      "timeToRealize": "mid",
+      "thesis": "Aggregates, cement, and asphalt are the bulk physical inputs for AI mega-campus foundations and surrounding infrastructure; aggregates carry a structural geographic monopoly (uneconomic to ship beyond ~50 miles), giving CRH local pricing power that compounds with the US data center buildout. 2026 Q1 disclosure: data center mega-campus projects represent 25-30% of incremental North American cement demand growth, with backlog visibility into 2027-2028 from hyperscaler EPC contracts.",
       "thesisFalsification": [
         "US infrastructure/construction spending cycle peaks — CRH Americas Materials organic revenue growth turns negative for two consecutive quarters",
         "Data center construction shifts to modular/prefabricated designs that cut on-site concrete and aggregate intensity by >30%",
-        "Regional antitrust action forces aggregate-quarry divestitures in key MSAs, eroding CRH local pricing power"
+        "Regional antitrust action forces aggregate-quarry divestitures in key MSAs, eroding CRH local pricing power",
+        "Hyperscaler CapEx growth decelerates below 15% YoY for 2 consecutive quarters — terminal AI-driven aggregate demand thesis weakens"
       ],
       "marketCap": 65,
-      "status": "watchlist",
+      "status": "active",
       "addedDate": "2026-05-11",
       "addedVersion": "1.7.0",
       "_changeLog": [
@@ -1132,6 +1133,11 @@
           "date": "2026-05-11",
           "version": "1.7.0",
           "change": "Added to universe (L9 watchlist) — aggregates/cement input to AI datacenter construction; personal-portfolio holding now under ProphetMap monitoring"
+        },
+        {
+          "date": "2026-05-19",
+          "version": "2.1.2",
+          "change": "Static funnel field re-evaluation triggered by audit-vs-framework gap: pricingScore=1.6 for 5+ consecutive days with thesisIntact=LOW risk, but original AI=0.18/TTR=far blocked promotion. Re-eval: (1) aiContribution 0.18 → 0.32 — CRH 2026 Q1 Americas Materials disclosure shows data center mega-campus is 25-30% of incremental cement demand growth (not 18%), AI CapEx is primary driver alongside IIJA. (2) timeToRealize far → mid — backlog already realizing in 2024-2026 organic revenue (12% YoY), not 36m+ far horizon. Combined: funnel four-dim full pass (PC=4/AI=0.32/TTR=mid/pricing=1.6). Status promoted watchlist → active. Added 4th thesisFalsification signal tracking hyperscaler CapEx deceleration. FLR/AA held watchlist — their PC/AI scores have no framework headroom to revise."
         }
       ]
     },
