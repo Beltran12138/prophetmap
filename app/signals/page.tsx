@@ -18,7 +18,7 @@ const PROXIMITY_COLOR: Record<number, string> = {
 
 function AlertCard({ entry }: { entry: AlertEntry }) {
   const a = entry.assessment;
-  // Skip null assessments and error-only assessments (DeepSeek JSON parse failures)
+  // Skip null assessments and error-only assessments (Gemini JSON parse failures)
   if (!a || !('overallRisk' in a) || !a.overallRisk) return null;
   const rColor = riskColor(a.overallRisk);
   const confirmedCount = a.signals?.filter((s) => s.proximity === 3).length ?? 0;
@@ -164,7 +164,7 @@ export default function SignalsPage() {
         <div>
           <div style={{ fontSize: 22, fontWeight: 700, color: '#f8fafc' }}>Thesis Signal Feed</div>
           <div style={{ fontSize: 12, color: '#475569', marginTop: 2 }}>
-            {alerts.date} · {alerts.totalAnalyzed} tickers analyzed · DeepSeek V4 Flash
+            {alerts.date} · {alerts.totalAnalyzed} tickers analyzed · Gemini 2.5 Flash
           </div>
         </div>
         <div style={{ display: 'flex', gap: 16, marginLeft: 'auto' }}>
