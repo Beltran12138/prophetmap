@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "version": "2.1.7",
+    "version": "2.1.8",
     "date": "2026-05-20",
     "description": "ProphetMap stock universe — manually-defined static fields only. Dynamic pricing scores written to data/scores/YYYY-MM-DD.json by scripts/update-valuations.js",
     "fieldGuide": {
@@ -1229,7 +1229,8 @@
       "thesisFalsification": [
         "Grid-scale battery storage achieves <$60/kWh installed cost by 2027, eliminating nuclear baseload premium",
         "NRC relicensing process for Constellation plants delayed beyond 36 months",
-        "Hyperscalers abandon 24/7 CFE commitments — spot power contracts replace long-term nuclear PPAs"
+        "Hyperscalers abandon 24/7 CFE commitments — spot power contracts replace long-term nuclear PPAs",
+        "Utility scarcity narrative breaks: Berkshire (BHE) or other Tier-1 IOU publicly discloses peak load capacity remains underutilized + hyperscaler PPA signing pace lags utility capex growth for 2 consecutive quarters — Greg Abel 2026-05-03 'energy demand still far below peak load capacity' statement provides anchor; CEG peg=3.74 [overpriced] suggests scarcity narrative may be priced beyond fundamentals"
       ],
       "marketCap": 75,
       "status": "active",
@@ -1240,6 +1241,11 @@
           "date": "2026-05-04",
           "version": "1.0.0",
           "change": "Initial addition to universe"
+        },
+        {
+          "date": "2026-05-20",
+          "version": "2.1.8",
+          "change": "Added thesisFalsification signal per JJJ: utility scarcity narrative break trigger anchored to Berkshire/Abel 2026-05-03 'peak load underutilized' statement + current CEG peg=3.74 overpriced signal. Monitors whether market-priced scarcity premium aligns with disclosed utility capacity reality."
         }
       ]
     },
@@ -1255,7 +1261,8 @@
       "thesisFalsification": [
         "New Texas wind/solar additions (20GW by 2026) suppress ERCOT power prices below $35/MWh average",
         "Texas Governor signs legislation capping merchant power prices — removes ERCOT scarcity pricing",
-        "Vistra's Illinois nuclear plants face stranded asset risk as Illinois grid becomes oversupplied"
+        "Vistra's Illinois nuclear plants face stranded asset risk as Illinois grid becomes oversupplied",
+        "Utility scarcity narrative breaks: ERCOT load forecast revised downward >15% OR Berkshire/Abel-style disclosure of underutilized peak capacity proves Texas tightness was temporary — IPP merchant scarcity premium compresses"
       ],
       "marketCap": 30,
       "status": "active",
@@ -1266,6 +1273,11 @@
           "date": "2026-05-04",
           "version": "1.0.0",
           "change": "Initial addition to universe"
+        },
+        {
+          "date": "2026-05-20",
+          "version": "2.1.8",
+          "change": "Added thesisFalsification signal per JJJ: utility scarcity narrative break anchored to Berkshire/Abel 2026-05-03 statement. VST currently pricing=1.7 fair (cheaper than CEG) so scarcity-priced-in risk lower, but trigger consistent across L11 layer."
         }
       ]
     },
