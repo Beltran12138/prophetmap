@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "version": "2.1.8",
-    "date": "2026-05-20",
+    "version": "2.2.0",
+    "date": "2026-05-26",
     "description": "ProphetMap stock universe — manually-defined static fields only. Dynamic pricing scores written to data/scores/YYYY-MM-DD.json by scripts/update-valuations.js",
     "fieldGuide": {
       "physicalConstraint": "1=pure software, 5=hard physical monopoly with multi-year lead times",
@@ -2072,6 +2072,146 @@
           "date": "2026-05-19",
           "version": "2.1.5",
           "change": "Live valuation run: pricingScore=3.0 (borderline PASS) but peg=36.41 [severely overpriced]. Mechanical funnel pass on pricing dimension but peg signals growth not justifying valuation — stronger cautionary than original forwardPE=49 pre-eval. _note entry triggers tightened: added peg <5.0 requirement alongside existing pricingScore + CCA design win conditions. Status remains watchlist."
+        }
+      ]
+    },
+    {
+      "symbol": "APLD",
+      "name": "Applied Digital",
+      "layer": "L9_MINER_CONVERT",
+      "layerRole": "primary",
+      "physicalConstraint": 5,
+      "aiContribution": 0.55,
+      "timeToRealize": "near",
+      "thesis": "Crypto miner → AI HPC hosting pivot most advanced in cohort. Polaris Forge North Dakota campus repurposes existing power+land+grid interconnect (18-36m new-build moat) into hyperscaler-class AI data center. CoreWeave 15-year ~250MW lease signed + Macquarie Asset Management strategic ~$5B. PC=5 reflects power PPA + land permit + interconnect queue triple-independence — three constraints 2026+ greenfield data center cannot replicate.",
+      "thesisFalsification": [
+        "CoreWeave or future hyperscaler anchor renegotiates PPA/lease economics down >25%",
+        "North Dakota state PUC reopens PPA review on grid-mix grounds, raises power cost >30%",
+        "Macquarie strategic terms reveal hidden equity dilution beyond disclosed levels",
+        "Bitcoin price >$150K sustained 6 months — mining margin > AI HPC margin, pivot economics reverse"
+      ],
+      "marketCap": 4,
+      "status": "watchlist",
+      "_note": "Added 2026-05-26 as L9_MINER_CONVERT primary — leader of crypto-miner-to-AI-HPC pivot cohort. Per [[portfolio_decisions_2026Q2]] memory: Leopold/SAC narrative warning, 2025 ran +200%~+1000%, default watchlist not active. Entry triggers: pricingScore ≤3.0 sustained 5 days AND CoreWeave Polaris Forge Phase 1 energized AND peg <2.0. Re-evaluation horizon: 2026 Q4 earnings. Funnel pre-eval: PC=5/AI=0.55/near — pricing dimension TBD by next update-valuations run.",
+      "addedDate": "2026-05-26",
+      "addedVersion": "2.2.0",
+      "_changeLog": [
+        {
+          "date": "2026-05-26",
+          "version": "2.2.0",
+          "change": "Added as L9_MINER_CONVERT primary — new sublayer for crypto miners pivoting to AI data center hosting. Sourced via inspired-loop guard (Meng Xing essay 2026-05-26) — default watchlist per portfolio_decisions_2026Q2. Static funnel pass PC=5/AI=0.55/near; pricing TBD."
+        }
+      ]
+    },
+    {
+      "symbol": "CIFR",
+      "name": "Cipher Mining",
+      "layer": "L9_MINER_CONVERT",
+      "layerRole": "primary",
+      "physicalConstraint": 5,
+      "aiContribution": 0.45,
+      "timeToRealize": "near",
+      "thesis": "Bitcoin miner with executed HPC pivot via Fluidstack ~200MW Barber Lake Texas lease (Stargate-adjacent capacity). Block, Inc. strategic equity investment ratifies AI infrastructure trajectory. Texas ERCOT power base + signed interconnect + long-term land lease = physical bottleneck arbitrage 36-month greenfield cannot replicate. AI=0.45 reflects partial pivot — Bitcoin mining cash flow retained as bridge financing while HPC ramps.",
+      "thesisFalsification": [
+        "Fluidstack 200MW lease cancellation or material renegotiation — primary AI anchor disappears",
+        "ERCOT or Texas PUC reopens Barber Lake PPA on grid stability grounds, raises power cost >25%",
+        "Block strategic investor exits or marks down position — credibility signal reverses",
+        "Stargate program scope reduction strands Fluidstack downstream capacity allocations"
+      ],
+      "marketCap": 3,
+      "status": "watchlist",
+      "_note": "Added 2026-05-26 as L9_MINER_CONVERT primary alongside APLD. Per [[portfolio_decisions_2026Q2]]: default watchlist, prior 12m run priced in much of pivot narrative. Entry triggers: pricingScore ≤3.0 sustained 5 days AND Fluidstack Barber Lake Phase 1 capacity online AND peg <2.0. Funnel pre-eval: PC=5/AI=0.45/near.",
+      "addedDate": "2026-05-26",
+      "addedVersion": "2.2.0",
+      "_changeLog": [
+        {
+          "date": "2026-05-26",
+          "version": "2.2.0",
+          "change": "Added as L9_MINER_CONVERT primary — Cipher Mining with executed Fluidstack 200MW Stargate-adjacent HPC pivot. Block strategic investor. Funnel pre-eval PC=5/AI=0.45/near; pricing TBD."
+        }
+      ]
+    },
+    {
+      "symbol": "IREN",
+      "name": "IREN Limited",
+      "layer": "L9_MINER_CONVERT",
+      "layerRole": "secondary",
+      "physicalConstraint": 4,
+      "aiContribution": 0.35,
+      "timeToRealize": "mid",
+      "thesis": "Australian-listed bitcoin miner with Childress Texas 750MW site partially converting to AI HPC + colocation. Microsoft multi-year AI cloud arrangement provides anchor demand validation. AI=0.35 reflects mid-stage pivot — significant mining footprint retained while AI capacity ramps gradually through 2026-2027. PC=4 (vs 5 for APLD/CIFR) because Childress conversion is incremental rather than dedicated greenfield AI build.",
+      "thesisFalsification": [
+        "Microsoft AI cloud arrangement scope reduced or rolled into broader hyperscaler procurement (CIFR/CRWV substitution)",
+        "Childress Texas conversion ramp slips beyond 2027 — competitive AI HPC supply catches up, pivot window closes",
+        "GPU allocation gap — NVDA Hopper/Blackwell priority queue places IREN behind dedicated AI clouds (CRWV/Lambda)",
+        "Australian ASX-listing capital structure friction forces sub-optimal US AI capex financing"
+      ],
+      "marketCap": 4,
+      "status": "watchlist",
+      "_note": "Added 2026-05-26 as L9_MINER_CONVERT secondary. Lower confidence vs APLD/CIFR — partial pivot, larger residual mining mix, ASX-listing capital structure friction. Per [[portfolio_decisions_2026Q2]]: default watchlist. Entry triggers: pricingScore ≤3.0 sustained 5 days AND AI revenue >50% of forward 12m guidance AND peg <2.0. Funnel pre-eval: PC=4/AI=0.35/mid.",
+      "addedDate": "2026-05-26",
+      "addedVersion": "2.2.0",
+      "_changeLog": [
+        {
+          "date": "2026-05-26",
+          "version": "2.2.0",
+          "change": "Added as L9_MINER_CONVERT secondary — IREN Childress Texas conversion + Microsoft anchor. Lower PC=4 reflects incremental pivot vs APLD/CIFR dedicated. Funnel pre-eval PC=4/AI=0.35/mid."
+        }
+      ]
+    },
+    {
+      "symbol": "WULF",
+      "name": "TeraWulf",
+      "layer": "L9_MINER_CONVERT",
+      "layerRole": "primary",
+      "physicalConstraint": 5,
+      "aiContribution": 0.45,
+      "timeToRealize": "near",
+      "thesis": "Bitcoin miner with Lake Mariner New York site nuclear-adjacent grid baseload + Google debt backstop validates AI infrastructure trajectory. Core42 / Fluidstack HPC lease executed. PC=5 reflects nuclear-adjacent power purchase (rare clean baseload at scale) + Google credit support (cost of capital advantage over peers) + signed long-term anchor lease. AI=0.45 reflects measured pivot with mining cash flow bridge.",
+      "thesisFalsification": [
+        "Google debt backstop withdrawn or terms materially renegotiated — capital structure advantage erodes",
+        "Core42/Fluidstack lease cancellation — primary AI anchor capacity strands",
+        "Lake Mariner nuclear-adjacent PPA renegotiated by New York PSC on grid stability or rate-payer grounds",
+        "Constellation/Vistra direct hyperscaler deals bypass miner-converts entirely — utility disintermediates"
+      ],
+      "marketCap": 3,
+      "status": "watchlist",
+      "_note": "Added 2026-05-26 as L9_MINER_CONVERT primary. Differentiator vs APLD/CIFR: nuclear-adjacent baseload + Google credit support (cost-of-capital arbitrage). Per [[portfolio_decisions_2026Q2]]: default watchlist. Entry triggers: pricingScore ≤3.0 sustained 5 days AND Core42 capacity milestone confirmed AND peg <2.0. Funnel pre-eval: PC=5/AI=0.45/near.",
+      "addedDate": "2026-05-26",
+      "addedVersion": "2.2.0",
+      "_changeLog": [
+        {
+          "date": "2026-05-26",
+          "version": "2.2.0",
+          "change": "Added as L9_MINER_CONVERT primary — TeraWulf with nuclear-adjacent grid + Google debt backstop + Core42 lease. Differentiator vs APLD/CIFR is cost-of-capital arbitrage via Google credit. Funnel pre-eval PC=5/AI=0.45/near."
+        }
+      ]
+    },
+    {
+      "symbol": "HUT",
+      "name": "Hut 8",
+      "layer": "L9_MINER_CONVERT",
+      "layerRole": "secondary",
+      "physicalConstraint": 4,
+      "aiContribution": 0.3,
+      "timeToRealize": "mid",
+      "thesis": "Diversified mining + Highrise compute partnership for AI HPC at Vega Texas site. AI=0.30 at funnel threshold — pivot less concentrated than APLD/CIFR/WULF, broader business mix including USBTC merger residual + retail-style operations. PC=4 reflects multi-site diversified portfolio without single dedicated AI conversion event of APLD/CIFR scale.",
+      "thesisFalsification": [
+        "Highrise compute partnership scope reduced or terms renegotiated — primary AI anchor degrades",
+        "AI revenue mix fails to cross 35% of total revenue by 2027 — pivot stalls, AI thesis dilutes",
+        "Vega Texas site interconnect or PPA reopens — AI economics compress vs APLD/CIFR peers",
+        "Bitcoin price >$150K sustained 6 months — diversified business defaults back to mining, AI optionality wasted"
+      ],
+      "marketCap": 2,
+      "status": "watchlist",
+      "_note": "Added 2026-05-26 as L9_MINER_CONVERT secondary — Hut 8 at funnel-pass threshold (AI=0.30 borderline). Weakest of cohort due to diversified mining-heavy mix. Per [[portfolio_decisions_2026Q2]]: default watchlist with elevated bar. Entry triggers: pricingScore ≤3.0 sustained 5 days AND Highrise AI revenue mix >35% of total AND peg <1.5. Funnel pre-eval: PC=4/AI=0.30/mid — borderline AI dimension.",
+      "addedDate": "2026-05-26",
+      "addedVersion": "2.2.0",
+      "_changeLog": [
+        {
+          "date": "2026-05-26",
+          "version": "2.2.0",
+          "change": "Added as L9_MINER_CONVERT secondary — Hut 8 with Highrise compute partnership. Weakest cohort confidence (AI=0.30 borderline, diversified mining-heavy). Funnel pre-eval PC=4/AI=0.30/mid."
         }
       ]
     }
