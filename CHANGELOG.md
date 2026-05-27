@@ -4,6 +4,50 @@ All notable universe / layers / framework changes, dated.
 
 ---
 
+## 2026-05-27 — INTC Added to L5 Secondary + MU "National-Champion" Falsification
+
+Inspired by sell-side analyst raising MU PT from $535 to $1,625 (2.65× consensus PT $613) and Trump-administration semiconductor narrative. User proposed "US 国运股" framing — INTC唯一替代 TSM, MU唯一替代三星海力士. Framework explicitly REJECTS pricing-immunity grant. Universe `v2.2.1 → v2.2.2`. Net: **+1 new ticker (INTC L5 secondary), +2 thesisFalsification signals on MU, no portfolio motion**.
+
+### Framework reaffirmation (no v0.7 reversal)
+
+Same structural rejection as 2026-05-26 NVDA permanent-core elevation: "national champion" thesis is a faith-statement absent falsification conditions. Encoded into framework via:
+- Thesis enters universe via standard ticker add (INTC) — runs daily funnel like every other ticker
+- "National-champion" risk encoded as testable falsification signals on both MU and INTC (CHIPS Act delay/rescission; competitor US-fab ramp)
+- NO override on pricingScore, NO pricing-immune bucket. Same logic that rejected NVDA permanent-core also rejects MU/INTC permanent-core.
+
+### v2.2.2 — INTC Initial Add + MU Thesis Hardening
+
+**INTC** (Intel) added to L5 secondary:
+- `physicalConstraint: 4` (advanced packaging + 18A foundry capacity is real capital infrastructure)
+- `aiContribution: 0.30` (border — Gaudi failed, but 18A external customer pipeline + AI-related foundry contracts pending)
+- `timeToRealize: mid` (18A commercial ramp 2026-27)
+- `layerRole: secondary` — TSM remains L5 primary because TSM Arizona fab is already producing N4, scheduled N3 by 2025, N2 by 2027. The "INTC唯一替代 TSM" framing is contradicted by current TSM Arizona output.
+- 5 thesisFalsification signals: 18A yield gate, foundry external revenue floor, server CPU share decline, gross margin recovery, CHIPS Act rescission (shared signal with MU).
+- Expected funnel outcome: FAIL on momentum/pricing dimensions when scored. Active status ≠ portfolio motion — universe entry only.
+
+**MU** (Micron) thesisFalsification expanded:
+- **+1**: CHIPS Act funding delayed/rescinded under Trump 2.0 (signal: Boise or Clay NY grant disbursement >12mo behind schedule). Shared with INTC.
+- **+1**: Samsung Taylor TX + SK Hynix Indiana achieve >$3B combined US-domiciled memory revenue by C2027 — "only US alternative to Korean memory duopoly" framing invalidated on facts.
+
+### Current funnel state (no change from 2026-05-26 scoring)
+
+| Ticker | pricingScore | Consensus upside | mom6m | funnel |
+|---|---|---|---|---|
+| NVDA | 2.3 | +37% | +15.5% | ✅ PASS |
+| AVGO | 2.9 | +16% | +19.7% | ✅ PASS |
+| TSM | 2.8 | +16% | +33.1% | ✅ PASS |
+| MU | 3.7 | −18% | +163% | ❌ FAIL |
+
+If user's "US semiconductor national-champion" thesis is valid, framework already surfaces three better captures (NVDA, AVGO, TSM) — all funnel-PASS — over MU/INTC (both expected funnel-FAIL on entry).
+
+### Inspired-loop guard
+
+Per `feedback_inspired_loop.md` memory: 24h pause from sell-side report reading (2026-05-27 morning) before portfolio motion. This commit is universe maintenance + thesis hardening, NOT portfolio entry.
+
+**Universe state:** 79 tickers, v2.2.2, active 48 / watchlist 29 / experimental 2.
+
+---
+
 ## 2026-05-26 (afternoon) — ORCL thesisFalsification Response
 
 Same-day discipline response to Gemini signal analysis result. Universe `v2.2.0 → v2.2.1`.

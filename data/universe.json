@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "version": "2.2.1",
-    "date": "2026-05-26",
+    "version": "2.2.2",
+    "date": "2026-05-27",
     "description": "ProphetMap stock universe — manually-defined static fields only. Dynamic pricing scores written to data/scores/YYYY-MM-DD.json by scripts/update-valuations.js",
     "fieldGuide": {
       "physicalConstraint": "1=pure software, 5=hard physical monopoly with multi-year lead times",
@@ -759,7 +759,9 @@
       "thesisFalsification": [
         "HBM capacity overbuild in 2026 — SK Hynix/Samsung/Micron collectively deliver >30% more HBM than demand",
         "DDR5 commodity DRAM ASPs collapse below $4/GB, dragging blended margins below 30%",
-        "HBM4 spec requires new tool investment beyond Micron's current 1β node capability"
+        "HBM4 spec requires new tool investment beyond Micron's current 1β node capability",
+        "CHIPS Act funding delayed or partially rescinded under Trump 2.0 — national-champion floor thesis breaks (signal: Boise or Clay NY grant disbursement >12mo behind original schedule)",
+        "Samsung Taylor TX + SK Hynix Indiana achieve >$3B combined US-domiciled memory revenue by C2027 — 'only US alternative to Korean memory duopoly' framing invalidated"
       ],
       "marketCap": 120,
       "status": "active",
@@ -770,6 +772,40 @@
           "date": "2026-05-04",
           "version": "1.0.0",
           "change": "Initial addition to universe"
+        },
+        {
+          "date": "2026-05-27",
+          "version": "2.2.2",
+          "change": "Added two thesisFalsification signals for 'US national-champion memory' thesis (CHIPS Act delay; Samsung TX + Hynix Indiana US-fab ramp). Triggered by 2026-05-27 user-proposed 'US 国运股 = MU' framing — framework rejects pricing-immunity but encodes thesis as testable via falsification layer per ALAB/KTOS precedent. Status unchanged (active). Current pricingScore 3.7 FAILS funnel; no portfolio motion."
+        }
+      ]
+    },
+    {
+      "symbol": "INTC",
+      "name": "Intel",
+      "layer": "L5",
+      "layerRole": "secondary",
+      "physicalConstraint": 4,
+      "aiContribution": 0.3,
+      "timeToRealize": "mid",
+      "thesis": "Sole US-domiciled leading-edge logic foundry candidate — 18A node with backside power (PowerVia) + RibbonFET could pull external customers (MSFT, GOOG announced) if yield reaches commercial gate. National-champion thesis: CHIPS Act $8.5B grant + Sec110 + tariff regime favors INTC as TSM-Arizona supplement and onshore IDM hedge",
+      "thesisFalsification": [
+        "18A node yield reaches <50% at C2026 H2 commercial-ramp gate — foundry external customer pipeline collapses",
+        "Foundry external customer revenue <$2B by C2026E (vs internal $10B+ implied target for 2027) — IFS strategy structurally fails",
+        "Server CPU market share continues declining vs AMD + ARM by >5pp/year through C2026 — core CPU business unable to fund foundry capex",
+        "Gross margin remains below 45% through 2026 — capex burden (>$25B/yr) without scale margin recovery forces equity raise or capex cut",
+        "Trump administration revokes or restructures CHIPS Act disbursements — national-champion floor thesis breaks (same signal applies to MU)"
+      ],
+      "marketCap": 95,
+      "status": "active",
+      "addedDate": "2026-05-27",
+      "addedVersion": "2.2.2",
+      "_note": "Added to universe 2026-05-27 in response to user-proposed 'US 国运股 = INTC 替代 TSM' framing. Framework rejects pricing-immunity grant; INTC enters universe to run through funnel like any other ticker. Expected funnel result: FAIL on multiple dimensions — momentum already elevated post-Trump tariff narrative, foundry external revenue still pre-commercial. Active status means it gets scored daily; entry into portfolio universe ≠ portfolio motion. layerRole=secondary because TSM remains L5 primary (Arizona fab now producing N4, N3 by 2025, N2 by 2027 — undercutting the 'INTC唯一替代' framing on facts). Cross-implication with MU: both share Trump-administration policy-risk falsification signal; if CHIPS Act rescinds, both thesisFalsifications fire simultaneously.",
+      "_changeLog": [
+        {
+          "date": "2026-05-27",
+          "version": "2.2.2",
+          "change": "Initial addition to L5 secondary — US national-champion foundry thesis enters universe to run funnel; framework rejects pricing-immunity grant"
         }
       ]
     },
