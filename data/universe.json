@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "version": "2.2.2",
+    "version": "2.2.3",
     "date": "2026-05-27",
     "description": "ProphetMap stock universe — manually-defined static fields only. Dynamic pricing scores written to data/scores/YYYY-MM-DD.json by scripts/update-valuations.js",
     "fieldGuide": {
@@ -243,18 +243,27 @@
       "thesisFalsification": [
         "G42 customer concentration (~85% of revenue) materially reduces — either by diversification toward >50% non-G42 or by CFIUS-driven customer loss",
         "FY26 revenue exceeds $1B (vs FY24 $78M), validating scale-out beyond single-customer order book",
-        "Stock price reverts below $100 (P/S compresses below 30x) post-lockup unwind, opening reasonable entry"
+        "Stock price reverts below $100 (P/S compresses below 30x) post-lockup unwind, opening reasonable entry",
+        "Gross margin remains negative or below 10% through C2027 — 2025 economics (Groq-comparable peer: revenue ~$40M / cost ~$60M, GM -50%) suggest SRAM-route unit economics unviable absent VC subsidy",
+        "AWS Trainium + Cerebras disaggregated inference integration stalls or fails to reach production deployment by C2026 H2 — strategic moat (heterogeneous-inference role) collapses",
+        "NVDA Rubin + LPX system (post-Groq acquisition) achieves >800 tok/s in production at competitive TCO — token-speed differentiation collapses for all SRAM-route startups",
+        "HBM4 (22TB/s+ per stack) closes SRAM bandwidth advantage to <5x by 2027 — long-term moat erodes as SRAM scaling plateaus on advanced nodes (N5 → N3E SRAM cell shrink near zero)"
       ],
       "marketCap": 95,
       "status": "watchlist",
       "addedDate": "2026-05-15",
       "addedVersion": "1.8.0",
-      "watchlistReason": "IPO 2026-05-14 priced $185 → closed $311 (+68%) → fully-diluted ~$95B vs FY24 revenue $78M → P/S >1000x (pricingScore funnel-fail). G42 single-customer dependency ~85% unmitigated. NVDA CUDA moat unbroken. Indirect exposure already captured via AMKR/TSM/MU. Re-evaluate when (a) price <$100 OR (b) FY26 revenue >$1B OR (c) G42 dependency <50%. Lockup expiry watch ~2026-11-14.",
+      "watchlistReason": "IPO 2026-05-14 priced $185 → closed $311 (+68%) → fully-diluted ~$95B vs FY24 revenue $78M → P/S >1000x (pricingScore funnel-fail). G42 single-customer dependency ~85% unmitigated. NVDA CUDA moat unbroken. Indirect exposure already captured via AMKR/TSM/MU. Re-evaluate when (a) price <$100 OR (b) FY26 revenue >$1B OR (c) G42 dependency <50%. Lockup expiry watch ~2026-11-14. 2026-05-27 update: heterogeneous-inference essay re-confirms watchlist verdict — NVDA system-level integration (Rubin+LPX, post-Groq acquisition) raises competitive bar; CBRS economic viability hinges on AWS Trainium disaggregated-inference partnership maturing into production deployment, not on standalone full-stack play. Essay-derived falsification signals appended below (4 new).",
       "_changeLog": [
         {
           "date": "2026-05-15",
           "version": "1.8.0",
           "change": "Added to L2 watchlist post-IPO. Status=watch — pricing funnel-fail (P/S >1000x), G42 concentration risk, indirect coverage via AMKR/TSM/MU adequate. Per framework v1.6 IPO 首日不建仓 principle."
+        },
+        {
+          "date": "2026-05-27",
+          "version": "2.2.3",
+          "change": "thesisFalsification +4 signals from heterogeneous-inference essay deconstruction (GM viability / AWS Trainium integration / NVDA Rubin+LPX competition / HBM4 bandwidth convergence). 4th inspired-loop trigger in 48h window; framework reaffirms watchlist (no entry). Status unchanged. Lockup expiry watch remains 2026-11-14."
         }
       ]
     },
