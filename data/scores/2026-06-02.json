@@ -1,0 +1,3486 @@
+{
+  "date": "2026-06-02",
+  "spy6mReturn": 9.7,
+  "funnelPassCount": 10,
+  "totalFetched": 80,
+  "errors": [
+    {
+      "symbol": "RNDR",
+      "error": "Quote not found for symbol: RNDR"
+    },
+    {
+      "symbol": "TAO",
+      "error": "No fundamentals data found for symbol: TAO"
+    },
+    {
+      "symbol": "FIL",
+      "error": "No fundamentals data found for symbol: FIL"
+    },
+    {
+      "symbol": "MOG",
+      "error": "No fundamentals data found for symbol: MOG"
+    }
+  ],
+  "results": [
+    {
+      "symbol": "CRH",
+      "layer": "L9",
+      "physicalConstraint": 4,
+      "aiContribution": 0.32,
+      "timeToRealize": "mid",
+      "price": 106.34,
+      "marketCap": 71,
+      "pricingScore": 1.7,
+      "pegRatio": 2.02,
+      "pegBand": "rich",
+      "funnelPass": true,
+      "funnelFailReasons": [],
+      "components": {
+        "forwardPE": {
+          "value": 15.901237,
+          "benchmark": 35.5,
+          "score": 1.6
+        },
+        "evRevenue": {
+          "value": 2.364,
+          "benchmark": 7.9,
+          "score": 1.2
+        },
+        "analystUpside": {
+          "targetPrice": 142.66028,
+          "currentPrice": 106.34,
+          "upside": 34.2,
+          "score": 1.6
+        },
+        "momentum6m": {
+          "ticker6m": -13.1,
+          "spy6m": 9.7,
+          "relative": -22.8,
+          "score": 2.2
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.3913,
+      "numberOfAnalysts": 24,
+      "fetchedAt": "2026-06-02T18:23:53.905Z"
+    },
+    {
+      "symbol": "NVDA",
+      "layer": "L2",
+      "physicalConstraint": 5,
+      "aiContribution": 0.85,
+      "timeToRealize": "near",
+      "price": 222.95,
+      "marketCap": 5400,
+      "pricingScore": 2.4,
+      "pegRatio": 0.69,
+      "pegBand": "cheap",
+      "funnelPass": true,
+      "funnelFailReasons": [],
+      "components": {
+        "forwardPE": {
+          "value": 17.613272,
+          "benchmark": 28.6,
+          "score": 2
+        },
+        "evRevenue": {
+          "value": 21.26,
+          "benchmark": 22.2,
+          "score": 2.9
+        },
+        "analystUpside": {
+          "targetPrice": 296.81033,
+          "currentPrice": 222.95,
+          "upside": 33.1,
+          "score": 1.7
+        },
+        "momentum6m": {
+          "ticker6m": 16.6,
+          "spy6m": 9.7,
+          "relative": 7,
+          "score": 3.2
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.29508,
+      "numberOfAnalysts": 58,
+      "fetchedAt": "2026-06-02T18:23:00.461Z"
+    },
+    {
+      "symbol": "SNPS",
+      "layer": "L3",
+      "physicalConstraint": 5,
+      "aiContribution": 0.4,
+      "timeToRealize": "near",
+      "price": 503.64,
+      "marketCap": 96,
+      "pricingScore": 2.4,
+      "pegRatio": 3.02,
+      "pegBand": "overpriced",
+      "funnelPass": true,
+      "funnelFailReasons": [],
+      "components": {
+        "forwardPE": {
+          "value": 29.249971,
+          "benchmark": 43.5,
+          "score": 2.2
+        },
+        "evRevenue": {
+          "value": 11.823,
+          "benchmark": 19,
+          "score": 2.1
+        },
+        "analystUpside": {
+          "targetPrice": 560.37885,
+          "currentPrice": 503.64,
+          "upside": 11.3,
+          "score": 2.5
+        },
+        "momentum6m": {
+          "ticker6m": 8.3,
+          "spy6m": 9.7,
+          "relative": -1.4,
+          "score": 3
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.76,
+      "numberOfAnalysts": 26,
+      "fetchedAt": "2026-06-02T18:23:10.596Z"
+    },
+    {
+      "symbol": "LIN",
+      "layer": "L3_5",
+      "physicalConstraint": 5,
+      "aiContribution": 0.4,
+      "timeToRealize": "near",
+      "price": 492.58,
+      "marketCap": 228,
+      "pricingScore": 2.8,
+      "pegRatio": 2.32,
+      "pegBand": "rich",
+      "funnelPass": true,
+      "funnelFailReasons": [],
+      "components": {
+        "forwardPE": {
+          "value": 24.991375,
+          "benchmark": 27.5,
+          "score": 2.8
+        },
+        "evRevenue": {
+          "value": 7.329,
+          "benchmark": 7.5,
+          "score": 2.9
+        },
+        "analystUpside": {
+          "targetPrice": 541.6092,
+          "currentPrice": 492.58,
+          "upside": 10,
+          "score": 2.6
+        },
+        "momentum6m": {
+          "ticker6m": 7.8,
+          "spy6m": 9.7,
+          "relative": -1.9,
+          "score": 2.9
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.66667,
+      "numberOfAnalysts": 25,
+      "fetchedAt": "2026-06-02T18:23:18.037Z"
+    },
+    {
+      "symbol": "AMAT",
+      "layer": "L4",
+      "physicalConstraint": 5,
+      "aiContribution": 0.3,
+      "timeToRealize": "near",
+      "price": 482.89,
+      "marketCap": 383,
+      "pricingScore": 2.8,
+      "pegRatio": 1.55,
+      "pegBand": "rich",
+      "funnelPass": true,
+      "funnelFailReasons": [],
+      "components": {
+        "forwardPE": {
+          "value": 29.86392,
+          "benchmark": 39.5,
+          "score": 2.4
+        },
+        "evRevenue": {
+          "value": 12.5,
+          "benchmark": 18.3,
+          "score": 2.2
+        },
+        "analystUpside": {
+          "targetPrice": 511.16666,
+          "currentPrice": 482.89,
+          "upside": 5.9,
+          "score": 2.8
+        },
+        "momentum6m": {
+          "ticker6m": 49.8,
+          "spy6m": 9.7,
+          "relative": 40.1,
+          "score": 4.3
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.5,
+      "numberOfAnalysts": 36,
+      "fetchedAt": "2026-06-02T18:23:20.865Z"
+    },
+    {
+      "symbol": "APLD",
+      "layer": "L9_MINER_CONVERT",
+      "physicalConstraint": 5,
+      "aiContribution": 0.55,
+      "timeToRealize": "near",
+      "price": 48,
+      "marketCap": 14,
+      "pricingScore": 2.8,
+      "pegRatio": 1.83,
+      "pegBand": "rich",
+      "funnelPass": true,
+      "funnelFailReasons": [],
+      "components": {
+        "forwardPE": {
+          "value": -50.526318,
+          "benchmark": 22,
+          "score": 1
+        },
+        "evRevenue": {
+          "value": 49.436,
+          "benchmark": 5,
+          "score": 5
+        },
+        "analystUpside": {
+          "targetPrice": 64.59091,
+          "currentPrice": 48,
+          "upside": 34.6,
+          "score": 1.6
+        },
+        "momentum6m": {
+          "ticker6m": 41.7,
+          "spy6m": 9.7,
+          "relative": 32,
+          "score": 4.1
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.18182,
+      "numberOfAnalysts": 11,
+      "fetchedAt": "2026-06-02T18:24:36.797Z"
+    },
+    {
+      "symbol": "IREN",
+      "layer": "L9_MINER_CONVERT",
+      "physicalConstraint": 4,
+      "aiContribution": 0.35,
+      "timeToRealize": "mid",
+      "price": 67.2466,
+      "marketCap": 24,
+      "pricingScore": 2.8,
+      "pegRatio": 3.11,
+      "pegBand": "overpriced",
+      "funnelPass": true,
+      "funnelFailReasons": [],
+      "components": {
+        "forwardPE": {
+          "value": -71.521385,
+          "benchmark": 22,
+          "score": 1
+        },
+        "evRevenue": {
+          "value": 33.153,
+          "benchmark": 5,
+          "score": 5
+        },
+        "analystUpside": {
+          "targetPrice": 79.84429,
+          "currentPrice": 67.2466,
+          "upside": 18.7,
+          "score": 2.3
+        },
+        "momentum6m": {
+          "ticker6m": 25.1,
+          "spy6m": 9.7,
+          "relative": 15.4,
+          "score": 3.5
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.86667,
+      "numberOfAnalysts": 14,
+      "fetchedAt": "2026-06-02T18:24:40.035Z"
+    },
+    {
+      "symbol": "TSM",
+      "layer": "L5",
+      "physicalConstraint": 5,
+      "aiContribution": 0.5,
+      "timeToRealize": "near",
+      "price": 444.43,
+      "marketCap": 2305,
+      "pricingScore": 2.9,
+      "pegRatio": 1.35,
+      "pegBand": "fair",
+      "funnelPass": true,
+      "funnelFailReasons": [],
+      "components": {
+        "forwardPE": {
+          "value": 22.771746,
+          "benchmark": 29.9,
+          "score": 2.4
+        },
+        "evRevenue": {
+          "value": 2.205,
+          "benchmark": 2.4,
+          "score": 2.8
+        },
+        "analystUpside": {
+          "targetPrice": 467.84027,
+          "currentPrice": 444.43,
+          "upside": 5.3,
+          "score": 2.8
+        },
+        "momentum6m": {
+          "ticker6m": 34.4,
+          "spy6m": 9.7,
+          "relative": 24.8,
+          "score": 3.8
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.47368,
+      "numberOfAnalysts": 18,
+      "fetchedAt": "2026-06-02T18:23:29.642Z"
+    },
+    {
+      "symbol": "AVAV",
+      "layer": "L_DEF",
+      "physicalConstraint": 4,
+      "aiContribution": 0.65,
+      "timeToRealize": "near",
+      "price": 201.41,
+      "marketCap": 10,
+      "pricingScore": 3,
+      "pegRatio": 1.57,
+      "pegBand": "rich",
+      "funnelPass": true,
+      "funnelFailReasons": [],
+      "components": {
+        "forwardPE": {
+          "value": 49.93913,
+          "benchmark": 22,
+          "score": 5
+        },
+        "evRevenue": {
+          "value": 6.449,
+          "benchmark": 5,
+          "score": 3.7
+        },
+        "analystUpside": {
+          "targetPrice": 309.87708,
+          "currentPrice": 201.41,
+          "upside": 53.9,
+          "score": 1
+        },
+        "momentum6m": {
+          "ticker6m": -27.7,
+          "spy6m": 9.7,
+          "relative": -37.3,
+          "score": 1.8
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.63158,
+      "numberOfAnalysts": 17,
+      "fetchedAt": "2026-06-02T18:24:33.945Z"
+    },
+    {
+      "symbol": "OKLO",
+      "layer": "L11",
+      "physicalConstraint": 3,
+      "aiContribution": 0.2,
+      "timeToRealize": "far",
+      "price": 72.82,
+      "marketCap": 13,
+      "pricingScore": 1.7,
+      "pegRatio": null,
+      "pegBand": "N/A",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "physicalConstraint 3 < 4",
+        "aiContribution 0.2 < 0.30",
+        "timeToRealize = far"
+      ],
+      "components": {
+        "forwardPE": {
+          "value": -86.79173,
+          "benchmark": 17.1,
+          "score": 1
+        },
+        "analystUpside": {
+          "targetPrice": 88.89474,
+          "currentPrice": 72.82,
+          "upside": 22.1,
+          "score": 2.1
+        },
+        "momentum6m": {
+          "ticker6m": -8.5,
+          "spy6m": 9.7,
+          "relative": -18.2,
+          "score": 2.4
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.95652,
+      "numberOfAnalysts": 19,
+      "fetchedAt": "2026-06-02T18:24:01.092Z"
+    },
+    {
+      "symbol": "ETH",
+      "layer": "L_DCOMP",
+      "physicalConstraint": 4,
+      "aiContribution": 0.2,
+      "timeToRealize": "near",
+      "price": 18.19,
+      "marketCap": null,
+      "pricingScore": 1.7,
+      "pegRatio": null,
+      "pegBand": "N/A",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "aiContribution 0.2 < 0.30"
+      ],
+      "components": {
+        "momentum6m": {
+          "ticker6m": -28,
+          "spy6m": 9.7,
+          "relative": -37.7,
+          "score": 1.7
+        }
+      },
+      "dataQuality": "low",
+      "analystRecommendMean": null,
+      "numberOfAnalysts": null,
+      "fetchedAt": "2026-06-02T18:24:19.963Z"
+    },
+    {
+      "symbol": "GOOG",
+      "layer": "L1",
+      "physicalConstraint": 2,
+      "aiContribution": 0.55,
+      "timeToRealize": "near",
+      "price": 362.57,
+      "marketCap": 4393,
+      "pricingScore": 2,
+      "pegRatio": 1.48,
+      "pegBand": "fair",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "physicalConstraint 2 < 4"
+      ],
+      "components": {
+        "forwardPE": {
+          "value": 25.014824,
+          "benchmark": 52.3,
+          "score": 1.7
+        },
+        "evRevenue": {
+          "value": 10.611,
+          "benchmark": 40.5,
+          "score": 1.2
+        },
+        "analystUpside": {
+          "targetPrice": 409.00287,
+          "currentPrice": 362.57,
+          "upside": 12.8,
+          "score": 2.5
+        },
+        "momentum6m": {
+          "ticker6m": 7.1,
+          "spy6m": 9.7,
+          "relative": -2.6,
+          "score": 2.9
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.43077,
+      "numberOfAnalysts": 14,
+      "fetchedAt": "2026-06-02T18:22:57.639Z"
+    },
+    {
+      "symbol": "FLR",
+      "layer": "L9",
+      "physicalConstraint": 2,
+      "aiContribution": 0.25,
+      "timeToRealize": "far",
+      "price": 49.065,
+      "marketCap": 7,
+      "pricingScore": 2,
+      "pegRatio": 1.1,
+      "pegBand": "fair",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "physicalConstraint 2 < 4",
+        "aiContribution 0.25 < 0.30",
+        "timeToRealize = far"
+      ],
+      "components": {
+        "forwardPE": {
+          "value": 14.878308,
+          "benchmark": 35.5,
+          "score": 1.5
+        },
+        "evRevenue": {
+          "value": 0.262,
+          "benchmark": 7.9,
+          "score": 1
+        },
+        "analystUpside": {
+          "targetPrice": 50.6875,
+          "currentPrice": 49.065,
+          "upside": 3.3,
+          "score": 2.9
+        },
+        "momentum6m": {
+          "ticker6m": 6.2,
+          "spy6m": 9.7,
+          "relative": -3.4,
+          "score": 2.9
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": null,
+      "numberOfAnalysts": 8,
+      "fetchedAt": "2026-06-02T18:23:52.476Z"
+    },
+    {
+      "symbol": "META",
+      "layer": "L0",
+      "physicalConstraint": 2,
+      "aiContribution": 0.5,
+      "timeToRealize": "near",
+      "price": 605.25,
+      "marketCap": 1536,
+      "pricingScore": 2.1,
+      "pegRatio": 0.91,
+      "pegBand": "cheap",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "physicalConstraint 2 < 4"
+      ],
+      "components": {
+        "forwardPE": {
+          "value": 16.737127,
+          "benchmark": 25.2,
+          "score": 2.2
+        },
+        "evRevenue": {
+          "value": 7.117,
+          "benchmark": 9.1,
+          "score": 2.5
+        },
+        "analystUpside": {
+          "targetPrice": 826.74713,
+          "currentPrice": 605.25,
+          "upside": 36.6,
+          "score": 1.5
+        },
+        "momentum6m": {
+          "ticker6m": -15.5,
+          "spy6m": 9.7,
+          "relative": -25.2,
+          "score": 2.2
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.34375,
+      "numberOfAnalysts": 59,
+      "fetchedAt": "2026-06-02T18:22:54.784Z"
+    },
+    {
+      "symbol": "VST",
+      "layer": "L11",
+      "physicalConstraint": 3,
+      "aiContribution": 0.2,
+      "timeToRealize": "mid",
+      "price": 158.22,
+      "marketCap": 53,
+      "pricingScore": 2.3,
+      "pegRatio": 0.48,
+      "pegBand": "cheap",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "physicalConstraint 3 < 4",
+        "aiContribution 0.2 < 0.30"
+      ],
+      "components": {
+        "forwardPE": {
+          "value": 14.439755,
+          "benchmark": 17.1,
+          "score": 2.6
+        },
+        "evRevenue": {
+          "value": 3.802,
+          "benchmark": 4.2,
+          "score": 2.8
+        },
+        "analystUpside": {
+          "targetPrice": 225.29411,
+          "currentPrice": 158.22,
+          "upside": 42.4,
+          "score": 1.3
+        },
+        "momentum6m": {
+          "ticker6m": -0.1,
+          "spy6m": 9.7,
+          "relative": -9.8,
+          "score": 2.7
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.42105,
+      "numberOfAnalysts": 17,
+      "fetchedAt": "2026-06-02T18:23:59.636Z"
+    },
+    {
+      "symbol": "AMZN",
+      "layer": "L0",
+      "physicalConstraint": 1,
+      "aiContribution": 0.4,
+      "timeToRealize": "near",
+      "price": 257.96,
+      "marketCap": 2775,
+      "pricingScore": 2.4,
+      "pegRatio": 1.83,
+      "pegBand": "rich",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "physicalConstraint 1 < 4"
+      ],
+      "components": {
+        "forwardPE": {
+          "value": 26.152166,
+          "benchmark": 25.2,
+          "score": 3.1
+        },
+        "evRevenue": {
+          "value": 3.908,
+          "benchmark": 9.1,
+          "score": 1.6
+        },
+        "analystUpside": {
+          "targetPrice": 312.7934,
+          "currentPrice": 257.96,
+          "upside": 21.3,
+          "score": 2.1
+        },
+        "momentum6m": {
+          "ticker6m": 7.8,
+          "spy6m": 9.7,
+          "relative": -1.9,
+          "score": 2.9
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.34848,
+      "numberOfAnalysts": 62,
+      "fetchedAt": "2026-06-02T18:22:53.403Z"
+    },
+    {
+      "symbol": "APD",
+      "layer": "L3_5",
+      "physicalConstraint": 4,
+      "aiContribution": 0.2,
+      "timeToRealize": "far",
+      "price": 279.315,
+      "marketCap": 62,
+      "pricingScore": 2.5,
+      "pegRatio": 2.26,
+      "pegBand": "rich",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "aiContribution 0.2 < 0.30",
+        "timeToRealize = far"
+      ],
+      "components": {
+        "forwardPE": {
+          "value": 19.622314,
+          "benchmark": 27.5,
+          "score": 2.3
+        },
+        "evRevenue": {
+          "value": 6.586,
+          "benchmark": 7.5,
+          "score": 2.7
+        },
+        "analystUpside": {
+          "targetPrice": 327.85666,
+          "currentPrice": 279.315,
+          "upside": 17.4,
+          "score": 2.3
+        },
+        "momentum6m": {
+          "ticker6m": 2.5,
+          "spy6m": 9.7,
+          "relative": -7.2,
+          "score": 2.8
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.91304,
+      "numberOfAnalysts": 21,
+      "fetchedAt": "2026-06-02T18:23:16.451Z"
+    },
+    {
+      "symbol": "SMR",
+      "layer": "L11",
+      "physicalConstraint": 3,
+      "aiContribution": 0.2,
+      "timeToRealize": "far",
+      "price": 13.985,
+      "marketCap": 5,
+      "pricingScore": 2.6,
+      "pegRatio": null,
+      "pegBand": "N/A",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "physicalConstraint 3 < 4",
+        "aiContribution 0.2 < 0.30",
+        "timeToRealize = far"
+      ],
+      "components": {
+        "forwardPE": {
+          "value": -20.869707,
+          "benchmark": 17.1,
+          "score": 1
+        },
+        "evRevenue": {
+          "value": 188.541,
+          "benchmark": 4.2,
+          "score": 5
+        },
+        "analystUpside": {
+          "targetPrice": 15.35714,
+          "currentPrice": 13.985,
+          "upside": 9.8,
+          "score": 2.6
+        },
+        "momentum6m": {
+          "ticker6m": -20,
+          "spy6m": 9.7,
+          "relative": -29.7,
+          "score": 2
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 2.52941,
+      "numberOfAnalysts": 14,
+      "fetchedAt": "2026-06-02T18:24:02.491Z"
+    },
+    {
+      "symbol": "MSFT",
+      "layer": "L0",
+      "physicalConstraint": 1,
+      "aiContribution": 0.45,
+      "timeToRealize": "near",
+      "price": 442.5,
+      "marketCap": 3287,
+      "pricingScore": 2.7,
+      "pegRatio": 1.42,
+      "pegBand": "fair",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "physicalConstraint 1 < 4"
+      ],
+      "components": {
+        "forwardPE": {
+          "value": 22.882912,
+          "benchmark": 25.2,
+          "score": 2.8
+        },
+        "evRevenue": {
+          "value": 10.897,
+          "benchmark": 9.1,
+          "score": 3.5
+        },
+        "analystUpside": {
+          "targetPrice": 560.8915,
+          "currentPrice": 442.5,
+          "upside": 26.8,
+          "score": 1.9
+        },
+        "momentum6m": {
+          "ticker6m": 2.9,
+          "spy6m": 9.7,
+          "relative": -6.8,
+          "score": 2.8
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.33929,
+      "numberOfAnalysts": 55,
+      "fetchedAt": "2026-06-02T18:22:52.028Z"
+    },
+    {
+      "symbol": "ETN",
+      "layer": "L8_COOL",
+      "physicalConstraint": 3,
+      "aiContribution": 0.4,
+      "timeToRealize": "mid",
+      "price": 415.49,
+      "marketCap": 161,
+      "pricingScore": 2.7,
+      "pegRatio": 3.02,
+      "pegBand": "overpriced",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "physicalConstraint 3 < 4"
+      ],
+      "components": {
+        "forwardPE": {
+          "value": 26.427837,
+          "benchmark": 31.2,
+          "score": 2.6
+        },
+        "evRevenue": {
+          "value": 6.187,
+          "benchmark": 8.7,
+          "score": 2.3
+        },
+        "analystUpside": {
+          "targetPrice": 451.73297,
+          "currentPrice": 415.49,
+          "upside": 8.7,
+          "score": 2.7
+        },
+        "momentum6m": {
+          "ticker6m": 18.2,
+          "spy6m": 9.7,
+          "relative": 8.6,
+          "score": 3.3
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.72414,
+      "numberOfAnalysts": 27,
+      "fetchedAt": "2026-06-02T18:23:43.908Z"
+    },
+    {
+      "symbol": "CEG",
+      "layer": "L11",
+      "physicalConstraint": 4,
+      "aiContribution": 0.25,
+      "timeToRealize": "mid",
+      "price": 274.425,
+      "marketCap": 99,
+      "pricingScore": 2.7,
+      "pegRatio": 3.74,
+      "pegBand": "overpriced",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "aiContribution 0.25 < 0.30"
+      ],
+      "components": {
+        "forwardPE": {
+          "value": 20.142733,
+          "benchmark": 17.1,
+          "score": 3.4
+        },
+        "evRevenue": {
+          "value": 3.948,
+          "benchmark": 4.2,
+          "score": 2.8
+        },
+        "analystUpside": {
+          "targetPrice": 368.0155,
+          "currentPrice": 274.425,
+          "upside": 34.1,
+          "score": 1.6
+        },
+        "momentum6m": {
+          "ticker6m": -2.2,
+          "spy6m": 9.7,
+          "relative": -11.9,
+          "score": 2.6
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.57143,
+      "numberOfAnalysts": 20,
+      "fetchedAt": "2026-06-02T18:23:58.208Z"
+    },
+    {
+      "symbol": "AA",
+      "layer": "L14",
+      "physicalConstraint": 3,
+      "aiContribution": 0.1,
+      "timeToRealize": "far",
+      "price": 83.605,
+      "marketCap": 22,
+      "pricingScore": 2.7,
+      "pegRatio": 8.36,
+      "pegBand": "overpriced",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "physicalConstraint 3 < 4",
+        "aiContribution 0.1 < 0.30",
+        "timeToRealize = far"
+      ],
+      "components": {
+        "forwardPE": {
+          "value": 12.41189,
+          "benchmark": 18,
+          "score": 2.2
+        },
+        "evRevenue": {
+          "value": 1.721,
+          "benchmark": 4.3,
+          "score": 1.5
+        },
+        "analystUpside": {
+          "targetPrice": 75.63846,
+          "currentPrice": 83.605,
+          "upside": -9.5,
+          "score": 3.4
+        },
+        "momentum6m": {
+          "ticker6m": 47.2,
+          "spy6m": 9.7,
+          "relative": 37.5,
+          "score": 4.2
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.78571,
+      "numberOfAnalysts": 13,
+      "fetchedAt": "2026-06-02T18:24:14.284Z"
+    },
+    {
+      "symbol": "EOG",
+      "layer": "L13",
+      "physicalConstraint": 3,
+      "aiContribution": 0.15,
+      "timeToRealize": "far",
+      "price": 138.9,
+      "marketCap": 74,
+      "pricingScore": 2.8,
+      "pegRatio": 1.09,
+      "pegBand": "fair",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "physicalConstraint 3 < 4",
+        "aiContribution 0.15 < 0.30",
+        "timeToRealize = far"
+      ],
+      "components": {
+        "forwardPE": {
+          "value": 9.474386,
+          "benchmark": 10.6,
+          "score": 2.7
+        },
+        "evRevenue": {
+          "value": 3.276,
+          "benchmark": 3.9,
+          "score": 2.6
+        },
+        "analystUpside": {
+          "targetPrice": 160.25,
+          "currentPrice": 138.9,
+          "upside": 15.4,
+          "score": 2.4
+        },
+        "momentum6m": {
+          "ticker6m": 23.9,
+          "spy6m": 9.7,
+          "relative": 14.2,
+          "score": 3.5
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 2.19355,
+      "numberOfAnalysts": 28,
+      "fetchedAt": "2026-06-02T18:24:08.265Z"
+    },
+    {
+      "symbol": "EQT",
+      "layer": "L13",
+      "physicalConstraint": 3,
+      "aiContribution": 0.15,
+      "timeToRealize": "far",
+      "price": 54.78,
+      "marketCap": 34,
+      "pricingScore": 2.8,
+      "pegRatio": 2.49,
+      "pegBand": "rich",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "physicalConstraint 3 < 4",
+        "aiContribution 0.15 < 0.30",
+        "timeToRealize = far"
+      ],
+      "components": {
+        "forwardPE": {
+          "value": 11.776567,
+          "benchmark": 10.6,
+          "score": 3.3
+        },
+        "evRevenue": {
+          "value": 4.688,
+          "benchmark": 3.9,
+          "score": 3.5
+        },
+        "analystUpside": {
+          "targetPrice": 70.04167,
+          "currentPrice": 54.78,
+          "upside": 27.9,
+          "score": 1.9
+        },
+        "momentum6m": {
+          "ticker6m": -5.1,
+          "spy6m": 9.7,
+          "relative": -14.8,
+          "score": 2.5
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.625,
+      "numberOfAnalysts": 24,
+      "fetchedAt": "2026-06-02T18:24:09.752Z"
+    },
+    {
+      "symbol": "PH",
+      "layer": "L_EMBI",
+      "physicalConstraint": 3,
+      "aiContribution": 0.15,
+      "timeToRealize": "medium",
+      "price": 835.07,
+      "marketCap": 105,
+      "pricingScore": 2.8,
+      "pegRatio": 3.31,
+      "pegBand": "overpriced",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "physicalConstraint 3 < 4",
+        "aiContribution 0.15 < 0.30"
+      ],
+      "components": {
+        "forwardPE": {
+          "value": 24.540789,
+          "benchmark": 22,
+          "score": 3.3
+        },
+        "evRevenue": {
+          "value": 5.381,
+          "benchmark": 5,
+          "score": 3.2
+        },
+        "analystUpside": {
+          "targetPrice": 1032.5,
+          "currentPrice": 835.07,
+          "upside": 23.6,
+          "score": 2.1
+        },
+        "momentum6m": {
+          "ticker6m": -10.8,
+          "spy6m": 9.7,
+          "relative": -20.4,
+          "score": 2.3
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.65385,
+      "numberOfAnalysts": 24,
+      "fetchedAt": "2026-06-02T18:24:25.686Z"
+    },
+    {
+      "symbol": "QCOM",
+      "layer": "L2_5",
+      "physicalConstraint": 3,
+      "aiContribution": 0.45,
+      "timeToRealize": "mid",
+      "price": 241.6,
+      "marketCap": 255,
+      "pricingScore": 2.9,
+      "pegRatio": 0.96,
+      "pegBand": "cheap",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "physicalConstraint 3 < 4"
+      ],
+      "components": {
+        "forwardPE": {
+          "value": 22.714943,
+          "benchmark": 31,
+          "score": 2.3
+        },
+        "evRevenue": {
+          "value": 5.548,
+          "benchmark": 26.2,
+          "score": 1
+        },
+        "analystUpside": {
+          "targetPrice": 177.09677,
+          "currentPrice": 241.6,
+          "upside": -26.7,
+          "score": 4.1
+        },
+        "momentum6m": {
+          "ticker6m": 59.4,
+          "spy6m": 9.7,
+          "relative": 49.7,
+          "score": 4.7
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 2.64103,
+      "numberOfAnalysts": 31,
+      "fetchedAt": "2026-06-02T18:23:04.746Z"
+    },
+    {
+      "symbol": "CRWV",
+      "layer": "L7",
+      "physicalConstraint": 3,
+      "aiContribution": 0.85,
+      "timeToRealize": "near",
+      "price": 120.3,
+      "marketCap": 66,
+      "pricingScore": 2.9,
+      "pegRatio": null,
+      "pegBand": "N/A",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "physicalConstraint 3 < 4"
+      ],
+      "components": {
+        "forwardPE": {
+          "value": -191.85991,
+          "benchmark": 22.5,
+          "score": 1
+        },
+        "evRevenue": {
+          "value": 16.216,
+          "benchmark": 2.7,
+          "score": 5
+        },
+        "analystUpside": {
+          "targetPrice": 138.5625,
+          "currentPrice": 120.3,
+          "upside": 15.2,
+          "score": 2.4
+        },
+        "momentum6m": {
+          "ticker6m": 29.1,
+          "spy6m": 9.7,
+          "relative": 19.4,
+          "score": 3.6
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.91429,
+      "numberOfAnalysts": 32,
+      "fetchedAt": "2026-06-02T18:23:38.163Z"
+    },
+    {
+      "symbol": "CBRS",
+      "layer": "L2",
+      "physicalConstraint": 3,
+      "aiContribution": 1,
+      "timeToRealize": "near",
+      "price": 234.5901,
+      "marketCap": 52,
+      "pricingScore": 3,
+      "pegRatio": null,
+      "pegBand": "N/A",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "physicalConstraint 3 < 4"
+      ],
+      "components": {
+        "evRevenue": {
+          "value": 24.906,
+          "benchmark": 22.2,
+          "score": 3.3
+        },
+        "momentum6m": {
+          "ticker6m": -0.9,
+          "spy6m": 9.7,
+          "relative": -10.5,
+          "score": 2.6
+        }
+      },
+      "dataQuality": "low",
+      "analystRecommendMean": null,
+      "numberOfAnalysts": null,
+      "fetchedAt": "2026-06-02T18:23:03.312Z"
+    },
+    {
+      "symbol": "ENTG",
+      "layer": "L3_5",
+      "physicalConstraint": 5,
+      "aiContribution": 0.25,
+      "timeToRealize": "far",
+      "price": 142.05,
+      "marketCap": 22,
+      "pricingScore": 3,
+      "pegRatio": 1.66,
+      "pegBand": "rich",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "aiContribution 0.25 < 0.30",
+        "timeToRealize = far"
+      ],
+      "components": {
+        "forwardPE": {
+          "value": 30.72454,
+          "benchmark": 27.5,
+          "score": 3.3
+        },
+        "evRevenue": {
+          "value": 7.422,
+          "benchmark": 7.5,
+          "score": 3
+        },
+        "analystUpside": {
+          "targetPrice": 160.6,
+          "currentPrice": 142.05,
+          "upside": 13.1,
+          "score": 2.5
+        },
+        "momentum6m": {
+          "ticker6m": 20.3,
+          "spy6m": 9.7,
+          "relative": 10.6,
+          "score": 3.4
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 2.18182,
+      "numberOfAnalysts": 10,
+      "fetchedAt": "2026-06-02T18:23:14.934Z"
+    },
+    {
+      "symbol": "SMCI",
+      "layer": "L7",
+      "physicalConstraint": 3,
+      "aiContribution": 0.75,
+      "timeToRealize": "near",
+      "price": 50.11,
+      "marketCap": 30,
+      "pricingScore": 3,
+      "pegRatio": 0.91,
+      "pegBand": "cheap",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "physicalConstraint 3 < 4"
+      ],
+      "components": {
+        "forwardPE": {
+          "value": 15.460195,
+          "benchmark": 22.5,
+          "score": 2.2
+        },
+        "evRevenue": {
+          "value": 1.069,
+          "benchmark": 2.7,
+          "score": 1.5
+        },
+        "analystUpside": {
+          "targetPrice": 37.625,
+          "currentPrice": 50.11,
+          "upside": -24.9,
+          "score": 4
+        },
+        "momentum6m": {
+          "ticker6m": 72.1,
+          "spy6m": 9.7,
+          "relative": 62.4,
+          "score": 5
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 2.83333,
+      "numberOfAnalysts": 16,
+      "fetchedAt": "2026-06-02T18:23:39.546Z"
+    },
+    {
+      "symbol": "GEV",
+      "layer": "L12",
+      "physicalConstraint": 4,
+      "aiContribution": 0.2,
+      "timeToRealize": "mid",
+      "price": 968.83,
+      "marketCap": 260,
+      "pricingScore": 3,
+      "pegRatio": 1.64,
+      "pegBand": "rich",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "aiContribution 0.2 < 0.30"
+      ],
+      "components": {
+        "forwardPE": {
+          "value": 39.525387,
+          "benchmark": 40.5,
+          "score": 2.9
+        },
+        "evRevenue": {
+          "value": 6.363,
+          "benchmark": 5.1,
+          "score": 3.6
+        },
+        "analystUpside": {
+          "targetPrice": 1215.8585,
+          "currentPrice": 968.83,
+          "upside": 25.5,
+          "score": 2
+        },
+        "momentum6m": {
+          "ticker6m": 33.4,
+          "spy6m": 9.7,
+          "relative": 23.7,
+          "score": 3.8
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.55556,
+      "numberOfAnalysts": 33,
+      "fetchedAt": "2026-06-02T18:24:05.297Z"
+    },
+    {
+      "symbol": "PWR",
+      "layer": "L12",
+      "physicalConstraint": 3,
+      "aiContribution": 0.2,
+      "timeToRealize": "mid",
+      "price": 700.66,
+      "marketCap": 105,
+      "pricingScore": 3,
+      "pegRatio": 1.96,
+      "pegBand": "rich",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "physicalConstraint 3 < 4",
+        "aiContribution 0.2 < 0.30"
+      ],
+      "components": {
+        "forwardPE": {
+          "value": 42.610252,
+          "benchmark": 40.5,
+          "score": 3.1
+        },
+        "evRevenue": {
+          "value": 3.626,
+          "benchmark": 5.1,
+          "score": 2.3
+        },
+        "analystUpside": {
+          "targetPrice": 761.3531,
+          "currentPrice": 700.66,
+          "upside": 8.7,
+          "score": 2.7
+        },
+        "momentum6m": {
+          "ticker6m": 47.6,
+          "spy6m": 9.7,
+          "relative": 37.9,
+          "score": 4.3
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.6,
+      "numberOfAnalysts": 26,
+      "fetchedAt": "2026-06-02T18:24:06.723Z"
+    },
+    {
+      "symbol": "ASML",
+      "layer": "L4",
+      "physicalConstraint": 5,
+      "aiContribution": 0.45,
+      "timeToRealize": "near",
+      "price": 1685,
+      "marketCap": 649,
+      "pricingScore": 3.1,
+      "pegRatio": 2.42,
+      "pegBand": "rich",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "pricingScore 3.1 > 3"
+      ],
+      "components": {
+        "forwardPE": {
+          "value": 41.006607,
+          "benchmark": 39.5,
+          "score": 3.1
+        },
+        "evRevenue": {
+          "value": 18.46,
+          "benchmark": 18.3,
+          "score": 3
+        },
+        "analystUpside": {
+          "targetPrice": 1663.4336,
+          "currentPrice": 1685,
+          "upside": -1.3,
+          "score": 3.1
+        },
+        "momentum6m": {
+          "ticker6m": 18.4,
+          "spy6m": 9.7,
+          "relative": 8.7,
+          "score": 3.3
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.45455,
+      "numberOfAnalysts": 15,
+      "fetchedAt": "2026-06-02T18:23:23.849Z"
+    },
+    {
+      "symbol": "ANET",
+      "layer": "L8_NET",
+      "physicalConstraint": 4,
+      "aiContribution": 0.7,
+      "timeToRealize": "near",
+      "price": 174.34,
+      "marketCap": 220,
+      "pricingScore": 3.1,
+      "pegRatio": 2.05,
+      "pegBand": "rich",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "pricingScore 3.1 > 3"
+      ],
+      "components": {
+        "forwardPE": {
+          "value": 39.181664,
+          "benchmark": 38.4,
+          "score": 3.1
+        },
+        "evRevenue": {
+          "value": 20.862,
+          "benchmark": 19.4,
+          "score": 3.2
+        },
+        "analystUpside": {
+          "targetPrice": 188.19922,
+          "currentPrice": 174.34,
+          "upside": 7.9,
+          "score": 2.7
+        },
+        "momentum6m": {
+          "ticker6m": 23,
+          "spy6m": 9.7,
+          "relative": 13.3,
+          "score": 3.4
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.27586,
+      "numberOfAnalysts": 27,
+      "fetchedAt": "2026-06-02T18:23:41.002Z"
+    },
+    {
+      "symbol": "FCX",
+      "layer": "L14",
+      "physicalConstraint": 4,
+      "aiContribution": 0.12,
+      "timeToRealize": "far",
+      "price": 71.0569,
+      "marketCap": 102,
+      "pricingScore": 3.1,
+      "pegRatio": 4.51,
+      "pegBand": "overpriced",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "aiContribution 0.12 < 0.30",
+        "timeToRealize = far",
+        "pricingScore 3.1 > 3"
+      ],
+      "components": {
+        "forwardPE": {
+          "value": 18.85889,
+          "benchmark": 18,
+          "score": 3.1
+        },
+        "evRevenue": {
+          "value": 4.354,
+          "benchmark": 4.3,
+          "score": 3
+        },
+        "analystUpside": {
+          "targetPrice": 68.26818,
+          "currentPrice": 71.0569,
+          "upside": -3.9,
+          "score": 3.2
+        },
+        "momentum6m": {
+          "ticker6m": 18,
+          "spy6m": 9.7,
+          "relative": 8.3,
+          "score": 3.3
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.69565,
+      "numberOfAnalysts": 22,
+      "fetchedAt": "2026-06-02T18:24:11.284Z"
+    },
+    {
+      "symbol": "KTOS",
+      "layer": "L_DEF",
+      "physicalConstraint": 4,
+      "aiContribution": 0.7,
+      "timeToRealize": "mid",
+      "price": 62.86,
+      "marketCap": 12,
+      "pricingScore": 3.1,
+      "pegRatio": 36.41,
+      "pegBand": "overpriced",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "pricingScore 3.1 > 3"
+      ],
+      "components": {
+        "forwardPE": {
+          "value": 58.54086,
+          "benchmark": 22,
+          "score": 5
+        },
+        "evRevenue": {
+          "value": 7.509,
+          "benchmark": 5,
+          "score": 4.3
+        },
+        "analystUpside": {
+          "targetPrice": 113.05,
+          "currentPrice": 62.86,
+          "upside": 79.8,
+          "score": 1
+        },
+        "momentum6m": {
+          "ticker6m": -39,
+          "spy6m": 9.7,
+          "relative": -48.7,
+          "score": 1.4
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": null,
+      "numberOfAnalysts": 20,
+      "fetchedAt": "2026-06-02T18:24:35.316Z"
+    },
+    {
+      "symbol": "AVGO",
+      "layer": "L2_5",
+      "physicalConstraint": 4,
+      "aiContribution": 0.55,
+      "timeToRealize": "near",
+      "price": 472.64,
+      "marketCap": 2238,
+      "pricingScore": 3.2,
+      "pegRatio": 0.97,
+      "pegBand": "cheap",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "pricingScore 3.2 > 3"
+      ],
+      "components": {
+        "forwardPE": {
+          "value": 25.485538,
+          "benchmark": 31,
+          "score": 2.6
+        },
+        "evRevenue": {
+          "value": 32.654,
+          "benchmark": 26.2,
+          "score": 3.6
+        },
+        "analystUpside": {
+          "targetPrice": 485.7178,
+          "currentPrice": 472.64,
+          "upside": 2.8,
+          "score": 2.9
+        },
+        "momentum6m": {
+          "ticker6m": 42.7,
+          "spy6m": 9.7,
+          "relative": 33,
+          "score": 4.1
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.31915,
+      "numberOfAnalysts": 44,
+      "fetchedAt": "2026-06-02T18:23:09.206Z"
+    },
+    {
+      "symbol": "DELL",
+      "layer": "L7",
+      "physicalConstraint": 2,
+      "aiContribution": 0.45,
+      "timeToRealize": "near",
+      "price": 437.485,
+      "marketCap": 284,
+      "pricingScore": 3.2,
+      "pegRatio": 1.74,
+      "pegBand": "rich",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "physicalConstraint 2 < 4",
+        "pricingScore 3.2 > 3"
+      ],
+      "components": {
+        "forwardPE": {
+          "value": 20.67522,
+          "benchmark": 22.5,
+          "score": 2.8
+        },
+        "evRevenue": {
+          "value": 2.403,
+          "benchmark": 2.7,
+          "score": 2.7
+        },
+        "analystUpside": {
+          "targetPrice": 469.45456,
+          "currentPrice": 437.485,
+          "upside": 7.3,
+          "score": 2.7
+        },
+        "momentum6m": {
+          "ticker6m": 282.3,
+          "spy6m": 9.7,
+          "relative": 272.6,
+          "score": 5
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.88462,
+      "numberOfAnalysts": 22,
+      "fetchedAt": "2026-06-02T18:23:36.720Z"
+    },
+    {
+      "symbol": "ASTS",
+      "layer": "L_SPACE",
+      "physicalConstraint": 5,
+      "aiContribution": 0.35,
+      "timeToRealize": "medium",
+      "price": 117.44,
+      "marketCap": 46,
+      "pricingScore": 3.2,
+      "pegRatio": null,
+      "pegBand": "N/A",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "pricingScore 3.2 > 3"
+      ],
+      "components": {
+        "forwardPE": {
+          "value": -395.2479,
+          "benchmark": 22,
+          "score": 1
+        },
+        "evRevenue": {
+          "value": 378.005,
+          "benchmark": 5,
+          "score": 5
+        },
+        "analystUpside": {
+          "targetPrice": 82.02222,
+          "currentPrice": 117.44,
+          "upside": -30.2,
+          "score": 4.2
+        },
+        "momentum6m": {
+          "ticker6m": 5.6,
+          "spy6m": 9.7,
+          "relative": -4.1,
+          "score": 2.9
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 2.81818,
+      "numberOfAnalysts": 9,
+      "fetchedAt": "2026-06-02T18:24:31.454Z"
+    },
+    {
+      "symbol": "CDNS",
+      "layer": "L3",
+      "physicalConstraint": 5,
+      "aiContribution": 0.4,
+      "timeToRealize": "near",
+      "price": 409.4534,
+      "marketCap": 113,
+      "pricingScore": 3.3,
+      "pegRatio": 3.56,
+      "pegBand": "overpriced",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "pricingScore 3.3 > 3"
+      ],
+      "components": {
+        "forwardPE": {
+          "value": 43.62849,
+          "benchmark": 43.5,
+          "score": 3
+        },
+        "evRevenue": {
+          "value": 20.94,
+          "benchmark": 19,
+          "score": 3.3
+        },
+        "analystUpside": {
+          "targetPrice": 383.94193,
+          "currentPrice": 409.4534,
+          "upside": -6.2,
+          "score": 3.2
+        },
+        "momentum6m": {
+          "ticker6m": 38.2,
+          "spy6m": 9.7,
+          "relative": 28.5,
+          "score": 3.9
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.44,
+      "numberOfAnalysts": 26,
+      "fetchedAt": "2026-06-02T18:23:12.052Z"
+    },
+    {
+      "symbol": "LRCX",
+      "layer": "L4",
+      "physicalConstraint": 5,
+      "aiContribution": 0.3,
+      "timeToRealize": "near",
+      "price": 331.755,
+      "marketCap": 415,
+      "pricingScore": 3.3,
+      "pegRatio": 1.85,
+      "pegBand": "rich",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "pricingScore 3.3 > 3"
+      ],
+      "components": {
+        "forwardPE": {
+          "value": 41.77049,
+          "benchmark": 39.5,
+          "score": 3.1
+        },
+        "evRevenue": {
+          "value": 18.244,
+          "benchmark": 18.3,
+          "score": 3
+        },
+        "analystUpside": {
+          "targetPrice": 313.6875,
+          "currentPrice": 331.755,
+          "upside": -5.4,
+          "score": 3.2
+        },
+        "momentum6m": {
+          "ticker6m": 42.1,
+          "spy6m": 9.7,
+          "relative": 32.4,
+          "score": 4.1
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.52778,
+      "numberOfAnalysts": 32,
+      "fetchedAt": "2026-06-02T18:23:22.355Z"
+    },
+    {
+      "symbol": "TER",
+      "layer": "L4",
+      "physicalConstraint": 4,
+      "aiContribution": 0.4,
+      "timeToRealize": "near",
+      "price": 390.195,
+      "marketCap": 61,
+      "pricingScore": 3.3,
+      "pegRatio": 1.48,
+      "pegBand": "fair",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "pricingScore 3.3 > 3"
+      ],
+      "components": {
+        "forwardPE": {
+          "value": 41.016083,
+          "benchmark": 39.5,
+          "score": 3.1
+        },
+        "evRevenue": {
+          "value": 15.23,
+          "benchmark": 18.3,
+          "score": 2.6
+        },
+        "analystUpside": {
+          "targetPrice": 369.52942,
+          "currentPrice": 390.195,
+          "upside": -5.3,
+          "score": 3.2
+        },
+        "momentum6m": {
+          "ticker6m": 61.9,
+          "spy6m": 9.7,
+          "relative": 52.2,
+          "score": 4.7
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": null,
+      "numberOfAnalysts": 17,
+      "fetchedAt": "2026-06-02T18:23:26.724Z"
+    },
+    {
+      "symbol": "PANW",
+      "layer": "L10",
+      "physicalConstraint": 1,
+      "aiContribution": 0.45,
+      "timeToRealize": "near",
+      "price": 294.32,
+      "marketCap": 239,
+      "pricingScore": 3.3,
+      "pegRatio": 4.72,
+      "pegBand": "overpriced",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "physicalConstraint 1 < 4",
+        "pricingScore 3.3 > 3"
+      ],
+      "components": {
+        "forwardPE": {
+          "value": 73.95142,
+          "benchmark": 98.9,
+          "score": 2.4
+        },
+        "evRevenue": {
+          "value": 24.371,
+          "benchmark": 30.2,
+          "score": 2.5
+        },
+        "analystUpside": {
+          "targetPrice": 234.48,
+          "currentPrice": 294.32,
+          "upside": -20.3,
+          "score": 3.8
+        },
+        "momentum6m": {
+          "ticker6m": 66.3,
+          "spy6m": 9.7,
+          "relative": 56.6,
+          "score": 4.9
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.59259,
+      "numberOfAnalysts": 48,
+      "fetchedAt": "2026-06-02T18:23:56.822Z"
+    },
+    {
+      "symbol": "ISRG",
+      "layer": "L_EMBI",
+      "physicalConstraint": 5,
+      "aiContribution": 0.75,
+      "timeToRealize": "near",
+      "price": 401.75,
+      "marketCap": 142,
+      "pricingScore": 3.3,
+      "pegRatio": 2.23,
+      "pegBand": "rich",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "pricingScore 3.3 > 3"
+      ],
+      "components": {
+        "forwardPE": {
+          "value": 34.072628,
+          "benchmark": 22,
+          "score": 4.4
+        },
+        "evRevenue": {
+          "value": 13.382,
+          "benchmark": 5,
+          "score": 5
+        },
+        "analystUpside": {
+          "targetPrice": 567.80273,
+          "currentPrice": 401.75,
+          "upside": 41.3,
+          "score": 1.3
+        },
+        "momentum6m": {
+          "ticker6m": -20.3,
+          "spy6m": 9.7,
+          "relative": -30,
+          "score": 2
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.9375,
+      "numberOfAnalysts": 29,
+      "fetchedAt": "2026-06-02T18:24:22.779Z"
+    },
+    {
+      "symbol": "KLAC",
+      "layer": "L4",
+      "physicalConstraint": 5,
+      "aiContribution": 0.35,
+      "timeToRealize": "near",
+      "price": 2019.81,
+      "marketCap": 264,
+      "pricingScore": 3.4,
+      "pegRatio": 2.02,
+      "pegBand": "rich",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "pricingScore 3.4 > 3"
+      ],
+      "components": {
+        "forwardPE": {
+          "value": 40.513878,
+          "benchmark": 39.5,
+          "score": 3.1
+        },
+        "evRevenue": {
+          "value": 19.441,
+          "benchmark": 18.3,
+          "score": 3.2
+        },
+        "analystUpside": {
+          "targetPrice": 1855.138,
+          "currentPrice": 2019.81,
+          "upside": -8.2,
+          "score": 3.3
+        },
+        "momentum6m": {
+          "ticker6m": 41.4,
+          "spy6m": 9.7,
+          "relative": 31.8,
+          "score": 4.1
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.93333,
+      "numberOfAnalysts": 29,
+      "fetchedAt": "2026-06-02T18:23:25.284Z"
+    },
+    {
+      "symbol": "AMKR",
+      "layer": "L5",
+      "physicalConstraint": 4,
+      "aiContribution": 0.35,
+      "timeToRealize": "mid",
+      "price": 76.45,
+      "marketCap": 19,
+      "pricingScore": 3.4,
+      "pegRatio": 0.76,
+      "pegBand": "cheap",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "pricingScore 3.4 > 3"
+      ],
+      "components": {
+        "forwardPE": {
+          "value": 31.179264,
+          "benchmark": 29.9,
+          "score": 3.1
+        },
+        "evRevenue": {
+          "value": 2.523,
+          "benchmark": 2.4,
+          "score": 3.1
+        },
+        "analystUpside": {
+          "targetPrice": 75.5,
+          "currentPrice": 76.45,
+          "upside": -1.2,
+          "score": 3
+        },
+        "momentum6m": {
+          "ticker6m": 58.2,
+          "spy6m": 9.7,
+          "relative": 48.5,
+          "score": 4.6
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 2.2,
+      "numberOfAnalysts": 8,
+      "fetchedAt": "2026-06-02T18:23:28.195Z"
+    },
+    {
+      "symbol": "GLW",
+      "layer": "L8_OPT",
+      "physicalConstraint": 4,
+      "aiContribution": 0.35,
+      "timeToRealize": "mid",
+      "price": 199.64,
+      "marketCap": 172,
+      "pricingScore": 3.4,
+      "pegRatio": 1.42,
+      "pegBand": "fair",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "pricingScore 3.4 > 3"
+      ],
+      "components": {
+        "forwardPE": {
+          "value": 47.267284,
+          "benchmark": 44.2,
+          "score": 3.2
+        },
+        "evRevenue": {
+          "value": 9.851,
+          "benchmark": 10.9,
+          "score": 2.8
+        },
+        "analystUpside": {
+          "targetPrice": 197.66667,
+          "currentPrice": 199.64,
+          "upside": -1,
+          "score": 3
+        },
+        "momentum6m": {
+          "ticker6m": 93.4,
+          "spy6m": 9.7,
+          "relative": 83.7,
+          "score": 5
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.8125,
+      "numberOfAnalysts": 15,
+      "fetchedAt": "2026-06-02T18:23:45.355Z"
+    },
+    {
+      "symbol": "RKLB",
+      "layer": "L_SPACE",
+      "physicalConstraint": 4,
+      "aiContribution": 0.45,
+      "timeToRealize": "near",
+      "price": 124.84,
+      "marketCap": 72,
+      "pricingScore": 3.4,
+      "pegRatio": null,
+      "pegBand": "N/A",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "pricingScore 3.4 > 3"
+      ],
+      "components": {
+        "forwardPE": {
+          "value": -11328.493,
+          "benchmark": 22,
+          "score": 1
+        },
+        "evRevenue": {
+          "value": 102.4,
+          "benchmark": 5,
+          "score": 5
+        },
+        "analystUpside": {
+          "targetPrice": 103.90938,
+          "currentPrice": 124.84,
+          "upside": -16.8,
+          "score": 3.7
+        },
+        "momentum6m": {
+          "ticker6m": 55.9,
+          "spy6m": 9.7,
+          "relative": 46.2,
+          "score": 4.5
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.61111,
+      "numberOfAnalysts": 16,
+      "fetchedAt": "2026-06-02T18:24:29.994Z"
+    },
+    {
+      "symbol": "HUT",
+      "layer": "L9_MINER_CONVERT",
+      "physicalConstraint": 4,
+      "aiContribution": 0.3,
+      "timeToRealize": "mid",
+      "price": 132.98,
+      "marketCap": 15,
+      "pricingScore": 3.4,
+      "pegRatio": null,
+      "pegBand": "N/A",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "pricingScore 3.4 > 3"
+      ],
+      "components": {
+        "forwardPE": {
+          "value": -71.59085,
+          "benchmark": 22,
+          "score": 1
+        },
+        "evRevenue": {
+          "value": 1312.618,
+          "benchmark": 5,
+          "score": 5
+        },
+        "analystUpside": {
+          "targetPrice": 119,
+          "currentPrice": 132.98,
+          "upside": -10.5,
+          "score": 3.4
+        },
+        "momentum6m": {
+          "ticker6m": 138.2,
+          "spy6m": 9.7,
+          "relative": 128.5,
+          "score": 5
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.3125,
+      "numberOfAnalysts": 16,
+      "fetchedAt": "2026-06-02T18:24:42.897Z"
+    },
+    {
+      "symbol": "PLTR",
+      "layer": "L1",
+      "physicalConstraint": 1,
+      "aiContribution": 0.7,
+      "timeToRealize": "mid",
+      "price": 152.07,
+      "marketCap": 365,
+      "pricingScore": 3.5,
+      "pegRatio": 2.24,
+      "pegBand": "rich",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "physicalConstraint 1 < 4",
+        "pricingScore 3.5 > 3"
+      ],
+      "components": {
+        "forwardPE": {
+          "value": 73.31219,
+          "benchmark": 52.3,
+          "score": 4
+        },
+        "evRevenue": {
+          "value": 72.245,
+          "benchmark": 40.5,
+          "score": 5
+        },
+        "analystUpside": {
+          "targetPrice": 183.7289,
+          "currentPrice": 152.07,
+          "upside": 20.8,
+          "score": 2.2
+        },
+        "momentum6m": {
+          "ticker6m": 3.7,
+          "spy6m": 9.7,
+          "relative": -5.9,
+          "score": 2.8
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.90323,
+      "numberOfAnalysts": 27,
+      "fetchedAt": "2026-06-02T18:22:59.061Z"
+    },
+    {
+      "symbol": "VRT",
+      "layer": "L8_COOL",
+      "physicalConstraint": 4,
+      "aiContribution": 0.65,
+      "timeToRealize": "near",
+      "price": 333.88,
+      "marketCap": 128,
+      "pricingScore": 3.6,
+      "pegRatio": 1.62,
+      "pegBand": "rich",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "pricingScore 3.6 > 3"
+      ],
+      "components": {
+        "forwardPE": {
+          "value": 37.78295,
+          "benchmark": 31.2,
+          "score": 3.5
+        },
+        "evRevenue": {
+          "value": 11.526,
+          "benchmark": 8.7,
+          "score": 3.8
+        },
+        "analystUpside": {
+          "targetPrice": 376.8,
+          "currentPrice": 333.88,
+          "upside": 12.9,
+          "score": 2.5
+        },
+        "momentum6m": {
+          "ticker6m": 79.3,
+          "spy6m": 9.7,
+          "relative": 69.7,
+          "score": 5
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.5,
+      "numberOfAnalysts": 25,
+      "fetchedAt": "2026-06-02T18:23:42.434Z"
+    },
+    {
+      "symbol": "COHR",
+      "layer": "L8_OPT",
+      "physicalConstraint": 4,
+      "aiContribution": 0.55,
+      "timeToRealize": "mid",
+      "price": 425.031,
+      "marketCap": 83,
+      "pricingScore": 3.6,
+      "pegRatio": 0.92,
+      "pegBand": "cheap",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "pricingScore 3.6 > 3"
+      ],
+      "components": {
+        "forwardPE": {
+          "value": 52.50096,
+          "benchmark": 44.2,
+          "score": 3.5
+        },
+        "evRevenue": {
+          "value": 10.957,
+          "benchmark": 10.9,
+          "score": 3
+        },
+        "analystUpside": {
+          "targetPrice": 380.61707,
+          "currentPrice": 425.031,
+          "upside": -10.4,
+          "score": 3.4
+        },
+        "momentum6m": {
+          "ticker6m": 100.3,
+          "spy6m": 9.7,
+          "relative": 90.6,
+          "score": 5
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.6,
+      "numberOfAnalysts": 21,
+      "fetchedAt": "2026-06-02T18:23:46.742Z"
+    },
+    {
+      "symbol": "ORCL",
+      "layer": "L0",
+      "physicalConstraint": 1,
+      "aiContribution": 0.35,
+      "timeToRealize": "near",
+      "price": 243.2,
+      "marketCap": 699,
+      "pricingScore": 3.7,
+      "pegRatio": 1.57,
+      "pegBand": "rich",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "physicalConstraint 1 < 4",
+        "pricingScore 3.7 > 3"
+      ],
+      "components": {
+        "forwardPE": {
+          "value": 30.276735,
+          "benchmark": 25.2,
+          "score": 3.5
+        },
+        "evRevenue": {
+          "value": 13.144,
+          "benchmark": 9.1,
+          "score": 4.1
+        },
+        "analystUpside": {
+          "targetPrice": 244.02513,
+          "currentPrice": 243.2,
+          "upside": 0.3,
+          "score": 3
+        },
+        "momentum6m": {
+          "ticker6m": 47.8,
+          "spy6m": 9.7,
+          "relative": 38.1,
+          "score": 4.3
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.51163,
+      "numberOfAnalysts": 39,
+      "fetchedAt": "2026-06-02T18:22:56.176Z"
+    },
+    {
+      "symbol": "AMD",
+      "layer": "L2",
+      "physicalConstraint": 4,
+      "aiContribution": 0.65,
+      "timeToRealize": "mid",
+      "price": 515.25,
+      "marketCap": 840,
+      "pricingScore": 3.7,
+      "pegRatio": 1.23,
+      "pegBand": "fair",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "pricingScore 3.7 > 3"
+      ],
+      "components": {
+        "forwardPE": {
+          "value": 39.40662,
+          "benchmark": 28.6,
+          "score": 3.9
+        },
+        "evRevenue": {
+          "value": 21.983,
+          "benchmark": 22.2,
+          "score": 3
+        },
+        "analystUpside": {
+          "targetPrice": 479.77084,
+          "currentPrice": 515.25,
+          "upside": -6.9,
+          "score": 3.3
+        },
+        "momentum6m": {
+          "ticker6m": 117.7,
+          "spy6m": 9.7,
+          "relative": 108,
+          "score": 5
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.4902,
+      "numberOfAnalysts": 48,
+      "fetchedAt": "2026-06-02T18:23:01.853Z"
+    },
+    {
+      "symbol": "TTMI",
+      "layer": "L5_5",
+      "physicalConstraint": 4,
+      "aiContribution": 0.3,
+      "timeToRealize": "near",
+      "price": 179.62,
+      "marketCap": 19,
+      "pricingScore": 3.7,
+      "pegRatio": 0.36,
+      "pegBand": "cheap",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "pricingScore 3.7 > 3"
+      ],
+      "components": {
+        "forwardPE": {
+          "value": 33.262962,
+          "benchmark": 22,
+          "score": 4.3
+        },
+        "evRevenue": {
+          "value": 5.975,
+          "benchmark": 5,
+          "score": 3.5
+        },
+        "analystUpside": {
+          "targetPrice": 209,
+          "currentPrice": 179.62,
+          "upside": 16.4,
+          "score": 2.3
+        },
+        "momentum6m": {
+          "ticker6m": 82.9,
+          "spy6m": 9.7,
+          "relative": 73.2,
+          "score": 5
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.25,
+      "numberOfAnalysts": 4,
+      "fetchedAt": "2026-06-02T18:23:31.016Z"
+    },
+    {
+      "symbol": "MU",
+      "layer": "L6",
+      "physicalConstraint": 4,
+      "aiContribution": 0.55,
+      "timeToRealize": "near",
+      "price": 1053.04,
+      "marketCap": 1188,
+      "pricingScore": 3.8,
+      "pegRatio": 0.36,
+      "pegBand": "cheap",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "pricingScore 3.8 > 3"
+      ],
+      "components": {
+        "forwardPE": {
+          "value": 10.01784,
+          "benchmark": 9.9,
+          "score": 3
+        },
+        "evRevenue": {
+          "value": 20.027,
+          "benchmark": 18.8,
+          "score": 3.2
+        },
+        "analystUpside": {
+          "targetPrice": 726.225,
+          "currentPrice": 1053.04,
+          "upside": -31,
+          "score": 4.2
+        },
+        "momentum6m": {
+          "ticker6m": 153.8,
+          "spy6m": 9.7,
+          "relative": 144.1,
+          "score": 5
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.47727,
+      "numberOfAnalysts": 40,
+      "fetchedAt": "2026-06-02T18:23:32.442Z"
+    },
+    {
+      "symbol": "MRVL",
+      "layer": "L2_5",
+      "physicalConstraint": 4,
+      "aiContribution": 0.6,
+      "timeToRealize": "mid",
+      "price": 284.545,
+      "marketCap": 249,
+      "pricingScore": 3.9,
+      "pegRatio": 1.17,
+      "pegBand": "fair",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "pricingScore 3.9 > 3"
+      ],
+      "components": {
+        "forwardPE": {
+          "value": 46.673965,
+          "benchmark": 31,
+          "score": 4.3
+        },
+        "evRevenue": {
+          "value": 22.185,
+          "benchmark": 26.2,
+          "score": 2.6
+        },
+        "analystUpside": {
+          "targetPrice": 222.55122,
+          "currentPrice": 284.545,
+          "upside": -21.8,
+          "score": 3.9
+        },
+        "momentum6m": {
+          "ticker6m": 260.5,
+          "spy6m": 9.7,
+          "relative": 250.9,
+          "score": 5
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.40909,
+      "numberOfAnalysts": 41,
+      "fetchedAt": "2026-06-02T18:23:07.760Z"
+    },
+    {
+      "symbol": "EQIX",
+      "layer": "L9",
+      "physicalConstraint": 3,
+      "aiContribution": 0.3,
+      "timeToRealize": "far",
+      "price": 1072.83,
+      "marketCap": 106,
+      "pricingScore": 3.9,
+      "pegRatio": 3.5,
+      "pegBand": "overpriced",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "physicalConstraint 3 < 4",
+        "timeToRealize = far",
+        "pricingScore 3.9 > 3"
+      ],
+      "components": {
+        "forwardPE": {
+          "value": 55.808746,
+          "benchmark": 35.5,
+          "score": 4.4
+        },
+        "evRevenue": {
+          "value": 13.188,
+          "benchmark": 7.9,
+          "score": 4.7
+        },
+        "analystUpside": {
+          "targetPrice": 1197.1072,
+          "currentPrice": 1072.83,
+          "upside": 11.6,
+          "score": 2.5
+        },
+        "momentum6m": {
+          "ticker6m": 30.7,
+          "spy6m": 9.7,
+          "relative": 21,
+          "score": 3.7
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.58065,
+      "numberOfAnalysts": 28,
+      "fetchedAt": "2026-06-02T18:23:49.600Z"
+    },
+    {
+      "symbol": "DLR",
+      "layer": "L9",
+      "physicalConstraint": 3,
+      "aiContribution": 0.3,
+      "timeToRealize": "far",
+      "price": 185.9,
+      "marketCap": 66,
+      "pricingScore": 3.9,
+      "pegRatio": 12.81,
+      "pegBand": "overpriced",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "physicalConstraint 3 < 4",
+        "timeToRealize = far",
+        "pricingScore 3.9 > 3"
+      ],
+      "components": {
+        "forwardPE": {
+          "value": 64.906044,
+          "benchmark": 35.5,
+          "score": 5
+        },
+        "evRevenue": {
+          "value": 13.424,
+          "benchmark": 7.9,
+          "score": 4.7
+        },
+        "analystUpside": {
+          "targetPrice": 218.72414,
+          "currentPrice": 185.9,
+          "upside": 17.7,
+          "score": 2.3
+        },
+        "momentum6m": {
+          "ticker6m": 12,
+          "spy6m": 9.7,
+          "relative": 2.3,
+          "score": 3.1
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.71875,
+      "numberOfAnalysts": 29,
+      "fetchedAt": "2026-06-02T18:23:51.027Z"
+    },
+    {
+      "symbol": "CCJ",
+      "layer": "L11_FUEL",
+      "physicalConstraint": 4,
+      "aiContribution": 0.35,
+      "timeToRealize": "mid",
+      "price": 119.925,
+      "marketCap": 52,
+      "pricingScore": 3.9,
+      "pegRatio": 1.92,
+      "pegBand": "rich",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "pricingScore 3.9 > 3"
+      ],
+      "components": {
+        "forwardPE": {
+          "value": 45.18617,
+          "benchmark": 22,
+          "score": 5
+        },
+        "evRevenue": {
+          "value": 13.833,
+          "benchmark": 5,
+          "score": 5
+        },
+        "analystUpside": {
+          "targetPrice": 129.9716,
+          "currentPrice": 119.925,
+          "upside": 8.4,
+          "score": 2.7
+        },
+        "momentum6m": {
+          "ticker6m": -2.8,
+          "spy6m": 9.7,
+          "relative": -12.5,
+          "score": 2.6
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.79167,
+      "numberOfAnalysts": 11,
+      "fetchedAt": "2026-06-02T18:24:03.931Z"
+    },
+    {
+      "symbol": "CRCL",
+      "layer": "L_DCOMP",
+      "physicalConstraint": 4,
+      "aiContribution": 0.3,
+      "timeToRealize": "near",
+      "price": 101.31,
+      "marketCap": 27,
+      "pricingScore": 3.9,
+      "pegRatio": 4.34,
+      "pegBand": "overpriced",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "pricingScore 3.9 > 3"
+      ],
+      "components": {
+        "forwardPE": {
+          "value": 45.410946,
+          "benchmark": 22,
+          "score": 5
+        },
+        "evRevenue": {
+          "value": 8.592,
+          "benchmark": 5,
+          "score": 4.8
+        },
+        "analystUpside": {
+          "targetPrice": 145.80228,
+          "currentPrice": 101.31,
+          "upside": 43.9,
+          "score": 1.2
+        },
+        "momentum6m": {
+          "ticker6m": 58.5,
+          "spy6m": 9.7,
+          "relative": 48.8,
+          "score": 4.6
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 2.2,
+      "numberOfAnalysts": 22,
+      "fetchedAt": "2026-06-02T18:24:21.370Z"
+    },
+    {
+      "symbol": "CLS",
+      "layer": "L7",
+      "physicalConstraint": 3,
+      "aiContribution": 0.7,
+      "timeToRealize": "near",
+      "price": 471.32,
+      "marketCap": 54,
+      "pricingScore": 4,
+      "pegRatio": 1,
+      "pegBand": "cheap",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "physicalConstraint 3 < 4",
+        "pricingScore 4 > 3"
+      ],
+      "components": {
+        "forwardPE": {
+          "value": 31.382086,
+          "benchmark": 22.5,
+          "score": 4
+        },
+        "evRevenue": {
+          "value": 3.597,
+          "benchmark": 2.7,
+          "score": 3.8
+        },
+        "analystUpside": {
+          "targetPrice": 441.33444,
+          "currentPrice": 471.32,
+          "upside": -6.4,
+          "score": 3.3
+        },
+        "momentum6m": {
+          "ticker6m": 67.7,
+          "spy6m": 9.7,
+          "relative": 58.1,
+          "score": 4.9
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.28571,
+      "numberOfAnalysts": 18,
+      "fetchedAt": "2026-06-02T18:23:35.313Z"
+    },
+    {
+      "symbol": "LITE",
+      "layer": "L8_OPT",
+      "physicalConstraint": 5,
+      "aiContribution": 0.8,
+      "timeToRealize": "near",
+      "price": 1030.81,
+      "marketCap": 80,
+      "pricingScore": 4,
+      "pegRatio": 0.63,
+      "pegBand": "cheap",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "pricingScore 4 > 3"
+      ],
+      "components": {
+        "forwardPE": {
+          "value": 56.948723,
+          "benchmark": 44.2,
+          "score": 3.7
+        },
+        "evRevenue": {
+          "value": 26.133,
+          "benchmark": 10.9,
+          "score": 5
+        },
+        "analystUpside": {
+          "targetPrice": 1104.6777,
+          "currentPrice": 1030.81,
+          "upside": 7.2,
+          "score": 2.7
+        },
+        "momentum6m": {
+          "ticker6m": 163.1,
+          "spy6m": 9.7,
+          "relative": 153.4,
+          "score": 5
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.58333,
+      "numberOfAnalysts": 24,
+      "fetchedAt": "2026-06-02T18:23:48.214Z"
+    },
+    {
+      "symbol": "CRWD",
+      "layer": "L10",
+      "physicalConstraint": 1,
+      "aiContribution": 0.5,
+      "timeToRealize": "near",
+      "price": 758.03,
+      "marketCap": 193,
+      "pricingScore": 4,
+      "pegRatio": 6.03,
+      "pegBand": "overpriced",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "physicalConstraint 1 < 4",
+        "pricingScore 4 > 3"
+      ],
+      "components": {
+        "forwardPE": {
+          "value": 122.83867,
+          "benchmark": 98.9,
+          "score": 3.6
+        },
+        "evRevenue": {
+          "value": 40.317,
+          "benchmark": 30.2,
+          "score": 3.8
+        },
+        "analystUpside": {
+          "targetPrice": 564.2384,
+          "currentPrice": 758.03,
+          "upside": -25.6,
+          "score": 4
+        },
+        "momentum6m": {
+          "ticker6m": 71.7,
+          "spy6m": 9.7,
+          "relative": 62.1,
+          "score": 5
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.69231,
+      "numberOfAnalysts": 50,
+      "fetchedAt": "2026-06-02T18:23:55.431Z"
+    },
+    {
+      "symbol": "LINK",
+      "layer": "L_DCOMP",
+      "physicalConstraint": 4,
+      "aiContribution": 0.35,
+      "timeToRealize": "near",
+      "price": 5.26,
+      "marketCap": 0,
+      "pricingScore": 4,
+      "pegRatio": null,
+      "pegBand": "N/A",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "pricingScore 4 > 3"
+      ],
+      "components": {
+        "evRevenue": {
+          "value": 6.367,
+          "benchmark": 5,
+          "score": 3.7
+        },
+        "momentum6m": {
+          "ticker6m": 49,
+          "spy6m": 9.7,
+          "relative": 39.3,
+          "score": 4.3
+        }
+      },
+      "dataQuality": "low",
+      "analystRecommendMean": null,
+      "numberOfAnalysts": null,
+      "fetchedAt": "2026-06-02T18:24:18.490Z"
+    },
+    {
+      "symbol": "TSLA",
+      "layer": "L_EMBI",
+      "physicalConstraint": 3,
+      "aiContribution": 0.4,
+      "timeToRealize": "medium",
+      "price": 422,
+      "marketCap": 1585,
+      "pricingScore": 4,
+      "pegRatio": 5.73,
+      "pegBand": "overpriced",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "physicalConstraint 3 < 4",
+        "pricingScore 4 > 3"
+      ],
+      "components": {
+        "forwardPE": {
+          "value": 168.14825,
+          "benchmark": 22,
+          "score": 5
+        },
+        "evRevenue": {
+          "value": 15.67,
+          "benchmark": 5,
+          "score": 5
+        },
+        "analystUpside": {
+          "targetPrice": 411.8878,
+          "currentPrice": 422,
+          "upside": -2.4,
+          "score": 3.1
+        },
+        "momentum6m": {
+          "ticker6m": -2,
+          "spy6m": 9.7,
+          "relative": -11.6,
+          "score": 2.6
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 2.3617,
+      "numberOfAnalysts": 41,
+      "fetchedAt": "2026-06-02T18:24:27.130Z"
+    },
+    {
+      "symbol": "SCCO",
+      "layer": "L14",
+      "physicalConstraint": 4,
+      "aiContribution": 0.12,
+      "timeToRealize": "far",
+      "price": 200.56,
+      "marketCap": 167,
+      "pricingScore": 4.2,
+      "pegRatio": 5.41,
+      "pegBand": "overpriced",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "aiContribution 0.12 < 0.30",
+        "timeToRealize = far",
+        "pricingScore 4.2 > 3"
+      ],
+      "components": {
+        "forwardPE": {
+          "value": 30.464317,
+          "benchmark": 18,
+          "score": 4.7
+        },
+        "evRevenue": {
+          "value": 11.306,
+          "benchmark": 4.3,
+          "score": 5
+        },
+        "analystUpside": {
+          "targetPrice": 163.13354,
+          "currentPrice": 200.56,
+          "upside": -18.7,
+          "score": 3.7
+        },
+        "momentum6m": {
+          "ticker6m": 7.3,
+          "spy6m": 9.7,
+          "relative": -2.4,
+          "score": 2.9
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 3.58824,
+      "numberOfAnalysts": 16,
+      "fetchedAt": "2026-06-02T18:24:12.760Z"
+    },
+    {
+      "symbol": "CIFR",
+      "layer": "L9_MINER_CONVERT",
+      "physicalConstraint": 5,
+      "aiContribution": 0.45,
+      "timeToRealize": "near",
+      "price": 26.21,
+      "marketCap": 11,
+      "pricingScore": 4.2,
+      "pegRatio": null,
+      "pegBand": "N/A",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "pricingScore 4.2 > 3"
+      ],
+      "components": {
+        "forwardPE": {
+          "value": 39.1194,
+          "benchmark": 22,
+          "score": 4.9
+        },
+        "evRevenue": {
+          "value": 66.144,
+          "benchmark": 5,
+          "score": 5
+        },
+        "analystUpside": {
+          "targetPrice": 31.6,
+          "currentPrice": 26.21,
+          "upside": 20.6,
+          "score": 2.2
+        },
+        "momentum6m": {
+          "ticker6m": 64.2,
+          "spy6m": 9.7,
+          "relative": 54.5,
+          "score": 4.8
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.33333,
+      "numberOfAnalysts": 15,
+      "fetchedAt": "2026-06-02T18:24:38.438Z"
+    },
+    {
+      "symbol": "WULF",
+      "layer": "L9_MINER_CONVERT",
+      "physicalConstraint": 5,
+      "aiContribution": 0.45,
+      "timeToRealize": "near",
+      "price": 26.465,
+      "marketCap": 13,
+      "pricingScore": 4.2,
+      "pegRatio": null,
+      "pegBand": "N/A",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "pricingScore 4.2 > 3"
+      ],
+      "components": {
+        "forwardPE": {
+          "value": 143.05405,
+          "benchmark": 22,
+          "score": 5
+        },
+        "evRevenue": {
+          "value": 91.636,
+          "benchmark": 5,
+          "score": 5
+        },
+        "analystUpside": {
+          "targetPrice": 34.78571,
+          "currentPrice": 26.465,
+          "upside": 31.4,
+          "score": 1.7
+        },
+        "momentum6m": {
+          "ticker6m": 97.9,
+          "spy6m": 9.7,
+          "relative": 88.3,
+          "score": 5
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.38462,
+      "numberOfAnalysts": 14,
+      "fetchedAt": "2026-06-02T18:24:41.517Z"
+    },
+    {
+      "symbol": "TSEM",
+      "layer": "L3_5",
+      "physicalConstraint": 3,
+      "aiContribution": 0.5,
+      "timeToRealize": "mid",
+      "price": 274.535,
+      "marketCap": 33,
+      "pricingScore": 4.3,
+      "pegRatio": 7.27,
+      "pegBand": "overpriced",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "physicalConstraint 3 < 4",
+        "pricingScore 4.3 > 3"
+      ],
+      "components": {
+        "forwardPE": {
+          "value": 47.84507,
+          "benchmark": 27.5,
+          "score": 4.8
+        },
+        "evRevenue": {
+          "value": 16.702,
+          "benchmark": 7.5,
+          "score": 5
+        },
+        "analystUpside": {
+          "targetPrice": 313.83334,
+          "currentPrice": 274.535,
+          "upside": 14.3,
+          "score": 2.4
+        },
+        "momentum6m": {
+          "ticker6m": 103.8,
+          "spy6m": 9.7,
+          "relative": 94.1,
+          "score": 5
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": null,
+      "numberOfAnalysts": 6,
+      "fetchedAt": "2026-06-02T18:23:19.451Z"
+    },
+    {
+      "symbol": "CGNX",
+      "layer": "L_EMBI",
+      "physicalConstraint": 4,
+      "aiContribution": 0.65,
+      "timeToRealize": "near",
+      "price": 66.63,
+      "marketCap": 11,
+      "pricingScore": 4.3,
+      "pegRatio": 2.71,
+      "pegBand": "overpriced",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "pricingScore 4.3 > 3"
+      ],
+      "components": {
+        "forwardPE": {
+          "value": 37.819275,
+          "benchmark": 22,
+          "score": 4.8
+        },
+        "evRevenue": {
+          "value": 10.064,
+          "benchmark": 5,
+          "score": 5
+        },
+        "analystUpside": {
+          "targetPrice": 76.25,
+          "currentPrice": 66.63,
+          "upside": 14.4,
+          "score": 2.4
+        },
+        "momentum6m": {
+          "ticker6m": 72,
+          "spy6m": 9.7,
+          "relative": 62.3,
+          "score": 5
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.71429,
+      "numberOfAnalysts": 20,
+      "fetchedAt": "2026-06-02T18:24:24.174Z"
+    },
+    {
+      "symbol": "VPG",
+      "layer": "L_EMBI",
+      "physicalConstraint": 2,
+      "aiContribution": 0.08,
+      "timeToRealize": "mid",
+      "price": 134.88,
+      "marketCap": 2,
+      "pricingScore": 4.3,
+      "pegRatio": 7.01,
+      "pegBand": "overpriced",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "physicalConstraint 2 < 4",
+        "aiContribution 0.08 < 0.30",
+        "pricingScore 4.3 > 3"
+      ],
+      "components": {
+        "forwardPE": {
+          "value": 74.51934,
+          "benchmark": 22,
+          "score": 5
+        },
+        "evRevenue": {
+          "value": 5.13,
+          "benchmark": 5,
+          "score": 3.1
+        },
+        "analystUpside": {
+          "targetPrice": 94.66667,
+          "currentPrice": 134.88,
+          "upside": -29.8,
+          "score": 4.2
+        },
+        "momentum6m": {
+          "ticker6m": 169.3,
+          "spy6m": 9.7,
+          "relative": 159.6,
+          "score": 5
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": null,
+      "numberOfAnalysts": 3,
+      "fetchedAt": "2026-06-02T18:24:28.537Z"
+    },
+    {
+      "symbol": "INTC",
+      "layer": "L5",
+      "physicalConstraint": 4,
+      "aiContribution": 0.3,
+      "timeToRealize": "mid",
+      "price": 107.255,
+      "marketCap": 539,
+      "pricingScore": 4.7,
+      "pegRatio": 1.36,
+      "pegBand": "fair",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "pricingScore 4.7 > 3"
+      ],
+      "components": {
+        "forwardPE": {
+          "value": 69.41299,
+          "benchmark": 29.9,
+          "score": 5
+        },
+        "evRevenue": {
+          "value": 10.701,
+          "benchmark": 2.4,
+          "score": 5
+        },
+        "analystUpside": {
+          "targetPrice": 88.7122,
+          "currentPrice": 107.255,
+          "upside": -17.3,
+          "score": 3.7
+        },
+        "momentum6m": {
+          "ticker6m": 130.8,
+          "spy6m": 9.7,
+          "relative": 121.1,
+          "score": 5
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 2.6875,
+      "numberOfAnalysts": 41,
+      "fetchedAt": "2026-06-02T18:23:33.904Z"
+    },
+    {
+      "symbol": "ALAB",
+      "layer": "L3",
+      "physicalConstraint": 4,
+      "aiContribution": 0.85,
+      "timeToRealize": "near",
+      "price": 348.49,
+      "marketCap": 60,
+      "pricingScore": 4.8,
+      "pegRatio": null,
+      "pegBand": "N/A",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "pricingScore 4.8 > 3"
+      ],
+      "components": {
+        "forwardPE": {
+          "value": 82.84186,
+          "benchmark": 43.5,
+          "score": 5
+        },
+        "evRevenue": {
+          "value": 53.646,
+          "benchmark": 19,
+          "score": 5
+        },
+        "analystUpside": {
+          "targetPrice": 244.96773,
+          "currentPrice": 348.49,
+          "upside": -29.7,
+          "score": 4.2
+        },
+        "momentum6m": {
+          "ticker6m": 131.4,
+          "spy6m": 9.7,
+          "relative": 121.7,
+          "score": 5
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.88462,
+      "numberOfAnalysts": 22,
+      "fetchedAt": "2026-06-02T18:23:13.464Z"
+    },
+    {
+      "symbol": "ARM",
+      "layer": "L2_5",
+      "physicalConstraint": 4,
+      "aiContribution": 0.6,
+      "timeToRealize": "mid",
+      "price": 404.97,
+      "marketCap": 433,
+      "pricingScore": 4.9,
+      "pegRatio": 3.07,
+      "pegBand": "overpriced",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "pricingScore 4.9 > 3"
+      ],
+      "components": {
+        "forwardPE": {
+          "value": 132.36174,
+          "benchmark": 31,
+          "score": 5
+        },
+        "evRevenue": {
+          "value": 88.125,
+          "benchmark": 26.2,
+          "score": 5
+        },
+        "analystUpside": {
+          "targetPrice": 241.18973,
+          "currentPrice": 404.97,
+          "upside": -40.4,
+          "score": 4.6
+        },
+        "momentum6m": {
+          "ticker6m": 284.4,
+          "spy6m": 9.7,
+          "relative": 274.7,
+          "score": 5
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.875,
+      "numberOfAnalysts": 37,
+      "fetchedAt": "2026-06-02T18:23:06.226Z"
+    },
+    {
+      "symbol": "RNDR",
+      "layer": "L_DCOMP",
+      "assetClass": "crypto",
+      "physicalConstraint": 3,
+      "aiContribution": 0.65,
+      "timeToRealize": "near",
+      "price": 2.12,
+      "marketCap": 1,
+      "pricingScore": 4.9,
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "PC=3<4",
+        "pricing=4.9>3.0"
+      ],
+      "components": {
+        "momentum6m": {
+          "ownReturn": 23.6,
+          "ethReturn": -38.9,
+          "relReturn": 62.4,
+          "score": 4.9
+        }
+      },
+      "dataQuality": "minimal",
+      "analystRecommendMean": null,
+      "numberOfAnalysts": null,
+      "cryptoMetrics": {
+        "tvlUSD": null,
+        "annualRevenueUSD": null,
+        "volume24hUSD": 180,
+        "priceChange6mPct": 23.6
+      },
+      "fetchedAt": "2026-06-02T18:26:32.236Z"
+    },
+    {
+      "symbol": "TAO",
+      "layer": "L_DCOMP",
+      "assetClass": "crypto",
+      "physicalConstraint": 2,
+      "aiContribution": 0.9,
+      "timeToRealize": "mid",
+      "price": 240.87,
+      "marketCap": 2,
+      "pricingScore": 3.7,
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "PC=2<4",
+        "pricing=3.7>3.0"
+      ],
+      "components": {
+        "momentum6m": {
+          "ownReturn": -17.1,
+          "ethReturn": -38.9,
+          "relReturn": 21.8,
+          "score": 3.7
+        }
+      },
+      "dataQuality": "minimal",
+      "analystRecommendMean": null,
+      "numberOfAnalysts": null,
+      "cryptoMetrics": {
+        "tvlUSD": null,
+        "annualRevenueUSD": null,
+        "volume24hUSD": 244,
+        "priceChange6mPct": -17.1
+      },
+      "fetchedAt": "2026-06-02T18:26:32.236Z"
+    },
+    {
+      "symbol": "FIL",
+      "layer": "L_DCOMP",
+      "assetClass": "crypto",
+      "physicalConstraint": 3,
+      "aiContribution": 0.3,
+      "timeToRealize": "mid",
+      "price": 0.888059,
+      "marketCap": 1,
+      "pricingScore": 2.95,
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "PC=3<4"
+      ],
+      "components": {
+        "pRev": {
+          "value": 504,
+          "benchmark": 504,
+          "score": 3
+        },
+        "momentum6m": {
+          "ownReturn": -42.5,
+          "ethReturn": -38.9,
+          "relReturn": -3.7,
+          "score": 2.9
+        }
+      },
+      "dataQuality": "partial",
+      "analystRecommendMean": null,
+      "numberOfAnalysts": null,
+      "cryptoMetrics": {
+        "tvlUSD": 0,
+        "annualRevenueUSD": 1,
+        "volume24hUSD": 116,
+        "priceChange6mPct": -42.5
+      },
+      "fetchedAt": "2026-06-02T18:26:32.237Z"
+    },
+    {
+      "symbol": "LINK",
+      "layer": "L_DCOMP",
+      "assetClass": "crypto",
+      "physicalConstraint": 4,
+      "aiContribution": 0.35,
+      "timeToRealize": "near",
+      "price": 8.58,
+      "marketCap": 6,
+      "pricingScore": 2.58,
+      "funnelPass": true,
+      "funnelFailReasons": [],
+      "components": {
+        "pRev": {
+          "value": 106,
+          "benchmark": 504,
+          "score": 1.8
+        },
+        "pTvl": {
+          "value": 8.43,
+          "benchmark": 8.43,
+          "score": 3
+        },
+        "momentum6m": {
+          "ownReturn": -39.8,
+          "ethReturn": -38.9,
+          "relReturn": -1,
+          "score": 3
+        }
+      },
+      "dataQuality": "full",
+      "analystRecommendMean": null,
+      "numberOfAnalysts": null,
+      "cryptoMetrics": {
+        "tvlUSD": 742,
+        "annualRevenueUSD": 59,
+        "volume24hUSD": 327,
+        "priceChange6mPct": -39.8
+      },
+      "fetchedAt": "2026-06-02T18:26:32.237Z"
+    },
+    {
+      "symbol": "ETH",
+      "layer": "L_DCOMP",
+      "assetClass": "crypto",
+      "physicalConstraint": 4,
+      "aiContribution": 0.2,
+      "timeToRealize": "near",
+      "price": 1915.68,
+      "marketCap": 232,
+      "pricingScore": 4.08,
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "AI=20%<30%",
+        "pricing=4.08>3.0"
+      ],
+      "components": {
+        "pRev": {
+          "value": 1196,
+          "benchmark": 504,
+          "score": 5
+        },
+        "momentum6m": {
+          "ownReturn": -38.9,
+          "ethReturn": -38.9,
+          "relReturn": 0,
+          "score": 3
+        }
+      },
+      "dataQuality": "partial",
+      "analystRecommendMean": null,
+      "numberOfAnalysts": null,
+      "cryptoMetrics": {
+        "tvlUSD": 0,
+        "annualRevenueUSD": 194,
+        "volume24hUSD": 18969,
+        "priceChange6mPct": -38.9
+      },
+      "fetchedAt": "2026-06-02T18:26:32.237Z"
+    }
+  ]
+}
