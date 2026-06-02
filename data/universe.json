@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "version": "2.2.3",
-    "date": "2026-05-27",
+    "version": "2.2.5",
+    "date": "2026-06-03",
     "description": "ProphetMap stock universe — manually-defined static fields only. Dynamic pricing scores written to data/scores/YYYY-MM-DD.json by scripts/update-valuations.js",
     "fieldGuide": {
       "physicalConstraint": "1=pure software, 5=hard physical monopoly with multi-year lead times",
@@ -675,6 +675,34 @@
           "date": "2026-05-04",
           "version": "1.0.0",
           "change": "Initial addition to universe"
+        }
+      ]
+    },
+    {
+      "symbol": "TER",
+      "name": "Teradyne",
+      "layer": "L4",
+      "layerRole": "secondary",
+      "physicalConstraint": 4,
+      "aiContribution": 0.4,
+      "timeToRealize": "near",
+      "thesis": "Back-end test (ATE) duopoly with Advantest — chip test becomes bottleneck as HBM stacking, chiplets, and advanced packaging raise test intensity per device. Complements L4 front-end WFE (AMAT/LRCX/ASML/KLAC): test is the under-covered back-end chokepoint of the equipment layer. Surfaced 2026-06-02 via user coverage-audit of 化工/PCB/材料/精密仪器 racetracks — the legitimate AI-chain gap (vs VPG which was rejected as non-AI industrial sensors).",
+      "thesisFalsification": [
+        "Advantest captures majority of HBM/AI-accelerator test share — TER duopoly position erodes below 40% in memory/SoC test",
+        "Built-in self-test (BIST) / AI virtual-test reduces external ATE requirement per device by >40%",
+        "Industrial automation segment (Universal Robots/MiR) drag offsets semi-test growth — AI-attributable revenue mix falls below 30%",
+        "Chiplet yields improve enough that system-level test (SLT) intensity plateaus through 2028"
+      ],
+      "marketCap": 25,
+      "status": "active",
+      "addedDate": "2026-06-02",
+      "addedVersion": "2.2.4",
+      "_note": "Added 2026-06-02 as first funnel-PASS-eligible name from the 11-trigger inspired-bombardment week — distinct from INTC/HPE/800V-cluster/SIVE (all expected funnel-FAIL) because back-end test is a genuine ASML-tier duopoly chokepoint. Static gate PASS (pc=4/aic=0.40/near); pricingScore TBD by next update-valuations run. Sourced via user's OWN coverage-audit (not external slop) — delta-gate classified as true framework-MAINTENANCE per [[inspired_loop]].",
+      "_changeLog": [
+        {
+          "date": "2026-06-02",
+          "version": "2.2.4",
+          "change": "Added to L4 secondary — back-end test (ATE) chokepoint complementing front-end WFE. Surfaced via user coverage-audit of 精密仪器 racetrack; the AI-chain-valid member (VPG rejected). Static funnel PASS pc=4/aic=0.40/near; pricing TBD."
         }
       ]
     },
@@ -1977,6 +2005,34 @@
           "date": "2026-05-08",
           "version": "1.4.0",
           "change": "Added to L_EMBI watchlist — Optimus humanoid robot mass-production tracking, expected funnel fail (PC=3 + pricing premium)"
+        }
+      ]
+    },
+    {
+      "symbol": "VPG",
+      "name": "Vishay Precision Group",
+      "layer": "L_EMBI",
+      "layerRole": "secondary",
+      "physicalConstraint": 2,
+      "aiContribution": 0.08,
+      "timeToRealize": "mid",
+      "thesis": "Foil resistors, strain gauges, and load cells supply force/torque/tactile sensing for robot force-feedback loops — the tactile-sensing periphery of the embodied AI supply chain (distinct from PH which covers actuation/motion). If humanoid force-control standardizes, precision force sensors gain a content-per-robot tailwind.",
+      "thesisFalsification": [
+        "Humanoid robot force-feedback standardizes on integrated MEMS/silicon force sensors, bypassing discrete foil/strain-gauge suppliers",
+        "VPG embodied/robotics revenue mix stays below 10% of total — dominant industrial/avionics/weighing end-markets dilute the embodied thesis",
+        "Chinese precision-sensor suppliers commoditize strain-gauge/load-cell pricing, eroding VPG margins",
+        "Humanoid commercialization slips beyond 2030, removing near/mid-term content catalyst"
+      ],
+      "marketCap": 0.4,
+      "status": "watchlist",
+      "_note": "Expected funnel fail: aiContribution=0.08 << 0.30 + physicalConstraint=2 (precision sensors have competitors, not a chokepoint). Informational coverage of the tactile/force-sensing category PH does not cleanly cover (PH=actuation/motion, VPG=force/tactile). Surfaced via user 2026-06-03 coverage-audit of 精密仪器 racetrack — added per B2 decision as a tracking handle, NOT a funnel candidate. Same watchlist-periphery tier as PH. The funnel-PASS embodied chokepoints remain ISRG/CGNX.",
+      "addedDate": "2026-06-03",
+      "addedVersion": "2.2.5",
+      "_changeLog": [
+        {
+          "date": "2026-06-03",
+          "version": "2.2.5",
+          "change": "Added to L_EMBI watchlist — tactile/force-sensing periphery (force-feedback for humanoid joints). Expected funnel fail (aic=0.08/pc=2). Tracking handle per user coverage-audit B2 decision; complements PH (actuation) on the sensing axis."
         }
       ]
     },
