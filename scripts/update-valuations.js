@@ -11,8 +11,13 @@
  *   25% — Analyst consensus upside (inverted — low upside = more priced in)
  *   20% — 6-month momentum vs SPY (outperformance = more priced in)
  *
+ * Cyclical value-trap gate (opt-in per ticker via "cyclical": true): raises the
+ *   pricingScore of peak-cycle cyclicals whose low forward P/E (built on peak EPS)
+ *   would otherwise misread as cheap. See cyclicalTrapAdjustment().
+ *
  * Funnel pass: physicalConstraint >= 4 AND aiContribution >= 0.30
  *              AND timeToRealize != "far" AND pricingScore <= 3
+ *              (pricingScore here is the cyclical-trap-adjusted "effective" score)
  */
 
 const YahooFinance = require('yahoo-finance2').default;
@@ -144,6 +149,44 @@ function computePricingScore(quote, summary, return6m, spy6m, benchmarks) {
 }
 
 /**
+ * Cyclical value-trap gate (opt-in via ticker.cyclical === true; no-op otherwise).
+ *
+ * For strongly cyclical names (memory, commodities, shipping), record-high margins
+ * depress forward P/E (peak EPS in the denominator), which the base pricingScore
+ * misreads as "cheap" — the classic value trap. This adjustment RAISES pricingScore
+ * (toward expensive/late-cycle) when the value-trap signature is present, so the
+ * funnel does not wave a peak-cycle cyclical through on a mirage low forward P/E.
+ *
+ * Signal 1 (primary, industry-agnostic): trailingPE / forwardPE >= 2 means the market
+ *   prices forward EPS to surge — a low forward P/E built on peak-cycle earnings.
+ * Signal 2 (confirmation): gross margin at/above the ticker's cyclical-peak threshold.
+ *
+ * Returns a delta in [0, 1.5] added to pricingScore (clamped 1-5 by the caller).
+ */
+function cyclicalTrapAdjustment(ticker, quote, summary) {
+  if (!ticker.cyclical) return { applied: false, delta: 0, reasons: [] };
+
+  const fwdPE = summary?.defaultKeyStatistics?.forwardPE;
+  const trailPE = quote?.trailingPE ?? summary?.defaultKeyStatistics?.trailingPE ?? null;
+  const grossMargin = summary?.financialData?.grossMargins; // decimal, e.g. 0.74
+  const peakGM = ticker.cyclicalPeakGM ?? 0.60;
+
+  const reasons = [];
+  let delta = 0;
+
+  if (fwdPE != null && trailPE != null && fwdPE > 0 && trailPE > 0 && trailPE / fwdPE >= 2) {
+    delta += 1.0;
+    reasons.push(`trailPE/fwdPE ${(trailPE / fwdPE).toFixed(1)}x — forward EPS priced to surge; low fwdPE is a peak-cycle value trap`);
+  }
+  if (grossMargin != null && grossMargin >= peakGM) {
+    delta += 0.5;
+    reasons.push(`grossMargin ${(grossMargin * 100).toFixed(0)}% >= cyclical-peak ${(peakGM * 100).toFixed(0)}%`);
+  }
+
+  return { applied: delta > 0, delta: Math.round(delta * 10) / 10, reasons };
+}
+
+/**
  * Determine funnel pass/fail.
  */
 function evaluateFunnel(ticker, pricingScore) {
@@ -197,7 +240,14 @@ async function main() {
         quote, summary, return6m, spy6m, layerBenchmarks
       );
 
-      const funnel = evaluateFunnel(ticker, pricingScore);
+      // Cyclical value-trap gate: raises pricingScore for peak-cycle cyclicals
+      // whose low forward P/E (peak EPS denominator) misreads as "cheap".
+      const cyclicalTrap = cyclicalTrapAdjustment(ticker, quote, summary);
+      const effectivePricingScore = pricingScore != null
+        ? Math.round(clamp(pricingScore + cyclicalTrap.delta, 1, 5) * 10) / 10
+        : null;
+
+      const funnel = evaluateFunnel(ticker, effectivePricingScore);
 
       const numAnalysts = summary?.financialData?.numberOfAnalystOpinions ?? null;
       const recommendMean = summary?.financialData?.recommendationMean ?? null;
@@ -217,7 +267,9 @@ async function main() {
         timeToRealize: ticker.timeToRealize,
         price: quote?.regularMarketPrice ?? null,
         marketCap: quote?.marketCap ? Math.round(quote.marketCap / 1e9) : null,
-        pricingScore,
+        pricingScore: effectivePricingScore,
+        rawPricingScore: pricingScore,
+        cyclicalTrap: cyclicalTrap.applied ? cyclicalTrap : null,
         pegRatio,
         pegBand,
         funnelPass: funnel.pass,
@@ -230,7 +282,8 @@ async function main() {
       });
 
       const passLabel = funnel.pass ? '✅ PASS' : '  ----';
-      console.log(`${passLabel} (pricing=${pricingScore ?? 'N/A'}, peg=${pegRatio ?? 'N/A'} [${pegBand}], dq=${dataQuality})`);
+      const trapLabel = cyclicalTrap.applied ? ` ⚠cyclical+${cyclicalTrap.delta} (raw ${pricingScore})` : '';
+      console.log(`${passLabel} (pricing=${effectivePricingScore ?? 'N/A'}${trapLabel}, peg=${pegRatio ?? 'N/A'} [${pegBand}], dq=${dataQuality})`);
     } catch (err) {
       console.log(`ERROR: ${err.message}`);
       errors.push({ symbol: sym, error: err.message });
