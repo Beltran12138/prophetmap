@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "version": "2.2.5",
-    "date": "2026-06-03",
+    "version": "2.3.0",
+    "date": "2026-06-12",
     "description": "ProphetMap stock universe — manually-defined static fields only. Dynamic pricing scores written to data/scores/YYYY-MM-DD.json by scripts/update-valuations.js",
     "fieldGuide": {
       "physicalConstraint": "1=pure software, 5=hard physical monopoly with multi-year lead times",
@@ -1127,6 +1127,34 @@
           "date": "2026-05-19",
           "version": "2.1.1",
           "change": "Live pricingScore=3.7 funnel-fail BUT peg=0.63 cheap — conflicting signal. _note added documenting growth-offset rationale. Status remains active."
+        }
+      ]
+    },
+    {
+      "symbol": "AXTI",
+      "name": "AXT Inc",
+      "layer": "L8_OPT_MAT",
+      "layerRole": "primary",
+      "physicalConstraint": 4,
+      "aiContribution": 0.5,
+      "timeToRealize": "near",
+      "thesis": "Indium phosphide (InP) substrate is the upstream physical chokepoint for AI optical interconnect — 95% of global wafer capacity held by 4 players (Sumitomo 60%, AXT 35% via Tongmei Beijing, II-VI/Coherent, JX Metals). AXT is #2, the only merchant supplier with 6-inch VGF mass production at cost advantage. InP is now >half of revenue ($13.6M of $26.9M Q1-2026), backlog $100M, scale-out orders set to double in 2026 and again in 2027. BUT double-edged: AXT's capacity sits at Tongmei Beijing INSIDE China's export-control zone — the scarcity narrative cuts both ways and neither resolution is a clean tailwind.",
+      "thesisFalsification": [
+        "US-China InP export deal reached (the very subject of the June-2026 Reuters report) — 250% InP wafer price spike unwinds, scarcity premium and AXT pricing logic collapse",
+        "China sustains controls — AXT's own Tongmei Beijing capacity stays export-throttled (first permits only June-2025, large backlog), so surging demand cannot convert to shipped volume",
+        "CPO/silicon-photonics migration arrives ahead of AXT's own 2028-29 guidance — InP long-wave (1310/1550nm) laser irreplaceability window shrinks",
+        "AI-enabler re-rating reverses: market reverts AXT to cyclical-substrate valuation (P/S 41x TTM toward cyclical 2-4x) if the InP demand thesis falsifies — de-rate risk dwarfs operational risk"
+      ],
+      "marketCap": 6,
+      "status": "watchlist",
+      "_note": "Funnel eval 2026-06-12 (inspired #7, Reuters InP-export story): physicalConstraint=4 PASS, aiContribution=0.5 PASS, timeToRealize=near PASS — three dimensions clear (genuine physical chokepoint) BUT pricingScore=5 FAIL (P/S 41x TTM; mktcap $5.58B vs revenue ~$108M ~51x; YTD +611%; already -38% off all-time-high $143.16). AND-gate fails on price alone. Distinct from FLR (structural PC=2 fail) — AXT is 'right physics, wrong price': the funnel's pricing gate actively rejecting a real chokepoint candidate at the narrative top. Watchlist = informational only, NOT an active position. Re-evaluate for active promotion if pricingScore falls to <=3 (P/S<10 or revenue catches valuation). update-valuations.js tracks this automatically and will flag the promotion threshold. Clean-beneficiary alternatives (Sumitomo/JX, Japan OTC pink) are scope-out per v1.10.",
+      "addedDate": "2026-06-12",
+      "addedVersion": "2.3.0",
+      "_changeLog": [
+        {
+          "date": "2026-06-12",
+          "version": "2.3.0",
+          "change": "New L8_OPT_MAT sublayer (optical-interconnect upstream materials / InP substrate) created; AXTI added as watchlist. Source: inspired #7 Reuters US-China InP export-control story. Four-dim funnel: PC=4 / AI=0.5 / TTR=near all pass, pricingScore=5 funnel-fail on valuation (P/S 41x, YTD +611%). Held watchlist (informational, not active) pending valuation regression to pricingScore<=3."
         }
       ]
     },
