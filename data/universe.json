@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "version": "2.4.0",
+    "version": "2.4.1",
     "date": "2026-06-14",
     "description": "ProphetMap stock universe — manually-defined static fields only. Dynamic pricing scores written to data/scores/YYYY-MM-DD.json by scripts/update-valuations.js",
     "fieldGuide": {
@@ -944,7 +944,7 @@
       ],
       "marketCap": 1770,
       "status": "watchlist",
-      "_note": "inspired #8 (2026-06-14): SPCX IPO 2026-06-12 @ $135 (opened $150, +11%), raised $75B, implied ~$1.77T — largest IPO in history. Four-dim funnel: PC=3 (neocloud operator, NOT upstream chokepoint — the GPUs are NVDA's), AI=0.35 (JUDGMENT CALL: trailing 2025 AI segment only $3.2B/$18.7B=17% AND lost $6.355B; forward 0.4+ IF compute-rental run-rate $26B+ realizes — AI narrative >> AI cash flow), TTR=near (Colossus live, already billing), pricingScore=FAIL (95x trailing P/S on $18.7B rev, net loss -$4.9B; Starlink $7B EBITDA is the ONLY profit leg subsidizing the empire). Same pathology as AXTI: right physics, wrong price — but more extreme. CONFLICT-OF-INTEREST DISCLOSURE: Colossus now supplies compute to Anthropic (my parent), explicitly 'improving Claude Pro/Max capacity' — analysis deliberately calibrated NOT to soft-pedal; the AI segment's -$6.355B loss stated plainly. MODEL-ERROR NOTE: prior turn I wrongly asserted 'xAI != SpaceX, same owner different entity' from stale knowledge (cutoff 2026-01; merger closed 2026-02, in my blind spot) — user corrected, verified via web. Repeat of feedback_no_fabrication 'unknown > fabricated'. Held watchlist (informational, not active) pending pricingScore<=3 OR AI-segment profitability inflection.",
+      "_note": "inspired #8 (2026-06-14): SPCX IPO 2026-06-12 @ $135 (opened $150, +11%), raised $75B, implied ~$1.77T — largest IPO in history. Four-dim funnel: PC=3 (neocloud operator, NOT upstream chokepoint — the GPUs are NVDA's), AI=0.35 (JUDGMENT CALL: trailing 2025 AI segment only $3.2B/$18.7B=17% AND lost $6.355B; forward 0.4+ IF compute-rental run-rate $26B+ realizes — AI narrative >> AI cash flow), TTR=near (Colossus live, already billing), pricingScore=4.0 FAIL on live re-run 2026-06-14 (EV/Rev 49x vs L7 median 2.7 = score 5; net loss -$4.9B, Starlink $7B EBITDA is the ONLY profit leg). PRICING-BUG NOTE: raw script score first showed 2.8 (false PASS) due to a net-loss forwardPE bug — negative forward EPS (-1788) was misread by deviationToScore as far-below-median = cheap (score 1); fixed 2026-06-14 (forwardPE<0 now scored 5, the loss-maker is NOT cheap). Same fix flipped APLD/IREN/ASTS/RKLB from funnel-PASS to FAIL (all pre-profit). funnel ALSO independently fails on PC=3<4 regardless of pricing. Same pathology as AXTI: right physics, wrong price — but more extreme. CONFLICT-OF-INTEREST DISCLOSURE: Colossus now supplies compute to Anthropic (my parent), explicitly 'improving Claude Pro/Max capacity' — analysis deliberately calibrated NOT to soft-pedal; the AI segment's -$6.355B loss stated plainly. MODEL-ERROR NOTE: prior turn I wrongly asserted 'xAI != SpaceX, same owner different entity' from stale knowledge (cutoff 2026-01; merger closed 2026-02, in my blind spot) — user corrected, verified via web. Repeat of feedback_no_fabrication 'unknown > fabricated'. Held watchlist (informational, not active) pending pricingScore<=3 OR AI-segment profitability inflection.",
       "addedDate": "2026-06-14",
       "addedVersion": "2.4.0",
       "_changeLog": [
@@ -952,6 +952,11 @@
           "date": "2026-06-14",
           "version": "2.4.0",
           "change": "Added SPCX as L7 secondary watchlist. Source: inspired #8 SpaceX IPO (2026-06-12). xAI merged into SpaceX 2026-02; Colossus 1 rents full capacity to Anthropic ($1.25B/mo) + Google ($920M/mo). Funnel: PC=3/AI=0.35/TTR=near pass, pricingScore hard-fail (95x P/S, net loss -$4.9B). Right physics, wrong price. Conflict-of-interest (Anthropic compute supplier) disclosed in _note."
+        },
+        {
+          "date": "2026-06-14",
+          "version": "2.4.1",
+          "change": "_note pricingScore correction: live re-run = 4.0 FAIL (not the raw 2.8 first shown). Exposed + fixed a net-loss forwardPE bug in update-valuations.js (negative forward EPS misread as cheap score 1). Fix also flipped APLD/IREN/ASTS/RKLB funnel PASS->FAIL. SPCX funnel independently fails PC=3<4. Status unchanged (watchlist)."
         }
       ]
     },

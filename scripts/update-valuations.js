@@ -91,7 +91,13 @@ function computePricingScore(quote, summary, return6m, spy6m, benchmarks) {
 
   // Component 1: Forward P/E (30%)
   const fwdPE = summary?.defaultKeyStatistics?.forwardPE;
-  const s1 = deviationToScore(fwdPE, benchmarks.medianForwardPE);
+  // Negative forward P/E = net loss (negative forward EPS). deviationToScore would
+  // read the negative value as far-below-median and misjudge a loss-maker as "cheap"
+  // (score 1). A company with no forward profit is the opposite of cheap on this
+  // dimension — treat net-loss as maximally-priced/risky (score 5).
+  const s1 = (fwdPE != null && fwdPE < 0)
+    ? 5
+    : deviationToScore(fwdPE, benchmarks.medianForwardPE);
   if (s1 != null) {
     scores.forwardPE = { value: fwdPE, benchmark: benchmarks.medianForwardPE, score: Math.round(s1 * 10) / 10 };
     weightedSum += s1 * 0.30;
