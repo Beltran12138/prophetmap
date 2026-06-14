@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "version": "2.4.1",
+    "version": "2.4.2",
     "date": "2026-06-14",
     "description": "ProphetMap stock universe — manually-defined static fields only. Dynamic pricing scores written to data/scores/YYYY-MM-DD.json by scripts/update-valuations.js",
     "fieldGuide": {
@@ -2114,7 +2114,7 @@
         "Major government contracts (NASA VADR, NRO) not renewed in 2026-2027 rebid cycle"
       ],
       "marketCap": 11,
-      "status": "active",
+      "status": "watchlist",
       "addedDate": "2026-05-08",
       "addedVersion": "1.2.0",
       "_changeLog": [
@@ -2122,6 +2122,11 @@
           "date": "2026-05-08",
           "version": "1.2.0",
           "change": "Added to L_SPACE — small satellite launch monopoly + space systems, physicalConstraint=4, aiContribution=0.45"
+        },
+        {
+          "date": "2026-06-14",
+          "version": "2.4.2",
+          "change": "Demote active->watchlist. forwardPE bug fix (commit 29a2c35) revealed true pricingScore=4.2 FAIL (was false-PASS 3.0 under net-loss bug). Thesis intact (PC=4/AI=0.45/near all pass), pure entry-timing/pricing fail — same as CCJ/ALAB precedent. Re-evaluate to active when pricingScore<=3 sustained. Held watchlist for signal coverage. (APLD/IREN/ASTS already watchlist, no change needed.)"
         }
       ]
     },
