@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "version": "2.3.0",
-    "date": "2026-06-12",
+    "version": "2.4.0",
+    "date": "2026-06-14",
     "description": "ProphetMap stock universe — manually-defined static fields only. Dynamic pricing scores written to data/scores/YYYY-MM-DD.json by scripts/update-valuations.js",
     "fieldGuide": {
       "physicalConstraint": "1=pure software, 5=hard physical monopoly with multi-year lead times",
@@ -924,6 +924,34 @@
           "date": "2026-05-08",
           "version": "1.6.0",
           "change": "Added to L7 — pure-play AI cloud compute, surfaced via discover-candidates.js (3 peer mentions)"
+        }
+      ]
+    },
+    {
+      "symbol": "SPCX",
+      "name": "SpaceX (incl. xAI / SpaceXAI)",
+      "layer": "L7",
+      "layerRole": "secondary",
+      "physicalConstraint": 3,
+      "aiContribution": 0.35,
+      "timeToRealize": "near",
+      "thesis": "Post-xAI-merger conglomerate (merger closed 2026-02). AI exposure is REAL via Colossus 1 compute-rental: Anthropic rents full Colossus 1 (~220k NVIDIA GPU / 300MW+) at $1.25B/mo (~$15B/yr) + Google $920M/mo. AI/datacenter is the forward value-driver per Musk 'space-based AI is the only way to scale'. BUT clean AI-chain capture remains at NVDA (the 220k GPUs are NVDA's) and at power, NOT at SPCX's $1.77T valuation. SPCX is a neocloud / compute-rental operator (mid-stream, like CRWV) bundled with Starlink (connectivity) + launch — not an upstream chokepoint.",
+      "thesisFalsification": [
+        "Lockup expiry + first public earnings show AI/SpaceXAI segment loss narrowing from 2025's -$6.355B — re-evaluate aiContribution upgrade",
+        "Compute contracts (Anthropic ~$15B + Google ~$11B annual run-rate) convert to positive segment cash flow — AI segment turns profitable",
+        "Space-based compute moves from deck to signed orders / launched capacity — physicalConstraint upgrade 3->4",
+        "pricingScore regresses to <=3 (valuation de-rate or revenue catch-up) — pricing gate clears, candidate for active"
+      ],
+      "marketCap": 1770,
+      "status": "watchlist",
+      "_note": "inspired #8 (2026-06-14): SPCX IPO 2026-06-12 @ $135 (opened $150, +11%), raised $75B, implied ~$1.77T — largest IPO in history. Four-dim funnel: PC=3 (neocloud operator, NOT upstream chokepoint — the GPUs are NVDA's), AI=0.35 (JUDGMENT CALL: trailing 2025 AI segment only $3.2B/$18.7B=17% AND lost $6.355B; forward 0.4+ IF compute-rental run-rate $26B+ realizes — AI narrative >> AI cash flow), TTR=near (Colossus live, already billing), pricingScore=FAIL (95x trailing P/S on $18.7B rev, net loss -$4.9B; Starlink $7B EBITDA is the ONLY profit leg subsidizing the empire). Same pathology as AXTI: right physics, wrong price — but more extreme. CONFLICT-OF-INTEREST DISCLOSURE: Colossus now supplies compute to Anthropic (my parent), explicitly 'improving Claude Pro/Max capacity' — analysis deliberately calibrated NOT to soft-pedal; the AI segment's -$6.355B loss stated plainly. MODEL-ERROR NOTE: prior turn I wrongly asserted 'xAI != SpaceX, same owner different entity' from stale knowledge (cutoff 2026-01; merger closed 2026-02, in my blind spot) — user corrected, verified via web. Repeat of feedback_no_fabrication 'unknown > fabricated'. Held watchlist (informational, not active) pending pricingScore<=3 OR AI-segment profitability inflection.",
+      "addedDate": "2026-06-14",
+      "addedVersion": "2.4.0",
+      "_changeLog": [
+        {
+          "date": "2026-06-14",
+          "version": "2.4.0",
+          "change": "Added SPCX as L7 secondary watchlist. Source: inspired #8 SpaceX IPO (2026-06-12). xAI merged into SpaceX 2026-02; Colossus 1 rents full capacity to Anthropic ($1.25B/mo) + Google ($920M/mo). Funnel: PC=3/AI=0.35/TTR=near pass, pricingScore hard-fail (95x P/S, net loss -$4.9B). Right physics, wrong price. Conflict-of-interest (Anthropic compute supplier) disclosed in _note."
         }
       ]
     },
