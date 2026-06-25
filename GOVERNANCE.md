@@ -36,6 +36,10 @@ Trigger: first week of earnings season — January, April, July, October.
 - [ ] Review `experimental` tickers
   - Graduate to `active` if: defined graduation threshold met (see per-ticker thesis)
   - Archive if: 12 months with no measurable technology progress signal
+- [ ] Backfill `supplyChainEvidence` + `catalysts` on existing `active` `primary` tickers (rolling)
+  - Target: every `primary` carries ≥1 external evidence entry and ≥1 dated catalyst, oldest-unverified first
+  - A `primary` that cannot be evidenced externally after one full review cycle → reconsider `primary` role (it is a narrative pick, not a verified chokepoint)
+  - Mark a catalyst whose `date` has passed with no thesis movement as a soft falsification flag for that ticker
 
 ---
 
@@ -56,8 +60,12 @@ Trigger: first week of earnings season — January, April, July, October.
 - Layer assignment unambiguous
 - At least 2 specific, falsifiable `thesisFalsification` signals can be written
 - Not a duplicate of existing ticker's thesis (check overlap)
+- **≥1 `supplyChainEvidence` entry** — at least one EXTERNAL proof (patent cross-reference / teardown / regulatory filing / third-party report) that the ticker actually occupies its mapped chokepoint. Company IR self-report or press release does NOT count. If the only basis for chain position is the company's own claim, the entry is narrative, not a chokepoint — do not add as `primary`; `secondary`/`watchlist` only, with the gap noted.
+- **≥1 `catalysts` entry with a dated event** — `timeToRealize` of `near`/`mid` must be backed by at least one concrete dated catalyst (`{date, event, source}`), not asserted. A `far` ticker may omit but should note why no catalyst is datable yet.
 
-**Process:** PR to `data/universe.json` with full schema entry including thesis and falsification signals.
+**Process:** PR to `data/universe.json` with full schema entry including thesis, falsification signals, supply-chain evidence, and catalysts.
+
+> **Provenance (v2.5.0, 2026-06-18):** the `supplyChainEvidence` + `catalysts` gates were distilled from the Serenity Taiwan-CPO methodology (TechFlow 2026-06-09) — **method borrowed, tickers rejected** (KOL talking own book = reverse indicator; Taiwan small-caps outside US universe by design). The two transferable disciplines: (1) verify chain membership by external fingerprint, not IR; (2) date the catalyst instead of saying "future." Per `inspired_loop` discipline this was a template change, not a portfolio motion.
 
 ---
 
