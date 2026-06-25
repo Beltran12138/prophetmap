@@ -134,6 +134,32 @@ function main() {
     }
   }
 
+  // Moat-capture field integrity + screening surface (Guo 2026 dimension)
+  const VALID_LOCKS = ['licensing', 'liability', 'privateData', 'userHabit', 'integration'];
+  const moatErrors = [];
+  const supplierTraps = [];
+  let moatAssessedCount = 0;
+  for (const t of universe.tickers) {
+    if (t.moatCapture == null) continue;
+    moatAssessedCount++;
+    if (typeof t.moatCapture !== 'number' || t.moatCapture < 1 || t.moatCapture > 5) {
+      moatErrors.push(`${t.symbol}: moatCapture ${t.moatCapture} out of range [1,5]`);
+    }
+    if (t.moatLocks) {
+      const bad = t.moatLocks.filter((l) => !VALID_LOCKS.includes(l));
+      if (bad.length) moatErrors.push(`${t.symbol}: invalid moatLocks [${bad.join(',')}]`);
+      if (t.moatCapture >= 4 && t.moatLocks.length === 0) {
+        moatErrors.push(`${t.symbol}: moatCapture ${t.moatCapture} >= 4 but no moatLocks listed (claim unbacked)`);
+      }
+    }
+    if (t.moatCapture <= 2) {
+      supplierTraps.push(`${t.symbol} (mc=${t.moatCapture}, pc=${t.physicalConstraint}, L=${t.layer})`);
+    }
+  }
+  if (moatErrors.length) {
+    console.log(`[ProphetMap Audit] ⚠ moatCapture integrity errors:\n  ${moatErrors.join('\n  ')}`);
+  }
+
   const lines = [
     `# ProphetMap Universe Audit — ${today()}`,
     '',
@@ -176,6 +202,16 @@ function main() {
       ...g.criteria.map((c) => `- [ ] ${c}`),
       '',
     ]),
+    '',
+    `## Moat-Capture Dimension (Guo 2026)`,
+    '',
+    `**Assessed**: ${moatAssessedCount} / ${universe.tickers.length} tickers (absent = funnel falls back to physical gate alone).`,
+    moatErrors.length ? `**⚠ Integrity errors**: ${moatErrors.length}` : '_Field integrity: OK._',
+    ...moatErrors.map((e) => `  - ${e}`),
+    '',
+    `**Supplier traps (moatCapture <= 2 — moat accrues elsewhere)**:`,
+    supplierTraps.length === 0 ? '_None assessed._' : '',
+    ...supplierTraps.map((s) => `  - ${s}`),
     '',
     '---',
     '',

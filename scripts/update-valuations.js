@@ -196,16 +196,28 @@ function cyclicalTrapAdjustment(ticker, quote, summary) {
  * Determine funnel pass/fail.
  */
 function evaluateFunnel(ticker, pricingScore) {
-  const { physicalConstraint, aiContribution, timeToRealize } = ticker;
+  const { physicalConstraint, aiContribution, timeToRealize, moatCapture } = ticker;
   const reasons = [];
+  const warnings = [];
 
-  if (physicalConstraint < 4) reasons.push(`physicalConstraint ${physicalConstraint} < 4`);
+  // Defensibility gate (Guo 2026 moat thesis): survives commoditization via a
+  // PHYSICAL chokepoint OR a non-physical moat — either suffices. moatCapture
+  // absent (not yet assessed) => 0 => falls back to the physical gate alone.
+  const moat = typeof moatCapture === 'number' ? moatCapture : 0;
+  if (physicalConstraint < 4 && moat < 4) {
+    reasons.push(`defensibility: physicalConstraint ${physicalConstraint} < 4 AND moatCapture ${moatCapture ?? 'n/a'} < 4`);
+  }
+  // Supplier-trap WARNING (not a fail): the moat accrues upstream (component
+  // vendor) or downstream (customer/incumbent), not to this ticker.
+  if (typeof moatCapture === 'number' && moatCapture <= 2) {
+    warnings.push(`supplier-trap: moatCapture ${moatCapture} — moat accrues to incumbent/customer, ticker is a replaceable vendor`);
+  }
   if (aiContribution < 0.30) reasons.push(`aiContribution ${aiContribution} < 0.30`);
   if (timeToRealize === 'far') reasons.push('timeToRealize = far');
   if (pricingScore != null && pricingScore > 3) reasons.push(`pricingScore ${pricingScore} > 3`);
   if (pricingScore == null) reasons.push('pricingScore unavailable');
 
-  return { pass: reasons.length === 0, failReasons: reasons };
+  return { pass: reasons.length === 0, failReasons: reasons, warnings };
 }
 
 async function main() {
@@ -271,6 +283,8 @@ async function main() {
         physicalConstraint: ticker.physicalConstraint,
         aiContribution: ticker.aiContribution,
         timeToRealize: ticker.timeToRealize,
+        moatCapture: ticker.moatCapture ?? null,
+        moatLocks: ticker.moatLocks ?? null,
         price: quote?.regularMarketPrice ?? null,
         marketCap: quote?.marketCap ? Math.round(quote.marketCap / 1e9) : null,
         pricingScore: effectivePricingScore,
@@ -280,6 +294,7 @@ async function main() {
         pegBand,
         funnelPass: funnel.pass,
         funnelFailReasons: funnel.failReasons,
+        funnelWarnings: funnel.warnings,
         components,
         dataQuality,
         analystRecommendMean: recommendMean,

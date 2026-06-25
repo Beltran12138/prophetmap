@@ -8,6 +8,8 @@ export type TickerScore = {
   physicalConstraint: number;
   aiContribution: number;
   timeToRealize: string;
+  moatCapture?: number | null;
+  moatLocks?: string[] | null;
   price: number | null;
   marketCap: number | null;
   pricingScore: number | null;
@@ -15,6 +17,7 @@ export type TickerScore = {
   pegBand?: 'cheap' | 'fair' | 'rich' | 'overpriced' | 'N/A';
   funnelPass: boolean;
   funnelFailReasons: string[];
+  funnelWarnings?: string[];
   components: {
     // Equity components
     forwardPE?: { value: number; benchmark: number; score: number };

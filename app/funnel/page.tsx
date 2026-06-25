@@ -39,6 +39,22 @@ function TickerRow({ t, rank }: { t: TickerScore; rank: number }) {
         <Bar value={t.physicalConstraint} max={5} color="#818cf8" />
       </td>
       <td style={{ padding: '10px 12px' }}>
+        {t.moatCapture != null ? (
+          <span
+            title={(t.moatLocks ?? []).join(', ') || 'no non-physical lock'}
+            style={{
+              fontSize: 13,
+              fontWeight: 700,
+              color: t.moatCapture >= 4 ? '#34d399' : t.moatCapture <= 2 ? '#f87171' : '#fbbf24',
+            }}
+          >
+            {t.moatCapture}{t.moatCapture <= 2 ? ' ⚠' : ''}
+          </span>
+        ) : (
+          <span style={{ fontSize: 11, color: '#475569' }}>—</span>
+        )}
+      </td>
+      <td style={{ padding: '10px 12px' }}>
         <Bar value={Math.round(t.aiContribution * 5)} max={5} color="#34d399" />
         <span style={{ fontSize: 10, color: '#64748b' }}>{Math.round(t.aiContribution * 100)}%</span>
       </td>
@@ -95,13 +111,13 @@ export default function FunnelPage() {
 
   const passes = scores.results.filter((t) => t.funnelPass);
   const nearMisses = scores.results
-    .filter((t) => !t.funnelPass && t.pricingScore != null && t.pricingScore <= 3.5 && t.physicalConstraint >= 3)
+    .filter((t) => !t.funnelPass && t.pricingScore != null && t.pricingScore <= 3.5 && (t.physicalConstraint >= 3 || (t.moatCapture ?? 0) >= 3))
     .sort((a, b) => (a.pricingScore ?? 99) - (b.pricingScore ?? 99))
     .slice(0, 10);
 
   const tableHeader = (
     <tr style={{ borderBottom: '2px solid #1e293b' }}>
-      {['#', 'Symbol', 'Layer', 'Phys', 'AI%', 'Time', 'Pricing', 'Price', 'Mkt Cap', 'Analyst↑', 'P/E note'].map((h) => (
+      {['#', 'Symbol', 'Layer', 'Phys', 'Moat', 'AI%', 'Time', 'Pricing', 'Price', 'Mkt Cap', 'Analyst↑', 'P/E note'].map((h) => (
         <th key={h} style={{ padding: '8px 12px', textAlign: 'left', fontSize: 11, color: '#475569', fontWeight: 600 }}>
           {h}
         </th>
@@ -114,7 +130,7 @@ export default function FunnelPage() {
       <div style={{ marginBottom: 24 }}>
         <div style={{ fontSize: 22, fontWeight: 700, color: '#f8fafc' }}>Four-Dimension Funnel</div>
         <div style={{ fontSize: 12, color: '#475569', marginTop: 2 }}>
-          {scores.date} · Pass criteria: physicalConstraint ≥ 4 · aiContribution ≥ 30% · timeToRealize ≠ far · pricingScore ≤ 3.0
+          {scores.date} · Pass criteria: defensibility (physicalConstraint ≥ 4 OR moatCapture ≥ 4) · aiContribution ≥ 30% · timeToRealize ≠ far · pricingScore ≤ 3.0 · Moat ⚠ = supplier-trap (≤ 2)
         </div>
       </div>
 
@@ -154,7 +170,7 @@ export default function FunnelPage() {
             </table>
           </div>
           <div style={{ fontSize: 11, color: '#334155', marginTop: 8 }}>
-            Near-miss criteria: physicalConstraint ≥ 3 AND pricingScore ≤ 3.5. Not full passes — shown for monitoring.
+            Near-miss criteria: (physicalConstraint ≥ 3 OR moatCapture ≥ 3) AND pricingScore ≤ 3.5. Not full passes — shown for monitoring.
           </div>
         </section>
       )}

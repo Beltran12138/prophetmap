@@ -1,16 +1,22 @@
 {
   "_meta": {
-    "version": "2.4.2",
-    "date": "2026-06-14",
+    "version": "2.6.0",
+    "date": "2026-06-25",
     "description": "ProphetMap stock universe — manually-defined static fields only. Dynamic pricing scores written to data/scores/YYYY-MM-DD.json by scripts/update-valuations.js",
     "fieldGuide": {
       "physicalConstraint": "1=pure software, 5=hard physical monopoly with multi-year lead times",
       "aiContribution": "0.0-1.0, estimated % of forward revenue/earnings growth attributable to AI thesis",
       "timeToRealize": "near=<12m, mid=12-36m, far=36+m",
-      "layerRole": "primary=core layer representative, secondary=partial exposure, bridge=spans multiple layers"
+      "layerRole": "primary=core layer representative, secondary=partial exposure, bridge=spans multiple layers",
+      "supplyChainEvidence": "OPTIONAL array of {claim, source, type}. EXTERNAL proof the ticker actually occupies the chokepoint it is mapped to — patent cross-reference, teardown/BOM, regulatory filing, third-party report. type ∈ {patent|teardown|filing|thirdparty|contract}. NEVER company IR self-report or press release. Purpose: separate verified chain position from narrative. Absence = thesis rests on management's word.",
+      "catalysts": "OPTIONAL array of {date, event, source}. Concrete dated events backing timeToRealize (e.g. a named platform's mass-production quarter, a capacity-online date, a contract decision window). date in YYYY-MM or YYYY-Qn. Replaces vague near/mid/far with falsifiable timeline. A passed catalyst date with no thesis movement is itself a falsification signal.",
+      "moatCapture": "OPTIONAL 1-5. WHO captures the private-correctness moat (orthogonal to physicalConstraint, which covers PHYSICAL lead-time only). 1=pure supplier, the moat accrues to the incumbent above (component vendor) or the customer below; the ticker is a replaceable vendor (the 'sold to whoever has the most compute' trap). 3=contested/shared, capture undecided. 5=the ticker itself holds the private ground truth / license / liability / user habit that a smarter general model still cannot enter. Source: Sarah Guo 2026 moat thesis — 'moat exists' != 'startup captures it'. A physicalConstraint=1 ticker can be moatCapture=5 (e.g. a licensed, liability-bearing, workflow-embedded app). Absence = not yet assessed; funnel falls back to the physical gate alone.",
+      "moatLocks": "OPTIONAL array, subset of {licensing, liability, privateData, userHabit, integration}. The NON-physical locks backing moatCapture. Physical lead-time is NOT listed here — it lives in physicalConstraint, do not double-count. Empty/absent with low moatCapture = supplier with no defensible lock.",
+      "moatFalsification": "OPTIONAL string. Falsifiable condition under which the moat is shown to accrue elsewhere or be absorbed by the model layer (e.g. 'a general model + public data replicates 80% of the function' or 'the incumbent in-houses it'). Same falsification discipline as thesisFalsification."
     },
     "funnelPassCriteria": {
-      "physicalConstraint": ">=4",
+      "defensibility": "physicalConstraint>=4 OR moatCapture>=4 (survives commoditization via a PHYSICAL chokepoint OR a non-physical moat — either suffices)",
+      "supplierTrapWarning": "moatCapture<=2 flags a supplier-trap (moat accrues upstream/downstream) — WARNING only, not an auto-fail",
       "aiContribution": ">=0.30",
       "timeToRealize": "near or mid",
       "pricingScore": "<=3 (computed at runtime)"
@@ -20,6 +26,9 @@
     {
       "symbol": "MSFT",
       "name": "Microsoft",
+      "moatCapture": 3,
+      "moatLocks": ["integration","userHabit"],
+      "moatFalsification": "OpenAI builds direct enterprise distribution that bypasses Azure, OR Copilot churn reveals the moat was bundling not workflow lock.",
       "layer": "L0",
       "layerRole": "primary",
       "physicalConstraint": 1,
@@ -46,6 +55,9 @@
     {
       "symbol": "AMZN",
       "name": "Amazon",
+      "moatCapture": 3,
+      "moatLocks": ["integration","userHabit"],
+      "moatFalsification": "AI inference workloads migrate off Bedrock to specialized clouds (Fireworks/Baseten) faster than AWS data-gravity locks them in.",
       "layer": "L0",
       "layerRole": "primary",
       "physicalConstraint": 1,
@@ -72,6 +84,9 @@
     {
       "symbol": "META",
       "name": "Meta Platforms",
+      "moatCapture": 4,
+      "moatLocks": ["privateData","userHabit"],
+      "moatFalsification": "Open-sourcing Llama commoditizes its own model edge while the social-graph data fails to differentiate ad-AI ROAS vs competitors.",
       "layer": "L0",
       "layerRole": "primary",
       "physicalConstraint": 2,
@@ -98,6 +113,9 @@
     {
       "symbol": "ORCL",
       "name": "Oracle",
+      "moatCapture": 3,
+      "moatLocks": ["integration"],
+      "moatFalsification": "The OpenAI/OCI capacity deal proves one-off; enterprise DB lock-in does not extend to AI workloads (customers keep DB on Oracle, run AI elsewhere).",
       "layer": "L0",
       "layerRole": "secondary",
       "physicalConstraint": 1,
@@ -130,6 +148,9 @@
     {
       "symbol": "GOOG",
       "name": "Alphabet",
+      "moatCapture": 4,
+      "moatLocks": ["userHabit","privateData","integration"],
+      "moatFalsification": "Search/Android distribution fails to convert the Gemini lead into retained share — a third-party model takes query share despite default placement.",
       "layer": "L1",
       "layerRole": "primary",
       "physicalConstraint": 2,
@@ -156,6 +177,9 @@
     {
       "symbol": "PLTR",
       "name": "Palantir",
+      "moatCapture": 5,
+      "moatLocks": ["licensing","liability","privateData","userHabit","integration"],
+      "moatFalsification": "A general model + RAG wins a flagship classified/defense deployment PLTR holds, OR commercial Foundry net-retention falls below 110% for two consecutive quarters (moat was switching-cost, not private ground truth).",
       "layer": "L1",
       "layerRole": "primary",
       "physicalConstraint": 1,
@@ -877,6 +901,9 @@
     {
       "symbol": "DELL",
       "name": "Dell Technologies",
+      "moatCapture": 1,
+      "moatLocks": [],
+      "moatFalsification": "SUPPLIER TRAP — assembler; moat accrues to NVDA (component) and the hyperscaler buyer. Falsified UP only if Dell captures a proprietary integration layer customers cannot replicate.",
       "layer": "L7",
       "layerRole": "secondary",
       "physicalConstraint": 2,
@@ -1246,6 +1273,9 @@
     {
       "symbol": "FLR",
       "name": "Fluor Corporation",
+      "moatCapture": 1,
+      "moatLocks": [],
+      "moatFalsification": "SUPPLIER TRAP — EPC contractor; moat accrues to the data-center owner. Falsified UP only if Fluor secures exclusive multi-year DC-build capacity competitors cannot match.",
       "layer": "L9",
       "layerRole": "secondary",
       "physicalConstraint": 2,
@@ -1310,6 +1340,9 @@
     {
       "symbol": "CRWD",
       "name": "CrowdStrike",
+      "moatCapture": 4,
+      "moatLocks": ["userHabit","integration","liability"],
+      "moatFalsification": "A model-native security entrant absorbs endpoint detection at materially lower cost AND CRWD net-retention compresses — i.e. the moat was incumbency, not the telemetry data.",
       "layer": "L10",
       "layerRole": "primary",
       "physicalConstraint": 1,
@@ -1336,6 +1369,9 @@
     {
       "symbol": "PANW",
       "name": "Palo Alto Networks",
+      "moatCapture": 3,
+      "moatLocks": ["integration","liability"],
+      "moatFalsification": "Platform-consolidation thesis reverses; point solutions re-fragment the stack, showing the bundle was the moat not the tech.",
       "layer": "L10",
       "layerRole": "primary",
       "physicalConstraint": 1,
