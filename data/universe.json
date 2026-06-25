@@ -205,6 +205,9 @@
     },
     {
       "symbol": "NVDA",
+      "moatCapture": 5,
+      "moatLocks": ["userHabit","integration"],
+      "moatFalsification": "An open stack (ROCm/Triton/MLIR) reaches CUDA parity AND developers migrate — moat was ecosystem lock, not silicon",
       "name": "NVIDIA",
       "layer": "L2",
       "layerRole": "primary",
@@ -231,6 +234,9 @@
     },
     {
       "symbol": "AMD",
+      "moatCapture": 3,
+      "moatLocks": ["integration"],
+      "moatFalsification": "ROCm fails to build a developer-ecosystem lock; AMD stays the cheaper-alternative price-taker",
       "name": "Advanced Micro Devices",
       "layer": "L2",
       "layerRole": "secondary",
@@ -257,6 +263,9 @@
     },
     {
       "symbol": "CBRS",
+      "moatCapture": 3,
+      "moatLocks": ["integration"],
+      "moatFalsification": "Wafer-scale arch does not win a durable software ecosystem; remains a niche challenger",
       "name": "Cerebras Systems",
       "layer": "L2",
       "layerRole": "secondary",
@@ -293,6 +302,9 @@
     },
     {
       "symbol": "QCOM",
+      "moatCapture": 4,
+      "moatLocks": ["licensing","integration"],
+      "moatFalsification": "Modem SEP royalties erode (Apple in-house) AND AI-edge fails to replace the licensing stream",
       "name": "Qualcomm",
       "layer": "L2_5",
       "layerRole": "primary",
@@ -319,6 +331,9 @@
     },
     {
       "symbol": "ARM",
+      "moatCapture": 5,
+      "moatLocks": ["licensing","userHabit","integration"],
+      "moatFalsification": "RISC-V open ISA displaces Arm in key sockets — licensing moat was switching-cost, not necessity",
       "name": "Arm Holdings",
       "layer": "L2_5",
       "layerRole": "primary",
@@ -345,6 +360,9 @@
     },
     {
       "symbol": "MRVL",
+      "moatCapture": 3,
+      "moatLocks": ["integration"],
+      "moatFalsification": "Hyperscalers in-house custom-ASIC design (poach teams); Marvell was a vendor",
       "name": "Marvell Technology",
       "layer": "L2_5",
       "layerRole": "primary",
@@ -371,6 +389,9 @@
     },
     {
       "symbol": "AVGO",
+      "moatCapture": 4,
+      "moatLocks": ["integration","userHabit"],
+      "moatFalsification": "Custom-ASIC customers (Google TPU) bring design in-house; VMware switching-lock erodes",
       "name": "Broadcom",
       "layer": "L2_5",
       "layerRole": "primary",
@@ -398,6 +419,9 @@
     },
     {
       "symbol": "SNPS",
+      "moatCapture": 5,
+      "moatLocks": ["userHabit","integration"],
+      "moatFalsification": "A viable third EDA stack emerges OR AI chip-design commoditizes EDA tooling",
       "name": "Synopsys",
       "layer": "L3",
       "layerRole": "primary",
@@ -424,6 +448,9 @@
     },
     {
       "symbol": "CDNS",
+      "moatCapture": 5,
+      "moatLocks": ["userHabit","integration"],
+      "moatFalsification": "A viable third EDA stack emerges OR AI chip-design commoditizes EDA tooling",
       "name": "Cadence Design Systems",
       "layer": "L3",
       "layerRole": "primary",
@@ -450,6 +477,9 @@
     },
     {
       "symbol": "ALAB",
+      "moatCapture": 3,
+      "moatLocks": ["integration"],
+      "moatFalsification": "Connectivity (retimer) function absorbed into switch/CPU silicon — Astera was a gap-filler",
       "name": "Astera Labs",
       "layer": "L3",
       "layerRole": "secondary",
@@ -488,6 +518,9 @@
     },
     {
       "symbol": "ENTG",
+      "moatCapture": 4,
+      "moatLocks": ["integration"],
+      "moatFalsification": "Fab requalification barrier falls; second-source materials qualify at scale",
       "name": "Entegris",
       "layer": "L3_5",
       "layerRole": "primary",
@@ -514,6 +547,9 @@
     },
     {
       "symbol": "APD",
+      "moatCapture": 3,
+      "moatLocks": ["integration"],
+      "moatFalsification": "On-site gas contracts do not renew at premium; commodity gas pricing",
       "name": "Air Products",
       "layer": "L3_5",
       "layerRole": "secondary",
@@ -540,6 +576,9 @@
     },
     {
       "symbol": "LIN",
+      "moatCapture": 4,
+      "moatLocks": ["integration"],
+      "moatFalsification": "On-site industrial-gas contract lock erodes; regional commoditization",
       "name": "Linde",
       "layer": "L3_5",
       "layerRole": "primary",
@@ -566,6 +605,9 @@
     },
     {
       "symbol": "TSEM",
+      "moatCapture": 2,
+      "moatLocks": [],
+      "moatFalsification": "Specialty foundry; capacity supplier, value accrues to fabless customers",
       "name": "Tower Semiconductor",
       "layer": "L3_5",
       "layerRole": "secondary",
@@ -599,6 +641,9 @@
     },
     {
       "symbol": "AMAT",
+      "moatCapture": 4,
+      "moatLocks": ["integration"],
+      "moatFalsification": "China domestic tool makers (Naura/AMEC) reach parity and displace at mature nodes",
       "name": "Applied Materials",
       "layer": "L4",
       "layerRole": "primary",
@@ -625,6 +670,9 @@
     },
     {
       "symbol": "LRCX",
+      "moatCapture": 4,
+      "moatLocks": ["integration"],
+      "moatFalsification": "Etch/deposition second-sourced by domestic-China tools at scale",
       "name": "Lam Research",
       "layer": "L4",
       "layerRole": "primary",
@@ -651,6 +699,9 @@
     },
     {
       "symbol": "ASML",
+      "moatCapture": 5,
+      "moatLocks": ["integration"],
+      "moatFalsification": "EUV monopoly broken — falsified only by a viable second EUV source (none credible for years)",
       "name": "ASML Holding",
       "layer": "L4",
       "layerRole": "primary",
@@ -678,6 +729,9 @@
     },
     {
       "symbol": "KLAC",
+      "moatCapture": 4,
+      "moatLocks": ["integration"],
+      "moatFalsification": "Process-control second-sourced; inspection requalification barrier falls",
       "name": "KLA Corporation",
       "layer": "L4",
       "layerRole": "primary",
@@ -704,6 +758,9 @@
     },
     {
       "symbol": "TER",
+      "moatCapture": 3,
+      "moatLocks": ["integration"],
+      "moatFalsification": "ATE design-in lost to Advantest / in-house test",
       "name": "Teradyne",
       "layer": "L4",
       "layerRole": "secondary",
@@ -732,6 +789,9 @@
     },
     {
       "symbol": "AMKR",
+      "moatCapture": 2,
+      "moatLocks": [],
+      "moatFalsification": "OSAT packaging; capacity supplier, value accrues to TSMC + fabless customers",
       "name": "Amkor Technology",
       "layer": "L5",
       "layerRole": "primary",
@@ -758,6 +818,9 @@
     },
     {
       "symbol": "TSM",
+      "moatCapture": 5,
+      "moatLocks": ["integration"],
+      "moatFalsification": "Process leadership lost (Intel/Samsung catch up) AND customer switching-lock breaks",
       "name": "Taiwan Semiconductor (ADR)",
       "layer": "L5",
       "layerRole": "primary",
@@ -784,6 +847,9 @@
     },
     {
       "symbol": "TTMI",
+      "moatCapture": 3,
+      "moatLocks": ["integration"],
+      "moatFalsification": "Defense/aero PCB qualification lock erodes; commercial PCB is commodity",
       "name": "TTM Technologies",
       "layer": "L5_5",
       "layerRole": "primary",
@@ -810,6 +876,9 @@
     },
     {
       "symbol": "MU",
+      "moatCapture": 3,
+      "moatLocks": ["integration"],
+      "moatFalsification": "HBM commoditizes as SK Hynix/Samsung flood capacity; reverts to cyclical DRAM/NAND commodity pricing",
       "name": "Micron Technology",
       "layer": "L6",
       "layerRole": "primary",
@@ -845,6 +914,9 @@
     },
     {
       "symbol": "INTC",
+      "moatCapture": 3,
+      "moatLocks": ["integration"],
+      "moatFalsification": "Foundry customers do not materialize; remains sub-scale vs TSMC",
       "name": "Intel",
       "layer": "L5",
       "layerRole": "secondary",
@@ -874,6 +946,9 @@
     },
     {
       "symbol": "CLS",
+      "moatCapture": 2,
+      "moatLocks": [],
+      "moatFalsification": "EMS/ODM assembler; moat accrues to hyperscaler customers — replaceable vendor",
       "name": "Celestica",
       "layer": "L7",
       "layerRole": "primary",
@@ -929,6 +1004,9 @@
     },
     {
       "symbol": "CRWV",
+      "moatCapture": 2,
+      "moatLocks": ["integration"],
+      "moatFalsification": "GPU-capacity reseller; moat accrues to NVDA (allocation) + Microsoft (anchor customer); take-or-pay only delays",
       "name": "CoreWeave",
       "layer": "L7",
       "layerRole": "primary",
@@ -956,6 +1034,9 @@
     },
     {
       "symbol": "SPCX",
+      "moatCapture": 4,
+      "moatLocks": ["licensing","userHabit"],
+      "moatFalsification": "Starlink eroded by Kuiper; xAI fails to differentiate vs frontier labs (private — low confidence)",
       "name": "SpaceX (incl. xAI / SpaceXAI)",
       "layer": "L7",
       "layerRole": "secondary",
@@ -989,6 +1070,9 @@
     },
     {
       "symbol": "SMCI",
+      "moatCapture": 2,
+      "moatLocks": [],
+      "moatFalsification": "Server assembler; moat accrues to NVDA + buyers; Dell/HPE replicate",
       "name": "Super Micro Computer",
       "layer": "L7",
       "layerRole": "primary",
@@ -1016,6 +1100,9 @@
     },
     {
       "symbol": "ANET",
+      "moatCapture": 4,
+      "moatLocks": ["userHabit","integration"],
+      "moatFalsification": "White-box switching + SONiC displaces Arista at hyperscalers — moat was EOS software, not necessity",
       "name": "Arista Networks",
       "layer": "L8_NET",
       "layerRole": "primary",
@@ -1042,6 +1129,9 @@
     },
     {
       "symbol": "VRT",
+      "moatCapture": 4,
+      "moatLocks": ["integration"],
+      "moatFalsification": "Liquid-cooling/power designs standardize; hyperscalers multi-source the installed base",
       "name": "Vertiv Holdings",
       "layer": "L8_COOL",
       "layerRole": "primary",
@@ -1068,6 +1158,9 @@
     },
     {
       "symbol": "ETN",
+      "moatCapture": 3,
+      "moatLocks": ["integration"],
+      "moatFalsification": "Electrical spec-in commoditizes; multi-sourcing at scale",
       "name": "Eaton Corporation",
       "layer": "L8_COOL",
       "layerRole": "secondary",
@@ -1094,6 +1187,9 @@
     },
     {
       "symbol": "GLW",
+      "moatCapture": 4,
+      "moatLocks": ["integration"],
+      "moatFalsification": "Optical-fiber/glass patent + capacity lead eroded by competitors",
       "name": "Corning",
       "layer": "L8_OPT",
       "layerRole": "primary",
@@ -1127,6 +1223,9 @@
     },
     {
       "symbol": "COHR",
+      "moatCapture": 3,
+      "moatLocks": ["integration"],
+      "moatFalsification": "Laser/optical components second-sourced; capacity-vendor pricing",
       "name": "Coherent Corp",
       "layer": "L8_OPT",
       "layerRole": "primary",
@@ -1159,6 +1258,9 @@
     },
     {
       "symbol": "LITE",
+      "moatCapture": 3,
+      "moatLocks": ["integration"],
+      "moatFalsification": "Transceiver commoditizes; Chinese optics (Innolight) take share",
       "name": "Lumentum Holdings",
       "layer": "L8_OPT",
       "layerRole": "primary",
@@ -1192,6 +1294,9 @@
     },
     {
       "symbol": "AXTI",
+      "moatCapture": 2,
+      "moatLocks": [],
+      "moatFalsification": "Compound-semi substrate supplier; value accrues to device makers; China-based capacity competition",
       "name": "AXT Inc",
       "layer": "L8_OPT_MAT",
       "layerRole": "primary",
@@ -1220,6 +1325,9 @@
     },
     {
       "symbol": "EQIX",
+      "moatCapture": 4,
+      "moatLocks": ["userHabit","integration"],
+      "moatFalsification": "Hyperscalers self-build and bypass colo interconnection; enterprise migrates direct",
       "name": "Equinix",
       "layer": "L9",
       "layerRole": "primary",
@@ -1246,6 +1354,9 @@
     },
     {
       "symbol": "DLR",
+      "moatCapture": 3,
+      "moatLocks": ["integration"],
+      "moatFalsification": "Wholesale-DC capacity commoditizes; tenant switching at lease renewal",
       "name": "Digital Realty",
       "layer": "L9",
       "layerRole": "primary",
@@ -1307,6 +1418,9 @@
     },
     {
       "symbol": "CRH",
+      "moatCapture": 3,
+      "moatLocks": [],
+      "moatFalsification": "Aggregates/cement local-geographic monopoly captures locally; no non-physical lock (already physical pc=4)",
       "name": "CRH plc",
       "layer": "L9",
       "layerRole": "secondary",
@@ -1397,6 +1511,9 @@
     },
     {
       "symbol": "CEG",
+      "moatCapture": 4,
+      "moatLocks": ["licensing","integration"],
+      "moatFalsification": "Data-center PPA premium compresses; merchant nuclear reverts to commodity power",
       "name": "Constellation Energy",
       "layer": "L11",
       "layerRole": "primary",
@@ -1429,6 +1546,9 @@
     },
     {
       "symbol": "VST",
+      "moatCapture": 3,
+      "moatLocks": ["licensing","integration"],
+      "moatFalsification": "Merchant-power spread compresses; retail book does not lock AI demand",
       "name": "Vistra Energy",
       "layer": "L11",
       "layerRole": "secondary",
@@ -1461,6 +1581,9 @@
     },
     {
       "symbol": "OKLO",
+      "moatCapture": 4,
+      "moatLocks": ["licensing"],
+      "moatFalsification": "NRC licensing fails/delays OR a competing SMR design is approved+ordered first (pre-revenue; licensing IS the moat and the bottleneck)",
       "name": "Oklo Inc.",
       "layer": "L11",
       "layerRole": "secondary",
@@ -1494,6 +1617,9 @@
     },
     {
       "symbol": "SMR",
+      "moatCapture": 4,
+      "moatLocks": ["licensing"],
+      "moatFalsification": "Design approval does not convert to commercial orders; cost overruns vs alternatives",
       "name": "NuScale Power",
       "layer": "L11",
       "layerRole": "secondary",
@@ -1527,6 +1653,9 @@
     },
     {
       "symbol": "CCJ",
+      "moatCapture": 3,
+      "moatLocks": ["integration"],
+      "moatFalsification": "Uranium long-term contracts do not price at premium; spot reversion",
       "name": "Cameco Corporation",
       "layer": "L11_FUEL",
       "layerRole": "primary",
@@ -1566,6 +1695,9 @@
     },
     {
       "symbol": "GEV",
+      "moatCapture": 4,
+      "moatLocks": ["integration"],
+      "moatFalsification": "Grid-equipment backlog cancels; Siemens Energy / Chinese OEMs take share",
       "name": "GE Vernova",
       "layer": "L12",
       "layerRole": "primary",
@@ -1592,6 +1724,9 @@
     },
     {
       "symbol": "PWR",
+      "moatCapture": 2,
+      "moatLocks": [],
+      "moatFalsification": "Electrical-EPC contractor; moat accrues to the utility/DC owner — replaceable service vendor (same class as FLR)",
       "name": "Quanta Services",
       "layer": "L12",
       "layerRole": "primary",
@@ -1618,6 +1753,9 @@
     },
     {
       "symbol": "EOG",
+      "moatCapture": 2,
+      "moatLocks": [],
+      "moatFalsification": "Natgas E&P; commodity price-taker, value accrues to spot market (ai 0.15 moot)",
       "name": "EOG Resources",
       "layer": "L13",
       "layerRole": "primary",
@@ -1644,6 +1782,9 @@
     },
     {
       "symbol": "EQT",
+      "moatCapture": 2,
+      "moatLocks": [],
+      "moatFalsification": "Natgas E&P; commodity price-taker (ai 0.15 moot)",
       "name": "EQT Corporation",
       "layer": "L13",
       "layerRole": "secondary",
@@ -1670,6 +1811,9 @@
     },
     {
       "symbol": "FCX",
+      "moatCapture": 2,
+      "moatLocks": [],
+      "moatFalsification": "Copper miner; commodity price-taker, capture leaks to LME pricing (ai 0.12 moot)",
       "name": "Freeport-McMoRan",
       "layer": "L14",
       "layerRole": "primary",
@@ -1696,6 +1840,9 @@
     },
     {
       "symbol": "SCCO",
+      "moatCapture": 2,
+      "moatLocks": [],
+      "moatFalsification": "Copper miner; commodity price-taker (ai 0.12 moot)",
       "name": "Southern Copper",
       "layer": "L14",
       "layerRole": "primary",
@@ -1722,6 +1869,9 @@
     },
     {
       "symbol": "AA",
+      "moatCapture": 2,
+      "moatLocks": [],
+      "moatFalsification": "Aluminum; commodity price-taker (ai 0.10 moot). Also a cheap-pricing promotion candidate — trap flag now annotates it",
       "name": "Alcoa",
       "layer": "L14",
       "layerRole": "secondary",
@@ -1828,6 +1978,9 @@
     },
     {
       "symbol": "RNDR",
+      "moatCapture": 2,
+      "moatLocks": [],
+      "moatFalsification": "Render value accrues to GPU owners + node operators — replaceable coordination layer",
       "name": "Render Network",
       "layer": "L_DCOMP",
       "layerRole": "primary",
@@ -1857,6 +2010,9 @@
     },
     {
       "symbol": "TAO",
+      "moatCapture": 2,
+      "moatLocks": [],
+      "moatFalsification": "Subnet-incentive token; no durable non-physical lock, value accrues to subnet operators (speculative)",
       "name": "Bittensor",
       "layer": "L_DCOMP",
       "layerRole": "primary",
@@ -1886,6 +2042,9 @@
     },
     {
       "symbol": "FIL",
+      "moatCapture": 2,
+      "moatLocks": [],
+      "moatFalsification": "Commodity storage protocol; value accrues to providers + spot pricing",
       "name": "Filecoin",
       "layer": "L_DCOMP",
       "layerRole": "primary",
@@ -1915,6 +2074,9 @@
     },
     {
       "symbol": "LINK",
+      "moatCapture": 4,
+      "moatLocks": ["integration","userHabit"],
+      "moatFalsification": "A competing oracle (Pyth) captures the majority of DeFi secured value",
       "name": "Chainlink",
       "layer": "L_DCOMP",
       "layerRole": "primary",
@@ -1944,6 +2106,9 @@
     },
     {
       "symbol": "ETH",
+      "moatCapture": 4,
+      "moatLocks": ["userHabit","integration"],
+      "moatFalsification": "An L1 competitor achieves sustained developer + TVL migration off Ethereum",
       "name": "Ethereum",
       "layer": "L_DCOMP",
       "layerRole": "bridge",
@@ -1974,6 +2139,9 @@
     },
     {
       "symbol": "CRCL",
+      "moatCapture": 4,
+      "moatLocks": ["licensing","integration"],
+      "moatFalsification": "USDC loses share to USDT/bank-issued stablecoins as banks get licensed; regulatory moat commoditizes",
       "name": "Circle Internet Group",
       "layer": "L_DCOMP",
       "layerRole": "bridge",
@@ -2002,6 +2170,9 @@
     },
     {
       "symbol": "ISRG",
+      "moatCapture": 5,
+      "moatLocks": ["licensing","userHabit","integration"],
+      "moatFalsification": "Medtronic Hugo / J&J Ottava take share; surgeon switching + installed-base lock breaks",
       "name": "Intuitive Surgical",
       "layer": "L_EMBI",
       "layerRole": "primary",
@@ -2028,6 +2199,9 @@
     },
     {
       "symbol": "CGNX",
+      "moatCapture": 4,
+      "moatLocks": ["integration"],
+      "moatFalsification": "Machine-vision spec-in lost to commodity vision + open CV models",
       "name": "Cognex",
       "layer": "L_EMBI",
       "layerRole": "primary",
@@ -2054,6 +2228,9 @@
     },
     {
       "symbol": "PH",
+      "moatCapture": 3,
+      "moatLocks": ["integration"],
+      "moatFalsification": "Motion/control spec-in commoditizes; AI exposure (0.15) immaterial regardless",
       "name": "Parker Hannifin",
       "layer": "L_EMBI",
       "layerRole": "secondary",
@@ -2081,6 +2258,9 @@
     },
     {
       "symbol": "TSLA",
+      "moatCapture": 4,
+      "moatLocks": ["privateData","userHabit"],
+      "moatFalsification": "FSD/Optimus fail to productize; fleet-data advantage does not convert to an autonomy lead",
       "name": "Tesla",
       "layer": "L_EMBI",
       "layerRole": "secondary",
@@ -2109,6 +2289,9 @@
     },
     {
       "symbol": "VPG",
+      "moatCapture": 2,
+      "moatLocks": [],
+      "moatFalsification": "Niche precision-sensor supplier; value accrues to OEMs (aiContribution 0.08 already fails funnel — moot)",
       "name": "Vishay Precision Group",
       "layer": "L_EMBI",
       "layerRole": "secondary",
@@ -2137,6 +2320,9 @@
     },
     {
       "symbol": "RKLB",
+      "moatCapture": 4,
+      "moatLocks": ["licensing","integration"],
+      "moatFalsification": "SpaceX pricing crushes small-launch economics; Neutron slips",
       "name": "Rocket Lab",
       "layer": "L_SPACE",
       "layerRole": "primary",
@@ -2168,6 +2354,9 @@
     },
     {
       "symbol": "ASTS",
+      "moatCapture": 4,
+      "moatLocks": ["licensing","integration"],
+      "moatFalsification": "Starlink direct-to-cell wins carrier deals; spectrum/patent position challenged",
       "name": "AST SpaceMobile",
       "layer": "L_SPACE",
       "layerRole": "primary",
@@ -2194,6 +2383,9 @@
     },
     {
       "symbol": "MOG",
+      "moatCapture": 3,
+      "moatLocks": ["integration"],
+      "moatFalsification": "Motion-control qualification eroded; AI exposure (0.15) immaterial",
       "name": "Moog",
       "layer": "L_SPACE",
       "layerRole": "secondary",
@@ -2221,6 +2413,9 @@
     },
     {
       "symbol": "AVAV",
+      "moatCapture": 4,
+      "moatLocks": ["licensing","integration"],
+      "moatFalsification": "Loses a program-of-record to Anduril/peers; defense qualification barrier breached",
       "name": "AeroVironment",
       "layer": "L_DEF",
       "layerRole": "primary",
@@ -2255,6 +2450,9 @@
     },
     {
       "symbol": "KTOS",
+      "moatCapture": 4,
+      "moatLocks": ["licensing","integration"],
+      "moatFalsification": "Drone/system programs not renewed; a new entrant wins qualification",
       "name": "Kratos Defense & Security Solutions",
       "layer": "L_DEF",
       "layerRole": "secondary",
@@ -2288,6 +2486,9 @@
     },
     {
       "symbol": "APLD",
+      "moatCapture": 3,
+      "moatLocks": ["integration"],
+      "moatFalsification": "AI-DC host; take-or-pay tenant lock real but power-access is the scarce asset — capture contested operator vs tenant",
       "name": "Applied Digital",
       "layer": "L9_MINER_CONVERT",
       "layerRole": "primary",
@@ -2316,6 +2517,9 @@
     },
     {
       "symbol": "CIFR",
+      "moatCapture": 3,
+      "moatLocks": ["integration"],
+      "moatFalsification": "AI-DC host; contested capture vs tenant + power contract",
       "name": "Cipher Mining",
       "layer": "L9_MINER_CONVERT",
       "layerRole": "primary",
@@ -2344,6 +2548,9 @@
     },
     {
       "symbol": "IREN",
+      "moatCapture": 3,
+      "moatLocks": ["integration"],
+      "moatFalsification": "AI-DC host; contested capture vs tenant",
       "name": "IREN Limited",
       "layer": "L9_MINER_CONVERT",
       "layerRole": "secondary",
@@ -2372,6 +2579,9 @@
     },
     {
       "symbol": "WULF",
+      "moatCapture": 3,
+      "moatLocks": ["integration"],
+      "moatFalsification": "AI-DC host; contested capture vs tenant",
       "name": "TeraWulf",
       "layer": "L9_MINER_CONVERT",
       "layerRole": "primary",
@@ -2400,6 +2610,9 @@
     },
     {
       "symbol": "HUT",
+      "moatCapture": 3,
+      "moatLocks": ["integration"],
+      "moatFalsification": "AI-DC host; contested capture vs tenant",
       "name": "Hut 8",
       "layer": "L9_MINER_CONVERT",
       "layerRole": "secondary",

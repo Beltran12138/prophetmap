@@ -57,11 +57,18 @@ function checkPromotion(ticker, scoreFiles) {
     }
   }
   if (consecutive >= PROMOTION_DAYS) {
+    // Supplier-trap annotation (Guo 2026): cheap valuation alone can promote a
+    // replaceable vendor whose moat accrues upstream/downstream. Surface, don't veto —
+    // human decides (see automation-boundary principle).
+    const trap = typeof ticker.moatCapture === 'number' && ticker.moatCapture <= 2
+      ? `moatCapture ${ticker.moatCapture} — moat accrues to incumbent/customer; cheap != defensible. Promote only if you reject this assessment.`
+      : null;
     return {
       symbol: ticker.symbol,
       layer: ticker.layer,
       reason: `pricingScore ≤ ${PROMOTION_THRESHOLD} for ${consecutive} consecutive days`,
       scoreSeries: scoreLog.join(' → '),
+      supplierTrap: trap,
     };
   }
   return null;
@@ -176,6 +183,7 @@ function main() {
       `### ${p.symbol} (${p.layer})`,
       `- **Reason**: ${p.reason}`,
       `- **Score series (last ${PROMOTION_DAYS}d)**: ${p.scoreSeries}`,
+      ...(p.supplierTrap ? [`- **⚠ Supplier-trap**: ${p.supplierTrap}`] : []),
       '',
     ]),
     '',
