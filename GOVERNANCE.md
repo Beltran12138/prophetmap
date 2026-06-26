@@ -115,6 +115,29 @@ Trigger: first week of earnings season — January, April, July, October.
 
 ---
 
+## Conceptual Frame — Solvability × Capture (v2.6.0)
+
+The two structural screening axes are not redundant; together they form a 2×2.
+
+**Axis 1 — AI-Solvability** (Hassabis, YC 2026-04-29). His three conditions for where today's methods reliably find the needle: (1) a combinatorial search space too large for brute force, (2) a *cleanly definable objective function* to ascend, (3) enough data — or an in-distribution simulator to synthesize it. The more a domain satisfies all three, the faster "doing the thing" commoditizes: anyone with data + compute converges on the solution. `physicalConstraint` is the inverse proxy — a low score means no physical chokepoint, i.e. high solvability.
+
+**Axis 2 — Value-Capture** (`moatCapture`, Guo 2026). Given the thing *gets* solved, WHO keeps the value.
+
+The axes are orthogonal, and Hassabis self-certifies it: protein folding satisfied all three solvability conditions, DeepMind solved it, then **open-sourced AlphaFold for free**. Capture moved downstream to Isomorphic (proprietary compound data + clinical + licensing). **Solved ≠ defensible.**
+
+|  | **Capture HIGH** (moatCapture ≥ 4) | **Capture LOW** (moatCapture ≤ 2) |
+|---|---|---|
+| **Solvable HIGH** (physicalConstraint low) | Non-physical moat — the rescues (PLTR, META, GOOG, QCOM): cheap to build, but licensing / liability / data / habit lock holds | **Supplier-trap** — cheap AND undefensible (CLS, SMCI, miner-hosts). Pricing alone promotes them; the trap flag is the counterweight |
+| **Solvable LOW** (physical chokepoint) | Physical + capture both (ASML, TSM, ISRG): strongest quadrant | Commodity price-taker (FCX, EOG, AA): physical-geographic moat leaks to spot pricing |
+
+The funnel's defensibility gate — `physicalConstraint ≥ 4 OR moatCapture ≥ 4` — is exactly "strong on at least one axis." The supplier-trap warning fires on the bottom-left cell.
+
+**Boundary — do not misread the solvability axis as a trading signal.** Condition (2), a definable objective function, is the real bottleneck and the one that silently fails in markets: prices are reflexive (your own bet deforms the objective's landscape), "maximize return" Goodharts the instant it becomes the optimization target, and condition (3)'s "in-distribution" excludes the regime shifts that actually matter. This frame screens the *business* solvability of universe names — it is NOT a claim that an AlphaGo-for-trading exists.
+
+> **Provenance (v2.6.0, 2026-06-26):** the `moatCapture` dimension came from Guo's "what's left of the moat" essay (TechFlow 2026-06-11); this 2×2 fuses it with Hassabis's three-condition heuristic (YC 2026-04-29). Both are KOL/founder sources read under `vc_pitch_source_bias` discipline — Hassabis's self-interest runs toward AGI-capex optimism, so only the falsifiable, cuts-against-interest claims were kept. Per `inspired_loop`, this is a documentation/thesis change, not a portfolio motion.
+
+---
+
 ## Known Governance Gaps (v1.0)
 
 1. **No per-ticker change log** — physicalConstraint/aiContribution changes leave no audit trail. Future: add `_changeLog: [{date, field, from, to, reason}]` per ticker.
