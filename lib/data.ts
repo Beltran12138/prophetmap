@@ -28,9 +28,25 @@ export type TickerScore = {
       quarters: number; beats: number; hitRate: number; avgSurprisePct: number;
     } | null;
   } | null;
+  // Derating signature (v2.9.0). Surfacing only, never a gate. Adds the path term
+  // momentum6m lacks: a -55% drawdown that is still +117% over 12m is a parabola
+  // deflating, not a thesis breaking, and the two are indistinguishable from
+  // endpoints alone. See CHANGELOG v2.9.0 §0 for the misread that produced this.
+  deratingSignature?: {
+    signature: 'none' | 'momentum-unwind' | 'architectural-derating' | 'drawdown-unclassified';
+    drawdownFrom52wHigh: number;
+    change52w: number | null;
+    estimatesRising: boolean;
+    delivering: boolean;
+    note: string | null;
+  } | null;
   price: number | null;
   marketCap: number | null;
   pricingScore: number | null;
+  // Pricing applicability (v2.9.0). GATING: false => the pricing gate fails.
+  // "We cannot price this" must not collapse into "this is attractively priced".
+  pricingApplicable?: boolean;
+  pricingInapplicableReason?: string | null;
   pegRatio?: number | null;
   pegBand?: 'cheap' | 'fair' | 'rich' | 'overpriced' | 'N/A';
   funnelPass: boolean;

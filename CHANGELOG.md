@@ -4,6 +4,106 @@ All notable universe / layers / framework changes, dated.
 
 ---
 
+## 2026-07-28 — v2.9.0: L8_OPT review against the Q2 print · pricing-applicability gate · derating signature
+
+Triggered by GLW closing **−15.6%** on the day it reported. Three outcomes, and the first one is a correction.
+
+### 0. The read that started this was wrong
+
+GLW's `momentum6m` read **−28.1% vs SPY** while consensus +1y EPS had been revised **up 8.9%** in 90 days and the company had beaten **4 of 4** quarters. COHR (−15.8% / +9.2% / 4-4) and LITE (−16.9% / +12.2% / 4-4) showed the same shape. That combination was read as *the market is discounting terminal value* — i.e. the CPO architecture thesis breaking — and the funnel was accused of being structurally long the falling knife.
+
+Wrong. Measured path:
+
+| GLW | |
+|---|---|
+| 2025-12-29 | $90.67 |
+| 2026-06-29 intraday record | **$271.78** |
+| 2026-07-28 | $120.89 |
+| drawdown from high | **−55.7%** |
+| 12-month return | **+117.5%** |
+| YTD | **+33.3%** |
+
+Nothing was being derated. A parabola was deflating, and the decline began 2026-06-30 — twenty sessions of orderly distribution **before** the print, which merely accelerated the last leg.
+
+`momentum6m` cannot see this because it compares two endpoints, and the entire distinction lives in the path between them. A name that fell steadily for six months and a name that nearly tripled and then gave it back both print ≈ −20%.
+
+Two smaller defects fell out of chasing it, both recorded rather than fixed here: `get6mReturn` uses `interval: '1mo'`, so the anchor snaps to a month boundary and the window oscillates between 5 and 6 months depending on the day of month (consistent across tickers and against SPY, so relative comparison survives — mislabelled, not corrupted); and the v2.7.1 `_changeLog` entry on GLW attributed the drawdown to "institutional concern over near-term CPO deployment timing", an attribution never evidenced. That entry now carries an explicit correction rather than being edited away.
+
+### 1. L8_OPT formal review — the falsifier printed, and it printed against the bear case
+
+Falsifier #6 (architecture-neutrality break), written 2026-07-28 with a 2027-03-31 check date, measures *Corning Optical Communications enterprise/DC sub-segment YoY growth <15% for 2 consecutive quarters*. Q2 2026 delivered its first observation:
+
+| | |
+|---|---|
+| Optical Communications sales | **$2,072M, +32% YoY** |
+| **Enterprise Networks** | **+65% YoY** |
+| segment net income | $438M, **+77% YoY** |
+| segment net margin | 21.1% |
+
+**NOT TRIGGERED — +65% against a <15% trigger, 4.3x the floor, zero of two required quarters.**
+
+And the corroboration runs the other way from mere absence-of-evidence: the same release announced an **NVIDIA agreement to expand Corning's US optical-connectivity capacity 10x** and US fiber capacity >50%, plus a **multiyear multibillion-dollar Amazon agreement**. NVIDIA is the CPO champion; it is scaling capacity *with* Corning, not around it. Weeks added on the call that clusters above ~130,000 GPUs require a **third optical layer** — content per cluster rising with cluster size, which is a physical argument for the layer that holds under either architecture.
+
+**`moatCapture = 4` strengthened.** The stock is the only thing that fell.
+
+New falsifier #7 opened — **capital-intensity capture leak**, testing the same mc=4 premise from the returns side rather than the position side. 2026 capex steps up to ~$2B (from ~$1.7B), concentrated in Optical. mc=4 asserts Corning captures the value of being architecturally required; the competing reading is that Corning funds the buildout on long-term agreements while the customer captures the returns. Weeks's "we price on the value we create for customers" is management assertion on precisely the contested point — a report-good source. MEASURE: segment net margin falls two consecutive quarters while segment sales still grow >20% YoY. BASELINE 21.1%, and the CFO guided margin *up* from here, so a decline contradicts management's own stated expectation. FIRST CHECK: FQ3 2026.
+
+New `falsificationObservations` field on universe tickers. A declared falsifier is only worth its check date if the measurement gets recorded when the date arrives — otherwise "tested and survived" is indistinguishable from "nobody looked", and both read as thesis-intact. Rule: record whether or not it fires, and contradictions carry an explicit `correction` rather than editing the earlier text.
+
+One claim was **not** encoded: an aggregator attributed part of the decline to signalled wireless-carrier capex slowdown. The 8-K carries no such commentary and management stated the Q3 guide was not meant to signal a slowdown. Left as unverified.
+
+### 2. Pricing applicability — GATING, fail-closed
+
+For some members the four pricing ratios do not read badly, they **do not exist**, and scoring them anyway emits a number that looks like a measurement. That number was deciding funnel state: LINK's sole fail reason was `pricingScore 3.8 > 3.2 (exit threshold — was passing)`, built from two components (EV/Rev 25% + momentum 20%) rescaled to full weight.
+
+For crypto members it was not thin — it was **the wrong asset**. The script passes the bare universe symbol to Yahoo, which resolves against the US equity/ETF namespace:
+
+| universe declares | Yahoo returns |
+|---|---|
+| `LINK` = Chainlink, $9B | **Interlink Electronics** — $74M NasdaqCM microcap, $4.70 |
+| `ETH` = Ethereum, $310B | **Grayscale Ethereum Mini Trust ETF**, $18.26 |
+| `TAO` = Bittensor | **Invesco China Real Estate ETF** |
+| `FIL`, `RNDR` | no fundamentals / no quote — failed loudly, safe |
+
+The first three are the dangerous class: a wrong answer that validates. There is no safe naive repair either — `TAO-USD` resolves to "Together As One", not Bittensor. `universe.json` already carries `coingeckoId` on every crypto member; **wiring that source is the real fix and is deliberately not done here** — it is a new data path, not a bug fix.
+
+`assessPricingApplicability` marks a ticker inapplicable when it is crypto, has no positive forward P/E *and* no EV/Revenue anchor, or has component coverage below 55%. Inapplicable ⇒ the pricing gate **fails**, hysteresis not consulted. "We cannot price this" must never collapse into "this is attractively priced", and the recorded reason must be the honest one rather than a fabricated numeric comparison.
+
+**PASS set unchanged — 21 names, no additions, no removals.** What changed is that the reasons are now true: RNDR/TAO/FIL move from silent fetch errors to recorded FAILs, LINK's fabricated 3.8 is replaced by the collision explanation, ETH and OKLO gain an honest second reason. Crypto members no longer enter the equity pipeline at all, so the wrong number is never produced rather than being produced and then discounted.
+
+A standing policy is now stated rather than hidden: **loss-making names are structurally locked out of the pricing gate** by the `forwardPE < 0 ⇒ score 5` rule. 14 tickers sit there today, all already failing. That is a defensible policy and it is a *policy*, not a measurement.
+
+### 3. Derating signature — SURFACING ONLY, zero weight
+
+Adds the path term `momentum6m` lacks. Both inputs come from modules already fetched; no additional requests.
+
+| signature | condition | reading |
+|---|---|---|
+| `momentum-unwind` | drawdown ≤ −30% **but** 12m return > 0 | giving back a prior advance — says nothing about the thesis |
+| `architectural-derating` | drawdown ≤ −30% **and** 12m ≤ 0 **and** estimates rising **and** beating | market rejecting an earnings stream it is simultaneously marking up — a claim about the years beyond the estimate horizon |
+| `drawdown-unclassified` | deep drawdown, estimates not rising or not delivering | ordinary deterioration |
+
+First run: **29 momentum-unwind · 6 architectural-derating · 10 unclassified · 34 none · 5 no-data.**
+
+GLW, COHR and LITE all classify **momentum-unwind** — the instrument built in response to today's crash says today's crash is not what it was read as. AXTI is the extreme case: −70.1% drawdown on a +1990.8% twelve months.
+
+The six `architectural-derating` hits, two of them current PASS holdings:
+
+| | layer | dd% | 12m% | pricingScore | funnel |
+|---|---|---|---|---|---|
+| ORCL | L0 | −64.9 | −52.0 | 2.1 | fail |
+| **KTOS** | L_DEF | −63.9 | −13.4 | 2.4 | **PASS** |
+| SMCI | L7 | −54.2 | −49.2 | 1.7 | fail |
+| **SNPS** | L3 | −40.6 | −38.8 | 1.9 | **PASS** |
+| PLTR | L1 | −40.0 | −15.8 | 3.5 | fail |
+| ISRG | L_EMBI | −39.5 | −28.2 | 3.2 | fail |
+
+Note the collision the same run produced: **ORCL is a watchlist promotion candidate** (`pricingScore 2.1 for 5 consecutive days → set status=active`) and simultaneously the deepest architectural-derating hit in the universe. The promotion machinery and the new diagnostic disagree, on purpose and visibly.
+
+**Not a gate, deliberately.** The rule has zero validated observations and its first draft — momentum6m negative + estimates rising + beating, without the path term — would have fired on GLW today and been wrong. Calibrate on live cases before letting it move the PASS set. It earns a gate only if flagged names go on to underperform their layer over a full cycle; if they do not, delete it rather than promote it.
+
+---
+
 ## 2026-07-28 — v2.8.0: constraint-decay tagging + expectation-vs-delivery check + peer-selection rule
 
 Three instrumentation changes. **All zero-weight — no gate reads any new field, and the PASS set is byte-identical before and after: the same 20 names** (AMAT, AMKR, AVAV, AVGO, CDNS, COHR, CRCL, CRH, GLW, GOOG, KTOS, LIN, LRCX, META, NVDA, QCOM, SNPS, TER, TSM, TTMI), with the same 4 fetch errors (RNDR, TAO, FIL, MOG). This is deliberate: v2.7.1 had just demonstrated how easily an engine change re-rates holdings, so this release measures without moving anything.

@@ -176,13 +176,15 @@ function computePricingScore(quote, summary, return6m, spy6m, benchmarks) {
     totalWeight += 0.20;
   }
 
-  if (totalWeight === 0) return { pricingScore: null, components: scores, dataQuality: 'insufficient' };
+  if (totalWeight === 0) {
+    return { pricingScore: null, components: scores, dataQuality: 'insufficient', totalWeight: 0 };
+  }
 
   // Rescale to full weight
   const pricingScore = Math.round((weightedSum / totalWeight) * 10) / 10;
   const dataQuality = totalWeight >= 0.75 ? 'good' : totalWeight >= 0.5 ? 'partial' : 'low';
 
-  return { pricingScore, components: scores, dataQuality };
+  return { pricingScore, components: scores, dataQuality, totalWeight };
 }
 
 /**
@@ -221,6 +223,132 @@ function cyclicalTrapAdjustment(ticker, quote, summary) {
   }
 
   return { applied: delta > 0, delta: Math.round(delta * 10) / 10, reasons };
+}
+
+/**
+ * Pricing applicability gate (v2.9.0). GATING — an inapplicable pricing dimension
+ * FAILS the funnel.
+ *
+ * pricingScore is a composite of four equity-market ratios. For some universe
+ * members those ratios do not merely read badly — they do not exist. Scoring them
+ * anyway emits a number that looks like a measurement and is not one, and that
+ * number was deciding funnel state: on 2026-07-28 LINK's only fail reason was
+ * `pricingScore 3.8 > 3.2 (exit threshold)`, and that 3.8 was built from two
+ * components (EV/Revenue 25% + momentum 20%) rescaled to full weight.
+ *
+ * For crypto members it was worse than thin — it was the wrong asset. This script
+ * passes the bare universe symbol to Yahoo, which resolves it against the US
+ * equity/ETF namespace. Verified 2026-07-28:
+ *   LINK  declared Chainlink  ($9B)   -> Interlink Electronics, a $74M NasdaqCM microcap
+ *   ETH   declared Ethereum   ($310B) -> Grayscale Ethereum Mini Trust ETF
+ *   TAO   declared Bittensor          -> Invesco China Real Estate ETF
+ *   FIL, RNDR                         -> no fundamentals / no quote (failed loudly — safe)
+ * The first three are the dangerous class: a wrong answer that validates. There is
+ * no safe naive repair either — `TAO-USD` resolves to "Together As One", not
+ * Bittensor. universe.json already carries `coingeckoId` on every crypto member;
+ * wiring that source is the real fix and is deliberately NOT done here.
+ *
+ * Policy: inapplicable => the pricing gate fails. "We cannot price this" must never
+ * collapse into "this is attractively priced", and the recorded reason must be the
+ * honest one rather than a fabricated numeric comparison.
+ */
+const PRICING_MIN_WEIGHT = 0.55; // fwdPE(0.30) + EV/Rev(0.25); under this the composite is a stub
+
+function assessPricingApplicability(ticker, components, totalWeight) {
+  if (ticker.assetClass === 'crypto') {
+    return {
+      applicable: false,
+      reason:
+        'crypto asset — forward P/E, EV/Revenue and analyst price targets do not exist for a token, '
+        + 'and the bare symbol resolves against the US equity/ETF namespace '
+        + '(verified 2026-07-28: LINK→Interlink Electronics, ETH→Grayscale ETF, TAO→Invesco China Real Estate ETF). '
+        + 'Price via coingeckoId, not this pipeline.',
+    };
+  }
+
+  const fwdPE = components?.forwardPE?.value;
+  const evr = components?.evRevenue?.value;
+  if (!((fwdPE != null && fwdPE > 0) || (evr != null && evr > 0))) {
+    return {
+      applicable: false,
+      reason:
+        'no fundamental anchor — neither a positive forward P/E nor an EV/Revenue ratio; '
+        + 'any score would rest entirely on analyst targets and price momentum',
+    };
+  }
+
+  if (totalWeight != null && totalWeight < PRICING_MIN_WEIGHT) {
+    return {
+      applicable: false,
+      reason:
+        `component coverage ${Math.round(totalWeight * 100)}% < ${Math.round(PRICING_MIN_WEIGHT * 100)}% — `
+        + 'the composite is a rescaled stub, not a four-factor score',
+    };
+  }
+
+  return { applicable: true, reason: null };
+}
+
+/**
+ * Derating signature (v2.9.0). SURFACING ONLY — zero weight, no gate reads it.
+ *
+ * The mistake this encodes: on 2026-07-28 GLW fell 15.6% on an earnings beat while
+ * `momentum6m` read -28.1% vs SPY, consensus +1y EPS had been revised UP 8.9% in 90
+ * days, and the company had beaten four quarters straight. That combination was read
+ * here as "the market is discounting terminal value" — the CPO architecture thesis
+ * breaking. It was wrong. GLW ran $90.67 (2025-12-29) -> intraday record $271.78
+ * (2026-06-29) -> $120.89: a -55.7% drawdown that is still +117.5% over twelve
+ * months. Nothing was being derated; a parabola was deflating.
+ *
+ * `momentum6m` cannot separate those because it compares two endpoints, and the whole
+ * distinction lives in the path between them. This adds the path term (drawdown from
+ * the 52-week high) and the longer endpoint (52-week change):
+ *
+ *   momentum-unwind        deep drawdown BUT still up over 12m — giving back a prior
+ *                          advance; says nothing about the thesis
+ *   architectural-derating deep drawdown AND flat/down over 12m AND estimates rising
+ *                          AND the company beating — the market is rejecting an
+ *                          earnings stream it is simultaneously marking up, which can
+ *                          only be a claim about the years beyond the estimate horizon
+ *
+ * Not a gate, deliberately: the rule has zero validated observations, and its first
+ * draft would have fired on GLW today and been wrong. Calibrate on live cases before
+ * letting it move the PASS set. Both inputs come from modules already fetched — this
+ * costs no additional requests.
+ */
+const DERATING_DRAWDOWN = -0.30;
+
+function computeDeratingSignature(quote, summary, realizationCheck) {
+  const ddPct = quote?.fiftyTwoWeekHighChangePercent;              // decimal, negative
+  const chg52w = summary?.defaultKeyStatistics?.['52WeekChange'];  // decimal
+  if (ddPct == null || !isFinite(ddPct)) return null;
+
+  const rev = realizationCheck?.estimateRevision;
+  const hit = realizationCheck?.surpriseHitRate;
+  const estimatesRising = rev?.direction === 'up' && rev?.meaningful === true;
+  const delivering = hit != null && hit.hitRate >= 0.5;
+
+  let signature = 'none';
+  if (ddPct <= DERATING_DRAWDOWN) {
+    if (chg52w == null) signature = 'drawdown-unclassified';
+    else if (chg52w > 0) signature = 'momentum-unwind';
+    else if (estimatesRising && delivering) signature = 'architectural-derating';
+    else signature = 'drawdown-unclassified';
+  }
+
+  return {
+    signature,
+    drawdownFrom52wHigh: Math.round(ddPct * 1000) / 10,
+    change52w: chg52w != null ? Math.round(chg52w * 1000) / 10 : null,
+    estimatesRising,
+    delivering,
+    note:
+      signature === 'momentum-unwind'
+        ? 'deep drawdown but positive 12m return — unwinding a prior advance, NOT evidence of a broken thesis'
+        : signature === 'architectural-derating'
+        ? 'down over 12m while estimates rise and the company beats — market is discounting beyond the estimate horizon; re-read this ticker\'s thesisFalsification entries'
+        : null,
+  };
 }
 
 /**
@@ -311,7 +439,7 @@ function computeRealizationCheck(summary) {
 const PRICING_ENTER = 2.8; // must be <= this to newly qualify
 const PRICING_EXIT = 3.2;  // must exceed this to lose an existing pass
 
-function evaluateFunnel(ticker, pricingScore, previousPass) {
+function evaluateFunnel(ticker, pricingScore, previousPass, applicability) {
   const { physicalConstraint, aiContribution, timeToRealize, moatCapture } = ticker;
   const reasons = [];
   const warnings = [];
@@ -336,7 +464,11 @@ function evaluateFunnel(ticker, pricingScore, previousPass) {
   // passing must reach PRICING_ENTER to qualify. Names inside the 2.8-3.2 band
   // are marked so the borderline state is visible rather than silently sticky.
   let inBand = false;
-  if (pricingScore == null) {
+  if (applicability && applicability.applicable === false) {
+    // Fail-closed. Hysteresis is deliberately not consulted: a name cannot coast on a
+    // prior PASS that was itself granted on an inapplicable number.
+    reasons.push(`pricing dimension not applicable — ${applicability.reason}`);
+  } else if (pricingScore == null) {
     reasons.push('pricingScore unavailable');
   } else {
     const threshold = previousPass ? PRICING_EXIT : PRICING_ENTER;
@@ -407,6 +539,47 @@ async function main() {
     const sym = ticker.symbol;
     process.stdout.write(`  ${sym}... `);
 
+    // Crypto members never enter the equity pipeline. Not a rate-limit saving: the
+    // bare symbol resolves to an unrelated US-listed security often enough that
+    // fetching at all is what creates the wrong number. See assessPricingApplicability.
+    if (ticker.assetClass === 'crypto') {
+      const applicability = assessPricingApplicability(ticker, {}, 0);
+      const funnel = evaluateFunnel(ticker, null, previousFunnel[sym] === true, applicability);
+      results.push({
+        symbol: sym,
+        layer: ticker.layer,
+        physicalConstraint: ticker.physicalConstraint,
+        constraintType: ticker.constraintType ?? null,
+        aiContribution: ticker.aiContribution,
+        timeToRealize: ticker.timeToRealize,
+        moatCapture: ticker.moatCapture ?? null,
+        moatLocks: ticker.moatLocks ?? null,
+        price: null,
+        marketCap: ticker.marketCap ?? null,
+        pricingScore: null,
+        rawPricingScore: null,
+        pricingApplicable: false,
+        pricingInapplicableReason: applicability.reason,
+        cyclicalTrap: null,
+        pegRatio: null,
+        pegBand: 'N/A',
+        funnelPass: funnel.pass,
+        funnelFailReasons: funnel.failReasons,
+        funnelWarnings: funnel.warnings,
+        previousFunnelPass: previousFunnel[sym] ?? null,
+        inHysteresisBand: false,
+        realizationCheck: null,
+        deratingSignature: null,
+        components: {},
+        dataQuality: 'not-applicable',
+        analystRecommendMean: null,
+        numberOfAnalysts: null,
+        fetchedAt: new Date().toISOString(),
+      });
+      console.log('  ---- (pricing not applicable: crypto — skipped equity pipeline)');
+      continue;
+    }
+
     try {
       // Serialize to avoid Yahoo Finance rate-limit on concurrent requests
       const quote = await yahooFinance.quote(sym);
@@ -439,9 +612,12 @@ async function main() {
       await sleep(RATE_LIMIT_MS);
 
       const layerBenchmarks = benchmarks[ticker.layer] || benchmarks.default;
-      const { pricingScore, components, dataQuality } = computePricingScore(
+      const { pricingScore, components, dataQuality, totalWeight } = computePricingScore(
         quote, summary, return6m, spy6m, layerBenchmarks
       );
+
+      // Applicability is judged BEFORE the score is allowed to gate anything.
+      const applicability = assessPricingApplicability(ticker, components, totalWeight);
 
       // Cyclical value-trap gate: raises pricingScore for peak-cycle cyclicals
       // whose low forward P/E (peak EPS denominator) misreads as "cheap".
@@ -450,7 +626,7 @@ async function main() {
         ? Math.round(clamp(pricingScore + cyclicalTrap.delta, 1, 5) * 10) / 10
         : null;
 
-      const funnel = evaluateFunnel(ticker, effectivePricingScore, previousFunnel[sym] === true);
+      const funnel = evaluateFunnel(ticker, effectivePricingScore, previousFunnel[sym] === true, applicability);
 
       const numAnalysts = summary?.financialData?.numberOfAnalystOpinions ?? null;
       const recommendMean = summary?.financialData?.recommendationMean ?? null;
@@ -463,6 +639,7 @@ async function main() {
         : 'overpriced';
 
       const realizationCheck = computeRealizationCheck(earningsSummary);
+      const deratingSignature = computeDeratingSignature(quote, summary, realizationCheck);
 
       results.push({
         symbol: sym,
@@ -477,6 +654,8 @@ async function main() {
         marketCap: quote?.marketCap ? Math.round(quote.marketCap / 1e9) : null,
         pricingScore: effectivePricingScore,
         rawPricingScore: pricingScore,
+        pricingApplicable: applicability.applicable,
+        pricingInapplicableReason: applicability.reason,
         cyclicalTrap: cyclicalTrap.applied ? cyclicalTrap : null,
         pegRatio,
         pegBand,
@@ -486,6 +665,7 @@ async function main() {
         previousFunnelPass: previousFunnel[sym] ?? null,
         inHysteresisBand: funnel.inHysteresisBand === true,
         realizationCheck,
+        deratingSignature,
         components,
         dataQuality,
         analystRecommendMean: recommendMean,
@@ -504,7 +684,10 @@ async function main() {
       const realLabel = revObj != null || hit != null
         ? `, rev90d=${revStr}, beats=${hit ? `${hit.beats}/${hit.quarters}` : 'N/A'}`
         : '';
-      console.log(`${passLabel}${bandLabel} (pricing=${effectivePricingScore ?? 'N/A'}${trapLabel}, peg=${pegRatio ?? 'N/A'} [${pegBand}]${realLabel}, dq=${dataQuality})`);
+      const sigLabel = deratingSignature && deratingSignature.signature !== 'none'
+        ? `, sig=${deratingSignature.signature}(dd${deratingSignature.drawdownFrom52wHigh}%/12m${deratingSignature.change52w ?? '?'}%)`
+        : '';
+      console.log(`${passLabel}${bandLabel} (pricing=${effectivePricingScore ?? 'N/A'}${trapLabel}, peg=${pegRatio ?? 'N/A'} [${pegBand}]${realLabel}, dq=${dataQuality}${sigLabel})`);
     } catch (err) {
       console.log(`ERROR: ${err.message}`);
       errors.push({ symbol: sym, error: err.message });
