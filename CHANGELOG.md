@@ -4,6 +4,55 @@ All notable universe / layers / framework changes, dated.
 
 ---
 
+## 2026-07-28 — v2.7.0: L8_OPT CPO re-evaluation + 3 watchlist adds (CRDO / CAT / MOD)
+
+Triggered by a sell-side note (Goldman raising 中际旭创 2026-28 EPS by 65%/108%/119%) that omitted co-packaged optics entirely. 中际旭创 itself is A-share and **out of scope by the v1.5/v1.10 universe boundary — not added**; the re-evaluation was run on the US-listed optical layer instead.
+
+### What the live run found
+
+The optical layer was re-priced independently of the AI mainline over July 2026: **GLW −36.2%, COHR −32.0%, MRVL −31.9%, LITE −16.9%** from 2026-06-25 to 2026-07-28, while **NVDA +0.6% and AVGO +0.7%** were flat. Sector-specific derate, not a broad risk-off. Media attribution: institutional concern over near-term CPO deployment timing (early June, Tower Semi leading declines) followed by valuation/positioning resets in July with no company-specific catalyst. Fundamentals accelerated through the derate (COHR datacenter+comms +41% YoY; LITE revenue +90% YoY).
+
+**The 2026-05-20 CPO-slip signals on GLW and COHR partially fired.** They were written as narrative-tempo checks against Jensen's Corning announcement; the July derate is the first time they paid.
+
+### Capture answer (the question the re-evaluation was run to answer)
+
+CPO moves capture toward **architecture-neutral positions**, readable straight off the existing `moatCapture` column:
+
+- **mc=5** — TSM / ASML / SNPS / CDNS / NVDA. TSM is the clean winner: CPO is an advanced-packaging problem (COUPE), so it sells one more layer in the CPO era than in the pluggable era.
+- **mc=4** — **GLW** is the only L8_OPT name here, on the premise that glass and fiber are required under *both* architectures.
+- **mc=3** — **LITE, COHR**. Real component barriers (InP/EML capacity), but product form is dictated by the downstream architecture.
+- Pure module assembly (the AAOI tier) is the exposed segment and is **correctly absent** from the universe.
+
+### Falsification hardening (3 tickers, no dimension changes)
+
+Existing CPO signals all required predicting CPO *timing*. Added gates that read off reported numbers instead:
+
+1. **GLW** — architecture-neutrality break, aimed directly at the mc=4 premise: CPO fiber-array-unit sourcing migrating to the packaging tier (TSMC COUPE / ASE) with a measurable divergence test (optical enterprise/DC sub-segment <15% YoY for 2 quarters *while* hyperscaler CPO ports grow >50%). Check 2027-03-31.
+2. **COHR** — quantified supercycle-peak gate: datacenter+comms growth <20% YoY for 2 consecutive quarters (baseline +41% in FQ3 FY2026). Direction-agnostic — COHR derates whether CPO arrives early (socket loss) or late (multiple compression). First check **2026-08-12** (FQ4 report).
+3. **LITE** — two conversion gates on the three-track thesis: ELS+OCS must reach 15% of quarterly revenue by FQ4 FY2027, and the disclosed CY27H1 CPO order must convert to revenue with OCS backlog holding above $400M. Rationale: FQ3 FY2026 disclosures (a booked CPO order, >$400M OCS backlog) are the first hard evidence that **CPO does not uniformly kill optical suppliers** — it removes the module and the DSP but still needs an external shared laser source. That makes the thesis testable, so it now carries conversion gates.
+
+### Three watchlist adds
+
+| Ticker | Layer | PC | AI | ttr | mc | pricing | Funnel |
+|---|---|---|---|---|---|---|---|
+| CRDO | L8_NET secondary | 4 | 0.85 | near | 3 | 3.0 | PASS (borderline) |
+| CAT | L12 secondary | 4 | 0.40 | near | 3 | 3.0 | PASS (borderline) |
+| MOD | L8_COOL secondary | 3 | 0.70 | near | 2 | 1.9 | **FAIL** (defensibility) |
+
+- **CRDO** — the copper vector, and the only counterparty in the universe to the optical layer: every L8_OPT name is long the same architectural outcome, CRDO is short it. PC=4 assigned for consistency with the ALAB precedent (fabless interconnect silicon), *not* for fab lead time. **Layer placement is provisional** — spans L2_5 (peer MRVL) and L8_NET; a dedicated `L8_ICONN` sublayer was considered and **rejected** because `sector-benchmarks.json` derives layer medians from a peer list, and a single-member layer yields a degenerate median (deviation 0 → pricingScore pinned at 3). Benchmark sensitivity is material: L8_NET medianForwardPE 37.6 vs L2_5 24.5. **pegRatio = N/A** — per the AXTI/CIFR/WULF precedent, sustained N/A means an unmonitorable thesis; re-check in 2-3 weeks.
+- **CAT** — inverts the usual failure mode: a slow-growing industrial (+22% revenue) that passes the AI gate on incremental-growth accounting, using the **CRH v2.1.2 convention** (Power & Energy is ~42% of revenue but includes oil & gas; datacenter-driven generation is the dominant source of *incremental* growth as construction decelerates). aiContribution=0.40 is discounted for the oil & gas share and is **the load-bearing assumption** — CAT reports no separate datacenter revenue line, so falsification signal #1 tests that number directly. Layer L12 because peer GEV is CAT's direct gas-turbine competitor.
+- **MOD** — retained deliberately as the layer's **counter-example**, not as a candidate. Fastest growth (+47.5% revenue, +158% datacenter in FQ4), cheapest inputs (forward PE 20.3 vs L8_COOL median 28.0; EV/Rev 3.99 vs 8.3), largest analyst upside (+47.9%) — and it fails **both** arms of the defensibility OR-gate. Gross margin 23.0%, **down 190bps YoY while revenue grew 23%**: a supplier with pricing power does not absorb cost and tariff increases during its own demand boom. Direct comparator VRT sits in the same layer at 37.2% GM and mc=4. Coverage caveat: 7 analysts, near the AXTI thin-coverage threshold.
+
+All three are `secondary` + `watchlist`, so the Tier-3 ADD gate requiring `supplyChainEvidence` for `primary` role is not triggered; CAT and MOD carry one filing-sourced evidence entry each, CRDO carries none (recorded as such rather than fabricated).
+
+### Engine defect found, not fixed
+
+`funnelPass` is a hard cut at `pricingScore <= 3.0` with no hysteresis. LITE crossed the threshold **6 times in 16 trading sessions** (2.8–3.5 range) through July. Any single-day PASS/FAIL record is therefore noise, which directly contaminates the A/B discipline's Gate B requirement to produce timestamped PASS names — one can retroactively pick a date to support either conclusion. `audit-universe.js` already applies a 5-consecutive-day rule for *promotion* candidates; the same debouncing does not exist on `funnelPass` itself. Suggested fix (not implemented): asymmetric band — enter PASS at ≤2.8, exit at >3.2, or require N consecutive days.
+
+Also noted: `sector-benchmarks.json` lists `IIVI` as an L8_OPT peer. II-VI renamed to Coherent (COHR) in 2022 — the same company is counted twice in the layer median.
+
+---
+
 ## 2026-06-25 — schema v2.6.0: `moatCapture` 5th dimension (Guo 2026 moat thesis)
 
 Triggered by user reading Sarah Guo's "what's the moat when models eat everything" essay (深潮 TechFlow, 2026-06-11). Core transferable insight: **"moat exists" != "the startup captures it"** — value can be real yet accrue to the incumbent above (component vendor) or the customer below, leaving the AI supplier a replaceable vendor. This is a private-correctness axis **orthogonal to `physicalConstraint`** (which covers PHYSICAL lead-time only). Per `inspired_loop` discipline this is a tooling/schema change, not a portfolio motion.

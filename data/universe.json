@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "version": "2.6.0",
-    "date": "2026-06-25",
+    "version": "2.7.0",
+    "date": "2026-07-28",
     "description": "ProphetMap stock universe — manually-defined static fields only. Dynamic pricing scores written to data/scores/YYYY-MM-DD.json by scripts/update-valuations.js",
     "fieldGuide": {
       "physicalConstraint": "1=pure software, 5=hard physical monopoly with multi-year lead times",
@@ -1202,7 +1202,8 @@
         "Fiber supply glut from Chinese manufacturers compresses GLW pricing by >20%",
         "Springboard plan fiber revenue falls below $1.5B annualized run-rate by end-2025",
         "CPO (co-packaged optics) commercial deployment slips beyond 2028 AND pluggable 1.6T optics dominance extends through 2027 — optical transition pace below thesis tempo, NVDA-Corning partnership ramp delayed",
-        "Optical fiber business segment within Corning fails to grow >25% YoY for 2 consecutive years — AI fiber thesis priced in beyond fundamentals (note: GLW is ~30% pure AI-optical, 50% non-AI glass/ceramics, requires segment-level disclosure to validate)"
+        "Optical fiber business segment within Corning fails to grow >25% YoY for 2 consecutive years — AI fiber thesis priced in beyond fundamentals (note: GLW is ~30% pure AI-optical, 50% non-AI glass/ceramics, requires segment-level disclosure to validate)",
+        "ARCHITECTURE-NEUTRALITY BREAK (tests the moatCapture=4 premise directly): CPO fiber-array units (FAU) and package-level optical connectors get sourced directly by advanced-packaging houses (TSMC COUPE / ASE / Amkor) or by switch OEMs, bypassing Corning's fiber and connector product lines. The mc=4 premise is 'glass is required under BOTH pluggable and CPO architectures, so capture is architecture-independent'. If FAU attach migrates into the packaging tier, that premise fails and capture moves to L5. MEASURE: Corning Optical Communications enterprise/DC sub-segment YoY growth <15% for 2 consecutive quarters WHILE hyperscaler CPO port shipments grow >50% YoY — divergence is the tell. SOURCE: GLW 10-Q segment disclosure + CPO supply-chain teardowns + TSMC COUPE supplier lists. CHECK: 2027-03-31."
       ],
       "marketCap": 40,
       "status": "active",
@@ -1218,6 +1219,11 @@
           "date": "2026-05-20",
           "version": "2.1.7",
           "change": "Added 2 thesisFalsification signals per DDD: (1) CPO commercial deployment slip beyond 2028 + pluggable extends through 2027 — Jensen 2026-05-08 statement is narrative-stage hype, not commercial validation; tempo verification needed. (2) Optical fiber segment growth <25% YoY for 2 years — GLW is 50% non-AI business mix (glass/ceramics/medical), segment-level disclosure required to defend AI-optical thesis."
+        },
+        {
+          "date": "2026-07-28",
+          "version": "2.7.0",
+          "change": "L8_OPT CPO re-evaluation. Added architecture-neutrality-break signal targeting the mc=4 premise itself (FAU sourcing migrating to the packaging tier), with a measurable divergence test and a 2027-03-31 check date. Context: the 2026-05-20 CPO-slip signal partially fired in July 2026 — institutional concern over near-term CPO deployment timing drove a sector-wide photonics derate (GLW -36% from 2026-06-25 to 2026-07-28) with no company-specific catalyst. GLW is the only L8_OPT name at mc=4; that rating rests entirely on glass being required under both architectures, so it needed its own falsifier rather than inheriting the shared CPO-timing ones."
         }
       ]
     },
@@ -1237,7 +1243,8 @@
         "Co-packaged optics (CPO) fully integrates into NVIDIA switch ASICs by 2027 — discrete transceiver market collapses",
         "Chinese competitors (InnoLight, HG Genuinelight) achieve 800G qualification at hyperscalers — >30% market share",
         "AI cluster interconnect shifts to electrical (copper) at shorter distances — transceiver TAM shrinks",
-        "CPO commercial deployment slips beyond 2028 AND pluggable 1.6T optics extends dominance through 2027 — narrative pace below market expectations, valuation compression as priced-in optical superCycle disappoints"
+        "CPO commercial deployment slips beyond 2028 AND pluggable 1.6T optics extends dominance through 2027 — narrative pace below market expectations, valuation compression as priced-in optical superCycle disappoints",
+        "SUPERCYCLE PEAK GATE (hardened, quantified): datacenter-and-communications revenue growth falls below 20% YoY for 2 consecutive quarters. BASELINE: +41% YoY in FQ3 FY2026 (segment), total revenue +21% YoY to $1.8B. Falling under 20% means the '3-4 qualified suppliers' scarcity premium is compressing — either CPO is displacing pluggable sockets or Chinese suppliers have qualified. FIRST CHECK: FQ4 FY2026 report, 2026-08-12 after close. SOURCE: quarterly segment disclosure. NOTE: this is a growth-DECELERATION gate, deliberately independent of the CPO-timing gates above — COHR can be hurt by CPO arriving early (socket loss) or late (multiple compression), and this gate catches both without predicting which."
       ],
       "marketCap": 10,
       "status": "active",
@@ -1253,6 +1260,11 @@
           "date": "2026-05-20",
           "version": "2.1.7",
           "change": "Added thesisFalsification signal: CPO commercial deployment slip + pluggable extension. Symmetric to GLW per DDD — Jensen narrative (2026-05-08) is hype not validation; tempo verification required. COHR sits between GLW (mid-pluggable) and LITE (CPO upstream) — slip impacts but with shorter recovery window than LITE."
+        },
+        {
+          "date": "2026-07-28",
+          "version": "2.7.0",
+          "change": "L8_OPT CPO re-evaluation. Added a quantified supercycle-peak gate (<20% YoY datacenter/comms growth for 2 consecutive quarters, baseline +41% in FQ3 FY2026, first check 2026-08-12). Rationale: the four existing signals all require predicting CPO TIMING, and July 2026 showed COHR derates on timing concerns in either direction (-32% over the month while fundamentals accelerated). A deceleration gate is direction-agnostic and reads off reported numbers instead of forecasts."
         }
       ]
     },
@@ -1272,7 +1284,9 @@
         "Coherent or Chinese competitor achieves 200G EML qualification at hyperscalers — LITE single-source moat compresses",
         "NVDA GB300/Rubin scale-up persists with copper through 2028 — CPO external laser revenue ramp slips materially",
         "Forward P/E exceeds 70x (sustained) — pricing dimension funnel-borderline triggers watch",
-        "Hyperscaler verticalization: Google/Microsoft internalize laser sourcing through M&A, bypassing merchant supplier"
+        "Hyperscaler verticalization: Google/Microsoft internalize laser sourcing through M&A, bypassing merchant supplier",
+        "THREE-TRACK PROOF GATE (tests the architecture-neutral thesis, not the pluggable cycle): combined revenue from CPO external laser sources (ELS) + optical circuit switches (OCS) fails to reach 15% of quarterly revenue by FQ4 FY2027. The thesis claims LITE spans pluggable EML -> CPO ELS -> OCS and therefore survives the architecture transition; if track 2 and track 3 stay immaterial, LITE is a pure pluggable-cycle beta wearing an architecture-neutral story and mc=3 is generous. SOURCE: quarterly product-line commentary / segment disclosure. CHECK: 2027-08-31.",
+        "ORDER-TO-REVENUE CONVERSION GATE: the disclosed CY27H1 CPO order fails to convert to recognized revenue by FQ2 FY2028, OR disclosed OCS backlog declines from the >$400M level for 2 consecutive quarters. Bookings are not revenue — this gate exists because the CPO-order and OCS-backlog datapoints (FQ3 FY2026) are currently the ONLY hard evidence for the architecture-neutral claim, and a booking that never ships would falsify it. SOURCE: earnings-call backlog disclosure."
       ],
       "marketCap": 5,
       "status": "active",
@@ -1289,6 +1303,11 @@
           "date": "2026-05-19",
           "version": "2.1.1",
           "change": "Live pricingScore=3.7 funnel-fail BUT peg=0.63 cheap — conflicting signal. _note added documenting growth-offset rationale. Status remains active."
+        },
+        {
+          "date": "2026-07-28",
+          "version": "2.7.0",
+          "change": "L8_OPT CPO re-evaluation. Added two gates that test the three-track architecture-neutral thesis rather than the pluggable cycle: (1) ELS+OCS must reach 15% of quarterly revenue by FQ4 FY2027, (2) the disclosed CY27H1 CPO order must convert to revenue and OCS backlog must hold above $400M. Rationale: FQ3 FY2026 disclosures (a booked CY27H1 CPO order, >$400M OCS backlog, revenue +90% YoY) are the first hard evidence that CPO does NOT uniformly kill optical-module suppliers — CPO removes the module and the DSP but still requires an external shared laser source, which is exactly track 2. That evidence makes the thesis testable for the first time, so it now carries explicit conversion gates. Also note the funnel-signal-noise problem observed this month: LITE's pricingScore crossed the 3.0 funnel threshold 6 times in 16 trading sessions (2.8-3.5 range), making any single-day PASS/FAIL record meaningless for the A/B discipline audit trail — hysteresis needed at the engine level, not per-ticker."
         }
       ]
     },
@@ -1320,6 +1339,115 @@
           "date": "2026-06-12",
           "version": "2.3.0",
           "change": "New L8_OPT_MAT sublayer (optical-interconnect upstream materials / InP substrate) created; AXTI added as watchlist. Source: inspired #7 Reuters US-China InP export-control story. Four-dim funnel: PC=4 / AI=0.5 / TTR=near all pass, pricingScore=5 funnel-fail on valuation (P/S 41x, YTD +611%). Held watchlist (informational, not active) pending valuation regression to pricingScore<=3."
+        }
+      ]
+    },
+    {
+      "symbol": "CRDO",
+      "moatCapture": 3,
+      "moatLocks": ["integration"],
+      "moatFalsification": "SerDes/retimer IP is licensable and second-sourced (AVGO, MRVL, ALAB all ship competing PHY); hyperscalers can dual-source AEC or revert to passive copper. Capture sits with the switch/accelerator vendor that defines the link budget, not with the PHY supplier.",
+      "name": "Credo Technology Group",
+      "layer": "L8_NET",
+      "layerRole": "secondary",
+      "physicalConstraint": 4,
+      "aiContribution": 0.85,
+      "timeToRealize": "near",
+      "thesis": "Third combatant in the AI interconnect architecture war, and the only one in the universe betting on COPPER. Active electrical cables (AEC) plus SerDes/retimer IP substitute for pluggable optics at intra-rack and short reach — precisely the distance band that both pluggable transceivers and co-packaged optics are fighting over. Rated PC=4 for consistency with ALAB (same category: fabless high-speed interconnect silicon, moat from design-in depth and 200G/lane SerDes know-how rather than fab lead time). Gross margin 68% and revenue +157% YoY are evidence of real pricing power, which is what separates this from the module-assembly tier. STRATEGIC ROLE IN UNIVERSE: L8_OPT (GLW/COHR/LITE) is long optics; CRDO is the natural short-side hedge on the same physical question — if scale-up stays copper through 2028, CRDO wins the exact revenue that LITE's falsification signal #2 says LITE loses.",
+      "thesisFalsification": [
+        "Copper reach limit binds earlier than expected: 224G/lane electrical signaling fails to hold intra-rack distances at Rubin-class power density, forcing optical (pluggable or CPO) into the sub-3m band — AEC TAM shrinks structurally rather than cyclically",
+        "Customer concentration realizes: any single customer exceeds 40% of revenue and then in-sources or dual-sources the PHY — this has been the recurring failure mode for merchant SerDes vendors",
+        "AVGO or MRVL bundles retimer/AEC PHY into switch-ASIC purchase agreements at effectively zero incremental price — the mc=3 rating collapses to 1 because capture moves to whoever defines the link budget",
+        "Gross margin falls below 55% for 2 consecutive quarters (baseline 68%) — the pricing-power premise, which is the main evidence separating CRDO from the commodity cable tier, is falsified"
+      ],
+      "marketCap": 39,
+      "status": "watchlist",
+      "_note": "Added 2026-07-28 during the L8_OPT CPO re-evaluation. LAYER PLACEMENT IS PROVISIONAL AND IS THE OPEN QUESTION: CRDO spans L2_5 (connectivity silicon, direct peer MRVL) and L8_NET (rack interconnect, peers ANET/CSCO/JNPR). Placed in L8_NET because the layer taxonomy is by position in the AI transmission chain, not by business model, and AEC is physically rack interconnect. Consequence to be aware of: L8_NET benchmarks (medianForwardPE 37.6, medianEVRevenue 21.3) vs L2_5 (24.5, 22.2) — the forward-PE benchmark differs by 53%, so placement materially moves pricingScore. A dedicated L8_ICONN sublayer was considered and REJECTED: sector-benchmarks.json computes layer medians from a peer list, and a single-member layer would either need a hand-maintained external peer set or produce a degenerate median (deviation 0 -> pricingScore pinned at 3), which is worse than an imperfect but populated layer. Watchlist only — informational, not an active position.",
+      "addedDate": "2026-07-28",
+      "addedVersion": "2.7.0",
+      "_changeLog": [
+        {
+          "date": "2026-07-28",
+          "version": "2.7.0",
+          "change": "Added to L8_NET secondary as watchlist. Rationale: the L8_OPT CPO re-evaluation found the optical layer had no counterparty — every optical name in the universe is long the same architectural outcome. CRDO is the copper-side vector and was the only uncovered interconnect route. PC=4 assigned for consistency with ALAB precedent (fabless interconnect silicon), NOT for fab lead time. Layer placement flagged provisional pending user decision, see _note."
+        }
+      ]
+    },
+    {
+      "symbol": "CAT",
+      "moatCapture": 3,
+      "moatLocks": ["integration"],
+      "moatFalsification": "Reciprocating gensets and industrial gas turbines are supplied by several qualified vendors (Cummins, Wartsila, GE Vernova, Siemens Energy, Mitsubishi). The current pricing power is a capacity-queue artifact, not a structural lock — it dissipates when the 125% capacity expansion across the industry lands. Capture then reverts to the datacenter owner.",
+      "name": "Caterpillar",
+      "layer": "L12",
+      "layerRole": "secondary",
+      "physicalConstraint": 4,
+      "aiContribution": 0.4,
+      "timeToRealize": "near",
+      "thesis": "On-site prime power is the bypass around the grid-interconnection queue. Datacenter developers are energizing campuses before utility service exists, running on CAT reciprocating gensets and Solar Turbines gas turbines from day one — some permanently, because reliability and economics beat waiting for the grid. This is a genuine physical constraint: turbine and large-engine capacity has multi-year lead times, management characterizes the situation as supply-constrained rather than demand-constrained, and engine manufacturing capacity for datacenters is being expanded 125% versus 2023. aiContribution=0.40 is set on the INCREMENTAL-growth convention established by the CRH precedent (v2.1.2), not on the revenue-mix convention: Power & Energy is ~42% of total revenue but includes oil and gas, while datacenter-driven power generation is the dominant source of incremental growth as construction machinery decelerates. The 0.40 figure is deliberately discounted from the headline power-generation growth rate to account for the oil-and-gas share of the same segment.",
+      "thesisFalsification": [
+        "aiContribution DIRECT TEST: management stops separating datacenter-driven power generation from oil-and-gas within Energy & Transportation, OR power generation sales to users grow below 15% YoY for 2 consecutive quarters (baseline: +41% to +44% YoY). Either outcome means the 0.40 incremental-growth estimate cannot be maintained and CAT reverts to a construction-and-mining cyclical — the exact category error that got SCCO cut in v1.4",
+        "The grid catches up: utility interconnection queues shorten materially in the top datacenter regions, removing the reason to buy on-site prime power. Bridge-power demand collapses faster than permanent-primary-power demand accumulates",
+        "Capacity expansion across the industry (CAT +125%, plus Cummins/Wartsila/GE Vernova additions) converts the queue-driven pricing power into normal competitive pricing — watch Power & Energy operating margin falling back toward the 2020 level of 16.4% from 26.3% in 2025",
+        "Backlog concentration risk realizes: the four disclosed 1GW-plus datacenter prime-power orders are cancelled, deferred, or repriced. Backlog is $51.2B and increasingly AI-linked, so a hyperscaler capex pause transmits here with roughly a one-year lag",
+        "Gas turbine and engine emissions permitting tightens in key datacenter states, making on-site fossil prime power non-viable and pushing demand to grid or nuclear (a scenario that would favor existing L11/L12 holdings instead)"
+      ],
+      "supplyChainEvidence": [
+        {
+          "claim": "Backlog of $51.2B with disclosed multi-gigawatt datacenter prime-power orders, deliveries starting late 2026 through 2027",
+          "source": "CAT quarterly SEC filing backlog disclosure",
+          "type": "filing"
+        }
+      ],
+      "marketCap": 402,
+      "status": "watchlist",
+      "_note": "Added 2026-07-28 on user request. The interesting property is that CAT inverts the usual funnel failure mode: it is a slow-growing industrial (revenue +22% YoY) that may pass the AI gate on incremental-growth accounting, whereas the fast-growing names in the same theme fail on defensibility. THE LOAD-BEARING ASSUMPTION IS aiContribution=0.40 — it is an estimate derived from segment commentary, not from a reported AI-revenue line, and CAT does not disclose datacenter revenue as a separate line item. If that number is wrong, CAT is a construction cyclical wearing an AI narrative and belongs nowhere near this universe. The first falsification signal is written specifically to test it. Watchlist only — informational, not an active position.",
+      "addedDate": "2026-07-28",
+      "addedVersion": "2.7.0",
+      "_changeLog": [
+        {
+          "date": "2026-07-28",
+          "version": "2.7.0",
+          "change": "Added to L12 secondary as watchlist. Layer choice: L12 Grid/Power Infrastructure because peer GEV is CAT's direct competitor in industrial gas turbines; L11 is nuclear/clean baseload (wrong — CAT is fossil), L13 is natural gas as a fuel rather than generating equipment. aiContribution=0.40 uses the CRH v2.1.2 incremental-growth convention with an explicit discount for the oil-and-gas share of Power & Energy; first thesisFalsification signal tests this number directly."
+        }
+      ]
+    },
+    {
+      "symbol": "MOD",
+      "moatCapture": 2,
+      "moatLocks": [],
+      "moatFalsification": "Liquid-cooling CDUs and heat exchangers are contested by VRT, Boyd, Motivair/Schneider, nVent, CoolIT and Delta. Gross margin of 23.0%, down 190bps YoY on cost and tariff pass-through failure, is direct evidence that capture sits with the hyperscaler customer rather than with Modine.",
+      "name": "Modine Manufacturing",
+      "layer": "L8_COOL",
+      "layerRole": "secondary",
+      "physicalConstraint": 3,
+      "aiContribution": 0.7,
+      "timeToRealize": "near",
+      "thesis": "Datacenter thermal management scaling with rack power density — datacenters reached 35% of FY2026 sales, the datacenter business grew 158% in FQ4, and a long-term capacity agreement carries a $165M upfront customer deposit against more than $4B of datacenter cooling product expected across CY2027-2029. A planned Reverse Morris Trust with Gentherm would spin out Performance Technologies and leave a pure-play datacenter and commercial HVAC company. HOWEVER the funnel rates this a FAIL on defensibility, and the entry exists mainly to make that failure auditable: physicalConstraint=3 because liquid-cooling CDUs are competitively manufacturable rather than a chokepoint, and moatCapture=2 because gross margin is 23.0% and FELL 190bps year over year while revenue grew 23% — a supplier with pricing power does not absorb cost and tariff increases during its own demand boom. Contrast VRT in the same layer at 37.2% gross margin and moatCapture=4.",
+      "thesisFalsification": [
+        "INVERTED GATE — this one falsifies the BEAR case and would justify promotion: gross margin recovers above 30% for 2 consecutive quarters after the datacenter capacity expansion costs roll off, demonstrating the margin compression was transitory investment rather than structural absence of pricing power. This is the single number that would move moatCapture from 2 toward 3",
+        "Customer concentration: the counterparty behind the $165M deposit and the $4B CY2027-2029 commitment is a single hyperscaler. If that agreement is renegotiated, deferred, or the customer dual-sources, both the growth thesis and the backlog quality break simultaneously",
+        "The Gentherm Reverse Morris Trust fails to close or is restructured — the pure-play datacenter story that supports the current multiple does not materialize",
+        "FY2027 guidance of 20-35% total sales growth and 60-80% datacenter growth is cut at any quarterly report — guidance this specific and this far above trend is the first thing to break if hyperscaler cooling orders normalize",
+        "Analyst coverage stays below 10 (currently 7): per the AXTI 2026-05-11 precedent, thin coverage means pegRatio and consensus-derived pricing inputs are unreliable, and an unmonitorable thesis is a slippage risk regardless of the fundamentals"
+      ],
+      "supplyChainEvidence": [
+        {
+          "claim": "Long-term datacenter capacity agreement with $165M upfront customer deposit, covering more than $4B of cooling product across CY2027-2029",
+          "source": "MOD SEC filing (annual report / material event disclosure)",
+          "type": "filing"
+        }
+      ],
+      "marketCap": 12,
+      "status": "watchlist",
+      "_note": "Added 2026-07-28 on user request. MOD is retained deliberately as the layer's counter-example rather than as a candidate: it has the fastest growth (+47.5% revenue, +158% datacenter in FQ4), the cheapest pricing inputs (forward PE 20.3 vs L8_COOL median 28.0, EV/Revenue 3.99 vs median 8.3), and the largest analyst upside (+47.9%) of anything reviewed in this session — and it still fails the funnel on both defensibility gates (PC=3 and mc=2, so the pc>=4 OR mc>=4 OR-gate fails on both arms). The whole point of the defensibility gate is to reject exactly this profile: maximum narrative and maximum apparent cheapness on top of 23% gross margins. Note also that the +47.9% analyst upside rests on only 7 analysts. Watchlist only — informational, not an active position.",
+      "addedDate": "2026-07-28",
+      "addedVersion": "2.7.0",
+      "_changeLog": [
+        {
+          "date": "2026-07-28",
+          "version": "2.7.0",
+          "change": "Added to L8_COOL secondary as watchlist. Funnel result: FAIL on the defensibility OR-gate (PC=3 AND mc=2, neither arm passes) despite the strongest growth and cheapest pricing profile in the session. Retained as an auditable counter-example and as the direct comparator to VRT (same layer, 37.2% vs 23.0% gross margin, mc=4 vs mc=2). Coverage caveat: 7 analysts, near the AXTI thin-coverage precedent threshold."
         }
       ]
     },
