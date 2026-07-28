@@ -4,6 +4,49 @@ All notable universe / layers / framework changes, dated.
 
 ---
 
+## 2026-07-28 — v2.7.1: benchmark self-reference fix + pricing hysteresis + CRDO relayer
+
+Three engine changes, all triggered by defects surfaced during the v2.7.0 work.
+
+### 1. `sector-benchmarks.json` was self-referential (the big one)
+
+`update-benchmarks.js` grouped `universe.tickers` by layer and took the median of the holdings themselves. The declared `peers` field — which lists EXTERNAL comparables — **was never read**. Consequences:
+
+- A layer could not look expensive relative to itself. L8_COOL's median forward PE was 28, computed from VRT (32.6) and ETN (25.3) — two names already carrying AI premium. Using premium-priced holdings to define "normal" means nobody registers as expensive.
+- **Six layers were degenerate** (<3 members): L1, L6, L8_NET, L10, L13, L_EXP_QC. **L6 held exactly one member (MU), so its median WAS MU** — deviation pinned at 0, score pinned at 3, and 55% of MU's pricingScore carried zero information. This is a partial explanation for the long-standing "pricingScore vs PEG divergence" logged in framework v1.1: the pricing dimension structurally could not see MU as cheap. After the fix MU's raw score reads **2.2** (peg 0.14).
+
+Fix: sample = declared `peers` ∪ universe members, deduped; iterate every layer with a benchmark entry rather than only layers holding members; write `_degenerate: true` when the live sample is under 3.
+
+Median shifts (old → new forward PE): **L6 5.6 → 26.8**, L1 41.4 → 21.6, L8_NET 37.6 → 23.4, L10 98.3 → 60.7, L9 35.2 → 24.9, L8_COOL 28 → 22, L2_5 24.5 → 26.6.
+
+Peer-list corrections: **IIVI removed from L8_OPT** (II-VI renamed to Coherent in 2022 — it was the same company listed twice), replaced with CIEN/AAOI/FN. **JNPR removed from L8_NET** — Juniper was acquired by HPE and returns no fundamentals; replaced with HPE/EXTR.
+
+### 2. Pricing gate now has hysteresis
+
+Hard cut at 3.0 replaced with an asymmetric band: **enter a pass at ≤2.8, lose an existing pass only above 3.2.** LITE crossed the old threshold 6 times in 16 sessions, so any single-day PASS record was unusable as an audit trail — which directly contaminated the A/B discipline's Gate B requirement for timestamped PASS names. Scores inside the band now carry `inHysteresisBand: true` plus a warning that the state is held over and is not a fresh signal. State anchors on the most recent scores file strictly before today, so same-day re-runs are idempotent. **15 of 80 tickers currently sit inside the band** — the borderline population is large, which is the point.
+
+### 3. CRDO moved L8_NET → L2_5 (same day it was added)
+
+Not a taxonomy call. Placing CRDO in L8_NET dropped that layer's median forward PE from 31.1 to 23.9 (−23%) because only 3 live samples remained after JNPR delisted, and that one addition by itself pushed **ANET — an actual holding — out of funnel PASS**. A watchlist addition must not be able to re-rate an existing position through a shared benchmark; that is contamination, not signal. L2_5 carries 5 members and the direct competitor (MRVL, same SerDes/optical-DSP/retimer product set), so it is both more robust and more comparable on business model.
+
+### ⚠ Rating changes here are METHODOLOGY-DRIVEN and are NOT sell triggers
+
+`funnelPass → false` is listed as a thesis-exit trigger in the investment framework. **That rule assumes the methodology is held constant.** Three names went PASS → FAIL in this run:
+
+| Ticker | pricing | Cause |
+|---|---|---|
+| VRT | 2.9 → 3.6 | benchmark fix (73% of the shift) + MOD's addition to the layer |
+| ANET | 3.0 → 4.0 | benchmark fix — its old PASS was self-referential (median = itself) |
+| LINK | 2.75 → 3.8 | equity-script artifact; crypto is scored by `update-crypto-valuations.js`, `dq=low` |
+
+None of these reflect a fundamental change. Treat 2026-07-28 as a **new baseline** and resume monitoring from here; a PASS → FAIL that occurs under a *stable* methodology is the signal the framework rule was written for.
+
+### Open governance gap (not resolved)
+
+Peer-list selection is now a subjective knob controlling 55% of every pricingScore, with no rule governing it. Swapping JNPR for HPE/EXTR moved ANET's EV/Revenue benchmark from 20.9 to 5.4 and its score from 3.0 to 4.0 — because CSCO/HPE/EXTR are low-growth incumbents while ANET is high-growth. Whether that is the right comparison set is a judgment call nobody has written a rule for. Candidate rule: peers must be ≥4 live names, business-model-matched, and changes to a peer list must be logged with the rating deltas they cause.
+
+---
+
 ## 2026-07-28 — v2.7.0: L8_OPT CPO re-evaluation + 3 watchlist adds (CRDO / CAT / MOD)
 
 Triggered by a sell-side note (Goldman raising 中际旭创 2026-28 EPS by 65%/108%/119%) that omitted co-packaged optics entirely. 中际旭创 itself is A-share and **out of scope by the v1.5/v1.10 universe boundary — not added**; the re-evaluation was run on the US-listed optical layer instead.

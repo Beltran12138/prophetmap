@@ -15,9 +15,17 @@
  *   pricingScore of peak-cycle cyclicals whose low forward P/E (built on peak EPS)
  *   would otherwise misread as cheap. See cyclicalTrapAdjustment().
  *
- * Funnel pass: physicalConstraint >= 4 AND aiContribution >= 0.30
- *              AND timeToRealize != "far" AND pricingScore <= 3
+ * Funnel pass: (physicalConstraint >= 4 OR moatCapture >= 4)
+ *              AND aiContribution >= 0.30 AND timeToRealize != "far"
+ *              AND the pricing gate below
  *              (pricingScore here is the cyclical-trap-adjusted "effective" score)
+ *
+ * Pricing gate has HYSTERESIS (added 2026-07-28): enter a pass at <= 2.8, lose an
+ *   existing pass only above 3.2. The old hard cut at 3.0 made borderline names
+ *   flip repeatedly — LITE crossed it 6 times in 16 sessions in July 2026 — which
+ *   made any single-day PASS record unusable as an audit trail. Scores inside the
+ *   band carry inHysteresisBand=true and a warning: state is held over from the
+ *   prior session, it is not a fresh signal.
  */
 
 const YahooFinance = require('yahoo-finance2').default;
@@ -195,7 +203,16 @@ function cyclicalTrapAdjustment(ticker, quote, summary) {
 /**
  * Determine funnel pass/fail.
  */
-function evaluateFunnel(ticker, pricingScore) {
+// Pricing-gate hysteresis. pricingScore is continuous and noisy day to day; a
+// hard cut at 3.0 made borderline names flip PASS/FAIL repeatedly (LITE crossed
+// it 6 times in 16 sessions during July 2026). Any single-day PASS record is then
+// meaningless — one can retroactively pick a date to support either conclusion,
+// which directly contaminates the A/B discipline's requirement for timestamped
+// PASS names. Asymmetric band: harder to enter than to stay.
+const PRICING_ENTER = 2.8; // must be <= this to newly qualify
+const PRICING_EXIT = 3.2;  // must exceed this to lose an existing pass
+
+function evaluateFunnel(ticker, pricingScore, previousPass) {
   const { physicalConstraint, aiContribution, timeToRealize, moatCapture } = ticker;
   const reasons = [];
   const warnings = [];
@@ -214,15 +231,64 @@ function evaluateFunnel(ticker, pricingScore) {
   }
   if (aiContribution < 0.30) reasons.push(`aiContribution ${aiContribution} < 0.30`);
   if (timeToRealize === 'far') reasons.push('timeToRealize = far');
-  if (pricingScore != null && pricingScore > 3) reasons.push(`pricingScore ${pricingScore} > 3`);
-  if (pricingScore == null) reasons.push('pricingScore unavailable');
 
-  return { pass: reasons.length === 0, failReasons: reasons, warnings };
+  // Pricing gate with hysteresis. Threshold depends on the prior state: a name
+  // already passing keeps passing until it exceeds PRICING_EXIT; a name not
+  // passing must reach PRICING_ENTER to qualify. Names inside the 2.8-3.2 band
+  // are marked so the borderline state is visible rather than silently sticky.
+  let inBand = false;
+  if (pricingScore == null) {
+    reasons.push('pricingScore unavailable');
+  } else {
+    const threshold = previousPass ? PRICING_EXIT : PRICING_ENTER;
+    if (pricingScore > threshold) {
+      reasons.push(
+        `pricingScore ${pricingScore} > ${threshold}` +
+        (previousPass ? ' (exit threshold — was passing)' : ' (entry threshold)')
+      );
+    }
+    if (pricingScore > PRICING_ENTER && pricingScore <= PRICING_EXIT) {
+      inBand = true;
+      warnings.push(
+        `pricing-hysteresis-band: ${pricingScore} sits in ${PRICING_ENTER}-${PRICING_EXIT}; ` +
+        `state held at ${previousPass ? 'PASS' : 'FAIL'} from prior session — not a fresh signal`
+      );
+    }
+  }
+
+  return { pass: reasons.length === 0, failReasons: reasons, warnings, inHysteresisBand: inBand };
+}
+
+/**
+ * Load the prior session's funnelPass state, used as the hysteresis anchor.
+ * Reads the most recent scores file strictly BEFORE today, so re-running on the
+ * same day is idempotent (it does not read its own output and ratchet itself).
+ * Missing history => empty map => every ticker must clear the stricter entry
+ * threshold, which is the correct conservative default.
+ */
+function loadPreviousFunnelState() {
+  try {
+    if (!fs.existsSync(SCORES_DIR)) return {};
+    const todayFile = `${today()}.json`;
+    const files = fs.readdirSync(SCORES_DIR)
+      .filter((f) => f.endsWith('.json') && f < todayFile)
+      .sort();
+    if (files.length === 0) return {};
+    const prev = JSON.parse(fs.readFileSync(path.join(SCORES_DIR, files[files.length - 1]), 'utf8'));
+    const map = {};
+    for (const r of prev.results || []) map[r.symbol] = r.funnelPass === true;
+    console.log(`[ProphetMap] Hysteresis anchor: ${files[files.length - 1]} (${Object.keys(map).length} tickers)`);
+    return map;
+  } catch (err) {
+    console.log(`[ProphetMap] Could not load previous funnel state (${err.message}) — using entry threshold for all`);
+    return {};
+  }
 }
 
 async function main() {
   const universe = JSON.parse(fs.readFileSync(UNIVERSE_PATH, 'utf8'));
   const { benchmarks } = JSON.parse(fs.readFileSync(BENCHMARKS_PATH, 'utf8'));
+  const previousFunnel = loadPreviousFunnelState();
 
   const activeTickers = universe.tickers.filter(
     (t) => t.status === 'active' || t.status === 'watchlist'
@@ -265,7 +331,7 @@ async function main() {
         ? Math.round(clamp(pricingScore + cyclicalTrap.delta, 1, 5) * 10) / 10
         : null;
 
-      const funnel = evaluateFunnel(ticker, effectivePricingScore);
+      const funnel = evaluateFunnel(ticker, effectivePricingScore, previousFunnel[sym] === true);
 
       const numAnalysts = summary?.financialData?.numberOfAnalystOpinions ?? null;
       const recommendMean = summary?.financialData?.recommendationMean ?? null;
@@ -295,6 +361,8 @@ async function main() {
         funnelPass: funnel.pass,
         funnelFailReasons: funnel.failReasons,
         funnelWarnings: funnel.warnings,
+        previousFunnelPass: previousFunnel[sym] ?? null,
+        inHysteresisBand: funnel.inHysteresisBand === true,
         components,
         dataQuality,
         analystRecommendMean: recommendMean,
@@ -304,7 +372,8 @@ async function main() {
 
       const passLabel = funnel.pass ? '✅ PASS' : '  ----';
       const trapLabel = cyclicalTrap.applied ? ` ⚠cyclical+${cyclicalTrap.delta} (raw ${pricingScore})` : '';
-      console.log(`${passLabel} (pricing=${effectivePricingScore ?? 'N/A'}${trapLabel}, peg=${pegRatio ?? 'N/A'} [${pegBand}], dq=${dataQuality})`);
+      const bandLabel = funnel.inHysteresisBand ? ' ~band' : '';
+      console.log(`${passLabel}${bandLabel} (pricing=${effectivePricingScore ?? 'N/A'}${trapLabel}, peg=${pegRatio ?? 'N/A'} [${pegBand}], dq=${dataQuality})`);
     } catch (err) {
       console.log(`ERROR: ${err.message}`);
       errors.push({ symbol: sym, error: err.message });

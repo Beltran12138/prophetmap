@@ -8,8 +8,17 @@
  * Run: node scripts/update-benchmarks.js
  * Cadence: weekly via GitHub Actions (Mondays before market open)
  *
- * Uses universe tickers as peers — more accurate than hardcoded guesses.
+ * Sample = declared `peers` (EXTERNAL comparables) UNION universe members of the
+ * layer, deduped. Using universe members alone is self-referential: the holdings
+ * define what "normal valuation" is, so a layer cannot look expensive relative to
+ * itself. Worse, a layer with a single universe member produced a median equal to
+ * that member, pinning its forwardPE and evRevenue deviations at 0 (score 3) —
+ * 55% of its pricingScore carried no information at all. The `peers` field was
+ * declared for exactly this purpose but was never read until 2026-07-28.
+ *
  * Falls back to existing static value if fewer than 2 data points available.
+ * `_degenerate: true` is written when the live sample is under 3 — the median is
+ * then too thin to anchor a pricing deviation and should be treated as advisory.
  */
 
 const YahooFinance = require('yahoo-finance2').default;
@@ -59,13 +68,26 @@ async function main() {
     byLayer[t.layer].push(t.symbol);
   }
 
-  const layers = Object.keys(byLayer);
+  // Compute for every layer that has a benchmark entry, not just layers that
+  // currently hold universe members — otherwise a layer whose members were all
+  // demoted keeps a stale median indefinitely.
+  const layers = [...new Set([
+    ...Object.keys(benchmarksFile.benchmarks).filter((k) => k !== 'default'),
+    ...Object.keys(byLayer),
+  ])];
   console.log(`[ProphetMap] Computing benchmarks for ${layers.length} layers...`);
 
   let updatedCount = 0;
 
   for (const layerId of layers) {
-    const symbols = byLayer[layerId];
+    // External peers first, then universe members — deduped. See header note on
+    // why universe-only sampling is self-referential.
+    const declaredPeers = benchmarksFile.benchmarks[layerId]?.peers || [];
+    const symbols = [...new Set([...declaredPeers, ...(byLayer[layerId] || [])])];
+    if (symbols.length === 0) {
+      console.log(`  ${layerId}... no peers and no universe members, skipping`);
+      continue;
+    }
     process.stdout.write(`  ${layerId} (${symbols.join(', ')})... `);
 
     const ratios = [];
@@ -102,8 +124,12 @@ async function main() {
     if (changed) {
       existing._lastComputed = new Date().toISOString().slice(0, 10);
       existing._sampleSize = ratios.filter((r) => r.forwardPE != null || r.evRevenue != null).length;
+      // A median over fewer than 3 live points cannot anchor a deviation — flag it
+      // rather than letting it silently drive 55% of every pricingScore in the layer.
+      existing._degenerate = existing._sampleSize < 3 || undefined;
       updatedCount++;
-      console.log(`PE=${computedPE ?? 'N/A'}, EV/R=${computedEVR ?? 'N/A'} (n=${existing._sampleSize})`);
+      const warn = existing._degenerate ? ' ⚠ DEGENERATE (<3 samples)' : '';
+      console.log(`PE=${computedPE ?? 'N/A'}, EV/R=${computedEVR ?? 'N/A'} (n=${existing._sampleSize})${warn}`);
     } else {
       console.log('no data — kept static values');
     }

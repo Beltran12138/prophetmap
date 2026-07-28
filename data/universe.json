@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "version": "2.7.0",
+    "version": "2.7.1",
     "date": "2026-07-28",
     "description": "ProphetMap stock universe — manually-defined static fields only. Dynamic pricing scores written to data/scores/YYYY-MM-DD.json by scripts/update-valuations.js",
     "fieldGuide": {
@@ -1222,7 +1222,7 @@
         },
         {
           "date": "2026-07-28",
-          "version": "2.7.0",
+          "version": "2.7.1",
           "change": "L8_OPT CPO re-evaluation. Added architecture-neutrality-break signal targeting the mc=4 premise itself (FAU sourcing migrating to the packaging tier), with a measurable divergence test and a 2027-03-31 check date. Context: the 2026-05-20 CPO-slip signal partially fired in July 2026 — institutional concern over near-term CPO deployment timing drove a sector-wide photonics derate (GLW -36% from 2026-06-25 to 2026-07-28) with no company-specific catalyst. GLW is the only L8_OPT name at mc=4; that rating rests entirely on glass being required under both architectures, so it needed its own falsifier rather than inheriting the shared CPO-timing ones."
         }
       ]
@@ -1263,7 +1263,7 @@
         },
         {
           "date": "2026-07-28",
-          "version": "2.7.0",
+          "version": "2.7.1",
           "change": "L8_OPT CPO re-evaluation. Added a quantified supercycle-peak gate (<20% YoY datacenter/comms growth for 2 consecutive quarters, baseline +41% in FQ3 FY2026, first check 2026-08-12). Rationale: the four existing signals all require predicting CPO TIMING, and July 2026 showed COHR derates on timing concerns in either direction (-32% over the month while fundamentals accelerated). A deceleration gate is direction-agnostic and reads off reported numbers instead of forecasts."
         }
       ]
@@ -1306,7 +1306,7 @@
         },
         {
           "date": "2026-07-28",
-          "version": "2.7.0",
+          "version": "2.7.1",
           "change": "L8_OPT CPO re-evaluation. Added two gates that test the three-track architecture-neutral thesis rather than the pluggable cycle: (1) ELS+OCS must reach 15% of quarterly revenue by FQ4 FY2027, (2) the disclosed CY27H1 CPO order must convert to revenue and OCS backlog must hold above $400M. Rationale: FQ3 FY2026 disclosures (a booked CY27H1 CPO order, >$400M OCS backlog, revenue +90% YoY) are the first hard evidence that CPO does NOT uniformly kill optical-module suppliers — CPO removes the module and the DSP but still requires an external shared laser source, which is exactly track 2. That evidence makes the thesis testable for the first time, so it now carries explicit conversion gates. Also note the funnel-signal-noise problem observed this month: LITE's pricingScore crossed the 3.0 funnel threshold 6 times in 16 trading sessions (2.8-3.5 range), making any single-day PASS/FAIL record meaningless for the A/B discipline audit trail — hysteresis needed at the engine level, not per-ticker."
         }
       ]
@@ -1348,7 +1348,7 @@
       "moatLocks": ["integration"],
       "moatFalsification": "SerDes/retimer IP is licensable and second-sourced (AVGO, MRVL, ALAB all ship competing PHY); hyperscalers can dual-source AEC or revert to passive copper. Capture sits with the switch/accelerator vendor that defines the link budget, not with the PHY supplier.",
       "name": "Credo Technology Group",
-      "layer": "L8_NET",
+      "layer": "L2_5",
       "layerRole": "secondary",
       "physicalConstraint": 4,
       "aiContribution": 0.85,
@@ -1362,14 +1362,19 @@
       ],
       "marketCap": 39,
       "status": "watchlist",
-      "_note": "Added 2026-07-28 during the L8_OPT CPO re-evaluation. LAYER PLACEMENT IS PROVISIONAL AND IS THE OPEN QUESTION: CRDO spans L2_5 (connectivity silicon, direct peer MRVL) and L8_NET (rack interconnect, peers ANET/CSCO/JNPR). Placed in L8_NET because the layer taxonomy is by position in the AI transmission chain, not by business model, and AEC is physically rack interconnect. Consequence to be aware of: L8_NET benchmarks (medianForwardPE 37.6, medianEVRevenue 21.3) vs L2_5 (24.5, 22.2) — the forward-PE benchmark differs by 53%, so placement materially moves pricingScore. A dedicated L8_ICONN sublayer was considered and REJECTED: sector-benchmarks.json computes layer medians from a peer list, and a single-member layer would either need a hand-maintained external peer set or produce a degenerate median (deviation 0 -> pricingScore pinned at 3), which is worse than an imperfect but populated layer. Watchlist only — informational, not an active position.",
+      "_note": "Added 2026-07-28 during the L8_OPT CPO re-evaluation. LAYER PLACEMENT RESOLVED TO L2_5 (initially placed in L8_NET, moved same day on evidence). CRDO genuinely spans both: L2_5 is connectivity silicon (direct competitor MRVL — both ship SerDes, optical DSP and retimers), L8_NET is rack interconnect, and AEC is physically rack interconnect. Two arguments decided it for L2_5, neither of them semantic: (1) BENCHMARK COMPARABILITY — the layer median exists to answer 'is this expensive relative to its own kind', and that comparison depends on business model (fabless, ~68% gross margin) rather than on position in the transmission chain; benchmarking a fabless chip designer against system OEMs (ANET/CSCO) compares different economics. (2) SAMPLE ROBUSTNESS AND CONTAMINATION — L8_NET has only 3 live samples after JNPR delisted into HPE, so adding CRDO moved that layer's median forward PE from 31.1 to 23.9 (-23%) and by itself pushed ANET, an actual holding, out of funnel PASS. L2_5 carries 5 members, so one addition cannot swing it comparably. A new-entry watchlist ticker must not be able to re-rate an existing position through the benchmark; that is framework contamination, not signal. A dedicated L8_ICONN sublayer was considered and REJECTED for the same reason in stronger form: a single-member layer yields a median equal to that member, pinning its forwardPE and evRevenue deviations at 0 and rendering 55% of its pricingScore uninformative. Watchlist only — informational, not an active position.",
       "addedDate": "2026-07-28",
       "addedVersion": "2.7.0",
       "_changeLog": [
         {
           "date": "2026-07-28",
-          "version": "2.7.0",
-          "change": "Added to L8_NET secondary as watchlist. Rationale: the L8_OPT CPO re-evaluation found the optical layer had no counterparty — every optical name in the universe is long the same architectural outcome. CRDO is the copper-side vector and was the only uncovered interconnect route. PC=4 assigned for consistency with ALAB precedent (fabless interconnect silicon), NOT for fab lead time. Layer placement flagged provisional pending user decision, see _note."
+          "version": "2.7.1",
+          "change": "Added as watchlist secondary. Rationale: the L8_OPT CPO re-evaluation found the optical layer had no counterparty — every optical name in the universe is long the same architectural outcome. CRDO is the copper-side vector and was the only uncovered interconnect route. PC=4 assigned for consistency with ALAB precedent (fabless interconnect silicon), NOT for fab lead time."
+        },
+        {
+          "date": "2026-07-28",
+          "version": "2.7.1",
+          "change": "Layer moved L8_NET -> L2_5 same day, on evidence rather than taxonomy. Placing CRDO in L8_NET dropped that layer's median forward PE from 31.1 to 23.9 (-23%) because only 3 live samples remain after JNPR delisted into HPE, and that single change pushed ANET — an actual holding — out of funnel PASS. A watchlist addition must not be able to re-rate an existing position through the shared benchmark. L2_5 has 5 members and the direct competitor (MRVL), so it is both more robust and more comparable on business model. See _note."
         }
       ]
     },
@@ -1407,7 +1412,7 @@
       "_changeLog": [
         {
           "date": "2026-07-28",
-          "version": "2.7.0",
+          "version": "2.7.1",
           "change": "Added to L12 secondary as watchlist. Layer choice: L12 Grid/Power Infrastructure because peer GEV is CAT's direct competitor in industrial gas turbines; L11 is nuclear/clean baseload (wrong — CAT is fossil), L13 is natural gas as a fuel rather than generating equipment. aiContribution=0.40 uses the CRH v2.1.2 incremental-growth convention with an explicit discount for the oil-and-gas share of Power & Energy; first thesisFalsification signal tests this number directly."
         }
       ]
@@ -1446,7 +1451,7 @@
       "_changeLog": [
         {
           "date": "2026-07-28",
-          "version": "2.7.0",
+          "version": "2.7.1",
           "change": "Added to L8_COOL secondary as watchlist. Funnel result: FAIL on the defensibility OR-gate (PC=3 AND mc=2, neither arm passes) despite the strongest growth and cheapest pricing profile in the session. Retained as an auditable counter-example and as the direct comparator to VRT (same layer, 37.2% vs 23.0% gross margin, mc=4 vs mc=2). Coverage caveat: 7 analysts, near the AXTI thin-coverage precedent threshold."
         }
       ]
