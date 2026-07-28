@@ -4,6 +4,48 @@ All notable universe / layers / framework changes, dated.
 
 ---
 
+## 2026-07-28 — v2.8.0: constraint-decay tagging + expectation-vs-delivery check + peer-selection rule
+
+Three instrumentation changes. **All zero-weight — no gate reads any new field, and the PASS set is byte-identical before and after: the same 20 names** (AMAT, AMKR, AVAV, AVGO, CDNS, COHR, CRCL, CRH, GLW, GOOG, KTOS, LIN, LRCX, META, NVDA, QCOM, SNPS, TER, TSM, TTMI), with the same 4 fetch errors (RNDR, TAO, FIL, MOG). This is deliberate: v2.7.1 had just demonstrated how easily an engine change re-rates holdings, so this release measures without moving anything.
+
+### 1. `physicalConstraint` conflated two constraints that decay at different speeds
+
+ASML holds pc=5 on EUV process lead time. CRH holds pc=4 on aggregate transport-radius economics. The five `L9_MINER_CONVERT` names hold pc=4–5 on **already-permitted grid interconnect**. The funnel credits all three as equally durable, but a technology constraint decays endogenously along a roadmap visible in filings, while a geographic one is **rented from a jurisdiction** and resets on a permitting reform or a competitor's capacity coming online — exogenous, and on no schedule you can observe.
+
+New `constraintType` on the 52 tickers with pc ≥ 4 (only they use the score): **33 tech · 12 geo · 5 regulatory · 2 unclassified**. Surfaced in the funnel's Phys column.
+
+The `unclassified` tag is a real finding, not a placeholder: **LINK and ETH carry `physicalConstraint = 4` for what is network effect, not physics.** Tagged rather than silently repriced — restating them would move their gate result, which is exactly what this release refuses to do. Logged as governance gap #7.
+
+**Falsifiable claim:** geo-type pc ≥ 4 names underperform tech-type on a risk-adjusted basis over a full cycle. If no separation appears in 12 months, this tag is decoration and should be deleted, not promoted to a gate.
+
+### 2. Every gate is denominated in expectation except the new one
+
+`aiContribution` is a share of **forward** revenue growth; `pricingScore` leans on forward P/E and analyst targets. Backlog, capex guidance and order books are all the same species — intent, the cheapest thing to produce in a capex cycle. Worse, `aiContribution` is a **hand-set static value in `universe.json`** while its denominator moves daily: consensus can be marked down for a quarter with the funnel showing nothing.
+
+New `realizationCheck` records what intent cannot fake — `estimateRevision` (+1y consensus EPS now vs 90d ago) and `surpriseHitRate` (beats over the last four reported quarters). Coverage: revision 76/80, surprise 78/80.
+
+Two implementation notes that cost a rewrite each:
+
+- **A percentage off a loss-making base is fake precision.** The first run printed ASTS at **−1836%** and RKLB at −471%, purely from a small negative base. Endpoints that are losses or near-zero are now flagged `meaningful: false` and render as `NM ↑/↓` with the raw endpoints (ASTS reads `NM(0.04→-0.65)`), standard not-meaningful convention.
+- **A zero-weight diagnostic must never be able to fail a ticker.** Bundling `earningsTrend`/`earningsHistory` into the main `quoteSummary` call **dropped OKLO, SPCX and LINK out of the run entirely** — Yahoo omits `epsActual`/`surprisePercent` for loss-makers, which fails the library's schema and throws for the whole request. Now fetched via a separate lenient client, with the payload recovered from `FailedYahooValidationError.result`. Costs one extra request per ticker. The main client still validates strictly — no gate-feeding field is ever read from an unvalidated response.
+
+**Deliberately not a gate.** A revision filter is momentum in fundamental clothing: it buys names whose estimates are already being marked up, which is the crowded, reflexive trade the A/B discipline treats as a reverse indicator. It earns a gate only if the audit trail shows revision divergence *leading* funnel-state changes.
+
+### 3. Peer selection — the v2.7.1 open gap now has a rule, and the rule found more damage
+
+v2.7.1 closed with peer-list selection identified as "a subjective knob controlling 55% of every pricingScore, with no rule governing it." Rule now written in GOVERNANCE.md § CHANGE a layer's `peers` list: ≥2 external peers, ≥4 valid names, business-model match, and **every peer-list change must be accepted only after recording the pricingScore delta for every ticker in the layer** — the CRDO incident in reverse.
+
+`update-benchmarks.js` now counts external peers, writes `_externalPeerCount` / `_selfReferential`, and reports. Two findings on first run:
+
+- **Reading `peers` only fixed half the self-reference.** A peer list made of holdings restores the defect. **L0's peers were MSFT/AMZN/META/ORCL — 4/4 universe members**, so its "sector median" was still literally the median of the book. 7 layers with entries fall below 2 external peers: L0 (0), L2, L2_5, L3, L4, L7, L14 (1 each).
+- **8 layers have no benchmark entry at all**, so they silently fall back to `benchmarks.default` — a single cross-industry placeholder of forward PE 22 / EV-Rev 5. **This covers 24 of 86 tickers (28%), of which 18 hold pc ≥ 4** — meaning they have already cleared the defensibility gate and pricing is the only substantive gate left, measured against a placeholder. Affected: L5_5 (TTMI), L8_OPT_MAT (AXTI), L11_FUEL (CCJ), L_DCOMP, L_EMBI (ISRG, CGNX…), L_SPACE (RKLB, ASTS, MOG), L_DEF (AVAV, KTOS), L9_MINER_CONVERT (APLD, CIFR, IREN, WULF, HUT).
+
+Both are **surfaced, not fixed.** Declaring peers for 8 layers would re-rate 24 tickers in one commit — precisely the move the new rule forbids without a recorded delta. Benchmark medians in this commit are unchanged from v2.7.1; only `_externalPeerCount` / `_selfReferential` were added.
+
+> **Provenance (v2.8.0, 2026-07-28):** prompted by a Thai FDI report (BlockBeats 2026-07-23) in which investment *applications* rose 80% and were read as realised industrial capability. Two transferable defects: geographic moats are rented and decay exogenously, and an intent metric had quietly been substituted for a delivery metric. Per `techpull_gate` the expectation-denominator problem was already latent in the v2.7.1 self-reference work — the news supplied the analogy, not the motive. Per `inspired_loop` this is an instrumentation change and **not a portfolio motion**; the identical PASS set is the evidence.
+
+---
+
 ## 2026-07-28 — v2.7.1: benchmark self-reference fix + pricing hysteresis + CRDO relayer
 
 Three engine changes, all triggered by defects surfaced during the v2.7.0 work.

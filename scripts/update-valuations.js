@@ -26,10 +26,33 @@
  *   made any single-day PASS record unusable as an audit trail. Scores inside the
  *   band carry inHysteresisBand=true and a warning: state is held over from the
  *   prior session, it is not a fresh signal.
+ *
+ * realizationCheck (added 2026-07-28, v2.8.0): ZERO WEIGHT, no gate reads it.
+ *   The funnel's aiContribution gate is a share of FORWARD revenue growth — i.e. it
+ *   is denominated in analyst expectation, not in delivered revenue. Backlog, capex
+ *   guidance and order books are all the same species: an intent number. This block
+ *   surfaces the two legs that separate intent from delivery, so a name can never
+ *   again pass on expectation alone without that being visible:
+ *     - estimateRevision: is the expectation itself being marked up or down (90d)?
+ *     - surpriseHitRate:  historically, did this issuer actually deliver on it?
+ *   Fetched in a SEPARATE, failure-swallowing request — the earnings modules fail
+ *   schema validation for loss-makers and took OKLO/SPCX/LINK down entirely when
+ *   bundled into the main call. A zero-weight diagnostic must not be able to fail a
+ *   ticker. See CHANGELOG v2.8.0 for why this is surfacing-only and not a gate.
  */
 
 const YahooFinance = require('yahoo-finance2').default;
 const yahooFinance = new YahooFinance({ suppressNotices: ['ripHistorical', 'yahooSurvey'] });
+
+// Separate client for the zero-weight realizationCheck modules only. Yahoo omits
+// epsActual/epsEstimate/surprisePercent for loss-making and pre-revenue issuers, which
+// fails the library's schema and throws — so this client keeps the validator quiet and
+// the caller recovers the raw payload from err.result. Kept apart from the main client
+// so no gate-feeding field is ever read from an unvalidated response.
+const yahooLenient = new YahooFinance({
+  suppressNotices: ['ripHistorical', 'yahooSurvey'],
+  validation: { logErrors: false },
+});
 const fs = require('fs');
 const path = require('path');
 
@@ -201,6 +224,82 @@ function cyclicalTrapAdjustment(ticker, quote, summary) {
 }
 
 /**
+ * Expectation-vs-delivery diagnostic. SURFACING ONLY — returns a record, never a
+ * score, and no gate reads it.
+ *
+ * Why it exists: every structural field the funnel gates on is forward-looking.
+ * `aiContribution` is a share of FORWARD revenue growth; the pricing score leans on
+ * forward P/E and analyst target prices. All of it is intent, and intent is the
+ * cheapest thing in an investment cycle to produce. This block records the two
+ * checks that intent cannot fake:
+ *
+ *   estimateRevision — the +1y consensus EPS now vs 90 days ago. Rising means the
+ *     expectation embedded in every other field is being marked UP; falling means the
+ *     denominator of aiContribution is quietly shrinking while the static, hand-set
+ *     aiContribution value in universe.json stays put. That silent divergence is the
+ *     exact failure mode this is here to expose.
+ *   surpriseHitRate — of the last four reported quarters, how many beat consensus,
+ *     and by how much on average. A long run of misses under a rising revision trend
+ *     is the classic late-cycle signature.
+ *
+ * Deliberate limitation: Yahoo exposes a revision history for EPS (`epsTrend`) but
+ * not for revenue, so the revision leg is EPS-based while `aiContribution` is
+ * revenue-denominated. It is a proxy, and is labelled as one — do not read it as a
+ * direct revenue-guidance delta.
+ */
+function computeRealizationCheck(summary) {
+  const trend = summary?.earningsTrend?.trend || [];
+  const history = summary?.earningsHistory?.history || [];
+
+  // Revision leg: +1y is the horizon the funnel's mid/near timeToRealize implies.
+  //
+  // A percentage change is only meaningful when BOTH endpoints are positive EPS of
+  // some size. Off a loss-making or near-zero base the ratio explodes and reads as a
+  // catastrophe that is not there — on 2026-07-28 ASTS printed -1836% and RKLB -471%
+  // purely from a small negative base. Those are marked meaningful:false and carry
+  // the raw endpoints instead, so a reader sees "-0.42 → -1.90 EPS" rather than a
+  // fake percentage. Standard NM (not meaningful) convention.
+  const MIN_MEANINGFUL_BASE = 0.25;
+  let estimateRevision = null;
+  const y1 = trend.find((t) => t.period === '+1y');
+  const now = y1?.epsTrend?.current;
+  const ago = y1?.epsTrend?.['90daysAgo'];
+  if (now != null && ago != null && isFinite(now) && isFinite(ago) && ago !== 0) {
+    const meaningful = ago >= MIN_MEANINGFUL_BASE && now > 0;
+    estimateRevision = {
+      horizon: '+1y',
+      basis: 'eps',
+      current: Math.round(now * 100) / 100,
+      ago90d: Math.round(ago * 100) / 100,
+      meaningful,
+      changePct: meaningful ? Math.round(((now - ago) / ago) * 1000) / 10 : null,
+      // Direction survives even when the ratio does not — a loss-maker being marked
+      // deeper into loss is still information, just not a percentage.
+      direction: now > ago ? 'up' : now < ago ? 'down' : 'flat',
+    };
+  }
+
+  // Delivery leg: did the issuer actually clear the bar it was given?
+  let surpriseHitRate = null;
+  const reported = history
+    .map((h) => h.surprisePercent)
+    .filter((v) => v != null && isFinite(v));
+  if (reported.length > 0) {
+    const beats = reported.filter((v) => v > 0).length;
+    const avg = reported.reduce((a, b) => a + b, 0) / reported.length;
+    surpriseHitRate = {
+      quarters: reported.length,
+      beats,
+      hitRate: Math.round((beats / reported.length) * 100) / 100,
+      avgSurprisePct: Math.round(avg * 1000) / 10,
+    };
+  }
+
+  if (estimateRevision == null && surpriseHitRate == null) return null;
+  return { estimateRevision, surpriseHitRate };
+}
+
+/**
  * Determine funnel pass/fail.
  */
 // Pricing-gate hysteresis. pricingScore is continuous and noisy day to day; a
@@ -319,6 +418,26 @@ async function main() {
       const return6m = await get6mReturn(sym);
       await sleep(RATE_LIMIT_MS);
 
+      // Fetched SEPARATELY and swallowed on failure, deliberately. These modules fail
+      // yahoo-finance2 schema validation for pre-revenue and loss-making names —
+      // earningsHistory omits epsActual/surprisePercent, which the library treats as a
+      // hard error. Bundled into the main quoteSummary call it took the whole ticker
+      // down with it: OKLO, SPCX and LINK all dropped out of the run on 2026-07-28.
+      // A zero-weight diagnostic must never be able to fail a ticker that the gates
+      // would otherwise score. Costs one extra request per ticker.
+      let earningsSummary = null;
+      try {
+        earningsSummary = await yahooLenient.quoteSummary(sym, {
+          modules: ['earningsTrend', 'earningsHistory'],
+        });
+      } catch (err) {
+        // FailedYahooValidationError carries the unvalidated payload on .result — the
+        // missing fields are precisely the ones a loss-maker has no value for, and the
+        // rest of the response is intact. Anything else degrades to null.
+        earningsSummary = err?.name === 'FailedYahooValidationError' ? (err.result ?? null) : null;
+      }
+      await sleep(RATE_LIMIT_MS);
+
       const layerBenchmarks = benchmarks[ticker.layer] || benchmarks.default;
       const { pricingScore, components, dataQuality } = computePricingScore(
         quote, summary, return6m, spy6m, layerBenchmarks
@@ -343,10 +462,13 @@ async function main() {
         : pegRatio <= 2.5 ? 'rich'
         : 'overpriced';
 
+      const realizationCheck = computeRealizationCheck(earningsSummary);
+
       results.push({
         symbol: sym,
         layer: ticker.layer,
         physicalConstraint: ticker.physicalConstraint,
+        constraintType: ticker.constraintType ?? null,
         aiContribution: ticker.aiContribution,
         timeToRealize: ticker.timeToRealize,
         moatCapture: ticker.moatCapture ?? null,
@@ -363,6 +485,7 @@ async function main() {
         funnelWarnings: funnel.warnings,
         previousFunnelPass: previousFunnel[sym] ?? null,
         inHysteresisBand: funnel.inHysteresisBand === true,
+        realizationCheck,
         components,
         dataQuality,
         analystRecommendMean: recommendMean,
@@ -373,7 +496,15 @@ async function main() {
       const passLabel = funnel.pass ? '✅ PASS' : '  ----';
       const trapLabel = cyclicalTrap.applied ? ` ⚠cyclical+${cyclicalTrap.delta} (raw ${pricingScore})` : '';
       const bandLabel = funnel.inHysteresisBand ? ' ~band' : '';
-      console.log(`${passLabel}${bandLabel} (pricing=${effectivePricingScore ?? 'N/A'}${trapLabel}, peg=${pegRatio ?? 'N/A'} [${pegBand}], dq=${dataQuality})`);
+      const revObj = realizationCheck?.estimateRevision;
+      const hit = realizationCheck?.surpriseHitRate;
+      const revStr = revObj == null ? 'N/A'
+        : revObj.meaningful ? `${revObj.changePct > 0 ? '+' : ''}${revObj.changePct}%`
+        : `NM(${revObj.ago90d}→${revObj.current})`;
+      const realLabel = revObj != null || hit != null
+        ? `, rev90d=${revStr}, beats=${hit ? `${hit.beats}/${hit.quarters}` : 'N/A'}`
+        : '';
+      console.log(`${passLabel}${bandLabel} (pricing=${effectivePricingScore ?? 'N/A'}${trapLabel}, peg=${pegRatio ?? 'N/A'} [${pegBand}]${realLabel}, dq=${dataQuality})`);
     } catch (err) {
       console.log(`ERROR: ${err.message}`);
       errors.push({ symbol: sym, error: err.message });

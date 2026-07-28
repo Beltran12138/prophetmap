@@ -115,6 +115,27 @@ Trigger: first week of earnings season — January, April, July, October.
 
 ---
 
+### CHANGE a layer's `peers` list (v2.8.0)
+
+`peers` in `data/sector-benchmarks.json` sets the layer's median Forward P/E and EV/Revenue, which together drive **55% of every pricingScore in that layer**. It is the single highest-leverage manual input in the system and it had no rule until now.
+
+**Two failures this rule exists to prevent, both observed:**
+
+1. **Self-reference.** Until 2026-07-28 `update-benchmarks.js` never read `peers` at all and sampled universe members only — a layer's "sector median" was the median of the book, so it could not look expensive relative to itself. L6 held one member (MU), making its median *equal to MU*, pinning both deviations at 0 and rendering 55% of its pricingScore informationless. Reading `peers` fixed half of it; the other half is that a peer list made of holdings restores the same defect. As of 2026-07-28, **L0's peers were MSFT/AMZN/META/ORCL — 4/4 universe members, i.e. still fully self-referential.**
+2. **Silent re-rating.** Adding CRDO to L8_NET moved the layer median −23% and **single-handedly knocked the holding ANET out of PASS** (v2.7.1). A watchlist addition re-rated an existing position through a shared benchmark.
+
+**Rules (ALL must hold):**
+
+- **≥ 2 external peers** — declared peers that are NOT universe members in that layer. `update-benchmarks.js` counts these, writes `_externalPeerCount`, and flags `_selfReferential: true` below the threshold. It does not auto-fix.
+- **≥ 4 valid names** in the combined sample (peers ∪ members) with live ratios. Below 3 the script already writes `_degenerate: true`; treat such a median as advisory and do not let a PASS rest on it.
+- **Business-model match** — a peer must earn money the same way as the layer, not merely sit in the same end market. Mixing structurally different margin and capital-intensity profiles (e.g. DRAM alongside HDD, or a fabless designer alongside a contract assembler) produces a median that describes no real company. Note the mismatch in the entry if a compromise is unavoidable.
+- **A watchlist addition must never silently re-rate a holding.** Before accepting a peer-list change, re-run `update-valuations.js` and record the pricingScore delta for **every** ticker in the layer, not just the new one. If a holding's funnel state flips, that flip is a *methodology* event and must be labelled as such — it is not a buy/sell signal.
+- **Record the change** in the layer's benchmark entry with date, reason, and the observed rating delta.
+
+**Removing a peer is as consequential as adding one** — JNPR (acquired by HPE) leaving L8_NET moved ANET's pricingScore 3.0 → 4.0. Delisted or acquired peers must be replaced, not merely deleted.
+
+---
+
 ## Conceptual Frame — Solvability × Capture (v2.6.0)
 
 The two structural screening axes are not redundant; together they form a 2×2.
@@ -138,10 +159,48 @@ The funnel's defensibility gate — `physicalConstraint ≥ 4 OR moatCapture ≥
 
 ---
 
+## Conceptual Frame — Constraint Decay & the Expectation Denominator (v2.8.0)
+
+Two observations about fields that already existed, not two new dimensions. Both are **zero-weight surfacing**: no gate reads either, and this release changed no ticker's PASS/FAIL state.
+
+### 1. `physicalConstraint` conflates two constraints that decay at different speeds
+
+ASML scores 5 on multi-year EUV process lead time. CRH scores 4 on aggregate transport-radius economics. The five `L9_MINER_CONVERT` names score 4–5 on **already-permitted grid interconnect and energised capacity**. These are not the same asset:
+
+- **tech** — process, IP, accumulated know-how. Decays endogenously, along a roadmap that is visible years ahead in capex and R&D disclosure.
+- **geo** — transport radius, mineral rights, siting, interconnect queue position, permitted capacity. **Rented from a jurisdiction, not owned.** Decays exogenously: a tax incentive, a permitting reform, or a competitor's capacity coming online resets it on no schedule you can observe from the filings.
+- **regulatory** — licence, approval, liability, defence contract.
+- **unclassified** — the score has no physical referent. This tag currently marks a real debt: LINK and ETH carry `physicalConstraint = 4` for what is network effect, not physics. Flagged, deliberately **not** silently repriced.
+
+Current distribution across the 52 tickers with pc ≥ 4: **33 tech · 12 geo · 5 regulatory · 2 unclassified**.
+
+**Falsifiable claim:** geo-type pc ≥ 4 names underperform tech-type pc ≥ 4 names on a risk-adjusted basis over a full cycle, because the funnel currently credits both as if permanent. If after 12 months there is no separation between the two cohorts, this distinction is decoration and should be deleted rather than promoted to a gate.
+
+### 2. Every gate is denominated in expectation except one
+
+`aiContribution` is a share of **forward** revenue growth. `pricingScore` leans on forward P/E and analyst target prices. Backlog, capex guidance and order books — the evidence base for most AI-chain theses — are the same species: statements of intent, which are the cheapest thing to produce in a capex cycle and the first thing to be revised.
+
+Worse, `aiContribution` is a **hand-set static value in `universe.json`** while its denominator moves daily. Consensus can be marked down for a quarter with the funnel showing no change at all.
+
+`realizationCheck` records the two things intent cannot fake:
+
+- `estimateRevision` — +1y consensus EPS now vs 90 days ago. The direction the whole forward-looking apparatus is being repriced in.
+- `surpriseHitRate` — beats over the last four reported quarters, and average surprise. Whether this issuer historically delivers on the bar it was given.
+
+**Known limitation:** Yahoo exposes a revision history for EPS but not for revenue, so the revision leg is EPS-based while `aiContribution` is revenue-denominated. It is a proxy and is labelled as one.
+
+**Deliberately not a gate.** A revision filter is momentum wearing fundamental clothing — it would buy names whose estimates are already being marked up, which is exactly the crowded, late, reflexive trade the A/B discipline treats as a reverse indicator. It earns a gate only if the audit trail shows revision divergence leading funnel-state changes, not trailing them.
+
+> **Provenance (v2.8.0, 2026-07-28):** prompted by a Thai FDI report (BlockBeats 2026-07-23) in which "investment applications" — an intent number — rose 80% and were read as realised industrial capability. The transferable defects were the two above: geographic moats are rented and decay exogenously, and an intent metric quietly substituted for a delivery metric. Per `techpull_gate`, the expectation-denominator problem was already latent in the v2.7.1 self-reference work; the news supplied the analogy, not the motive. Per `inspired_loop`, this is an instrumentation change and **not a portfolio motion** — no PASS/FAIL state moved.
+
+---
+
 ## Known Governance Gaps (v1.0)
 
 1. **No per-ticker change log** — physicalConstraint/aiContribution changes leave no audit trail. Future: add `_changeLog: [{date, field, from, to, reason}]` per ticker.
 2. **Experimental graduation not fully defined** — IONQ/RGTI graduation requires: fault-tolerant qubit demo (<0.1% logical error rate). Needs explicit threshold per experimental ticker.
 3. **watchlist → active trigger not automated** — currently manual. Future: `update-valuations.js` should flag when watchlist ticker pricingScore ≤ 2.5 for 5 consecutive trading days.
-4. **Sector benchmarks update is manual** — no automation for refreshing P/E and EV/Revenue medians. Risk: stale benchmarks distort pricing scores silently.
+4. **Sector benchmarks update is manual** — ~~no automation~~ resolved in part: `update-benchmarks.js` now recomputes medians weekly. Remaining risk: **peer selection** is still the manual input driving 55% of every pricingScore. Rules defined in § CHANGE a layer's `peers` list (v2.8.0); enforcement is surfacing-only, so a self-referential layer warns but still computes.
 5. **No position-size guidance** — ProphetMap generates alpha signals, not portfolio weights. Users must apply their own sizing rules (e.g., Kelly criterion, equal-weight by funnel score).
+6. **`constraintType` unset for pc < 4 tickers** (v2.8.0) — only the 52 names that clear the defensibility gate on physical grounds are classified, since only they use the score. A ticker promoted past pc 4 in a quarterly review must be classified at the same time.
+7. **`physicalConstraint` is metaphorical for crypto** (v2.8.0) — LINK and ETH hold pc = 4 for network effects, not physics, and are tagged `unclassified`. Either a crypto-native defensibility measure is defined or their pc scores are restated; until then their defensibility gate result is not comparable to an equity's.

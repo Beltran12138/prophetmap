@@ -6,10 +6,28 @@ export type TickerScore = {
   layer: string;
   assetClass?: 'equity' | 'crypto';
   physicalConstraint: number;
+  // Which KIND of constraint the pc score rests on. Zero weight — no gate reads it.
+  // 'geo' decays exogenously (policy/permitting/new capacity) and much faster than
+  // 'tech'; 'unclassified' means the pc score has no physical referent at all.
+  constraintType?: 'tech' | 'geo' | 'regulatory' | 'unclassified' | null;
   aiContribution: number;
   timeToRealize: string;
   moatCapture?: number | null;
   moatLocks?: string[] | null;
+  // Expectation-vs-delivery diagnostic (v2.8.0). Surfacing only, never a gate.
+  realizationCheck?: {
+    estimateRevision: {
+      horizon: string; basis: string; current: number; ago90d: number;
+      // false when an endpoint is a loss or near-zero, where a % change is fake
+      // precision. changePct is null in that case; direction still holds.
+      meaningful: boolean;
+      changePct: number | null;
+      direction: 'up' | 'down' | 'flat';
+    } | null;
+    surpriseHitRate: {
+      quarters: number; beats: number; hitRate: number; avgSurprisePct: number;
+    } | null;
+  } | null;
   price: number | null;
   marketCap: number | null;
   pricingScore: number | null;
