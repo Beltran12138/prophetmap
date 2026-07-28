@@ -46,6 +46,56 @@ Both are **surfaced, not fixed.** Declaring peers for 8 layers would re-rate 24 
 
 ---
 
+## 2026-07-28 — v2.8.1: CAT downgraded pc 4 → 3, CMI added (L12)
+
+Triggered by a SemiAnalysis piece on behind-the-meter power (BlockBeats relay, 2026-07-21) brought in as **supporting** evidence for the CAT position added earlier the same day. The research cut the score instead.
+
+### First, the relayed numbers were wrong
+
+The relay reported "~1GW signed this year, >4GW/year in 2027-2028." The actual SemiAnalysis report is titled *US Grid Constraints: Towards **40GW+** of Behind-The-Meter Datacenter by 2028?* and forecasts US datacenter buildout from +21GW in 2026 to +84GW by 2030, BTM powering **over half** of new US datacenters from 2028, and BTM equipment TAM crossing **50GW/year by 2029**, from a model tracking 40,000 power plants that has national grid headroom turning negative in 2027.
+
+Individual orders falsify the 1GW figure directly: INNIO × VoltaGrid 2.3GW, CAT × AIP "Monarch" 2GW, CAT × ProPetro PROPWR 2.1GW, Vantage Stargate Frontier 2.58GW. CAT alone holds six publicly announced contracts of ≥1GW each. **The relayed version understated the forecast by one to two orders of magnitude.**
+
+### CAT: physicalConstraint 4 → 3, `constraintType` removed
+
+The original 4 rested on multi-year lead times and management's "supply-constrained, not demand-constrained" framing — assessed **without market-share data**. Three findings:
+
+1. **CAT is third.** INNIO/Jenbacher has ~8.3GW of announced projects, exceeding Rolls-Royce (3.7GW) **plus** Caterpillar (3.6GW) combined. Six or more credible vendors compete.
+2. **Latent capacity dissolves the queue** (Thunder Said Energy): only ~15GW of engine manufacturing is dedicated to the power sector today, against a ~250GW pool across marine and heavy-duty that can be redirected at modest cost. Categorically unlike a fab — 3-5 years, tens of billions, physically irreversible. **The shortage is a pricing artifact, not a physical constraint.**
+3. **The speed edge is compressing.** Q1-2026 orders deliver in 2028 — a 24-30 month window that has erased the historical advantage over gas turbines, though it still beats grid interconnect at 36-84 months.
+
+Three falsification signals added: **bridge-not-destination** (Latitude Media's *Open Circuit* challenge to this very forecast — operators pushing hardest for off-grid concede they eventually want grid service, which would make 2027-2029 a one-time transition wave rather than a plateau); a **market-share gate**; and a **delivery-vs-intent gate** anchored on the v2.8.0 `realizationCheck` baseline.
+
+**Net effect on the PASS set: none.** CAT failed before (pricing 2.9 > 2.8 entry) and fails now. What changed is the **category** of failure — from AXTI-type "right physics, wrong price" to MOD-type structural disqualification. The distinction is load-bearing: an AXTI-type failure is re-evaluated when price falls, a MOD-type failure is not.
+
+Recorded as a counterweight so this is not one-sided: CAT's demand evidence is unusually hard (six 1GW+ contracts, $51.2B backlog, cancellation penalties and prepayments before it commits capital) and its delivery record is solid (3 of 4 quarters beat, +8.6% average surprise). **CAT is a good business with a real order book; it is not a chokepoint.**
+
+### CMI added — L12 secondary, watchlist, pc=3 / ai=0.35 / near / mc=3 → FAIL
+
+A genuine coverage gap: INNIO is Advent-held private and Rolls-Royce trades OTC pink (out of scope per v1.10), so **CAT and CMI are the only public vehicles in this trade**. Covering only CAT made its apparent prominence in the universe a survivorship artifact of the investable set rather than of the competitive set.
+
+Fails defensibility on the same vendor-agnostic latent-capacity argument. Pricing is **not** the binding constraint — CMI has the lowest forward PE in L12 (18.5 vs a ~29.5 layer median) and scored **2.2**. Another MOD-pattern name: cheap and structurally disqualified.
+
+Three things the numbers say that the engine-boom narrative does not:
+
+- **The central tension**: CMI's stronghold is **standby** power while CAT's focus is **prime** power — and the structural shift being underwritten here is precisely backup-to-prime. **CMI leads the segment being displaced.** Its 2028 backlog makes this an erosion, not a cliff.
+- **Consolidated growth is +2.7%** (heavy-duty truck units −16%, engine segment −4%). The datacenter unit is genuinely strong — ~$3.5B expected 2026 revenue, record 22.7% EBITDA margin — and is being **fully absorbed by cyclical decline elsewhere**. A great division inside a company whose consolidated numbers don't express it is not an AI-chain instrument.
+- **`realizationCheck` earned its keep on the first name it was applied to**: CMI beat consensus in only **1 of 4** quarters — the worst in L12 (PWR 4/4, CAT 3/4, GEV 2/4) — with +1y EPS revised up only 4.7% over 90 days vs CAT's 9.1%. The cheapest forward PE in the layer sits on the weakest delivery record in the layer.
+
+### Peer-selection rule compliance (v2.8.0), logged in full
+
+Adding CMI moved L12's medians: forward PE **31.9 → 29.5**, EV/Revenue **6.2 → 5.7**. Per the rule, `update-valuations.js` was re-run and the delta recorded for **every** member, not just the addition:
+
+| Ticker | before | after |
+|---|---|---|
+| CAT | 2.9 | 2.9 |
+| GEV | 3.0 | 3.0 |
+| PWR | 2.6 | 2.6 |
+
+**Observed delta: zero. No funnel state flipped.** The median moved ~7% but no member sat near a rounding boundary. Rule checks: `_externalPeerCount` = 2 (EMR, ROK) meets the ≥2 minimum; combined sample n=6 meets the ≥4 minimum; business-model match holds. **The margin is thin** — losing either EMR or ROK would drop L12 below the external-peer floor and flag it `_selfReferential`. Logged in the layer's `_changeLog`.
+
+---
+
 ## 2026-07-28 — v2.7.1: benchmark self-reference fix + pricing hysteresis + CRDO relayer
 
 Three engine changes, all triggered by defects surfaced during the v2.7.0 work.
