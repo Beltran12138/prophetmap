@@ -46,6 +46,53 @@ Both are **surfaced, not fixed.** Declaring peers for 8 layers would re-rate 24 
 
 ---
 
+## 2026-07-28 — v2.8.2: the 8 unbenchmarked layers — 2 anchored, 6 proven unanchorable
+
+Closing the item v2.8.0 surfaced: 8 layers had no benchmark entry, so **24 tickers (18 of them pc ≥ 4) priced against the cross-industry default of forward PE 22 / EV-Revenue 5.** The task was scoped as "declare peers for 8 layers." Attempting it established that **6 of the 8 cannot be anchored**, for structural reasons rather than effort.
+
+### The default is not neutral noise — it pins 55% of pricingScore at 5.0
+
+Actual ratios in these layers against the 22 / 5 default: APLD 234.7x / 40.9x, RKLB 2108x / 55.2x, ASTS −218x / 211.4x, WULF 84.9x / 69.0x, AXTI 53.5x / 32.2x. `deviationToScore` saturates at 5, so for most of these names **both** the forwardPE and evRevenue components sit pinned at 5.0 and carry no information.
+
+This is structurally the **same defect as the L6 single-member median** found in v2.7.1, inverted: there the components were pinned at 3.0 (neutral), here at 5.0 (maximally expensive).
+
+**Consequence:** names in these layers can essentially only fail the pricing gate — *except where their real ratios happen to sit near 22 / 5 by coincidence.* **TTMI (19.9x / 4.34x), AVAV (34.4x / 4.04x), KTOS (43.6x / 5.65x) and CRCL (33.1x / 5.18x) currently PASS on that coincidence**, not on any sector comparison.
+
+### Anchored: 2 layers
+
+**L9_MINER_CONVERT** — peers MARA / RIOT / CORZ / CLSK / BTDR (5 external, clean model match). Medians 22 → **77.2** and 5 → **20.6**.
+
+| | before | after | |
+|---|---|---|---|
+| APLD | 3.5 | 3.5 | |
+| CIFR | 3.7 | **2.8** | **FAIL → PASS** |
+| IREN | 3.4 | 2.9 | |
+| WULF | 3.6 | 3.0 | |
+| HUT | 4.0 | 4.0 | |
+
+⚠ **The 77.2 must not be read as "the sector trades at 77x."** `median()` filters non-positive values, so the loss-making peers (MARA, RIOT, CLSK, BTDR) drop out and the figure is the midpoint of the *profitable minority* — whose PEs are themselves extreme (CIFR 42x, CORZ 68x, WULF 85x, APLD 235x). Benchmarking against it says only "cheap relative to other very expensive names."
+
+**CIFR's new PASS is low-confidence and should not be traded on**: it rests entirely on that leg, `pegRatio` is N/A (the AXTI unmonitorable precedent), `estimateRevision` is **−11.1%** — consensus being marked *down*, rare in this universe — and it sits exactly on the 2.8 entry threshold. **Methodology event, not a buy signal.**
+
+**L_DEF** — peers DRS / LHX / RCAT. Medians 22 → **34.4** and 5 → **5.6**. AVAV 2.5 → **2.1**, KTOS 2.8 → **2.4**; both were passing and still pass, with more headroom. Model mismatch disclosed: LHX is ~4x larger and a prime contractor, RCAT is a direct product competitor but loss-making so it contributes only to the EV/Revenue leg. Only 2 peers supply a valid forwardPE, so AVAV sits near the median and self-reference is only partly removed. Both passes also look weaker on delivery than on price: **AVAV's +1y consensus EPS was revised DOWN 18% over 90 days with 1 of 4 quarters beating**; KTOS carries pegRatio 36.41.
+
+### Proven unanchorable: 6 layers — recorded in `_meta._unanchorableLayers`, not fabricated
+
+A placeholder is a visible *unknown*; a wrong median is an invisible *known*. Reasons, each specific:
+
+- **L11_FUEL** — insufficient valid sample, not absent peers. Exploration-stage uranium (UEC, NXE, DNN) carries negative forward PE and EV/Revenue of **219x–605x** on near-zero revenue; including them would make CCJ look arbitrarily cheap. Restricting to producers leaves CCJ / LEU / UUUU = n 3, below the ≥4 rule.
+- **L5_5** — no comparable US-listed PCB/substrate maker exists (Zhen Ding, Unimicron, Nan Ya are all Taiwan-listed, out of scope per v1.10). The available US names are EMS contract assemblers (BHE 1.05x, SANM 0.90x EV/Rev) — the exact model mismatch the v2.8.0 rule names. **TTMI's current PASS cannot be tested against a real peer set because none exists.**
+- **L8_OPT_MAT** — compound-semiconductor substrate peers are almost all non-US (Sumitomo, JX, IQE, Soitec); the nearest US analogue WOLF has negative forward PE. Fewer than 2 valid external peers.
+- **L_SPACE** — forwardPE is *meaningless* for the constituents, not merely unanchored: RKLB prints 2108x, ASTS −218x, external PL 6099x. The EV/Revenue leg could be anchored, but a half-anchored layer whose other half is nonsense is worse than an openly flagged placeholder.
+- **L_EMBI** — the layer has no single business model, so no peer can match it: surgical robotics (ISRG), machine vision (CGNX), industrial motion (PH), a carmaker (TSLA), sensors (VPG). **This is a layer-definition problem, not a peer-selection problem**; the fix is splitting the layer, which is a separate decision.
+- **L_DCOMP** — mixes two asset classes. Five constituents are crypto scored on P/Revenue and P/TVL by a different script, for which an equity forward-PE median is categorically inapplicable; only CRCL is an equity.
+
+### Standing implication
+
+For pre-revenue, loss-making and crypto constituents, `pricingScore` is not a weak signal — it is **inapplicable**, while the funnel still uses it as a hard gate. That is the honest description of the remaining distortion, and it is a design question rather than a data-entry backlog. Not actioned here: fixing it would change the PASS set by fiat.
+
+---
+
 ## 2026-07-28 — v2.8.1: CAT downgraded pc 4 → 3, CMI added (L12)
 
 Triggered by a SemiAnalysis piece on behind-the-meter power (BlockBeats relay, 2026-07-21) brought in as **supporting** evidence for the CAT position added earlier the same day. The research cut the score instead.
