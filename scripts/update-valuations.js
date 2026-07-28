@@ -101,7 +101,16 @@ async function get6mReturn(symbol) {
     const rows = await yahooFinance.historical(symbol, {
       period1: sixMonthsAgo(),
       period2: new Date(),
-      interval: '1mo',
+      // Daily bars, not '1mo'. Yahoo labels a monthly bar with the month start and
+      // closes it at month end, so period1 = "six months ago today" was snapping the
+      // anchor forward to the END of the following month: measured 2026-07-28, GLW's
+      // "6-month" return ran from the 2026-02 month-end close, a 5-month window. The
+      // window length therefore oscillated between 5 and 6 months with the day of the
+      // month. Consistent across tickers and against SPY, so the relative comparison
+      // survived — but a field named 6m must measure 6m, and the anchor moving on its
+      // own schedule is the kind of drift that shows up later as an unexplained
+      // regime change in the momentum component.
+      interval: '1d',
     });
     if (!rows || rows.length < 2) return null;
     const first = rows[0].close;
@@ -244,9 +253,21 @@ function cyclicalTrapAdjustment(ticker, quote, summary) {
  *   TAO   declared Bittensor          -> Invesco China Real Estate ETF
  *   FIL, RNDR                         -> no fundamentals / no quote (failed loudly — safe)
  * The first three are the dangerous class: a wrong answer that validates. There is
- * no safe naive repair either — `TAO-USD` resolves to "Together As One", not
- * Bittensor. universe.json already carries `coingeckoId` on every crypto member;
- * wiring that source is the real fix and is deliberately NOT done here.
+ * no safe naive repair inside this script either — `TAO-USD` resolves to "Together
+ * As One", not Bittensor.
+ *
+ * The correct crypto pricing path ALREADY EXISTS: `update-crypto-valuations.js`
+ * runs immediately after this script in CI, prices L_DCOMP members off CoinGecko +
+ * DeFiLlama via the `coingeckoId` already declared in universe.json, and merges its
+ * rows in. It deduplicates on line 318 with
+ *   base.results = base.results.filter((r) => r.assetClass !== 'crypto')
+ * — and that filter has never matched anything, because THIS script never wrote an
+ * `assetClass` field. Net effect in the committed record: `data/scores/2026-07-28.json`
+ * as produced by CI carried TWO rows for LINK (one at $4.55 = Interlink Electronics,
+ * one at $8.40 = Chainlink) and two for ETH ($18.31 Grayscale ETF, $1919.63 Ethereum),
+ * with funnelPassCount counting across both. Every row now carries assetClass so the
+ * dedupe works, and crypto rows written here are deliberate placeholders that the
+ * crypto script replaces.
  *
  * Policy: inapplicable => the pricing gate fails. "We cannot price this" must never
  * collapse into "this is attractively priced", and the recorded reason must be the
@@ -548,6 +569,9 @@ async function main() {
       results.push({
         symbol: sym,
         layer: ticker.layer,
+        // REQUIRED: update-crypto-valuations.js dedupes on this field before merging
+        // its own rows. Omitting it is what produced duplicate LINK/ETH rows.
+        assetClass: 'crypto',
         physicalConstraint: ticker.physicalConstraint,
         constraintType: ticker.constraintType ?? null,
         aiContribution: ticker.aiContribution,
@@ -644,6 +668,7 @@ async function main() {
       results.push({
         symbol: sym,
         layer: ticker.layer,
+        assetClass: ticker.assetClass ?? 'equity',
         physicalConstraint: ticker.physicalConstraint,
         constraintType: ticker.constraintType ?? null,
         aiContribution: ticker.aiContribution,

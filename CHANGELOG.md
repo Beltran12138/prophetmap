@@ -4,6 +4,78 @@ All notable universe / layers / framework changes, dated.
 
 ---
 
+## 2026-07-28 — v2.9.1: `assetClass` never emitted · true 6-month window
+
+Two fixes, and **both correct claims made in v2.9.0 hours earlier**. Both were found only because the push was rejected and the remote's CI commit had to be read before rebasing.
+
+### 1. The crypto pipeline was never missing — its dedupe key was
+
+v2.9.0 §2 stated: *"`universe.json` already carries `coingeckoId` on every crypto member; **wiring that source is the real fix and is deliberately not done here**."*
+
+**Wrong. It has been wired the whole time.** `scripts/update-crypto-valuations.js` runs immediately after `update-valuations.js` in `daily.yml`, prices L_DCOMP members off CoinGecko + DeFiLlama, and computes a crypto-native score (35% P/Rev, 35% P/TVL, 30% 6m momentum vs ETH). I never opened `scripts/`.
+
+The actual bug is one missing field. The crypto script deduplicates before merging:
+
+```js
+base.results = base.results.filter((r) => r.assetClass !== 'crypto');
+```
+
+`update-valuations.js` never wrote `assetClass`, so that filter matched nothing and the merge became an append. `lib/data.ts` had declared `assetClass?: 'equity' | 'crypto'` all along — the field was expected and never populated.
+
+The committed record shows the damage. CI's own `0af9b2b` (`data/scores/2026-07-28.json`, 16:27 UTC) carried **two rows for LINK and two for ETH**:
+
+| symbol | price | source | pricingScore | pass |
+|---|---|---|---|---|
+| LINK | **$4.55** | Interlink Electronics (equity collision) | 3.8 | false |
+| LINK | **$8.40** | Chainlink (CoinGecko) | 2.89 | **true** |
+| ETH | **$18.31** | Grayscale Mini Trust ETF | 2.8 | false |
+| ETH | **$1,919.63** | Ethereum (CoinGecko) | 4.08 | false |
+
+86 rows for 84 tickers, `funnelPassCount` summed across both, and the funnel page renders every row — LINK appeared twice, once as a $4.55 microcap and once as the asset it is supposed to be.
+
+Every row now carries `assetClass`; crypto rows written by the equity script are explicit placeholders the crypto script replaces. Verified after the fix: **84 rows, 84 unique symbols, 79 equity / 5 crypto, zero duplicates.**
+
+Two divergences between the two funnels are now visible and are **left alone**: the crypto path uses a hard `pricing > 3.0` cut with no hysteresis, and its defensibility gate is `physicalConstraint < 4` alone — it never got the `OR moatCapture >= 4` clause. Recorded, not changed; either edit re-rates L_DCOMP by fiat.
+
+### 2. `get6mReturn` was a data error, not a labelling error
+
+v2.9.0 §0 stated the `interval: '1mo'` anchor drift was *"consistent across tickers and against SPY, so relative comparison survives — mislabelled, not corrupted."*
+
+**Wrong.** The snap-to-month-end anchor lands on a different point in each ticker's own path, so the distortion is ticker-specific and large. Switching to `interval: '1d'` moved the 6-month return by:
+
+| | before | after | Δ |
+|---|---|---|---|
+| AXTI | +13.0% | **+152.3%** | +139pp |
+| LITE | −7.2% | **+67.6%** | +75pp |
+| ALAB | +123.7% | +55.7% | −68pp |
+| MOD | −6.0% | +44.6% | +51pp |
+| AMD | +130.6% | +81.8% | −49pp |
+| **GLW** | **−19.6%** | **+16.2%** | **+36pp** |
+| IREN | −15.9% | −46.0% | −30pp |
+
+SPY itself moved +8.3% → +6.6%.
+
+**This retroactively strengthens §0 of v2.9.0 and makes the original misread worse than described.** The "GLW has been derating for six months" reading was built on a −19.6% six-month return. GLW's true six-month return is **+16.2%**. The decline the terminal-value thesis was constructed to explain did not exist at all.
+
+11 of 84 names moved ≥0.2 pricingScore: LITE 3.1→3.6, AXTI 3.6→4.0, VRT 3.3→3.6, MOD 2.2→2.5, GLW 2.2→2.5, CGNX 3.6→3.9, TSEM 3.7→3.5, TER 2.5→2.7, CRDO 3.1→2.9, CLS 3.0→2.8, APLD 3.5→3.3.
+
+### PASS set: 21 → 23
+
+| | change | why |
+|---|---|---|
+| **LINK** | restored | the crypto-native row survives dedupe instead of sitting alongside a wrong one; it was passing in CI before this session too |
+| **IREN** | FAIL → PASS | 2.9 → 2.7 on the corrected 6-month return |
+
+**IREN's pass is flagged low-confidence and is not a buy signal**, on the same grounds as CIFR in v2.8.2. Its `forwardPE` is **−36.1** (loss-making, scored 5 by the punitive constant); the pass is carried by momentum score 1.2 (it fell 46%) and analyst-upside score 1 (target $81.73 vs price $33.97). `estimateRevision` direction is **down** (−0.37 → −0.48 EPS — a deepening loss), beats are 2/4, and its benchmark is the L9_MINER_CONVERT median that v2.8.2 already flagged as biased by `median()` dropping non-positive values. `deratingSignature` reads momentum-unwind (+129.8% over 12m). A cheaper price on a widening loss is what this row says.
+
+`architectural-derating` still fires on the same six names after the momentum fix — ORCL, KTOS, SMCI, SNPS, PLTR, ISRG — with SNPS now the cheapest name in the universe at pricingScore 1.7.
+
+### Process note
+
+Both errors survived v2.9.0 review and died at `git push`. The rejection forced reading `origin/master` before rebasing, and CI's file contained the duplicate rows in plain sight. The v2.8.1 lesson was *confirm the baseline with `git log` before starting local work*; the sharper version is **read what CI actually produced rather than what you assume the pipeline does** — and, more bluntly, `ls scripts/` before concluding a data path does not exist.
+
+---
+
 ## 2026-07-28 — v2.9.0: L8_OPT review against the Q2 print · pricing-applicability gate · derating signature
 
 Triggered by GLW closing **−15.6%** on the day it reported. Three outcomes, and the first one is a correction.
