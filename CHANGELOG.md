@@ -4,6 +4,36 @@ All notable universe / layers / framework changes, dated.
 
 ---
 
+## 2026-07-29 — v2.9.6: GLW competitive-read observation — the first datapoint against a rating strengthened one day earlier
+
+GLW's `moatCapture = 4` was STRENGTHENED on 2026-07-28 off the Q2 print. This entry files the first datapoint pointing the other way, **while it is fresh rather than at the next print** — which is the whole point of the `falsificationObservations` mechanism and the reason the review cadence should not be a function of what publishes.
+
+### 1. What was measured
+
+Innolight (中际旭创, 300308.SZ) is marketing a HK listing at roughly **$7.0B base / $8.0B with greenshoe** — the largest Hong Kong equity offering in seven years. Cornerstones reported as BlackRock, Hillhouse, Temasek, JPMorgan AM, Wellington, 思柏 and 云锋, expected to take close to half the deal. Innolight overtook CATL in May–June 2026 as the largest weight in the CSI 300.
+
+**Falsifier #2 — "Fiber supply glut from Chinese manufacturers compresses GLW pricing by >20%" — NOT TRIGGERED.** No pricing compression is observed or reported. A financing is an input to future supply pressure, not the pressure.
+
+### 2. Two corrections, both to the proposal that generated this entry
+
+**(a) Wrong falsifier.** The session proposal framed this as a test of capture-leak / architecture-neutrality (#6, #7). A competitor raising equity tests neither architecture nor who earns the returns on GLW's own capex. The correct target is **#2**. Filing a real datapoint against a falsifier it cannot move is worse than not filing it.
+
+**(b) Wrong tier — this is the load-bearing qualifier.** Innolight is an **optical module / transceiver** maker. GLW is a **fiber, glass and connector** maker. Falsifier #2 as written says *fiber* glut; Innolight is not a fiber supplier. An $8B recapitalisation of the Chinese transceiver leader is a materially stronger competitive read on **COHR and LITE** — both L8_OPT holdings, both transceiver-tier — than on GLW. The event is filed as *adjacent to* #2 rather than stretched to fit inside it.
+
+### 3. Counter-evidence from the same week
+
+Alphabet reported Q2 2026 on **2026-07-22**: revenue $119.80B (+24%, vs $117.02B consensus), **Google Cloud +82%** to $24.8B, backlog +$50B sequentially to **$514B**, Q2 capex $44.9B (+107% YoY). **Full-year 2026 capex guidance RAISED to $195–205B from $180–190B** — the second consecutive raise. CFO Ashkenazi: *"We're still in a supply-constrained environment … now for multiple quarters in a row."*
+
+The TPU cluster architecture driving the Chinese order book (9,216 liquid-cooled chips per cluster, all-optical OCS interconnect) carries **higher** optical content per unit than a conventional electrical spine. **The market punished the spender** — GOOGL to $329.43 after hours on the capex raise.
+
+### 4. Nothing re-rated
+
+`moatCapture` 4, `physicalConstraint` 4, `constraintType` tech — all HELD. Consistent with the INTC hold ("one observation does not move a rating") and the CRCL rule that ratings move on measurement of the ticker. What the entry establishes is a **dated baseline**: falsifier #2 is now measurable against a specific competitor capitalisation event rather than against a vague sense of "Chinese competition".
+
+**COHR and LITE explicitly NOT audited.** Reading a competitive event straight into ratings for two other tickers is the error this file exists to prevent. **Open item.** Layer state at 07-29 for reference: GLW pS 2.6 / PASS, **COHR pS 2.3 / PASS / PEG 0.92**, LITE pS 3.4 / FAIL — the framework's cheapest name in the layer is also the one most exposed to the read recorded here. Tension noted, not resolved.
+
+---
+
 ## 2026-07-29 — v2.9.5: the queue test generalised to `moatLocks: "licensing"` — and a field that means two opposite things
 
 v2.9.4 wrote the queue-vs-chokepoint test against `constraintType`, which covers 5 tickers. The test's real range is `moatLocks: "licensing"`, which covers **14**. Sweeping it surfaced a defect in the field before the test could be applied.
