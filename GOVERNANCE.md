@@ -113,6 +113,30 @@ Trigger: first week of earnings season — January, April, July, October.
 
 **Process:** PR to `data/layers.json` with updated schema + corresponding `data/universe.json` ticker reassignments.
 
+#### Layer proposals evaluated and rejected
+
+Kept so a rejected proposal is not re-litigated from scratch, and so the reason is auditable if it changes.
+
+**Grid-scale / behind-the-meter storage — REJECTED 2026-07-29, conditionally.** Proposed off a Goldman Sachs report (2026-07-16) framing storage as the fastest route around the interconnect queue.
+
+| Criterion | Verdict |
+|---|---|
+| ≥3 tickers that fit without forcing | **FAIL** — see below |
+| Distinct physical constraint descriptor | **PASS**, cleanly |
+| AI transmission logic | **PASS** |
+| ≥2 layer falsification signals | **PASS** (drafted, unused) |
+
+The constraint argument is genuinely physical and is the strongest part of the proposal: GPU load swings 0→100% in milliseconds; gas turbines tolerate roughly two start-stops per day and there are reports of new combined-cycle units failing shafts inside seven months under load cycling; grid expansion runs 4–8 years against 12–18 months for storage deployment. That is a distinct constraint — **deployment speed and ramp rate**, not generation capacity (L11), not equipment lead time (L12), not fuel (L13). Demand denominator is independently sourced: BloombergNEF puts US data centers at ~20% of national electricity by 2035 against 5.9% today, 12% by 2030.
+
+**It fails on ticker supply.** US-listed, investable, and not already placed: FLNC is the only real candidate. NRGV is a sub-$3 name the same report rates Neutral; SHLS's BESS line is guided to $30–35M of 2026 revenue, i.e. immaterial. TSLA already sits in `L_EMBI` and its energy business is guided at ~21% of 2028 revenue, so it is a partial-exposure name, not a pure play. CATL, LGES, Samsung SDI and 阳光电源 are outside the book's stated edge circle. **One name is not a layer** — it is a ticker, and forcing a layer around it produces exactly the self-referential benchmark the v2.8.0 peer rule exists to prevent.
+
+**Two substantive objections, recorded because they would survive even if the ticker count were met:**
+
+1. **Value capture is unresolved between the cell and the integrator.** CATL holds roughly 30% of the global storage-battery market. FLNC is a systems integrator, not a cell manufacturer. If scarcity sits in cell capacity, the value accrues to names outside the edge circle; if it sits in integration, FLNC has a claim. The report's "arms dealer" framing blurs the two, and the proposal cannot be scored without resolving it.
+2. **FLNC's stated moat is a gatekeeper permission** — exclusive battery partner status for NVIDIA's DSX Vera Rubin reference architecture. Per §3a that is the licensee sense, and NVIDIA has every commercial incentive to multi-source a reference-architecture component. **Third independent instance of the queue test, and the first on a candidate this file itself proposed.**
+
+**Reopen if:** two further US-listed pure-play storage names reach investable scale, OR the cell-versus-integrator capture question resolves toward integration with evidence. Source bias noted: the originating report is sell-side, carries FLNC at Buy with the price target raised $20 → $22, and rates other names in the same note Neutral and Sell.
+
 ---
 
 ### CHANGE a layer's `peers` list (v2.8.0)
@@ -291,3 +315,4 @@ This is the honest state. It was previously masked: until v2.9.2 the peer-indepe
 7. **`physicalConstraint` is metaphorical for crypto** (v2.8.0) — LINK and ETH hold pc = 4 for network effects, not physics, and are tagged `unclassified`. Either a crypto-native defensibility measure is defined or their pc scores are restated; until then their defensibility gate result is not comparable to an equity's. *Partially addressed in v2.9.3*: the crypto funnel now carries the same `OR moatCapture >= 4` clause as the equity funnel, which gives a network-effect moat somewhere honest to live. The restatement itself — lowering the metaphorical pc scores and letting `moatCapture` carry the defensibility — **would** move ratings and is deliberately not done.
 8. **The two `pricingScore` scales are not economically identical** (v2.9.3) — equity `deviationToScore` uses slope 2.5, crypto `devToScore` uses slope 1.5, so crypto scores are compressed toward 3.0. Reaching the shared `PRICING_ENTER` of 2.8 requires −13.3% below median for a token versus −8% for an equity: **the same constant is materially stricter for crypto.** The constants are shared anyway, because `pricingScore` is consumed as one cross-asset scale everywhere else — `lib/data.ts` `pricingColor()`/`pricingBg()` apply identical breakpoints with no `assetClass` branch. Harmonising the slope would re-rate every crypto member in one commit and is therefore a recorded decision, not a pending fix.
 9. **Hysteresis anchoring is keyed on symbol alone in `update-valuations.js`** (v2.9.3) — `loadPreviousFunnelState()` builds `map[r.symbol]`, so in a file containing two rows for one symbol the last row silently wins. Harmless from v2.9.1 onward (`assetClass` now prevents duplicates), but every scores file through 2026-07-27 contains such duplicates, so any backfill or historical replay resolves them by file order. `update-crypto-valuations.js` filters on `assetClass === 'crypto'` and is not affected.
+10. **Layer assignment silently determines the benchmark, so near-identical businesses in different layers get non-comparable `pricingScore`s** (v2.9.7) — **ALAB sits in `L3` and CRDO in `L2_5`.** Astera Labs (PCIe/CXL retimers) and Credo (SerDes, active electrical cables) are the closest comparables either one has; they are priced against entirely different peer medians, so their scores cannot be read side by side. **ALAB's L3 placement is NOT an error** — its `thesis` states "adjacent to but distinct from L3 EDA layer" and its `_changeLog` records the choice as deliberate, using `layerRole: secondary` to mark the sub-thesis. The gap is structural, not clerical: `layerRole: secondary` distinguishes the thesis but not the benchmark, so a secondary-role ticker is still measured against the primary role's median (ALAB against SNPS/CDNS, i.e. EDA multiples). **Deliberately not fixed here.** Moving ALAB would re-rate it through a different benchmark, which is precisely the silent re-rating the v2.8.0 peer rule exists to prevent, and ALAB's own `_note` carries pre-declared re-evaluation triggers (`pricingScore ≤3.0 for 5+ days`, or forward P/S compressing below 35x) that are nowhere near met — it printed 4.0 on 2026-07-29. A fix belongs in a quarterly review with the full layer delta measured, not in a news-driven commit. *Worth noting the precedent that makes ALAB a good example: it was demoted active → watchlist on 2026-05-19 the same day its pre-declared falsifier #4 (forward P/S >40x) fired. When a falsifier is measurable and someone is looking, the mechanism works.*

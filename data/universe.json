@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "version": "2.9.6",
+    "version": "2.9.7",
     "date": "2026-07-28",
     "description": "ProphetMap stock universe — manually-defined static fields only. Dynamic pricing scores written to data/scores/YYYY-MM-DD.json by scripts/update-valuations.js",
     "fieldGuide": {
@@ -352,7 +352,8 @@
       "thesisFalsification": [
         "Apple Silicon M4 maintains >30% performance-per-watt advantage on on-device AI benchmarks",
         "On-device AI fails to reach commercial tipping point — <10% of enterprise apps deploy edge inference by 2026",
-        "QCOM loses Apple modem contract, removing scale economics for advanced node procurement"
+        "QCOM loses Apple modem contract, removing scale economics for advanced node procurement",
+        "ON-DEVICE AI REVENUE TEST (opened 2026-07-29, successor to the unmeasurable #2 — #2 is NOT edited and stands as written). #2 reads \"<10% of enterprise apps deploy edge inference by 2026\"; enterprise app deployment share is not a published statistic, so #2 cannot be evaluated by anyone, which is why its own deadline passed without a check. MEASURE INSTEAD, from QCOM's own segment disclosure: QCT compute/PC revenue fails to exceed $3B annualised by FQ4 2027, OR total company revenue growth remains negative year-over-year for four consecutive quarters. BASELINE 2026-07-29: total revenue $44.5B with trailing growth of MINUS 3.5%, gross margin 54.8%, operating margin 22.1%, trailing EPS 9.30 against forward 10.99. FIRST CHECK: FQ4 FY2026 10-K segment table."
       ],
       "marketCap": 185,
       "status": "active",
@@ -363,6 +364,27 @@
           "date": "2026-05-04",
           "version": "1.0.0",
           "change": "Initial addition to universe"
+        },
+        {
+          "date": "2026-07-29",
+          "version": "2.9.7",
+          "change": "First falsifier review, prompted by UBS reporting QCOM in extreme short crowding. Principal finding is not the crowding: falsifier #2 carried a \"by 2026\" deadline that has now arrived and it CANNOT BE EVALUATED — \"share of enterprise apps deploying edge inference\" is not published by anyone. Recorded as a second class of threshold defect distinct from the gameable thresholds found on INTC and CRCL. #2 stands as written; successor #4 added, measured off the company's own segment disclosure. Also recorded: revenue is shrinking 3.5% YoY while aiContribution 0.45 is denominated in forward revenue GROWTH — the sharpest instance of the v2.8.0 denominator problem, in the cheapest name in the book. No rating moved."
+        }
+      ],
+      "falsificationObservations": [
+        {
+          "date": "2026-07-29",
+          "targets": "FALSIFIER #2 — its stated deadline (\"by 2026\") has arrived — plus the UBS 2026-07-21 report that QCOM has entered extreme short crowding, a reading seen twice in nine years of that dataset.",
+          "measured": "Engine, 2026-07-29 run: pricingScore 1.8 — the LOWEST of any active holding except NVDA — funnelPass TRUE, forward P/E 14.5, PEG 0.54, price $159.27, market cap $168B. Independently fetched: revenue $44.5B with trailing growth MINUS 3.5%, gross margin 54.8%, operating margin 22.1%, trailing EPS 9.30, forward EPS 10.99 (+18%), shortPercentOfFloat 3.84%. UBS reports QCOM in the short-crowded cohort at the extreme end alongside Skyworks (-13.9) and Entegris (-7.9), with the smartphone sector in sustained outflow.",
+          "threshold": "#2: \"On-device AI fails to reach commercial tipping point — <10% of enterprise apps deploy edge inference by 2026\"",
+          "result": "CANNOT BE EVALUATED — and that is the finding, not an excuse. The deadline written into the falsifier has arrived and no check occurred, because the quantity it names is not published by anyone. There is no source for \"share of enterprise apps deploying edge inference\". A falsifier whose measurement does not exist cannot fire, cannot be refuted, and silently converts a position into an article of faith while appearing to be disciplined. #1 (Apple Silicon perf-per-watt lead) has the same defect in weaker form — no standard on-device AI benchmark is named. #3 (loses the Apple modem contract) is genuinely measurable and is NOT triggered.",
+          "thresholdDefect": "Two distinct failure modes now recorded in this repo. INTC #2 and CRCL #2 were GAMEABLE — measurable but reachable by means that do not validate the thesis. QCOM #2 is UNMEASURABLE — no data source exists at any price. The second is worse: a gameable threshold at least produces a number to argue about. Per the append-don't-edit rule #2 stands as written and successor #4 is added with a measurement drawn from the company's own segment disclosure.",
+          "crowdingReading": "HANDLE WITH CARE, and the care is quantitative. UBS's \"extreme short crowding\" is a proprietary positioning factor, not short interest. The observable short interest is 3.84% of float — against MU's 3.21%, a name in the same note's EXTREME LONG cohort. On the public measure the two are close, so the nine-year claim cannot be verified from outside UBS and is recorded as reported, not as fact. Separately, contrarian positioning is not a thesis: this book already rejected buying a name because it was hated (framework line 235 on sell-side and KOL narrative). The datum earns a place here only because it points the opposite way from the engine, and disagreement between an independent measure and the engine is what this file is for.",
+          "theCheapnessQuestion": "The engine calls QCOM the cheapest active holding after NVDA. The fundamentals say revenue is SHRINKING 3.5% year over year. Those are consistent, and the consistency is the whole point: a forward P/E of 14.5 on declining revenue is not obviously cheap, it is a price for decline. Note the structural exposure this creates in the funnel: aiContribution is set at 0.45 and is defined as a share of FORWARD REVENUE GROWTH. If forward growth is near zero or negative, 45% of it is not a meaningful gate — the denominator problem GOVERNANCE flagged in v2.8.0 section 2 has its sharpest instance here, in the cheapest name in the book. Flagged, not repriced.",
+          "conclusion": "No rating moved. physicalConstraint HELD at 3, moatCapture HELD at 4, aiContribution HELD at 0.45 — none was audited against evidence in this review and none should move on a positioning datum. Per v2.9.5, QCOM is a LICENSOR (its moatFalsification names \"the licensing stream\" as revenue it collects), so the queue-vs-chokepoint test does not apply to it; its correct falsifier is substitution, which #3 already carries. TWO THINGS THIS REVIEW CHANGES: falsifier #2 is now on record as unmeasurable rather than untriggered, and successor #4 gives the position a test that can actually be run against a filing. Also noted for later: constraintType is undefined on this ticker while physicalConstraint is 3 — not fixed here.",
+          "confidence": "HIGH on engine output and fetched fundamentals. HIGH on the judgement that #2 is unmeasurable — the claim is that no public source exists, and if one is produced this entry should be revised. MEDIUM on the UBS crowding figures (Chinese-language secondary summary; the proprietary factor cannot be checked). LOW on any read of what the crowding implies for forward return — none is asserted.",
+          "nextCheck": "FQ4 FY2026 10-K segment table, against new falsifier #4: QCT compute/PC revenue run-rate and whether total revenue growth has turned positive. Secondary: any concrete disclosure on Apple modem volumes, which is falsifier #3.",
+          "source": "UBS SemiBytes 2026-07-21 via TechFlow/深潮 Chinese-language summary (secondary); engine output data/scores/2026-07-29.json; fundamentals yahoo-finance2 fetched 2026-07-29."
         }
       ]
     },
@@ -987,7 +1009,8 @@
         "DDR5 commodity DRAM ASPs collapse below $4/GB, dragging blended margins below 30%",
         "HBM4 spec requires new tool investment beyond Micron's current 1β node capability",
         "CHIPS Act funding delayed or partially rescinded under Trump 2.0 — national-champion floor thesis breaks (signal: Boise or Clay NY grant disbursement >12mo behind original schedule)",
-        "Samsung Taylor TX + SK Hynix Indiana achieve >$3B combined US-domiciled memory revenue by C2027 — 'only US alternative to Korean memory duopoly' framing invalidated"
+        "Samsung Taylor TX + SK Hynix Indiana achieve >$3B combined US-domiciled memory revenue by C2027 — 'only US alternative to Korean memory duopoly' framing invalidated",
+        "CYCLE-PEAK DETECTION (opened 2026-07-29). The five falsifiers above contain no peak test — #2 fires at blended margin below 30%, which is a crash, not a turn, so by the time it fires the cycle is over. MEASURE: consolidated gross margin declines sequentially for two consecutive quarters from the 2026 peak WHILE HBM bit shipments still grow — margin rolling over ahead of volume is the memory cycle's standard turn signature, and it separates a pricing turn from a demand turn. BASELINE 2026-07-29: GM(ttm) 72.6%, which is 17.6pp ABOVE this ticker's own recorded cyclicalPeakGM of 55%; forward EPS 153.74 against trailing 44.23 = 3.48x, i.e. consensus prices a further tripling from an already record margin. FIRST CHECK: FQ4 FY2026."
       ],
       "marketCap": 120,
       "status": "active",
@@ -1003,6 +1026,27 @@
           "date": "2026-05-27",
           "version": "2.2.2",
           "change": "Added two thesisFalsification signals for 'US national-champion memory' thesis (CHIPS Act delay; Samsung TX + Hynix Indiana US-fab ramp). Triggered by 2026-05-27 user-proposed 'US 国运股 = MU' framing — framework rejects pricing-immunity but encodes thesis as testable via falsification layer per ALAB/KTOS precedent. Status unchanged (active). Current pricingScore 3.7 FAILS funnel; no portfolio motion."
+        },
+        {
+          "date": "2026-07-29",
+          "version": "2.9.7",
+          "change": "First falsifier review. Adjudicated UBS SemiBytes (2026-07-21) \"47% cash return underpriced\" against the engine cyclicalTrap: ENGINE UPHELD. UBS arithmetic checked and consistent (>$400B cumulative FCF / $868B market cap = 46.1%); the dispute is durability, not arithmetic. Deciding evidence is gross margin 72.6% against this ticker's own pre-set cyclicalPeakGM of 55% — a variable the UBS note never addresses. Recorded that the same note calls MU both undervalued and extreme-long-crowded. No rating moved. New falsifier #6 opened: the list had no cycle-peak test, only a crash test (#2 at GM<30%)."
+        }
+      ],
+      "falsificationObservations": [
+        {
+          "date": "2026-07-29",
+          "targets": "ADJUDICATION — UBS SemiBytes (2026-07-21) \"47% cash return is underpriced\" AGAINST the engine's cyclicalTrap. Both describe the same company from opposite ends; this entry decides which reading the book acts on, and opens the falsifier the list was missing.",
+          "measured": "Engine, 2026-07-29 run: pricingScore 3.6 FAIL; forward P/E 5.0; PEG 0.13; market cap $868B; price $768.42; momentum6m +76.3% vs SPY +5.6% (component score 5.0, i.e. maximally expensive on that leg); analystUpside +96.2% (score 1); estimatesRising TRUE; deratingSignature momentum-unwind, -38.8% from the 52-week high on a +615.1% 12-month return. cyclicalTrap APPLIED, delta 1.5, on two stated reasons: \"trailPE/fwdPE 3.5x — forward EPS priced to surge; low fwdPE is a peak-cycle value trap\" and \"grossMargin 73% >= cyclical-peak 55%\". Independently fetched fundamentals confirm both: GM(ttm) 72.6%, trailing EPS 44.23, forward EPS 153.74 (3.48x), revenue $90.3B.",
+          "threshold": "No existing falsifier addresses this. #2 is the nearest and it fires only at blended margin <30%.",
+          "result": "ENGINE READING UPHELD. The two claims are arithmetically compatible and the disagreement is entirely about the persistence of the earnings being capitalised. UBS's cumulative-FCF-to-2028 figure was checked and is internally consistent: >$400B against an $868B market cap is 46.1%, matching the \"47%\" cited. The engine does not dispute the arithmetic; it disputes the denominator's durability.",
+          "decidingEvidence": "GROSS MARGIN. 72.6% trailing on a memory manufacturer, against this ticker's own recorded cyclicalPeakGM of 55% — 17.6pp above a peak the framework set in advance, not after the fact. The UBS note argues density leadership at 1-alpha/1-beta without EUV, 2XX-layer NAND, and LP-DDR position; all may be true and none of them explains a margin 17.6pp above cycle peak, which is a price phenomenon, not a cost phenomenon. The note does not address gross margin at all. A cash-return argument that capitalises peak-cycle FCF without testing whether the margin is peak-cycle is incomplete on the one variable that decides it.",
+          "sourceSelfContradiction": "The same UBS note places MU simultaneously in the \"undervalued vs SK Hynix\" bucket AND in the extreme long-crowded cohort (+24 or above; 12 of 63 covered names, alongside Lam Research, Broadcom, Seagate and AMD). A name cannot be both under-owned and extremely crowded. These are different desks publishing under one masthead. The crowding datum is the more falsifiable of the two — it is a positioning measurement rather than a valuation opinion — and it points the opposite way from the recommendation.",
+          "counterEvidence": "The demand side is not in question and is arguably strengthening. Alphabet raised FY2026 capex guidance to $195-205B on 2026-07-22 (second consecutive raise) with the CFO stating the company is \"still in a supply-constrained environment … multiple quarters in a row\". Bernstein's 2026-07-21 bottom-up puts DRAM and HBM at 55% of the incremental wafer demand from each new gigawatt of AI compute. estimatesRising is TRUE and the company is delivering. NONE OF THAT IS A COUNTER-ARGUMENT TO THE ENGINE: strong demand is exactly the condition under which a cyclical trades at a low forward multiple on peak earnings. The engine is not forecasting a demand collapse; it is declining to pay for peak margin as though it were mid-cycle margin.",
+          "conclusion": "No rating moved. physicalConstraint HELD at 4 (tech), moatCapture HELD at 3, aiContribution HELD at 0.55 — the HBM three-supplier thesis is not what is in dispute. funnelPass remains FALSE on pricing, which is the correct and intended outcome: the funnel is telling the book WHEN, not WHETHER. New falsifier #6 opened because the audit exposed a real gap — five falsifiers and not one of them tests for a cycle turn, which for a ticker carrying cyclical:true is the single most likely way this position goes wrong. WHAT WOULD CHANGE THIS VERDICT: gross margin holding above 65% for four consecutive quarters would argue the 55% cyclicalPeakGM parameter is stale and should be re-set, at which point the cyclicalTrap would stop firing and the UBS reading would deserve the book's money.",
+          "confidence": "HIGH on all engine figures and on the independently fetched GM / EPS data (yahoo-finance2, 2026-07-29). HIGH on the arithmetic check of the UBS cumulative-FCF claim. MEDIUM-HIGH on the verdict itself — the 55% cyclicalPeakGM parameter is a hand-set framework input and its provenance was not re-derived in this review; if that number is wrong the verdict is wrong. MEDIUM on the UBS content, which is read from a Chinese-language secondary summary rather than the note itself.",
+          "nextCheck": "FQ4 FY2026 — sequential gross margin against the 72.6% baseline, and HBM bit shipment direction, per new falsifier #6. Second date: 2026-12-09, when the buyback restriction the UBS note leans on lifts; actual repurchase pace from that point is a harder test of the cash-return thesis than any forecast.",
+          "source": "UBS SemiBytes 2026-07-21 via TechFlow/深潮 Chinese-language summary (secondary); Bernstein 2026-07-21 via the same channel; Alphabet Q2 2026 results and call 2026-07-22; engine output data/scores/2026-07-29.json; fundamentals yahoo-finance2 fetched 2026-07-29."
         }
       ]
     },
@@ -3013,8 +3057,14 @@
           "date": "2026-05-26",
           "version": "2.2.0",
           "change": "Added as L9_MINER_CONVERT primary — new sublayer for crypto miners pivoting to AI data center hosting. Sourced via inspired-loop guard (Meng Xing essay 2026-05-26) — default watchlist per portfolio_decisions_2026Q2. Static funnel pass PC=5/AI=0.55/near; pricing TBD."
+        },
+        {
+          "date": "2026-07-29",
+          "version": "2.9.7",
+          "change": "watchlistReason populated. The field was empty; the rationale and the conjunctive entry triggers were already fully recorded in _note at addition. Each trigger measured against 2026-07-29 data: NONE fire. The whole cohort crossed below pricingScore 3.0 only in the last 1-2 sessions, and the cause was the 2026-07-28 declaration of the layer benchmark (a methodology event, so labelled in the benchmark entry), not a price move. The 5-day persistence leg written on 2026-05-26 is what blocks that from reading as a signal."
         }
-      ]
+      ],
+      "watchlistReason": "Status rationale was ALREADY recorded in _note at addition (2026-05-26, v2.2.0) — this field was empty, not the rationale. Origin: default-watchlist per [[portfolio_decisions_2026Q2]] (Leopold/SAC narrative warning; the cohort had run +200% to +1000% through 2025). Entry triggers are stated in _note and are conjunctive. MEASURED 2026-07-29 — pricingScore 2.8 (<=3.0 SATISFIED on 2026-07-29 only; the 5-day persistence leg FAILS — the score was 3.6 on 07-20 through 07-24, 3.5 on 07-27, 3.3 on 07-28). PEG 1.83 < 2.0 SATISFIED. CoreWeave Polaris Forge Phase 1 energisation NOT VERIFIED here. Trigger does not fire. COHORT-WIDE CAVEAT: every member of this layer re-priced downward on 2026-07-28 because the layer benchmark was declared that day (v2.8.2 — the layer previously had NO entry and used the cross-industry default forward PE 22 / EV-Rev 5, replaced by miner peers at 77.2 / 20.6). The benchmark entry itself labels this \"A METHODOLOGY EVENT, NOT A BUY SIGNAL\". The 5-day persistence requirement written into these triggers on 2026-05-26 is therefore currently doing exactly the job it was written for: it prevents the cohort from being read as newly cheap when what changed was the yardstick. Additionally the forwardPE median 77.2 is biased — median() drops non-positive values and 4 of the 5 declared peers are loss-making, so it is the midpoint of the profitable minority."
     },
     {
       "symbol": "CIFR",
@@ -3047,8 +3097,14 @@
           "date": "2026-05-26",
           "version": "2.2.0",
           "change": "Added as L9_MINER_CONVERT primary — Cipher Mining with executed Fluidstack 200MW Stargate-adjacent HPC pivot. Block strategic investor. Funnel pre-eval PC=5/AI=0.45/near; pricing TBD."
+        },
+        {
+          "date": "2026-07-29",
+          "version": "2.9.7",
+          "change": "watchlistReason populated. The field was empty; the rationale and the conjunctive entry triggers were already fully recorded in _note at addition. Each trigger measured against 2026-07-29 data: NONE fire. The whole cohort crossed below pricingScore 3.0 only in the last 1-2 sessions, and the cause was the 2026-07-28 declaration of the layer benchmark (a methodology event, so labelled in the benchmark entry), not a price move. The 5-day persistence leg written on 2026-05-26 is what blocks that from reading as a signal."
         }
-      ]
+      ],
+      "watchlistReason": "Status rationale was ALREADY recorded in _note at addition (2026-05-26, v2.2.0) — this field was empty, not the rationale. Origin: default-watchlist per [[portfolio_decisions_2026Q2]] (Leopold/SAC narrative warning; the cohort had run +200% to +1000% through 2025). Entry triggers are stated in _note and are conjunctive. MEASURED 2026-07-29 — pricingScore 2.5 (<=3.0 satisfied 07-28 and 07-29 only, 2 of 5 days — persistence leg FAILS; the score was 4.2 as recently as 07-24). PEG is NULL, so the \"<2.0\" leg CANNOT BE EVALUATED, which is a fail, not a pass. Fluidstack Barber Lake Phase 1 NOT VERIFIED here. Trigger does not fire. The layer benchmark entry independently flags CIFR's PASS as low-confidence: it rests entirely on the biased forwardPE leg, pegRatio is N/A, estimateRevision is -11.1% (consensus being marked DOWN, rare in this universe), and it sits near the entry threshold. COHORT-WIDE CAVEAT: every member of this layer re-priced downward on 2026-07-28 because the layer benchmark was declared that day (v2.8.2 — the layer previously had NO entry and used the cross-industry default forward PE 22 / EV-Rev 5, replaced by miner peers at 77.2 / 20.6). The benchmark entry itself labels this \"A METHODOLOGY EVENT, NOT A BUY SIGNAL\". The 5-day persistence requirement written into these triggers on 2026-05-26 is therefore currently doing exactly the job it was written for: it prevents the cohort from being read as newly cheap when what changed was the yardstick. Additionally the forwardPE median 77.2 is biased — median() drops non-positive values and 4 of the 5 declared peers are loss-making, so it is the midpoint of the profitable minority."
     },
     {
       "symbol": "IREN",
@@ -3081,8 +3137,14 @@
           "date": "2026-05-26",
           "version": "2.2.0",
           "change": "Added as L9_MINER_CONVERT secondary — IREN Childress Texas conversion + Microsoft anchor. Lower PC=4 reflects incremental pivot vs APLD/CIFR dedicated. Funnel pre-eval PC=4/AI=0.35/mid."
+        },
+        {
+          "date": "2026-07-29",
+          "version": "2.9.7",
+          "change": "watchlistReason populated. The field was empty; the rationale and the conjunctive entry triggers were already fully recorded in _note at addition. Each trigger measured against 2026-07-29 data: NONE fire. The whole cohort crossed below pricingScore 3.0 only in the last 1-2 sessions, and the cause was the 2026-07-28 declaration of the layer benchmark (a methodology event, so labelled in the benchmark entry), not a price move. The 5-day persistence leg written on 2026-05-26 is what blocks that from reading as a signal."
         }
-      ]
+      ],
+      "watchlistReason": "Status rationale was ALREADY recorded in _note at addition (2026-05-26, v2.2.0) — this field was empty, not the rationale. Origin: default-watchlist per [[portfolio_decisions_2026Q2]] (Leopold/SAC narrative warning; the cohort had run +200% to +1000% through 2025). Entry triggers are stated in _note and are conjunctive. MEASURED 2026-07-29 — pricingScore 2.7 (2 of 5 days — persistence leg FAILS; 3.5-3.6 from 07-20 to 07-27). PEG 3.11 > 2.0 FAILS. The operational leg is the one the 2026-07-20 news moves: the trigger reads \"AI revenue >50% of forward 12m guidance\", and IREN raised its AI-cloud annualised run-rate target to >$4B by year-end with ~85% contracted (a $2.8B multi-year agreement; customers named as Microsoft, NVIDIA, Perplexity, Figure AI), scaling 480MW in 2026 against ~3MW in 2025 and targeting 1.2GW in 2027, with customer prepayments covering ~45% of GPU capex. That leg is plausibly met. TRIGGER STILL DOES NOT FIRE — the conditions are conjunctive and both the pricing and PEG legs fail. Note also that the pricingScore 2.7 is driven primarily by momentum (6m -49.5% vs SPY +5.6%, component score 1.2), not by cheapness: forward PE is NEGATIVE (-32.1) and correctly scores 5. The remaining ~55% of GPU capex is financed, i.e. this is the same private-credit pool that funds the hyperscaler off-balance-sheet JV structures. COHORT-WIDE CAVEAT: every member of this layer re-priced downward on 2026-07-28 because the layer benchmark was declared that day (v2.8.2 — the layer previously had NO entry and used the cross-industry default forward PE 22 / EV-Rev 5, replaced by miner peers at 77.2 / 20.6). The benchmark entry itself labels this \"A METHODOLOGY EVENT, NOT A BUY SIGNAL\". The 5-day persistence requirement written into these triggers on 2026-05-26 is therefore currently doing exactly the job it was written for: it prevents the cohort from being read as newly cheap when what changed was the yardstick. Additionally the forwardPE median 77.2 is biased — median() drops non-positive values and 4 of the 5 declared peers are loss-making, so it is the midpoint of the profitable minority."
     },
     {
       "symbol": "WULF",
@@ -3115,8 +3177,14 @@
           "date": "2026-05-26",
           "version": "2.2.0",
           "change": "Added as L9_MINER_CONVERT primary — TeraWulf with nuclear-adjacent grid + Google debt backstop + Core42 lease. Differentiator vs APLD/CIFR is cost-of-capital arbitrage via Google credit. Funnel pre-eval PC=5/AI=0.45/near."
+        },
+        {
+          "date": "2026-07-29",
+          "version": "2.9.7",
+          "change": "watchlistReason populated. The field was empty; the rationale and the conjunctive entry triggers were already fully recorded in _note at addition. Each trigger measured against 2026-07-29 data: NONE fire. The whole cohort crossed below pricingScore 3.0 only in the last 1-2 sessions, and the cause was the 2026-07-28 declaration of the layer benchmark (a methodology event, so labelled in the benchmark entry), not a price move. The 5-day persistence leg written on 2026-05-26 is what blocks that from reading as a signal."
         }
-      ]
+      ],
+      "watchlistReason": "Status rationale was ALREADY recorded in _note at addition (2026-05-26, v2.2.0) — this field was empty, not the rationale. Origin: default-watchlist per [[portfolio_decisions_2026Q2]] (Leopold/SAC narrative warning; the cohort had run +200% to +1000% through 2025). Entry triggers are stated in _note and are conjunctive. MEASURED 2026-07-29 — pricingScore 3.0 — exactly ON the <=3.0 boundary on 2026-07-29 only (3.7 from 07-20 to 07-24), so the persistence leg FAILS and the level leg passes only at the boundary. PEG is NULL, so the \"<2.0\" leg CANNOT BE EVALUATED. Core42 capacity milestone NOT VERIFIED here. Trigger does not fire. COHORT-WIDE CAVEAT: every member of this layer re-priced downward on 2026-07-28 because the layer benchmark was declared that day (v2.8.2 — the layer previously had NO entry and used the cross-industry default forward PE 22 / EV-Rev 5, replaced by miner peers at 77.2 / 20.6). The benchmark entry itself labels this \"A METHODOLOGY EVENT, NOT A BUY SIGNAL\". The 5-day persistence requirement written into these triggers on 2026-05-26 is therefore currently doing exactly the job it was written for: it prevents the cohort from being read as newly cheap when what changed was the yardstick. Additionally the forwardPE median 77.2 is biased — median() drops non-positive values and 4 of the 5 declared peers are loss-making, so it is the midpoint of the profitable minority."
     },
     {
       "symbol": "HUT",
@@ -3149,8 +3217,14 @@
           "date": "2026-05-26",
           "version": "2.2.0",
           "change": "Added as L9_MINER_CONVERT secondary — Hut 8 with Highrise compute partnership. Weakest cohort confidence (AI=0.30 borderline, diversified mining-heavy). Funnel pre-eval PC=4/AI=0.30/mid."
+        },
+        {
+          "date": "2026-07-29",
+          "version": "2.9.7",
+          "change": "watchlistReason populated. The field was empty; the rationale and the conjunctive entry triggers were already fully recorded in _note at addition. Each trigger measured against 2026-07-29 data: NONE fire. The whole cohort crossed below pricingScore 3.0 only in the last 1-2 sessions, and the cause was the 2026-07-28 declaration of the layer benchmark (a methodology event, so labelled in the benchmark entry), not a price move. The 5-day persistence leg written on 2026-05-26 is what blocks that from reading as a signal."
         }
-      ]
+      ],
+      "watchlistReason": "Status rationale was ALREADY recorded in _note at addition (2026-05-26, v2.2.0) — this field was empty, not the rationale. Origin: default-watchlist per [[portfolio_decisions_2026Q2]] (Leopold/SAC narrative warning; the cohort had run +200% to +1000% through 2025). Entry triggers are stated in _note and are conjunctive. MEASURED 2026-07-29 — pricingScore 3.8 — FAILS the <=3.0 level outright, no persistence question arises (4.2-4.3 from 07-20 to 07-24). PEG NULL, so the tighter \"<1.5\" leg required of HUT cannot be evaluated. The operational leg reads \"Highrise AI revenue mix >35% of total\"; the 2026-07-20 announcement of a $9.8B / 15-year lease with an unnamed investment-grade tenant (+352MW, campus to 704MW leased, 1GW commercialised, first-cycle contracted value $19.6B) is a CONTRACT-VALUE disclosure, not a revenue-mix disclosure, and the capex denominator is unstated — $9.8B over 15 years on 352MW is $1.86M/MW/year against an unstated build cost. It does not measure the trigger. Forward PE is NEGATIVE (-34.8). Trigger does not fire, on the widest margin of the five. COHORT-WIDE CAVEAT: every member of this layer re-priced downward on 2026-07-28 because the layer benchmark was declared that day (v2.8.2 — the layer previously had NO entry and used the cross-industry default forward PE 22 / EV-Rev 5, replaced by miner peers at 77.2 / 20.6). The benchmark entry itself labels this \"A METHODOLOGY EVENT, NOT A BUY SIGNAL\". The 5-day persistence requirement written into these triggers on 2026-05-26 is therefore currently doing exactly the job it was written for: it prevents the cohort from being read as newly cheap when what changed was the yardstick. Additionally the forwardPE median 77.2 is biased — median() drops non-positive values and 4 of the 5 declared peers are loss-making, so it is the midpoint of the profitable minority."
     }
   ]
 }

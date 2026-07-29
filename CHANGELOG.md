@@ -4,6 +4,62 @@ All notable universe / layers / framework changes, dated.
 
 ---
 
+## 2026-07-29 — v2.9.7: five watchlist triggers measured · MU adjudicated against UBS · a falsifier that cannot be measured · storage layer rejected
+
+Five items commissioned together. **Two of the five began as claims of mine that the measurement contradicted.**
+
+### 0. Correction — the miner-convert cohort's watchlist rationale was never missing
+
+The previous session reported that all five `L9_MINER_CONVERT` tickers sat on watchlist "with no recorded reason." **The `watchlistReason` field was empty; the rationale was not.** Every one carries it in `_note` from the 2026-05-26 addition, together with **conjunctive, quantified entry triggers** — more disciplined than most entries in the book. Reading one field and declaring the record absent is the same error class as the CRCL `risk` field: checking one pipeline and concluding the signal does not exist.
+
+### 1. The five triggers measured — none fires, and the reason matters more than the result
+
+| | pS 07-29 | ≤3.0 for 5 days? | PEG leg | Trigger |
+|---|---|---|---|---|
+| APLD | 2.8 | ✗ (1 of 5 — was 3.6 on 07-24) | 1.83 ✓ | no |
+| CIFR | 2.5 | ✗ (2 of 5 — was 4.2 on 07-24) | **null** — cannot evaluate | no |
+| IREN | 2.7 | ✗ (2 of 5) | 3.11 ✗ | no |
+| WULF | 3.0 | ✗ (1 of 5, and only at the boundary) | **null** | no |
+| HUT | 3.8 | ✗ outright | **null** | no |
+
+**The whole cohort crossed below 3.0 in the last one to two sessions, and the cause was not price.** The layer benchmark was *declared* on 2026-07-28 (v2.8.2) — the layer previously had no entry and used the cross-industry default of forward P/E 22 / EV-Rev 5, replaced by miner peers at 77.2 / 20.6. The benchmark entry already labels this **"A METHODOLOGY EVENT, NOT A BUY SIGNAL."**
+
+**The 5-day persistence leg, written on 2026-05-26, is at this moment doing precisely the job it was written for**: it prevents a change of yardstick from reading as a change in value. Recorded because this is the clearest demonstration in the repo of a pre-committed rule paying for itself.
+
+IREN is the near miss worth naming: its operational leg ("AI revenue >50% of forward 12m guidance") is plausibly met by the 2026-07-20 announcement — AI-cloud run-rate target raised above $4B with ~85% contracted, 480MW in 2026 against ~3MW in 2025. The conditions are conjunctive and both financial legs fail. Also recorded: IREN's 2.7 is driven by **momentum** (6m −49.5%, component score 1.2), not cheapness — its forward P/E is **negative** and correctly scores 5.
+
+### 2. MU — UBS "47% cash return is underpriced" vs the engine's `cyclicalTrap`. **Engine upheld.**
+
+UBS's arithmetic was checked and holds: >$400B cumulative FCF to 2028 against an $868B market cap is 46.1%, matching the cited 47%. **The dispute is not arithmetic, it is the durability of the denominator.**
+
+**Deciding evidence: gross margin 72.6% trailing, against this ticker's own `cyclicalPeakGM` of 0.55** — 17.6pp above a peak the framework set *in advance*. Forward EPS 153.74 against trailing 44.23 is 3.48×. The UBS note argues density leadership, 2XX NAND and LP-DDR position; all may be true and none explains a margin 17.6pp above cycle peak, which is a price phenomenon. **The note does not mention gross margin.**
+
+**The note also contradicts itself**: MU appears as undervalued *and* in the extreme long-crowded cohort (12 of 63 names). A name cannot be both under-owned and extremely crowded. The crowding datum is the more falsifiable of the two and points the other way.
+
+**New falsifier #6 opened — the audit found a real hole.** Five falsifiers on a ticker carrying `cyclical: true` and **not one tests for a cycle turn**; #2 fires at blended margin below 30%, which is a crash, not a turn. #6 measures two consecutive sequential gross-margin declines *while HBM bit shipments still grow* — margin rolling over ahead of volume. **What would reverse this verdict:** gross margin holding above 65% for four quarters would argue the 55% parameter is stale.
+
+### 3. QCOM — the finding is not the crowding
+
+**Falsifier #2 carried a "by 2026" deadline. It has arrived. It CANNOT BE EVALUATED.** "Share of enterprise apps deploying edge inference" is published by no one. A falsifier whose measurement does not exist cannot fire, cannot be refuted, and **silently converts a position into an article of faith while looking disciplined.**
+
+This is a **second class of threshold defect**, distinct from the one already on file: INTC #2 and CRCL #2 were *gameable* — measurable, but reachable by means that do not validate the thesis. QCOM #2 is *unmeasurable* — no source exists at any price. The second is worse; a gameable threshold at least yields a number to argue about. #2 stands as written; successor #4 measures off the company's own segment disclosure.
+
+Also recorded: QCOM is the cheapest active holding after NVDA (pS 1.8, fwd P/E 14.5, PEG 0.54) **and its revenue is shrinking 3.5% YoY**. Those are consistent — 14.5× on declining revenue is a price for decline. And it exposes the sharpest instance of the v2.8.0 denominator problem: `aiContribution` 0.45 is a share of forward revenue *growth*, and forward growth may be near zero. Flagged, not repriced. On the crowding itself: UBS's factor is proprietary; observable short interest is **3.84% of float against MU's 3.21%** — on the public measure the two are close, so the nine-year claim is recorded as reported, not as fact.
+
+### 4. Storage layer — REJECTED, conditionally
+
+Passes three of four new-layer criteria including the physical-constraint test, which is genuinely strong (millisecond GPU ramp; gas turbines limited to ~two starts/day with reported shaft failures inside seven months; 4–8 year grid expansion against 12–18 month storage deployment). **Fails on ticker supply: FLNC is the only real US-listed pure play.** One name is not a layer.
+
+Two objections recorded that would survive even a larger ticker count: (a) capture is unresolved between cell and integrator — CATL holds ~30% of global storage cells and sits outside the edge circle; (b) **FLNC's stated moat is exclusive battery-partner status for NVIDIA's DSX reference architecture — a gatekeeper permission, and NVIDIA has every incentive to multi-source it.** That is the **third independent instance** of the v2.9.5 queue test, and the first on a candidate this file itself proposed.
+
+### 5. ALAB — not a misassignment. Gap #10 instead.
+
+The previous session flagged ALAB's `L3` placement as a probable error. **It is not.** The `thesis` says "adjacent to but distinct from L3 EDA layer" and `_changeLog` records the choice as deliberate. The real defect is structural and is recorded as governance gap #10: **`layerRole: secondary` distinguishes the thesis but not the benchmark**, so ALAB is priced against SNPS/CDNS EDA multiples while its closest comparable, CRDO, is priced against L2_5. **Deliberately not fixed** — moving it would re-rate it through a different benchmark, the exact silent re-rating the v2.8.0 peer rule prohibits, and ALAB's own pre-declared re-evaluation triggers are nowhere near met (it printed 4.0 on 07-29).
+
+**Process note.** No rating moved anywhere in this release. `data/scores/*` untouched. MU `PC 4 / moat 3 / aiC 0.55` and QCOM `PC 3 / moat 4 / aiC 0.45` all held — neither was audited against evidence on those dimensions and neither should move on a positioning datum or a sell-side note.
+
+---
+
 ## 2026-07-29 — v2.9.6: GLW competitive-read observation — the first datapoint against a rating strengthened one day earlier
 
 GLW's `moatCapture = 4` was STRENGTHENED on 2026-07-28 off the Q2 print. This entry files the first datapoint pointing the other way, **while it is fresh rather than at the next print** — which is the whole point of the `falsificationObservations` mechanism and the reason the review cadence should not be a function of what publishes.
