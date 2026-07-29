@@ -56,19 +56,30 @@
     },
     "L2": {
       "label": "Training Silicon",
-      "medianForwardPE": 39,
-      "medianEVRevenue": 20,
+      "medianForwardPE": 33.6,
+      "medianEVRevenue": 21.3,
       "peers": [
         "NVDA",
-        "AMD",
-        "INTC"
+        "AMD"
       ],
-      "_computedForwardPE": 39,
-      "_computedEVRevenue": 20,
+      "_computedForwardPE": 33.6,
+      "_computedEVRevenue": 21.3,
       "_lastComputed": "2026-07-28",
-      "_sampleSize": 4,
-      "_externalPeerCount": 1,
-      "_selfReferential": true
+      "_sampleSize": 3,
+      "_externalPeerCount": 0,
+      "_selfReferential": true,
+      "_peerChangeLog": [
+        {
+          "date": "2026-07-28",
+          "version": "2.9.2",
+          "change": "REMOVED INTC from peers. medianForwardPE 38.8 -> 33.6, medianEVRevenue 20.0 -> 21.3, sample 4 -> 3.",
+          "reason": "Two independent grounds. (1) Layer contradiction: INTC is a universe holding in layer L5 and its thesis is explicitly the foundry thesis, so it was simultaneously a constituent of what L2 calls fair value AND, measured against L5 foundry median 18.5, L2 most expensive outlier at forward P/E 43.9. (2) Business-model mismatch per GOVERNANCE.md section CHANGE a layer peers list: L2 is fabless high-performance compute silicon; INTC is a capital-intensive IDM carrying a foundry segment that lost 2.1B USD in Q2 2026. That capital-intensity gap is the exact mismatch the rule names.",
+          "notReplaced": "GOVERNANCE.md requires DELISTED or ACQUIRED peers be replaced. INTC is neither - it is mis-assigned, so the replacement rule does not bind. Deliberately NOT replaced: L2 has no public external comparable. Training silicon is a duopoly plus private firms (Cerebras is already universe member CBRS; Groq, SambaNova, Tenstorrent are private). Any substitute would fail business-model-match harder than INTC did.",
+          "medianProvenance": "Recomputed from the ratio snapshot already stored in data/scores/2026-07-28.json, NOT a fresh fetch. A live re-fetch on 2026-07-29 UTC moved medians across 22 layers (L6 24.3 -> 16.6, a -32% move that would materially re-rate MU). Bundling that drift into a structural commit is the silent re-rating GOVERNANCE.md section CHANGE a layer peers list forbids. Price drift is left to the scheduled job.",
+          "ratingDelta": "Measured with every non-benchmark component frozen at 2026-07-28. NVDA 2.0 -> 2.0. AMD 3.1 -> 3.2. CBRS 3.3 -> 3.3. No funnel state flipped. The two components offset: AMD forwardPE component 2.7 -> 3.0 (worse) while its evRevenue component 3.2 -> 3.0 (better), because INTC EV/Revenue of 8.75 had been dragging the L2 EV/Revenue median DOWN. INTC own pricingScore is unaffected - it is scored against L5.",
+          "residualLimitation": "L2 now correctly reports _externalPeerCount 0 / _selfReferential true. 55 percent of every L2 pricingScore is anchored on a median of the book itself. Structural property of a duopoly layer, not a fixable data gap - and the honest state the layer-scoped external-peer test was masking."
+        }
+      ]
     },
     "L2_5": {
       "label": "Inference / Edge Silicon",
@@ -282,7 +293,9 @@
       "_computedEVRevenue": 4,
       "_lastComputed": "2026-07-28",
       "_sampleSize": 6,
-      "_externalPeerCount": 2
+      "_externalPeerCount": 1,
+      "_selfReferential": true,
+      "_peerIndependenceNote": "CCJ is a universe holding in L11_FUEL. Counted as an external peer until v2.9.2 because the test was layer-scoped. True external peer count is 1 (NRG), below the >=2 rule."
     },
     "L12": {
       "label": "Grid / Power Infrastructure",
@@ -357,7 +370,9 @@
       "_computedEVRevenue": 188,
       "_lastComputed": "2026-07-28",
       "_sampleSize": 3,
-      "_externalPeerCount": 3
+      "_externalPeerCount": 1,
+      "_selfReferential": true,
+      "_peerIndependenceNote": "IONQ and RGTI are this layer own members. They were invisible to the member list only because update-benchmarks.js skips status=experimental, so the layer was declaring its own holdings as external peers. True external peer count is 1 (QUBT), below the >=2 rule."
     },
     "default": {
       "label": "Fallback",

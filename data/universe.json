@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "version": "2.9.0",
+    "version": "2.9.2",
     "date": "2026-07-28",
     "description": "ProphetMap stock universe — manually-defined static fields only. Dynamic pricing scores written to data/scores/YYYY-MM-DD.json by scripts/update-valuations.js",
     "fieldGuide": {
@@ -14,7 +14,8 @@
       "moatCapture": "OPTIONAL 1-5. WHO captures the private-correctness moat (orthogonal to physicalConstraint, which covers PHYSICAL lead-time only). 1=pure supplier, the moat accrues to the incumbent above (component vendor) or the customer below; the ticker is a replaceable vendor (the 'sold to whoever has the most compute' trap). 3=contested/shared, capture undecided. 5=the ticker itself holds the private ground truth / license / liability / user habit that a smarter general model still cannot enter. Source: Sarah Guo 2026 moat thesis — 'moat exists' != 'startup captures it'. A physicalConstraint=1 ticker can be moatCapture=5 (e.g. a licensed, liability-bearing, workflow-embedded app). Absence = not yet assessed; funnel falls back to the physical gate alone.",
       "moatLocks": "OPTIONAL array, subset of {licensing, liability, privateData, userHabit, integration}. The NON-physical locks backing moatCapture. Physical lead-time is NOT listed here — it lives in physicalConstraint, do not double-count. Empty/absent with low moatCapture = supplier with no defensible lock.",
       "moatFalsification": "OPTIONAL string. Falsifiable condition under which the moat is shown to accrue elsewhere or be absorbed by the model layer (e.g. 'a general model + public data replicates 80% of the function' or 'the incumbent in-houses it'). Same falsification discipline as thesisFalsification.",
-      "falsificationObservations": "OPTIONAL array, added v2.9.0. A declared falsifier is only worth its check date if someone records what the measurement actually said when the date arrived — otherwise a signal that has been tested and survived is indistinguishable from one nobody looked at, and both quietly read as 'thesis intact'. Each entry states which falsifier it targets, the measured value, the declared threshold, the verdict (TRIGGERED / NOT TRIGGERED / INCONCLUSIVE), and its source. Two rules: (1) record the observation whether or not it fires — a non-firing observation is the more common and more easily lost one; (2) if the observation contradicts something previously written here, the entry carries an explicit `correction` field rather than the earlier text being edited away. Price action is recorded under `priceContext` and is deliberately kept separate from the measurement — a stock falling is not evidence that a falsifier fired."
+      "falsificationObservations": "OPTIONAL array, added v2.9.0. A declared falsifier is only worth its check date if someone records what the measurement actually said when the date arrived — otherwise a signal that has been tested and survived is indistinguishable from one nobody looked at, and both quietly read as 'thesis intact'. Each entry states which falsifier it targets, the measured value, the declared threshold, the verdict (TRIGGERED / NOT TRIGGERED / INCONCLUSIVE), and its source. Two rules: (1) record the observation whether or not it fires — a non-firing observation is the more common and more easily lost one; (2) if the observation contradicts something previously written here, the entry carries an explicit `correction` field rather than the earlier text being edited away. Price action is recorded under `priceContext` and is deliberately kept separate from the measurement — a stock falling is not evidence that a falsifier fired.",
+      "thesisFalsification": "Falsification conditions for the ticker thesis. Appending a falsifier is preferred to editing one: a threshold that measurement shows to be gameable stays in the list as written so the original judgement remains auditable, and the refinement enters as a new numbered entry (see INTC #6 vs #2, GLW #7 vs #6)."
     },
     "funnelPassCriteria": {
       "defensibility": "physicalConstraint>=4 OR moatCapture>=4 (survives commoditization via a PHYSICAL chokepoint OR a non-physical moat — either suffices)",
@@ -29,7 +30,10 @@
       "symbol": "MSFT",
       "name": "Microsoft",
       "moatCapture": 3,
-      "moatLocks": ["integration","userHabit"],
+      "moatLocks": [
+        "integration",
+        "userHabit"
+      ],
       "moatFalsification": "OpenAI builds direct enterprise distribution that bypasses Azure, OR Copilot churn reveals the moat was bundling not workflow lock.",
       "layer": "L0",
       "layerRole": "primary",
@@ -58,7 +62,10 @@
       "symbol": "AMZN",
       "name": "Amazon",
       "moatCapture": 3,
-      "moatLocks": ["integration","userHabit"],
+      "moatLocks": [
+        "integration",
+        "userHabit"
+      ],
       "moatFalsification": "AI inference workloads migrate off Bedrock to specialized clouds (Fireworks/Baseten) faster than AWS data-gravity locks them in.",
       "layer": "L0",
       "layerRole": "primary",
@@ -87,7 +94,10 @@
       "symbol": "META",
       "name": "Meta Platforms",
       "moatCapture": 4,
-      "moatLocks": ["privateData","userHabit"],
+      "moatLocks": [
+        "privateData",
+        "userHabit"
+      ],
       "moatFalsification": "Open-sourcing Llama commoditizes its own model edge while the social-graph data fails to differentiate ad-AI ROAS vs competitors.",
       "layer": "L0",
       "layerRole": "primary",
@@ -116,7 +126,9 @@
       "symbol": "ORCL",
       "name": "Oracle",
       "moatCapture": 3,
-      "moatLocks": ["integration"],
+      "moatLocks": [
+        "integration"
+      ],
       "moatFalsification": "The OpenAI/OCI capacity deal proves one-off; enterprise DB lock-in does not extend to AI workloads (customers keep DB on Oracle, run AI elsewhere).",
       "layer": "L0",
       "layerRole": "secondary",
@@ -151,7 +163,11 @@
       "symbol": "GOOG",
       "name": "Alphabet",
       "moatCapture": 4,
-      "moatLocks": ["userHabit","privateData","integration"],
+      "moatLocks": [
+        "userHabit",
+        "privateData",
+        "integration"
+      ],
       "moatFalsification": "Search/Android distribution fails to convert the Gemini lead into retained share — a third-party model takes query share despite default placement.",
       "layer": "L1",
       "layerRole": "primary",
@@ -180,7 +196,13 @@
       "symbol": "PLTR",
       "name": "Palantir",
       "moatCapture": 5,
-      "moatLocks": ["licensing","liability","privateData","userHabit","integration"],
+      "moatLocks": [
+        "licensing",
+        "liability",
+        "privateData",
+        "userHabit",
+        "integration"
+      ],
       "moatFalsification": "A general model + RAG wins a flagship classified/defense deployment PLTR holds, OR commercial Foundry net-retention falls below 110% for two consecutive quarters (moat was switching-cost, not private ground truth).",
       "layer": "L1",
       "layerRole": "primary",
@@ -208,7 +230,10 @@
     {
       "symbol": "NVDA",
       "moatCapture": 5,
-      "moatLocks": ["userHabit","integration"],
+      "moatLocks": [
+        "userHabit",
+        "integration"
+      ],
       "moatFalsification": "An open stack (ROCm/Triton/MLIR) reaches CUDA parity AND developers migrate — moat was ecosystem lock, not silicon",
       "name": "NVIDIA",
       "layer": "L2",
@@ -238,7 +263,9 @@
     {
       "symbol": "AMD",
       "moatCapture": 3,
-      "moatLocks": ["integration"],
+      "moatLocks": [
+        "integration"
+      ],
       "moatFalsification": "ROCm fails to build a developer-ecosystem lock; AMD stays the cheaper-alternative price-taker",
       "name": "Advanced Micro Devices",
       "layer": "L2",
@@ -268,7 +295,9 @@
     {
       "symbol": "CBRS",
       "moatCapture": 3,
-      "moatLocks": ["integration"],
+      "moatLocks": [
+        "integration"
+      ],
       "moatFalsification": "Wafer-scale arch does not win a durable software ecosystem; remains a niche challenger",
       "name": "Cerebras Systems",
       "layer": "L2",
@@ -307,7 +336,10 @@
     {
       "symbol": "QCOM",
       "moatCapture": 4,
-      "moatLocks": ["licensing","integration"],
+      "moatLocks": [
+        "licensing",
+        "integration"
+      ],
       "moatFalsification": "Modem SEP royalties erode (Apple in-house) AND AI-edge fails to replace the licensing stream",
       "name": "Qualcomm",
       "layer": "L2_5",
@@ -336,7 +368,11 @@
     {
       "symbol": "ARM",
       "moatCapture": 5,
-      "moatLocks": ["licensing","userHabit","integration"],
+      "moatLocks": [
+        "licensing",
+        "userHabit",
+        "integration"
+      ],
       "moatFalsification": "RISC-V open ISA displaces Arm in key sockets — licensing moat was switching-cost, not necessity",
       "name": "Arm Holdings",
       "layer": "L2_5",
@@ -366,7 +402,9 @@
     {
       "symbol": "MRVL",
       "moatCapture": 3,
-      "moatLocks": ["integration"],
+      "moatLocks": [
+        "integration"
+      ],
       "moatFalsification": "Hyperscalers in-house custom-ASIC design (poach teams); Marvell was a vendor",
       "name": "Marvell Technology",
       "layer": "L2_5",
@@ -396,7 +434,10 @@
     {
       "symbol": "AVGO",
       "moatCapture": 4,
-      "moatLocks": ["integration","userHabit"],
+      "moatLocks": [
+        "integration",
+        "userHabit"
+      ],
       "moatFalsification": "Custom-ASIC customers (Google TPU) bring design in-house; VMware switching-lock erodes",
       "name": "Broadcom",
       "layer": "L2_5",
@@ -427,7 +468,10 @@
     {
       "symbol": "SNPS",
       "moatCapture": 5,
-      "moatLocks": ["userHabit","integration"],
+      "moatLocks": [
+        "userHabit",
+        "integration"
+      ],
       "moatFalsification": "A viable third EDA stack emerges OR AI chip-design commoditizes EDA tooling",
       "name": "Synopsys",
       "layer": "L3",
@@ -457,7 +501,10 @@
     {
       "symbol": "CDNS",
       "moatCapture": 5,
-      "moatLocks": ["userHabit","integration"],
+      "moatLocks": [
+        "userHabit",
+        "integration"
+      ],
       "moatFalsification": "A viable third EDA stack emerges OR AI chip-design commoditizes EDA tooling",
       "name": "Cadence Design Systems",
       "layer": "L3",
@@ -487,7 +534,9 @@
     {
       "symbol": "ALAB",
       "moatCapture": 3,
-      "moatLocks": ["integration"],
+      "moatLocks": [
+        "integration"
+      ],
       "moatFalsification": "Connectivity (retimer) function absorbed into switch/CPU silicon — Astera was a gap-filler",
       "name": "Astera Labs",
       "layer": "L3",
@@ -529,7 +578,9 @@
     {
       "symbol": "ENTG",
       "moatCapture": 4,
-      "moatLocks": ["integration"],
+      "moatLocks": [
+        "integration"
+      ],
       "moatFalsification": "Fab requalification barrier falls; second-source materials qualify at scale",
       "name": "Entegris",
       "layer": "L3_5",
@@ -559,7 +610,9 @@
     {
       "symbol": "APD",
       "moatCapture": 3,
-      "moatLocks": ["integration"],
+      "moatLocks": [
+        "integration"
+      ],
       "moatFalsification": "On-site gas contracts do not renew at premium; commodity gas pricing",
       "name": "Air Products",
       "layer": "L3_5",
@@ -589,7 +642,9 @@
     {
       "symbol": "LIN",
       "moatCapture": 4,
-      "moatLocks": ["integration"],
+      "moatLocks": [
+        "integration"
+      ],
       "moatFalsification": "On-site industrial-gas contract lock erodes; regional commoditization",
       "name": "Linde",
       "layer": "L3_5",
@@ -655,7 +710,9 @@
     {
       "symbol": "AMAT",
       "moatCapture": 4,
-      "moatLocks": ["integration"],
+      "moatLocks": [
+        "integration"
+      ],
       "moatFalsification": "China domestic tool makers (Naura/AMEC) reach parity and displace at mature nodes",
       "name": "Applied Materials",
       "layer": "L4",
@@ -685,7 +742,9 @@
     {
       "symbol": "LRCX",
       "moatCapture": 4,
-      "moatLocks": ["integration"],
+      "moatLocks": [
+        "integration"
+      ],
       "moatFalsification": "Etch/deposition second-sourced by domestic-China tools at scale",
       "name": "Lam Research",
       "layer": "L4",
@@ -715,7 +774,9 @@
     {
       "symbol": "ASML",
       "moatCapture": 5,
-      "moatLocks": ["integration"],
+      "moatLocks": [
+        "integration"
+      ],
       "moatFalsification": "EUV monopoly broken — falsified only by a viable second EUV source (none credible for years)",
       "name": "ASML Holding",
       "layer": "L4",
@@ -746,7 +807,9 @@
     {
       "symbol": "KLAC",
       "moatCapture": 4,
-      "moatLocks": ["integration"],
+      "moatLocks": [
+        "integration"
+      ],
       "moatFalsification": "Process-control second-sourced; inspection requalification barrier falls",
       "name": "KLA Corporation",
       "layer": "L4",
@@ -776,7 +839,9 @@
     {
       "symbol": "TER",
       "moatCapture": 3,
-      "moatLocks": ["integration"],
+      "moatLocks": [
+        "integration"
+      ],
       "moatFalsification": "ATE design-in lost to Advantest / in-house test",
       "name": "Teradyne",
       "layer": "L4",
@@ -838,7 +903,9 @@
     {
       "symbol": "TSM",
       "moatCapture": 5,
-      "moatLocks": ["integration"],
+      "moatLocks": [
+        "integration"
+      ],
       "moatFalsification": "Process leadership lost (Intel/Samsung catch up) AND customer switching-lock breaks",
       "name": "Taiwan Semiconductor (ADR)",
       "layer": "L5",
@@ -868,7 +935,9 @@
     {
       "symbol": "TTMI",
       "moatCapture": 3,
-      "moatLocks": ["integration"],
+      "moatLocks": [
+        "integration"
+      ],
       "moatFalsification": "Defense/aero PCB qualification lock erodes; commercial PCB is commodity",
       "name": "TTM Technologies",
       "layer": "L5_5",
@@ -898,7 +967,9 @@
     {
       "symbol": "MU",
       "moatCapture": 3,
-      "moatLocks": ["integration"],
+      "moatLocks": [
+        "integration"
+      ],
       "moatFalsification": "HBM commoditizes as SK Hynix/Samsung flood capacity; reverts to cyclical DRAM/NAND commodity pricing",
       "name": "Micron Technology",
       "layer": "L6",
@@ -937,7 +1008,9 @@
     {
       "symbol": "INTC",
       "moatCapture": 3,
-      "moatLocks": ["integration"],
+      "moatLocks": [
+        "integration"
+      ],
       "moatFalsification": "Foundry customers do not materialize; remains sub-scale vs TSMC",
       "name": "Intel",
       "layer": "L5",
@@ -952,7 +1025,8 @@
         "Foundry external customer revenue <$2B by C2026E (vs internal $10B+ implied target for 2027) — IFS strategy structurally fails",
         "Server CPU market share continues declining vs AMD + ARM by >5pp/year through C2026 — core CPU business unable to fund foundry capex",
         "Gross margin remains below 45% through 2026 — capex burden (>$25B/yr) without scale margin recovery forces equity raise or capex cut",
-        "Trump administration revokes or restructures CHIPS Act disbursements — national-champion floor thesis breaks (same signal applies to MU)"
+        "Trump administration revokes or restructures CHIPS Act disbursements — national-champion floor thesis breaks (same signal applies to MU)",
+        "IFS external revenue growth is reclassification rather than customer acquisition — external foundry revenue excluding deconsolidated-affiliate volume (Altera, deconsolidated 2025-09-12) fails to exceed $150M/quarter by Q4 C2026, i.e. the headline external line grows while genuine third-party wafer revenue does not. Opened 2026-07-28 (v2.9.2) because falsifier #2 bare-dollar threshold can be cleared by an accounting event without strategic progress. FIRST CHECK: Q4 FY2026 10-K segment detail."
       ],
       "marketCap": 95,
       "status": "active",
@@ -964,6 +1038,41 @@
           "date": "2026-05-27",
           "version": "2.2.2",
           "change": "Initial addition to L5 secondary — US national-champion foundry thesis enters universe to run funnel; framework rejects pricing-immunity grant"
+        },
+        {
+          "date": "2026-07-28",
+          "version": "2.9.2",
+          "change": "First formal L5 falsifier review against a reported quarter (Q2 FY2026). falsificationObservations opened with two entries: falsifier #2 TRACKING TO TRIGGER on $293M external foundry revenue, falsifier #4 both legs in-track. Falsifiers #1 and #3 recorded as NOT triggered on counter-evidence. New falsifier #6 opened to separate reclassified revenue from customer-won revenue. moatCapture HELD at 3 and physicalConstraint HELD at 4 — no rating moved on one print."
+        }
+      ],
+      "falsificationObservations": [
+        {
+          "date": "2026-07-28",
+          "targets": "IFS EXTERNAL REVENUE FAILURE (falsifier #2) — the load-bearing falsifier for the entire thesis",
+          "measured": "Q2 FY2026 (reported 2026-07-23). Intel Foundry segment revenue $5.8B, +6% QoQ; EXTERNAL foundry revenue $293M — 5% of segment revenue; segment operating loss $2.1B (improved $348M QoQ). Prior points: Q1 2026 external $174M on $5.421B segment revenue with a $2.437B operating loss; FY2025 external $307M for the full year (~$77M/quarter); FY2024 external $159M. H1 2026 external therefore totals $467M.",
+          "threshold": "Foundry external customer revenue <$2B by C2026E (vs internal $10B+ implied target for 2027) — IFS strategy structurally fails",
+          "result": "TRACKING TO TRIGGER, not yet arithmetically closed. To clear $2B, H2 2026 must deliver $1,533M against an H1 of $467M. Q2 grew +68.4% QoQ; sustaining exactly that rate for two more quarters yields Q3 $493M and Q4 $830M, an FY total of ~$1.80B — still short. Clearing $2B requires QoQ growth to ACCELERATE beyond the current pace. No marquee external 14A customer is signed; management targets 2H 2026, and 14A does not enter risk production until 2H 2027, so any 2026 external ramp must come from 18A.",
+          "thresholdDefect": "The threshold is a bare dollar figure and can be cleared by accounting reclassification without any strategic progress. Altera was deconsolidated 2025-09-12 after the sale of 51% of its stock, which converted Intel-internal wafer volume into third-party external revenue. The FY2025 $77M/quarter to Q1 2026 $174M step-up is therefore substantially mechanical rather than customer-won. The falsifier intent is \"can Intel win third-party foundry customers\"; on that intent the economic content is firing harder than the numeric threshold shows. Addressed by opening falsifier #6 rather than by moving the number, so the original threshold stays auditable.",
+          "counterEvidence": "The same print carried genuine good news that must not be smoothed away. 18A output exceeded internal targets by ~25% in Q2, output up >50% QoQ, and Panther Lake cost fell ~50% YTD — cost per good die is a yield proxy, so this is evidence AGAINST falsifier #1. Data Center AI revenue $6.3B, +24% QoQ and +59% YoY, is evidence AGAINST falsifier #3. Intel Foundry also announced its first named external customer (Fortinet, 2026-07-23), breaking a long customer silence — real, but small against a $5.8B segment. Total revenue $16.128B beat ~$14.43B consensus; non-GAAP EPS $0.42 vs ~$0.21-0.22; seventh consecutive quarter above own guidance. This is a company whose PRODUCT side is recovering and whose FOUNDRY side remains unproven — and the price is being paid for the foundry side.",
+          "sourceBias": "18A yield progress is management-reported against internal targets with no external audit. Standard treatment for a self-reported metric from a party with an incentive to report well: accept the direction, discount the magnitude, and do not let it carry a rating change on its own.",
+          "priceContext": "INTC $87.18 on 2026-07-28, pricingScore 4.2, funnel FAIL on pricing alone. Forward P/E 43.9 against the L5 foundry median 18.5 (component score 5.0, the punitive maximum); EV/Revenue 8.75 (score 5.0); momentum component 5.0 on a +78.7% six-month return; only analyst upside at 1.7 (mean target $115.65, +32.7%) argues the other way. 12-month change +349.1%, drawdown from 52-week high -38.8%, deratingSignature momentum-unwind. Defensibility is passed via physicalConstraint=4; aiContribution sits at exactly 0.30, precisely on the gate boundary, so any downward revision of that estimate fails the ticker on a second dimension.",
+          "conclusion": "moatCapture HELD at 3 — deliberately NOT downgraded. The integration lock is not converting into third-party capture, which argues for 2; but the product side beat hard and 18A cost is genuinely falling, and this session already produced one error from re-rating a thesis on a single print (CHANGELOG v2.9.0 section 0, GLW). One observation does not move a rating. physicalConstraint HELD at 4, constraintType tech — leading-edge logic capability is a real technical constraint regardless of who buys it. The 2026-05-27 _note predicted \"FAIL on multiple dimensions — momentum already elevated\"; that has held for two months while the stock added another leg, which is a reminder that the funnel judges price, not direction.",
+          "confidence": "F2 tracking-to-trigger: HIGH. F4 both legs in-track: HIGH. F1 not triggered: MEDIUM (management-reported only). F3 not triggered: MEDIUM-HIGH. Quarterly external-revenue figures: MEDIUM-HIGH — taken from aggregators citing the 10-Q; the filing was not read directly, and one source (tech-insider.org) reported $800M for Q1 2026 against the $174M carried by multiple others. The $174M figure is used here; if the 10-Q says otherwise the F2 arithmetic must be redone.",
+          "nextCheck": "Q3 FY2026 (late October 2026). Decisive gate: external foundry revenue <= $400M FIRES falsifier #2 arithmetically, since Q4 would then need $1,133M (+183% QoQ) to reach $2B. >= $550M keeps $2B alive but still requires a further ~79% QoQ step in Q4. Read the segment table in the 10-Q directly, not the press release.",
+          "source": "Intel Q2 FY2026 results reported 2026-07-23; Q2 2026 earnings call (CEO Lip-Bu Tan, CFO David Zinsner); Q1 2026 Form 10-Q segment disclosure; FY2025 Form 10-K. Aggregators: BigGo Finance, Investing.com transcript, Yahoo Finance transcript, Forbes 2026-07-08 on foundry revenue vs the stock. Price and ratio data yahoo-finance2, data/scores/2026-07-28.json."
+        },
+        {
+          "date": "2026-07-28",
+          "targets": "CAPEX-vs-MARGIN SQUEEZE (falsifier #4)",
+          "measured": "Non-GAAP gross margin 41.8% in Q2 FY2026, 280bp above own forecast; Q3 guidance 42%. CFO Zinsner raised the 2026 capex outlook to more than $20B (a ~$3B increase) citing strong customer demand signals, with tooling spend ~40% above 2025 and 2027 expected significantly above 2026. Adjusted free cash flow -$8.419B in the quarter against operating cash flow of ~$7B; ~$30B cash and short-term investments. Management cited 2021-2026 US tools-and-plant spend approaching $100B.",
+          "threshold": "Gross margin remains below 45% through 2026 — capex burden (>$25B/yr) without scale margin recovery forces equity raise or capex cut",
+          "result": "BOTH LEGS IN TRACK; the stated CONSEQUENCE has not occurred. Margin leg: 41.8% actual and 42% guided are below 45%, and the guide does not reach it. Capex leg: >$20B in 2026 with 2027 \"significantly above\" points at the >$25B/yr threshold in 2027 rather than 2026. No equity raise and no capex cut — the opposite, capex was raised. The falsifier is accumulating rather than firing, and its resolution is a 2027 event.",
+          "arithmeticCaveat": "Operating cash flow +$7B alongside adjusted FCF -$8.419B implies roughly $15.4B of capex in a single quarter, which does not reconcile with a full-year outlook of >$20B. Either the adjusted-FCF definition includes items beyond capex, or one of the figures is misreported by the aggregators. NOT RESOLVED — flagged rather than encoded as fact. The sign and order of magnitude (deeply negative free cash flow) are solid; the decomposition is not.",
+          "framingNote": "The $100B US-spend superlative is a bounded claim: \"in the United States\", \"tools and plant\", \"2021-2026\". TSMC total capex over the same period materially exceeds it; the US restriction is what makes the superlative true. Recorded as management framing, not as a competitive fact.",
+          "conclusion": "The coverage of this print led with the capex raise. Capex is an INPUT. Falsifier #2 measures the OUTPUT. A company can raise capex indefinitely without winning a foundry customer, and this quarter it did both — raised capex and reported $293M of external revenue. The gap between those two facts is the thesis risk in one line.",
+          "confidence": "HIGH on both legs being in-track; LOW on the FCF decomposition (see arithmeticCaveat).",
+          "nextCheck": "Q4 FY2026 print and the FY2027 capex guide (January 2027) — the first point at which the >$25B/yr leg becomes measurable rather than directional.",
+          "source": "Intel Q2 FY2026 earnings call, CFO David Zinsner remarks; aggregator transcripts as above."
         }
       ]
     },
@@ -1028,7 +1137,9 @@
     {
       "symbol": "CRWV",
       "moatCapture": 2,
-      "moatLocks": ["integration"],
+      "moatLocks": [
+        "integration"
+      ],
       "moatFalsification": "GPU-capacity reseller; moat accrues to NVDA (allocation) + Microsoft (anchor customer); take-or-pay only delays",
       "name": "CoreWeave",
       "layer": "L7",
@@ -1058,7 +1169,10 @@
     {
       "symbol": "SPCX",
       "moatCapture": 4,
-      "moatLocks": ["licensing","userHabit"],
+      "moatLocks": [
+        "licensing",
+        "userHabit"
+      ],
       "moatFalsification": "Starlink eroded by Kuiper; xAI fails to differentiate vs frontier labs (private — low confidence)",
       "name": "SpaceX (incl. xAI / SpaceXAI)",
       "layer": "L7",
@@ -1124,7 +1238,10 @@
     {
       "symbol": "ANET",
       "moatCapture": 4,
-      "moatLocks": ["userHabit","integration"],
+      "moatLocks": [
+        "userHabit",
+        "integration"
+      ],
       "moatFalsification": "White-box switching + SONiC displaces Arista at hyperscalers — moat was EOS software, not necessity",
       "name": "Arista Networks",
       "layer": "L8_NET",
@@ -1154,7 +1271,9 @@
     {
       "symbol": "VRT",
       "moatCapture": 4,
-      "moatLocks": ["integration"],
+      "moatLocks": [
+        "integration"
+      ],
       "moatFalsification": "Liquid-cooling/power designs standardize; hyperscalers multi-source the installed base",
       "name": "Vertiv Holdings",
       "layer": "L8_COOL",
@@ -1184,7 +1303,9 @@
     {
       "symbol": "ETN",
       "moatCapture": 3,
-      "moatLocks": ["integration"],
+      "moatLocks": [
+        "integration"
+      ],
       "moatFalsification": "Electrical spec-in commoditizes; multi-sourcing at scale",
       "name": "Eaton Corporation",
       "layer": "L8_COOL",
@@ -1213,7 +1334,9 @@
     {
       "symbol": "GLW",
       "moatCapture": 4,
-      "moatLocks": ["integration"],
+      "moatLocks": [
+        "integration"
+      ],
       "moatFalsification": "Optical-fiber/glass patent + capacity lead eroded by competitors",
       "name": "Corning",
       "layer": "L8_OPT",
@@ -1277,7 +1400,9 @@
     {
       "symbol": "COHR",
       "moatCapture": 3,
-      "moatLocks": ["integration"],
+      "moatLocks": [
+        "integration"
+      ],
       "moatFalsification": "Laser/optical components second-sourced; capacity-vendor pricing",
       "name": "Coherent Corp",
       "layer": "L8_OPT",
@@ -1319,7 +1444,9 @@
     {
       "symbol": "LITE",
       "moatCapture": 3,
-      "moatLocks": ["integration"],
+      "moatLocks": [
+        "integration"
+      ],
       "moatFalsification": "Transceiver commoditizes; Chinese optics (Innolight) take share",
       "name": "Lumentum Holdings",
       "layer": "L8_OPT",
@@ -1395,7 +1522,9 @@
     {
       "symbol": "CRDO",
       "moatCapture": 3,
-      "moatLocks": ["integration"],
+      "moatLocks": [
+        "integration"
+      ],
       "moatFalsification": "SerDes/retimer IP is licensable and second-sourced (AVGO, MRVL, ALAB all ship competing PHY); hyperscalers can dual-source AEC or revert to passive copper. Capture sits with the switch/accelerator vendor that defines the link budget, not with the PHY supplier.",
       "name": "Credo Technology Group",
       "layer": "L2_5",
@@ -1432,7 +1561,9 @@
     {
       "symbol": "CAT",
       "moatCapture": 3,
-      "moatLocks": ["integration"],
+      "moatLocks": [
+        "integration"
+      ],
       "moatFalsification": "Reciprocating gensets and industrial gas turbines are supplied by several qualified vendors (Cummins, INNIO, Rolls-Royce, Rehlko, Generac, Wartsila, GE Vernova, Siemens Energy, Mitsubishi). The current pricing power is a capacity-queue artifact, not a structural lock. Decisive evidence (Thunder Said Energy, 2026): only ~15GW of engine manufacturing capacity is presently dedicated to the power sector, while marine and heavy-duty manufacturers can collectively build ~250GW of engines, and redirecting a slice of that requires only modest investment. This is categorically unlike a semiconductor fab (3-5 years, tens of billions, physically irreversible): engine capacity has a large latent pool sitting one retooling decision away. Capture then reverts to the datacenter owner.",
       "name": "Caterpillar",
       "layer": "L12",
@@ -1479,7 +1610,9 @@
     {
       "symbol": "CMI",
       "moatCapture": 3,
-      "moatLocks": ["integration"],
+      "moatLocks": [
+        "integration"
+      ],
       "moatFalsification": "Same ~250GW latent engine-capacity argument that cut CAT to pc=3 applies here in full. CMI's specific lock is vertical integration — it builds both the engine and the genset, plus a distribution and service network — which is real but is matched by CAT and does not constitute a chokepoint. Capture reverts to the hyperscaler once capacity catches demand.",
       "name": "Cummins",
       "layer": "L12",
@@ -1557,7 +1690,10 @@
     {
       "symbol": "EQIX",
       "moatCapture": 4,
-      "moatLocks": ["userHabit","integration"],
+      "moatLocks": [
+        "userHabit",
+        "integration"
+      ],
       "moatFalsification": "Hyperscalers self-build and bypass colo interconnection; enterprise migrates direct",
       "name": "Equinix",
       "layer": "L9",
@@ -1586,7 +1722,9 @@
     {
       "symbol": "DLR",
       "moatCapture": 3,
-      "moatLocks": ["integration"],
+      "moatLocks": [
+        "integration"
+      ],
       "moatFalsification": "Wholesale-DC capacity commoditizes; tenant switching at lease renewal",
       "name": "Digital Realty",
       "layer": "L9",
@@ -1687,7 +1825,11 @@
       "symbol": "CRWD",
       "name": "CrowdStrike",
       "moatCapture": 4,
-      "moatLocks": ["userHabit","integration","liability"],
+      "moatLocks": [
+        "userHabit",
+        "integration",
+        "liability"
+      ],
       "moatFalsification": "A model-native security entrant absorbs endpoint detection at materially lower cost AND CRWD net-retention compresses — i.e. the moat was incumbency, not the telemetry data.",
       "layer": "L10",
       "layerRole": "primary",
@@ -1716,7 +1858,10 @@
       "symbol": "PANW",
       "name": "Palo Alto Networks",
       "moatCapture": 3,
-      "moatLocks": ["integration","liability"],
+      "moatLocks": [
+        "integration",
+        "liability"
+      ],
       "moatFalsification": "Platform-consolidation thesis reverses; point solutions re-fragment the stack, showing the bundle was the moat not the tech.",
       "layer": "L10",
       "layerRole": "primary",
@@ -1744,7 +1889,10 @@
     {
       "symbol": "CEG",
       "moatCapture": 4,
-      "moatLocks": ["licensing","integration"],
+      "moatLocks": [
+        "licensing",
+        "integration"
+      ],
       "moatFalsification": "Data-center PPA premium compresses; merchant nuclear reverts to commodity power",
       "name": "Constellation Energy",
       "layer": "L11",
@@ -1780,7 +1928,10 @@
     {
       "symbol": "VST",
       "moatCapture": 3,
-      "moatLocks": ["licensing","integration"],
+      "moatLocks": [
+        "licensing",
+        "integration"
+      ],
       "moatFalsification": "Merchant-power spread compresses; retail book does not lock AI demand",
       "name": "Vistra Energy",
       "layer": "L11",
@@ -1815,7 +1966,9 @@
     {
       "symbol": "OKLO",
       "moatCapture": 4,
-      "moatLocks": ["licensing"],
+      "moatLocks": [
+        "licensing"
+      ],
       "moatFalsification": "NRC licensing fails/delays OR a competing SMR design is approved+ordered first (pre-revenue; licensing IS the moat and the bottleneck)",
       "name": "Oklo Inc.",
       "layer": "L11",
@@ -1851,7 +2004,9 @@
     {
       "symbol": "SMR",
       "moatCapture": 4,
-      "moatLocks": ["licensing"],
+      "moatLocks": [
+        "licensing"
+      ],
       "moatFalsification": "Design approval does not convert to commercial orders; cost overruns vs alternatives",
       "name": "NuScale Power",
       "layer": "L11",
@@ -1887,7 +2042,9 @@
     {
       "symbol": "CCJ",
       "moatCapture": 3,
-      "moatLocks": ["integration"],
+      "moatLocks": [
+        "integration"
+      ],
       "moatFalsification": "Uranium long-term contracts do not price at premium; spot reversion",
       "name": "Cameco Corporation",
       "layer": "L11_FUEL",
@@ -1930,7 +2087,9 @@
     {
       "symbol": "GEV",
       "moatCapture": 4,
-      "moatLocks": ["integration"],
+      "moatLocks": [
+        "integration"
+      ],
       "moatFalsification": "Grid-equipment backlog cancels; Siemens Energy / Chinese OEMs take share",
       "name": "GE Vernova",
       "layer": "L12",
@@ -2314,7 +2473,10 @@
     {
       "symbol": "LINK",
       "moatCapture": 4,
-      "moatLocks": ["integration","userHabit"],
+      "moatLocks": [
+        "integration",
+        "userHabit"
+      ],
       "moatFalsification": "A competing oracle (Pyth) captures the majority of DeFi secured value",
       "name": "Chainlink",
       "layer": "L_DCOMP",
@@ -2347,7 +2509,10 @@
     {
       "symbol": "ETH",
       "moatCapture": 4,
-      "moatLocks": ["userHabit","integration"],
+      "moatLocks": [
+        "userHabit",
+        "integration"
+      ],
       "moatFalsification": "An L1 competitor achieves sustained developer + TVL migration off Ethereum",
       "name": "Ethereum",
       "layer": "L_DCOMP",
@@ -2381,7 +2546,10 @@
     {
       "symbol": "CRCL",
       "moatCapture": 4,
-      "moatLocks": ["licensing","integration"],
+      "moatLocks": [
+        "licensing",
+        "integration"
+      ],
       "moatFalsification": "USDC loses share to USDT/bank-issued stablecoins as banks get licensed; regulatory moat commoditizes",
       "name": "Circle Internet Group",
       "layer": "L_DCOMP",
@@ -2413,7 +2581,11 @@
     {
       "symbol": "ISRG",
       "moatCapture": 5,
-      "moatLocks": ["licensing","userHabit","integration"],
+      "moatLocks": [
+        "licensing",
+        "userHabit",
+        "integration"
+      ],
       "moatFalsification": "Medtronic Hugo / J&J Ottava take share; surgeon switching + installed-base lock breaks",
       "name": "Intuitive Surgical",
       "layer": "L_EMBI",
@@ -2443,7 +2615,9 @@
     {
       "symbol": "CGNX",
       "moatCapture": 4,
-      "moatLocks": ["integration"],
+      "moatLocks": [
+        "integration"
+      ],
       "moatFalsification": "Machine-vision spec-in lost to commodity vision + open CV models",
       "name": "Cognex",
       "layer": "L_EMBI",
@@ -2473,7 +2647,9 @@
     {
       "symbol": "PH",
       "moatCapture": 3,
-      "moatLocks": ["integration"],
+      "moatLocks": [
+        "integration"
+      ],
       "moatFalsification": "Motion/control spec-in commoditizes; AI exposure (0.15) immaterial regardless",
       "name": "Parker Hannifin",
       "layer": "L_EMBI",
@@ -2503,7 +2679,10 @@
     {
       "symbol": "TSLA",
       "moatCapture": 4,
-      "moatLocks": ["privateData","userHabit"],
+      "moatLocks": [
+        "privateData",
+        "userHabit"
+      ],
       "moatFalsification": "FSD/Optimus fail to productize; fleet-data advantage does not convert to an autonomy lead",
       "name": "Tesla",
       "layer": "L_EMBI",
@@ -2565,7 +2744,10 @@
     {
       "symbol": "RKLB",
       "moatCapture": 4,
-      "moatLocks": ["licensing","integration"],
+      "moatLocks": [
+        "licensing",
+        "integration"
+      ],
       "moatFalsification": "SpaceX pricing crushes small-launch economics; Neutron slips",
       "name": "Rocket Lab",
       "layer": "L_SPACE",
@@ -2600,7 +2782,10 @@
     {
       "symbol": "ASTS",
       "moatCapture": 4,
-      "moatLocks": ["licensing","integration"],
+      "moatLocks": [
+        "licensing",
+        "integration"
+      ],
       "moatFalsification": "Starlink direct-to-cell wins carrier deals; spectrum/patent position challenged",
       "name": "AST SpaceMobile",
       "layer": "L_SPACE",
@@ -2630,7 +2815,9 @@
     {
       "symbol": "MOG",
       "moatCapture": 3,
-      "moatLocks": ["integration"],
+      "moatLocks": [
+        "integration"
+      ],
       "moatFalsification": "Motion-control qualification eroded; AI exposure (0.15) immaterial",
       "name": "Moog",
       "layer": "L_SPACE",
@@ -2661,7 +2848,10 @@
     {
       "symbol": "AVAV",
       "moatCapture": 4,
-      "moatLocks": ["licensing","integration"],
+      "moatLocks": [
+        "licensing",
+        "integration"
+      ],
       "moatFalsification": "Loses a program-of-record to Anduril/peers; defense qualification barrier breached",
       "name": "AeroVironment",
       "layer": "L_DEF",
@@ -2699,7 +2889,10 @@
     {
       "symbol": "KTOS",
       "moatCapture": 4,
-      "moatLocks": ["licensing","integration"],
+      "moatLocks": [
+        "licensing",
+        "integration"
+      ],
       "moatFalsification": "Drone/system programs not renewed; a new entrant wins qualification",
       "name": "Kratos Defense & Security Solutions",
       "layer": "L_DEF",
@@ -2736,7 +2929,9 @@
     {
       "symbol": "APLD",
       "moatCapture": 3,
-      "moatLocks": ["integration"],
+      "moatLocks": [
+        "integration"
+      ],
       "moatFalsification": "AI-DC host; take-or-pay tenant lock real but power-access is the scarce asset — capture contested operator vs tenant",
       "name": "Applied Digital",
       "layer": "L9_MINER_CONVERT",
@@ -2768,7 +2963,9 @@
     {
       "symbol": "CIFR",
       "moatCapture": 3,
-      "moatLocks": ["integration"],
+      "moatLocks": [
+        "integration"
+      ],
       "moatFalsification": "AI-DC host; contested capture vs tenant + power contract",
       "name": "Cipher Mining",
       "layer": "L9_MINER_CONVERT",
@@ -2800,7 +2997,9 @@
     {
       "symbol": "IREN",
       "moatCapture": 3,
-      "moatLocks": ["integration"],
+      "moatLocks": [
+        "integration"
+      ],
       "moatFalsification": "AI-DC host; contested capture vs tenant",
       "name": "IREN Limited",
       "layer": "L9_MINER_CONVERT",
@@ -2832,7 +3031,9 @@
     {
       "symbol": "WULF",
       "moatCapture": 3,
-      "moatLocks": ["integration"],
+      "moatLocks": [
+        "integration"
+      ],
       "moatFalsification": "AI-DC host; contested capture vs tenant",
       "name": "TeraWulf",
       "layer": "L9_MINER_CONVERT",
@@ -2864,7 +3065,9 @@
     {
       "symbol": "HUT",
       "moatCapture": 3,
-      "moatLocks": ["integration"],
+      "moatLocks": [
+        "integration"
+      ],
       "moatFalsification": "AI-DC host; contested capture vs tenant",
       "name": "Hut 8",
       "layer": "L9_MINER_CONVERT",

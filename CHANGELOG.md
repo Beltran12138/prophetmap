@@ -4,6 +4,118 @@ All notable universe / layers / framework changes, dated.
 
 ---
 
+## 2026-07-28 — v2.9.2: INTC falsifier review · L2 peer-list repair · the peer-independence test was measuring the wrong set
+
+Two commissioned items. The second turned out to be three defects, not the one it was commissioned for.
+
+### 1. INTC — first formal L5 falsifier review against a reported quarter
+
+Q2 FY2026, reported 2026-07-23. Two `falsificationObservations` entries opened on `INTC`, same procedure as the GLW review in v2.9.0 (that one was L8_OPT; this is L5).
+
+**Falsifier #2 is the load-bearing one, and it is TRACKING TO TRIGGER.**
+
+| | external foundry revenue |
+|---|---|
+| FY2024 | $159M (full year) |
+| FY2025 | $307M (full year, ~$77M/qtr) |
+| Q1 2026 | $174M |
+| **Q2 2026** | **$293M** — 5% of the $5.8B segment |
+| **H1 2026** | **$467M** |
+
+Threshold: *external customer revenue <$2B by C2026E → IFS strategy structurally fails.*
+
+To clear $2B, H2 must deliver **$1,533M**. Q2 grew +68.4% QoQ; sustaining exactly that rate gives Q3 $493M and Q4 $830M, an FY total of **~$1.80B — still short**. Clearing the bar requires the growth rate to *accelerate*. No marquee external 14A customer is signed (management targets 2H 2026), and 14A does not enter risk production until 2H 2027, so any 2026 external ramp has to come from 18A.
+
+**Decisive next check, Q3 FY2026 (late October):** external ≤ **$400M** fires #2 arithmetically — Q4 would then need $1,133M, a +183% QoQ jump. ≥ **$550M** keeps $2B alive but still demands a further ~79% QoQ step in Q4.
+
+**The threshold has a defect, found by measuring it.** It is a bare dollar figure, and a bare dollar figure can be cleared by an accounting event. Altera was deconsolidated 2025-09-12 (51% of its stock sold), converting Intel-internal wafer volume into third-party external revenue — so the $77M/qtr → $174M step-up is substantially *mechanical*, not customer-won. The falsifier's intent is "can Intel win third-party customers"; on intent it is firing harder than the number shows.
+
+Handled by **opening falsifier #6** rather than editing #2, so the original judgement stays auditable:
+
+> *IFS external revenue growth is reclassification rather than customer acquisition — external foundry revenue excluding deconsolidated-affiliate volume fails to exceed $150M/quarter by Q4 C2026. FIRST CHECK: Q4 FY2026 10-K segment detail.*
+
+Same pattern as GLW #7 vs #6 in v2.9.0. Recorded as a general rule in `_meta.fieldGuide.thesisFalsification`: **append, don't edit.**
+
+**Falsifier #4 — both legs in track, consequence not yet observed.** Non-GAAP GM 41.8%, Q3 guide 42%, neither reaching the 45% floor; capex >$20B for 2026 with 2027 "significantly above", pointing at the >$25B/yr leg in 2027. No equity raise, no capex cut — capex was *raised*. Accumulating, not firing; resolves in 2027.
+
+**Falsifiers #1 and #3 — NOT triggered, and this is real good news that is not being smoothed away.** 18A output beat internal targets ~25%, up >50% QoQ, Panther Lake cost −50% YTD (cost per good die is a yield proxy). Data Center AI $6.3B, +24% QoQ, **+59% YoY**. First named external foundry customer announced (Fortinet, 2026-07-23). Revenue $16.128B vs ~$14.43B consensus; non-GAAP EPS $0.42 vs ~$0.21–0.22; seventh straight quarter above own guidance.
+
+The honest synthesis: **the product side is recovering and the foundry side is unproven — and the price is being paid for the foundry side.** Capex is an input; falsifier #2 measures the output. This quarter Intel raised the input and reported $293M of the output.
+
+**No rating moved.** `moatCapture` HELD at 3, `physicalConstraint` HELD at 4. The integration lock failing to convert into third-party capture argues for 2, but this session already produced one error from re-rating a thesis on a single print (§0 of v2.9.0, GLW). One observation does not move a rating.
+
+**Confidence, explicit.** #2 tracking-to-trigger HIGH · #4 legs in-track HIGH · #1 not-triggered MEDIUM (management-reported, unaudited) · #3 not-triggered MEDIUM-HIGH · **quarterly external-revenue figures MEDIUM-HIGH** — taken from aggregators citing the 10-Q, filing not read directly, and one source reported $800M for Q1 against the $174M carried by others. Two arithmetic caveats are flagged rather than encoded: OCF +$7B alongside adjusted FCF −$8.419B implies ~$15.4B of capex in one quarter, which does not reconcile with >$20B for the year; and the "$100B, more than any semiconductor company" superlative is bounded to *US* tools and plant, which is what makes it true.
+
+`INTC` remains **FAIL on pricing alone** — pricingScore 4.2, forward P/E 43.9 vs the L5 median 18.5, +349.1% over 12 months. Note also that `aiContribution` sits at **exactly 0.30**, precisely on the gate boundary: any downward revision fails the ticker on a second dimension.
+
+---
+
+### 2. L2 peer list — INTC removed
+
+`INTC` was declared a **peer of L2** while its universe entry is **layer L5**. It was simultaneously a constituent of what L2 calls fair value *and*, against L5's foundry median of 18.5, L2's most expensive outlier at forward P/E 43.9.
+
+Two independent grounds for removal, so this is not a close call:
+
+1. **Layer contradiction** — the universe thesis for INTC is explicitly the *foundry* thesis. L5 is the thesis-correct assignment, so the peer list is what was wrong, not the layer. `layer` is unchanged.
+2. **Business-model mismatch** — GOVERNANCE.md § *CHANGE a layer's `peers` list* forbids mixing capital-intensity profiles. L2 is fabless high-performance compute silicon; INTC is a capital-intensive IDM carrying a foundry segment that lost $2.1B in the quarter. That is the exact mismatch the rule names.
+
+GOVERNANCE.md requires *delisted or acquired* peers be replaced. INTC is neither, so the rule does not bind — and it is **deliberately not replaced**: L2 has no public external comparable. Training silicon is a duopoly plus private companies (Cerebras is already the universe member CBRS; Groq, SambaNova, Tenstorrent are private). Any substitute would fail business-model-match harder than INTC did.
+
+**Measured rating delta** — GOVERNANCE.md requires it for *every* ticker in the layer, all non-benchmark components frozen at 2026-07-28:
+
+| | pricingScore | forward P/E cmpt | EV/Rev cmpt | funnel |
+|---|---|---|---|---|
+| NVDA | 2.0 → **2.0** | 1.5 → 1.6 | 2.8 → 2.7 | PASS → PASS |
+| AMD | 3.1 → **3.2** | 2.7 → 3.0 | 3.2 → 3.0 | FAIL → FAIL |
+| CBRS | 3.3 → **3.3** | 5.0 → 5.0 | 5.0 → 5.0 | FAIL → FAIL |
+
+Median moves: forward P/E 38.8 → **33.6**, EV/Revenue 20.0 → **21.3**, sample 4 → 3.
+
+**The two components offset, which the pre-measurement prediction missed.** Only the forward-P/E effect had been anticipated. INTC's EV/Revenue of 8.75 had been dragging the L2 EV/Revenue median *down*, making L2 members look expensive on that leg; removing it raises the median and makes them look cheaper. Net effect on AMD is **+0.1**, not the one-directional move predicted. No funnel state flipped. `INTC`'s own score is untouched — it is scored against L5.
+
+**Median provenance matters here.** The medians were recomputed from the ratio snapshot already stored in `data/scores/2026-07-28.json`, **not** from a fresh fetch. A live re-run at 2026-07-29 UTC moved medians across 22 layers — including **L6 24.3 → 16.6, a −32% move that would materially re-rate MU**. Bundling that drift into a structural commit is precisely the silent re-rating GOVERNANCE.md exists to prevent. Price drift is left to the scheduled job.
+
+---
+
+### 3. The peer-independence test was measuring the wrong set
+
+Not commissioned. Found while verifying §2 — and it is the reason §2 was invisible.
+
+`update-benchmarks.js` computed:
+
+```js
+const externalPeers = declaredPeers.filter((p) => !members.includes(p));
+```
+
+`members` is **this layer's** universe tickers. But GOVERNANCE.md §124 states the principle globally — *"a peer list made of holdings restores the same defect"*. **A holding is a holding, whatever layer it sits in.**
+
+| layer | reported external peers | actual | why |
+|---|---|---|---|
+| **L2** | 1 | **0** | INTC is an L5 holding, counted as L2's external reference |
+| **L11** | 2 | **1** | CCJ is an L11_FUEL holding |
+| **L_EXP_QC** | 3 | **1** | IONQ/RGTI are that layer's *own* members — invisible to `members` only because `byLayer` skips `status === 'experimental'`, so the layer was declaring its own holdings as external peers |
+
+**All three errors inflate `_externalPeerCount`. All three make the self-reference alarm UNDER-fire.** A diagnostic biased toward reassurance is worse than no diagnostic, and this one had been quietly reassuring since v2.8.0.
+
+Fixed by testing against the whole book, at any status and in any layer:
+
+```js
+const universeSymbols = new Set(universe.tickers.map((t) => t.symbol));
+const externalPeers = declaredPeers.filter((p) => !universeSymbols.has(p));
+```
+
+Surfacing only — **zero pricing impact**. It turns on two new `_selfReferential` alarms (L11, L_EXP_QC) and corrects L2's from a masked 1 to a true 0. Self-referential layers now stand at **9 of 22**: L0, L2, L2_5, L3, L4, L7, L11, L14, L_EXP_QC.
+
+The residual limitation is stated rather than papered over: **55% of every L2 pricingScore is now openly anchored on a median of the book itself.** That is a structural property of a duopoly layer, not a fixable data gap — and it is the honest state the layer-scoped test was hiding.
+
+---
+
+### Process note
+
+§1 was commissioned as a review and produced a falsifier-design fix. §2 was commissioned as a one-line peer edit and produced a systemic diagnostic bug. Both times the extra finding came from **verifying the commissioned change rather than just making it** — the same mechanism that produced v2.9.1, where reading the remote before rebasing exposed two errors in v2.9.0.
+
+---
+
 ## 2026-07-28 — v2.9.1: `assetClass` never emitted · true 6-month window
 
 Two fixes, and **both correct claims made in v2.9.0 hours earlier**. Both were found only because the push was rejected and the remote's CI commit had to be read before rebasing.

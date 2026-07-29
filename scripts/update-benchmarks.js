@@ -84,6 +84,17 @@ async function main() {
     byLayer[t.layer].push(t.symbol);
   }
 
+  // Every symbol the book holds, at ANY status and in ANY layer. This is the set the
+  // peer-independence test must be taken against — not `byLayer[layerId]`. A holding
+  // is a holding: pricing it against a differently-layered holding is still the book
+  // pricing itself. See v2.9.2 for the two ways the layer-scoped test misreported:
+  //   L2 declared INTC an external peer — INTC is an L5 holding.
+  //   L_EXP_QC declared IONQ/RGTI external — they are that layer's own members,
+  //     invisible to byLayer only because `status === 'experimental'` is skipped above.
+  // Both errors inflate _externalPeerCount, i.e. both make the self-reference alarm
+  // UNDER-fire. A diagnostic biased toward reassurance is worse than none.
+  const universeSymbols = new Set(universe.tickers.map((t) => t.symbol));
+
   // Compute for every layer that has a benchmark entry, not just layers that
   // currently hold universe members — otherwise a layer whose members were all
   // demoted keeps a stale median indefinitely.
@@ -109,7 +120,9 @@ async function main() {
     }
     // Peer independence: peers that are themselves holdings do not de-self-reference
     // the median. Counted before the fetch so it is reported even if data is missing.
-    const externalPeers = declaredPeers.filter((p) => !members.includes(p));
+    // Tested against the whole book (v2.9.2), not this layer's members — see the
+    // universeSymbols note above.
+    const externalPeers = declaredPeers.filter((p) => !universeSymbols.has(p));
     const hasEntry = !!benchmarksFile.benchmarks[layerId];
     if (!hasEntry) {
       // Strictly worse than self-reference: with no entry at all, update-valuations.js
