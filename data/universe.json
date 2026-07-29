@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "version": "2.9.2",
+    "version": "2.9.4",
     "date": "2026-07-28",
     "description": "ProphetMap stock universe — manually-defined static fields only. Dynamic pricing scores written to data/scores/YYYY-MM-DD.json by scripts/update-valuations.js",
     "fieldGuide": {
@@ -23,7 +23,8 @@
       "aiContribution": ">=0.30",
       "timeToRealize": "near or mid",
       "pricingScore": "<=3 (computed at runtime)"
-    }
+    },
+    "changeLog": []
   },
   "tickers": [
     {
@@ -2554,7 +2555,7 @@
       "name": "Circle Internet Group",
       "layer": "L_DCOMP",
       "layerRole": "bridge",
-      "physicalConstraint": 4,
+      "physicalConstraint": 3,
       "constraintType": "regulatory",
       "aiContribution": 0.3,
       "timeToRealize": "near",
@@ -2563,7 +2564,8 @@
         "Federal Reserve target rate falls below 2% for two consecutive quarters compressing reserves yield",
         "USDT or new stablecoin captures >20% of USDC market cap share through better cross-chain UX",
         "GENIUS Act implementation forces unfavorable reserve composition or yield-sharing requirements",
-        "Major AI agent platform standardizes on bank-issued tokenized deposits rather than USDC"
+        "Major AI agent platform standardizes on bank-issued tokenized deposits rather than USDC",
+        "Issuer unbundling — value migrates from BEING the dollar to OPERATING the mint: combined supply of brand-issued stablecoins minted on third-party white-label infrastructure (Bridge Open Issuance and equivalents) exceeds $15B, i.e. 20% of USDC supply, by 2027-12-31. Distinct from #2, which tests one rival dollar taking USDC's share; this tests whether \"a dollar any brand can issue\" takes it collectively, in which case USDC's licensing and reserve scale stop being differentiators. BASELINE 2026-07-29: ~$0.15B visible (Phantom CASH $0.123B; MetaMask mUSD below the DeFiLlama registry cut; KlarnaUSD not yet on mainnet) — the threshold is roughly 100x from here, so a reading above $3B at the interim check should be treated as on-pace. FIRST CHECK: 2026-12-31 supply snapshot."
       ],
       "marketCap": 8,
       "status": "active",
@@ -2575,6 +2577,40 @@
           "date": "2026-05-08",
           "version": "1.6.0",
           "change": "Added to L_DCOMP as bridge role — USDC issuer, AI agent payment rail thesis, rate-sensitive"
+        },
+        {
+          "date": "2026-07-29",
+          "version": "2.9.4",
+          "change": "First formal falsifier review for CRCL. falsificationObservations opened with two entries: falsifier #2 NOT TRIGGERED on a first-party DeFiLlama series (USDC +13.7% YoY, share flat at 23.75%), falsifier #4 NOT TRIGGERED — Klarna is not an AI agent platform and KlarnaUSD is not live. physicalConstraint RE-RATED 4 -> 3: the OCC granted national trust charters to eleven firms in roughly three months, so the regulatory constraint is a queue, not a chokepoint. funnelPass unchanged (verified by simulation); moatCapture HELD at 4 on affirmative supply evidence and now carries the defensibility OR-gate alone. New falsifier #5 opened on issuer unbundling (Bridge Open Issuance), which tests the \"integration\" lock that is now load-bearing."
+        }
+      ],
+      "falsificationObservations": [
+        {
+          "date": "2026-07-29",
+          "targets": "USDC SHARE LOSS (falsifier #2)",
+          "measured": "DeFiLlama first-party series, USDC circulating supply and share of total USD-pegged supply: 2025-07-31 $63.68B / 24.07%; 2025-11-25 $74.29B / 24.55%; 2026-01-31 $69.99B / 23.00%; 2026-04-30 $77.34B / 24.38%; 2026-06-30 $73.75B / 23.82%; 2026-07-29 $72.40B / 23.75%. YoY: USDC supply +13.7%, total USD-pegged market $264.5B -> $306.4B (+15.8%), share -0.32pp. Current ranking: USDT $183.82B (59.75%); USDC #2 at 23.75%; largest challenger USDS $6.56B (2.13%); USD1 $4.05B; USDG $3.27B; Circle USYC $3.01B; PYUSD $2.66B; BUIDL $2.64B; RLUSD $1.61B.",
+          "threshold": "USDT or new stablecoin captures >20% of USDC market cap share through better cross-chain UX",
+          "result": "NOT TRIGGERED, wide margin, on every reading of the threshold. On the most demanding reading (a challenger reaching 20% of USDC supply = $14.5B) the largest non-USDT challenger is USDS at $6.56B — and USDS is a DeFi-native collateral dollar, not the cross-chain UX competitor the falsifier describes. On the loosest reading (USDC share falling 20% relative, 24.07% -> 19.26%) share is 23.75%, sitting inside a 12-month range of 23.00-24.55%.",
+          "thresholdDefect": "The phrase \">20% of USDC market cap share\" admits three readings: 20% of USDC supply ($14.5B), 20% of total market share ($61B), or a 20% relative decline in USDC share (to 19.26%). All three are NOT TRIGGERED today so the ambiguity is not yet load-bearing, but it will be at the margin. Not edited, per the append-don't-edit rule; new falsifier #5 measures a different mechanism and carries an unambiguous dollar threshold.",
+          "correction": "An intermediate read in this session compared two secondary-source datapoints (total $304B / USDC $74.3B cited in a Nov 2025 article, vs $307.6B / $72.28B today) and concluded USDC was shrinking while the market grew. The first-party series shows those were a local peak and a local trough; the trend is flat. This is the same class of error as the GLW momentum6m read (CHANGELOG v2.9.0 section 0): a two-point comparison on a volatile series manufacturing a trend that is not there.",
+          "priceContext": "CRCL $62.38 on 2026-07-29, down from $64.95 on 07-28; -67.7% from the 52-week high $193.33; 52-week range $49.90-$193.33. Last scored pricingScore 2.8 — exactly on PRICING_ENTER, i.e. it qualifies by the narrowest possible margin. +1y EPS estimate revised -5.2% over 90 days; PEG 4.34 (\"overpriced\"); 3 of the last 4 quarters beat but average surprise -4.3%. The name is funnel-passing while its estimate path deteriorates — that tension is not resolved by this entry.",
+          "conclusion": "moatCapture HELD at 4, and held on affirmative measurement rather than on absence of evidence: USDC compounded +13.7% YoY with share flat inside a 1.5pp band. This is a different and stronger evidentiary basis than the INTC 2026-07-28 hold, which rested on \"one print does not move a rating\". Note that the existing moatFalsification field already predicted the two-clause risk — \"USDC loses share to USDT/bank-issued stablecoins AS BANKS GET LICENSED; regulatory moat commoditizes\". The second clause is now realised (see the falsifier #4 entry). The first is not.",
+          "confidence": "HIGH on the supply and share series — first-party DeFiLlama API, pulled 2026-07-29, not an aggregator summary. MEDIUM on threshold interpretation, see thresholdDefect.",
+          "nextCheck": "2026-12-31 supply snapshot. Fires if any single non-USDT challenger exceeds $14.5B, or if USDC share breaks below 19.3% on the DeFiLlama series.",
+          "source": "DeFiLlama stablecoins API — stablecoins.llama.fi/stablecoins, /stablecoincharts/all, /stablecoincharts/all?stablecoin=2 — fetched 2026-07-29; price and estimate data yahoo-finance2 fetched 2026-07-29; last scored row data/scores/2026-07-28.json."
+        },
+        {
+          "date": "2026-07-29",
+          "targets": "BANK-ISSUED TOKENIZED DEPOSITS DISPLACE USDC IN AI AGENT SETTLEMENT (falsifier #4) — and a formal re-audit of physicalConstraint 4 / constraintType \"regulatory\"",
+          "measured": "Stripe assembled a competing full stack in 21 months: Bridge acquired 2024-10 for $1.1B; Tempo L1 announced with Paradigm 2025-09-04, $500M Series A at $5B valuation 2025-10, mainnet 2026-03, Stripe / Visa / Zodia Custody as first external validators 2026-04; Bridge Open Issuance announced 2025-09 (white-label stablecoin minting, reserves at BlackRock / Fidelity / Superstate); Bridge National Trust Bank conditionally approved by the OCC 2026-02-12 (Corporate Decision #1365), announced 02-17; Machine Payments Protocol for autonomous agent payment; Stripe in talks to acquire OpenRouter at ~$10B (Bloomberg, 2026-07-24). KlarnaUSD announced 2025-11-25 as the first bank-issued token on Tempo, minted through Bridge Open Issuance.",
+          "threshold": "Major AI agent platform standardizes on bank-issued tokenized deposits rather than USDC",
+          "result": "NOT TRIGGERED. Two of the three required elements are absent. (a) Klarna is a bank but not an AI agent platform. (b) KlarnaUSD was on testnet at announcement with mainnet stated only as \"2026\", not consumer-available, and Klarna framed the initial use as internal cross-border cost reduction with no plan to touch its installment product; no KlarnaUSD supply appears in the DeFiLlama registry as of 2026-07-29. The falsifier requires standardization BY a major AI agent platform. What exists is infrastructure capable of hosting one.",
+          "counterEvidence": "Circle is AHEAD of Bridge on the charter, not behind. Circle received FINAL OCC approval 2026-07-10 for First National Digital Currency Bank, N.A. (operating as Circle National Trust); Bridge holds only conditional approval from 2026-02-12. Bridge-issued supply visible on-chain is de minimis: Phantom CASH $0.123B, MetaMask mUSD below the registry cut, against USDC $72.40B. The Bank Policy Institute opposed Bridge's application and the ABA has urged the OCC to slow approvals pending GENIUS Act rulemaking — the regulator-throughput assumption below is therefore not guaranteed to continue.",
+          "correction": "In the session discussion immediately preceding this entry I asserted that Bridge obtaining an OCC charter weakened Circle's regulatory moat in a head-to-head sense. That framing was wrong on the facts: Circle got there first and got further. The finding that survives measurement is broader and does not depend on Stripe at all — see conclusion.",
+          "conclusion": "physicalConstraint RE-RATED 4 -> 3. constraintType stays \"regulatory\" (the label describes the kind of constraint; what changed is the rated strength). Reason: the rating asserted a chokepoint, and the measurement says queue. The OCC granted conditional national trust charters to Circle, Ripple, Paxos, Fidelity Digital Assets and BitGo in December 2025, to Bridge in February 2026, and has applications pending from Coinbase, Crypto.com, Protego, Morgan Stanley, Payoneer, Zerohash and World Liberty Financial. A constraint that eleven competitors clear inside roughly three months is not rationed — the regulator is widening it as policy. CONSEQUENCE: funnelPass is UNCHANGED, verified by offline simulation of the defensibility OR-gate before this edit rather than assumed — moatCapture=4 carries the gate alone. RESIDUAL DOUBLE-COUNT, recorded rather than acted on: moatLocks contains \"licensing\", which is the same claim physicalConstraint=4 was making. With the physical leg withdrawn, the only independent lock left is \"integration\". Simulation confirms that moatCapture 4 -> 3 would flip the OR-gate to FAIL, so the entire position now hangs on one unverified lock. That is what new falsifier #5 is opened to measure. moatCapture NOT re-rated here — the falsifier #2 entry shows affirmative supply evidence against a downgrade.",
+          "confidence": "HIGH on the charter facts and dates (OCC Corporate Decision #1365; Circle press release 2026-07-10). HIGH on the queue-vs-chokepoint re-rating logic. MEDIUM on whether \"integration\" alone sustains moatCapture=4 — unmeasured, and the reason falsifier #5 exists. MEDIUM on the Klarna mainnet status, which comes from launch-announcement coverage rather than a Klarna filing.",
+          "nextCheck": "2026-12-31 — (a) supply of Bridge-minted brand stablecoins against falsifier #5; (b) whether any AI agent platform announces a settlement default; (c) whether the OCC pace holds or the ABA/BPI pushback slows it, which would argue for restoring physicalConstraint to 4.",
+          "source": "OCC Corporate Decision #1365 (2026-02); Bridge/Stripe announcement 2026-02-17 (CoinDesk, Payments Dive, PYMNTS); Circle press release 2026-07-10; American Banker charter coverage; Klarna KlarnaUSD announcement 2025-11-25 (PYMNTS, Cointelegraph); Tempo coverage 2025-09 to 2026-04 (Crypto Briefing, Everstake); Bloomberg via BlockBeats 2026-07-24 (OpenRouter); DeFiLlama registry fetched 2026-07-29."
         }
       ]
     },

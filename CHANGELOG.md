@@ -4,6 +4,48 @@ All notable universe / layers / framework changes, dated.
 
 ---
 
+## 2026-07-29 — v2.9.4: CRCL falsifier review · `physicalConstraint` 4 → 3 · the regulatory-constraint test
+
+Prompted by two news items — Stripe in talks to acquire OpenRouter at ~$10B, and Stripe/Advent's $60.50/share offer for PayPal. **Neither produced a portfolio motion.** PYPL was evaluated and rejected before reaching the pricing gate; what the news actually did was supply a stress test for a name already held.
+
+### 0. PYPL evaluated and rejected — recorded so it is not re-proposed
+
+Fails the funnel at two independent gates: the defensibility OR-gate (`physicalConstraint` 1–2, `moatCapture` 2–3 — the 8.2× standalone forward P/E against V/MA at ~25× *is* the market's moat verdict) and `aiContribution` (≈0.05–0.10 of forward revenue growth, against a 0.30 floor). It never reaches `pricingScore`, so the apparent 10.2× cheapness is never consulted.
+
+Separately and more fundamentally: **a target's upside is contractually capped at the deal price.** If the merger creates the value the thesis claims, that value accrues to Stripe's shareholders. At $58.73 against a $60.50 bid and a $53.83 sell-side standalone target, the market implies ≈83% completion probability; an independent estimate of 60–70% (Braintree/Stripe horizontal overlap in enterprise acquiring is the antitrust handle) makes the current price rich, not cheap. Not added to the universe, not added to the watchlist.
+
+### 1. CRCL — first formal falsifier review
+
+`falsificationObservations` opened with two entries, matching the GLW v2.9.0 / INTC v2.9.2 format.
+
+**Falsifier #2 (USDC share loss) — NOT TRIGGERED, wide margin.** First-party DeFiLlama series: USDC $63.68B / 24.07% (2025-07-31) → $72.40B / 23.75% (2026-07-29). Supply **+13.7% YoY** against a market that grew 15.8%; share flat inside a 12-month band of 23.00–24.55%. The largest non-USDT challenger is USDS at $6.56B (2.13%), against a threshold requiring roughly $14.5B. `moatCapture` **HELD at 4 on affirmative measurement**, which is a stronger basis than the INTC hold of 2026-07-28 ("one print does not move a rating").
+
+A `thresholdDefect` is recorded: ">20% of USDC market cap share" admits three readings ($14.5B, $61B, or share falling to 19.26%). All three are untriggered today so the ambiguity is not yet load-bearing. **Not edited** — append-don't-edit.
+
+**Falsifier #4 (bank-issued tokenized deposits displace USDC in agent settlement) — NOT TRIGGERED.** KlarnaUSD is the first bank-issued token on Stripe's Tempo, minted through Bridge Open Issuance — but Klarna is not an AI agent platform, KlarnaUSD was on testnet at announcement, and no supply appears in the DeFiLlama registry. What exists is infrastructure capable of hosting the falsifier's scenario, not the scenario.
+
+### 2. Correction — the head-to-head charter claim was wrong
+
+The session discussion preceding this commit asserted that Bridge's OCC charter weakened Circle's regulatory moat **head-to-head**. Wrong on the facts: **Circle received FINAL OCC approval 2026-07-10** (First National Digital Currency Bank, N.A.); Bridge holds only **conditional** approval from 2026-02-12. Circle is ahead, not behind.
+
+A second self-correction is recorded inside the falsifier #2 entry: an intermediate read compared a Nov-2025 secondary datapoint against today's and concluded USDC was shrinking. The first-party series shows a local peak against a local trough. Same class of error as the GLW `momentum6m` read (v2.9.0 §0) — **two-point comparison on a volatile series manufacturing a trend that is not there.**
+
+### 3. `physicalConstraint` 4 → 3, and the test that produced it
+
+The finding that survives measurement is broader than Stripe and does not depend on it. The rating claimed a chokepoint; the OCC has granted national trust charters to **eleven firms in roughly three months**, with more pending. **A constraint eleven competitors clear in a quarter is a queue, not a chokepoint** — the regulator is widening it as policy, not rationing it.
+
+Generalised into GOVERNANCE §"Constraint Decay" **new §3**: a `regulatory` constraint earns pc ≥ 4 only if grants are capped by something other than regulator throughput. Explicitly **not** applied to the other four regulatory-type holdings (ISRG, ASTS, AVAV, KTOS) — not audited, no view recorded, open item.
+
+`funnelPass` **unchanged**, verified by offline simulation of the OR-gate *before* the edit rather than asserted after it. The residual is recorded rather than acted on: `moatLocks` still contains `"licensing"`, which is the same claim `physicalConstraint = 4` was making. With the physical leg withdrawn, **the entire position hangs on `moatCapture = 4`, whose only independent lock is `"integration"`** — and simulation confirms `moatCapture` 4 → 3 would flip the gate to FAIL.
+
+### 4. New falsifier #5 — issuer unbundling
+
+Opened to measure the now load-bearing `"integration"` lock: combined supply of brand-issued stablecoins minted on third-party white-label infrastructure exceeds **$15B (≈20% of USDC supply) by 2027-12-31**. Distinct from #2 — that tests one rival dollar taking share; this tests whether *"a dollar any brand can issue"* takes it collectively, in which case licensing and reserve scale stop being differentiators. Baseline 2026-07-29 ≈$0.15B visible. First check 2026-12-31.
+
+**Process note.** `data/scores/*` untouched. No pipeline run — local UTC has rolled to 07-29 and an after-hours run would write a scores file ahead of CI. The re-rating takes effect on CI's next run. GOVERNANCE's stale pc ≥ 4 distribution line (`52 · 33 tech · 5 regulatory`) was recounted to `50 · 32 tech · 4 regulatory`; it was already off by one in two buckets before this commit.
+
+---
+
 ## 2026-07-28 — v2.9.3: crypto funnel aligned with the equity funnel · L2 self-reference recorded as permanent
 
 Three items were tabled at the end of v2.9.2. **The first was withdrawn — the recommendation that produced it was wrong.**

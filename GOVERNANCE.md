@@ -172,7 +172,7 @@ ASML scores 5 on multi-year EUV process lead time. CRH scores 4 on aggregate tra
 - **regulatory** — licence, approval, liability, defence contract.
 - **unclassified** — the score has no physical referent. This tag currently marks a real debt: LINK and ETH carry `physicalConstraint = 4` for what is network effect, not physics. Flagged, deliberately **not** silently repriced.
 
-Current distribution across the 52 tickers with pc ≥ 4: **33 tech · 12 geo · 5 regulatory · 2 unclassified**.
+Current distribution across the **50** tickers with pc ≥ 4: **32 tech · 12 geo · 4 regulatory · 2 unclassified**. *(Recounted 2026-07-29. The previously stated "52 · 33 tech · 5 regulatory" was stale by one in two buckets before this commit; one further regulatory name left the pc ≥ 4 cohort in v2.9.4, see §3.)*
 
 **Falsifiable claim:** geo-type pc ≥ 4 names underperform tech-type pc ≥ 4 names on a risk-adjusted basis over a full cycle, because the funnel currently credits both as if permanent. If after 12 months there is no separation between the two cohorts, this distinction is decoration and should be deleted rather than promoted to a gate.
 
@@ -190,6 +190,25 @@ Worse, `aiContribution` is a **hand-set static value in `universe.json`** while 
 **Known limitation:** Yahoo exposes a revision history for EPS but not for revenue, so the revision leg is EPS-based while `aiContribution` is revenue-denominated. It is a proxy and is labelled as one.
 
 **Deliberately not a gate.** A revision filter is momentum wearing fundamental clothing — it would buy names whose estimates are already being marked up, which is exactly the crowded, late, reflexive trade the A/B discipline treats as a reverse indicator. It earns a gate only if the audit trail shows revision divergence leading funnel-state changes, not trailing them.
+
+### 3. `constraintType: "regulatory"` — queue or chokepoint? (v2.9.4)
+
+§1 lists `regulatory` as a constraint kind but attaches no test to it. This is the test.
+
+A regulatory constraint earns `physicalConstraint ≥ 4` only if the licence is **rationed** — that is, if the number of grants is capped by something other than the regulator's own throughput. The discriminating measurement is not "is this hard to get?" but **"at what rate are competitors clearing it, and is there a ceiling on how many can?"**
+
+| | Test | Example |
+|---|---|---|
+| **Chokepoint** — pc ≥ 4 earned | Grants are capped by a scarce underlying thing | Exclusive spectrum (finite MHz); classified programme access; an installed base carrying its own clearance |
+| **Queue** — pc ≥ 4 not earned | Any qualified applicant can enter; the only limit is processing time | An open application window |
+
+**Applied 2026-07-29 to CRCL.** The rating asserted a chokepoint on stablecoin-issuer licensing. Measurement: the OCC granted conditional national trust charters to Circle, Ripple, Paxos, Fidelity Digital Assets and BitGo in December 2025 and to Stripe's Bridge in February 2026, with applications pending from Coinbase, Crypto.com, Protego, Morgan Stanley, Payoneer, Zerohash and World Liberty Financial. **Eleven firms clearing inside roughly three months is a queue.** `physicalConstraint` re-rated **4 → 3**. `funnelPass` unchanged — `moatCapture = 4` carries the defensibility OR-gate alone, verified by offline simulation before the edit.
+
+**Reversibility is part of the test.** The ABA and the Bank Policy Institute have both urged the OCC to slow approvals pending GENIUS Act rulemaking. If the pace stops, the constraint is rationed again and the rating should be restored. This is recorded as an explicit re-check in the CRCL `falsificationObservations` entry, not left as a matter of judgement.
+
+**NOT applied to the other four `constraintType: "regulatory"` holdings** — ISRG (pc 5), ASTS (pc 5), AVAV (pc 4), KTOS (pc 4). They were **not audited** in this commit and **no view is recorded on them**. Their constraints are prima facie of a different species (device clearance on an installed base, exclusive spectrum, defence programme access), but "prima facie" is not a measurement. **Open item.**
+
+---
 
 > **Provenance (v2.8.0, 2026-07-28):** prompted by a Thai FDI report (BlockBeats 2026-07-23) in which "investment applications" — an intent number — rose 80% and were read as realised industrial capability. The transferable defects were the two above: geographic moats are rented and decay exogenously, and an intent metric quietly substituted for a delivery metric. Per `techpull_gate`, the expectation-denominator problem was already latent in the v2.7.1 self-reference work; the news supplied the analogy, not the motive. Per `inspired_loop`, this is an instrumentation change and **not a portfolio motion** — no PASS/FAIL state moved.
 
