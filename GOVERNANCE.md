@@ -208,6 +208,42 @@ A regulatory constraint earns `physicalConstraint ≥ 4` only if the licence is 
 
 **NOT applied to the other four `constraintType: "regulatory"` holdings** — ISRG (pc 5), ASTS (pc 5), AVAV (pc 4), KTOS (pc 4). They were **not audited** in this commit and **no view is recorded on them**. Their constraints are prima facie of a different species (device clearance on an installed base, exclusive spectrum, defence programme access), but "prima facie" is not a measurement. **Open item.**
 
+#### 3a. Generalised to `moatLocks: "licensing"` — but first, the field means two opposite things (v2.9.5)
+
+The queue-vs-chokepoint test above was written against `constraintType`. `constraintType: "regulatory"` covers 5 tickers; **`moatLocks: "licensing"` covers 14**, which is the range the test should actually sweep. Sweeping it surfaced a defect in the field itself, which has to be resolved before the test can be applied.
+
+**`licensing` is used for two economically opposite positions:**
+
+| Sense | Who you are | What it is | Test that applies |
+|---|---|---|---|
+| **Licensor** — you collect | You *are* the gatekeeper; others pay you a royalty | A genuine moat. Its decay is substitution of your IP, not withdrawal of a permission | **Not** the queue test. Test is: can the payers switch? |
+| **Licensee** — you hold a permit | A gatekeeper granted you admission | **A revocable permission, not an asset.** Widening the gate dilutes it without anyone taking anything from you | **The queue test** |
+
+Confirmed from the tickers' own `moatFalsification` text, not inferred:
+
+- **QCOM** — *"Modem SEP royalties erode (Apple in-house) AND AI-edge fails to replace **the licensing stream**"* → licensor.
+- **ARM** — *"RISC-V open ISA displaces Arm in key sockets — **licensing moat was switching-cost, not necessity**"* → licensor.
+- **OKLO** — *"NRC licensing fails/delays … (pre-revenue; **licensing IS the moat and the bottleneck**)"* → licensee.
+- **SMR** — *"First and only NRC-certified small modular reactor design … design certification remains as competitive moat"* → licensee.
+
+**Rule.** The queue test applies to the **licensee** sense only — 12 of the 14. For the licensor sense (QCOM, ARM) a widening gate is irrelevant or even favourable; the correct falsifier is substitution, which both tickers already carry.
+
+**Two independent instances now support the test**, from unrelated domains inside eight days of each other:
+
+| Gatekeeper | Widening | Rate |
+|---|---|---|
+| OCC — stablecoin issuer trust charters | 5 conditional (Dec 2025) → +Bridge (Feb 2026) → 7 pending | 11 firms / ~83 days |
+| Anthropic — Project Glasswing frontier-model access | 45 orgs (2026-04-07) → 195 orgs (2026-06-02), 15+ countries | 150 additions / ~8 weeks |
+
+The Glasswing case is the cleaner demonstration because the gatekeeper is **paying to widen** — up to $100M in usage credits. **When admission is subsidised, admission is not scarce**, and the direction of the subsidy is the direction of the scarcity. Anything of the form "company X has privileged access to Y" should be run through this before it is treated as a screen.
+
+**Scan result — the two single-lock exposures.** Of the 12 licensee-sense tickers, ten carry at least one other lock, so the test cannot collapse their rating on its own. **Two carry `moatLocks: ["licensing"]` and nothing else, both rated `moatCapture: 4`:**
+
+- **OKLO** — `moatCapture 4`, sole lock. Its own `moatFalsification` concedes *"licensing IS the moat and the bottleneck"*. Measured gate movement: **10 CFR Part 53 took effect 2026-04-29**, a risk-informed technology-inclusive path created under NEIMA specifically to shorten non-light-water reviews. Additionally, Oklo's Aurora is still in **Combined License Application review** — i.e. the sole lock is **prospective, not held**.
+- **SMR (NuScale)** — `moatCapture 4`, sole lock, and unlike OKLO the licence is genuinely **held**: the only SMR developer with full NRC certification, two approved designs. But the lead is compressing on measurement: the uprated 77 MWe review took **22 months against 41 months** for the original. Its existing `moatFalsification` tests conversion-to-orders, **not** gate widening — so the widening is currently an **unencoded** risk.
+
+**Neither is re-rated in this commit.** Both are `status: watchlist` (no position), the gate-widening measurement above is from secondary coverage rather than NRC dockets read directly, and the CRCL precedent of the same day holds: a rating moves on measurement of the ticker, not on a rule newly written. **Open item, first check 2026-12-31** — whether any second SMR design clears certification under Part 53, which is the event that converts SMR's lock from held-and-narrowing to diluted.
+
 ---
 
 > **Provenance (v2.8.0, 2026-07-28):** prompted by a Thai FDI report (BlockBeats 2026-07-23) in which "investment applications" — an intent number — rose 80% and were read as realised industrial capability. The transferable defects were the two above: geographic moats are rented and decay exogenously, and an intent metric quietly substituted for a delivery metric. Per `techpull_gate`, the expectation-denominator problem was already latent in the v2.7.1 self-reference work; the news supplied the analogy, not the motive. Per `inspired_loop`, this is an instrumentation change and **not a portfolio motion** — no PASS/FAIL state moved.

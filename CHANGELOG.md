@@ -4,6 +4,47 @@ All notable universe / layers / framework changes, dated.
 
 ---
 
+## 2026-07-29 — v2.9.5: the queue test generalised to `moatLocks: "licensing"` — and a field that means two opposite things
+
+v2.9.4 wrote the queue-vs-chokepoint test against `constraintType`, which covers 5 tickers. The test's real range is `moatLocks: "licensing"`, which covers **14**. Sweeping it surfaced a defect in the field before the test could be applied.
+
+### 1. `licensing` conflates licensor and licensee
+
+Read from the tickers' own `moatFalsification` text, not inferred:
+
+- **QCOM** — *"Modem SEP royalties erode … AND AI-edge fails to replace **the licensing stream**"* → **licensor**. It collects.
+- **ARM** — *"RISC-V open ISA displaces Arm — **licensing moat was switching-cost, not necessity**"* → **licensor**.
+- **OKLO** — *"NRC licensing fails/delays … **licensing IS the moat and the bottleneck**"* → **licensee**. It holds a permit.
+- **SMR** — *"First and only NRC-certified small modular reactor design"* → **licensee**.
+
+Being the gatekeeper and being admitted by one are opposite positions. **The queue test applies to the licensee sense only — 12 of 14.** For a licensor a widening gate is irrelevant or favourable, and the correct falsifier is substitution, which QCOM and ARM already carry.
+
+### 2. Two independent instances now support the test
+
+| Gatekeeper | Widening | Rate |
+|---|---|---|
+| OCC — stablecoin issuer trust charters | 5 conditional (Dec 2025) → +Bridge (Feb 2026) → 7 pending | 11 firms / ~83 days |
+| Anthropic — Project Glasswing frontier-model access | 45 orgs (2026-04-07) → 195 (2026-06-02), 15+ countries | 150 / ~8 weeks |
+
+Glasswing is the cleaner demonstration because the gatekeeper is **paying to widen** — up to $100M in usage credits. **When admission is subsidised, admission is not scarce**, and the direction of the subsidy is the direction of the scarcity. Recorded because "company X has privileged access to Y" is a recurring screen shape that this test kills cheaply.
+
+### 3. Scan result — two single-lock exposures, neither re-rated
+
+Ten of the twelve licensee-sense tickers carry a second lock, so the test cannot collapse them alone. **Two carry `moatLocks: ["licensing"]` and nothing else, both at `moatCapture: 4`:**
+
+- **OKLO** — sole lock, and its own falsifier concedes *"licensing IS the moat and the bottleneck"*. **10 CFR Part 53 took effect 2026-04-29** (risk-informed, technology-inclusive path under NEIMA, written to shorten non-light-water reviews). Aurora is still in **Combined License Application review** — the sole lock is **prospective, not held**.
+- **SMR (NuScale)** — sole lock, but genuinely **held**: the only developer with full NRC certification, two approved designs. The lead is compressing on measurement — the uprated 77 MWe review took **22 months against 41** for the original. Its existing falsifier tests conversion-to-orders, **not** gate widening, so the widening is **unencoded**.
+
+**Neither re-rated.** Both `status: watchlist`; the gate measurement is secondary coverage, not NRC dockets read directly; and the CRCL precedent of the same day holds — a rating moves on measurement of the ticker, not on a rule newly written. **First check 2026-12-31.**
+
+### 4. Evaluated and rejected as a screen: "has Glasswing access"
+
+~195 organisations across 15+ countries, including AWS, Apple, Google, Microsoft, NVIDIA, Broadcom, Cisco, JPMorganChase, NYSE, ICE. Empirical test inside this repo: **CRWD and PANW are both members** and the framework rates them differently (moat 4 / active vs moat 3 / watchlist). Membership carries **zero information** for the decision the framework makes. The investable content is the inference bill — ~195 orgs running security workloads at $25/$125 per M tokens, distributed through Bedrock, Vertex and Microsoft Foundry — i.e. an L0–L9 demand datapoint, not a screen.
+
+**Process note.** `data/universe.json` unchanged this commit — no rating moved. GOVERNANCE only. The v2.9.4 `physicalConstraint` re-rating had not yet reached CI when it ran on 07-29 (CRCL still shows PC 4 in `data/scores/2026-07-29.json`); it takes effect on the 07-30 run.
+
+---
+
 ## 2026-07-29 — v2.9.4: CRCL falsifier review · `physicalConstraint` 4 → 3 · the regulatory-constraint test
 
 Prompted by two news items — Stripe in talks to acquire OpenRouter at ~$10B, and Stripe/Advent's $60.50/share offer for PayPal. **Neither produced a portfolio motion.** PYPL was evaluated and rejected before reaching the pricing gate; what the news actually did was supply a stress test for a name already held.
