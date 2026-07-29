@@ -79,7 +79,15 @@
           "ratingDelta": "Measured with every non-benchmark component frozen at 2026-07-28. NVDA 2.0 -> 2.0. AMD 3.1 -> 3.2. CBRS 3.3 -> 3.3. No funnel state flipped. The two components offset: AMD forwardPE component 2.7 -> 3.0 (worse) while its evRevenue component 3.2 -> 3.0 (better), because INTC EV/Revenue of 8.75 had been dragging the L2 EV/Revenue median DOWN. INTC own pricingScore is unaffected - it is scored against L5.",
           "residualLimitation": "L2 now correctly reports _externalPeerCount 0 / _selfReferential true. 55 percent of every L2 pricingScore is anchored on a median of the book itself. Structural property of a duopoly layer, not a fixable data gap - and the honest state the layer-scoped external-peer test was masking."
         }
-      ]
+      ],
+      "_structurallySelfReferential": {
+        "recorded": "2026-07-28 (v2.9.3)",
+        "status": "CLOSED — decided, not a backlog item. Do NOT resolve this by declaring a peer.",
+        "why": "Training silicon is a duopoly plus private companies. NVDA and AMD are holdings; CBRS (Cerebras) is the obvious third public name and is also a holding; Groq, SambaNova and Tenstorrent are private. Adjacent public fabless designers fail the business-model-match rule harder than INTC did, and INTC was removed for exactly that reason (v2.9.2).",
+        "consequence": "55 percent of every L2 pricingScore is anchored on a median of the book itself. NVDA, AMD and CBRS cannot look expensive relative to a group composed of NVDA, AMD and CBRS. An L2 pricing verdict is a WITHIN-LAYER RANKING, never a statement about absolute valuation.",
+        "previouslyMasked": "Until v2.9.2 the peer-independence test was layer-scoped, so INTC — an L5 holding — counted as L2 one external reference and the layer reported _externalPeerCount 1.",
+        "seeAlso": "GOVERNANCE.md section Structurally Self-Referential Layers"
+      }
     },
     "L2_5": {
       "label": "Inference / Edge Silicon",

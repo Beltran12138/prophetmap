@@ -205,13 +205,97 @@ function computeScore(ticker, metrics, ethReturn, medians) {
   return { pricingScore, components, dataQuality };
 }
 
-function evaluateFunnel(ticker, pricingScore) {
+// Shared with update-valuations.js. Deliberately the SAME numbers, not scale-adjusted
+// ones: pricingScore is consumed as a single cross-asset scale everywhere else in the
+// system — lib/data.ts pricingColor()/pricingBg() apply the identical 2.0/2.5/3.0/3.5
+// breakpoints to every row with no assetClass branch — so a funnel threshold that
+// differed by asset class would be the inconsistency, not the fix.
+//
+// KNOWN, RECORDED, NOT FIXED: the two scales are not economically identical. Equity
+// deviationToScore uses slope 2.5, crypto devToScore uses slope 1.5, so crypto scores
+// are compressed toward 3.0. Reaching 2.8 requires -13.3% below median here versus -8%
+// on the equity side, i.e. the shared constant is materially STRICTER for crypto.
+// Changing the slope to match would re-rate every crypto member at once, so it is
+// recorded rather than done. See CHANGELOG v2.9.3.
+const PRICING_ENTER = 2.8; // must be <= this to newly qualify
+const PRICING_EXIT = 3.2;  // must exceed this to lose an existing pass
+
+/**
+ * Prior session's funnelPass state for crypto rows only, used as the hysteresis anchor.
+ * Reads the most recent scores file strictly BEFORE today so a same-day re-run does not
+ * read its own output and ratchet itself.
+ *
+ * Filtered on assetClass === 'crypto' rather than keyed on symbol alone. Historical
+ * files written before v2.9.1 contain BOTH a crypto row and an equity-namespace
+ * collision row for the same symbol — 2026-07-27 carries LINK at $4.52 (Interlink
+ * Electronics, pass=false) alongside LINK at $8.63 (Chainlink, pass=true). A symbol-only
+ * lookup resolves those by file order, which is an accident, not a rule.
+ */
+function loadPreviousCryptoState() {
+  try {
+    if (!fs.existsSync(SCORES_DIR)) return {};
+    const todayFile = `${today()}.json`;
+    const files = fs.readdirSync(SCORES_DIR)
+      .filter((f) => f.endsWith('.json') && f < todayFile)
+      .sort();
+    if (files.length === 0) return {};
+    const prevFile = files[files.length - 1];
+    const prev = JSON.parse(fs.readFileSync(path.join(SCORES_DIR, prevFile), 'utf8'));
+    const map = {};
+    for (const r of prev.results || []) {
+      if (r.assetClass !== 'crypto') continue;
+      map[r.symbol] = r.funnelPass === true;
+    }
+    console.log(`[ProphetMap Crypto] Hysteresis anchor: ${prevFile} (${Object.keys(map).length} crypto rows)`);
+    return map;
+  } catch (err) {
+    console.log(`[ProphetMap Crypto] Could not load previous funnel state (${err.message}) — entry threshold for all`);
+    return {};
+  }
+}
+
+function evaluateFunnel(ticker, pricingScore, previousPass) {
   const failReasons = [];
-  if (ticker.physicalConstraint < 4) failReasons.push(`PC=${ticker.physicalConstraint}<4`);
+  const warnings = [];
+
+  // Defensibility gate. Aligned with update-valuations.js in v2.9.3: a physical
+  // chokepoint OR a non-physical moat, either suffices. Absent moatCapture => 0 =>
+  // falls back to the physical gate alone, i.e. the pre-v2.9.3 behaviour.
+  // Measured delta on adoption: ZERO. No L_DCOMP member has physicalConstraint < 4
+  // AND moatCapture >= 4 (LINK and ETH carry mc=4 but already clear pc=4; RNDR, TAO
+  // and FIL carry mc=2). The clause is added to close a silent divergence, not to
+  // move a rating — without it the two funnels would disagree the moment a crypto
+  // member with pc=3 / mc=4 is added, and nothing would report the disagreement.
+  const moat = typeof ticker.moatCapture === 'number' ? ticker.moatCapture : 0;
+  if (ticker.physicalConstraint < 4 && moat < 4) {
+    failReasons.push(`defensibility: PC=${ticker.physicalConstraint}<4 AND moatCapture=${ticker.moatCapture ?? 'n/a'}<4`);
+  }
   if (ticker.aiContribution < 0.30) failReasons.push(`AI=${Math.round(ticker.aiContribution * 100)}%<30%`);
   if (ticker.timeToRealize === 'far') failReasons.push('time=far');
-  if (pricingScore == null || pricingScore > 3.0) failReasons.push(`pricing=${pricingScore ?? 'N/A'}>3.0`);
-  return { pass: failReasons.length === 0, failReasons };
+
+  // Pricing gate with hysteresis, replacing the hard >3.0 cut. Crypto scores are more
+  // volatile than equity scores despite the flatter slope, so the layer that most
+  // needed flap suppression was the one that never got it.
+  let inBand = false;
+  if (pricingScore == null) {
+    failReasons.push('pricing=N/A');
+  } else {
+    const threshold = previousPass ? PRICING_EXIT : PRICING_ENTER;
+    if (pricingScore > threshold) {
+      failReasons.push(
+        `pricing=${pricingScore}>${threshold}` + (previousPass ? ' (exit — was passing)' : ' (entry)')
+      );
+    }
+    if (pricingScore > PRICING_ENTER && pricingScore <= PRICING_EXIT) {
+      inBand = true;
+      warnings.push(
+        `pricing-hysteresis-band: ${pricingScore} sits in ${PRICING_ENTER}-${PRICING_EXIT}; ` +
+        `state held at ${previousPass ? 'PASS' : 'FAIL'} from prior session — not a fresh signal`
+      );
+    }
+  }
+
+  return { pass: failReasons.length === 0, failReasons, warnings, inHysteresisBand: inBand };
 }
 
 // ─── Main ─────────────────────────────────────────────────────────────────────
@@ -263,16 +347,18 @@ async function main() {
   console.log(`\n[ProphetMap Crypto] L_DCOMP medians — P/Rev: ${layerMedians.pRev?.toFixed(0) ?? 'N/A'}, P/TVL: ${layerMedians.pTvl?.toFixed(2) ?? 'N/A'}`);
 
   // Score each ticker
+  const previousFunnel = loadPreviousCryptoState();
   const results = [];
   for (const t of cryptoTickers) {
     const m = metricsMap[t.symbol];
     const { pricingScore, components, dataQuality } = computeScore(t, m, ethReturn, layerMedians);
-    const funnel = evaluateFunnel(t, pricingScore);
+    const funnel = evaluateFunnel(t, pricingScore, previousFunnel[t.symbol] === true);
 
     results.push({
       symbol: t.symbol,
       layer: t.layer,
       assetClass: 'crypto',
+      moatCapture: t.moatCapture ?? null,
       physicalConstraint: t.physicalConstraint,
       aiContribution: t.aiContribution,
       timeToRealize: t.timeToRealize,
@@ -281,6 +367,7 @@ async function main() {
       pricingScore,
       funnelPass: funnel.pass,
       funnelFailReasons: funnel.failReasons,
+      funnelWarnings: funnel.warnings,
       components,
       dataQuality,
       analystRecommendMean: null,

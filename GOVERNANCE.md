@@ -195,6 +195,36 @@ Worse, `aiContribution` is a **hand-set static value in `universe.json`** while 
 
 ---
 
+## Structurally Self-Referential Layers (v2.9.3) — CLOSED, not outstanding
+
+`_selfReferential: true` currently fires on 9 of 22 layers. **The flag cannot distinguish two states that call for opposite responses:**
+
+| state | meaning | correct response |
+|---|---|---|
+| **under-populated** | nobody has done the work of finding external comparables | do the work |
+| **structurally unanchorable** | qualifying external comparables **do not exist** | stop looking, record why |
+
+Read as the first when it is the second, the flag becomes a standing invitation to "fix" it by declaring a badly-matched peer — which silently re-rates every holding in the layer. That is not hypothetical: adding CRDO to L8_NET moved the median −23% and knocked ANET out of PASS (v2.7.1); JNPR leaving L8_NET moved ANET's pricingScore 3.0 → 4.0.
+
+**A layer recorded here is a decided question, not a backlog item. Do not "fix" it.**
+
+### L2 — Training Silicon · `_externalPeerCount: 0` · PERMANENT
+
+Recorded 2026-07-28 (v2.9.2/2.9.3). The layer is a duopoly plus private companies:
+
+- **NVDA, AMD** — universe holdings, so they cannot de-self-reference the median
+- **CBRS** (Cerebras) — the obvious third public name, already a universe holding
+- **Groq, SambaNova, Tenstorrent** — private, no public ratios
+- Adjacent public names (fabless designers at other points of the stack) fail the **business-model match** rule harder than INTC did, and INTC was removed for precisely that reason
+
+**Consequence, stated plainly: 55% of every L2 pricingScore is anchored on a median of the book itself, and no amount of peer-list work will change that.** NVDA, AMD and CBRS cannot look expensive relative to a group that is composed of NVDA, AMD and CBRS. Treat an L2 pricing verdict as a *within-layer ranking*, never as a statement about absolute valuation.
+
+This is the honest state. It was previously masked: until v2.9.2 the peer-independence test was layer-scoped, so INTC — an L5 holding — was counted as L2's one external reference, and the layer reported `_externalPeerCount: 1`.
+
+**L0 (Hyperscaler / Foundation Models) is the same shape and is NOT yet recorded here** — its declared peers MSFT/AMZN/META/ORCL are 4/4 holdings, but whether a qualifying external hyperscaler exists has not been researched. Under-populated and structurally unanchorable are indistinguishable for L0 until someone looks.
+
+---
+
 ## Known Governance Gaps (v1.0)
 
 1. **No per-ticker change log** — physicalConstraint/aiContribution changes leave no audit trail. Future: add `_changeLog: [{date, field, from, to, reason}]` per ticker.
@@ -203,4 +233,6 @@ Worse, `aiContribution` is a **hand-set static value in `universe.json`** while 
 4. **Sector benchmarks update is manual** — ~~no automation~~ resolved in part: `update-benchmarks.js` now recomputes medians weekly. Remaining risk: **peer selection** is still the manual input driving 55% of every pricingScore. Rules defined in § CHANGE a layer's `peers` list (v2.8.0); enforcement is surfacing-only, so a self-referential layer warns but still computes.
 5. **No position-size guidance** — ProphetMap generates alpha signals, not portfolio weights. Users must apply their own sizing rules (e.g., Kelly criterion, equal-weight by funnel score).
 6. **`constraintType` unset for pc < 4 tickers** (v2.8.0) — only the 52 names that clear the defensibility gate on physical grounds are classified, since only they use the score. A ticker promoted past pc 4 in a quarterly review must be classified at the same time.
-7. **`physicalConstraint` is metaphorical for crypto** (v2.8.0) — LINK and ETH hold pc = 4 for network effects, not physics, and are tagged `unclassified`. Either a crypto-native defensibility measure is defined or their pc scores are restated; until then their defensibility gate result is not comparable to an equity's.
+7. **`physicalConstraint` is metaphorical for crypto** (v2.8.0) — LINK and ETH hold pc = 4 for network effects, not physics, and are tagged `unclassified`. Either a crypto-native defensibility measure is defined or their pc scores are restated; until then their defensibility gate result is not comparable to an equity's. *Partially addressed in v2.9.3*: the crypto funnel now carries the same `OR moatCapture >= 4` clause as the equity funnel, which gives a network-effect moat somewhere honest to live. The restatement itself — lowering the metaphorical pc scores and letting `moatCapture` carry the defensibility — **would** move ratings and is deliberately not done.
+8. **The two `pricingScore` scales are not economically identical** (v2.9.3) — equity `deviationToScore` uses slope 2.5, crypto `devToScore` uses slope 1.5, so crypto scores are compressed toward 3.0. Reaching the shared `PRICING_ENTER` of 2.8 requires −13.3% below median for a token versus −8% for an equity: **the same constant is materially stricter for crypto.** The constants are shared anyway, because `pricingScore` is consumed as one cross-asset scale everywhere else — `lib/data.ts` `pricingColor()`/`pricingBg()` apply identical breakpoints with no `assetClass` branch. Harmonising the slope would re-rate every crypto member in one commit and is therefore a recorded decision, not a pending fix.
+9. **Hysteresis anchoring is keyed on symbol alone in `update-valuations.js`** (v2.9.3) — `loadPreviousFunnelState()` builds `map[r.symbol]`, so in a file containing two rows for one symbol the last row silently wins. Harmless from v2.9.1 onward (`assetClass` now prevents duplicates), but every scores file through 2026-07-27 contains such duplicates, so any backfill or historical replay resolves them by file order. `update-crypto-valuations.js` filters on `assetClass === 'crypto'` and is not affected.

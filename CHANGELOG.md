@@ -4,6 +4,93 @@ All notable universe / layers / framework changes, dated.
 
 ---
 
+## 2026-07-28 — v2.9.3: crypto funnel aligned with the equity funnel · L2 self-reference recorded as permanent
+
+Three items were tabled at the end of v2.9.2. **The first was withdrawn — the recommendation that produced it was wrong.**
+
+### 0. Correction — the 23KB archive threshold measures `MEMORY.md`, not a topic file
+
+v2.9.2's closing summary flagged that a memory topic file had "crossed the 23KB archive hard-trigger line."
+
+**Wrong.** `memory_schema` §1 sizes that threshold against **`MEMORY.md`**, which is loaded into context every session and is bounded by a 24,400 B hook limit. A topic file is loaded only when read, so its size costs nothing until then. Applying a resident-context budget to a non-resident file is a category error.
+
+Measured: `MEMORY.md` = **21,558 B = 88.4%** of the limit, which lands in the **soft-trigger band (86–94%)** whose prescribed action is *"tell the user, don't act."* The lossless-compression pass the rule requires before any archiving had already been run today — zero residual on both tail classes. **No archiving performed.**
+
+---
+
+### 1. Crypto funnel — the two divergences closed, both measured at zero delta
+
+`update-crypto-valuations.js` had never received two changes the equity funnel got:
+
+**(a) Defensibility gate — `OR moatCapture >= 4` added.**
+
+```js
+// before
+if (ticker.physicalConstraint < 4) failReasons.push(`PC=${ticker.physicalConstraint}<4`);
+// after
+const moat = typeof ticker.moatCapture === 'number' ? ticker.moatCapture : 0;
+if (ticker.physicalConstraint < 4 && moat < 4) failReasons.push(`defensibility: ...`);
+```
+
+**Measured delta: zero.** No L_DCOMP member has `physicalConstraint < 4` **and** `moatCapture >= 4` — LINK and ETH carry mc=4 but already clear pc=4; RNDR, TAO and FIL carry mc=2. The clause closes a divergence that would have produced a silent disagreement the moment a crypto member with pc=3 / mc=4 was added, with nothing reporting it.
+
+This also partially addresses governance gap #7 (`physicalConstraint` is metaphorical for crypto — LINK/ETH hold pc=4 for *network effects*, not physics). The OR clause gives a network-effect moat somewhere honest to live. **Restating the metaphorical pc scores and letting `moatCapture` carry the defensibility would move ratings and is deliberately not done.**
+
+**(b) Pricing gate — hard `> 3.0` cut replaced with the equity hysteresis band 2.8 / 3.2.**
+
+Anchor lookup filters on `assetClass === 'crypto'` rather than keying on symbol, because every scores file through 2026-07-27 contains *both* a crypto row and an equity-namespace collision row per symbol — 07-27 carries LINK at $4.52 (Interlink Electronics, `pass=false`) beside LINK at $8.63 (Chainlink, `pass=true`). A symbol-only lookup resolves that by file order, which is an accident rather than a rule.
+
+**Measured delta on 2026-07-28 data: zero funnel-state changes.**
+
+| | pS | prior | before | after |
+|---|---|---|---|---|
+| RNDR | 3.40 | FAIL | FAIL | FAIL |
+| TAO | 3.50 | FAIL | FAIL | FAIL |
+| FIL | 2.86 | FAIL | FAIL | FAIL *(second fail reason added: 2.86 > 2.8 entry)* |
+| **LINK** | **2.89** | **PASS** | **PASS** | **PASS — now flagged `pricing-hysteresis-band`** |
+| ETH | 4.08 | FAIL | FAIL | FAIL |
+
+**The useful output is not the delta, it is the label.** LINK is the only crypto PASS in the book, and its 2.89 sits inside the 2.8–3.2 band — so that PASS is a state **held from the prior session, not a fresh signal**. Under the old hard cut this was invisible: 2.89 < 3.0 read as an ordinary pass.
+
+**The forward-looking effect is a real tightening and is not being described as free.** Entry moves 3.0 → 2.8. If LINK ever exits above 3.2, re-entry will require ≤ 2.8 where it previously required ≤ 3.0.
+
+**Why the constants were shared rather than scale-adjusted.** The two scales are *not* economically identical — equity `deviationToScore` uses slope **2.5**, crypto `devToScore` uses slope **1.5**, so crypto scores compress toward 3.0 and reaching 2.8 demands **−13.3%** below median versus **−8%** on the equity side. The shared constant is therefore materially stricter for crypto. It is shared anyway because `pricingScore` is already consumed as a single cross-asset scale everywhere else in the system: `lib/data.ts` `pricingColor()` and `pricingBg()` apply the identical 2.0/2.5/3.0/3.5 breakpoints to every row with no `assetClass` branch. A funnel threshold that alone varied by asset class would be the inconsistency. Harmonising the *slope* instead would re-rate every crypto member in one commit — recorded as governance gap #8, not done.
+
+Crypto rows now also emit `moatCapture` and `funnelWarnings`, which the equity rows already carried.
+
+---
+
+### 2. L2 self-reference — recorded as CLOSED, not as a backlog item
+
+New GOVERNANCE.md section **Structurally Self-Referential Layers**, plus a machine-readable `_structurallySelfReferential` block on the L2 benchmark entry.
+
+`_selfReferential: true` fires on **9 of 22** layers, and the flag **cannot distinguish two states that call for opposite responses**:
+
+| state | meaning | correct response |
+|---|---|---|
+| under-populated | nobody has done the work | do the work |
+| structurally unanchorable | qualifying comparables **do not exist** | stop looking, record why |
+
+Read as the first when it is the second, the flag becomes a standing invitation to "fix" it by declaring a badly-matched peer — which silently re-rates every holding in the layer. Not hypothetical: CRDO entering L8_NET moved the median −23% and knocked ANET out of PASS (v2.7.1); JNPR leaving moved ANET 3.0 → 4.0.
+
+**L2 is unanchorable and permanently so.** NVDA and AMD are holdings; CBRS (Cerebras) — the obvious third public name — is also a holding; Groq, SambaNova and Tenstorrent are private; adjacent public fabless designers fail business-model match harder than INTC did, and INTC was removed for exactly that reason in v2.9.2.
+
+**Consequence, stated plainly: 55% of every L2 pricingScore is anchored on a median of the book itself, and no amount of peer-list work will change it.** NVDA, AMD and CBRS cannot look expensive relative to a group composed of NVDA, AMD and CBRS. **An L2 pricing verdict is a within-layer ranking, never a statement about absolute valuation.**
+
+**L0 is the same shape and is deliberately NOT recorded** — its peers MSFT/AMZN/META/ORCL are 4/4 holdings, but whether a qualifying external hyperscaler exists has not been researched. For L0 the two states remain indistinguishable until someone looks, and claiming otherwise would be the same category error as §0.
+
+Two further gaps recorded: **#8** the two pricingScore slopes (above), and **#9** `loadPreviousFunnelState()` in `update-valuations.js` keys `map[r.symbol]` alone, so a duplicated symbol resolves by file order — harmless from v2.9.1 onward but live for any replay of files through 2026-07-27.
+
+---
+
+### Process note
+
+`data/scores` is again untouched: the crypto changes were verified by offline simulation against the stored 07-28 scores with the 07-27 anchor, rather than by running the live pipeline, which would have hit CoinGecko and written an after-hours 2026-07-29 file ahead of CI. Same reasoning as v2.9.2 §2.
+
+Of the three items tabled, **one was withdrawn as based on a wrong reading, one changed no ratings but exposed that the only crypto PASS is a held state, and one was closed as permanently unfixable.** None of them was the "fix" it looked like from the outside.
+
+---
+
 ## 2026-07-28 — v2.9.2: INTC falsifier review · L2 peer-list repair · the peer-independence test was measuring the wrong set
 
 Two commissioned items. The second turned out to be three defects, not the one it was commissioned for.
