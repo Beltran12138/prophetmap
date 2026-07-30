@@ -4,6 +4,61 @@ All notable universe / layers / framework changes, dated.
 
 ---
 
+## 2026-07-30 — v2.9.9: AMKR is a worse GEV · and the primary decision indicator was frozen through a 34.6% drawdown
+
+### 1. AMKR — the capture test's second application, and it fails harder
+
+Surfaced by ranking the 26 funnel-passing names on PEG: AMKR came second-cheapest at **0.76** while carrying **`moatCapture: 2`, the lowest capture rating of any name that clears the gate.** Falsifier #4 added to the same specification as GEV #4. **Not a holding** — it sits on the T2 candidate list.
+
+**Gross margin, full year:** FY2022 **18.8%** · FY2023 14.5% · FY2024 14.8% · FY2025 **14.0%**. Four-year peak **18.8%**, so the falsifier's 20% threshold is set **above anything AMKR has achieved in four years.**
+
+**Worse than GEV on three counts:**
+
+| | AMKR | GEV |
+|---|---|---|
+| Gross margin | **14.0%** (ttm 15.5%) | 20.6% |
+| Revenue growth | FY2025 **$6.71B < FY2022 $7.09B** — four years, no net growth | genuine +21.9% |
+| Latest quarter | rev $1.99B → $1.89B → **$1.68B** *and* GM 16.7% → **14.2%** — **both lines rolling over together** | n/a |
+
+The +25.6% the screen reports is a TTM comparison against a depressed early-2025 base, not a trend.
+
+**The deciding structural observation:** NVIDIA's **$1.5B prepayment** for Arizona packaging capacity (2026-07-23) argues **FOR** `moatCapture: 2`, not against it. **A supplier that needs its customer to fund its capex has no pricing power** — on a 14% gross margin AMKR cannot self-fund the expansion, so NVIDIA does, and **the party that funds the asset captures the rent.** Same shape as the GOVERNANCE §3/§3a queue test, and the sharpest instance yet: here the gatekeeper is not merely widening access, **it is paying for it.**
+
+**NO RATING MOVED** — the data *corroborates* `moatCapture: 2`, which is precisely why nothing changes. Counter-argument preserved: the four-quarter trend test has not run, Arizona capacity is not in the revenue line, and one sequential decline is not a trend.
+
+### 2. The framework defect — `pegRatio` is stale, and PEG is the declared primary indicator
+
+**AMKR's PEG did not move by one basis point across a 34.6% five-session drawdown:**
+
+| | price | forward P/E | **PEG** |
+|---|---|---|---|
+| 07-27 | $60.30 | 23.0 | **0.76** |
+| 07-28 | $45.98 | 17.6 | **0.76** |
+| 07-29 | $44.27 | **15.5** | **0.76** |
+
+Forward P/E fell **33%**. **Arithmetically impossible for a live ratio.**
+
+**Root cause:** `scripts/update-valuations.js:657` reads `summary.defaultKeyStatistics.pegRatio` — a Yahoo **precomputed** field on Yahoo's own refresh cadence, **not derived from the live price the engine already holds.**
+
+**Systemic scope, 2026-07-22 → 07-29: of 49 tickers that moved >5%, 22 (45%) carried a completely unchanged `pegRatio`** — TTMI −32.9%, COHR −30.3%, LITE −29.2%, AMD −23.3%, INTC −22.0%.
+
+**NOT claimed: any directional bias. Zero tickers rose more than 5% in this window — the up-move sample is empty and the asymmetry cannot be tested.**
+
+**This is the fourth PEG failure mode found in one session, all inside a single 26-name list:**
+
+| # | Case | Defect |
+|---|---|---|
+| 1 | MU 0.13 | denominator is peak-cycle EPS |
+| 2 | KTOS 36.41 | denominator → 0; carries no information yet is banded "overpriced" |
+| 3 | QCOM 0.54 | EPS growth on revenue **shrinking 3.5% YoY** |
+| 4 | **45% of movers** | **the field is stale** |
+
+**Raised as a framework item and deliberately NOT resolved here.** PEG is the holder's declared primary decision indicator; changing it is a framework decision, not a ticker decision.
+
+**Process note.** Verified against `HEAD`: **0 substantive changes across all 87 tickers and all existing falsifier strings — appends only.** `data/scores/*` untouched.
+
+---
+
 ## 2026-07-30 — v2.9.8: GEV's falsifiers all tested demand and none tested capture · a purchase bet pre-registered, then reversed by its own audit an hour later
 
 Two items commissioned after a portfolio review found the same shape twice — **a position whose thesis is not in the book** — plus a third that the second item generated on its own: **the open question it raised was answerable immediately, and answering it contradicted the entry that raised it.**
