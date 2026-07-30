@@ -4,6 +4,87 @@ All notable universe / layers / framework changes, dated.
 
 ---
 
+## 2026-07-30 — v2.9.8: GEV's falsifiers all tested demand and none tested capture · a purchase bet pre-registered, then reversed by its own audit an hour later
+
+Two items commissioned after a portfolio review found the same shape twice — **a position whose thesis is not in the book** — plus a third that the second item generated on its own: **the open question it raised was answerable immediately, and answering it contradicted the entry that raised it.**
+
+### 0. Correction — the measurement I proposed for GEV could not be taken
+
+The prior session proposed measuring "data-centre customer share of gas-turbine orders." **No source available discloses it at ticker level.** It surfaces, when it surfaces, as an unquantified remark on an earnings call. The measurement was **substituted, not taken**, and the substitution is recorded in the entry rather than quietly performed — because a falsifier written against a non-existent data source is the *unmeasurable* defect class already on file from QCOM #2, and proposing one is the same error as writing one.
+
+### 1. GEV — the review answered a question nobody asked
+
+GEV is the **best-performing position in the holder's book** over six months (+19.8pp vs SPY) and **has never passed the funnel**. Two hypotheses were put up: either `aiContribution 0.20` is too low, or the gain comes from an unwritten non-AI thesis.
+
+**The margin data supports neither. It points at `moatCapture: 4` being too HIGH.**
+
+| | GEV |
+|---|---|
+| Gross margin | **20.6%** |
+| Operating margin | 7.5% |
+| Revenue growth | +21.9% YoY |
+
+| Sample | GM range | median |
+|---|---|---|
+| Power / cooling / industrial (GEV CEG VST CAT CMI PWR PH VRT ETN MOD) | 15.1–38.6% | **27.2%** |
+| Names clearing the defensibility gate (NVDA AVGO TSM LIN ANET GLW AMAT CDNS) | 36.4–85.9% | **63.9%** |
+
+Median gap **36.6pp**. Every sampled name above 45% GM clears the gate; nothing in the power complex exceeds 38.6%. **GEV is second-lowest of all 18.** Revenue growing 21.9% on a 20.6% gross margin is demand arriving in the revenue line and not the margin line — pass-through, which is the opposite of capture. One `moatLock` on a 20.6%-GM equipment manufacturer is a weak basis for a 4.
+
+**NO RATING MOVED, and the reason is the counter-argument, not caution.** GEV's margin today is earned on contracts signed before the AI power bid existed. The thesis' own mechanism — 3–5 year lead times — guarantees that pricing power on new orders reaches the income statement with a multi-year lag. **A level test cannot separate "no pricing power" from "not yet converted."** So falsifier #4 is written as a four-quarter *trend* test: fires if GM stays ≤25% through FY2027 on >15% revenue growth. Earliest possible adjudication FQ2 2027.
+
+**The structural hole #4 closes:** three falsifiers, all testing demand (backlog growth, interconnection queue, HVDC substitution), **zero testing whether the bottleneck earns rent** — on a ticker whose entire case is that a bottleneck earns rent.
+
+**Recorded and unresolved:** the holder's realised gain still has no thesis in the book. `aiContribution 0.20` attributes four-fifths of GEV's forward growth to something never written down — therefore with no falsifier and no exit condition. A documentation gap, not a rating gap, and this entry does not close it.
+
+**Secondary, engine unaffected:** GEV's trailing earnings are non-operating-dominated — net margin 23.0% against operating margin 7.5%, forward EPS 24.89 *below* trailing 33.31, two of the last four quarterly prints carrying +316% and +772% surprises that a 20.6% gross margin cannot produce. **One-time items or bad data — not resolved, and nothing here rests on them.** The engine reads forward P/E, and `cyclicalTrap` fires on a *high* trailing/forward ratio while GEV's is 0.75 — wrong direction, cannot misfire.
+
+### 2. MU — a bet written down before the evidence that settles it exists
+
+MU sits in the holder's 2026-07-30 buy basket. The engine says FAIL. **This entry adjudicates nothing; it pre-registers.**
+
+**The purchase bets on exactly one proposition: that `cyclicalPeakGM = 0.55` is stale.** Nothing else in the funnel objects — PC 4, moat 3, aiC 0.55, ttr near all clear. It fails on pricing *alone*, and on pricing only because `cyclicalTrap` adds **+1.5 to a raw 2.1**. Raw 2.1 would rank MU the **fourth-cheapest name in the entire 26-name pass list.** The bet is not that demand is strong; the engine already agrees it is.
+
+**Settle conditions, both directions, committed now:**
+
+| | Condition |
+|---|---|
+| Bet **wrong** | Falsifier #6 fires — two sequential GM declines while HBM bits still grow |
+| Bet **right** | GM holds >65% for four consecutive quarters → the 0.55 parameter is re-set, the trap stops firing, MU reverts toward 2.1 |
+| **Neither** | GM drifts 55–65% → parameter neither stale nor validated; re-derive from source rather than defend |
+
+**Asymmetry recorded:** every argument *for* the bet is a demand datum (estimates +52.9% in 90 days, 4-of-4 beats averaging +20.2%, Alphabet's supply-constrained capex raise, Bernstein's 55%-of-incremental-wafer-demand). **The engine's objection is not about demand. None of that evidence touches the claim being bet on.**
+
+### 3. MU, same day, one hour later — the constant was re-derived and it reverses §2
+
+§2 closes by flagging `cyclicalPeakGM = 0.55` as unaudited and asking for it to be re-derived before FQ4. **It was re-derived within the hour. The result does not favour the bet §2 pre-registers.** A third observation entry is appended; §2 is left unedited so the sequence of belief stays legible.
+
+**The deciding row is COGS.**
+
+| Quarter | Revenue | COGS | GM |
+|---|---|---|---|
+| 2025-05 | $9.30B | $5.79B | 37.7% |
+| 2025-08 | $11.31B | $6.26B | 44.7% |
+| 2025-11 | $13.64B | $6.00B | 56.0% |
+| 2026-02 | $23.86B | $6.11B | 74.4% |
+| 2026-05 | **$41.46B** | **$6.40B** | **84.6%** |
+
+**Revenue rose 4.5× over five quarters. COGS rose 11%.** No volume story, no mix story, no cost story — **the entire expansion from 37.7% to 84.6% is ASP.** This is not the cyclicalTrap heuristic being applied; it is the trap's mechanism visible in primary line items. **And the leverage is symmetric:** with COGS flat, every dollar of ASP decline is a dollar of gross profit decline, with no cost base to cushion it. The four quarters reconstruct to $90.3B at 72.6% — an exact match to the figure the engine consumes, so **the engine's input is independently confirmed.**
+
+**The constant is not stale-low. It is generous.** Full-year GM: FY2022 **45.2%**, FY2023 −9.1%, FY2024 22.4%, FY2025 39.8%. **The four-year peak is 45.2% — the constant sits 9.8pp ABOVE it.** *Limitation carried forward: only four fiscal years were obtainable; MU's all-time peak is not in evidence and a longer series could move this.*
+
+**The reductio:** latest-quarter GM **84.6% now exceeds NVIDIA's 74.1%.** A DRAM/NAND manufacturer out-earning, at the gross line, the company with 80–90% accelerator share behind CUDA. Possible in a historic shortage — but definitionally a *peak*, not a regime, unless commodity memory has become more defensible than CUDA. Nobody is arguing that, including the bulls.
+
+**"Forward P/E 5.0 is cheap" rests on a denominator implying $174B of net income.** Forward EPS 153.74 × 1.129B shares. TTM net income is **$50.5B** → consensus needs a further **+244%**. Annualising the best quarter ever printed ($28.24B → $113B) still leaves **+54%** to find. **The 5.0 is arithmetically correct and economically empty — which is what a cyclical value trap is.**
+
+**Counter-evidence, and it is not weak:** 4.5× revenue on flat COGS is *also* what a genuine structural shortage looks like early. If HBM capacity cannot be added faster than demand grows — which this ticker's own thesis asserts — the condition can persist for quarters, and the position can make a lot of money before it turns. **The question is duration, not direction, and nothing measured here dates it.** Alphabet's 2026-07-22 "still supply-constrained … multiple quarters in a row" is first-party and current.
+
+**Constant HELD at 0.55** — corroborated, not changed. No rating moved. Open item from §2 **closed**; successor limitation is the four-year window. **Next check amended:** measure FQ4 sequential margin against **84.6%**, not the already-stale 72.6% TTM. **The COGS line is now the cheapest tell** — revenue decelerating while COGS keeps climbing marks the turn regardless of what margin prints.
+
+**Process note.** No rating moved, no threshold edited, no existing falsifier altered — verified by string comparison against `HEAD` across all 87 tickers and all 318 existing falsifier strings: **0 substantive changes, appends only.** `data/scores/*` untouched, so the 07-30 CI run is unaffected by this release.
+
+---
+
 ## 2026-07-29 — v2.9.7: five watchlist triggers measured · MU adjudicated against UBS · a falsifier that cannot be measured · storage layer rejected
 
 Five items commissioned together. **Two of the five began as claims of mine that the measurement contradicted.**
