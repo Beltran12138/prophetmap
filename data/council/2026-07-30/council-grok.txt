@@ -1,0 +1,356 @@
+# 方法论审查结论（可执行）
+
+---
+
+## Q1. PEG 是否应继续作为主指标？
+
+**结论：否。降级为「条件触发的筛选项」，不再作为主定价闸门。**  
+**置信度：高**
+
+### 为什么不能靠「加 veto」救 PEG
+
+四个失效场景不是边界噪声，而是 **PEG 定义本身与「业务可持续赚钱能力」不对齐**：
+
+| 失效 | 结构根因（不是实现 bug） |
+|------|--------------------------|
+| MU | 分母用的是 **峰值周期 EPS 隐含增长率**，分子用的是 **当前价/峰值 EPS** → 双重周期夸大「便宜」 |
+| KTOS | PEG = PE / g，g→0 时 **无定义/发散**；与「真高估」不可比 |
+| QCOM | g 用 **EPS 增长**，可被回购/税率/一次性利润率推高，**与需求无关** |
+| AMKR | Yahoo `defaultKeyStatistics.pegRatio` **不是实时函数**；45% 冻结 = 主指标数据管线不合格 |
+
+若主指标在 26 只里同时踩中「周期失真 / 数学奇点 / 会计增长 / 数据冻结」四类，**加 veto 等于把 PEG 改造成另一个指标**，还不如直接换主指标。
+
+### 替代主指标：`PricingGate`（可计算）
+
+**主决策变量 = 经质量调整的前瞻估值分位 + 增长真实性校验。**
+
+#### A. 核心定价分（主闸门）
+
+```
+// 输入（均为实时或可日更）
+fwdPE     = price / consensus_fwd_EPS_12m     // 必须自算，禁止 Yahoo pegRatio
+evRev     = EV / NTM_revenue                  // 可选 NTM 或 TTM+guide
+upside    = (mean_target - price) / price     // 分析师目标价上行空间
+relMom6m  = stock_ret_6m - SPX_ret_6m
+
+// 各维标准化到 1–5（1=便宜/好，5=贵/差），沿用你现有 pricingScore 分位法
+// 权重建议微调（相对你现方案，把「动量」降权，因它不是估值）
+pricingScore = 0.35*score_fwdPE
+             + 0.30*score_evRev
+             + 0.25*score_upside
+             + 0.10*score_relMom6m
+```
+
+**动作（取代 PEG 分档）：**
+
+| pricingScore | 动作 |
+|---|---|
+| ≤ 2.0 | 积极买入/加仓（须通过下方 Quality Gate） |
+| 2.0–2.8 | 标准买入 |
+| 2.8–3.5 | 持有不加，禁止新入场 |
+| > 3.5 | 退出观望 / 论点重审 |
+
+（阈值可按你的历史分位校准；关键是 **单主轴 + 质量否决**，不要双主轴。）
+
+#### B. Quality Gate（硬否决，不过则降一档或禁止买入）
+
+```
+// 1) 增长真实性（堵 QCOM / 部分 MU）
+rev_g_fwd   = consensus_NTM_rev / TTM_rev - 1
+eps_g_fwd   = consensus_fwd_EPS / TTM_EPS - 1   // 仅用于诊断，不入主分母
+organic_ok  = (rev_g_fwd >= 0.05) OR (rev_g_fwd >= 0 AND eps_g_fwd <= 2*rev_g_fwd + 0.10)
+// 解读：营收至少不塌；若 EPS 增速 >> 营收，必须是有限溢价，禁止「纯财务工程」进 cheap 档
+
+// 2) 周期峰值检测（堵 MU）
+gm_ttm      = gross_margin_ttM
+gm_hist_p75 = 过去 20 个季度毛利率的 75 分位
+gm_peak_flag = (gm_ttm > gm_hist_p75 + 0.15) OR (gm_ttm > 0.60 AND gm_hist_median < 0.45)
+// 美光类：当前 GM 远超历史常态 → 禁止用峰值 EPS 做「便宜」结论
+if gm_peak_flag:
+    // 用「常态化 EPS」重算估值
+    normalized_EPS = median(过去 12 个季度 operating_EPS)   // 或 mid-cycle GM * 合理量
+    fwdPE_norm = price / max(normalized_EPS, consensus_fwd_EPS * 0.5)
+    // 主闸门改用 fwdPE_norm 的分位，而不是峰值 consensus
+
+// 3) PEG 仅作可选诊断（不再驱动仓位）
+if abs(rev_g_fwd) < 0.03:   // 堵 KTOS
+    peg_status = "UNDEFINED"
+else:
+    peg = fwdPE / (rev_g_fwd * 100)   // 强制用营收增长，不用 EPS 增长
+    // peg 只输出到日志/看板，不进 if/then 买卖
+
+// 4) 数据新鲜度（堵 AMKR）
+peg_source_forbidden = True   // 硬编码：永不读 Yahoo pegRatio
+assert last_price_ts 与 valuation_ts 日差 <= 1
+if price_change_5d_abs > 0.05 and valuation_unchanged:
+    flag STALE_DATA → 当日该标的全部自动降为 "hold / no new entry"
+```
+
+#### 若你坚持保留 PEG 为「并列主指标」（不推荐）
+
+最低可行 veto（逐条对应四个场景）：
+
+| # | 场景 | 可执行 veto |
+|---|------|-------------|
+| 1 | MU 周期峰值 | `if GM_ttm > GM_hist_p75 + 15pp OR GM_ttm > 1.5 * GM_hist_median: PEG 无效；改用 mid-cycle PE 或 EV/NTM_EBIT` |
+| 2 | KTOS g≈0 | `if |g_rev| < 3% 或 |g_eps| < 3%: PEG = NULL，档位强制 = rich（禁止用 overpriced 叙事，改为「不可估」）` |
+| 3 | QCOM 财务工程 | `if g_eps > 0 且 g_rev < 0: 禁止 PEG≤1.0 触发买入；最高允许 fair，且要求 share_count_yoy ≤ −2% 时额外标注「回购驱动」` |
+| 4 | AMKR 冻结 | `禁止 Yahoo pegRatio；自算 peg = (price/fwdEPS) / (g_rev*100)；若 5d 价格变动>5% 而 peg 变动<1% → STALE，剔除当日信号` |
+
+**即便加上以上，仍建议 PEG 不做主指标**——因为 veto 后有效信号密度会骤降，主闸门实质变成 pricingScore + Quality Gate。
+
+**你可能错在哪：**  
+- 若你的标的池长期是 **高增速软件/平台**（稳定高毛利、增长可预测），PEG 主指标的有效域更大；你给的 26 只偏 **半导/周期/国防**，PEG 失效是 **池子与指标不匹配**，不一定是 PEG 在所有美股上不可用。置信度：中。
+
+---
+
+## Q2. PEG 与 pricingScore 冲突时的仲裁规则（可写进代码）
+
+**结论：取消「双主轴并行」；定义单一决策输出 `action`，冲突用优先级表消解。**  
+**置信度：高**
+
+### 推荐架构（PEG 降级后）
+
+```python
+def decide(row) -> str:
+    # --- 0. 硬数据/质量否决（最高优先级）---
+    if row.stale_valuation or row.data_quality != "OK":
+        return "HOLD_NO_NEW"          # 对应 AMKR 类
+
+    if row.gm_peak_flag and row.pricing_score_raw_uses_peak_eps:
+        row.pricing_score = rescore_with_normalized_eps(row)
+
+    if not row.organic_ok:            # 对应 QCOM：营收萎缩+EPS暴涨
+        # 再便宜也不进积极档
+        cap = "HOLD_NO_NEW"
+    else:
+        cap = None
+
+    # --- 1. 主闸门：仅 pricingScore ---
+    s = row.pricing_score
+    if s <= 2.0:
+        action = "BUY_AGGRESSIVE"
+    elif s <= 2.8:
+        action = "BUY_STANDARD"
+    elif s <= 3.5:
+        action = "HOLD_NO_NEW"
+    else:
+        action = "EXIT_REVIEW"
+
+    # --- 2. 可选 PEG 仅作单向刹车（永不单独开闸）---
+    if row.peg_status == "VALID" and row.peg > 2.5 and action in ("BUY_AGGRESSIVE", "BUY_STANDARD"):
+        action = "HOLD_NO_NEW"        # PEG 只能否决买入，不能单独触发买入
+
+    if row.peg_status == "UNDEFINED": # KTOS
+        # 不影响主闸门；仅禁止用 PEG 叙事
+        pass
+
+    # --- 3. cap 强制降档 ---
+    rank = ["EXIT_REVIEW", "HOLD_NO_NEW", "BUY_STANDARD", "BUY_AGGRESSIVE"]
+    if cap is not None:
+        action = rank[min(rank.index(action), rank.index(cap))]
+
+    return action
+```
+
+### 若过渡期仍双轨并行：显式冲突表（不要「综合考虑」）
+
+```python
+def arbitrate(peg_bucket, pricing_score, flags) -> str:
+    """
+    peg_bucket: CHEAP|FAIR|RICH|OVER|NULL
+    pricing_score: float 1–5
+    flags: organic_ok, gm_peak, stale
+    """
+    if flags.stale:
+        return "HOLD_NO_NEW"
+
+    ps_bucket = (
+        "CHEAP" if pricing_score <= 2.0 else
+        "FAIR"  if pricing_score <= 2.8 else
+        "RICH"  if pricing_score <= 3.5 else
+        "OVER"
+    )
+
+    # 优先级：stale/quality > 两者都差取严 > 冲突时 pricingScore 赢买入权，PEG 赢卖出/刹车权
+
+    if flags.gm_peak or not flags.organic_ok:
+        # 质量否决：禁止任何 BUY_*
+        if ps_bucket in ("RICH", "OVER") or peg_bucket in ("RICH", "OVER"):
+            return "EXIT_REVIEW" if (ps_bucket == "OVER" or peg_bucket == "OVER") else "HOLD_NO_NEW"
+        return "HOLD_NO_NEW"
+
+    # 同向
+    if peg_bucket == ps_bucket or peg_bucket == "NULL":
+        return {
+            "CHEAP": "BUY_AGGRESSIVE",
+            "FAIR":  "BUY_STANDARD",
+            "RICH":  "HOLD_NO_NEW",
+            "OVER":  "EXIT_REVIEW",
+        }[ps_bucket]
+
+    # 冲突矩阵（PEG vs pricingScore）
+    # 规则精神：
+    # - 买入：必须 pricingScore 支持；PEG 便宜但 PS 贵 → 不买（MU）
+    # - 卖出/禁止新入：任一 OVER 或两者都 RICH → 从严
+    # - PS 最便宜但 PEG rich → 允许小仓标准买，禁止积极买（CRH）
+
+    key = (peg_bucket, ps_bucket)
+    table = {
+        # PEG cheap, PS not
+        ("CHEAP", "FAIR"):  "BUY_STANDARD",      # 降档，不积极
+        ("CHEAP", "RICH"):  "HOLD_NO_NEW",        # MU 型：PEG 诱多，PS 否决
+        ("CHEAP", "OVER"):  "HOLD_NO_NEW",        # 极端：禁止买，但不因 PEG 而 EXIT
+        # PEG fair
+        ("FAIR", "CHEAP"):  "BUY_STANDARD",
+        ("FAIR", "RICH"):   "HOLD_NO_NEW",
+        ("FAIR", "OVER"):   "EXIT_REVIEW",
+        # PEG rich
+        ("RICH", "CHEAP"):  "BUY_STANDARD",       # CRH 型：PS 开闸但禁止积极
+        ("RICH", "FAIR"):   "HOLD_NO_NEW",
+        ("RICH", "OVER"):   "EXIT_REVIEW",
+        # PEG over
+        ("OVER", "CHEAP"):  "HOLD_NO_NEW",        # 不因 PS 便宜而买；PEG 可能是 g 失真
+        ("OVER", "FAIR"):   "HOLD_NO_NEW",
+        ("OVER", "RICH"):   "EXIT_REVIEW",
+        # PEG null (g≈0)
+        ("NULL", "CHEAP"):  "BUY_STANDARD",       # 忽略 PEG，PS 主导但降一档
+        ("NULL", "FAIR"):   "BUY_STANDARD",
+        ("NULL", "RICH"):   "HOLD_NO_NEW",
+        ("NULL", "OVER"):   "EXIT_REVIEW",
+    }
+    return table[key]
+```
+
+**对你两个实例的落地结果：**
+
+| 标的 | 结果 | 原因 |
+|------|------|------|
+| **MU** | `HOLD_NO_NEW`（若再触发 `gm_peak` 则同） | PEG CHEAP + PS RICH → 表内禁止买 |
+| **CRH** | `BUY_STANDARD`（非积极） | PEG RICH + PS CHEAP → 允许标准仓，禁止积极加仓 |
+
+**你可能错在哪：**  
+CRH 的「PS 最便宜」若大量来自 **分析师目标价滞后**（上行空间维 25%），则仲裁表会系统性偏多；应把 `upside` 权重压到 ≤15%，或对目标价 >90 天未更新的设 `upside_stale` 否决。置信度：中。
+
+---
+
+## Q3. 是否应增加「毛利率捕获测试」为独立维度？
+
+**结论：应增加，但是「硬否决/诊断门」而非 pricingScore 第五个加权维。**  
+**置信度：高（作门控）；中（作连续打分维）**
+
+### 支持做门控、反对直接加权的原因
+
+- **你的 26 只样本**：低 GM 名字「量涨利不涨」= 价值捕获失败，对 **买入质量** 信息量大。  
+- **反对意见成立**：长交期（涡轮 3–5 年）下 TTM GM 是 **滞后合同结构**，直接当 20% 权重会误杀处于涨价通道早期的名字。  
+- 因此：**离散门控（过/降档/警告）> 连续加权**，并对行业加「交期豁免」。
+
+### 可执行定义：`MarginCaptureTest`
+
+```python
+def margin_capture(row) -> str:
+    """
+    返回: PASS | WARN | FAIL
+    FAIL → 禁止 BUY_AGGRESSIVE，最高 BUY_STANDARD 且仓位上限 ×0.5
+    WARN → 禁止 BUY_AGGRESSIVE
+    PASS → 不限制
+    """
+    # 营收与毛利「同步改善」检验（最近 4Q vs 前 4Q）
+    d_rev = row.rev_L4Q / row.rev_P4Q - 1
+    d_gp  = row.gross_profit_L4Q / row.gross_profit_P4Q - 1   # 毛利额，不是率
+    d_gm  = row.gm_L4Q - row.gm_P4Q                          # pp
+
+    # 长交期豁免（可维护行业表）
+    long_cycle = row.industry in {"power_turbines", "defense_prime", "aero_OEM"}
+    backlog_improving = (row.backlog_yoy is not None and row.backlog_yoy > 0.10)
+
+    if long_cycle and backlog_improving:
+        # 滞后 GM 不作为 FAIL 依据；仅 WARN 如果 GM 连续 8Q 下行
+        if row.gm_slope_8q < -0.02:   # 每年约 -2pp
+            return "WARN"
+        return "PASS"
+
+    # 核心规则
+    # 1) 量增利更增 → 捕获成功
+    if d_rev > 0.05 and d_gp >= d_rev - 0.02:
+        return "PASS"
+
+    # 2) 量增但毛利额增速显著落后 → 捕获失败（你描述的低 GM 组）
+    if d_rev > 0.05 and d_gp < d_rev - 0.05:
+        return "FAIL"
+
+    # 3) 靠提价/组合的 GM 跳升但历史无锚 → 周期峰值警告（MU）
+    if row.gm_ttm > row.gm_hist_p75 + 0.15:
+        return "WARN"   # 与 gm_peak 联动，估值改用常态化
+
+    # 4) 绝对 GM 阈值（你给的 40%/45% 可作分层，不当唯一判决）
+    if row.gm_ttm < 0.25 and d_gm <= 0 and d_rev > 0:
+        return "FAIL"   # 深加工/封测类「过手费」模式
+
+    if row.gm_ttm < 0.40 and d_gm < -0.02:
+        return "WARN"
+
+    return "PASS"
+```
+
+**写入总决策（接 Q2）：**
+
+```python
+mc = margin_capture(row)
+if mc == "FAIL" and action == "BUY_AGGRESSIVE":
+    action = "BUY_STANDARD"
+    row.position_cap *= 0.5
+if mc == "FAIL" and action == "BUY_STANDARD" and row.pricing_score > 2.3:
+    action = "HOLD_NO_NEW"
+if mc == "WARN" and action == "BUY_AGGRESSIVE":
+    action = "BUY_STANDARD"
+```
+
+### 不要做的事
+
+- **不要**把 GM 绝对值线性打进 pricingScore（META 82% vs AMKR 15% 的分位差会被半导体封测结构永久惩罚，变成行业偏见而非定价信号）。  
+- **不要**用单季 GM 突变做买卖（库存、一次性和 mix）。最少 **L4Q vs P4Q** 或 8 季斜率。
+
+**你可能错在哪：**  
+1. **n=26 且事后观察**：低 GM 四只「量涨利不涨」可能是 **行业结构（OSAT/材料）** 而非可泛化 alpha；样本外需至少 100+ 名字 × 3 年滚动验证。置信度：该模式在 OSAT/低端制造上 **中高**，推广到全池 **低**。  
+2. **「>45% 就能留存需求」过强**：高 GM 公司仍可因 **capex/竞争/周期** 毁价值（历史内存高峰 GM 也曾很高）。GM 捕获测的是 **短期定价权痕迹**，不是护城河充分条件。  
+3. 长交期豁免若只靠行业标签，会被错误分类；更好的是 **`backlog` / `RPO` / book-to-bill`** 有则用，无则不豁免。
+
+---
+
+## 总决策架构（一张图说完）
+
+```
+实时自算估值 ──► pricingScore（唯一主闸门）
+                      │
+                      ▼
+              Quality Gate（organic 增长 / 峰值 GM / stale 数据）
+                      │
+                      ▼
+              MarginCaptureTest（PASS/WARN/FAIL → 降档/砍仓）
+                      │
+                      ▼
+              PEG（可选）：仅 VALID 时作「买入刹车」，永不单独开闸
+                      │
+                      ▼
+                   action + position_cap
+```
+
+| 决策 | 内容 | 置信度 |
+|------|------|--------|
+| Q1 | **PEG 降级**；主指标 = 自算 pricingScore + Quality Gate | 高 |
+| Q2 | **PS 管买入开闸，PEG/质量管刹车**；MU→不买，CRH→标准买 | 高 |
+| Q3 | **要 GM 捕获，作门控不作加权维**；长交期用 backlog 豁免 | 高/中 |
+
+### 我最可能错的三点（主动挖忧）
+
+1. **pricingScore 本身若含 25% 分析师上行空间**，在 Semi 景气反转期会滞后，主闸门会从「PEG 诱多」换成「目标价诱多」——需单独做 target-price freshness 与 dispersion 检验。  
+2. **用 rev growth 替换 EPS growth 算 PEG** 会系统性低估「高回购 + 稳收入」的成熟现金牛（部分消费/支付）；若池子含该类，organic_ok 阈值要分行业。  
+3. **MU 案例的正确处理** 可能是「周期框架 + 仓位上限」而非简单否决：峰值 GM 否决「积极买入」合理，但 **中周期回撤买入** 可能仍有 alpha；你的框架若是 **趋势/质量成长** 导向，否决正确；若是 **周期均值回归** 导向，应另建 `cyclical_sleeve`，不要硬套 PEG/成长门控。
+
+---
+
+**最小改造顺序（若只改三刀）：**  
+1. 立刻禁用 Yahoo `pegRatio`，全部自算 `fwdPE`；价格变估值必须变。  
+2. 主闸门切到 pricingScore；PEG 只做 `if peg>2.5 and VALID: 禁止新买入`。  
+3. 上线 `organic_ok` + `gm_peak_flag` + `margin_capture` 三道门，专门钉死 MU/QCOM/低 GM 过手费。

@@ -1,0 +1,115 @@
+### Q1. PEG 是否应继续作为主指标？
+
+**结论：是，但必须取消对第三方预计算字段的依赖，并加装 4 个硬否决条件。替代方案暂不必要，因为当前框架的核心问题不在 PEG 的逻辑，而在数据源腐败和缺少质量前置检查。**
+
+以下否决条件逐条对应你给出的四个失效场景，任何一条触发，PEG 档位结果直接标记为 `INVALID`，不参与买入决策。
+
+---
+
+#### 否决条件 1（针对 MU —— 虚假分母）
+```
+if (forward_net_margin_estimate > trailing_net_margin * 1.5)
+   AND (trailing_revenue_growth_rate < 0.05)
+   AND (trailing_gross_margin > 5yr_avg_gross_margin * 1.8):
+    PEG = INVALID  // 周期股暴利期，前瞻 EPS 不可作为稳态增长率锚
+```
+**置信度：高**  
+**潜在错误点：** 阈值 1.5/1.8 基于经验值，未回测；若遇到真实的永久性利润率跃迁（如商业模式转型）会误杀。
+
+---
+
+#### 否决条件 2（针对 KTOS —— 指标爆炸）
+```
+if (long_term_growth_estimate < 0.02):  // 增长率不足 2%
+    PEG = INVALID  // PEG 在分母趋零时退化为噪声，不可排序
+```
+**置信度：高**  
+**潜在错误点：** 你把 KTOS 和真正高估标的分档混在一起的问题解决了，但 INVALID 标的的去向需另行定义（Q2 会涉及）。
+
+---
+
+#### 否决条件 3（针对 QCOM —— 虚假分子）
+```
+if (trailing_revenue_growth_rate < 0)  // 营收同比收缩
+   AND (trailing_eps_growth_rate > 0.5):  // EPS 却暴增 50%+
+    PEG = INVALID  // EPS 增长非由业务扩张驱动，不可信赖
+```
+**置信度：中**  
+**潜在错误点：** 没有区分“回购导致 EPS 增长”与“一次性剥离资产收益”；只能假设大幅背离营收的 EPS 增长都不可信。你可以用股票数量变化做进一步筛选。
+
+---
+
+#### 否决条件 4（针对 AMKR —— 数据冻结）
+```
+// 规则：禁止使用任何第三方预计算 PEG ratio；必须自行实时计算
+实时PEG = forward_pE_实时 / long_term_growth_estimate
+// 若数据源不允许获取逐日更新的 forward PE 和增长率，则将标的标记为
+data_freshness_status = STALE
+```
+**置信度：极高（接近 100%）**  
+**可执行动作：** 立即弃用 `defaultKeyStatistics.pegRatio`。你实测的 45% 冻结率说明这个字段在震荡市里是毒药，没有任何修补空间。
+
+---
+
+### Q2. PEG 与 pricingScore 冲突的仲裁规则
+
+直接写入代码的规则集合（优先级从上到下）：
+
+```
+// 第一步：处理 INVALID 标的
+if PEG == INVALID:
+    // 此时完全不看 PEG 档位，仅用 pricingScore 决策，
+    // 但入场门槛提高 1 档（即 1→2，即需比正常便宜一档才允许买入）
+    允许买入 if pricingScore <= 2.0 else 禁止入场
+
+// 第二步：冲突仲裁（两个指标都有效时）
+else if pricingScore <= 2.0 AND PEG >= 1.5:
+    // CRH 类型：pricingScore 喊便宜，PEG 喊贵（rich/overpriced）
+    // 默认听 pricingScore 的上限放宽，但禁止积极加仓
+    动作 = "允许标准买入，禁止积极加仓"
+    注释 = "PEG 保守归保守，多维估值便宜可轻仓试错"
+
+else if pricingScore >= 4.0 AND PEG <= 1.0:
+    // MU 类型：PEG 喊最便宜，pricingScore 喊贵
+    // 这通常意味着价格/动量/分析师因子在预警，PEG 可能踩了分母陷阱
+    动作 = "禁止新入场，已有持仓必须削减 50%"
+
+else if pricingScore >= 3.5 AND PEG <= 1.5:
+    // 中间状态：PEG 便宜/公允，但多维估值偏贵
+    动作 = "禁止买入，持有不加仓"
+
+// 其余正常情况按 PEG 档位执行原规则，不做修改
+```
+**置信度：中**  
+**潜在错误点：** 我把 pricingScore ≤2.0（而非 2.5）当作“便宜”的绝对阈值，这个值靠的是你给的 26 只标的排名印象（CRH 1.6 为全表最便宜），未经验证分布在更大样本下是否合理；你最好跑一遍历史分布的百分位再确定。
+
+---
+
+### Q3. 是否应增加「毛利率捕获测试」作为独立维度？
+
+**结论：是，但不应做成静态毛利率阈值，而应做成“毛利率增量趋势测试”，直接回答“增长有多少能留在企业内部”这个唯一重要的问题。**
+
+#### 具体可执行公式（两个信号组合）
+```
+gross_margin_trend = (current_gross_margin - 3yr_avg_gross_margin)
+revenue_to_gross_profit_conversion = (gross_profit_QoQ_delta / revenue_QoQ_delta)  // 增量转化率
+
+margin_capture_score = 
+    +1  if gross_margin_trend > 0.05 AND revenue_to_gross_profit_conversion > 0.5
+    -1  if gross_margin_trend < -0.05 OR revenue_to_gross_profit_conversion < 0.2
+    0   otherwise
+```
+将这个 score 作为加分项/减分项作用于最终仓位：  
+- +1：允许将原本 PEG 决定的仓位上限上浮 20%  
+- -1：强制将仓位上限下浮 30%，即使 PEG 和 pricingScore 都绿灯
+
+**反对意见的处理：**  
+你说得对，长交期行业（燃气轮机 3-5 年）的毛利率是滞后指标，但我给的 `revenue_to_gross_profit_conversion` 是增量比率，看的是当前新增收入有多少变成毛利，这可以直接捕捉到“今天签的订单，利润质量是否在恶化”，不依赖平均毛利率水平。因此反对意见对“增量趋势”部分无效，仅对静态毛利率阈值有效。**我故意没有使用毛利率绝对阈值，就是为了绕过你提出的这个滞后性问题。**
+
+**置信度：高**  
+**潜在错误点：** QoQ 增量在低增长公司中会非常嘈杂，这时候 conversion ratio 会剧烈波动，产生假阳性/假阴性。需要加一条 `if abs(revenue_QoQ_delta) < 0.02 * revenue: margin_capture_score = 0` 来冻结信号。
+
+---
+
+**最后指出你整体可能犯错的地方：**  
+你把 PEG 的增长率分母默认为“可持续增长率”，这在半导体周期股（MU, QCOM, AMKR）上是系统性错误——这些公司的盈利周期并非单峰，而是锯齿状，任何使用“长期增长率点估计”的估值指标都会在周期拐点给出致命的错误信号。可能你需要的不是一个修补后的 PEG 框架，而是一个明确将“周期阶段”作为第一维度的状态机模型。但我上述方案是在你现有框架内损伤最小的修正，如果你愿意承担一次彻底重构，可以放弃 PEG，改用 `企业经营利润/EV` 加 `库存周期位置` 的二维矩阵。这个方向的置信度为中，因为你的行为规则(分档动作)已经根深蒂固，彻底重构的转换成本可能高于修补收益。

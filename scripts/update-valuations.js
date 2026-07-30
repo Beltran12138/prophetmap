@@ -460,6 +460,31 @@ function computeRealizationCheck(summary) {
 const PRICING_ENTER = 2.8; // must be <= this to newly qualify
 const PRICING_EXIT = 3.2;  // must exceed this to lose an existing pass
 
+// PEG staleness detector (added 2026-07-30, v2.9.10). `pegRatio` below is Yahoo's
+// PRECOMPUTED defaultKeyStatistics field, not a function of the live price this
+// script already holds. Measured 2026-07-22 -> 07-29: of 49 tickers that moved
+// more than 5%, 22 (45%) carried a byte-identical pegRatio. AMKR is the clearest
+// case — price 60.30 -> 45.98 -> 44.27, forward P/E 23.0 -> 17.6 -> 15.5 (-33%),
+// pegRatio 0.76 -> 0.76 -> 0.76, unchanged to the basis point. That is impossible
+// for a live ratio. PEG is the holder's declared PRIMARY pricing indicator, so a
+// frozen value is not a cosmetic defect; it silently freezes the decision rule.
+//
+// NOT claimed: any directional bias. Zero tickers rose more than 5% in that window,
+// so the up-move sample is empty and the asymmetry was not testable.
+//
+// This flag does NOT gate anything. pegRatio feeds no funnel condition and no
+// component of pricingScore — verified by grep across scripts/ and lib/ — so
+// nothing here can move funnelPass. It marks the number as unusable for the day.
+const PEG_STALE_PRICE_MOVE = 5.0; // percent move against the anchor that should have moved PEG
+
+// Minimum growth rate below which PEG carries no information: the denominator
+// approaches zero and the ratio diverges regardless of valuation. KTOS printed
+// pegRatio 36.41 on 2026-07-29 and was banded "overpriced" alongside genuinely
+// expensive names, which is a category error — it is not expensive, it is
+// unmeasurable. Both council models (Grok, DeepSeek, 2026-07-30) proposed this
+// same guard independently.
+const PEG_MIN_GROWTH = 0.03;
+
 function evaluateFunnel(ticker, pricingScore, previousPass, applicability) {
   const { physicalConstraint, aiContribution, timeToRealize, moatCapture } = ticker;
   const reasons = [];
@@ -537,10 +562,126 @@ function loadPreviousFunnelState() {
   }
 }
 
+/**
+ * Prior-session PEG and price, keyed by symbol — the anchor the staleness check
+ * compares against. Reads the same file loadPreviousFunnelState() reads, in a
+ * separate pass on purpose: the hysteresis anchor is load-bearing for funnelPass
+ * and is deliberately not refactored to carry a second payload.
+ */
+function loadPreviousPegAnchor() {
+  try {
+    if (!fs.existsSync(SCORES_DIR)) return {};
+    const todayFile = `${today()}.json`;
+    const files = fs.readdirSync(SCORES_DIR)
+      .filter((f) => f.endsWith('.json') && f < todayFile)
+      .sort();
+    if (files.length === 0) return {};
+    const file = files[files.length - 1];
+    const prev = JSON.parse(fs.readFileSync(path.join(SCORES_DIR, file), 'utf8'));
+    const map = {};
+    for (const r of prev.results || []) {
+      map[r.symbol] = { peg: r.pegRatio ?? null, price: r.price ?? null, date: prev.date ?? file.replace('.json', '') };
+    }
+    return map;
+  } catch (err) {
+    console.log(`[ProphetMap] Could not load previous PEG anchor (${err.message}) — staleness undetectable this run`);
+    return {};
+  }
+}
+
+/**
+ * PEG recomputed from the live price this script already holds, as a DIAGNOSTIC
+ * ONLY. It is emitted alongside Yahoo's pegRatio and deliberately does NOT replace
+ * it, and deliberately carries NO band.
+ *
+ * Why not replace: measured 2026-07-30 across MU / AMKR / NVDA / QCOM / GOOG / KTOS,
+ * this value diverges from Yahoo's by -97% to +1505%. It is a DIFFERENT METRIC, not
+ * a repaired one — Yahoo's pegRatio could not be reproduced from any obtainable
+ * field, so its growth denominator is unknown. The holder's decision bands
+ * (1.0 / 1.5 / 2.5) are calibrated to Yahoo's scale. Swapping the number underneath
+ * those bands would re-rate the entire book silently, which is exactly what the
+ * v2.8.0 peer rule prohibits. Re-banding requires a historical distribution study
+ * and is a framework decision, not an engineering one.
+ *
+ * Denominator: the textbook PEG uses a long-term (+5y) growth estimate. Yahoo
+ * returned NULL for `+5y` on EVERY ticker tested on 2026-07-30, so +1y is the only
+ * obtainable rate and the basis is recorded per-ticker so the two are never confused.
+ *
+ * MEASURED BEHAVIOUR, 2026-07-30 dry run — two of four known PEG failure modes are
+ * fixed and two are NOT. Recorded as measured, not as intended:
+ *   #1 MU peak-cycle EPS  — NOT FIXED, made worse. Yahoo 0.13, self 0.04; both
+ *      "cheap", both on the same peak-EPS denominator. cyclicalTrap catches this,
+ *      PEG does not, in any formulation.
+ *   #2 KTOS denominator   — NOT FIXED, INVERTED. Yahoo 36.41 "overpriced", self 0.99
+ *      "cheap". The growth floor does NOT fire here: +1y growth is 40.5%, well clear
+ *      of it. KTOS's distortion lives in trailing EPS of 0.15 against forward 1.09,
+ *      a 7x jump off a near-zero base, which neither ratio expresses. Yahoo's number
+ *      at least reads as an outlier; the self-computed one reads as a buy.
+ *   #3 QCOM shrinking rev — FIXED. Yahoo 0.51 "cheap" on revenue contracting 3.5%
+ *      YoY; self returns null because +1y growth is 1.7%, under the floor.
+ *   #4 staleness          — FIXED by construction; the value is a function of the
+ *      live price.
+ * NOTE ON THE FLOOR: both council models (2026-07-30) proposed PEG_MIN_GROWTH
+ * independently and both proposed it to catch KTOS. On measurement it catches QCOM
+ * and not KTOS. The guard is worth keeping — it is doing real work — but it is not
+ * doing the work it was designed for, and that is recorded rather than tidied away.
+ * ALSO: GOOG, a core holding, returns null (expected contraction, +1y growth
+ * -28.5%). Correct behaviour for a ratio undefined on negative growth, but it means
+ * this diagnostic is silent on some of the largest positions.
+ */
+function computeSelfPeg(quote, summary, earningsSummary) {
+  const price = quote?.regularMarketPrice ?? null;
+  const fwdEps = summary?.defaultKeyStatistics?.forwardEps ?? quote?.epsForward ?? null;
+  const trend = earningsSummary?.earningsTrend?.trend ?? [];
+  const ltgRaw = trend.find((t) => t.period === '+5y')?.growth ?? null;
+  const g1yRaw = trend.find((t) => t.period === '+1y')?.growth ?? null;
+
+  const ltg = ltgRaw != null && isFinite(ltgRaw) ? ltgRaw : null;
+  const g1y = g1yRaw != null && isFinite(g1yRaw) ? g1yRaw : null;
+  const growth = ltg ?? g1y;
+  const basis = ltg != null ? '+5y' : (g1y != null ? '+1y' : null);
+
+  if (price == null || fwdEps == null || fwdEps <= 0) {
+    return { value: null, basis, reason: 'forward EPS unavailable or non-positive' };
+  }
+  if (growth == null) return { value: null, basis: null, reason: 'no analyst growth estimate available' };
+  if (growth <= 0) {
+    return { value: null, basis, reason: `growth ${(growth * 100).toFixed(1)}% <= 0 — PEG undefined for expected contraction` };
+  }
+  if (growth < PEG_MIN_GROWTH) {
+    return { value: null, basis, reason: `growth ${(growth * 100).toFixed(1)}% < ${(PEG_MIN_GROWTH * 100).toFixed(0)}% — denominator near zero, ratio carries no information` };
+  }
+
+  const fwdPE = price / fwdEps;
+  return { value: Math.round((fwdPE / (growth * 100)) * 100) / 100, basis, reason: null };
+}
+
+/**
+ * Flags Yahoo's pegRatio as unusable for the day when it did not move through a
+ * price move that must have moved it. Conservative by construction: it fires only
+ * on byte-identical equality, so a PEG that moved even slightly is treated as live.
+ */
+function detectPegStale(pegRatio, price, anchor) {
+  if (!anchor || anchor.peg == null || anchor.price == null || pegRatio == null || price == null) {
+    return { stale: false, detail: null };
+  }
+  const pxDelta = (price / anchor.price - 1) * 100;
+  if (Math.abs(pxDelta) < PEG_STALE_PRICE_MOVE) return { stale: false, detail: null };
+  if (pegRatio !== anchor.peg) return { stale: false, detail: null };
+  return {
+    stale: true,
+    detail:
+      `pegRatio unchanged at ${pegRatio} while price moved ${pxDelta >= 0 ? '+' : ''}${pxDelta.toFixed(1)}% ` +
+      `since ${anchor.date} (${anchor.price} -> ${price}) — Yahoo precomputed field has not refreshed; ` +
+      `treat pegBand as unusable for this session`,
+  };
+}
+
 async function main() {
   const universe = JSON.parse(fs.readFileSync(UNIVERSE_PATH, 'utf8'));
   const { benchmarks } = JSON.parse(fs.readFileSync(BENCHMARKS_PATH, 'utf8'));
   const previousFunnel = loadPreviousFunnelState();
+  const pegAnchor = loadPreviousPegAnchor();
 
   const activeTickers = universe.tickers.filter(
     (t) => t.status === 'active' || t.status === 'watchlist'
@@ -662,6 +803,10 @@ async function main() {
         : pegRatio <= 2.5 ? 'rich'
         : 'overpriced';
 
+      // Diagnostics only — neither gates anything. See computeSelfPeg / detectPegStale.
+      const selfPeg = computeSelfPeg(quote, summary, earningsSummary);
+      const pegStaleness = detectPegStale(pegRatio, quote?.regularMarketPrice ?? null, pegAnchor[sym]);
+
       const realizationCheck = computeRealizationCheck(earningsSummary);
       const deratingSignature = computeDeratingSignature(quote, summary, realizationCheck);
 
@@ -684,6 +829,11 @@ async function main() {
         cyclicalTrap: cyclicalTrap.applied ? cyclicalTrap : null,
         pegRatio,
         pegBand,
+        pegStale: pegStaleness.stale,
+        pegStaleDetail: pegStaleness.detail,
+        pegSelf: selfPeg.value,
+        pegSelfBasis: selfPeg.basis,
+        pegSelfUnavailableReason: selfPeg.reason,
         funnelPass: funnel.pass,
         funnelFailReasons: funnel.failReasons,
         funnelWarnings: funnel.warnings,
@@ -712,7 +862,10 @@ async function main() {
       const sigLabel = deratingSignature && deratingSignature.signature !== 'none'
         ? `, sig=${deratingSignature.signature}(dd${deratingSignature.drawdownFrom52wHigh}%/12m${deratingSignature.change52w ?? '?'}%)`
         : '';
-      console.log(`${passLabel}${bandLabel} (pricing=${effectivePricingScore ?? 'N/A'}${trapLabel}, peg=${pegRatio ?? 'N/A'} [${pegBand}]${realLabel}, dq=${dataQuality}${sigLabel})`);
+      const pegLabel = pegStaleness.stale
+        ? ` !STALE(self=${selfPeg.value ?? 'n/a'})`
+        : (selfPeg.value != null ? ` self=${selfPeg.value}` : '');
+      console.log(`${passLabel}${bandLabel} (pricing=${effectivePricingScore ?? 'N/A'}${trapLabel}, peg=${pegRatio ?? 'N/A'} [${pegBand}]${pegLabel}${realLabel}, dq=${dataQuality}${sigLabel})`);
     } catch (err) {
       console.log(`ERROR: ${err.message}`);
       errors.push({ symbol: sym, error: err.message });

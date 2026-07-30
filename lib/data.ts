@@ -49,6 +49,17 @@ export type TickerScore = {
   pricingInapplicableReason?: string | null;
   pegRatio?: number | null;
   pegBand?: 'cheap' | 'fair' | 'rich' | 'overpriced' | 'N/A';
+  // PEG diagnostics (v2.9.10). NON-GATING — pegRatio feeds no funnel condition and
+  // no pricingScore component. pegStale marks Yahoo's precomputed pegRatio as not
+  // having refreshed through a >5% price move, i.e. pegBand is unusable that session.
+  // pegSelf is recomputed from the live price and is a DIFFERENT metric on a
+  // DIFFERENT scale — it deliberately carries no band and must not be read against
+  // the 1.0 / 1.5 / 2.5 thresholds, which are calibrated to Yahoo's number.
+  pegStale?: boolean;
+  pegStaleDetail?: string | null;
+  pegSelf?: number | null;
+  pegSelfBasis?: '+5y' | '+1y' | null;
+  pegSelfUnavailableReason?: string | null;
   funnelPass: boolean;
   funnelFailReasons: string[];
   funnelWarnings?: string[];

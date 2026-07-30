@@ -4,6 +4,71 @@ All notable universe / layers / framework changes, dated.
 
 ---
 
+## 2026-07-30 — v2.9.10: PEG staleness detector · the fix does not fix what it was supposed to
+
+Engine change, following the v2.9.9 finding that `pegRatio` — the holder's **declared primary pricing indicator** — was frozen on 45% of the names that moved more than 5% in a week.
+
+### 0. Blast radius: zero on the engine, total on the human rule
+
+**`pegRatio` feeds no funnel condition and no `pricingScore` component** — verified by grep across `scripts/` and `lib/`. It is a pure output field consumed by the UI and by the holder's decision bands. **`funnelPass` cannot move on this change.**
+
+**Verification method — stronger than an output diff:** the entire diff to `update-valuations.js` **deletes exactly one line, and it is a `console.log`.** Everything else is pure addition. This is not "I compared the outputs and they matched"; it is "the code producing every pre-existing field is byte-identical." No full-table delta is required because no existing field is computed differently.
+
+### 1. What was NOT done, and why
+
+**Yahoo's `pegRatio` was not replaced.** The v2.9.9 recommendation was to self-compute it. On implementation that turned out to be the wrong instruction:
+
+- **`+5y` long-term growth — the textbook PEG denominator — returns NULL on every ticker tested.** DeepSeek's council proposal (`forward_PE / long_term_growth_estimate`) is **not implementable; the field does not exist.** Fifth instance of the *unmeasurable* defect class this session, this one inside a council recommendation.
+- **Yahoo's `pegRatio` cannot be reproduced from any obtainable field**, so its growth denominator is unknown. A self-computed value diverges from it by **−97% to +1505%** across MU / AMKR / NVDA / QCOM / GOOG / KTOS. **It is a different metric, not a repaired one.**
+- The holder's bands (1.0 / 1.5 / 2.5) are calibrated to Yahoo's scale. **Swapping the number underneath them would re-rate the whole book silently** — precisely what the v2.8.0 peer rule prohibits. Re-banding needs a historical distribution study and is a framework decision, not an engineering one.
+
+So `pegSelf` ships as a **diagnostic with no band**, alongside the original.
+
+### 2. What shipped
+
+| Field | Purpose |
+|---|---|
+| `pegStale` / `pegStaleDetail` | fires when `pegRatio` is byte-identical through a >5% price move against the prior session |
+| `pegSelf` / `pegSelfBasis` | PEG from the live price; basis recorded per-ticker (`+5y` or `+1y`) so the two are never confused |
+| `pegSelfUnavailableReason` | why it is null — contraction, growth floor, or missing forward EPS |
+
+`PEG_MIN_GROWTH = 0.03` — below this the denominator approaches zero and the ratio carries no information.
+
+**`detectPegStale` unit-tested 7/7** against real historical values pulled from stored scores files, including **direction symmetry** (fires on up-moves as well as down). That closes the v2.9.9 caveat that the asymmetry was untestable — it was untestable *in the data*, not in the code.
+
+### 3. The honest scorecard — two of four fixed, and not the two intended
+
+| # | Failure mode | Yahoo | `pegSelf` | Fixed? |
+|---|---|---|---|---|
+| 1 | MU peak-cycle EPS | 0.13 cheap | **0.04 cheap** | ❌ **worse** |
+| 2 | KTOS denominator | 36.41 overpriced | **0.99 cheap** | ❌ **inverted, worse** |
+| 3 | QCOM shrinking revenue | 0.51 cheap | **null** (growth 1.7% < floor) | ✅ |
+| 4 | staleness | frozen | live | ✅ |
+
+**The most useful finding is about the council itself.** Both models proposed `PEG_MIN_GROWTH` independently, and **both proposed it to catch KTOS. On measurement it catches QCOM and not KTOS** — KTOS's `+1y` growth is 40.5%, nowhere near the floor. Its distortion lives in trailing EPS of 0.15 against forward 1.09, a 7× jump off a near-zero base, **which neither ratio expresses.** The guard is kept because it is doing real work; it is not doing the work it was designed for, and that is recorded rather than tidied away.
+
+**Also recorded:** GOOG, a core holding, returns `null` (expected contraction, `+1y` growth −28.5%). Correct for a ratio undefined on negative growth — but it means the diagnostic is **silent on some of the largest positions.**
+
+### 4. Council — archived, and both members were wrong on Q3
+
+Raw transcripts in `data/council/2026-07-30/`. **2 of 3 models: MiMo timed out on three separate attempts** (documented syntax, `mimo run`, and a short connectivity probe), so it is a connectivity failure, not a prompt failure. Separately, `~/.claude/commands/council.md` carries a **stale invocation** for MiMo.
+
+| | Grok | DeepSeek |
+|---|---|---|
+| Q1 PEG as primary | **demote** — the failures are definitional, not implementation | **keep + 4 vetoes** — "the problem is data-source corruption, not PEG's logic" |
+| Q2 arbitration | identical in spirit — **pricingScore holds the buy gate, PEG can only brake** | same; MU → no buy, CRH → standard not aggressive |
+| Q3 margin capture | add as **gate** | add as **incremental trend** |
+
+**Q3: both said add it. Measurement says no.** Four candidate formulations were tested against six tickers and **all four failed, each differently:**
+
+- **DeepSeek's incremental conversion (ΔGP/Δrev, >0.5 = good)** scores **MU +1 in all four quarters** (76.8% → 111.3% → 98.9% → 98.3%) — a ~99% conversion is COGS not moving at all, the exact signature of pure ASP, read as maximum capture quality. It also breaks entirely when revenue declines (3 of 16 quarter-pairs return meaningless numbers).
+- **COGS-growth / revenue-growth** calls **AVGO (69.5% GM) "pure pass-through"** at 0.85.
+- **Price/volume decomposition** calls **TSM "83% price-driven"** — TSM's COGS is mostly depreciation, fixed, so it does not move with volume.
+
+**Conclusion: gross margin conflates pricing power, cost structure and mix, and the income statement alone cannot separate them.** The GEV #4 and AMKR #4 falsifiers stand precisely *because they attempt no decomposition* — they ask one compound question over four quarters. **Kept as per-ticker falsifiers; NOT promoted to a fifth dimension.**
+
+---
+
 ## 2026-07-30 — v2.9.9: AMKR is a worse GEV · and the primary decision indicator was frozen through a 34.6% drawdown
 
 ### 1. AMKR — the capture test's second application, and it fails harder
