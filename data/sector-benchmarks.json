@@ -1,7 +1,7 @@
 {
   "_meta": {
     "version": "1.0.0",
-    "lastUpdated": "2026-08-03",
+    "lastUpdated": "2026-08-10",
     "updateCadence": "quarterly — every earnings season (Jan/Apr/Jul/Oct)",
     "note": "Sector median P/E and EV/Revenue used for pricing score computation. Update by running scripts/update-sector-benchmarks.js or manually after quarterly earnings.",
     "lastComputedBy": "update-benchmarks.js",
@@ -23,48 +23,48 @@
   "benchmarks": {
     "L0": {
       "label": "Hyperscaler / Foundation Models",
-      "medianForwardPE": 18.7,
-      "medianEVRevenue": 7,
+      "medianForwardPE": 19.1,
+      "medianEVRevenue": 7.5,
       "peers": [
         "MSFT",
         "AMZN",
         "META",
         "ORCL"
       ],
-      "_computedForwardPE": 18.7,
-      "_computedEVRevenue": 7,
-      "_lastComputed": "2026-08-03",
+      "_computedForwardPE": 19.1,
+      "_computedEVRevenue": 7.5,
+      "_lastComputed": "2026-08-10",
       "_sampleSize": 4,
       "_externalPeerCount": 0,
       "_selfReferential": true
     },
     "L1": {
       "label": "AI Infrastructure Software",
-      "medianForwardPE": 24.1,
-      "medianEVRevenue": 8.8,
+      "medianForwardPE": 24.5,
+      "medianEVRevenue": 9.2,
       "peers": [
         "GOOG",
         "PLTR",
         "NOW",
         "CRM"
       ],
-      "_computedForwardPE": 24.1,
-      "_computedEVRevenue": 8.8,
-      "_lastComputed": "2026-08-03",
+      "_computedForwardPE": 24.5,
+      "_computedEVRevenue": 9.2,
+      "_lastComputed": "2026-08-10",
       "_sampleSize": 4,
       "_externalPeerCount": 2
     },
     "L2": {
       "label": "Training Silicon",
-      "medianForwardPE": 34.6,
-      "medianEVRevenue": 20.5,
+      "medianForwardPE": 31.3,
+      "medianEVRevenue": 21.2,
       "peers": [
         "NVDA",
         "AMD"
       ],
-      "_computedForwardPE": 34.6,
-      "_computedEVRevenue": 20.5,
-      "_lastComputed": "2026-08-03",
+      "_computedForwardPE": 31.3,
+      "_computedEVRevenue": 21.2,
+      "_lastComputed": "2026-08-10",
       "_sampleSize": 3,
       "_externalPeerCount": 0,
       "_selfReferential": true,
@@ -91,57 +91,57 @@
     },
     "L2_5": {
       "label": "Inference / Edge Silicon",
-      "medianForwardPE": 26.5,
-      "medianEVRevenue": 22.1,
+      "medianForwardPE": 31.3,
+      "medianEVRevenue": 24.8,
       "peers": [
         "QCOM",
         "ARM",
         "MRVL",
         "MTSI"
       ],
-      "_computedForwardPE": 26.5,
-      "_computedEVRevenue": 22.1,
-      "_lastComputed": "2026-08-03",
+      "_computedForwardPE": 31.3,
+      "_computedEVRevenue": 24.8,
+      "_lastComputed": "2026-08-10",
       "_sampleSize": 6,
       "_externalPeerCount": 1,
       "_selfReferential": true
     },
     "L3": {
       "label": "EDA / IP",
-      "medianForwardPE": 35.1,
+      "medianForwardPE": 35.6,
       "medianEVRevenue": 16.2,
       "peers": [
         "SNPS",
         "CDNS",
         "ANSS"
       ],
-      "_computedForwardPE": 35.1,
+      "_computedForwardPE": 35.6,
       "_computedEVRevenue": 16.2,
-      "_lastComputed": "2026-08-03",
+      "_lastComputed": "2026-08-10",
       "_sampleSize": 3,
       "_externalPeerCount": 1,
       "_selfReferential": true
     },
     "L3_5": {
       "label": "Semiconductor Materials",
-      "medianForwardPE": 25.3,
-      "medianEVRevenue": 6.7,
+      "medianForwardPE": 27.6,
+      "medianEVRevenue": 7,
       "peers": [
         "ENTG",
         "APD",
         "CMC",
         "AZTA"
       ],
-      "_computedForwardPE": 25.3,
-      "_computedEVRevenue": 6.7,
-      "_lastComputed": "2026-08-03",
+      "_computedForwardPE": 27.6,
+      "_computedEVRevenue": 7,
+      "_lastComputed": "2026-08-10",
       "_sampleSize": 6,
       "_externalPeerCount": 2
     },
     "L4": {
       "label": "Semiconductor Equipment",
-      "medianForwardPE": 28.9,
-      "medianEVRevenue": 14.8,
+      "medianForwardPE": 30.9,
+      "medianEVRevenue": 15.7,
       "peers": [
         "AMAT",
         "LRCX",
@@ -149,98 +149,98 @@
         "ASML",
         "ONTO"
       ],
-      "_computedForwardPE": 28.9,
-      "_computedEVRevenue": 14.8,
-      "_lastComputed": "2026-08-03",
+      "_computedForwardPE": 30.9,
+      "_computedEVRevenue": 15.7,
+      "_lastComputed": "2026-08-10",
       "_sampleSize": 6,
       "_externalPeerCount": 1,
       "_selfReferential": true
     },
     "L5": {
       "label": "Advanced Packaging / Foundry",
-      "medianForwardPE": 19.7,
-      "medianEVRevenue": 2.5,
+      "medianForwardPE": 20.3,
+      "medianEVRevenue": 2.6,
       "peers": [
         "TSM",
         "AMKR",
         "ASX",
         "UMC"
       ],
-      "_computedForwardPE": 19.7,
-      "_computedEVRevenue": 2.5,
-      "_lastComputed": "2026-08-03",
+      "_computedForwardPE": 20.3,
+      "_computedEVRevenue": 2.6,
+      "_lastComputed": "2026-08-10",
       "_sampleSize": 5,
       "_externalPeerCount": 2
     },
     "L6": {
       "label": "Memory / Storage",
-      "medianForwardPE": 15,
-      "medianEVRevenue": 15.8,
+      "medianForwardPE": 13.7,
+      "medianEVRevenue": 11.7,
       "peers": [
         "MU",
         "WDC",
         "STX"
       ],
-      "_computedForwardPE": 15,
-      "_computedEVRevenue": 15.8,
-      "_lastComputed": "2026-08-03",
+      "_computedForwardPE": 13.7,
+      "_computedEVRevenue": 11.7,
+      "_lastComputed": "2026-08-10",
       "_sampleSize": 3,
       "_externalPeerCount": 2
     },
     "L7": {
       "label": "AI Servers / EMS",
-      "medianForwardPE": 16.3,
-      "medianEVRevenue": 2.3,
+      "medianForwardPE": 16.2,
+      "medianEVRevenue": 2.4,
       "peers": [
         "DELL",
         "HPE",
         "CLS",
         "SMCI"
       ],
-      "_computedForwardPE": 16.3,
-      "_computedEVRevenue": 2.3,
-      "_lastComputed": "2026-08-03",
+      "_computedForwardPE": 16.2,
+      "_computedEVRevenue": 2.4,
+      "_lastComputed": "2026-08-10",
       "_sampleSize": 6,
       "_externalPeerCount": 1,
       "_selfReferential": true
     },
     "L8_NET": {
       "label": "AI Networking",
-      "medianForwardPE": 23.5,
-      "medianEVRevenue": 5.5,
+      "medianForwardPE": 20.5,
+      "medianEVRevenue": 5.3,
       "peers": [
         "ANET",
         "CSCO",
         "HPE",
         "EXTR"
       ],
-      "_computedForwardPE": 23.5,
-      "_computedEVRevenue": 5.5,
-      "_lastComputed": "2026-08-03",
+      "_computedForwardPE": 20.5,
+      "_computedEVRevenue": 5.3,
+      "_lastComputed": "2026-08-10",
       "_sampleSize": 4,
       "_peerNote": "JNPR removed 2026-07-28 — Juniper was acquired by HPE and no longer returns fundamentals. HPE now carries that business.",
       "_externalPeerCount": 3
     },
     "L8_COOL": {
       "label": "Thermal / Power Distribution",
-      "medianForwardPE": 22.2,
-      "medianEVRevenue": 4.6,
+      "medianForwardPE": 22.3,
+      "medianEVRevenue": 4.7,
       "peers": [
         "VRT",
         "ETN",
         "GNRC",
         "IR"
       ],
-      "_computedForwardPE": 22.2,
-      "_computedEVRevenue": 4.6,
-      "_lastComputed": "2026-08-03",
+      "_computedForwardPE": 22.3,
+      "_computedEVRevenue": 4.7,
+      "_lastComputed": "2026-08-10",
       "_sampleSize": 5,
       "_externalPeerCount": 2
     },
     "L8_OPT": {
       "label": "Optical Interconnect",
-      "medianForwardPE": 33.8,
-      "medianEVRevenue": 8.8,
+      "medianForwardPE": 40.6,
+      "medianEVRevenue": 11,
       "peers": [
         "GLW",
         "COHR",
@@ -249,57 +249,57 @@
         "AAOI",
         "FN"
       ],
-      "_computedForwardPE": 33.8,
-      "_computedEVRevenue": 8.8,
-      "_lastComputed": "2026-08-03",
+      "_computedForwardPE": 40.6,
+      "_computedEVRevenue": 11,
+      "_lastComputed": "2026-08-10",
       "_sampleSize": 6,
       "_externalPeerCount": 3
     },
     "L9": {
       "label": "Datacenter Real Estate",
-      "medianForwardPE": 25.7,
-      "medianEVRevenue": 12.2,
+      "medianForwardPE": 25.3,
+      "medianEVRevenue": 12.3,
       "peers": [
         "EQIX",
         "DLR",
         "AMT",
         "CCI"
       ],
-      "_computedForwardPE": 25.7,
-      "_computedEVRevenue": 12.2,
-      "_lastComputed": "2026-08-03",
+      "_computedForwardPE": 25.3,
+      "_computedEVRevenue": 12.3,
+      "_lastComputed": "2026-08-10",
       "_sampleSize": 6,
       "_externalPeerCount": 2
     },
     "L10": {
       "label": "Cybersecurity",
-      "medianForwardPE": 62.2,
-      "medianEVRevenue": 20.4,
+      "medianForwardPE": 65.4,
+      "medianEVRevenue": 21.5,
       "peers": [
         "CRWD",
         "PANW",
         "ZS",
         "FTNT"
       ],
-      "_computedForwardPE": 62.2,
-      "_computedEVRevenue": 20.4,
-      "_lastComputed": "2026-08-03",
+      "_computedForwardPE": 65.4,
+      "_computedEVRevenue": 21.5,
+      "_lastComputed": "2026-08-10",
       "_sampleSize": 4,
       "_externalPeerCount": 2
     },
     "L11": {
       "label": "Nuclear / Clean Baseload Power",
-      "medianForwardPE": 17.4,
-      "medianEVRevenue": 3.9,
+      "medianForwardPE": 16.9,
+      "medianEVRevenue": 8,
       "peers": [
         "CEG",
         "VST",
         "CCJ",
         "NRG"
       ],
-      "_computedForwardPE": 17.4,
-      "_computedEVRevenue": 3.9,
-      "_lastComputed": "2026-08-03",
+      "_computedForwardPE": 16.9,
+      "_computedEVRevenue": 8,
+      "_lastComputed": "2026-08-10",
       "_sampleSize": 6,
       "_externalPeerCount": 1,
       "_selfReferential": true,
@@ -307,17 +307,17 @@
     },
     "L12": {
       "label": "Grid / Power Infrastructure",
-      "medianForwardPE": 30.2,
-      "medianEVRevenue": 5.6,
+      "medianForwardPE": 28,
+      "medianEVRevenue": 5.5,
       "peers": [
         "GEV",
         "PWR",
         "EMR",
         "ROK"
       ],
-      "_computedForwardPE": 30.2,
-      "_computedEVRevenue": 5.6,
-      "_lastComputed": "2026-08-03",
+      "_computedForwardPE": 28,
+      "_computedEVRevenue": 5.5,
+      "_lastComputed": "2026-08-10",
       "_sampleSize": 6,
       "_externalPeerCount": 2,
       "_changeLog": [
@@ -334,33 +334,33 @@
     },
     "L13": {
       "label": "Natural Gas",
-      "medianForwardPE": 11.7,
-      "medianEVRevenue": 4,
+      "medianForwardPE": 11.1,
+      "medianEVRevenue": 4.1,
       "peers": [
         "EOG",
         "EQT",
         "AR",
         "CRK"
       ],
-      "_computedForwardPE": 11.7,
-      "_computedEVRevenue": 4,
-      "_lastComputed": "2026-08-03",
+      "_computedForwardPE": 11.1,
+      "_computedEVRevenue": 4.1,
+      "_lastComputed": "2026-08-10",
       "_sampleSize": 4,
       "_externalPeerCount": 2
     },
     "L14": {
       "label": "Physical Resources / Commodities",
-      "medianForwardPE": 14.7,
-      "medianEVRevenue": 2.9,
+      "medianForwardPE": 15.8,
+      "medianEVRevenue": 3.2,
       "peers": [
         "FCX",
         "SCCO",
         "AA",
         "NUE"
       ],
-      "_computedForwardPE": 14.7,
-      "_computedEVRevenue": 2.9,
-      "_lastComputed": "2026-08-03",
+      "_computedForwardPE": 15.8,
+      "_computedEVRevenue": 3.2,
+      "_lastComputed": "2026-08-10",
       "_sampleSize": 4,
       "_externalPeerCount": 1,
       "_selfReferential": true
@@ -368,15 +368,15 @@
     "L_EXP_QC": {
       "label": "Quantum Computing (Experimental)",
       "medianForwardPE": null,
-      "medianEVRevenue": 195.2,
+      "medianEVRevenue": 251.4,
       "peers": [
         "IONQ",
         "RGTI",
         "QUBT"
       ],
       "note": "Pre-revenue category — EV/Revenue is the only meaningful comparable",
-      "_computedEVRevenue": 195.2,
-      "_lastComputed": "2026-08-03",
+      "_computedEVRevenue": 251.4,
+      "_lastComputed": "2026-08-10",
       "_sampleSize": 3,
       "_externalPeerCount": 1,
       "_selfReferential": true,
@@ -389,8 +389,8 @@
     },
     "L9_MINER_CONVERT": {
       "label": "Bitcoin Mining -> AI/HPC Conversion",
-      "medianForwardPE": 106.2,
-      "medianEVRevenue": 20.4,
+      "medianForwardPE": 104.2,
+      "medianEVRevenue": 21.5,
       "peers": [
         "MARA",
         "RIOT",
@@ -399,10 +399,10 @@
         "BTDR"
       ],
       "_peerNote": "Declared 2026-07-28. Five external comparables, all bitcoin miners at varying stages of HPC/AI conversion — the closest business-model match available and none of them universe members. CAVEAT ON THE forwardPE LEG: MARA, RIOT, CLSK and BTDR all carry NEGATIVE forward PE (loss-making), and median() filters non-positive values, so the forwardPE median rests on the profitable minority (CORZ plus whichever universe members are profitable). That is a selection bias toward the few winners in a mostly loss-making cohort. The EV/Revenue leg is sound: all five peers report valid positive ratios (5.97 to 21.83).",
-      "_computedForwardPE": 106.2,
-      "_computedEVRevenue": 20.4,
+      "_computedForwardPE": 104.2,
+      "_computedEVRevenue": 21.5,
       "_externalPeerCount": 5,
-      "_lastComputed": "2026-08-03",
+      "_lastComputed": "2026-08-10",
       "_sampleSize": 10,
       "_changeLog": [
         {
@@ -418,18 +418,18 @@
     },
     "L_DEF": {
       "label": "Defense Tech / Autonomous Systems",
-      "medianForwardPE": 33.5,
-      "medianEVRevenue": 5.3,
+      "medianForwardPE": 36.4,
+      "medianEVRevenue": 5.5,
       "peers": [
         "DRS",
         "LHX",
         "RCAT"
       ],
       "_peerNote": "Declared 2026-07-28. Three external comparables, meeting the >=2 floor with one to spare. BUSINESS-MODEL MISMATCH DISCLOSED per the v2.8.0 rule: the layer holds two mid-cap defense-tech names (AVAV ~$13B, KTOS) and no clean size-matched public peer set exists. LHX is ~4x larger and is a prime contractor rather than a systems specialist; RCAT is a direct product competitor in small military UAS but is loss-making, so it contributes only to the EV/Revenue leg. DRS is the closest match on both size and model. The median is therefore bracketed by a peer too large and a peer too small; treat it as advisory rather than precise.",
-      "_computedForwardPE": 33.5,
-      "_computedEVRevenue": 5.3,
+      "_computedForwardPE": 36.4,
+      "_computedEVRevenue": 5.5,
       "_externalPeerCount": 3,
-      "_lastComputed": "2026-08-03",
+      "_lastComputed": "2026-08-10",
       "_sampleSize": 5,
       "_changeLog": [
         {
