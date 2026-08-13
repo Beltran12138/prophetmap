@@ -4,6 +4,50 @@ All notable universe / layers / framework changes, dated.
 
 ---
 
+## 2026-08-12 — v2.9.11: two recorded gaps from an external triage · documentation only
+
+No code, no data, no field. `GOVERNANCE.md` Known Governance Gaps gains #11 and #12. **Blast radius: zero** — the diff touches one file and adds no gate, no enum value, and no ticker edit. `funnelPass` cannot move.
+
+### What prompted it
+
+A 30-source knowledge export (桌面 `投研金融/`, NotebookLM `Fin` + `ECON` notebooks, 6.8 MB) was triaged **against this project specifically** — the question asked was not "is this good material" but "does it interface with ProphetMap." Result: **24 sources non-empty, 21 discarded.**
+
+### 1. Gap #11 — `moatLocks` has no value for *effective scale*
+
+Measured distribution: `integration 61 · userHabit 18 · licensing 14 · privateData 4 · liability 3`. Against the five-moat taxonomy, intangibles / switching costs / cost advantage are all housed. **Network effect** is Gap #7 already. **Effective scale** — economics support only a few profitable participants, so a rational entrant declines even with entry unbarred — has nowhere to sit.
+
+**This is a different mechanism from the queue-vs-chokepoint test (§3).** That test asks whether *permission* is rationed. Effective scale asks whether *economics* are. A licence queue can be wide open while the third entrant still loses money.
+
+Not fixed: assigning a sixth lock across 87 tickers requires re-reading each `moatFalsification` string, and any reassignment that moved `moatCapture` would be the silent re-rate the v2.8.0 peer rule prohibits. Deferred to quarterly review, one ticker at a time, evidence quoted.
+
+### 2. Gap #12 — A-track gate B records *whether* non-consensus, not *which kind*
+
+Gate B wants ≥3 timestamped cases of "pS ≤ 3.0 at signal, non-consensus, eventually right." **"Non-consensus" is a boolean.** Mauboussin's BAIT taxonomy (behavioral / analytical / informational / technical) splits it four ways.
+
+The consequence is sharper than a taxonomy usually is: **ProphetMap has no informational channel** (every input is public) **and reads no sentiment**, so structurally it can only produce *analytical* and *technical* edge — and within analytical, mostly the different-time-scale branch, which is what `timeToRealize` already is.
+
+> **If the reconstructed A-track cases classify mainly as behavioral, the alpha is not coming from the machine, and gate B passing would be a false positive.**
+
+That is a falsifier gate B cannot currently generate about itself. Proposed: one `inefficiencyType` enum on the A-track blotter, filled at signal time, read by no gate, reviewed at the 12-month A/B mid-check.
+
+### 3. What was rejected, and why it is worth recording
+
+Three ready-made Claude-skill drafts came with the export. All three were declined for this project:
+
+| Draft | Verdict |
+|---|---|
+| China Macro-Strategic Analyst | No interface. This is a US-equity chain; no field reads a macro variable, and no PRC ticker exists in the universe |
+| Crypto / Meme survival | The crypto members are LINK and ETH on long-horizon infrastructure theses. Different asset class, different horizon |
+| US value & growth | **Buffett's screens are calibrated on consumer-staples issuers.** `cumulative capex / cumulative net income < 50%` excludes TSM, ASML and AMAT — the defining members of the physical-plus-capture quadrant. Its Driehaus relative-strength rule (top 10–20% RS) is the momentum filter the v2.8.0 frame refuses by name: *"a revision filter is momentum wearing fundamental clothing."* Only its moat taxonomy and BAIT survived, as #11 and #12 |
+
+The general form, worth keeping: **an imported screen is a construct claim.** Before adopting it, ask whether it was calibrated on a population resembling this universe. Two of the three rejections above are that question answered no.
+
+### Provenance
+
+Mauboussin, *Who Is On the Other Side?* (Counterpoint Global / Morgan Stanley IM). Full text held locally in `~/research-refs/`, **deliberately not committed** — this repo is public and the paper is third-party copyright. Per `inspired_loop` and `techpull_gate`: documentation change, **not a portfolio motion**.
+
+---
+
 ## 2026-07-30 — v2.9.10: PEG staleness detector · the fix does not fix what it was supposed to
 
 Engine change, following the v2.9.9 finding that `pegRatio` — the holder's **declared primary pricing indicator** — was frozen on 45% of the names that moved more than 5% in a week.
