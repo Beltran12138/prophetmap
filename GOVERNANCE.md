@@ -332,3 +332,43 @@ This is the honest state. It was previously masked: until v2.9.2 the peer-indepe
     **Proposed, not implemented:** one `inefficiencyType` enum field on the A-track blotter, filled at signal time, four values, no gate reads it. Zero blast radius on the funnel. Reviewed at the 12-month A/B mid-check alongside gates A and B.
 
 > **Provenance (v2.9.11, 2026-08-12):** both items came out of triaging a 30-source NotebookLM export (桌面 `投研金融/`) against this project. #11's taxonomy and #12's BAIT framework are from Mauboussin, *Who Is On the Other Side?* (Counterpoint Global). Of the 24 non-empty sources in that export, **21 were judged to have no interface with this project and were discarded** — including three generated Claude-skill drafts, whose Buffett-style financial screens (`cumulative capex / cumulative net income < 50%`) would exclude TSM, ASML and AMAT, i.e. the defining members of the strongest quadrant, and whose Driehaus relative-strength rule is the momentum filter §2 of the v2.8.0 frame explicitly refuses. Per `inspired_loop` and `techpull_gate`: **documentation only, no portfolio motion, no ticker's PASS/FAIL state moved, no field added.**
+
+13. **Gate A was never measurable, and the reason was not the window length** (v2.9.12) — the standing assumption was that gate A could not be evaluated because no A-track blotter existed and the 12-month window had not elapsed. Both halves are wrong. `data/scores/` has carried daily `funnelPass` and `price` for every ticker since 2026-05-04 — **76 files, 102 calendar days, 74% coverage, price present on 84/84 rows.** The outcome data was never missing. What was missing is that **the experiment's conditions were edited while the experiment ran**:
+
+    - **Membership look-ahead.** All **87/87** tickers carry `addedDate` *after* the 2026-05-04 scoring start (79 in May, 4 in June, 4 in July). A name added in July was selected with June's realised returns already visible.
+    - **Post-hoc re-scoring.** **39** `_changeLog` entries touching `physicalConstraint`/`moatCapture` are dated inside the window.
+    - **Survivorship.** Demotion removes a ticker from the pass-set going forward — e.g. `TSEM 2026-05-19: Demoted active → watchlist, pricingScore=4.1 + peg=7.15 + PC=3 triple-fail`. The basket sheds losers by construction.
+
+    **Measured, so the size of the contamination is on the record** (64 adjacent-trading-day segments, 2026-05-04 → 2026-08-14, equal-weight, rebalanced each scoring day; reproduce with `node scripts/ab-track.js --diagnostic`):
+
+    | basket | cum | geoAnn | volAnn | ann/vol |
+    |---|---:|---:|---:|---:|
+    | pass-set | **+8.55%** | +38.1% | 37.4% | **+1.02** |
+    | FAIL-set | −12.16% | −40.0% | 44.7% | −0.90 |
+    | all-universe | −8.72% | −30.2% | 42.5% | −0.71 |
+    | SMH | −1.16% | −4.5% | 54.6% | −0.08 |
+
+    **pass-set minus all-universe: +0.263%/day, t = +1.76, n = 64 — NOT SIGNIFICANT at 5%.** A headline "+9.71pp over SMH, risk-adjusted 1.02 vs −0.08" would have been available here and would have been wrong twice over: not significant, and computed on conditions edited mid-flight.
+
+    **Single-factor attribution makes the contamination specific rather than theoretical.** Same basket size, cheapest-first, same 64 segments:
+
+    | | cum |
+    |---|---:|
+    | full funnel | **+8.55%** |
+    | `pricingScore` only | +2.15% |
+    | `momentum6m` only (20% weight) | +3.13% |
+    | `analystUpside` only (25%) | +1.32% |
+    | `evRevenue` only (25%) | −1.53% |
+    | `forwardPE` only (30% weight) | **−4.93%** |
+
+    The elaborate four-component pricing composite contributes **+2.15%** on its own; the full funnel returns **+8.55%**. The residual ≈ +6.4pp therefore comes from the hand-scored gates — `physicalConstraint`, `moatCapture`, `aiContribution` — **which are precisely the fields edited 39 times inside the window.** The excess is concentrated exactly where the contamination is. Separately worth recording: the heaviest-weighted component, `forwardPE` at 30%, is the *worst* single factor over this span.
+
+    **What partially survives.** The pass-set/FAIL-set spread of **20.7pp** shares one universe on both sides, so universe-selection bias largely cancels in the difference. It remains exposed to the 39 re-scorings and to survivorship. **Treat as a weak signal that the funnel discriminates; never as evidence gate A passed.**
+
+    **Fixed by freezing, not by waiting.** Letting the existing window run to 2027-05 would not help — the same three defects would still be present at expiry. `data/ab-track/frozen-2026-08-17.json` pins the 87-name roster with its `pc`/`moatCapture`/`aiContribution`/`timeToRealize` values and pre-registers the basket rules (equal weight; adjacent trading days only, gaps dropped not bridged; **demotion or removal from `universe.json` does not remove a name from the frozen roster**; start at the first scores file strictly after the freeze date, since this freeze was authored with knowledge of everything up to 2026-08-14; report the paired t alongside every return). Window restarts **2026-08-17 → 2027-08-17**, mid-check 2027-02-17, non-executing.
+
+    **The cost is stated rather than buried: the first 3.4 months of A-track record are void and the clock restarts.** That is worse-sounding and better than presenting a contaminated number in 2027-05.
+
+    **Delete clause.** If at 2027-08-17 gate A still cannot be evaluated because these pre-registered rules were violated, the correct action is to record that **the test failed to run** — not to freeze a third time. A screen that keeps restarting its own exam has answered the question.
+
+> **Provenance (v2.9.12, 2026-08-17):** surfaced while triaging a personal crypto book against this project — the question asked was whether a crypto line could be merged into ProphetMap. It cannot and need not: `RNDR/TAO/FIL/LINK/ETH` have been in the universe since 2026-05-06 with their own `update-crypto-valuations.js`, and a holdings review is a different instrument from an idea screen (that table lives outside this repo, at `~/crypto-portfolio/`). The transferable finding was methodological: **a falsifier needs two legs — a mechanism leg (does it behave like the thesis says) and a delivery leg (did it pay what the thesis implies)** — established on BTC, where the mechanism leg fired in 98.4% of rolling windows yet was far weaker evidence than the delivery leg (36-month return tied with gold at 2.2× the volatility). Applying the delivery leg to this engine is what exposed Gap #13. A scan of all **320** `thesisFalsification` entries found **23.4%** carry both a threshold and a deadline and **2.5% (8)** reference price/valuation at all — of which **7 are pricing entry gates, not thesis falsifiers**. *(That scan's mechanism/business-delivery split was discarded as unreliable: the regex missed 60.3% of entries because business metrics appear as "seat growth"/"ARPU"/"MAU"/"contracts". Only the valuation-term count is trustworthy, since that vocabulary is closed.)* Per `inspired_loop` and `techpull_gate`: **documentation and a read-only measurement script; no ticker's PASS/FAIL state moved, no scoring field changed, no portfolio motion.**

@@ -4,6 +4,77 @@ All notable universe / layers / framework changes, dated.
 
 ---
 
+## 2026-08-17 — v2.9.12: gate A was never measurable · conditions frozen, clock restarted
+
+Two new files (`data/ab-track/frozen-2026-08-17.json`, `scripts/ab-track.js` — read-only) and `GOVERNANCE.md` Gap #13. **No ticker edited, no scoring field changed, no gate added.** `funnelPass` cannot move.
+
+### What prompted it
+
+A personal crypto book was triaged against this project; the question asked was whether a crypto line should be merged in. **It should not, and need not** — see §4. What did transfer was a method, and applying it here found something larger than the question that produced it.
+
+### 1. The method: a falsifier needs two legs
+
+- **Mechanism leg** — does the asset behave the way the thesis says?
+- **Delivery leg** — did it pay what the thesis implies?
+
+Established on BTC against a "digital gold" thesis. The mechanism leg fired hard: over 24 months, rolling-90-day BTC-SPX correlation exceeded BTC-GOLD in **98.4%** of windows. But the delivery leg was far more damaging and far simpler: over 36 months BTC returned **+141.1%** against gold's **+137.6%** — tied — at **2.2× the volatility** (47.2% vs 21.3%) and 2.1× the drawdown. "Digital gold" means *better gold*; the measurement says same return, twice the pain.
+
+A falsifier with only the mechanism leg is weaker evidence than it appears to be.
+
+### 2. Applying the delivery leg to this engine
+
+Scan of all **320** `thesisFalsification` entries across 87 tickers:
+
+| | |
+|---|---:|
+| carry an explicit threshold | 55.9% |
+| carry a deadline | 31.2% |
+| **carry both** | **23.4%** |
+| **reference price / valuation at all** | **2.5% (8)** — and **7 of those 8 are pricing entry gates, not thesis falsifiers** |
+
+The book asks whether the *company* performs. It almost never asks whether the *position* paid.
+
+*Discarded from that scan:* the mechanism/business-delivery split. The regex missed **60.3%** of entries because business metrics appear as "seat growth" / "ARPU" / "MAU" / "contracts". Only the valuation count is trustworthy — that vocabulary is closed. Recorded because a scan that looks rigorous and is not should be labelled, not quietly dropped.
+
+### 3. Gap #13 — the finding that mattered
+
+The standing belief was "gate A can't be evaluated: no blotter, window not elapsed." **Both halves were wrong.** `data/scores/` has carried daily `funnelPass` + `price` since 2026-05-04 — 76 files, price on 84/84 rows. The outcome data was always there. **The conditions were edited while the experiment ran:**
+
+- **87/87** tickers have `addedDate` *after* the scoring start (79 May · 4 Jun · 4 Jul)
+- **39** `_changeLog` entries touch `physicalConstraint`/`moatCapture` inside the window
+- demotion removes a name from the pass-set going forward (`TSEM 2026-05-19` triple-fail → watchlist)
+
+Measured anyway, so the contamination has a size (64 adjacent-trading-day segments, equal weight; `node scripts/ab-track.js --diagnostic`):
+
+| basket | cum | ann/vol |
+|---|---:|---:|
+| pass-set | **+8.55%** | **+1.02** |
+| FAIL-set | −12.16% | −0.90 |
+| all-universe | −8.72% | −0.71 |
+| SMH | −1.16% | −0.08 |
+
+**pass-set − all-universe: +0.263%/day, t = +1.76, n = 64 → NOT SIGNIFICANT.** A "+9.71pp over SMH, risk-adjusted 1.02 vs −0.08" headline was available here and would have been wrong twice: not significant, and computed on conditions edited mid-flight.
+
+**Single-factor attribution localises the problem.** `pricingScore` alone returns **+2.15%**; the full funnel returns **+8.55%**. The residual ≈ +6.4pp comes from the hand-scored gates — the same fields edited 39 times. Also: `forwardPE`, the heaviest component at 30% weight, is the **worst** single factor over the span at **−4.93%**.
+
+**Partially surviving:** the pass/FAIL spread of **20.7pp** shares one universe on both sides, so universe-selection bias largely cancels. Weak evidence the funnel discriminates; **not** evidence gate A passed.
+
+**Fixed by freezing, not waiting.** Running the old window to 2027-05 would deliver the same three defects at expiry. Roster and scores pinned in `frozen-2026-08-17.json`; basket rules pre-registered (equal weight · adjacent trading days only · **demotion does not remove a name** · start strictly after the freeze date · paired t reported with every return). Window **2026-08-17 → 2027-08-17**, mid-check 2027-02-17, non-executing.
+
+**Stated cost: the first 3.4 months of A-track record are void and the clock restarts.** Worse-sounding, better than a contaminated number in 2027-05. Delete clause: if the rules are violated again, record that *the test failed to run* — do not freeze a third time.
+
+### 4. What was rejected, and why it is worth recording
+
+| Proposal | Verdict |
+|---|---|
+| Merge the personal crypto holdings into `universe.json` | **Rejected.** ProphetMap is an idea screen, a holdings book is a portfolio review. Overlap between the two is exactly one name (ETH). BTC/XAUT/XMR and a Dubai property RWA have no AI-supply-chain thesis; `aiContribution` would fail them all, and the repair would be to loosen a gate. Holdings table lives outside this repo at `~/crypto-portfolio/` |
+| Build an open-source "crypto investment framework" repo | **Rejected on evidence.** `gh search repos "investment thesis tracker"` returns seven independent attempts built in the last nine months, **all at 0–1 stars**; several are Claude skills rather than software. The data layer is already free and occupied (DefiLlama + CoinGecko), and the P/F denominator critique is public commentary, not an edge |
+| Add crypto valuation tooling here | **Unnecessary — it already exists.** `RNDR/TAO/FIL/LINK/ETH` since 2026-05-06, `update-crypto-valuations.js` computing `pRev` (= P/F) and `pTvl` off the same two APIs. Independent hand-calculation of ETH's P/F gave **2,544×** against the script's **2,418×** — two implementations converging is the useful part |
+
+> **Provenance (v2.9.12, 2026-08-17):** method from a personal-portfolio triage, not from a source read. Per `inspired_loop` and `techpull_gate`: documentation plus a read-only measurement script; **no portfolio motion, no PASS/FAIL state moved.** The one live consequence is that this engine's own performance claim is now under conditions that cannot be edited after the fact — which is the point of the exercise and also its main cost.
+
+---
+
 ## 2026-08-12 — v2.9.11: two recorded gaps from an external triage · documentation only
 
 No code, no data, no field. `GOVERNANCE.md` Known Governance Gaps gains #11 and #12. **Blast radius: zero** — the diff touches one file and adds no gate, no enum value, and no ticker edit. `funnelPass` cannot move.

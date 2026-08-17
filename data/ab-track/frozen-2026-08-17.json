@@ -1,0 +1,1502 @@
+{
+  "_meta": {
+    "frozenAt": "2026-08-17",
+    "purpose": "A/B track gate A — frozen experimental conditions. Nothing in this file is edited after frozenAt.",
+    "why": "Before this date gate A was unmeasurable: all 87 tickers were added AFTER the 2026-05-04 scoring start, pc/moatCapture were edited 39 times inside the window, and demoted tickers left the basket. See GOVERNANCE.md Gap #13.",
+    "window": {
+      "start": "2026-08-17",
+      "end": "2027-08-17",
+      "midCheck": "2027-02-17",
+      "midCheckExecutes": false
+    },
+    "benchmark": "SMH",
+    "preRegisteredRules": {
+      "membership": "A ticker is IN the basket on day t if funnelPass==true in that day's scores file. Membership is read from scores, never from a later edit of universe.json.",
+      "weighting": "equal-weight, rebalanced each scoring day",
+      "holdingPeriod": "returns are taken between ADJACENT trading days only; non-adjacent gaps are dropped, not bridged",
+      "exitDoesNotRemove": "A ticker demoted, removed from universe.json, or delisted after frozenAt REMAINS in the frozen roster. Its post-exit return is carried at the last observable price; if unpriceable it is dropped for that segment only and the drop is logged.",
+      "startPoint": "first scores file STRICTLY AFTER frozenAt — data/scores/2026-08-14.json and earlier are NOT usable as a start, because this freeze was authored with knowledge of them",
+      "noReweighting": "physicalConstraint / moatCapture / aiContribution / timeToRealize are frozen at the values in rosterN below. Later edits to universe.json do NOT retroactively change basket membership logic.",
+      "significance": "report Welch t of daily excess vs the all-universe basket alongside every return figure. |t|<2 is reported as NOT SIGNIFICANT, never omitted."
+    },
+    "gates": {
+      "A": "pass-set basket beats SMH, risk-adjusted, over the window",
+      "B": ">=3 timestamped names genuinely non-consensus at signal and eventually right"
+    },
+    "deleteClause": "If at 2027-08-17 gate A cannot be evaluated because these rules were violated, the correct action is to record that the test failed to run — not to re-freeze and restart a third time."
+  },
+  "rosterN": 87,
+  "roster": [
+    {
+      "symbol": "MSFT",
+      "name": "Microsoft",
+      "layer": "L0",
+      "layerRole": "primary",
+      "status": "active",
+      "assetClass": null,
+      "physicalConstraint": 1,
+      "moatCapture": 3,
+      "aiContribution": 0.45,
+      "timeToRealize": "near",
+      "moatLocks": [
+        "integration",
+        "userHabit"
+      ],
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "AMZN",
+      "name": "Amazon",
+      "layer": "L0",
+      "layerRole": "primary",
+      "status": "active",
+      "assetClass": null,
+      "physicalConstraint": 1,
+      "moatCapture": 3,
+      "aiContribution": 0.4,
+      "timeToRealize": "near",
+      "moatLocks": [
+        "integration",
+        "userHabit"
+      ],
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "META",
+      "name": "Meta Platforms",
+      "layer": "L0",
+      "layerRole": "primary",
+      "status": "active",
+      "assetClass": null,
+      "physicalConstraint": 2,
+      "moatCapture": 4,
+      "aiContribution": 0.5,
+      "timeToRealize": "near",
+      "moatLocks": [
+        "privateData",
+        "userHabit"
+      ],
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "ORCL",
+      "name": "Oracle",
+      "layer": "L0",
+      "layerRole": "secondary",
+      "status": "watchlist",
+      "assetClass": null,
+      "physicalConstraint": 1,
+      "moatCapture": 3,
+      "aiContribution": 0.35,
+      "timeToRealize": "near",
+      "moatLocks": [
+        "integration"
+      ],
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "GOOG",
+      "name": "Alphabet",
+      "layer": "L1",
+      "layerRole": "primary",
+      "status": "active",
+      "assetClass": null,
+      "physicalConstraint": 2,
+      "moatCapture": 4,
+      "aiContribution": 0.55,
+      "timeToRealize": "near",
+      "moatLocks": [
+        "userHabit",
+        "privateData",
+        "integration"
+      ],
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "PLTR",
+      "name": "Palantir",
+      "layer": "L1",
+      "layerRole": "primary",
+      "status": "active",
+      "assetClass": null,
+      "physicalConstraint": 1,
+      "moatCapture": 5,
+      "aiContribution": 0.7,
+      "timeToRealize": "mid",
+      "moatLocks": [
+        "licensing",
+        "liability",
+        "privateData",
+        "userHabit",
+        "integration"
+      ],
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "NVDA",
+      "name": "NVIDIA",
+      "layer": "L2",
+      "layerRole": "primary",
+      "status": "active",
+      "assetClass": null,
+      "physicalConstraint": 5,
+      "moatCapture": 5,
+      "aiContribution": 0.85,
+      "timeToRealize": "near",
+      "moatLocks": [
+        "userHabit",
+        "integration"
+      ],
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "AMD",
+      "name": "Advanced Micro Devices",
+      "layer": "L2",
+      "layerRole": "secondary",
+      "status": "active",
+      "assetClass": null,
+      "physicalConstraint": 4,
+      "moatCapture": 3,
+      "aiContribution": 0.65,
+      "timeToRealize": "mid",
+      "moatLocks": [
+        "integration"
+      ],
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "CBRS",
+      "name": "Cerebras Systems",
+      "layer": "L2",
+      "layerRole": "secondary",
+      "status": "watchlist",
+      "assetClass": null,
+      "physicalConstraint": 3,
+      "moatCapture": 3,
+      "aiContribution": 1,
+      "timeToRealize": "near",
+      "moatLocks": [
+        "integration"
+      ],
+      "addedDate": "2026-05-15",
+      "addedVersion": "1.8.0"
+    },
+    {
+      "symbol": "QCOM",
+      "name": "Qualcomm",
+      "layer": "L2_5",
+      "layerRole": "primary",
+      "status": "active",
+      "assetClass": null,
+      "physicalConstraint": 3,
+      "moatCapture": 4,
+      "aiContribution": 0.45,
+      "timeToRealize": "mid",
+      "moatLocks": [
+        "licensing",
+        "integration"
+      ],
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "ARM",
+      "name": "Arm Holdings",
+      "layer": "L2_5",
+      "layerRole": "primary",
+      "status": "active",
+      "assetClass": null,
+      "physicalConstraint": 4,
+      "moatCapture": 5,
+      "aiContribution": 0.6,
+      "timeToRealize": "mid",
+      "moatLocks": [
+        "licensing",
+        "userHabit",
+        "integration"
+      ],
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "MRVL",
+      "name": "Marvell Technology",
+      "layer": "L2_5",
+      "layerRole": "primary",
+      "status": "active",
+      "assetClass": null,
+      "physicalConstraint": 4,
+      "moatCapture": 3,
+      "aiContribution": 0.6,
+      "timeToRealize": "mid",
+      "moatLocks": [
+        "integration"
+      ],
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "AVGO",
+      "name": "Broadcom",
+      "layer": "L2_5",
+      "layerRole": "primary",
+      "status": "active",
+      "assetClass": null,
+      "physicalConstraint": 4,
+      "moatCapture": 4,
+      "aiContribution": 0.55,
+      "timeToRealize": "near",
+      "moatLocks": [
+        "integration",
+        "userHabit"
+      ],
+      "addedDate": "2026-05-08",
+      "addedVersion": "1.5.0"
+    },
+    {
+      "symbol": "SNPS",
+      "name": "Synopsys",
+      "layer": "L3",
+      "layerRole": "primary",
+      "status": "active",
+      "assetClass": null,
+      "physicalConstraint": 5,
+      "moatCapture": 5,
+      "aiContribution": 0.4,
+      "timeToRealize": "near",
+      "moatLocks": [
+        "userHabit",
+        "integration"
+      ],
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "CDNS",
+      "name": "Cadence Design Systems",
+      "layer": "L3",
+      "layerRole": "primary",
+      "status": "active",
+      "assetClass": null,
+      "physicalConstraint": 5,
+      "moatCapture": 5,
+      "aiContribution": 0.4,
+      "timeToRealize": "near",
+      "moatLocks": [
+        "userHabit",
+        "integration"
+      ],
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "ALAB",
+      "name": "Astera Labs",
+      "layer": "L3",
+      "layerRole": "secondary",
+      "status": "watchlist",
+      "assetClass": null,
+      "physicalConstraint": 4,
+      "moatCapture": 3,
+      "aiContribution": 0.85,
+      "timeToRealize": "near",
+      "moatLocks": [
+        "integration"
+      ],
+      "addedDate": "2026-05-15",
+      "addedVersion": "1.9.0"
+    },
+    {
+      "symbol": "ENTG",
+      "name": "Entegris",
+      "layer": "L3_5",
+      "layerRole": "primary",
+      "status": "active",
+      "assetClass": null,
+      "physicalConstraint": 5,
+      "moatCapture": 4,
+      "aiContribution": 0.25,
+      "timeToRealize": "far",
+      "moatLocks": [
+        "integration"
+      ],
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "APD",
+      "name": "Air Products",
+      "layer": "L3_5",
+      "layerRole": "secondary",
+      "status": "watchlist",
+      "assetClass": null,
+      "physicalConstraint": 4,
+      "moatCapture": 3,
+      "aiContribution": 0.2,
+      "timeToRealize": "far",
+      "moatLocks": [
+        "integration"
+      ],
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "LIN",
+      "name": "Linde",
+      "layer": "L3_5",
+      "layerRole": "primary",
+      "status": "active",
+      "assetClass": null,
+      "physicalConstraint": 5,
+      "moatCapture": 4,
+      "aiContribution": 0.4,
+      "timeToRealize": "near",
+      "moatLocks": [
+        "integration"
+      ],
+      "addedDate": "2026-05-08",
+      "addedVersion": "1.3.0"
+    },
+    {
+      "symbol": "TSEM",
+      "name": "Tower Semiconductor",
+      "layer": "L3_5",
+      "layerRole": "secondary",
+      "status": "watchlist",
+      "assetClass": null,
+      "physicalConstraint": 3,
+      "moatCapture": 2,
+      "aiContribution": 0.5,
+      "timeToRealize": "mid",
+      "moatLocks": [],
+      "addedDate": "2026-05-15",
+      "addedVersion": "2.0.0"
+    },
+    {
+      "symbol": "AMAT",
+      "name": "Applied Materials",
+      "layer": "L4",
+      "layerRole": "primary",
+      "status": "active",
+      "assetClass": null,
+      "physicalConstraint": 5,
+      "moatCapture": 4,
+      "aiContribution": 0.3,
+      "timeToRealize": "near",
+      "moatLocks": [
+        "integration"
+      ],
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "LRCX",
+      "name": "Lam Research",
+      "layer": "L4",
+      "layerRole": "primary",
+      "status": "active",
+      "assetClass": null,
+      "physicalConstraint": 5,
+      "moatCapture": 4,
+      "aiContribution": 0.3,
+      "timeToRealize": "near",
+      "moatLocks": [
+        "integration"
+      ],
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "ASML",
+      "name": "ASML Holding",
+      "layer": "L4",
+      "layerRole": "primary",
+      "status": "active",
+      "assetClass": null,
+      "physicalConstraint": 5,
+      "moatCapture": 5,
+      "aiContribution": 0.45,
+      "timeToRealize": "near",
+      "moatLocks": [
+        "integration"
+      ],
+      "addedDate": "2026-05-08",
+      "addedVersion": "1.5.0"
+    },
+    {
+      "symbol": "KLAC",
+      "name": "KLA Corporation",
+      "layer": "L4",
+      "layerRole": "primary",
+      "status": "active",
+      "assetClass": null,
+      "physicalConstraint": 5,
+      "moatCapture": 4,
+      "aiContribution": 0.35,
+      "timeToRealize": "near",
+      "moatLocks": [
+        "integration"
+      ],
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "TER",
+      "name": "Teradyne",
+      "layer": "L4",
+      "layerRole": "secondary",
+      "status": "active",
+      "assetClass": null,
+      "physicalConstraint": 4,
+      "moatCapture": 3,
+      "aiContribution": 0.4,
+      "timeToRealize": "near",
+      "moatLocks": [
+        "integration"
+      ],
+      "addedDate": "2026-06-02",
+      "addedVersion": "2.2.4"
+    },
+    {
+      "symbol": "AMKR",
+      "name": "Amkor Technology",
+      "layer": "L5",
+      "layerRole": "primary",
+      "status": "active",
+      "assetClass": null,
+      "physicalConstraint": 4,
+      "moatCapture": 2,
+      "aiContribution": 0.35,
+      "timeToRealize": "mid",
+      "moatLocks": [],
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "TSM",
+      "name": "Taiwan Semiconductor (ADR)",
+      "layer": "L5",
+      "layerRole": "primary",
+      "status": "active",
+      "assetClass": null,
+      "physicalConstraint": 5,
+      "moatCapture": 5,
+      "aiContribution": 0.5,
+      "timeToRealize": "near",
+      "moatLocks": [
+        "integration"
+      ],
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "TTMI",
+      "name": "TTM Technologies",
+      "layer": "L5_5",
+      "layerRole": "primary",
+      "status": "active",
+      "assetClass": null,
+      "physicalConstraint": 4,
+      "moatCapture": 3,
+      "aiContribution": 0.3,
+      "timeToRealize": "near",
+      "moatLocks": [
+        "integration"
+      ],
+      "addedDate": "2026-05-08",
+      "addedVersion": "1.3.0"
+    },
+    {
+      "symbol": "MU",
+      "name": "Micron Technology",
+      "layer": "L6",
+      "layerRole": "primary",
+      "status": "active",
+      "assetClass": null,
+      "physicalConstraint": 4,
+      "moatCapture": 3,
+      "aiContribution": 0.55,
+      "timeToRealize": "near",
+      "moatLocks": [
+        "integration"
+      ],
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "INTC",
+      "name": "Intel",
+      "layer": "L5",
+      "layerRole": "secondary",
+      "status": "active",
+      "assetClass": null,
+      "physicalConstraint": 4,
+      "moatCapture": 3,
+      "aiContribution": 0.3,
+      "timeToRealize": "mid",
+      "moatLocks": [
+        "integration"
+      ],
+      "addedDate": "2026-05-27",
+      "addedVersion": "2.2.2"
+    },
+    {
+      "symbol": "CLS",
+      "name": "Celestica",
+      "layer": "L7",
+      "layerRole": "primary",
+      "status": "active",
+      "assetClass": null,
+      "physicalConstraint": 3,
+      "moatCapture": 2,
+      "aiContribution": 0.7,
+      "timeToRealize": "near",
+      "moatLocks": [],
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "DELL",
+      "name": "Dell Technologies",
+      "layer": "L7",
+      "layerRole": "secondary",
+      "status": "watchlist",
+      "assetClass": null,
+      "physicalConstraint": 2,
+      "moatCapture": 1,
+      "aiContribution": 0.45,
+      "timeToRealize": "near",
+      "moatLocks": [],
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "CRWV",
+      "name": "CoreWeave",
+      "layer": "L7",
+      "layerRole": "primary",
+      "status": "active",
+      "assetClass": null,
+      "physicalConstraint": 3,
+      "moatCapture": 2,
+      "aiContribution": 0.85,
+      "timeToRealize": "near",
+      "moatLocks": [
+        "integration"
+      ],
+      "addedDate": "2026-05-08",
+      "addedVersion": "1.6.0"
+    },
+    {
+      "symbol": "SPCX",
+      "name": "SpaceX (incl. xAI / SpaceXAI)",
+      "layer": "L7",
+      "layerRole": "secondary",
+      "status": "watchlist",
+      "assetClass": null,
+      "physicalConstraint": 3,
+      "moatCapture": 4,
+      "aiContribution": 0.35,
+      "timeToRealize": "near",
+      "moatLocks": [
+        "licensing",
+        "userHabit"
+      ],
+      "addedDate": "2026-06-14",
+      "addedVersion": "2.4.0"
+    },
+    {
+      "symbol": "SMCI",
+      "name": "Super Micro Computer",
+      "layer": "L7",
+      "layerRole": "primary",
+      "status": "active",
+      "assetClass": null,
+      "physicalConstraint": 3,
+      "moatCapture": 2,
+      "aiContribution": 0.75,
+      "timeToRealize": "near",
+      "moatLocks": [],
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "ANET",
+      "name": "Arista Networks",
+      "layer": "L8_NET",
+      "layerRole": "primary",
+      "status": "active",
+      "assetClass": null,
+      "physicalConstraint": 4,
+      "moatCapture": 4,
+      "aiContribution": 0.7,
+      "timeToRealize": "near",
+      "moatLocks": [
+        "userHabit",
+        "integration"
+      ],
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "VRT",
+      "name": "Vertiv Holdings",
+      "layer": "L8_COOL",
+      "layerRole": "primary",
+      "status": "active",
+      "assetClass": null,
+      "physicalConstraint": 4,
+      "moatCapture": 4,
+      "aiContribution": 0.65,
+      "timeToRealize": "near",
+      "moatLocks": [
+        "integration"
+      ],
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "ETN",
+      "name": "Eaton Corporation",
+      "layer": "L8_COOL",
+      "layerRole": "secondary",
+      "status": "active",
+      "assetClass": null,
+      "physicalConstraint": 3,
+      "moatCapture": 3,
+      "aiContribution": 0.4,
+      "timeToRealize": "mid",
+      "moatLocks": [
+        "integration"
+      ],
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "GLW",
+      "name": "Corning",
+      "layer": "L8_OPT",
+      "layerRole": "primary",
+      "status": "active",
+      "assetClass": null,
+      "physicalConstraint": 4,
+      "moatCapture": 4,
+      "aiContribution": 0.35,
+      "timeToRealize": "mid",
+      "moatLocks": [
+        "integration"
+      ],
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "COHR",
+      "name": "Coherent Corp",
+      "layer": "L8_OPT",
+      "layerRole": "primary",
+      "status": "active",
+      "assetClass": null,
+      "physicalConstraint": 4,
+      "moatCapture": 3,
+      "aiContribution": 0.55,
+      "timeToRealize": "mid",
+      "moatLocks": [
+        "integration"
+      ],
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "LITE",
+      "name": "Lumentum Holdings",
+      "layer": "L8_OPT",
+      "layerRole": "primary",
+      "status": "active",
+      "assetClass": null,
+      "physicalConstraint": 5,
+      "moatCapture": 3,
+      "aiContribution": 0.8,
+      "timeToRealize": "near",
+      "moatLocks": [
+        "integration"
+      ],
+      "addedDate": "2026-05-15",
+      "addedVersion": "2.0.0"
+    },
+    {
+      "symbol": "AXTI",
+      "name": "AXT Inc",
+      "layer": "L8_OPT_MAT",
+      "layerRole": "primary",
+      "status": "watchlist",
+      "assetClass": null,
+      "physicalConstraint": 4,
+      "moatCapture": 2,
+      "aiContribution": 0.5,
+      "timeToRealize": "near",
+      "moatLocks": [],
+      "addedDate": "2026-06-12",
+      "addedVersion": "2.3.0"
+    },
+    {
+      "symbol": "CRDO",
+      "name": "Credo Technology Group",
+      "layer": "L2_5",
+      "layerRole": "secondary",
+      "status": "watchlist",
+      "assetClass": null,
+      "physicalConstraint": 4,
+      "moatCapture": 3,
+      "aiContribution": 0.85,
+      "timeToRealize": "near",
+      "moatLocks": [
+        "integration"
+      ],
+      "addedDate": "2026-07-28",
+      "addedVersion": "2.7.0"
+    },
+    {
+      "symbol": "CAT",
+      "name": "Caterpillar",
+      "layer": "L12",
+      "layerRole": "secondary",
+      "status": "watchlist",
+      "assetClass": null,
+      "physicalConstraint": 3,
+      "moatCapture": 3,
+      "aiContribution": 0.4,
+      "timeToRealize": "near",
+      "moatLocks": [
+        "integration"
+      ],
+      "addedDate": "2026-07-28",
+      "addedVersion": "2.7.0"
+    },
+    {
+      "symbol": "CMI",
+      "name": "Cummins",
+      "layer": "L12",
+      "layerRole": "secondary",
+      "status": "watchlist",
+      "assetClass": null,
+      "physicalConstraint": 3,
+      "moatCapture": 3,
+      "aiContribution": 0.35,
+      "timeToRealize": "near",
+      "moatLocks": [
+        "integration"
+      ],
+      "addedDate": "2026-07-28",
+      "addedVersion": "2.8.1"
+    },
+    {
+      "symbol": "MOD",
+      "name": "Modine Manufacturing",
+      "layer": "L8_COOL",
+      "layerRole": "secondary",
+      "status": "watchlist",
+      "assetClass": null,
+      "physicalConstraint": 3,
+      "moatCapture": 2,
+      "aiContribution": 0.7,
+      "timeToRealize": "near",
+      "moatLocks": [],
+      "addedDate": "2026-07-28",
+      "addedVersion": "2.7.0"
+    },
+    {
+      "symbol": "EQIX",
+      "name": "Equinix",
+      "layer": "L9",
+      "layerRole": "primary",
+      "status": "watchlist",
+      "assetClass": null,
+      "physicalConstraint": 3,
+      "moatCapture": 4,
+      "aiContribution": 0.3,
+      "timeToRealize": "far",
+      "moatLocks": [
+        "userHabit",
+        "integration"
+      ],
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "DLR",
+      "name": "Digital Realty",
+      "layer": "L9",
+      "layerRole": "primary",
+      "status": "watchlist",
+      "assetClass": null,
+      "physicalConstraint": 3,
+      "moatCapture": 3,
+      "aiContribution": 0.3,
+      "timeToRealize": "far",
+      "moatLocks": [
+        "integration"
+      ],
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "FLR",
+      "name": "Fluor Corporation",
+      "layer": "L9",
+      "layerRole": "secondary",
+      "status": "watchlist",
+      "assetClass": null,
+      "physicalConstraint": 2,
+      "moatCapture": 1,
+      "aiContribution": 0.25,
+      "timeToRealize": "far",
+      "moatLocks": [],
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "CRH",
+      "name": "CRH plc",
+      "layer": "L9",
+      "layerRole": "secondary",
+      "status": "active",
+      "assetClass": null,
+      "physicalConstraint": 4,
+      "moatCapture": 3,
+      "aiContribution": 0.32,
+      "timeToRealize": "mid",
+      "moatLocks": [],
+      "addedDate": "2026-05-11",
+      "addedVersion": "1.7.0"
+    },
+    {
+      "symbol": "CRWD",
+      "name": "CrowdStrike",
+      "layer": "L10",
+      "layerRole": "primary",
+      "status": "active",
+      "assetClass": null,
+      "physicalConstraint": 1,
+      "moatCapture": 4,
+      "aiContribution": 0.5,
+      "timeToRealize": "near",
+      "moatLocks": [
+        "userHabit",
+        "integration",
+        "liability"
+      ],
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "PANW",
+      "name": "Palo Alto Networks",
+      "layer": "L10",
+      "layerRole": "primary",
+      "status": "watchlist",
+      "assetClass": null,
+      "physicalConstraint": 1,
+      "moatCapture": 3,
+      "aiContribution": 0.45,
+      "timeToRealize": "near",
+      "moatLocks": [
+        "integration",
+        "liability"
+      ],
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "CEG",
+      "name": "Constellation Energy",
+      "layer": "L11",
+      "layerRole": "primary",
+      "status": "active",
+      "assetClass": null,
+      "physicalConstraint": 4,
+      "moatCapture": 4,
+      "aiContribution": 0.25,
+      "timeToRealize": "mid",
+      "moatLocks": [
+        "licensing",
+        "integration"
+      ],
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "VST",
+      "name": "Vistra Energy",
+      "layer": "L11",
+      "layerRole": "secondary",
+      "status": "active",
+      "assetClass": null,
+      "physicalConstraint": 3,
+      "moatCapture": 3,
+      "aiContribution": 0.2,
+      "timeToRealize": "mid",
+      "moatLocks": [
+        "licensing",
+        "integration"
+      ],
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "OKLO",
+      "name": "Oklo Inc.",
+      "layer": "L11",
+      "layerRole": "secondary",
+      "status": "watchlist",
+      "assetClass": null,
+      "physicalConstraint": 3,
+      "moatCapture": 4,
+      "aiContribution": 0.2,
+      "timeToRealize": "far",
+      "moatLocks": [
+        "licensing"
+      ],
+      "addedDate": "2026-05-08",
+      "addedVersion": "1.6.0"
+    },
+    {
+      "symbol": "SMR",
+      "name": "NuScale Power",
+      "layer": "L11",
+      "layerRole": "secondary",
+      "status": "watchlist",
+      "assetClass": null,
+      "physicalConstraint": 3,
+      "moatCapture": 4,
+      "aiContribution": 0.2,
+      "timeToRealize": "far",
+      "moatLocks": [
+        "licensing"
+      ],
+      "addedDate": "2026-05-08",
+      "addedVersion": "1.6.0"
+    },
+    {
+      "symbol": "CCJ",
+      "name": "Cameco Corporation",
+      "layer": "L11_FUEL",
+      "layerRole": "primary",
+      "status": "watchlist",
+      "assetClass": null,
+      "physicalConstraint": 4,
+      "moatCapture": 3,
+      "aiContribution": 0.35,
+      "timeToRealize": "mid",
+      "moatLocks": [
+        "integration"
+      ],
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "GEV",
+      "name": "GE Vernova",
+      "layer": "L12",
+      "layerRole": "primary",
+      "status": "active",
+      "assetClass": null,
+      "physicalConstraint": 4,
+      "moatCapture": 4,
+      "aiContribution": 0.2,
+      "timeToRealize": "mid",
+      "moatLocks": [
+        "integration"
+      ],
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "PWR",
+      "name": "Quanta Services",
+      "layer": "L12",
+      "layerRole": "primary",
+      "status": "active",
+      "assetClass": null,
+      "physicalConstraint": 3,
+      "moatCapture": 2,
+      "aiContribution": 0.2,
+      "timeToRealize": "mid",
+      "moatLocks": [],
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "EOG",
+      "name": "EOG Resources",
+      "layer": "L13",
+      "layerRole": "primary",
+      "status": "watchlist",
+      "assetClass": null,
+      "physicalConstraint": 3,
+      "moatCapture": 2,
+      "aiContribution": 0.15,
+      "timeToRealize": "far",
+      "moatLocks": [],
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "EQT",
+      "name": "EQT Corporation",
+      "layer": "L13",
+      "layerRole": "secondary",
+      "status": "watchlist",
+      "assetClass": null,
+      "physicalConstraint": 3,
+      "moatCapture": 2,
+      "aiContribution": 0.15,
+      "timeToRealize": "far",
+      "moatLocks": [],
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "FCX",
+      "name": "Freeport-McMoRan",
+      "layer": "L14",
+      "layerRole": "primary",
+      "status": "watchlist",
+      "assetClass": null,
+      "physicalConstraint": 4,
+      "moatCapture": 2,
+      "aiContribution": 0.12,
+      "timeToRealize": "far",
+      "moatLocks": [],
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "SCCO",
+      "name": "Southern Copper",
+      "layer": "L14",
+      "layerRole": "primary",
+      "status": "watchlist",
+      "assetClass": null,
+      "physicalConstraint": 4,
+      "moatCapture": 2,
+      "aiContribution": 0.12,
+      "timeToRealize": "far",
+      "moatLocks": [],
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "AA",
+      "name": "Alcoa",
+      "layer": "L14",
+      "layerRole": "secondary",
+      "status": "watchlist",
+      "assetClass": null,
+      "physicalConstraint": 3,
+      "moatCapture": 2,
+      "aiContribution": 0.1,
+      "timeToRealize": "far",
+      "moatLocks": [],
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "IONQ",
+      "name": "IonQ",
+      "layer": "L_EXP_QC",
+      "layerRole": "primary",
+      "status": "experimental",
+      "assetClass": null,
+      "physicalConstraint": 5,
+      "moatCapture": null,
+      "aiContribution": 0.1,
+      "timeToRealize": "far",
+      "moatLocks": null,
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "RGTI",
+      "name": "Rigetti Computing",
+      "layer": "L_EXP_QC",
+      "layerRole": "secondary",
+      "status": "experimental",
+      "assetClass": null,
+      "physicalConstraint": 5,
+      "moatCapture": null,
+      "aiContribution": 0.1,
+      "timeToRealize": "far",
+      "moatLocks": null,
+      "addedDate": "2026-05-04",
+      "addedVersion": "1.0.0"
+    },
+    {
+      "symbol": "RNDR",
+      "name": "Render Network",
+      "layer": "L_DCOMP",
+      "layerRole": "primary",
+      "status": "active",
+      "assetClass": "crypto",
+      "physicalConstraint": 3,
+      "moatCapture": 2,
+      "aiContribution": 0.65,
+      "timeToRealize": "near",
+      "moatLocks": [],
+      "addedDate": "2026-05-06",
+      "addedVersion": "1.1.0"
+    },
+    {
+      "symbol": "TAO",
+      "name": "Bittensor",
+      "layer": "L_DCOMP",
+      "layerRole": "primary",
+      "status": "active",
+      "assetClass": "crypto",
+      "physicalConstraint": 2,
+      "moatCapture": 2,
+      "aiContribution": 0.9,
+      "timeToRealize": "mid",
+      "moatLocks": [],
+      "addedDate": "2026-05-06",
+      "addedVersion": "1.1.0"
+    },
+    {
+      "symbol": "FIL",
+      "name": "Filecoin",
+      "layer": "L_DCOMP",
+      "layerRole": "primary",
+      "status": "active",
+      "assetClass": "crypto",
+      "physicalConstraint": 3,
+      "moatCapture": 2,
+      "aiContribution": 0.3,
+      "timeToRealize": "mid",
+      "moatLocks": [],
+      "addedDate": "2026-05-06",
+      "addedVersion": "1.1.0"
+    },
+    {
+      "symbol": "LINK",
+      "name": "Chainlink",
+      "layer": "L_DCOMP",
+      "layerRole": "primary",
+      "status": "active",
+      "assetClass": "crypto",
+      "physicalConstraint": 4,
+      "moatCapture": 4,
+      "aiContribution": 0.35,
+      "timeToRealize": "near",
+      "moatLocks": [
+        "integration",
+        "userHabit"
+      ],
+      "addedDate": "2026-05-06",
+      "addedVersion": "1.1.0"
+    },
+    {
+      "symbol": "ETH",
+      "name": "Ethereum",
+      "layer": "L_DCOMP",
+      "layerRole": "bridge",
+      "status": "active",
+      "assetClass": "crypto",
+      "physicalConstraint": 4,
+      "moatCapture": 4,
+      "aiContribution": 0.2,
+      "timeToRealize": "near",
+      "moatLocks": [
+        "userHabit",
+        "integration"
+      ],
+      "addedDate": "2026-05-06",
+      "addedVersion": "1.1.0"
+    },
+    {
+      "symbol": "CRCL",
+      "name": "Circle Internet Group",
+      "layer": "L_DCOMP",
+      "layerRole": "bridge",
+      "status": "active",
+      "assetClass": null,
+      "physicalConstraint": 3,
+      "moatCapture": 4,
+      "aiContribution": 0.3,
+      "timeToRealize": "near",
+      "moatLocks": [
+        "licensing",
+        "integration"
+      ],
+      "addedDate": "2026-05-08",
+      "addedVersion": "1.6.0"
+    },
+    {
+      "symbol": "ISRG",
+      "name": "Intuitive Surgical",
+      "layer": "L_EMBI",
+      "layerRole": "primary",
+      "status": "active",
+      "assetClass": null,
+      "physicalConstraint": 5,
+      "moatCapture": 5,
+      "aiContribution": 0.75,
+      "timeToRealize": "near",
+      "moatLocks": [
+        "licensing",
+        "userHabit",
+        "integration"
+      ],
+      "addedDate": "2026-05-08",
+      "addedVersion": "1.2.0"
+    },
+    {
+      "symbol": "CGNX",
+      "name": "Cognex",
+      "layer": "L_EMBI",
+      "layerRole": "primary",
+      "status": "active",
+      "assetClass": null,
+      "physicalConstraint": 4,
+      "moatCapture": 4,
+      "aiContribution": 0.65,
+      "timeToRealize": "near",
+      "moatLocks": [
+        "integration"
+      ],
+      "addedDate": "2026-05-08",
+      "addedVersion": "1.2.0"
+    },
+    {
+      "symbol": "PH",
+      "name": "Parker Hannifin",
+      "layer": "L_EMBI",
+      "layerRole": "secondary",
+      "status": "watchlist",
+      "assetClass": null,
+      "physicalConstraint": 3,
+      "moatCapture": 3,
+      "aiContribution": 0.15,
+      "timeToRealize": "mid",
+      "moatLocks": [
+        "integration"
+      ],
+      "addedDate": "2026-05-08",
+      "addedVersion": "1.2.0"
+    },
+    {
+      "symbol": "TSLA",
+      "name": "Tesla",
+      "layer": "L_EMBI",
+      "layerRole": "secondary",
+      "status": "watchlist",
+      "assetClass": null,
+      "physicalConstraint": 3,
+      "moatCapture": 4,
+      "aiContribution": 0.4,
+      "timeToRealize": "mid",
+      "moatLocks": [
+        "privateData",
+        "userHabit"
+      ],
+      "addedDate": "2026-05-08",
+      "addedVersion": "1.4.0"
+    },
+    {
+      "symbol": "VPG",
+      "name": "Vishay Precision Group",
+      "layer": "L_EMBI",
+      "layerRole": "secondary",
+      "status": "watchlist",
+      "assetClass": null,
+      "physicalConstraint": 2,
+      "moatCapture": 2,
+      "aiContribution": 0.08,
+      "timeToRealize": "mid",
+      "moatLocks": [],
+      "addedDate": "2026-06-03",
+      "addedVersion": "2.2.5"
+    },
+    {
+      "symbol": "RKLB",
+      "name": "Rocket Lab",
+      "layer": "L_SPACE",
+      "layerRole": "primary",
+      "status": "watchlist",
+      "assetClass": null,
+      "physicalConstraint": 4,
+      "moatCapture": 4,
+      "aiContribution": 0.45,
+      "timeToRealize": "near",
+      "moatLocks": [
+        "licensing",
+        "integration"
+      ],
+      "addedDate": "2026-05-08",
+      "addedVersion": "1.2.0"
+    },
+    {
+      "symbol": "ASTS",
+      "name": "AST SpaceMobile",
+      "layer": "L_SPACE",
+      "layerRole": "primary",
+      "status": "watchlist",
+      "assetClass": null,
+      "physicalConstraint": 5,
+      "moatCapture": 4,
+      "aiContribution": 0.35,
+      "timeToRealize": "mid",
+      "moatLocks": [
+        "licensing",
+        "integration"
+      ],
+      "addedDate": "2026-05-08",
+      "addedVersion": "1.2.0"
+    },
+    {
+      "symbol": "MOG",
+      "name": "Moog",
+      "layer": "L_SPACE",
+      "layerRole": "secondary",
+      "status": "watchlist",
+      "assetClass": null,
+      "physicalConstraint": 4,
+      "moatCapture": 3,
+      "aiContribution": 0.15,
+      "timeToRealize": "mid",
+      "moatLocks": [
+        "integration"
+      ],
+      "addedDate": "2026-05-08",
+      "addedVersion": "1.2.0"
+    },
+    {
+      "symbol": "AVAV",
+      "name": "AeroVironment",
+      "layer": "L_DEF",
+      "layerRole": "primary",
+      "status": "watchlist",
+      "assetClass": null,
+      "physicalConstraint": 4,
+      "moatCapture": 4,
+      "aiContribution": 0.65,
+      "timeToRealize": "near",
+      "moatLocks": [
+        "licensing",
+        "integration"
+      ],
+      "addedDate": "2026-05-19",
+      "addedVersion": "2.1.4"
+    },
+    {
+      "symbol": "KTOS",
+      "name": "Kratos Defense & Security Solutions",
+      "layer": "L_DEF",
+      "layerRole": "secondary",
+      "status": "watchlist",
+      "assetClass": null,
+      "physicalConstraint": 4,
+      "moatCapture": 4,
+      "aiContribution": 0.7,
+      "timeToRealize": "mid",
+      "moatLocks": [
+        "licensing",
+        "integration"
+      ],
+      "addedDate": "2026-05-19",
+      "addedVersion": "2.1.4"
+    },
+    {
+      "symbol": "APLD",
+      "name": "Applied Digital",
+      "layer": "L9_MINER_CONVERT",
+      "layerRole": "primary",
+      "status": "watchlist",
+      "assetClass": null,
+      "physicalConstraint": 5,
+      "moatCapture": 3,
+      "aiContribution": 0.55,
+      "timeToRealize": "near",
+      "moatLocks": [
+        "integration"
+      ],
+      "addedDate": "2026-05-26",
+      "addedVersion": "2.2.0"
+    },
+    {
+      "symbol": "CIFR",
+      "name": "Cipher Mining",
+      "layer": "L9_MINER_CONVERT",
+      "layerRole": "primary",
+      "status": "watchlist",
+      "assetClass": null,
+      "physicalConstraint": 5,
+      "moatCapture": 3,
+      "aiContribution": 0.45,
+      "timeToRealize": "near",
+      "moatLocks": [
+        "integration"
+      ],
+      "addedDate": "2026-05-26",
+      "addedVersion": "2.2.0"
+    },
+    {
+      "symbol": "IREN",
+      "name": "IREN Limited",
+      "layer": "L9_MINER_CONVERT",
+      "layerRole": "secondary",
+      "status": "watchlist",
+      "assetClass": null,
+      "physicalConstraint": 4,
+      "moatCapture": 3,
+      "aiContribution": 0.35,
+      "timeToRealize": "mid",
+      "moatLocks": [
+        "integration"
+      ],
+      "addedDate": "2026-05-26",
+      "addedVersion": "2.2.0"
+    },
+    {
+      "symbol": "WULF",
+      "name": "TeraWulf",
+      "layer": "L9_MINER_CONVERT",
+      "layerRole": "primary",
+      "status": "watchlist",
+      "assetClass": null,
+      "physicalConstraint": 5,
+      "moatCapture": 3,
+      "aiContribution": 0.45,
+      "timeToRealize": "near",
+      "moatLocks": [
+        "integration"
+      ],
+      "addedDate": "2026-05-26",
+      "addedVersion": "2.2.0"
+    },
+    {
+      "symbol": "HUT",
+      "name": "Hut 8",
+      "layer": "L9_MINER_CONVERT",
+      "layerRole": "secondary",
+      "status": "watchlist",
+      "assetClass": null,
+      "physicalConstraint": 4,
+      "moatCapture": 3,
+      "aiContribution": 0.3,
+      "timeToRealize": "mid",
+      "moatLocks": [
+        "integration"
+      ],
+      "addedDate": "2026-05-26",
+      "addedVersion": "2.2.0"
+    }
+  ]
+}
