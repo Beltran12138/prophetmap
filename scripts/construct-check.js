@@ -139,12 +139,20 @@ if (nGate < 1.6) {
 }
 
 const ci = bootstrapCI(GATE, 1000, 20260823);
-console.log(`这个 1.43 自己的测量误差  (bootstrap ${ci.n} 次，对标的重抽)`);
+console.log(`这个 ${nGate.toFixed(2)} 自己的测量误差  (bootstrap ${ci.n} 次，对标的重抽)`);
 console.log(`  95% 区间   [${ci.lo.toFixed(2)}, ${ci.hi.toFixed(2)}]`);
+console.log('');
+
+// The one line that has to survive a projector. Rules printed rather than
+// aligned: CJK cell width varies by terminal, and a box that comes apart on
+// the night is worse than no box.
+const RULE = '─'.repeat(56);
+console.log(RULE);
+console.log(`  ▶  这道闸用了 2 个维度，实际只有 ${nGate.toFixed(2)} 个`);
 if (ci.hi < 2) {
-  console.log(`  区间上界 ${ci.hi.toFixed(2)} < 2 —— 即使按误差最乐观的一端读，`);
-  console.log('  「这两个维度等于两重检查」也在 95% 水平上被排除。');
+  console.log(`     95% 区间 [${ci.lo.toFixed(2)}, ${ci.hi.toFixed(2)}] —— 上界仍然 < 2`);
 }
+console.log(RULE);
 console.log('');
 
 const pc = roster.filter(t => t.physicalConstraint >= CUT).length;
