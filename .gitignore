@@ -8,5 +8,7 @@ Thumbs.db
 
 .vercel
 
-# Personal watchlist pulled from a broker. Never commit.
-watchlist.local.txt
+# Personal broker data - watchlist and holdings. Never commit. The glob is
+# deliberately wider than the two files that exist today: the cost of one more
+# ignored file is nothing, the cost of one leaked one is not recoverable.
+*.local.txt
