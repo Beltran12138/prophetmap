@@ -58,8 +58,8 @@ const rows = symbols.map(sym => {
 });
 
 console.log('');
-console.log('ProphetMap 核心闸门');
-console.log(`  physicalConstraint >= ${CUT}  OR  moatCapture >= ${CUT}`);
+console.log('核心闸门 · 27 层 AI 产业链选股模型');
+console.log(`  physicalConstraint（物理约束） >= ${CUT}  OR  moatCapture（护城河捕获） >= ${CUT}`);
 console.log(`  这个闸门用了两个维度，有效维度数 1.43（见 scripts/construct-check.js）`);
 console.log('');
 console.log(`读取 data/ab-track/frozen-2026-08-17.json · 冻结于 ${frozen._meta.frozenAt}`);

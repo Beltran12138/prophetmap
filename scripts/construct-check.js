@@ -60,8 +60,9 @@ const frozen = JSON.parse(fs.readFileSync(FROZEN, 'utf8'));
 const roster = frozen.roster.filter(t => FIELDS.every(f => typeof t[f] === 'number'));
 
 console.log('');
-console.log('ProphetMap 核心闸门');
-console.log(`  physicalConstraint >= ${CUT}  OR  moatCapture >= ${CUT}`);
+console.log('核心闸门 · 27 层 AI 产业链选股模型');
+console.log(`  physicalConstraint（物理约束） >= ${CUT}`);
+console.log(`  OR  moatCapture（护城河捕获） >= ${CUT}`);
 console.log('');
 console.log(`读取 ${path.relative(path.join(__dirname, '..'), FROZEN).replace(/\\/g, '/')}`);
 console.log(`冻结于 ${frozen._meta.frozenAt} · ${roster.length} 个标的，三个维度全部有分`);
