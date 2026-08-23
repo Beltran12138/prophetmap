@@ -56,6 +56,48 @@ function neff(fields, rho) {
 
 const key = (a, b) => [a, b].sort().join('~');
 
+// n_eff read off one roster is a point estimate. A number used to argue that
+// someone else's confidence is overstated has to report its own, so resample
+// tickers with replacement and take the percentile interval. The resample is
+// over tickers — the unit that was drawn from the world — not over cells:
+// resampling cells would break the within-ticker link between the three fields
+// and return an interval that is too narrow, which is the flattering direction.
+// Seeded, so the number on screen is the same one every run.
+function mulberry32(seed) {
+  let a = seed >>> 0;
+  return function () {
+    a = (a + 0x6D2B79F5) >>> 0;
+    let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+function neffOf(sample, fields) {
+  const c = {};
+  fields.forEach(f => { c[f] = ranks(sample.map(t => t[f])); });
+  const r = {};
+  for (let i = 0; i < fields.length; i++)
+    for (let j = i + 1; j < fields.length; j++)
+      r[key(fields[i], fields[j])] = pearson(c[fields[i]], c[fields[j]]);
+  return neff(fields, r);
+}
+
+function bootstrapCI(fields, draws, seed) {
+  const rnd = mulberry32(seed);
+  const out = [];
+  for (let d = 0; d < draws; d++) {
+    const sample = new Array(roster.length);
+    for (let i = 0; i < roster.length; i++)
+      sample[i] = roster[Math.floor(rnd() * roster.length)];
+    const v = neffOf(sample, fields);
+    if (Number.isFinite(v)) out.push(v);
+  }
+  out.sort((a, b) => a - b);
+  const at = p => out[Math.min(out.length - 1, Math.max(0, Math.round(p * (out.length - 1))))];
+  return { lo: at(0.025), hi: at(0.975), n: out.length };
+}
+
 const frozen = JSON.parse(fs.readFileSync(FROZEN, 'utf8'));
 const roster = frozen.roster.filter(t => FIELDS.every(f => typeof t[f] === 'number'));
 
@@ -95,6 +137,15 @@ if (nGate < 1.6) {
   console.log(`  ! 这个闸门用了两个维度，实际上只有 ${nGate.toFixed(2)} 个。`);
   console.log('');
 }
+
+const ci = bootstrapCI(GATE, 1000, 20260823);
+console.log(`这个 1.43 自己的测量误差  (bootstrap ${ci.n} 次，对标的重抽)`);
+console.log(`  95% 区间   [${ci.lo.toFixed(2)}, ${ci.hi.toFixed(2)}]`);
+if (ci.hi < 2) {
+  console.log(`  区间上界 ${ci.hi.toFixed(2)} < 2 —— 即使按误差最乐观的一端读，`);
+  console.log('  「这两个维度等于两重检查」也在 95% 水平上被排除。');
+}
+console.log('');
 
 const pc = roster.filter(t => t.physicalConstraint >= CUT).length;
 const mc = roster.filter(t => t.moatCapture >= CUT).length;
