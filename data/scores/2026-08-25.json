@@ -1,0 +1,7115 @@
+{
+  "date": "2026-08-25",
+  "spy6mReturn": 10.4,
+  "funnelPassCount": 24,
+  "totalFetched": 84,
+  "errors": [
+    {
+      "symbol": "MOG",
+      "error": "No fundamentals data found for symbol: MOG"
+    }
+  ],
+  "results": [
+    {
+      "symbol": "CRH",
+      "layer": "L9",
+      "assetClass": "equity",
+      "physicalConstraint": 4,
+      "constraintType": "geo",
+      "aiContribution": 0.32,
+      "timeToRealize": "mid",
+      "moatCapture": 3,
+      "moatLocks": [],
+      "price": 95.17,
+      "marketCap": 63,
+      "pricingScore": 1.5,
+      "rawPricingScore": 1.5,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": 1.88,
+      "pegBand": "rich",
+      "pegStale": false,
+      "pegStaleDetail": null,
+      "pegSelf": 1.13,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": null,
+      "funnelPass": true,
+      "funnelFailReasons": [],
+      "funnelWarnings": [],
+      "previousFunnelPass": true,
+      "inHysteresisBand": false,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": 6.67,
+          "ago90d": 6.74,
+          "meaningful": true,
+          "changePct": -1.1,
+          "direction": "down"
+        },
+        "surpriseHitRate": {
+          "quarters": 4,
+          "beats": 2,
+          "hitRate": 0.5,
+          "avgSurprisePct": 0.8
+        }
+      },
+      "deratingSignature": {
+        "signature": "none",
+        "drawdownFrom52wHigh": -27.7,
+        "change52w": -16.2,
+        "estimatesRising": false,
+        "delivering": true,
+        "note": null
+      },
+      "components": {
+        "forwardPE": {
+          "value": 14.385173,
+          "benchmark": 25.6,
+          "score": 1.9
+        },
+        "evRevenue": {
+          "value": 2.123,
+          "benchmark": 12.5,
+          "score": 1
+        },
+        "analystUpside": {
+          "targetPrice": 138.37955,
+          "currentPrice": 95.17,
+          "upside": 45.4,
+          "score": 1.2
+        },
+        "momentum6m": {
+          "ticker6m": -20.8,
+          "spy6m": 10.4,
+          "relative": -31.2,
+          "score": 2
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.33333,
+      "numberOfAnalysts": 22,
+      "fetchedAt": "2026-08-25T15:24:41.689Z"
+    },
+    {
+      "symbol": "QCOM",
+      "layer": "L2_5",
+      "assetClass": "equity",
+      "physicalConstraint": 3,
+      "constraintType": null,
+      "aiContribution": 0.45,
+      "timeToRealize": "mid",
+      "moatCapture": 4,
+      "moatLocks": [
+        "licensing",
+        "integration"
+      ],
+      "price": 159.88,
+      "marketCap": 168,
+      "pricingScore": 2,
+      "rawPricingScore": 2,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": 0.71,
+      "pegBand": "cheap",
+      "pegStale": false,
+      "pegStaleDetail": null,
+      "pegSelf": null,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": "growth -3.0% <= 0 — PEG undefined for expected contraction",
+      "funnelPass": true,
+      "funnelFailReasons": [],
+      "funnelWarnings": [],
+      "previousFunnelPass": true,
+      "inHysteresisBand": false,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": 10.2,
+          "ago90d": 10.64,
+          "meaningful": true,
+          "changePct": -4.1,
+          "direction": "down"
+        },
+        "surpriseHitRate": {
+          "quarters": 4,
+          "beats": 3,
+          "hitRate": 0.75,
+          "avgSurprisePct": 2.5
+        }
+      },
+      "deratingSignature": {
+        "signature": "drawdown-unclassified",
+        "drawdownFrom52wHigh": -38.5,
+        "change52w": -0.4,
+        "estimatesRising": false,
+        "delivering": true,
+        "note": null
+      },
+      "components": {
+        "forwardPE": {
+          "value": 15.6715145,
+          "benchmark": 28.4,
+          "score": 1.9
+        },
+        "evRevenue": {
+          "value": 3.936,
+          "benchmark": 23.9,
+          "score": 1
+        },
+        "analystUpside": {
+          "targetPrice": 193.1,
+          "currentPrice": 159.88,
+          "upside": 20.8,
+          "score": 2.2
+        },
+        "momentum6m": {
+          "ticker6m": 9.6,
+          "spy6m": 10.4,
+          "relative": -0.7,
+          "score": 3
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 2.56757,
+      "numberOfAnalysts": 30,
+      "fetchedAt": "2026-08-25T15:23:23.835Z"
+    },
+    {
+      "symbol": "SNPS",
+      "layer": "L3",
+      "assetClass": "equity",
+      "physicalConstraint": 5,
+      "constraintType": "tech",
+      "aiContribution": 0.4,
+      "timeToRealize": "near",
+      "moatCapture": 5,
+      "moatLocks": [
+        "userHabit",
+        "integration"
+      ],
+      "price": 401.765,
+      "marketCap": 77,
+      "pricingScore": 2,
+      "rawPricingScore": 2,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": 2.14,
+      "pegBand": "rich",
+      "pegStale": false,
+      "pegStaleDetail": null,
+      "pegSelf": 1.39,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": null,
+      "funnelPass": true,
+      "funnelFailReasons": [],
+      "funnelWarnings": [],
+      "previousFunnelPass": true,
+      "inHysteresisBand": false,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": 17.26,
+          "ago90d": 17.05,
+          "meaningful": true,
+          "changePct": 1.3,
+          "direction": "up"
+        },
+        "surpriseHitRate": {
+          "quarters": 4,
+          "beats": 3,
+          "hitRate": 0.75,
+          "avgSurprisePct": 1.7
+        }
+      },
+      "deratingSignature": {
+        "signature": "architectural-derating",
+        "drawdownFrom52wHigh": -34.8,
+        "change52w": -33.8,
+        "estimatesRising": true,
+        "delivering": true,
+        "note": "down over 12m while estimates rise and the company beats — market is discounting beyond the estimate horizon; re-read this ticker's thesisFalsification entries"
+      },
+      "components": {
+        "forwardPE": {
+          "value": 23.271177,
+          "benchmark": 33.5,
+          "score": 2.2
+        },
+        "evRevenue": {
+          "value": 9.666,
+          "benchmark": 15.2,
+          "score": 2.1
+        },
+        "analystUpside": {
+          "targetPrice": 560.1738,
+          "currentPrice": 401.765,
+          "upside": 39.4,
+          "score": 1.4
+        },
+        "momentum6m": {
+          "ticker6m": -10.6,
+          "spy6m": 10.4,
+          "relative": -20.9,
+          "score": 2.3
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.70833,
+      "numberOfAnalysts": 26,
+      "fetchedAt": "2026-08-25T15:23:31.475Z"
+    },
+    {
+      "symbol": "AVAV",
+      "layer": "L_DEF",
+      "assetClass": "equity",
+      "physicalConstraint": 4,
+      "constraintType": "regulatory",
+      "aiContribution": 0.65,
+      "timeToRealize": "near",
+      "moatCapture": 4,
+      "moatLocks": [
+        "licensing",
+        "integration"
+      ],
+      "price": 149.31,
+      "marketCap": 8,
+      "pricingScore": 2,
+      "rawPricingScore": 2,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": 1.57,
+      "pegBand": "rich",
+      "pegStale": false,
+      "pegStaleDetail": null,
+      "pegSelf": 0.95,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": null,
+      "funnelPass": true,
+      "funnelFailReasons": [],
+      "funnelWarnings": [],
+      "previousFunnelPass": true,
+      "inHysteresisBand": false,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": 4.4,
+          "ago90d": 5.39,
+          "meaningful": true,
+          "changePct": -18.3,
+          "direction": "down"
+        },
+        "surpriseHitRate": {
+          "quarters": 4,
+          "beats": 1,
+          "hitRate": 0.25,
+          "avgSurprisePct": -8.3
+        }
+      },
+      "deratingSignature": {
+        "signature": "drawdown-unclassified",
+        "drawdownFrom52wHigh": -64.3,
+        "change52w": -39.7,
+        "estimatesRising": false,
+        "delivering": false,
+        "note": null
+      },
+      "components": {
+        "forwardPE": {
+          "value": 33.900578,
+          "benchmark": 32,
+          "score": 3.1
+        },
+        "evRevenue": {
+          "value": 3.882,
+          "benchmark": 5.1,
+          "score": 2.4
+        },
+        "analystUpside": {
+          "targetPrice": 225.76685,
+          "currentPrice": 149.31,
+          "upside": 51.2,
+          "score": 1
+        },
+        "momentum6m": {
+          "ticker6m": -41.5,
+          "spy6m": 10.4,
+          "relative": -51.9,
+          "score": 1.3
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.6,
+      "numberOfAnalysts": 19,
+      "fetchedAt": "2026-08-25T15:25:26.803Z"
+    },
+    {
+      "symbol": "AMKR",
+      "layer": "L5",
+      "assetClass": "equity",
+      "physicalConstraint": 4,
+      "constraintType": "tech",
+      "aiContribution": 0.35,
+      "timeToRealize": "mid",
+      "moatCapture": 2,
+      "moatLocks": [],
+      "price": 48.96,
+      "marketCap": 12,
+      "pricingScore": 2.1,
+      "rawPricingScore": 2.1,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": 0.76,
+      "pegBand": "cheap",
+      "pegStale": false,
+      "pegStaleDetail": null,
+      "pegSelf": 1.8,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": null,
+      "funnelPass": true,
+      "funnelFailReasons": [],
+      "funnelWarnings": [
+        "supplier-trap: moatCapture 2 — moat accrues to incumbent/customer, ticker is a replaceable vendor"
+      ],
+      "previousFunnelPass": true,
+      "inHysteresisBand": false,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": 2.82,
+          "ago90d": 2.45,
+          "meaningful": true,
+          "changePct": 15.2,
+          "direction": "up"
+        },
+        "surpriseHitRate": {
+          "quarters": 4,
+          "beats": 4,
+          "hitRate": 1,
+          "avgSurprisePct": 39.3
+        }
+      },
+      "deratingSignature": {
+        "signature": "momentum-unwind",
+        "drawdownFrom52wHigh": -49.4,
+        "change52w": 96.6,
+        "estimatesRising": true,
+        "delivering": true,
+        "note": "deep drawdown but positive 12m return — unwinding a prior advance, NOT evidence of a broken thesis"
+      },
+      "components": {
+        "forwardPE": {
+          "value": 17.348537,
+          "benchmark": 19.8,
+          "score": 2.7
+        },
+        "evRevenue": {
+          "value": 1.622,
+          "benchmark": 2.5,
+          "score": 2.1
+        },
+        "analystUpside": {
+          "targetPrice": 77.11111,
+          "currentPrice": 48.96,
+          "upside": 57.5,
+          "score": 1
+        },
+        "momentum6m": {
+          "ticker6m": -3.9,
+          "spy6m": 10.4,
+          "relative": -14.3,
+          "score": 2.5
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": null,
+      "numberOfAnalysts": 9,
+      "fetchedAt": "2026-08-25T15:23:54.963Z"
+    },
+    {
+      "symbol": "TTMI",
+      "layer": "L5_5",
+      "assetClass": "equity",
+      "physicalConstraint": 4,
+      "constraintType": "tech",
+      "aiContribution": 0.3,
+      "timeToRealize": "near",
+      "moatCapture": 3,
+      "moatLocks": [
+        "integration"
+      ],
+      "price": 112.515,
+      "marketCap": 12,
+      "pricingScore": 2.1,
+      "rawPricingScore": 2.1,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": 0.36,
+      "pegBand": "cheap",
+      "pegStale": true,
+      "pegStaleDetail": "pegRatio unchanged at 0.36 while price moved +6.6% since 2026-08-24 (105.58 -> 112.515) — Yahoo precomputed field has not refreshed; treat pegBand as unusable for this session",
+      "pegSelf": 0.39,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": null,
+      "funnelPass": true,
+      "funnelFailReasons": [],
+      "funnelWarnings": [],
+      "previousFunnelPass": true,
+      "inHysteresisBand": false,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": 6.89,
+          "ago90d": 5.2,
+          "meaningful": true,
+          "changePct": 32.6,
+          "direction": "up"
+        },
+        "surpriseHitRate": {
+          "quarters": 4,
+          "beats": 4,
+          "hitRate": 1,
+          "avgSurprisePct": 9.1
+        }
+      },
+      "deratingSignature": {
+        "signature": "momentum-unwind",
+        "drawdownFrom52wHigh": -49.7,
+        "change52w": 138.7,
+        "estimatesRising": true,
+        "delivering": true,
+        "note": "deep drawdown but positive 12m return — unwinding a prior advance, NOT evidence of a broken thesis"
+      },
+      "components": {
+        "forwardPE": {
+          "value": 16.324266,
+          "benchmark": 22,
+          "score": 2.4
+        },
+        "evRevenue": {
+          "value": 3.518,
+          "benchmark": 5,
+          "score": 2.3
+        },
+        "analystUpside": {
+          "targetPrice": 214.25,
+          "currentPrice": 112.515,
+          "upside": 90.4,
+          "score": 1
+        },
+        "momentum6m": {
+          "ticker6m": 3.4,
+          "spy6m": 10.4,
+          "relative": -7,
+          "score": 2.8
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.25,
+      "numberOfAnalysts": 4,
+      "fetchedAt": "2026-08-25T15:23:58.772Z"
+    },
+    {
+      "symbol": "NVDA",
+      "layer": "L2",
+      "assetClass": "equity",
+      "physicalConstraint": 5,
+      "constraintType": "tech",
+      "aiContribution": 0.85,
+      "timeToRealize": "near",
+      "moatCapture": 5,
+      "moatLocks": [
+        "userHabit",
+        "integration"
+      ],
+      "price": 210.71,
+      "marketCap": 5104,
+      "pricingScore": 2.2,
+      "rawPricingScore": 2.2,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": 0.59,
+      "pegBand": "cheap",
+      "pegStale": false,
+      "pegStaleDetail": null,
+      "pegSelf": 0.36,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": null,
+      "funnelPass": true,
+      "funnelFailReasons": [],
+      "funnelWarnings": [],
+      "previousFunnelPass": true,
+      "inHysteresisBand": false,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": 13.04,
+          "ago90d": 12.59,
+          "meaningful": true,
+          "changePct": 3.6,
+          "direction": "up"
+        },
+        "surpriseHitRate": {
+          "quarters": 4,
+          "beats": 4,
+          "hitRate": 1,
+          "avgSurprisePct": 4.6
+        }
+      },
+      "deratingSignature": {
+        "signature": "none",
+        "drawdownFrom52wHigh": -10.9,
+        "change52w": 14.7,
+        "estimatesRising": true,
+        "delivering": true,
+        "note": null
+      },
+      "components": {
+        "forwardPE": {
+          "value": 16.157503,
+          "benchmark": 30.6,
+          "score": 1.8
+        },
+        "evRevenue": {
+          "value": 19.744,
+          "benchmark": 20.3,
+          "score": 2.9
+        },
+        "analystUpside": {
+          "targetPrice": 304.72882,
+          "currentPrice": 210.71,
+          "upside": 44.6,
+          "score": 1.2
+        },
+        "momentum6m": {
+          "ticker6m": 7.7,
+          "spy6m": 10.4,
+          "relative": -2.6,
+          "score": 2.9
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.29032,
+      "numberOfAnalysts": 59,
+      "fetchedAt": "2026-08-25T15:23:17.897Z"
+    },
+    {
+      "symbol": "AVGO",
+      "layer": "L2_5",
+      "assetClass": "equity",
+      "physicalConstraint": 4,
+      "constraintType": "tech",
+      "aiContribution": 0.55,
+      "timeToRealize": "near",
+      "moatCapture": 4,
+      "moatLocks": [
+        "integration",
+        "userHabit"
+      ],
+      "price": 359.88,
+      "marketCap": 1712,
+      "pricingScore": 2.2,
+      "rawPricingScore": 2.2,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": 0.41,
+      "pegBand": "cheap",
+      "pegStale": false,
+      "pegStaleDetail": null,
+      "pegSelf": 0.27,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": null,
+      "funnelPass": true,
+      "funnelFailReasons": [],
+      "funnelWarnings": [],
+      "previousFunnelPass": true,
+      "inHysteresisBand": false,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": 19.5,
+          "ago90d": 18.22,
+          "meaningful": true,
+          "changePct": 7.1,
+          "direction": "up"
+        },
+        "surpriseHitRate": {
+          "quarters": 4,
+          "beats": 4,
+          "hitRate": 1,
+          "avgSurprisePct": 2.3
+        }
+      },
+      "deratingSignature": {
+        "signature": "none",
+        "drawdownFrom52wHigh": -27.3,
+        "change52w": 20.4,
+        "estimatesRising": true,
+        "delivering": true,
+        "note": null
+      },
+      "components": {
+        "forwardPE": {
+          "value": 18.451477,
+          "benchmark": 28.4,
+          "score": 2.1
+        },
+        "evRevenue": {
+          "value": 23.217,
+          "benchmark": 23.9,
+          "score": 2.9
+        },
+        "analystUpside": {
+          "targetPrice": 526.30005,
+          "currentPrice": 359.88,
+          "upside": 46.2,
+          "score": 1.2
+        },
+        "momentum6m": {
+          "ticker6m": 8.3,
+          "spy6m": 10.4,
+          "relative": -2.1,
+          "score": 2.9
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.32653,
+      "numberOfAnalysts": 46,
+      "fetchedAt": "2026-08-25T15:23:29.556Z"
+    },
+    {
+      "symbol": "META",
+      "layer": "L0",
+      "assetClass": "equity",
+      "physicalConstraint": 2,
+      "constraintType": null,
+      "aiContribution": 0.5,
+      "timeToRealize": "near",
+      "moatCapture": 4,
+      "moatLocks": [
+        "privateData",
+        "userHabit"
+      ],
+      "price": 563.02,
+      "marketCap": 1434,
+      "pricingScore": 2.3,
+      "rawPricingScore": 2.3,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": 0.82,
+      "pegBand": "cheap",
+      "pegStale": false,
+      "pegStaleDetail": null,
+      "pegSelf": 1.43,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": null,
+      "funnelPass": true,
+      "funnelFailReasons": [],
+      "funnelWarnings": [],
+      "previousFunnelPass": true,
+      "inHysteresisBand": false,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": 33.93,
+          "ago90d": 34.75,
+          "meaningful": true,
+          "changePct": -2.4,
+          "direction": "down"
+        },
+        "surpriseHitRate": {
+          "quarters": 4,
+          "beats": 2,
+          "hitRate": 0.5,
+          "avgSurprisePct": -8.5
+        }
+      },
+      "deratingSignature": {
+        "signature": "none",
+        "drawdownFrom52wHigh": -28.8,
+        "change52w": -25.9,
+        "estimatesRising": false,
+        "delivering": true,
+        "note": null
+      },
+      "components": {
+        "forwardPE": {
+          "value": 16.223171,
+          "benchmark": 18.2,
+          "score": 2.7
+        },
+        "evRevenue": {
+          "value": 6.336,
+          "benchmark": 7.3,
+          "score": 2.7
+        },
+        "analystUpside": {
+          "targetPrice": 754.14246,
+          "currentPrice": 563.02,
+          "upside": 33.9,
+          "score": 1.6
+        },
+        "momentum6m": {
+          "ticker6m": -13.9,
+          "spy6m": 10.4,
+          "relative": -24.2,
+          "score": 2.2
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.35484,
+      "numberOfAnalysts": 57,
+      "fetchedAt": "2026-08-25T15:23:10.316Z"
+    },
+    {
+      "symbol": "COHR",
+      "layer": "L8_OPT",
+      "assetClass": "equity",
+      "physicalConstraint": 4,
+      "constraintType": "tech",
+      "aiContribution": 0.55,
+      "timeToRealize": "mid",
+      "moatCapture": 3,
+      "moatLocks": [
+        "integration"
+      ],
+      "price": 286.23,
+      "marketCap": 56,
+      "pricingScore": 2.3,
+      "rawPricingScore": 2.3,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": 0.92,
+      "pegBand": "cheap",
+      "pegStale": true,
+      "pegStaleDetail": "pegRatio unchanged at 0.92 while price moved +5.6% since 2026-08-24 (271.15 -> 286.23) — Yahoo precomputed field has not refreshed; treat pegBand as unusable for this session",
+      "pegSelf": 0.42,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": null,
+      "funnelPass": true,
+      "funnelFailReasons": [],
+      "funnelWarnings": [],
+      "previousFunnelPass": true,
+      "inHysteresisBand": false,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": 13.95,
+          "ago90d": 12.24,
+          "meaningful": true,
+          "changePct": 14,
+          "direction": "up"
+        },
+        "surpriseHitRate": {
+          "quarters": 4,
+          "beats": 4,
+          "hitRate": 1,
+          "avgSurprisePct": 6.7
+        }
+      },
+      "deratingSignature": {
+        "signature": "momentum-unwind",
+        "drawdownFrom52wHigh": -34.9,
+        "change52w": 200.8,
+        "estimatesRising": true,
+        "delivering": true,
+        "note": "deep drawdown but positive 12m return — unwinding a prior advance, NOT evidence of a broken thesis"
+      },
+      "components": {
+        "forwardPE": {
+          "value": 20.519838,
+          "benchmark": 26.7,
+          "score": 2.4
+        },
+        "evRevenue": {
+          "value": 7.846,
+          "benchmark": 9.2,
+          "score": 2.6
+        },
+        "analystUpside": {
+          "targetPrice": 416.09348,
+          "currentPrice": 286.23,
+          "upside": 45.4,
+          "score": 1.2
+        },
+        "momentum6m": {
+          "ticker6m": 6.8,
+          "spy6m": 10.4,
+          "relative": -3.6,
+          "score": 2.9
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.63636,
+      "numberOfAnalysts": 21,
+      "fetchedAt": "2026-08-25T15:24:22.171Z"
+    },
+    {
+      "symbol": "AMAT",
+      "layer": "L4",
+      "assetClass": "equity",
+      "physicalConstraint": 5,
+      "constraintType": "tech",
+      "aiContribution": 0.3,
+      "timeToRealize": "near",
+      "moatCapture": 4,
+      "moatLocks": [
+        "integration"
+      ],
+      "price": 480,
+      "marketCap": 381,
+      "pricingScore": 2.6,
+      "rawPricingScore": 2.6,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": 0.99,
+      "pegBand": "cheap",
+      "pegStale": false,
+      "pegStaleDetail": null,
+      "pegSelf": 0.6,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": null,
+      "funnelPass": true,
+      "funnelFailReasons": [],
+      "funnelWarnings": [],
+      "previousFunnelPass": true,
+      "inHysteresisBand": false,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": 18.34,
+          "ago90d": 16.11,
+          "meaningful": true,
+          "changePct": 13.8,
+          "direction": "up"
+        },
+        "surpriseHitRate": {
+          "quarters": 4,
+          "beats": 4,
+          "hitRate": 1,
+          "avgSurprisePct": 5.3
+        }
+      },
+      "deratingSignature": {
+        "signature": "momentum-unwind",
+        "drawdownFrom52wHigh": -35.1,
+        "change52w": 194.3,
+        "estimatesRising": true,
+        "delivering": true,
+        "note": "deep drawdown but positive 12m return — unwinding a prior advance, NOT evidence of a broken thesis"
+      },
+      "components": {
+        "forwardPE": {
+          "value": 26.170546,
+          "benchmark": 27.5,
+          "score": 2.9
+        },
+        "evRevenue": {
+          "value": 12.4,
+          "benchmark": 15,
+          "score": 2.6
+        },
+        "analystUpside": {
+          "targetPrice": 641.02856,
+          "currentPrice": 480,
+          "upside": 33.5,
+          "score": 1.7
+        },
+        "momentum6m": {
+          "ticker6m": 21.5,
+          "spy6m": 10.4,
+          "relative": 11.2,
+          "score": 3.4
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.46154,
+      "numberOfAnalysts": 35,
+      "fetchedAt": "2026-08-25T15:23:45.189Z"
+    },
+    {
+      "symbol": "KTOS",
+      "layer": "L_DEF",
+      "assetClass": "equity",
+      "physicalConstraint": 4,
+      "constraintType": "regulatory",
+      "aiContribution": 0.7,
+      "timeToRealize": "mid",
+      "moatCapture": 4,
+      "moatLocks": [
+        "licensing",
+        "integration"
+      ],
+      "price": 53.215,
+      "marketCap": 10,
+      "pricingScore": 2.6,
+      "rawPricingScore": 2.6,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": 36.41,
+      "pegBand": "overpriced",
+      "pegStale": false,
+      "pegStaleDetail": null,
+      "pegSelf": 1.3,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": null,
+      "funnelPass": true,
+      "funnelFailReasons": [],
+      "funnelWarnings": [],
+      "previousFunnelPass": true,
+      "inHysteresisBand": false,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": 1.12,
+          "ago90d": 1.07,
+          "meaningful": true,
+          "changePct": 4.1,
+          "direction": "up"
+        },
+        "surpriseHitRate": {
+          "quarters": 4,
+          "beats": 4,
+          "hitRate": 1,
+          "avgSurprisePct": 23
+        }
+      },
+      "deratingSignature": {
+        "signature": "architectural-derating",
+        "drawdownFrom52wHigh": -60.3,
+        "change52w": -22,
+        "estimatesRising": true,
+        "delivering": true,
+        "note": "down over 12m while estimates rise and the company beats — market is discounting beyond the estimate horizon; re-read this ticker's thesisFalsification entries"
+      },
+      "components": {
+        "forwardPE": {
+          "value": 47.624374,
+          "benchmark": 32,
+          "score": 4.2
+        },
+        "evRevenue": {
+          "value": 5.726,
+          "benchmark": 5.1,
+          "score": 3.3
+        },
+        "analystUpside": {
+          "targetPrice": 105.61905,
+          "currentPrice": 53.215,
+          "upside": 98.5,
+          "score": 1
+        },
+        "momentum6m": {
+          "ticker6m": -39.7,
+          "spy6m": 10.4,
+          "relative": -50.1,
+          "score": 1.3
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.42857,
+      "numberOfAnalysts": 21,
+      "fetchedAt": "2026-08-25T15:25:28.677Z"
+    },
+    {
+      "symbol": "GOOG",
+      "layer": "L1",
+      "assetClass": "equity",
+      "physicalConstraint": 2,
+      "constraintType": null,
+      "aiContribution": 0.55,
+      "timeToRealize": "near",
+      "moatCapture": 4,
+      "moatLocks": [
+        "userHabit",
+        "privateData",
+        "integration"
+      ],
+      "price": 342.8,
+      "marketCap": 4192,
+      "pricingScore": 2.7,
+      "rawPricingScore": 2.7,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": 0.93,
+      "pegBand": "cheap",
+      "pegStale": false,
+      "pegStaleDetail": null,
+      "pegSelf": null,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": "growth -28.1% <= 0 — PEG undefined for expected contraction",
+      "funnelPass": true,
+      "funnelFailReasons": [],
+      "funnelWarnings": [],
+      "previousFunnelPass": true,
+      "inHysteresisBand": false,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": 14.81,
+          "ago90d": 14.43,
+          "meaningful": true,
+          "changePct": 2.7,
+          "direction": "up"
+        },
+        "surpriseHitRate": {
+          "quarters": 4,
+          "beats": 4,
+          "hitRate": 1,
+          "avgSurprisePct": 85.2
+        }
+      },
+      "deratingSignature": {
+        "signature": "none",
+        "drawdownFrom52wHigh": -15.2,
+        "change52w": 65.7,
+        "estimatesRising": true,
+        "delivering": true,
+        "note": null
+      },
+      "components": {
+        "forwardPE": {
+          "value": 23.144943,
+          "benchmark": 24.4,
+          "score": 2.9
+        },
+        "evRevenue": {
+          "value": 9.22,
+          "benchmark": 9.2,
+          "score": 3
+        },
+        "analystUpside": {
+          "targetPrice": 422.336,
+          "currentPrice": 342.8,
+          "upside": 23.2,
+          "score": 2.1
+        },
+        "momentum6m": {
+          "ticker6m": 9.5,
+          "spy6m": 10.4,
+          "relative": -0.9,
+          "score": 3
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.36508,
+      "numberOfAnalysts": 15,
+      "fetchedAt": "2026-08-25T15:23:14.107Z"
+    },
+    {
+      "symbol": "LIN",
+      "layer": "L3_5",
+      "assetClass": "equity",
+      "physicalConstraint": 5,
+      "constraintType": "geo",
+      "aiContribution": 0.4,
+      "timeToRealize": "near",
+      "moatCapture": 4,
+      "moatLocks": [
+        "integration"
+      ],
+      "price": 485.805,
+      "marketCap": 224,
+      "pricingScore": 2.7,
+      "rawPricingScore": 2.7,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": 2.08,
+      "pegBand": "rich",
+      "pegStale": false,
+      "pegStaleDetail": null,
+      "pegSelf": 2.62,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": null,
+      "funnelPass": true,
+      "funnelFailReasons": [],
+      "funnelWarnings": [],
+      "previousFunnelPass": true,
+      "inHysteresisBand": false,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": 18.26,
+          "ago90d": 18.24,
+          "meaningful": true,
+          "changePct": 0.1,
+          "direction": "up"
+        },
+        "surpriseHitRate": {
+          "quarters": 4,
+          "beats": 4,
+          "hitRate": 1,
+          "avgSurprisePct": 0.7
+        }
+      },
+      "deratingSignature": {
+        "signature": "none",
+        "drawdownFrom52wHigh": -11.4,
+        "change52w": 1.7,
+        "estimatesRising": true,
+        "delivering": true,
+        "note": null
+      },
+      "components": {
+        "forwardPE": {
+          "value": 24.81921,
+          "benchmark": 26.8,
+          "score": 2.8
+        },
+        "evRevenue": {
+          "value": 7.068,
+          "benchmark": 7,
+          "score": 3
+        },
+        "analystUpside": {
+          "targetPrice": 547.24,
+          "currentPrice": 485.805,
+          "upside": 12.6,
+          "score": 2.5
+        },
+        "momentum6m": {
+          "ticker6m": -4.4,
+          "spy6m": 10.4,
+          "relative": -14.8,
+          "score": 2.5
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.7037,
+      "numberOfAnalysts": 25,
+      "fetchedAt": "2026-08-25T15:23:41.337Z"
+    },
+    {
+      "symbol": "GLW",
+      "layer": "L8_OPT",
+      "assetClass": "equity",
+      "physicalConstraint": 4,
+      "constraintType": "tech",
+      "aiContribution": 0.35,
+      "timeToRealize": "mid",
+      "moatCapture": 4,
+      "moatLocks": [
+        "integration"
+      ],
+      "price": 147.99,
+      "marketCap": 127,
+      "pricingScore": 2.7,
+      "rawPricingScore": 2.7,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": 1.14,
+      "pegBand": "fair",
+      "pegStale": false,
+      "pegStaleDetail": null,
+      "pegSelf": 1.07,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": null,
+      "funnelPass": true,
+      "funnelFailReasons": [],
+      "funnelWarnings": [],
+      "previousFunnelPass": true,
+      "inHysteresisBand": false,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": 4.32,
+          "ago90d": 4.04,
+          "meaningful": true,
+          "changePct": 6.9,
+          "direction": "up"
+        },
+        "surpriseHitRate": {
+          "quarters": 4,
+          "beats": 4,
+          "hitRate": 1,
+          "avgSurprisePct": 1.9
+        }
+      },
+      "deratingSignature": {
+        "signature": "momentum-unwind",
+        "drawdownFrom52wHigh": -45.5,
+        "change52w": 115.9,
+        "estimatesRising": true,
+        "delivering": true,
+        "note": "deep drawdown but positive 12m return — unwinding a prior advance, NOT evidence of a broken thesis"
+      },
+      "components": {
+        "forwardPE": {
+          "value": 34.25314,
+          "benchmark": 26.7,
+          "score": 3.7
+        },
+        "evRevenue": {
+          "value": 7.829,
+          "benchmark": 9.2,
+          "score": 2.6
+        },
+        "analystUpside": {
+          "targetPrice": 191.4,
+          "currentPrice": 147.99,
+          "upside": 29.3,
+          "score": 1.8
+        },
+        "momentum6m": {
+          "ticker6m": -7.7,
+          "spy6m": 10.4,
+          "relative": -18.1,
+          "score": 2.4
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": null,
+      "numberOfAnalysts": 15,
+      "fetchedAt": "2026-08-25T15:24:20.137Z"
+    },
+    {
+      "symbol": "CIFR",
+      "layer": "L9_MINER_CONVERT",
+      "assetClass": "equity",
+      "physicalConstraint": 5,
+      "constraintType": "geo",
+      "aiContribution": 0.45,
+      "timeToRealize": "near",
+      "moatCapture": 3,
+      "moatLocks": [
+        "integration"
+      ],
+      "price": 16.16,
+      "marketCap": 7,
+      "pricingScore": 2.7,
+      "rawPricingScore": 2.7,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": null,
+      "pegBand": "N/A",
+      "pegStale": false,
+      "pegStaleDetail": null,
+      "pegSelf": 0.52,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": null,
+      "funnelPass": true,
+      "funnelFailReasons": [],
+      "funnelWarnings": [],
+      "previousFunnelPass": true,
+      "inHysteresisBand": false,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": 0.23,
+          "ago90d": 0.47,
+          "meaningful": true,
+          "changePct": -51.1,
+          "direction": "down"
+        },
+        "surpriseHitRate": {
+          "quarters": 4,
+          "beats": 1,
+          "hitRate": 0.25,
+          "avgSurprisePct": -169.8
+        }
+      },
+      "deratingSignature": {
+        "signature": "momentum-unwind",
+        "drawdownFrom52wHigh": -46.4,
+        "change52w": 115.7,
+        "estimatesRising": false,
+        "delivering": false,
+        "note": "deep drawdown but positive 12m return — unwinding a prior advance, NOT evidence of a broken thesis"
+      },
+      "components": {
+        "forwardPE": {
+          "value": 70.260864,
+          "benchmark": 97.9,
+          "score": 2.3
+        },
+        "evRevenue": {
+          "value": 58.377,
+          "benchmark": 20.5,
+          "score": 5
+        },
+        "analystUpside": {
+          "targetPrice": 32.17647,
+          "currentPrice": 16.16,
+          "upside": 99.1,
+          "score": 1
+        },
+        "momentum6m": {
+          "ticker6m": -2.7,
+          "spy6m": 10.4,
+          "relative": -13.1,
+          "score": 2.6
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.29412,
+      "numberOfAnalysts": 17,
+      "fetchedAt": "2026-08-25T15:25:32.468Z"
+    },
+    {
+      "symbol": "CDNS",
+      "layer": "L3",
+      "assetClass": "equity",
+      "physicalConstraint": 5,
+      "constraintType": "tech",
+      "aiContribution": 0.4,
+      "timeToRealize": "near",
+      "moatCapture": 5,
+      "moatLocks": [
+        "userHabit",
+        "integration"
+      ],
+      "price": 326.105,
+      "marketCap": 90,
+      "pricingScore": 2.8,
+      "rawPricingScore": 2.8,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": 2.89,
+      "pegBand": "overpriced",
+      "pegStale": false,
+      "pegStaleDetail": null,
+      "pegSelf": 2,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": null,
+      "funnelPass": true,
+      "funnelFailReasons": [],
+      "funnelWarnings": [],
+      "previousFunnelPass": true,
+      "inHysteresisBand": false,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": 9.54,
+          "ago90d": 9.38,
+          "meaningful": true,
+          "changePct": 1.7,
+          "direction": "up"
+        },
+        "surpriseHitRate": {
+          "quarters": 4,
+          "beats": 4,
+          "hitRate": 1,
+          "avgSurprisePct": 4.6
+        }
+      },
+      "deratingSignature": {
+        "signature": "none",
+        "drawdownFrom52wHigh": -21.7,
+        "change52w": -8.2,
+        "estimatesRising": true,
+        "delivering": true,
+        "note": null
+      },
+      "components": {
+        "forwardPE": {
+          "value": 34.198578,
+          "benchmark": 33.5,
+          "score": 3.1
+        },
+        "evRevenue": {
+          "value": 15.095,
+          "benchmark": 15.2,
+          "score": 3
+        },
+        "analystUpside": {
+          "targetPrice": 403.93927,
+          "currentPrice": 326.105,
+          "upside": 23.9,
+          "score": 2
+        },
+        "momentum6m": {
+          "ticker6m": 8,
+          "spy6m": 10.4,
+          "relative": -2.3,
+          "score": 2.9
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.44,
+      "numberOfAnalysts": 27,
+      "fetchedAt": "2026-08-25T15:23:33.392Z"
+    },
+    {
+      "symbol": "TER",
+      "layer": "L4",
+      "assetClass": "equity",
+      "physicalConstraint": 4,
+      "constraintType": "tech",
+      "aiContribution": 0.4,
+      "timeToRealize": "near",
+      "moatCapture": 3,
+      "moatLocks": [
+        "integration"
+      ],
+      "price": 367.8,
+      "marketCap": 58,
+      "pricingScore": 2.8,
+      "rawPricingScore": 2.8,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": 0.96,
+      "pegBand": "cheap",
+      "pegStale": false,
+      "pegStaleDetail": null,
+      "pegSelf": 1.18,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": null,
+      "funnelPass": true,
+      "funnelFailReasons": [],
+      "funnelWarnings": [],
+      "previousFunnelPass": true,
+      "inHysteresisBand": false,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": 11.55,
+          "ago90d": 9.51,
+          "meaningful": true,
+          "changePct": 21.4,
+          "direction": "up"
+        },
+        "surpriseHitRate": {
+          "quarters": 4,
+          "beats": 4,
+          "hitRate": 1,
+          "avgSurprisePct": 19.7
+        }
+      },
+      "deratingSignature": {
+        "signature": "none",
+        "drawdownFrom52wHigh": -24.6,
+        "change52w": 207.6,
+        "estimatesRising": true,
+        "delivering": true,
+        "note": null
+      },
+      "components": {
+        "forwardPE": {
+          "value": 31.835802,
+          "benchmark": 27.5,
+          "score": 3.4
+        },
+        "evRevenue": {
+          "value": 12.731,
+          "benchmark": 15,
+          "score": 2.6
+        },
+        "analystUpside": {
+          "targetPrice": 449.8,
+          "currentPrice": 367.8,
+          "upside": 22.3,
+          "score": 2.1
+        },
+        "momentum6m": {
+          "ticker6m": 7.3,
+          "spy6m": 10.4,
+          "relative": -3.1,
+          "score": 2.9
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.64706,
+      "numberOfAnalysts": 15,
+      "fetchedAt": "2026-08-25T15:23:53.061Z"
+    },
+    {
+      "symbol": "TSM",
+      "layer": "L5",
+      "assetClass": "equity",
+      "physicalConstraint": 5,
+      "constraintType": "tech",
+      "aiContribution": 0.5,
+      "timeToRealize": "near",
+      "moatCapture": 5,
+      "moatLocks": [
+        "integration"
+      ],
+      "price": 414.99,
+      "marketCap": 2152,
+      "pricingScore": 2.8,
+      "rawPricingScore": 2.8,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": 1,
+      "pegBand": "cheap",
+      "pegStale": false,
+      "pegStaleDetail": null,
+      "pegSelf": 0.66,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": null,
+      "funnelPass": true,
+      "funnelFailReasons": [],
+      "funnelWarnings": [],
+      "previousFunnelPass": true,
+      "inHysteresisBand": false,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": 21.78,
+          "ago90d": 19.3,
+          "meaningful": true,
+          "changePct": 12.9,
+          "direction": "up"
+        },
+        "surpriseHitRate": {
+          "quarters": 4,
+          "beats": 4,
+          "hitRate": 1,
+          "avgSurprisePct": 8.1
+        }
+      },
+      "deratingSignature": {
+        "signature": "none",
+        "drawdownFrom52wHigh": -13.4,
+        "change52w": 71.8,
+        "estimatesRising": true,
+        "delivering": true,
+        "note": null
+      },
+      "components": {
+        "forwardPE": {
+          "value": 19.055363,
+          "benchmark": 19.8,
+          "score": 2.9
+        },
+        "evRevenue": {
+          "value": 3.29,
+          "benchmark": 2.5,
+          "score": 3.8
+        },
+        "analystUpside": {
+          "targetPrice": 554.45483,
+          "currentPrice": 414.99,
+          "upside": 33.6,
+          "score": 1.7
+        },
+        "momentum6m": {
+          "ticker6m": 7,
+          "spy6m": 10.4,
+          "relative": -3.3,
+          "score": 2.9
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.42105,
+      "numberOfAnalysts": 18,
+      "fetchedAt": "2026-08-25T15:23:56.861Z"
+    },
+    {
+      "symbol": "KLAC",
+      "layer": "L4",
+      "assetClass": "equity",
+      "physicalConstraint": 5,
+      "constraintType": "tech",
+      "aiContribution": 0.35,
+      "timeToRealize": "near",
+      "moatCapture": 4,
+      "moatLocks": [
+        "integration"
+      ],
+      "price": 182.39,
+      "marketCap": 238,
+      "pricingScore": 2.9,
+      "rawPricingScore": 2.9,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": 1.76,
+      "pegBand": "rich",
+      "pegStale": false,
+      "pegStaleDetail": null,
+      "pegSelf": 1.29,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": null,
+      "funnelPass": true,
+      "funnelFailReasons": [],
+      "funnelWarnings": [
+        "pricing-hysteresis-band: 2.9 sits in 2.8-3.2; state held at PASS from prior session — not a fresh signal"
+      ],
+      "previousFunnelPass": true,
+      "inHysteresisBand": true,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": 6.6,
+          "ago90d": 5.91,
+          "meaningful": true,
+          "changePct": 11.7,
+          "direction": "up"
+        },
+        "surpriseHitRate": {
+          "quarters": 4,
+          "beats": 4,
+          "hitRate": 1,
+          "avgSurprisePct": 2.6
+        }
+      },
+      "deratingSignature": {
+        "signature": "momentum-unwind",
+        "drawdownFrom52wHigh": -40.7,
+        "change52w": 104.4,
+        "estimatesRising": true,
+        "delivering": true,
+        "note": "deep drawdown but positive 12m return — unwinding a prior advance, NOT evidence of a broken thesis"
+      },
+      "components": {
+        "forwardPE": {
+          "value": 27.615751,
+          "benchmark": 27.5,
+          "score": 3
+        },
+        "evRevenue": {
+          "value": 17.562,
+          "benchmark": 15,
+          "score": 3.4
+        },
+        "analystUpside": {
+          "targetPrice": 231.77779,
+          "currentPrice": 182.39,
+          "upside": 27.1,
+          "score": 1.9
+        },
+        "momentum6m": {
+          "ticker6m": 17.9,
+          "spy6m": 10.4,
+          "relative": 7.5,
+          "score": 3.3
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.86207,
+      "numberOfAnalysts": 27,
+      "fetchedAt": "2026-08-25T15:23:51.093Z"
+    },
+    {
+      "symbol": "LRCX",
+      "layer": "L4",
+      "assetClass": "equity",
+      "physicalConstraint": 5,
+      "constraintType": "tech",
+      "aiContribution": 0.3,
+      "timeToRealize": "near",
+      "moatCapture": 4,
+      "moatLocks": [
+        "integration"
+      ],
+      "price": 312.83,
+      "marketCap": 391,
+      "pricingScore": 3,
+      "rawPricingScore": 3,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": 1.46,
+      "pegBand": "fair",
+      "pegStale": false,
+      "pegStaleDetail": null,
+      "pegSelf": 1.22,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": null,
+      "funnelPass": true,
+      "funnelFailReasons": [],
+      "funnelWarnings": [
+        "pricing-hysteresis-band: 3 sits in 2.8-3.2; state held at PASS from prior session — not a fresh signal"
+      ],
+      "previousFunnelPass": true,
+      "inHysteresisBand": true,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": 11.56,
+          "ago90d": 9.55,
+          "meaningful": true,
+          "changePct": 21,
+          "direction": "up"
+        },
+        "surpriseHitRate": {
+          "quarters": 4,
+          "beats": 4,
+          "hitRate": 1,
+          "avgSurprisePct": 7
+        }
+      },
+      "deratingSignature": {
+        "signature": "none",
+        "drawdownFrom52wHigh": -28.7,
+        "change52w": 199.3,
+        "estimatesRising": true,
+        "delivering": true,
+        "note": null
+      },
+      "components": {
+        "forwardPE": {
+          "value": 27.068113,
+          "benchmark": 27.5,
+          "score": 3
+        },
+        "evRevenue": {
+          "value": 16.643,
+          "benchmark": 15,
+          "score": 3.3
+        },
+        "analystUpside": {
+          "targetPrice": 371.35483,
+          "currentPrice": 312.83,
+          "upside": 18.7,
+          "score": 2.3
+        },
+        "momentum6m": {
+          "ticker6m": 25.4,
+          "spy6m": 10.4,
+          "relative": 15,
+          "score": 3.5
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.45714,
+      "numberOfAnalysts": 31,
+      "fetchedAt": "2026-08-25T15:23:47.096Z"
+    },
+    {
+      "symbol": "IREN",
+      "layer": "L9_MINER_CONVERT",
+      "assetClass": "equity",
+      "physicalConstraint": 4,
+      "constraintType": "geo",
+      "aiContribution": 0.35,
+      "timeToRealize": "mid",
+      "moatCapture": 3,
+      "moatLocks": [
+        "integration"
+      ],
+      "price": 42.06,
+      "marketCap": 15,
+      "pricingScore": 3,
+      "rawPricingScore": 3,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": 3.11,
+      "pegBand": "overpriced",
+      "pegStale": false,
+      "pegStaleDetail": null,
+      "pegSelf": null,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": "forward EPS unavailable or non-positive",
+      "funnelPass": true,
+      "funnelFailReasons": [],
+      "funnelWarnings": [
+        "pricing-hysteresis-band: 3 sits in 2.8-3.2; state held at PASS from prior session — not a fresh signal"
+      ],
+      "previousFunnelPass": true,
+      "inHysteresisBand": true,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": -0.86,
+          "ago90d": -1.63,
+          "meaningful": false,
+          "changePct": null,
+          "direction": "up"
+        },
+        "surpriseHitRate": {
+          "quarters": 4,
+          "beats": 2,
+          "hitRate": 0.5,
+          "avgSurprisePct": 7.5
+        }
+      },
+      "deratingSignature": {
+        "signature": "momentum-unwind",
+        "drawdownFrom52wHigh": -45.3,
+        "change52w": 73.2,
+        "estimatesRising": false,
+        "delivering": true,
+        "note": "deep drawdown but positive 12m return — unwinding a prior advance, NOT evidence of a broken thesis"
+      },
+      "components": {
+        "forwardPE": {
+          "value": -41.920406,
+          "benchmark": 97.9,
+          "score": 5
+        },
+        "evRevenue": {
+          "value": 21.106,
+          "benchmark": 20.5,
+          "score": 3.1
+        },
+        "analystUpside": {
+          "targetPrice": 80.1875,
+          "currentPrice": 42.06,
+          "upside": 90.7,
+          "score": 1
+        },
+        "momentum6m": {
+          "ticker6m": -4.5,
+          "spy6m": 10.4,
+          "relative": -14.8,
+          "score": 2.5
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.58824,
+      "numberOfAnalysts": 16,
+      "fetchedAt": "2026-08-25T15:25:34.345Z"
+    },
+    {
+      "symbol": "APLD",
+      "layer": "L9_MINER_CONVERT",
+      "assetClass": "equity",
+      "physicalConstraint": 5,
+      "constraintType": "geo",
+      "aiContribution": 0.55,
+      "timeToRealize": "near",
+      "moatCapture": 3,
+      "moatLocks": [
+        "integration"
+      ],
+      "price": 28.1795,
+      "marketCap": 8,
+      "pricingScore": 3.1,
+      "rawPricingScore": 3.1,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": 1.83,
+      "pegBand": "rich",
+      "pegStale": false,
+      "pegStaleDetail": null,
+      "pegSelf": null,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": "forward EPS unavailable or non-positive",
+      "funnelPass": true,
+      "funnelFailReasons": [],
+      "funnelWarnings": [
+        "pricing-hysteresis-band: 3.1 sits in 2.8-3.2; state held at PASS from prior session — not a fresh signal"
+      ],
+      "previousFunnelPass": true,
+      "inHysteresisBand": true,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": -0.25,
+          "ago90d": -0.44,
+          "meaningful": false,
+          "changePct": null,
+          "direction": "up"
+        },
+        "surpriseHitRate": {
+          "quarters": 4,
+          "beats": 4,
+          "hitRate": 1,
+          "avgSurprisePct": 111.1
+        }
+      },
+      "deratingSignature": {
+        "signature": "momentum-unwind",
+        "drawdownFrom52wHigh": -44.4,
+        "change52w": 63.3,
+        "estimatesRising": false,
+        "delivering": true,
+        "note": "deep drawdown but positive 12m return — unwinding a prior advance, NOT evidence of a broken thesis"
+      },
+      "components": {
+        "forwardPE": {
+          "value": -112.718,
+          "benchmark": 97.9,
+          "score": 5
+        },
+        "evRevenue": {
+          "value": 21.874,
+          "benchmark": 20.5,
+          "score": 3.2
+        },
+        "analystUpside": {
+          "targetPrice": 74.22727,
+          "currentPrice": 28.1795,
+          "upside": 163.4,
+          "score": 1
+        },
+        "momentum6m": {
+          "ticker6m": -3.1,
+          "spy6m": 10.4,
+          "relative": -13.5,
+          "score": 2.6
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.36364,
+      "numberOfAnalysts": 11,
+      "fetchedAt": "2026-08-25T15:25:30.597Z"
+    },
+    {
+      "symbol": "VST",
+      "layer": "L11",
+      "assetClass": "equity",
+      "physicalConstraint": 3,
+      "constraintType": null,
+      "aiContribution": 0.2,
+      "timeToRealize": "mid",
+      "moatCapture": 3,
+      "moatLocks": [
+        "licensing",
+        "integration"
+      ],
+      "price": 137.805,
+      "marketCap": 46,
+      "pricingScore": 1.8,
+      "rawPricingScore": 1.8,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": 0.39,
+      "pegBand": "cheap",
+      "pegStale": false,
+      "pegStaleDetail": null,
+      "pegSelf": 0.65,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": null,
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "defensibility: physicalConstraint 3 < 4 AND moatCapture 3 < 4",
+        "aiContribution 0.2 < 0.30"
+      ],
+      "funnelWarnings": [],
+      "previousFunnelPass": false,
+      "inHysteresisBand": false,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": 10.35,
+          "ago90d": 10.89,
+          "meaningful": true,
+          "changePct": -5,
+          "direction": "down"
+        },
+        "surpriseHitRate": {
+          "quarters": 4,
+          "beats": 1,
+          "hitRate": 0.25,
+          "avgSurprisePct": -21.8
+        }
+      },
+      "deratingSignature": {
+        "signature": "drawdown-unclassified",
+        "drawdownFrom52wHigh": -37.3,
+        "change52w": -30.5,
+        "estimatesRising": false,
+        "delivering": false,
+        "note": null
+      },
+      "components": {
+        "forwardPE": {
+          "value": 13.294441,
+          "benchmark": 16.8,
+          "score": 2.5
+        },
+        "evRevenue": {
+          "value": 3.544,
+          "benchmark": 8.4,
+          "score": 1.6
+        },
+        "analystUpside": {
+          "targetPrice": 217.84212,
+          "currentPrice": 137.805,
+          "upside": 58.1,
+          "score": 1
+        },
+        "momentum6m": {
+          "ticker6m": -21.4,
+          "spy6m": 10.4,
+          "relative": -31.8,
+          "score": 1.9
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.36842,
+      "numberOfAnalysts": 19,
+      "fetchedAt": "2026-08-25T15:24:49.324Z"
+    },
+    {
+      "symbol": "AA",
+      "layer": "L14",
+      "assetClass": "equity",
+      "physicalConstraint": 3,
+      "constraintType": null,
+      "aiContribution": 0.1,
+      "timeToRealize": "far",
+      "moatCapture": 2,
+      "moatLocks": [],
+      "price": 50.48,
+      "marketCap": 13,
+      "pricingScore": 1.8,
+      "rawPricingScore": 1.8,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": 8.36,
+      "pegBand": "overpriced",
+      "pegStale": false,
+      "pegStaleDetail": null,
+      "pegSelf": null,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": "growth -10.8% <= 0 — PEG undefined for expected contraction",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "defensibility: physicalConstraint 3 < 4 AND moatCapture 2 < 4",
+        "aiContribution 0.1 < 0.30",
+        "timeToRealize = far"
+      ],
+      "funnelWarnings": [
+        "supplier-trap: moatCapture 2 — moat accrues to incumbent/customer, ticker is a replaceable vendor"
+      ],
+      "previousFunnelPass": false,
+      "inHysteresisBand": false,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": 5.8,
+          "ago90d": 6.3,
+          "meaningful": true,
+          "changePct": -8,
+          "direction": "down"
+        },
+        "surpriseHitRate": {
+          "quarters": 4,
+          "beats": 2,
+          "hitRate": 0.5,
+          "avgSurprisePct": 18.7
+        }
+      },
+      "deratingSignature": {
+        "signature": "momentum-unwind",
+        "drawdownFrom52wHigh": -40.2,
+        "change52w": 54.6,
+        "estimatesRising": false,
+        "delivering": true,
+        "note": "deep drawdown but positive 12m return — unwinding a prior advance, NOT evidence of a broken thesis"
+      },
+      "components": {
+        "forwardPE": {
+          "value": 8.704694,
+          "benchmark": 15.7,
+          "score": 1.9
+        },
+        "evRevenue": {
+          "value": 1.027,
+          "benchmark": 3.3,
+          "score": 1.3
+        },
+        "analystUpside": {
+          "targetPrice": 62.975,
+          "currentPrice": 50.48,
+          "upside": 24.8,
+          "score": 2
+        },
+        "momentum6m": {
+          "ticker6m": -22.2,
+          "spy6m": 10.4,
+          "relative": -32.6,
+          "score": 1.9
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.84615,
+      "numberOfAnalysts": 12,
+      "fetchedAt": "2026-08-25T15:25:08.538Z"
+    },
+    {
+      "symbol": "CMI",
+      "layer": "L12",
+      "assetClass": "equity",
+      "physicalConstraint": 3,
+      "constraintType": null,
+      "aiContribution": 0.35,
+      "timeToRealize": "near",
+      "moatCapture": 3,
+      "moatLocks": [
+        "integration"
+      ],
+      "price": 573.24,
+      "marketCap": 79,
+      "pricingScore": 1.9,
+      "rawPricingScore": 1.9,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": 1.33,
+      "pegBand": "fair",
+      "pegStale": false,
+      "pegStaleDetail": null,
+      "pegSelf": 1.02,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": null,
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "defensibility: physicalConstraint 3 < 4 AND moatCapture 3 < 4"
+      ],
+      "funnelWarnings": [],
+      "previousFunnelPass": false,
+      "inHysteresisBand": false,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": 33.73,
+          "ago90d": 31.69,
+          "meaningful": true,
+          "changePct": 6.4,
+          "direction": "up"
+        },
+        "surpriseHitRate": {
+          "quarters": 4,
+          "beats": 0,
+          "hitRate": 0,
+          "avgSurprisePct": -14.1
+        }
+      },
+      "deratingSignature": {
+        "signature": "none",
+        "drawdownFrom52wHigh": -22.3,
+        "change52w": 43.5,
+        "estimatesRising": true,
+        "delivering": false,
+        "note": null
+      },
+      "components": {
+        "forwardPE": {
+          "value": 16.613712,
+          "benchmark": 27.6,
+          "score": 2
+        },
+        "evRevenue": {
+          "value": 2.423,
+          "benchmark": 5.5,
+          "score": 1.6
+        },
+        "analystUpside": {
+          "targetPrice": 757.0175,
+          "currentPrice": 573.24,
+          "upside": 32.1,
+          "score": 1.7
+        },
+        "momentum6m": {
+          "ticker6m": -3.6,
+          "spy6m": 10.4,
+          "relative": -13.9,
+          "score": 2.5
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.91304,
+      "numberOfAnalysts": 20,
+      "fetchedAt": "2026-08-25T15:24:31.839Z"
+    },
+    {
+      "symbol": "FLR",
+      "layer": "L9",
+      "assetClass": "equity",
+      "physicalConstraint": 2,
+      "constraintType": null,
+      "aiContribution": 0.25,
+      "timeToRealize": "far",
+      "moatCapture": 1,
+      "moatLocks": [],
+      "price": 51.325,
+      "marketCap": 7,
+      "pricingScore": 1.9,
+      "rawPricingScore": 1.9,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": 1.1,
+      "pegBand": "fair",
+      "pegStale": false,
+      "pegStaleDetail": null,
+      "pegSelf": 0.63,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": null,
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "defensibility: physicalConstraint 2 < 4 AND moatCapture 1 < 4",
+        "aiContribution 0.25 < 0.30",
+        "timeToRealize = far"
+      ],
+      "funnelWarnings": [
+        "supplier-trap: moatCapture 1 — moat accrues to incumbent/customer, ticker is a replaceable vendor"
+      ],
+      "previousFunnelPass": false,
+      "inHysteresisBand": false,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": 3.37,
+          "ago90d": 3.21,
+          "meaningful": true,
+          "changePct": 4.7,
+          "direction": "up"
+        },
+        "surpriseHitRate": {
+          "quarters": 4,
+          "beats": 2,
+          "hitRate": 0.5,
+          "avgSurprisePct": 0
+        }
+      },
+      "deratingSignature": {
+        "signature": "none",
+        "drawdownFrom52wHigh": -11.4,
+        "change52w": 23.8,
+        "estimatesRising": true,
+        "delivering": true,
+        "note": null
+      },
+      "components": {
+        "forwardPE": {
+          "value": 15.247706,
+          "benchmark": 25.6,
+          "score": 2
+        },
+        "evRevenue": {
+          "value": 0.321,
+          "benchmark": 12.5,
+          "score": 1
+        },
+        "analystUpside": {
+          "targetPrice": 60.6875,
+          "currentPrice": 51.325,
+          "upside": 18.2,
+          "score": 2.3
+        },
+        "momentum6m": {
+          "ticker6m": -4.2,
+          "spy6m": 10.4,
+          "relative": -14.5,
+          "score": 2.5
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 2.11111,
+      "numberOfAnalysts": 8,
+      "fetchedAt": "2026-08-25T15:24:39.702Z"
+    },
+    {
+      "symbol": "MOD",
+      "layer": "L8_COOL",
+      "assetClass": "equity",
+      "physicalConstraint": 3,
+      "constraintType": null,
+      "aiContribution": 0.7,
+      "timeToRealize": "near",
+      "moatCapture": 2,
+      "moatLocks": [],
+      "price": 190.135,
+      "marketCap": 10,
+      "pricingScore": 2,
+      "rawPricingScore": 2,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": 0.67,
+      "pegBand": "cheap",
+      "pegStale": false,
+      "pegStaleDetail": null,
+      "pegSelf": 0.37,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": null,
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "defensibility: physicalConstraint 3 < 4 AND moatCapture 2 < 4"
+      ],
+      "funnelWarnings": [
+        "supplier-trap: moatCapture 2 — moat accrues to incumbent/customer, ticker is a replaceable vendor"
+      ],
+      "previousFunnelPass": false,
+      "inHysteresisBand": false,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": 11.18,
+          "ago90d": 10.17,
+          "meaningful": true,
+          "changePct": 10,
+          "direction": "up"
+        },
+        "surpriseHitRate": {
+          "quarters": 4,
+          "beats": 4,
+          "hitRate": 1,
+          "avgSurprisePct": 13.7
+        }
+      },
+      "deratingSignature": {
+        "signature": "momentum-unwind",
+        "drawdownFrom52wHigh": -41.2,
+        "change52w": 33.1,
+        "estimatesRising": true,
+        "delivering": true,
+        "note": "deep drawdown but positive 12m return — unwinding a prior advance, NOT evidence of a broken thesis"
+      },
+      "components": {
+        "forwardPE": {
+          "value": 17.003544,
+          "benchmark": 20.6,
+          "score": 2.6
+        },
+        "evRevenue": {
+          "value": 3.14,
+          "benchmark": 4.4,
+          "score": 2.3
+        },
+        "analystUpside": {
+          "targetPrice": 310.2857,
+          "currentPrice": 190.135,
+          "upside": 63.2,
+          "score": 1
+        },
+        "momentum6m": {
+          "ticker6m": -17.4,
+          "spy6m": 10.4,
+          "relative": -27.8,
+          "score": 2.1
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.125,
+      "numberOfAnalysts": 7,
+      "fetchedAt": "2026-08-25T15:24:33.864Z"
+    },
+    {
+      "symbol": "SMCI",
+      "layer": "L7",
+      "assetClass": "equity",
+      "physicalConstraint": 3,
+      "constraintType": null,
+      "aiContribution": 0.75,
+      "timeToRealize": "near",
+      "moatCapture": 2,
+      "moatLocks": [],
+      "price": 38.1801,
+      "marketCap": 25,
+      "pricingScore": 2.1,
+      "rawPricingScore": 2.1,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": 0.91,
+      "pegBand": "cheap",
+      "pegStale": true,
+      "pegStaleDetail": "pegRatio unchanged at 0.91 while price moved +10.6% since 2026-08-24 (34.5248 -> 38.1801) — Yahoo precomputed field has not refreshed; treat pegBand as unusable for this session",
+      "pegSelf": 0.31,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": null,
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "defensibility: physicalConstraint 3 < 4 AND moatCapture 2 < 4"
+      ],
+      "funnelWarnings": [
+        "supplier-trap: moatCapture 2 — moat accrues to incumbent/customer, ticker is a replaceable vendor"
+      ],
+      "previousFunnelPass": false,
+      "inHysteresisBand": false,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": 4.87,
+          "ago90d": 2.89,
+          "meaningful": true,
+          "changePct": 68.5,
+          "direction": "up"
+        },
+        "surpriseHitRate": {
+          "quarters": 3,
+          "beats": 2,
+          "hitRate": 0.67,
+          "avgSurprisePct": 34
+        }
+      },
+      "deratingSignature": {
+        "signature": "architectural-derating",
+        "drawdownFrom52wHigh": -35,
+        "change52w": -20.7,
+        "estimatesRising": true,
+        "delivering": true,
+        "note": "down over 12m while estimates rise and the company beats — market is discounting beyond the estimate horizon; re-read this ticker's thesisFalsification entries"
+      },
+      "components": {
+        "forwardPE": {
+          "value": 7.168733,
+          "benchmark": 15.2,
+          "score": 1.7
+        },
+        "evRevenue": {
+          "value": 0.706,
+          "benchmark": 2.3,
+          "score": 1.3
+        },
+        "analystUpside": {
+          "targetPrice": 42.375,
+          "currentPrice": 38.1801,
+          "upside": 11,
+          "score": 2.6
+        },
+        "momentum6m": {
+          "ticker6m": 13.6,
+          "spy6m": 10.4,
+          "relative": 3.3,
+          "score": 3.1
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 2.84211,
+      "numberOfAnalysts": 16,
+      "fetchedAt": "2026-08-25T15:24:12.193Z"
+    },
+    {
+      "symbol": "ORCL",
+      "layer": "L0",
+      "assetClass": "equity",
+      "physicalConstraint": 1,
+      "constraintType": null,
+      "aiContribution": 0.35,
+      "timeToRealize": "near",
+      "moatCapture": 3,
+      "moatLocks": [
+        "integration"
+      ],
+      "price": 145.03,
+      "marketCap": 418,
+      "pricingScore": 2.3,
+      "rawPricingScore": 2.3,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": 0.83,
+      "pegBand": "cheap",
+      "pegStale": false,
+      "pegStaleDetail": null,
+      "pegSelf": 0.37,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": null,
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "defensibility: physicalConstraint 1 < 4 AND moatCapture 3 < 4"
+      ],
+      "funnelWarnings": [],
+      "previousFunnelPass": false,
+      "inHysteresisBand": false,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": 10.91,
+          "ago90d": 10.71,
+          "meaningful": true,
+          "changePct": 1.9,
+          "direction": "up"
+        },
+        "surpriseHitRate": {
+          "quarters": 4,
+          "beats": 3,
+          "hitRate": 0.75,
+          "avgSurprisePct": 12.7
+        }
+      },
+      "deratingSignature": {
+        "signature": "architectural-derating",
+        "drawdownFrom52wHigh": -58,
+        "change52w": -39.2,
+        "estimatesRising": true,
+        "delivering": true,
+        "note": "down over 12m while estimates rise and the company beats — market is discounting beyond the estimate horizon; re-read this ticker's thesisFalsification entries"
+      },
+      "components": {
+        "forwardPE": {
+          "value": 13.2872925,
+          "benchmark": 18.2,
+          "score": 2.3
+        },
+        "evRevenue": {
+          "value": 8.186,
+          "benchmark": 7.3,
+          "score": 3.3
+        },
+        "analystUpside": {
+          "targetPrice": 246.42635,
+          "currentPrice": 145.03,
+          "upside": 69.9,
+          "score": 1
+        },
+        "momentum6m": {
+          "ticker6m": -1.9,
+          "spy6m": 10.4,
+          "relative": -12.3,
+          "score": 2.6
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.59091,
+      "numberOfAnalysts": 41,
+      "fetchedAt": "2026-08-25T15:23:12.246Z"
+    },
+    {
+      "symbol": "CLS",
+      "layer": "L7",
+      "assetClass": "equity",
+      "physicalConstraint": 3,
+      "constraintType": null,
+      "aiContribution": 0.7,
+      "timeToRealize": "near",
+      "moatCapture": 2,
+      "moatLocks": [],
+      "price": 301.89,
+      "marketCap": 38,
+      "pricingScore": 2.4,
+      "rawPricingScore": 2.4,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": 1,
+      "pegBand": "cheap",
+      "pegStale": false,
+      "pegStaleDetail": null,
+      "pegSelf": 0.21,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": null,
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "defensibility: physicalConstraint 3 < 4 AND moatCapture 2 < 4"
+      ],
+      "funnelWarnings": [
+        "supplier-trap: moatCapture 2 — moat accrues to incumbent/customer, ticker is a replaceable vendor"
+      ],
+      "previousFunnelPass": false,
+      "inHysteresisBand": false,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": 19.48,
+          "ago90d": 15.02,
+          "meaningful": true,
+          "changePct": 29.7,
+          "direction": "up"
+        },
+        "surpriseHitRate": {
+          "quarters": 4,
+          "beats": 4,
+          "hitRate": 1,
+          "avgSurprisePct": 6.8
+        }
+      },
+      "deratingSignature": {
+        "signature": "momentum-unwind",
+        "drawdownFrom52wHigh": -36.3,
+        "change52w": 48.3,
+        "estimatesRising": true,
+        "delivering": true,
+        "note": "deep drawdown but positive 12m return — unwinding a prior advance, NOT evidence of a broken thesis"
+      },
+      "components": {
+        "forwardPE": {
+          "value": 15.49741,
+          "benchmark": 15.2,
+          "score": 3
+        },
+        "evRevenue": {
+          "value": 2.2,
+          "benchmark": 2.3,
+          "score": 2.9
+        },
+        "analystUpside": {
+          "targetPrice": 474.4387,
+          "currentPrice": 301.89,
+          "upside": 57.2,
+          "score": 1
+        },
+        "momentum6m": {
+          "ticker6m": 2.7,
+          "spy6m": 10.4,
+          "relative": -7.7,
+          "score": 2.7
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.35,
+      "numberOfAnalysts": 17,
+      "fetchedAt": "2026-08-25T15:24:04.504Z"
+    },
+    {
+      "symbol": "CEG",
+      "layer": "L11",
+      "assetClass": "equity",
+      "physicalConstraint": 4,
+      "constraintType": "geo",
+      "aiContribution": 0.25,
+      "timeToRealize": "mid",
+      "moatCapture": 4,
+      "moatLocks": [
+        "licensing",
+        "integration"
+      ],
+      "price": 274.31,
+      "marketCap": 97,
+      "pricingScore": 2.4,
+      "rawPricingScore": 2.4,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": 3.74,
+      "pegBand": "overpriced",
+      "pegStale": false,
+      "pegStaleDetail": null,
+      "pegSelf": 2.04,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": null,
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "aiContribution 0.25 < 0.30"
+      ],
+      "funnelWarnings": [],
+      "previousFunnelPass": false,
+      "inHysteresisBand": false,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": 13.34,
+          "ago90d": 13.59,
+          "meaningful": true,
+          "changePct": -1.8,
+          "direction": "down"
+        },
+        "surpriseHitRate": {
+          "quarters": 4,
+          "beats": 3,
+          "hitRate": 0.75,
+          "avgSurprisePct": 4.2
+        }
+      },
+      "deratingSignature": {
+        "signature": "drawdown-unclassified",
+        "drawdownFrom52wHigh": -33.5,
+        "change52w": -13.6,
+        "estimatesRising": false,
+        "delivering": true,
+        "note": null
+      },
+      "components": {
+        "forwardPE": {
+          "value": 20.560425,
+          "benchmark": 16.8,
+          "score": 3.6
+        },
+        "evRevenue": {
+          "value": 3.877,
+          "benchmark": 8.4,
+          "score": 1.7
+        },
+        "analystUpside": {
+          "targetPrice": 348.304,
+          "currentPrice": 274.31,
+          "upside": 27,
+          "score": 1.9
+        },
+        "momentum6m": {
+          "ticker6m": -15.8,
+          "spy6m": 10.4,
+          "relative": -26.2,
+          "score": 2.1
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.54545,
+      "numberOfAnalysts": 20,
+      "fetchedAt": "2026-08-25T15:24:47.396Z"
+    },
+    {
+      "symbol": "PWR",
+      "layer": "L12",
+      "assetClass": "equity",
+      "physicalConstraint": 3,
+      "constraintType": null,
+      "aiContribution": 0.2,
+      "timeToRealize": "mid",
+      "moatCapture": 2,
+      "moatLocks": [],
+      "price": 615,
+      "marketCap": 92,
+      "pricingScore": 2.6,
+      "rawPricingScore": 2.6,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": 1.76,
+      "pegBand": "rich",
+      "pegStale": false,
+      "pegStaleDetail": null,
+      "pegSelf": 1.8,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": null,
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "defensibility: physicalConstraint 3 < 4 AND moatCapture 2 < 4",
+        "aiContribution 0.2 < 0.30"
+      ],
+      "funnelWarnings": [
+        "supplier-trap: moatCapture 2 — moat accrues to incumbent/customer, ticker is a replaceable vendor"
+      ],
+      "previousFunnelPass": false,
+      "inHysteresisBand": false,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": 19.64,
+          "ago90d": 16.45,
+          "meaningful": true,
+          "changePct": 19.4,
+          "direction": "up"
+        },
+        "surpriseHitRate": {
+          "quarters": 4,
+          "beats": 4,
+          "hitRate": 1,
+          "avgSurprisePct": 16.7
+        }
+      },
+      "deratingSignature": {
+        "signature": "none",
+        "drawdownFrom52wHigh": -22,
+        "change52w": 60.7,
+        "estimatesRising": true,
+        "delivering": true,
+        "note": null
+      },
+      "components": {
+        "forwardPE": {
+          "value": 31.29528,
+          "benchmark": 27.6,
+          "score": 3.3
+        },
+        "evRevenue": {
+          "value": 3.007,
+          "benchmark": 5.5,
+          "score": 1.9
+        },
+        "analystUpside": {
+          "targetPrice": 770.0421,
+          "currentPrice": 615,
+          "upside": 25.2,
+          "score": 2
+        },
+        "momentum6m": {
+          "ticker6m": 9.2,
+          "spy6m": 10.4,
+          "relative": -1.2,
+          "score": 3
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.5,
+      "numberOfAnalysts": 28,
+      "fetchedAt": "2026-08-25T15:24:58.782Z"
+    },
+    {
+      "symbol": "APD",
+      "layer": "L3_5",
+      "assetClass": "equity",
+      "physicalConstraint": 4,
+      "constraintType": "geo",
+      "aiContribution": 0.2,
+      "timeToRealize": "far",
+      "moatCapture": 3,
+      "moatLocks": [
+        "integration"
+      ],
+      "price": 304.97,
+      "marketCap": 68,
+      "pricingScore": 2.7,
+      "rawPricingScore": 2.7,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": 2.2,
+      "pegBand": "rich",
+      "pegStale": false,
+      "pegStaleDetail": null,
+      "pegSelf": 2.86,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": null,
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "aiContribution 0.2 < 0.30",
+        "timeToRealize = far"
+      ],
+      "funnelWarnings": [],
+      "previousFunnelPass": false,
+      "inHysteresisBand": false,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": 14.44,
+          "ago90d": 14.24,
+          "meaningful": true,
+          "changePct": 1.3,
+          "direction": "up"
+        },
+        "surpriseHitRate": {
+          "quarters": 4,
+          "beats": 4,
+          "hitRate": 1,
+          "avgSurprisePct": 3.1
+        }
+      },
+      "deratingSignature": {
+        "signature": "none",
+        "drawdownFrom52wHigh": -3.1,
+        "change52w": 4.2,
+        "estimatesRising": true,
+        "delivering": true,
+        "note": null
+      },
+      "components": {
+        "forwardPE": {
+          "value": 21.126698,
+          "benchmark": 26.8,
+          "score": 2.5
+        },
+        "evRevenue": {
+          "value": 6.997,
+          "benchmark": 7,
+          "score": 3
+        },
+        "analystUpside": {
+          "targetPrice": 343.6316,
+          "currentPrice": 304.97,
+          "upside": 12.7,
+          "score": 2.5
+        },
+        "momentum6m": {
+          "ticker6m": 8.8,
+          "spy6m": 10.4,
+          "relative": -1.6,
+          "score": 2.9
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.80952,
+      "numberOfAnalysts": 19,
+      "fetchedAt": "2026-08-25T15:23:39.316Z"
+    },
+    {
+      "symbol": "CAT",
+      "layer": "L12",
+      "assetClass": "equity",
+      "physicalConstraint": 3,
+      "constraintType": null,
+      "aiContribution": 0.4,
+      "timeToRealize": "near",
+      "moatCapture": 3,
+      "moatLocks": [
+        "integration"
+      ],
+      "price": 812.0834,
+      "marketCap": 373,
+      "pricingScore": 2.7,
+      "rawPricingScore": 2.7,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": 1.82,
+      "pegBand": "rich",
+      "pegStale": false,
+      "pegStaleDetail": null,
+      "pegSelf": 1.38,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": null,
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "defensibility: physicalConstraint 3 < 4 AND moatCapture 3 < 4"
+      ],
+      "funnelWarnings": [],
+      "previousFunnelPass": false,
+      "inHysteresisBand": false,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": 32.28,
+          "ago90d": 29.86,
+          "meaningful": true,
+          "changePct": 8.1,
+          "direction": "up"
+        },
+        "surpriseHitRate": {
+          "quarters": 4,
+          "beats": 4,
+          "hitRate": 1,
+          "avgSurprisePct": 17.5
+        }
+      },
+      "deratingSignature": {
+        "signature": "none",
+        "drawdownFrom52wHigh": -24.3,
+        "change52w": 88.1,
+        "estimatesRising": true,
+        "delivering": true,
+        "note": null
+      },
+      "components": {
+        "forwardPE": {
+          "value": 25.156557,
+          "benchmark": 27.6,
+          "score": 2.8
+        },
+        "evRevenue": {
+          "value": 5.513,
+          "benchmark": 5.5,
+          "score": 3
+        },
+        "analystUpside": {
+          "targetPrice": 979.2196,
+          "currentPrice": 812.0834,
+          "upside": 20.6,
+          "score": 2.2
+        },
+        "momentum6m": {
+          "ticker6m": 5.9,
+          "spy6m": 10.4,
+          "relative": -4.4,
+          "score": 2.9
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 2.14286,
+      "numberOfAnalysts": 26,
+      "fetchedAt": "2026-08-25T15:24:29.896Z"
+    },
+    {
+      "symbol": "EOG",
+      "layer": "L13",
+      "assetClass": "equity",
+      "physicalConstraint": 3,
+      "constraintType": null,
+      "aiContribution": 0.15,
+      "timeToRealize": "far",
+      "moatCapture": 2,
+      "moatLocks": [],
+      "price": 149.04,
+      "marketCap": 78,
+      "pricingScore": 2.7,
+      "rawPricingScore": 2.7,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": 1.22,
+      "pegBand": "fair",
+      "pegStale": false,
+      "pegStaleDetail": null,
+      "pegSelf": null,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": "growth -12.3% <= 0 — PEG undefined for expected contraction",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "defensibility: physicalConstraint 3 < 4 AND moatCapture 2 < 4",
+        "aiContribution 0.15 < 0.30",
+        "timeToRealize = far"
+      ],
+      "funnelWarnings": [
+        "supplier-trap: moatCapture 2 — moat accrues to incumbent/customer, ticker is a replaceable vendor"
+      ],
+      "previousFunnelPass": false,
+      "inHysteresisBand": false,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": 14.58,
+          "ago90d": 14.55,
+          "meaningful": true,
+          "changePct": 0.2,
+          "direction": "up"
+        },
+        "surpriseHitRate": {
+          "quarters": 4,
+          "beats": 4,
+          "hitRate": 1,
+          "avgSurprisePct": 5.6
+        }
+      },
+      "deratingSignature": {
+        "signature": "none",
+        "drawdownFrom52wHigh": -3,
+        "change52w": 23.8,
+        "estimatesRising": true,
+        "delivering": true,
+        "note": null
+      },
+      "components": {
+        "forwardPE": {
+          "value": 10.224382,
+          "benchmark": 12.1,
+          "score": 2.6
+        },
+        "evRevenue": {
+          "value": 3.074,
+          "benchmark": 4.2,
+          "score": 2.3
+        },
+        "analystUpside": {
+          "targetPrice": 159.8148,
+          "currentPrice": 149.04,
+          "upside": 7.2,
+          "score": 2.7
+        },
+        "momentum6m": {
+          "ticker6m": 21.7,
+          "spy6m": 10.4,
+          "relative": 11.3,
+          "score": 3.4
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 2.23333,
+      "numberOfAnalysts": 27,
+      "fetchedAt": "2026-08-25T15:25:00.717Z"
+    },
+    {
+      "symbol": "AMZN",
+      "layer": "L0",
+      "assetClass": "equity",
+      "physicalConstraint": 1,
+      "constraintType": null,
+      "aiContribution": 0.4,
+      "timeToRealize": "near",
+      "moatCapture": 3,
+      "moatLocks": [
+        "integration",
+        "userHabit"
+      ],
+      "price": 260.691,
+      "marketCap": 2812,
+      "pricingScore": 2.8,
+      "rawPricingScore": 2.8,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": 1.38,
+      "pegBand": "fair",
+      "pegStale": false,
+      "pegStaleDetail": null,
+      "pegSelf": null,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": "growth -16.7% <= 0 — PEG undefined for expected contraction",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "defensibility: physicalConstraint 1 < 4 AND moatCapture 3 < 4"
+      ],
+      "funnelWarnings": [],
+      "previousFunnelPass": false,
+      "inHysteresisBand": false,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": 10.48,
+          "ago90d": 9.85,
+          "meaningful": true,
+          "changePct": 6.4,
+          "direction": "up"
+        },
+        "surpriseHitRate": {
+          "quarters": 4,
+          "beats": 3,
+          "hitRate": 0.75,
+          "avgSurprisePct": 77
+        }
+      },
+      "deratingSignature": {
+        "signature": "none",
+        "drawdownFrom52wHigh": -9.2,
+        "change52w": 14.6,
+        "estimatesRising": true,
+        "delivering": true,
+        "note": null
+      },
+      "components": {
+        "forwardPE": {
+          "value": 25.089338,
+          "benchmark": 18.2,
+          "score": 3.9
+        },
+        "evRevenue": {
+          "value": 3.81,
+          "benchmark": 7.3,
+          "score": 1.8
+        },
+        "analystUpside": {
+          "targetPrice": 327.004,
+          "currentPrice": 260.691,
+          "upside": 25.4,
+          "score": 2
+        },
+        "momentum6m": {
+          "ticker6m": 23.8,
+          "spy6m": 10.4,
+          "relative": 13.4,
+          "score": 3.4
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.31667,
+      "numberOfAnalysts": 60,
+      "fetchedAt": "2026-08-25T15:23:08.456Z"
+    },
+    {
+      "symbol": "ENTG",
+      "layer": "L3_5",
+      "assetClass": "equity",
+      "physicalConstraint": 5,
+      "constraintType": "tech",
+      "aiContribution": 0.25,
+      "timeToRealize": "far",
+      "moatCapture": 4,
+      "moatLocks": [
+        "integration"
+      ],
+      "price": 139.315,
+      "marketCap": 21,
+      "pricingScore": 2.8,
+      "rawPricingScore": 2.8,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": 1.58,
+      "pegBand": "rich",
+      "pegStale": false,
+      "pegStaleDetail": null,
+      "pegSelf": 1,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": null,
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "aiContribution 0.25 < 0.30",
+        "timeToRealize = far"
+      ],
+      "funnelWarnings": [],
+      "previousFunnelPass": false,
+      "inHysteresisBand": false,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": 5.02,
+          "ago90d": 4.61,
+          "meaningful": true,
+          "changePct": 8.9,
+          "direction": "up"
+        },
+        "surpriseHitRate": {
+          "quarters": 4,
+          "beats": 3,
+          "hitRate": 0.75,
+          "avgSurprisePct": 8.4
+        }
+      },
+      "deratingSignature": {
+        "signature": "none",
+        "drawdownFrom52wHigh": -25.5,
+        "change52w": 61.5,
+        "estimatesRising": true,
+        "delivering": true,
+        "note": null
+      },
+      "components": {
+        "forwardPE": {
+          "value": 27.776007,
+          "benchmark": 26.8,
+          "score": 3.1
+        },
+        "evRevenue": {
+          "value": 7.315,
+          "benchmark": 7,
+          "score": 3.1
+        },
+        "analystUpside": {
+          "targetPrice": 173.36365,
+          "currentPrice": 139.315,
+          "upside": 24.4,
+          "score": 2
+        },
+        "momentum6m": {
+          "ticker6m": 1.4,
+          "spy6m": 10.4,
+          "relative": -8.9,
+          "score": 2.7
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.75,
+      "numberOfAnalysts": 11,
+      "fetchedAt": "2026-08-25T15:23:37.344Z"
+    },
+    {
+      "symbol": "EQT",
+      "layer": "L13",
+      "assetClass": "equity",
+      "physicalConstraint": 3,
+      "constraintType": null,
+      "aiContribution": 0.15,
+      "timeToRealize": "far",
+      "moatCapture": 2,
+      "moatLocks": [],
+      "price": 54.1,
+      "marketCap": 34,
+      "pricingScore": 2.8,
+      "rawPricingScore": 2.8,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": 1.53,
+      "pegBand": "rich",
+      "pegStale": false,
+      "pegStaleDetail": null,
+      "pegSelf": null,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": "growth -3.3% <= 0 — PEG undefined for expected contraction",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "defensibility: physicalConstraint 3 < 4 AND moatCapture 2 < 4",
+        "aiContribution 0.15 < 0.30",
+        "timeToRealize = far"
+      ],
+      "funnelWarnings": [
+        "supplier-trap: moatCapture 2 — moat accrues to incumbent/customer, ticker is a replaceable vendor"
+      ],
+      "previousFunnelPass": false,
+      "inHysteresisBand": false,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": 4.34,
+          "ago90d": 4.77,
+          "meaningful": true,
+          "changePct": -9,
+          "direction": "down"
+        },
+        "surpriseHitRate": {
+          "quarters": 4,
+          "beats": 3,
+          "hitRate": 0.75,
+          "avgSurprisePct": 17.1
+        }
+      },
+      "deratingSignature": {
+        "signature": "none",
+        "drawdownFrom52wHigh": -20.7,
+        "change52w": 2,
+        "estimatesRising": false,
+        "delivering": true,
+        "note": null
+      },
+      "components": {
+        "forwardPE": {
+          "value": 13.753235,
+          "benchmark": 12.1,
+          "score": 3.3
+        },
+        "evRevenue": {
+          "value": 4.605,
+          "benchmark": 4.2,
+          "score": 3.2
+        },
+        "analystUpside": {
+          "targetPrice": 67.68,
+          "currentPrice": 54.1,
+          "upside": 25.1,
+          "score": 2
+        },
+        "momentum6m": {
+          "ticker6m": -8.9,
+          "spy6m": 10.4,
+          "relative": -19.3,
+          "score": 2.4
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.48,
+      "numberOfAnalysts": 25,
+      "fetchedAt": "2026-08-25T15:25:02.640Z"
+    },
+    {
+      "symbol": "GEV",
+      "layer": "L12",
+      "assetClass": "equity",
+      "physicalConstraint": 4,
+      "constraintType": "tech",
+      "aiContribution": 0.2,
+      "timeToRealize": "mid",
+      "moatCapture": 4,
+      "moatLocks": [
+        "integration"
+      ],
+      "price": 939.75,
+      "marketCap": 250,
+      "pricingScore": 3,
+      "rawPricingScore": 3,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": 1.63,
+      "pegBand": "rich",
+      "pegStale": false,
+      "pegStaleDetail": null,
+      "pegSelf": 0.57,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": null,
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "aiContribution 0.2 < 0.30",
+        "pricingScore 3 > 2.8 (entry threshold)"
+      ],
+      "funnelWarnings": [
+        "pricing-hysteresis-band: 3 sits in 2.8-3.2; state held at FAIL from prior session — not a fresh signal"
+      ],
+      "previousFunnelPass": false,
+      "inHysteresisBand": true,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": 24.74,
+          "ago90d": 24.23,
+          "meaningful": true,
+          "changePct": 2.1,
+          "direction": "up"
+        },
+        "surpriseHitRate": {
+          "quarters": 4,
+          "beats": 2,
+          "hitRate": 0.5,
+          "avgSurprisePct": 263.4
+        }
+      },
+      "deratingSignature": {
+        "signature": "none",
+        "drawdownFrom52wHigh": -21.4,
+        "change52w": 50.5,
+        "estimatesRising": true,
+        "delivering": true,
+        "note": null
+      },
+      "components": {
+        "forwardPE": {
+          "value": 37.383495,
+          "benchmark": 27.6,
+          "score": 3.9
+        },
+        "evRevenue": {
+          "value": 5.876,
+          "benchmark": 5.5,
+          "score": 3.2
+        },
+        "analystUpside": {
+          "targetPrice": 1236.4318,
+          "currentPrice": 939.75,
+          "upside": 31.6,
+          "score": 1.7
+        },
+        "momentum6m": {
+          "ticker6m": 7.3,
+          "spy6m": 10.4,
+          "relative": -3.1,
+          "score": 2.9
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.54054,
+      "numberOfAnalysts": 33,
+      "fetchedAt": "2026-08-25T15:24:56.911Z"
+    },
+    {
+      "symbol": "VPG",
+      "layer": "L_EMBI",
+      "assetClass": "equity",
+      "physicalConstraint": 2,
+      "constraintType": null,
+      "aiContribution": 0.08,
+      "timeToRealize": "mid",
+      "moatCapture": 2,
+      "moatLocks": [],
+      "price": 65.818,
+      "marketCap": 1,
+      "pricingScore": 3,
+      "rawPricingScore": 3,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": 3.7,
+      "pegBand": "overpriced",
+      "pegStale": false,
+      "pegStaleDetail": null,
+      "pegSelf": 0.17,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": null,
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "defensibility: physicalConstraint 2 < 4 AND moatCapture 2 < 4",
+        "aiContribution 0.08 < 0.30",
+        "pricingScore 3 > 2.8 (entry threshold)"
+      ],
+      "funnelWarnings": [
+        "supplier-trap: moatCapture 2 — moat accrues to incumbent/customer, ticker is a replaceable vendor",
+        "pricing-hysteresis-band: 3 sits in 2.8-3.2; state held at FAIL from prior session — not a fresh signal"
+      ],
+      "previousFunnelPass": false,
+      "inHysteresisBand": true,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": 1.79,
+          "ago90d": 1.56,
+          "meaningful": true,
+          "changePct": 14.5,
+          "direction": "up"
+        },
+        "surpriseHitRate": {
+          "quarters": 4,
+          "beats": 1,
+          "hitRate": 0.25,
+          "avgSurprisePct": -28.8
+        }
+      },
+      "deratingSignature": {
+        "signature": "momentum-unwind",
+        "drawdownFrom52wHigh": -56.6,
+        "change52w": 132.4,
+        "estimatesRising": true,
+        "delivering": false,
+        "note": "deep drawdown but positive 12m return — unwinding a prior advance, NOT evidence of a broken thesis"
+      },
+      "components": {
+        "forwardPE": {
+          "value": 36.769833,
+          "benchmark": 22,
+          "score": 4.7
+        },
+        "evRevenue": {
+          "value": 2.571,
+          "benchmark": 5,
+          "score": 1.8
+        },
+        "analystUpside": {
+          "targetPrice": 93.33333,
+          "currentPrice": 65.818,
+          "upside": 41.8,
+          "score": 1.3
+        },
+        "momentum6m": {
+          "ticker6m": 36.2,
+          "spy6m": 10.4,
+          "relative": 25.9,
+          "score": 3.9
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": null,
+      "numberOfAnalysts": 3,
+      "fetchedAt": "2026-08-25T15:25:20.115Z"
+    },
+    {
+      "symbol": "AMD",
+      "layer": "L2",
+      "assetClass": "equity",
+      "physicalConstraint": 4,
+      "constraintType": "tech",
+      "aiContribution": 0.65,
+      "timeToRealize": "mid",
+      "moatCapture": 3,
+      "moatLocks": [
+        "integration"
+      ],
+      "price": 480.64,
+      "marketCap": 785,
+      "pricingScore": 3.1,
+      "rawPricingScore": 3.1,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": 1.01,
+      "pegBand": "fair",
+      "pegStale": true,
+      "pegStaleDetail": "pegRatio unchanged at 1.01 while price moved +5.5% since 2026-08-24 (455.68 -> 480.64) — Yahoo precomputed field has not refreshed; treat pegBand as unusable for this session",
+      "pegSelf": 0.3,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": null,
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "pricingScore 3.1 > 2.8 (entry threshold)"
+      ],
+      "funnelWarnings": [
+        "pricing-hysteresis-band: 3.1 sits in 2.8-3.2; state held at FAIL from prior session — not a fresh signal"
+      ],
+      "previousFunnelPass": false,
+      "inHysteresisBand": true,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": 15.49,
+          "ago90d": 12.96,
+          "meaningful": true,
+          "changePct": 19.5,
+          "direction": "up"
+        },
+        "surpriseHitRate": {
+          "quarters": 4,
+          "beats": 4,
+          "hitRate": 1,
+          "avgSurprisePct": 6.9
+        }
+      },
+      "deratingSignature": {
+        "signature": "none",
+        "drawdownFrom52wHigh": -17.8,
+        "change52w": 174.1,
+        "estimatesRising": true,
+        "delivering": true,
+        "note": null
+      },
+      "components": {
+        "forwardPE": {
+          "value": 31.032606,
+          "benchmark": 30.6,
+          "score": 3
+        },
+        "evRevenue": {
+          "value": 17.838,
+          "benchmark": 20.3,
+          "score": 2.7
+        },
+        "analystUpside": {
+          "targetPrice": 613.0917,
+          "currentPrice": 480.64,
+          "upside": 27.6,
+          "score": 1.9
+        },
+        "momentum6m": {
+          "ticker6m": 127.9,
+          "spy6m": 10.4,
+          "relative": 117.5,
+          "score": 5
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.4717,
+      "numberOfAnalysts": 48,
+      "fetchedAt": "2026-08-25T15:23:19.897Z"
+    },
+    {
+      "symbol": "PH",
+      "layer": "L_EMBI",
+      "assetClass": "equity",
+      "physicalConstraint": 3,
+      "constraintType": null,
+      "aiContribution": 0.15,
+      "timeToRealize": "mid",
+      "moatCapture": 3,
+      "moatLocks": [
+        "integration"
+      ],
+      "price": 1021.375,
+      "marketCap": 129,
+      "pricingScore": 3.1,
+      "rawPricingScore": 3.1,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": 3.35,
+      "pegBand": "overpriced",
+      "pegStale": false,
+      "pegStaleDetail": null,
+      "pegSelf": 2.33,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": null,
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "defensibility: physicalConstraint 3 < 4 AND moatCapture 3 < 4",
+        "aiContribution 0.15 < 0.30",
+        "pricingScore 3.1 > 2.8 (entry threshold)"
+      ],
+      "funnelWarnings": [
+        "pricing-hysteresis-band: 3.1 sits in 2.8-3.2; state held at FAIL from prior session — not a fresh signal"
+      ],
+      "previousFunnelPass": false,
+      "inHysteresisBand": true,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": 39.39,
+          "ago90d": 37.24,
+          "meaningful": true,
+          "changePct": 5.8,
+          "direction": "up"
+        },
+        "surpriseHitRate": {
+          "quarters": 4,
+          "beats": 4,
+          "hitRate": 1,
+          "avgSurprisePct": 8.1
+        }
+      },
+      "deratingSignature": {
+        "signature": "none",
+        "drawdownFrom52wHigh": -7.1,
+        "change52w": 33.2,
+        "estimatesRising": true,
+        "delivering": true,
+        "note": null
+      },
+      "components": {
+        "forwardPE": {
+          "value": 25.927637,
+          "benchmark": 22,
+          "score": 3.4
+        },
+        "evRevenue": {
+          "value": 6.33,
+          "benchmark": 5,
+          "score": 3.7
+        },
+        "analystUpside": {
+          "targetPrice": 1160.9535,
+          "currentPrice": 1021.375,
+          "upside": 13.7,
+          "score": 2.5
+        },
+        "momentum6m": {
+          "ticker6m": 0.9,
+          "spy6m": 10.4,
+          "relative": -9.4,
+          "score": 2.7
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.68,
+      "numberOfAnalysts": 23,
+      "fetchedAt": "2026-08-25T15:25:16.181Z"
+    },
+    {
+      "symbol": "LITE",
+      "layer": "L8_OPT",
+      "assetClass": "equity",
+      "physicalConstraint": 5,
+      "constraintType": "tech",
+      "aiContribution": 0.8,
+      "timeToRealize": "near",
+      "moatCapture": 3,
+      "moatLocks": [
+        "integration"
+      ],
+      "price": 866.51,
+      "marketCap": 78,
+      "pricingScore": 3.2,
+      "rawPricingScore": 3.2,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": 0.63,
+      "pegBand": "cheap",
+      "pegStale": true,
+      "pegStaleDetail": "pegRatio unchanged at 0.63 while price moved +6.3% since 2026-08-24 (815.38 -> 866.51) — Yahoo precomputed field has not refreshed; treat pegBand as unusable for this session",
+      "pegSelf": 0.09,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": null,
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "pricingScore 3.2 > 2.8 (entry threshold)"
+      ],
+      "funnelWarnings": [
+        "pricing-hysteresis-band: 3.2 sits in 2.8-3.2; state held at FAIL from prior session — not a fresh signal"
+      ],
+      "previousFunnelPass": false,
+      "inHysteresisBand": true,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": 33.01,
+          "ago90d": 28.12,
+          "meaningful": true,
+          "changePct": 17.4,
+          "direction": "up"
+        },
+        "surpriseHitRate": {
+          "quarters": 4,
+          "beats": 3,
+          "hitRate": 0.75,
+          "avgSurprisePct": -8.1
+        }
+      },
+      "deratingSignature": {
+        "signature": "none",
+        "drawdownFrom52wHigh": -20.2,
+        "change52w": 566.2,
+        "estimatesRising": true,
+        "delivering": true,
+        "note": null
+      },
+      "components": {
+        "forwardPE": {
+          "value": 26.247406,
+          "benchmark": 26.7,
+          "score": 3
+        },
+        "evRevenue": {
+          "value": 24.353,
+          "benchmark": 9.2,
+          "score": 5
+        },
+        "analystUpside": {
+          "targetPrice": 1148.303,
+          "currentPrice": 866.51,
+          "upside": 32.5,
+          "score": 1.7
+        },
+        "momentum6m": {
+          "ticker6m": 19.8,
+          "spy6m": 10.4,
+          "relative": 9.4,
+          "score": 3.3
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.54167,
+      "numberOfAnalysts": 24,
+      "fetchedAt": "2026-08-25T15:24:24.074Z"
+    },
+    {
+      "symbol": "CRDO",
+      "layer": "L2_5",
+      "assetClass": "equity",
+      "physicalConstraint": 4,
+      "constraintType": "tech",
+      "aiContribution": 0.85,
+      "timeToRealize": "near",
+      "moatCapture": 3,
+      "moatLocks": [
+        "integration"
+      ],
+      "price": 227.825,
+      "marketCap": 42,
+      "pricingScore": 3.2,
+      "rawPricingScore": 3.2,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": null,
+      "pegBand": "N/A",
+      "pegStale": false,
+      "pegStaleDetail": null,
+      "pegSelf": 0.52,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": null,
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "pricingScore 3.2 > 2.8 (entry threshold)"
+      ],
+      "funnelWarnings": [
+        "pricing-hysteresis-band: 3.2 sits in 2.8-3.2; state held at FAIL from prior session — not a fresh signal"
+      ],
+      "previousFunnelPass": false,
+      "inHysteresisBand": true,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": 9.12,
+          "ago90d": 7.6,
+          "meaningful": true,
+          "changePct": 19.9,
+          "direction": "up"
+        },
+        "surpriseHitRate": {
+          "quarters": 4,
+          "beats": 4,
+          "hitRate": 1,
+          "avgSurprisePct": 26.3
+        }
+      },
+      "deratingSignature": {
+        "signature": "none",
+        "drawdownFrom52wHigh": -26.2,
+        "change52w": 85.4,
+        "estimatesRising": true,
+        "delivering": true,
+        "note": null
+      },
+      "components": {
+        "forwardPE": {
+          "value": 24.979963,
+          "benchmark": 28.4,
+          "score": 2.7
+        },
+        "evRevenue": {
+          "value": 30.03,
+          "benchmark": 23.9,
+          "score": 3.6
+        },
+        "analystUpside": {
+          "targetPrice": 283.23447,
+          "currentPrice": 227.825,
+          "upside": 24.3,
+          "score": 2
+        },
+        "momentum6m": {
+          "ticker6m": 84.5,
+          "spy6m": 10.4,
+          "relative": 74.2,
+          "score": 5
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.31579,
+      "numberOfAnalysts": 19,
+      "fetchedAt": "2026-08-25T15:24:27.930Z"
+    },
+    {
+      "symbol": "MSFT",
+      "layer": "L0",
+      "assetClass": "equity",
+      "physicalConstraint": 1,
+      "constraintType": null,
+      "aiContribution": 0.45,
+      "timeToRealize": "near",
+      "moatCapture": 3,
+      "moatLocks": [
+        "integration",
+        "userHabit"
+      ],
+      "price": 489.41,
+      "marketCap": 3634,
+      "pricingScore": 3.3,
+      "rawPricingScore": 3.3,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": 1.57,
+      "pegBand": "rich",
+      "pegStale": false,
+      "pegStaleDetail": null,
+      "pegSelf": 1.07,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": null,
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "defensibility: physicalConstraint 1 < 4 AND moatCapture 3 < 4",
+        "pricingScore 3.3 > 2.8 (entry threshold)"
+      ],
+      "funnelWarnings": [],
+      "previousFunnelPass": false,
+      "inHysteresisBand": false,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": 23.57,
+          "ago90d": 22.63,
+          "meaningful": true,
+          "changePct": 4.2,
+          "direction": "up"
+        },
+        "surpriseHitRate": {
+          "quarters": 4,
+          "beats": 4,
+          "hitRate": 1,
+          "avgSurprisePct": 8.8
+        }
+      },
+      "deratingSignature": {
+        "signature": "none",
+        "drawdownFrom52wHigh": -11.6,
+        "change52w": -2.9,
+        "estimatesRising": true,
+        "delivering": true,
+        "note": null
+      },
+      "components": {
+        "forwardPE": {
+          "value": 20.761217,
+          "benchmark": 18.2,
+          "score": 3.4
+        },
+        "evRevenue": {
+          "value": 11.061,
+          "benchmark": 7.3,
+          "score": 4.3
+        },
+        "analystUpside": {
+          "targetPrice": 569.4537,
+          "currentPrice": 489.41,
+          "upside": 16.4,
+          "score": 2.3
+        },
+        "momentum6m": {
+          "ticker6m": 22.2,
+          "spy6m": 10.4,
+          "relative": 11.8,
+          "score": 3.4
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.36364,
+      "numberOfAnalysts": 52,
+      "fetchedAt": "2026-08-25T15:23:06.558Z"
+    },
+    {
+      "symbol": "CBRS",
+      "layer": "L2",
+      "assetClass": "equity",
+      "physicalConstraint": 3,
+      "constraintType": null,
+      "aiContribution": 1,
+      "timeToRealize": "near",
+      "moatCapture": 3,
+      "moatLocks": [
+        "integration"
+      ],
+      "price": 181.85,
+      "marketCap": 43,
+      "pricingScore": 3.3,
+      "rawPricingScore": 3.3,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": null,
+      "pegBand": "N/A",
+      "pegStale": false,
+      "pegStaleDetail": null,
+      "pegSelf": 0.39,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": null,
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "defensibility: physicalConstraint 3 < 4 AND moatCapture 3 < 4",
+        "pricingScore 3.3 > 2.8 (entry threshold)"
+      ],
+      "funnelWarnings": [],
+      "previousFunnelPass": false,
+      "inHysteresisBand": false,
+      "realizationCheck": {
+        "estimateRevision": null,
+        "surpriseHitRate": {
+          "quarters": 2,
+          "beats": 2,
+          "hitRate": 1,
+          "avgSurprisePct": 74.3
+        }
+      },
+      "deratingSignature": {
+        "signature": "drawdown-unclassified",
+        "drawdownFrom52wHigh": -52.9,
+        "change52w": -40.4,
+        "estimatesRising": false,
+        "delivering": true,
+        "note": null
+      },
+      "components": {
+        "forwardPE": {
+          "value": 142.77527,
+          "benchmark": 30.6,
+          "score": 5
+        },
+        "evRevenue": {
+          "value": 55.264,
+          "benchmark": 20.3,
+          "score": 5
+        },
+        "analystUpside": {
+          "targetPrice": 291.63635,
+          "currentPrice": 181.85,
+          "upside": 60.4,
+          "score": 1
+        },
+        "momentum6m": {
+          "ticker6m": -41.5,
+          "spy6m": 10.4,
+          "relative": -51.9,
+          "score": 1.3
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.45455,
+      "numberOfAnalysts": 11,
+      "fetchedAt": "2026-08-25T15:23:21.922Z"
+    },
+    {
+      "symbol": "ETN",
+      "layer": "L8_COOL",
+      "assetClass": "equity",
+      "physicalConstraint": 3,
+      "constraintType": null,
+      "aiContribution": 0.4,
+      "timeToRealize": "mid",
+      "moatCapture": 3,
+      "moatLocks": [
+        "integration"
+      ],
+      "price": 412.2101,
+      "marketCap": 160,
+      "pricingScore": 3.3,
+      "rawPricingScore": 3.3,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": 3.01,
+      "pegBand": "overpriced",
+      "pegStale": false,
+      "pegStaleDetail": null,
+      "pegSelf": 1.38,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": null,
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "defensibility: physicalConstraint 3 < 4 AND moatCapture 3 < 4",
+        "pricingScore 3.3 > 2.8 (entry threshold)"
+      ],
+      "funnelWarnings": [],
+      "previousFunnelPass": false,
+      "inHysteresisBand": false,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": 16.03,
+          "ago90d": 15.71,
+          "meaningful": true,
+          "changePct": 2,
+          "direction": "up"
+        },
+        "surpriseHitRate": {
+          "quarters": 4,
+          "beats": 4,
+          "hitRate": 1,
+          "avgSurprisePct": 1.5
+        }
+      },
+      "deratingSignature": {
+        "signature": "none",
+        "drawdownFrom52wHigh": -13.8,
+        "change52w": 16.1,
+        "estimatesRising": true,
+        "delivering": true,
+        "note": null
+      },
+      "components": {
+        "forwardPE": {
+          "value": 25.70898,
+          "benchmark": 20.6,
+          "score": 3.6
+        },
+        "evRevenue": {
+          "value": 5.975,
+          "benchmark": 4.4,
+          "score": 3.9
+        },
+        "analystUpside": {
+          "targetPrice": 477.3708,
+          "currentPrice": 412.2101,
+          "upside": 15.8,
+          "score": 2.4
+        },
+        "momentum6m": {
+          "ticker6m": 10.4,
+          "spy6m": 10.4,
+          "relative": 0,
+          "score": 3
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.55556,
+      "numberOfAnalysts": 25,
+      "fetchedAt": "2026-08-25T15:24:18.184Z"
+    },
+    {
+      "symbol": "OKLO",
+      "layer": "L11",
+      "assetClass": "equity",
+      "physicalConstraint": 3,
+      "constraintType": null,
+      "aiContribution": 0.2,
+      "timeToRealize": "far",
+      "moatCapture": 4,
+      "moatLocks": [
+        "licensing"
+      ],
+      "price": 43.14,
+      "marketCap": 8,
+      "pricingScore": 3.3,
+      "rawPricingScore": 3.3,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": null,
+      "pegBand": "N/A",
+      "pegStale": false,
+      "pegStaleDetail": null,
+      "pegSelf": null,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": "forward EPS unavailable or non-positive",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "aiContribution 0.2 < 0.30",
+        "timeToRealize = far",
+        "pricingScore 3.3 > 2.8 (entry threshold)"
+      ],
+      "funnelWarnings": [],
+      "previousFunnelPass": false,
+      "inHysteresisBand": false,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": -0.96,
+          "ago90d": -0.88,
+          "meaningful": false,
+          "changePct": null,
+          "direction": "down"
+        },
+        "surpriseHitRate": {
+          "quarters": 3,
+          "beats": 0,
+          "hitRate": 0,
+          "avgSurprisePct": -66.8
+        }
+      },
+      "deratingSignature": {
+        "signature": "drawdown-unclassified",
+        "drawdownFrom52wHigh": -77.7,
+        "change52w": -46.6,
+        "estimatesRising": false,
+        "delivering": false,
+        "note": null
+      },
+      "components": {
+        "forwardPE": {
+          "value": -42.96,
+          "benchmark": 16.8,
+          "score": 5
+        },
+        "evRevenue": {
+          "value": 4067.638,
+          "benchmark": 8.4,
+          "score": 5
+        },
+        "analystUpside": {
+          "targetPrice": 79.875,
+          "currentPrice": 43.14,
+          "upside": 85.2,
+          "score": 1
+        },
+        "momentum6m": {
+          "ticker6m": -35,
+          "spy6m": 10.4,
+          "relative": -45.3,
+          "score": 1.5
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 2.04,
+      "numberOfAnalysts": 20,
+      "fetchedAt": "2026-08-25T15:24:51.235Z"
+    },
+    {
+      "symbol": "ISRG",
+      "layer": "L_EMBI",
+      "assetClass": "equity",
+      "physicalConstraint": 5,
+      "constraintType": "regulatory",
+      "aiContribution": 0.75,
+      "timeToRealize": "near",
+      "moatCapture": 5,
+      "moatLocks": [
+        "licensing",
+        "userHabit",
+        "integration"
+      ],
+      "price": 371.63,
+      "marketCap": 133,
+      "pricingScore": 3.3,
+      "rawPricingScore": 3.3,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": 1.86,
+      "pegBand": "rich",
+      "pegStale": false,
+      "pegStaleDetail": null,
+      "pegSelf": 2.6,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": null,
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "pricingScore 3.3 > 2.8 (entry threshold)"
+      ],
+      "funnelWarnings": [],
+      "previousFunnelPass": false,
+      "inHysteresisBand": false,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": 12.07,
+          "ago90d": 11.79,
+          "meaningful": true,
+          "changePct": 2.4,
+          "direction": "up"
+        },
+        "surpriseHitRate": {
+          "quarters": 4,
+          "beats": 4,
+          "hitRate": 1,
+          "avgSurprisePct": 15.7
+        }
+      },
+      "deratingSignature": {
+        "signature": "architectural-derating",
+        "drawdownFrom52wHigh": -38.5,
+        "change52w": -21.2,
+        "estimatesRising": true,
+        "delivering": true,
+        "note": "down over 12m while estimates rise and the company beats — market is discounting beyond the estimate horizon; re-read this ticker's thesisFalsification entries"
+      },
+      "components": {
+        "forwardPE": {
+          "value": 30.787443,
+          "benchmark": 22,
+          "score": 4
+        },
+        "evRevenue": {
+          "value": 11.499,
+          "benchmark": 5,
+          "score": 5
+        },
+        "analystUpside": {
+          "targetPrice": 478.00934,
+          "currentPrice": 371.63,
+          "upside": 28.6,
+          "score": 1.9
+        },
+        "momentum6m": {
+          "ticker6m": -26.6,
+          "spy6m": 10.4,
+          "relative": -37,
+          "score": 1.8
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.81818,
+      "numberOfAnalysts": 30,
+      "fetchedAt": "2026-08-25T15:25:12.366Z"
+    },
+    {
+      "symbol": "CGNX",
+      "layer": "L_EMBI",
+      "assetClass": "equity",
+      "physicalConstraint": 4,
+      "constraintType": "tech",
+      "aiContribution": 0.65,
+      "timeToRealize": "near",
+      "moatCapture": 4,
+      "moatLocks": [
+        "integration"
+      ],
+      "price": 59.64,
+      "marketCap": 10,
+      "pricingScore": 3.3,
+      "rawPricingScore": 3.3,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": 2.71,
+      "pegBand": "overpriced",
+      "pegStale": false,
+      "pegStaleDetail": null,
+      "pegSelf": 1.5,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": null,
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "pricingScore 3.3 > 2.8 (entry threshold)"
+      ],
+      "funnelWarnings": [],
+      "previousFunnelPass": false,
+      "inHysteresisBand": false,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": 2.02,
+          "ago90d": 1.75,
+          "meaningful": true,
+          "changePct": 15.5,
+          "direction": "up"
+        },
+        "surpriseHitRate": {
+          "quarters": 4,
+          "beats": 4,
+          "hitRate": 1,
+          "avgSurprisePct": 19.9
+        }
+      },
+      "deratingSignature": {
+        "signature": "none",
+        "drawdownFrom52wHigh": -18.2,
+        "change52w": 33.4,
+        "estimatesRising": true,
+        "delivering": true,
+        "note": null
+      },
+      "components": {
+        "forwardPE": {
+          "value": 29.463491,
+          "benchmark": 22,
+          "score": 3.8
+        },
+        "evRevenue": {
+          "value": 8.739,
+          "benchmark": 5,
+          "score": 4.9
+        },
+        "analystUpside": {
+          "targetPrice": 80.05263,
+          "currentPrice": 59.64,
+          "upside": 34.2,
+          "score": 1.6
+        },
+        "momentum6m": {
+          "ticker6m": 3.9,
+          "spy6m": 10.4,
+          "relative": -6.5,
+          "score": 2.8
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.85,
+      "numberOfAnalysts": 19,
+      "fetchedAt": "2026-08-25T15:25:14.260Z"
+    },
+    {
+      "symbol": "ASML",
+      "layer": "L4",
+      "assetClass": "equity",
+      "physicalConstraint": 5,
+      "constraintType": "tech",
+      "aiContribution": 0.45,
+      "timeToRealize": "near",
+      "moatCapture": 5,
+      "moatLocks": [
+        "integration"
+      ],
+      "price": 1749.36,
+      "marketCap": 672,
+      "pricingScore": 3.4,
+      "rawPricingScore": 3.4,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": 2.1,
+      "pegBand": "rich",
+      "pegStale": false,
+      "pegStaleDetail": null,
+      "pegSelf": 0.82,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": null,
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "pricingScore 3.4 > 2.8 (entry threshold)"
+      ],
+      "funnelWarnings": [],
+      "previousFunnelPass": false,
+      "inHysteresisBand": false,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": 51.69,
+          "ago90d": 40.92,
+          "meaningful": true,
+          "changePct": 26.3,
+          "direction": "up"
+        },
+        "surpriseHitRate": {
+          "quarters": 4,
+          "beats": 3,
+          "hitRate": 0.75,
+          "avgSurprisePct": 4.1
+        }
+      },
+      "deratingSignature": {
+        "signature": "none",
+        "drawdownFrom52wHigh": -12.5,
+        "change52w": 128,
+        "estimatesRising": true,
+        "delivering": true,
+        "note": null
+      },
+      "components": {
+        "forwardPE": {
+          "value": 33.84356,
+          "benchmark": 27.5,
+          "score": 3.6
+        },
+        "evRevenue": {
+          "value": 1050.933,
+          "benchmark": 15,
+          "score": 5
+        },
+        "analystUpside": {
+          "targetPrice": 2195.1438,
+          "currentPrice": 1749.36,
+          "upside": 25.5,
+          "score": 2
+        },
+        "momentum6m": {
+          "ticker6m": 14.6,
+          "spy6m": 10.4,
+          "relative": 4.2,
+          "score": 3.1
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.40909,
+      "numberOfAnalysts": 15,
+      "fetchedAt": "2026-08-25T15:23:48.996Z"
+    },
+    {
+      "symbol": "SPCX",
+      "layer": "L7",
+      "assetClass": "equity",
+      "physicalConstraint": 3,
+      "constraintType": null,
+      "aiContribution": 0.35,
+      "timeToRealize": "near",
+      "moatCapture": 4,
+      "moatLocks": [
+        "licensing",
+        "userHabit"
+      ],
+      "price": 137.05,
+      "marketCap": 1807,
+      "pricingScore": 3.4,
+      "rawPricingScore": 3.4,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": null,
+      "pegBand": "N/A",
+      "pegStale": false,
+      "pegStaleDetail": null,
+      "pegSelf": 0.05,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": null,
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "pricingScore 3.4 > 2.8 (entry threshold)"
+      ],
+      "funnelWarnings": [],
+      "previousFunnelPass": false,
+      "inHysteresisBand": false,
+      "realizationCheck": {
+        "estimateRevision": null,
+        "surpriseHitRate": {
+          "quarters": 1,
+          "beats": 1,
+          "hitRate": 1,
+          "avgSurprisePct": 68.9
+        }
+      },
+      "deratingSignature": {
+        "signature": "drawdown-unclassified",
+        "drawdownFrom52wHigh": -39.3,
+        "change52w": -16.1,
+        "estimatesRising": false,
+        "delivering": true,
+        "note": null
+      },
+      "components": {
+        "forwardPE": {
+          "value": 85.633286,
+          "benchmark": 15.2,
+          "score": 5
+        },
+        "evRevenue": {
+          "value": 151.83,
+          "benchmark": 2.3,
+          "score": 5
+        },
+        "analystUpside": {
+          "targetPrice": 216.33333,
+          "currentPrice": 137.05,
+          "upside": 57.8,
+          "score": 1
+        },
+        "momentum6m": {
+          "ticker6m": -14.8,
+          "spy6m": 10.4,
+          "relative": -25.2,
+          "score": 2.2
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.68571,
+      "numberOfAnalysts": 18,
+      "fetchedAt": "2026-08-25T15:24:10.243Z"
+    },
+    {
+      "symbol": "VRT",
+      "layer": "L8_COOL",
+      "assetClass": "equity",
+      "physicalConstraint": 4,
+      "constraintType": "tech",
+      "aiContribution": 0.65,
+      "timeToRealize": "near",
+      "moatCapture": 4,
+      "moatLocks": [
+        "integration"
+      ],
+      "price": 259.1886,
+      "marketCap": 100,
+      "pricingScore": 3.4,
+      "rawPricingScore": 3.4,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": 1.23,
+      "pegBand": "fair",
+      "pegStale": false,
+      "pegStaleDetail": null,
+      "pegSelf": 0.8,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": null,
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "pricingScore 3.4 > 2.8 (entry threshold)"
+      ],
+      "funnelWarnings": [],
+      "previousFunnelPass": false,
+      "inHysteresisBand": false,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": 9.1,
+          "ago90d": 8.83,
+          "meaningful": true,
+          "changePct": 3,
+          "direction": "up"
+        },
+        "surpriseHitRate": {
+          "quarters": 4,
+          "beats": 4,
+          "hitRate": 1,
+          "avgSurprisePct": 13
+        }
+      },
+      "deratingSignature": {
+        "signature": "momentum-unwind",
+        "drawdownFrom52wHigh": -31.8,
+        "change52w": 99.3,
+        "estimatesRising": true,
+        "delivering": true,
+        "note": "deep drawdown but positive 12m return — unwinding a prior advance, NOT evidence of a broken thesis"
+      },
+      "components": {
+        "forwardPE": {
+          "value": 28.486052,
+          "benchmark": 20.6,
+          "score": 4
+        },
+        "evRevenue": {
+          "value": 8.571,
+          "benchmark": 4.4,
+          "score": 5
+        },
+        "analystUpside": {
+          "targetPrice": 338.15384,
+          "currentPrice": 259.1886,
+          "upside": 30.5,
+          "score": 1.8
+        },
+        "momentum6m": {
+          "ticker6m": -1.1,
+          "spy6m": 10.4,
+          "relative": -11.5,
+          "score": 2.6
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.39286,
+      "numberOfAnalysts": 26,
+      "fetchedAt": "2026-08-25T15:24:15.986Z"
+    },
+    {
+      "symbol": "TSEM",
+      "layer": "L3_5",
+      "assetClass": "equity",
+      "physicalConstraint": 3,
+      "constraintType": null,
+      "aiContribution": 0.5,
+      "timeToRealize": "mid",
+      "moatCapture": 2,
+      "moatLocks": [],
+      "price": 211.685,
+      "marketCap": 24,
+      "pricingScore": 3.5,
+      "rawPricingScore": 3.5,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": 5.69,
+      "pegBand": "overpriced",
+      "pegStale": false,
+      "pegStaleDetail": null,
+      "pegSelf": 0.47,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": null,
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "defensibility: physicalConstraint 3 < 4 AND moatCapture 2 < 4",
+        "pricingScore 3.5 > 2.8 (entry threshold)"
+      ],
+      "funnelWarnings": [
+        "supplier-trap: moatCapture 2 — moat accrues to incumbent/customer, ticker is a replaceable vendor"
+      ],
+      "previousFunnelPass": false,
+      "inHysteresisBand": false,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": 6.51,
+          "ago90d": 4.87,
+          "meaningful": true,
+          "changePct": 33.6,
+          "direction": "up"
+        },
+        "surpriseHitRate": {
+          "quarters": 4,
+          "beats": 4,
+          "hitRate": 1,
+          "avgSurprisePct": 11.8
+        }
+      },
+      "deratingSignature": {
+        "signature": "momentum-unwind",
+        "drawdownFrom52wHigh": -33.8,
+        "change52w": 251.8,
+        "estimatesRising": true,
+        "delivering": true,
+        "note": "deep drawdown but positive 12m return — unwinding a prior advance, NOT evidence of a broken thesis"
+      },
+      "components": {
+        "forwardPE": {
+          "value": 32.537437,
+          "benchmark": 26.8,
+          "score": 3.5
+        },
+        "evRevenue": {
+          "value": 13.165,
+          "benchmark": 7,
+          "score": 5
+        },
+        "analystUpside": {
+          "targetPrice": 321.32144,
+          "currentPrice": 211.685,
+          "upside": 51.8,
+          "score": 1
+        },
+        "momentum6m": {
+          "ticker6m": 68,
+          "spy6m": 10.4,
+          "relative": 57.7,
+          "score": 4.9
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": null,
+      "numberOfAnalysts": 7,
+      "fetchedAt": "2026-08-25T15:23:43.254Z"
+    },
+    {
+      "symbol": "DELL",
+      "layer": "L7",
+      "assetClass": "equity",
+      "physicalConstraint": 2,
+      "constraintType": null,
+      "aiContribution": 0.45,
+      "timeToRealize": "near",
+      "moatCapture": 1,
+      "moatLocks": [],
+      "price": 452.02,
+      "marketCap": 292,
+      "pricingScore": 3.5,
+      "rawPricingScore": 3.5,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": 0.73,
+      "pegBand": "cheap",
+      "pegStale": false,
+      "pegStaleDetail": null,
+      "pegSelf": 1.08,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": null,
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "defensibility: physicalConstraint 2 < 4 AND moatCapture 1 < 4",
+        "pricingScore 3.5 > 2.8 (entry threshold)"
+      ],
+      "funnelWarnings": [
+        "supplier-trap: moatCapture 1 — moat accrues to incumbent/customer, ticker is a replaceable vendor"
+      ],
+      "previousFunnelPass": false,
+      "inHysteresisBand": false,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": 20.16,
+          "ago90d": 12.61,
+          "meaningful": true,
+          "changePct": 59.9,
+          "direction": "up"
+        },
+        "surpriseHitRate": {
+          "quarters": 4,
+          "beats": 4,
+          "hitRate": 1,
+          "avgSurprisePct": 20.1
+        }
+      },
+      "deratingSignature": {
+        "signature": "none",
+        "drawdownFrom52wHigh": -12.1,
+        "change52w": 230.7,
+        "estimatesRising": true,
+        "delivering": true,
+        "note": null
+      },
+      "components": {
+        "forwardPE": {
+          "value": 20.305166,
+          "benchmark": 15.2,
+          "score": 3.8
+        },
+        "evRevenue": {
+          "value": 2.247,
+          "benchmark": 2.3,
+          "score": 2.9
+        },
+        "analystUpside": {
+          "targetPrice": 508.9565,
+          "currentPrice": 452.02,
+          "upside": 12.6,
+          "score": 2.5
+        },
+        "momentum6m": {
+          "ticker6m": 266.1,
+          "spy6m": 10.4,
+          "relative": 255.7,
+          "score": 5
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.77778,
+      "numberOfAnalysts": 23,
+      "fetchedAt": "2026-08-25T15:24:06.413Z"
+    },
+    {
+      "symbol": "CRWV",
+      "layer": "L7",
+      "assetClass": "equity",
+      "physicalConstraint": 3,
+      "constraintType": null,
+      "aiContribution": 0.85,
+      "timeToRealize": "near",
+      "moatCapture": 2,
+      "moatLocks": [
+        "integration"
+      ],
+      "price": 88.4701,
+      "marketCap": 49,
+      "pricingScore": 3.5,
+      "rawPricingScore": 3.5,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": null,
+      "pegBand": "N/A",
+      "pegStale": false,
+      "pegStaleDetail": null,
+      "pegSelf": null,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": "forward EPS unavailable or non-positive",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "defensibility: physicalConstraint 3 < 4 AND moatCapture 2 < 4",
+        "pricingScore 3.5 > 2.8 (entry threshold)"
+      ],
+      "funnelWarnings": [
+        "supplier-trap: moatCapture 2 — moat accrues to incumbent/customer, ticker is a replaceable vendor"
+      ],
+      "previousFunnelPass": false,
+      "inHysteresisBand": false,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": -4.37,
+          "ago90d": -3.42,
+          "meaningful": false,
+          "changePct": null,
+          "direction": "down"
+        },
+        "surpriseHitRate": {
+          "quarters": 4,
+          "beats": 2,
+          "hitRate": 0.5,
+          "avgSurprisePct": 4.3
+        }
+      },
+      "deratingSignature": {
+        "signature": "drawdown-unclassified",
+        "drawdownFrom52wHigh": -42.3,
+        "change52w": -5.6,
+        "estimatesRising": false,
+        "delivering": true,
+        "note": null
+      },
+      "components": {
+        "forwardPE": {
+          "value": -45.40188,
+          "benchmark": 15.2,
+          "score": 5
+        },
+        "evRevenue": {
+          "value": 12.338,
+          "benchmark": 2.3,
+          "score": 5
+        },
+        "analystUpside": {
+          "targetPrice": 144.45714,
+          "currentPrice": 88.4701,
+          "upside": 63.3,
+          "score": 1
+        },
+        "momentum6m": {
+          "ticker6m": -9.7,
+          "spy6m": 10.4,
+          "relative": -20.1,
+          "score": 2.3
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.84211,
+      "numberOfAnalysts": 35,
+      "fetchedAt": "2026-08-25T15:24:08.338Z"
+    },
+    {
+      "symbol": "EQIX",
+      "layer": "L9",
+      "assetClass": "equity",
+      "physicalConstraint": 3,
+      "constraintType": null,
+      "aiContribution": 0.3,
+      "timeToRealize": "far",
+      "moatCapture": 4,
+      "moatLocks": [
+        "userHabit",
+        "integration"
+      ],
+      "price": 1083.855,
+      "marketCap": 107,
+      "pricingScore": 3.5,
+      "rawPricingScore": 3.5,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": 3.43,
+      "pegBand": "overpriced",
+      "pegStale": false,
+      "pegStaleDetail": null,
+      "pegSelf": 12.8,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": null,
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "timeToRealize = far",
+        "pricingScore 3.5 > 2.8 (entry threshold)"
+      ],
+      "funnelWarnings": [],
+      "previousFunnelPass": false,
+      "inHysteresisBand": false,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": 18.69,
+          "ago90d": 19.22,
+          "meaningful": true,
+          "changePct": -2.8,
+          "direction": "down"
+        },
+        "surpriseHitRate": {
+          "quarters": 4,
+          "beats": 2,
+          "hitRate": 0.5,
+          "avgSurprisePct": 0.7
+        }
+      },
+      "deratingSignature": {
+        "signature": "none",
+        "drawdownFrom52wHigh": -4,
+        "change52w": 35,
+        "estimatesRising": false,
+        "delivering": true,
+        "note": null
+      },
+      "components": {
+        "forwardPE": {
+          "value": 57.9823,
+          "benchmark": 25.6,
+          "score": 5
+        },
+        "evRevenue": {
+          "value": 12.774,
+          "benchmark": 12.5,
+          "score": 3.1
+        },
+        "analystUpside": {
+          "targetPrice": 1234.5518,
+          "currentPrice": 1083.855,
+          "upside": 13.9,
+          "score": 2.4
+        },
+        "momentum6m": {
+          "ticker6m": 12.8,
+          "spy6m": 10.4,
+          "relative": 2.5,
+          "score": 3.1
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.53125,
+      "numberOfAnalysts": 29,
+      "fetchedAt": "2026-08-25T15:24:35.759Z"
+    },
+    {
+      "symbol": "DLR",
+      "layer": "L9",
+      "assetClass": "equity",
+      "physicalConstraint": 3,
+      "constraintType": null,
+      "aiContribution": 0.3,
+      "timeToRealize": "far",
+      "moatCapture": 3,
+      "moatLocks": [
+        "integration"
+      ],
+      "price": 192.45,
+      "marketCap": 72,
+      "pricingScore": 3.5,
+      "rawPricingScore": 3.5,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": 13.8,
+      "pegBand": "overpriced",
+      "pegStale": false,
+      "pegStaleDetail": null,
+      "pegSelf": null,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": "growth -13.7% <= 0 — PEG undefined for expected contraction",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "defensibility: physicalConstraint 3 < 4 AND moatCapture 3 < 4",
+        "timeToRealize = far",
+        "pricingScore 3.5 > 2.8 (entry threshold)"
+      ],
+      "funnelWarnings": [],
+      "previousFunnelPass": false,
+      "inHysteresisBand": false,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": 2.89,
+          "ago90d": 2.86,
+          "meaningful": true,
+          "changePct": 0.9,
+          "direction": "up"
+        },
+        "surpriseHitRate": {
+          "quarters": 4,
+          "beats": 3,
+          "hitRate": 0.75,
+          "avgSurprisePct": 9.1
+        }
+      },
+      "deratingSignature": {
+        "signature": "none",
+        "drawdownFrom52wHigh": -7.5,
+        "change52w": 12.3,
+        "estimatesRising": true,
+        "delivering": true,
+        "note": null
+      },
+      "components": {
+        "forwardPE": {
+          "value": 66.56175,
+          "benchmark": 25.6,
+          "score": 5
+        },
+        "evRevenue": {
+          "value": 13.435,
+          "benchmark": 12.5,
+          "score": 3.2
+        },
+        "analystUpside": {
+          "targetPrice": 223.32259,
+          "currentPrice": 192.45,
+          "upside": 16,
+          "score": 2.4
+        },
+        "momentum6m": {
+          "ticker6m": 7.2,
+          "spy6m": 10.4,
+          "relative": -3.2,
+          "score": 2.9
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.45455,
+      "numberOfAnalysts": 31,
+      "fetchedAt": "2026-08-25T15:24:37.681Z"
+    },
+    {
+      "symbol": "SMR",
+      "layer": "L11",
+      "assetClass": "equity",
+      "physicalConstraint": 3,
+      "constraintType": null,
+      "aiContribution": 0.2,
+      "timeToRealize": "far",
+      "moatCapture": 4,
+      "moatLocks": [
+        "licensing"
+      ],
+      "price": 9.555,
+      "marketCap": 4,
+      "pricingScore": 3.5,
+      "rawPricingScore": 3.5,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": null,
+      "pegBand": "N/A",
+      "pegStale": false,
+      "pegStaleDetail": null,
+      "pegSelf": null,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": "forward EPS unavailable or non-positive",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "aiContribution 0.2 < 0.30",
+        "timeToRealize = far",
+        "pricingScore 3.5 > 2.8 (entry threshold)"
+      ],
+      "funnelWarnings": [],
+      "previousFunnelPass": false,
+      "inHysteresisBand": false,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": -0.72,
+          "ago90d": -0.6,
+          "meaningful": false,
+          "changePct": null,
+          "direction": "down"
+        },
+        "surpriseHitRate": {
+          "quarters": 4,
+          "beats": 1,
+          "hitRate": 0.25,
+          "avgSurprisePct": -401
+        }
+      },
+      "deratingSignature": {
+        "signature": "drawdown-unclassified",
+        "drawdownFrom52wHigh": -83.4,
+        "change52w": -74.9,
+        "estimatesRising": false,
+        "delivering": false,
+        "note": null
+      },
+      "components": {
+        "forwardPE": {
+          "value": -14.657605,
+          "benchmark": 16.8,
+          "score": 5
+        },
+        "evRevenue": {
+          "value": 243.304,
+          "benchmark": 8.4,
+          "score": 5
+        },
+        "analystUpside": {
+          "targetPrice": 12.63333,
+          "currentPrice": 9.555,
+          "upside": 32.2,
+          "score": 1.7
+        },
+        "momentum6m": {
+          "ticker6m": -27.5,
+          "spy6m": 10.4,
+          "relative": -37.9,
+          "score": 1.7
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 2.55556,
+      "numberOfAnalysts": 15,
+      "fetchedAt": "2026-08-25T15:24:53.118Z"
+    },
+    {
+      "symbol": "RKLB",
+      "layer": "L_SPACE",
+      "assetClass": "equity",
+      "physicalConstraint": 4,
+      "constraintType": "tech",
+      "aiContribution": 0.45,
+      "timeToRealize": "near",
+      "moatCapture": 4,
+      "moatLocks": [
+        "licensing",
+        "integration"
+      ],
+      "price": 67.35,
+      "marketCap": 43,
+      "pricingScore": 3.5,
+      "rawPricingScore": 3.5,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": null,
+      "pegBand": "N/A",
+      "pegStale": false,
+      "pegStaleDetail": null,
+      "pegSelf": 6.38,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": null,
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "pricingScore 3.5 > 2.8 (entry threshold)"
+      ],
+      "funnelWarnings": [],
+      "previousFunnelPass": false,
+      "inHysteresisBand": false,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": -0.07,
+          "ago90d": -0.04,
+          "meaningful": false,
+          "changePct": null,
+          "direction": "down"
+        },
+        "surpriseHitRate": {
+          "quarters": 3,
+          "beats": 2,
+          "hitRate": 0.67,
+          "avgSurprisePct": 25.1
+        }
+      },
+      "deratingSignature": {
+        "signature": "momentum-unwind",
+        "drawdownFrom52wHigh": -55.4,
+        "change52w": 41.9,
+        "estimatesRising": false,
+        "delivering": true,
+        "note": "deep drawdown but positive 12m return — unwinding a prior advance, NOT evidence of a broken thesis"
+      },
+      "components": {
+        "forwardPE": {
+          "value": 1347,
+          "benchmark": 22,
+          "score": 5
+        },
+        "evRevenue": {
+          "value": 50.298,
+          "benchmark": 5,
+          "score": 5
+        },
+        "analystUpside": {
+          "targetPrice": 112.94118,
+          "currentPrice": 67.35,
+          "upside": 67.7,
+          "score": 1
+        },
+        "momentum6m": {
+          "ticker6m": -4.1,
+          "spy6m": 10.4,
+          "relative": -14.4,
+          "score": 2.5
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.61111,
+      "numberOfAnalysts": 17,
+      "fetchedAt": "2026-08-25T15:25:22.015Z"
+    },
+    {
+      "symbol": "WULF",
+      "layer": "L9_MINER_CONVERT",
+      "assetClass": "equity",
+      "physicalConstraint": 5,
+      "constraintType": "geo",
+      "aiContribution": 0.45,
+      "timeToRealize": "near",
+      "moatCapture": 3,
+      "moatLocks": [
+        "integration"
+      ],
+      "price": 16.15,
+      "marketCap": 8,
+      "pricingScore": 3.5,
+      "rawPricingScore": 3.5,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": null,
+      "pegBand": "N/A",
+      "pegStale": false,
+      "pegStaleDetail": null,
+      "pegSelf": null,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": "forward EPS unavailable or non-positive",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "pricingScore 3.5 > 2.8 (entry threshold)"
+      ],
+      "funnelWarnings": [],
+      "previousFunnelPass": false,
+      "inHysteresisBand": false,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": -0.24,
+          "ago90d": 0.33,
+          "meaningful": false,
+          "changePct": null,
+          "direction": "down"
+        },
+        "surpriseHitRate": {
+          "quarters": 4,
+          "beats": 1,
+          "hitRate": 0.25,
+          "avgSurprisePct": -18.3
+        }
+      },
+      "deratingSignature": {
+        "signature": "momentum-unwind",
+        "drawdownFrom52wHigh": -45.9,
+        "change52w": 67.5,
+        "estimatesRising": false,
+        "delivering": false,
+        "note": "deep drawdown but positive 12m return — unwinding a prior advance, NOT evidence of a broken thesis"
+      },
+      "components": {
+        "forwardPE": {
+          "value": -67.291664,
+          "benchmark": 97.9,
+          "score": 5
+        },
+        "evRevenue": {
+          "value": 62.604,
+          "benchmark": 20.5,
+          "score": 5
+        },
+        "analystUpside": {
+          "targetPrice": 36.63889,
+          "currentPrice": 16.15,
+          "upside": 126.9,
+          "score": 1
+        },
+        "momentum6m": {
+          "ticker6m": -9.9,
+          "spy6m": 10.4,
+          "relative": -20.3,
+          "score": 2.3
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.27778,
+      "numberOfAnalysts": 18,
+      "fetchedAt": "2026-08-25T15:25:36.228Z"
+    },
+    {
+      "symbol": "MRVL",
+      "layer": "L2_5",
+      "assetClass": "equity",
+      "physicalConstraint": 4,
+      "constraintType": "tech",
+      "aiContribution": 0.6,
+      "timeToRealize": "mid",
+      "moatCapture": 3,
+      "moatLocks": [
+        "integration"
+      ],
+      "price": 243.7,
+      "marketCap": 219,
+      "pricingScore": 3.6,
+      "rawPricingScore": 3.6,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": 1.4,
+      "pegBand": "fair",
+      "pegStale": true,
+      "pegStaleDetail": "pegRatio unchanged at 1.4 while price moved +8.7% since 2026-08-24 (224.195 -> 243.7) — Yahoo precomputed field has not refreshed; treat pegBand as unusable for this session",
+      "pegSelf": 0.72,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": null,
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "pricingScore 3.6 > 2.8 (entry threshold)"
+      ],
+      "funnelWarnings": [],
+      "previousFunnelPass": false,
+      "inHysteresisBand": false,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": 6.25,
+          "ago90d": 5.52,
+          "meaningful": true,
+          "changePct": 13.2,
+          "direction": "up"
+        },
+        "surpriseHitRate": {
+          "quarters": 4,
+          "beats": 3,
+          "hitRate": 0.75,
+          "avgSurprisePct": 1
+        }
+      },
+      "deratingSignature": {
+        "signature": "none",
+        "drawdownFrom52wHigh": -26.1,
+        "change52w": 208.8,
+        "estimatesRising": true,
+        "delivering": true,
+        "note": null
+      },
+      "components": {
+        "forwardPE": {
+          "value": 38.98227,
+          "benchmark": 28.4,
+          "score": 3.9
+        },
+        "evRevenue": {
+          "value": 23.175,
+          "benchmark": 23.9,
+          "score": 2.9
+        },
+        "analystUpside": {
+          "targetPrice": 266.35535,
+          "currentPrice": 243.7,
+          "upside": 9.3,
+          "score": 2.6
+        },
+        "momentum6m": {
+          "ticker6m": 200.9,
+          "spy6m": 10.4,
+          "relative": 190.5,
+          "score": 5
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.43182,
+      "numberOfAnalysts": 41,
+      "fetchedAt": "2026-08-25T15:23:27.629Z"
+    },
+    {
+      "symbol": "FCX",
+      "layer": "L14",
+      "assetClass": "equity",
+      "physicalConstraint": 4,
+      "constraintType": "geo",
+      "aiContribution": 0.12,
+      "timeToRealize": "far",
+      "moatCapture": 2,
+      "moatLocks": [],
+      "price": 78.25,
+      "marketCap": 112,
+      "pricingScore": 3.6,
+      "rawPricingScore": 3.6,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": 6.28,
+      "pegBand": "overpriced",
+      "pegStale": false,
+      "pegStaleDetail": null,
+      "pegSelf": 0.51,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": null,
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "aiContribution 0.12 < 0.30",
+        "timeToRealize = far",
+        "pricingScore 3.6 > 2.8 (entry threshold)"
+      ],
+      "funnelWarnings": [
+        "supplier-trap: moatCapture 2 — moat accrues to incumbent/customer, ticker is a replaceable vendor"
+      ],
+      "previousFunnelPass": false,
+      "inHysteresisBand": false,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": 4.12,
+          "ago90d": 3.72,
+          "meaningful": true,
+          "changePct": 10.9,
+          "direction": "up"
+        },
+        "surpriseHitRate": {
+          "quarters": 4,
+          "beats": 4,
+          "hitRate": 1,
+          "avgSurprisePct": 27.5
+        }
+      },
+      "deratingSignature": {
+        "signature": "none",
+        "drawdownFrom52wHigh": -0.9,
+        "change52w": 75.4,
+        "estimatesRising": true,
+        "delivering": true,
+        "note": null
+      },
+      "components": {
+        "forwardPE": {
+          "value": 18.97876,
+          "benchmark": 15.7,
+          "score": 3.5
+        },
+        "evRevenue": {
+          "value": 5.03,
+          "benchmark": 3.3,
+          "score": 4.3
+        },
+        "analystUpside": {
+          "targetPrice": 71.72727,
+          "currentPrice": 78.25,
+          "upside": -8.3,
+          "score": 3.3
+        },
+        "momentum6m": {
+          "ticker6m": 13.7,
+          "spy6m": 10.4,
+          "relative": 3.3,
+          "score": 3.1
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.69565,
+      "numberOfAnalysts": 22,
+      "fetchedAt": "2026-08-25T15:25:04.599Z"
+    },
+    {
+      "symbol": "ASTS",
+      "layer": "L_SPACE",
+      "assetClass": "equity",
+      "physicalConstraint": 5,
+      "constraintType": "regulatory",
+      "aiContribution": 0.35,
+      "timeToRealize": "mid",
+      "moatCapture": 4,
+      "moatLocks": [
+        "licensing",
+        "integration"
+      ],
+      "price": 61.93,
+      "marketCap": 24,
+      "pricingScore": 3.6,
+      "rawPricingScore": 3.6,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": null,
+      "pegBand": "N/A",
+      "pegStale": false,
+      "pegStaleDetail": null,
+      "pegSelf": null,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": "forward EPS unavailable or non-positive",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "pricingScore 3.6 > 2.8 (entry threshold)"
+      ],
+      "funnelWarnings": [],
+      "previousFunnelPass": false,
+      "inHysteresisBand": false,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": -1.05,
+          "ago90d": -0.52,
+          "meaningful": false,
+          "changePct": null,
+          "direction": "down"
+        },
+        "surpriseHitRate": {
+          "quarters": 4,
+          "beats": 0,
+          "hitRate": 0,
+          "avgSurprisePct": -77.4
+        }
+      },
+      "deratingSignature": {
+        "signature": "momentum-unwind",
+        "drawdownFrom52wHigh": -53.7,
+        "change52w": 23.6,
+        "estimatesRising": false,
+        "delivering": false,
+        "note": "deep drawdown but positive 12m return — unwinding a prior advance, NOT evidence of a broken thesis"
+      },
+      "components": {
+        "forwardPE": {
+          "value": -51.087246,
+          "benchmark": 22,
+          "score": 5
+        },
+        "evRevenue": {
+          "value": 172.603,
+          "benchmark": 5,
+          "score": 5
+        },
+        "analystUpside": {
+          "targetPrice": 78.48182,
+          "currentPrice": 61.93,
+          "upside": 26.7,
+          "score": 1.9
+        },
+        "momentum6m": {
+          "ticker6m": -24.8,
+          "spy6m": 10.4,
+          "relative": -35.2,
+          "score": 1.8
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 2.69231,
+      "numberOfAnalysts": 11,
+      "fetchedAt": "2026-08-25T15:25:23.926Z"
+    },
+    {
+      "symbol": "CCJ",
+      "layer": "L11_FUEL",
+      "assetClass": "equity",
+      "physicalConstraint": 4,
+      "constraintType": "geo",
+      "aiContribution": 0.35,
+      "timeToRealize": "mid",
+      "moatCapture": 3,
+      "moatLocks": [
+        "integration"
+      ],
+      "price": 106.33,
+      "marketCap": 46,
+      "pricingScore": 3.7,
+      "rawPricingScore": 3.7,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": 1.92,
+      "pegBand": "rich",
+      "pegStale": false,
+      "pegStaleDetail": null,
+      "pegSelf": 0.74,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": null,
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "pricingScore 3.7 > 2.8 (entry threshold)"
+      ],
+      "funnelWarnings": [],
+      "previousFunnelPass": false,
+      "inHysteresisBand": false,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": 2.61,
+          "ago90d": 2.65,
+          "meaningful": true,
+          "changePct": -1.7,
+          "direction": "down"
+        },
+        "surpriseHitRate": {
+          "quarters": 4,
+          "beats": 2,
+          "hitRate": 0.5,
+          "avgSurprisePct": -18.9
+        }
+      },
+      "deratingSignature": {
+        "signature": "none",
+        "drawdownFrom52wHigh": -21.4,
+        "change52w": 33.7,
+        "estimatesRising": false,
+        "delivering": true,
+        "note": null
+      },
+      "components": {
+        "forwardPE": {
+          "value": 40.78963,
+          "benchmark": 22,
+          "score": 5
+        },
+        "evRevenue": {
+          "value": 12.851,
+          "benchmark": 5,
+          "score": 5
+        },
+        "analystUpside": {
+          "targetPrice": 130.17238,
+          "currentPrice": 106.33,
+          "upside": 22.4,
+          "score": 2.1
+        },
+        "momentum6m": {
+          "ticker6m": -11.2,
+          "spy6m": 10.4,
+          "relative": -21.6,
+          "score": 2.3
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.59091,
+      "numberOfAnalysts": 11,
+      "fetchedAt": "2026-08-25T15:24:55.004Z"
+    },
+    {
+      "symbol": "CRCL",
+      "layer": "L_DCOMP",
+      "assetClass": "equity",
+      "physicalConstraint": 3,
+      "constraintType": "regulatory",
+      "aiContribution": 0.3,
+      "timeToRealize": "near",
+      "moatCapture": 4,
+      "moatLocks": [
+        "licensing",
+        "integration"
+      ],
+      "price": 90.3832,
+      "marketCap": 25,
+      "pricingScore": 3.7,
+      "rawPricingScore": 3.7,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": 4.34,
+      "pegBand": "overpriced",
+      "pegStale": false,
+      "pegStaleDetail": null,
+      "pegSelf": 1.86,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": null,
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "pricingScore 3.7 > 2.8 (entry threshold)"
+      ],
+      "funnelWarnings": [],
+      "previousFunnelPass": false,
+      "inHysteresisBand": false,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": 1.38,
+          "ago90d": 1.67,
+          "meaningful": true,
+          "changePct": -17.1,
+          "direction": "down"
+        },
+        "surpriseHitRate": {
+          "quarters": 4,
+          "beats": 4,
+          "hitRate": 1,
+          "avgSurprisePct": 111.7
+        }
+      },
+      "deratingSignature": {
+        "signature": "drawdown-unclassified",
+        "drawdownFrom52wHigh": -43.3,
+        "change52w": -32,
+        "estimatesRising": false,
+        "delivering": true,
+        "note": null
+      },
+      "components": {
+        "forwardPE": {
+          "value": 56.840134,
+          "benchmark": 22,
+          "score": 5
+        },
+        "evRevenue": {
+          "value": 7.075,
+          "benchmark": 5,
+          "score": 4
+        },
+        "analystUpside": {
+          "targetPrice": 102.63696,
+          "currentPrice": 90.3832,
+          "upside": 13.6,
+          "score": 2.5
+        },
+        "momentum6m": {
+          "ticker6m": 8.7,
+          "spy6m": 10.4,
+          "relative": -1.7,
+          "score": 2.9
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 2.33333,
+      "numberOfAnalysts": 23,
+      "fetchedAt": "2026-08-25T15:25:10.466Z"
+    },
+    {
+      "symbol": "ALAB",
+      "layer": "L3",
+      "assetClass": "equity",
+      "physicalConstraint": 4,
+      "constraintType": "tech",
+      "aiContribution": 0.85,
+      "timeToRealize": "near",
+      "moatCapture": 3,
+      "moatLocks": [
+        "integration"
+      ],
+      "price": 284.11,
+      "marketCap": 49,
+      "pricingScore": 3.8,
+      "rawPricingScore": 3.8,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": null,
+      "pegBand": "N/A",
+      "pegStale": false,
+      "pegStaleDetail": null,
+      "pegSelf": 0.76,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": null,
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "pricingScore 3.8 > 2.8 (entry threshold)"
+      ],
+      "funnelWarnings": [],
+      "previousFunnelPass": false,
+      "inHysteresisBand": false,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": 6.39,
+          "ago90d": 4.21,
+          "meaningful": true,
+          "changePct": 52,
+          "direction": "up"
+        },
+        "surpriseHitRate": {
+          "quarters": 4,
+          "beats": 4,
+          "hitRate": 1,
+          "avgSurprisePct": 16.8
+        }
+      },
+      "deratingSignature": {
+        "signature": "momentum-unwind",
+        "drawdownFrom52wHigh": -43.1,
+        "change52w": 55.4,
+        "estimatesRising": true,
+        "delivering": true,
+        "note": "deep drawdown but positive 12m return — unwinding a prior advance, NOT evidence of a broken thesis"
+      },
+      "components": {
+        "forwardPE": {
+          "value": 44.437458,
+          "benchmark": 33.5,
+          "score": 3.8
+        },
+        "evRevenue": {
+          "value": 39.053,
+          "benchmark": 15.2,
+          "score": 5
+        },
+        "analystUpside": {
+          "targetPrice": 389.9527,
+          "currentPrice": 284.11,
+          "upside": 37.3,
+          "score": 1.5
+        },
+        "momentum6m": {
+          "ticker6m": 121.7,
+          "spy6m": 10.4,
+          "relative": 111.3,
+          "score": 5
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.80769,
+      "numberOfAnalysts": 23,
+      "fetchedAt": "2026-08-25T15:23:35.451Z"
+    },
+    {
+      "symbol": "PANW",
+      "layer": "L10",
+      "assetClass": "equity",
+      "physicalConstraint": 1,
+      "constraintType": null,
+      "aiContribution": 0.45,
+      "timeToRealize": "near",
+      "moatCapture": 3,
+      "moatLocks": [
+        "integration",
+        "liability"
+      ],
+      "price": 345.75,
+      "marketCap": 282,
+      "pricingScore": 3.8,
+      "rawPricingScore": 3.8,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": 3.97,
+      "pegBand": "overpriced",
+      "pegStale": false,
+      "pegStaleDetail": null,
+      "pegSelf": 9.27,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": null,
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "defensibility: physicalConstraint 1 < 4 AND moatCapture 3 < 4",
+        "pricingScore 3.8 > 2.8 (entry threshold)"
+      ],
+      "funnelWarnings": [],
+      "previousFunnelPass": false,
+      "inHysteresisBand": false,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": 1.94,
+          "ago90d": 2.33,
+          "meaningful": true,
+          "changePct": -16.7,
+          "direction": "down"
+        },
+        "surpriseHitRate": {
+          "quarters": 4,
+          "beats": 4,
+          "hitRate": 1,
+          "avgSurprisePct": 7
+        }
+      },
+      "deratingSignature": {
+        "signature": "none",
+        "drawdownFrom52wHigh": -13.3,
+        "change52w": 90.5,
+        "estimatesRising": false,
+        "delivering": true,
+        "note": null
+      },
+      "components": {
+        "forwardPE": {
+          "value": 83.984116,
+          "benchmark": 63.9,
+          "score": 3.8
+        },
+        "evRevenue": {
+          "value": 26.871,
+          "benchmark": 21,
+          "score": 3.7
+        },
+        "analystUpside": {
+          "targetPrice": 361.554,
+          "currentPrice": 345.75,
+          "upside": 4.6,
+          "score": 2.8
+        },
+        "momentum6m": {
+          "ticker6m": 138.7,
+          "spy6m": 10.4,
+          "relative": 128.3,
+          "score": 5
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.63636,
+      "numberOfAnalysts": 50,
+      "fetchedAt": "2026-08-25T15:24:45.517Z"
+    },
+    {
+      "symbol": "TSLA",
+      "layer": "L_EMBI",
+      "assetClass": "equity",
+      "physicalConstraint": 3,
+      "constraintType": null,
+      "aiContribution": 0.4,
+      "timeToRealize": "mid",
+      "moatCapture": 4,
+      "moatLocks": [
+        "privateData",
+        "userHabit"
+      ],
+      "price": 352.555,
+      "marketCap": 1392,
+      "pricingScore": 3.8,
+      "rawPricingScore": 3.8,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": 5.32,
+      "pegBand": "overpriced",
+      "pegStale": false,
+      "pegStaleDetail": null,
+      "pegSelf": 7.5,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": null,
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "pricingScore 3.8 > 2.8 (entry threshold)"
+      ],
+      "funnelWarnings": [],
+      "previousFunnelPass": false,
+      "inHysteresisBand": false,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": 2.16,
+          "ago90d": 2.53,
+          "meaningful": true,
+          "changePct": -14.5,
+          "direction": "down"
+        },
+        "surpriseHitRate": {
+          "quarters": 4,
+          "beats": 2,
+          "hitRate": 0.5,
+          "avgSurprisePct": -5.2
+        }
+      },
+      "deratingSignature": {
+        "signature": "none",
+        "drawdownFrom52wHigh": -29.3,
+        "change52w": -0.8,
+        "estimatesRising": false,
+        "delivering": true,
+        "note": null
+      },
+      "components": {
+        "forwardPE": {
+          "value": 163.34117,
+          "benchmark": 22,
+          "score": 5
+        },
+        "evRevenue": {
+          "value": 13.042,
+          "benchmark": 5,
+          "score": 5
+        },
+        "analystUpside": {
+          "targetPrice": 390.09283,
+          "currentPrice": 352.555,
+          "upside": 10.6,
+          "score": 2.6
+        },
+        "momentum6m": {
+          "ticker6m": -15.5,
+          "spy6m": 10.4,
+          "relative": -25.9,
+          "score": 2.1
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 2.34783,
+      "numberOfAnalysts": 39,
+      "fetchedAt": "2026-08-25T15:25:18.170Z"
+    },
+    {
+      "symbol": "MU",
+      "layer": "L6",
+      "assetClass": "equity",
+      "physicalConstraint": 4,
+      "constraintType": "tech",
+      "aiContribution": 0.55,
+      "timeToRealize": "near",
+      "moatCapture": 3,
+      "moatLocks": [
+        "integration"
+      ],
+      "price": 930.9173,
+      "marketCap": null,
+      "pricingScore": 3.9,
+      "rawPricingScore": 2.4,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": {
+        "applied": true,
+        "delta": 1.5,
+        "reasons": [
+          "trailPE/fwdPE 3.5x — forward EPS priced to surge; low fwdPE is a peak-cycle value trap",
+          "grossMargin 73% >= cyclical-peak 55%"
+        ]
+      },
+      "pegRatio": 0.14,
+      "pegBand": "cheap",
+      "pegStale": false,
+      "pegStaleDetail": null,
+      "pegSelf": 0.05,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": null,
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "pricingScore 3.9 > 2.8 (entry threshold)"
+      ],
+      "funnelWarnings": [],
+      "previousFunnelPass": false,
+      "inHysteresisBand": false,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": 155.03,
+          "ago90d": 102.72,
+          "meaningful": true,
+          "changePct": 50.9,
+          "direction": "up"
+        },
+        "surpriseHitRate": {
+          "quarters": 4,
+          "beats": 4,
+          "hitRate": 1,
+          "avgSurprisePct": 20.3
+        }
+      },
+      "deratingSignature": {
+        "signature": "none",
+        "drawdownFrom52wHigh": -25.8,
+        "change52w": 681.5,
+        "estimatesRising": true,
+        "delivering": true,
+        "note": null
+      },
+      "components": {
+        "forwardPE": {
+          "value": 6.006409,
+          "benchmark": 14.5,
+          "score": 1.5
+        },
+        "evRevenue": {
+          "value": 11.173,
+          "benchmark": 12.8,
+          "score": 2.7
+        },
+        "analystUpside": {
+          "targetPrice": 1515.1136,
+          "currentPrice": 930.9173,
+          "upside": 62.8,
+          "score": 1
+        },
+        "momentum6m": {
+          "ticker6m": 117.1,
+          "spy6m": 10.4,
+          "relative": 106.7,
+          "score": 5
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.3617,
+      "numberOfAnalysts": 44,
+      "fetchedAt": "2026-08-25T15:24:00.744Z"
+    },
+    {
+      "symbol": "AXTI",
+      "layer": "L8_OPT_MAT",
+      "assetClass": "equity",
+      "physicalConstraint": 4,
+      "constraintType": "tech",
+      "aiContribution": 0.5,
+      "timeToRealize": "near",
+      "moatCapture": 2,
+      "moatLocks": [],
+      "price": 69.35,
+      "marketCap": 5,
+      "pricingScore": 3.9,
+      "rawPricingScore": 3.9,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": 12.09,
+      "pegBand": "overpriced",
+      "pegStale": true,
+      "pegStaleDetail": "pegRatio unchanged at 12.09 while price moved +9.9% since 2026-08-24 (63.1001 -> 69.35) — Yahoo precomputed field has not refreshed; treat pegBand as unusable for this session",
+      "pegSelf": 0.2,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": null,
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "pricingScore 3.9 > 2.8 (entry threshold)"
+      ],
+      "funnelWarnings": [
+        "supplier-trap: moatCapture 2 — moat accrues to incumbent/customer, ticker is a replaceable vendor"
+      ],
+      "previousFunnelPass": false,
+      "inHysteresisBand": false,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": 2.23,
+          "ago90d": 0.75,
+          "meaningful": true,
+          "changePct": 196,
+          "direction": "up"
+        },
+        "surpriseHitRate": {
+          "quarters": 4,
+          "beats": 4,
+          "hitRate": 1,
+          "avgSurprisePct": 82.6
+        }
+      },
+      "deratingSignature": {
+        "signature": "momentum-unwind",
+        "drawdownFrom52wHigh": -51.6,
+        "change52w": 2261,
+        "estimatesRising": true,
+        "delivering": true,
+        "note": "deep drawdown but positive 12m return — unwinding a prior advance, NOT evidence of a broken thesis"
+      },
+      "components": {
+        "forwardPE": {
+          "value": 31.154535,
+          "benchmark": 22,
+          "score": 4
+        },
+        "evRevenue": {
+          "value": 31.479,
+          "benchmark": 5,
+          "score": 5
+        },
+        "analystUpside": {
+          "targetPrice": 91.6,
+          "currentPrice": 69.35,
+          "upside": 32.1,
+          "score": 1.7
+        },
+        "momentum6m": {
+          "ticker6m": 69.3,
+          "spy6m": 10.4,
+          "relative": 58.9,
+          "score": 5
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": null,
+      "numberOfAnalysts": 5,
+      "fetchedAt": "2026-08-25T15:24:26.005Z"
+    },
+    {
+      "symbol": "HUT",
+      "layer": "L9_MINER_CONVERT",
+      "assetClass": "equity",
+      "physicalConstraint": 4,
+      "constraintType": "geo",
+      "aiContribution": 0.3,
+      "timeToRealize": "mid",
+      "moatCapture": 3,
+      "moatLocks": [
+        "integration"
+      ],
+      "price": 82.815,
+      "marketCap": 10,
+      "pricingScore": 3.9,
+      "rawPricingScore": 3.9,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": null,
+      "pegBand": "N/A",
+      "pegStale": false,
+      "pegStaleDetail": null,
+      "pegSelf": null,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": "forward EPS unavailable or non-positive",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "pricingScore 3.9 > 2.8 (entry threshold)"
+      ],
+      "funnelWarnings": [],
+      "previousFunnelPass": false,
+      "inHysteresisBand": false,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": -5.19,
+          "ago90d": -2.3,
+          "meaningful": false,
+          "changePct": null,
+          "direction": "down"
+        },
+        "surpriseHitRate": {
+          "quarters": 4,
+          "beats": 3,
+          "hitRate": 0.75,
+          "avgSurprisePct": -492
+        }
+      },
+      "deratingSignature": {
+        "signature": "momentum-unwind",
+        "drawdownFrom52wHigh": -41.2,
+        "change52w": 207.1,
+        "estimatesRising": false,
+        "delivering": true,
+        "note": "deep drawdown but positive 12m return — unwinding a prior advance, NOT evidence of a broken thesis"
+      },
+      "components": {
+        "forwardPE": {
+          "value": -15.948965,
+          "benchmark": 97.9,
+          "score": 5
+        },
+        "evRevenue": {
+          "value": 55.207,
+          "benchmark": 20.5,
+          "score": 5
+        },
+        "analystUpside": {
+          "targetPrice": 161.77779,
+          "currentPrice": 82.815,
+          "upside": 95.3,
+          "score": 1
+        },
+        "momentum6m": {
+          "ticker6m": 49.8,
+          "spy6m": 10.4,
+          "relative": 39.4,
+          "score": 4.3
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.33333,
+      "numberOfAnalysts": 18,
+      "fetchedAt": "2026-08-25T15:25:38.134Z"
+    },
+    {
+      "symbol": "ANET",
+      "layer": "L8_NET",
+      "assetClass": "equity",
+      "physicalConstraint": 4,
+      "constraintType": "tech",
+      "aiContribution": 0.7,
+      "timeToRealize": "near",
+      "moatCapture": 4,
+      "moatLocks": [
+        "userHabit",
+        "integration"
+      ],
+      "price": 189.88,
+      "marketCap": 239,
+      "pricingScore": 4,
+      "rawPricingScore": 4,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": 1.78,
+      "pegBand": "rich",
+      "pegStale": false,
+      "pegStaleDetail": null,
+      "pegSelf": 1.45,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": null,
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "pricingScore 4 > 2.8 (entry threshold)"
+      ],
+      "funnelWarnings": [],
+      "previousFunnelPass": false,
+      "inHysteresisBand": false,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": 5.16,
+          "ago90d": 4.45,
+          "meaningful": true,
+          "changePct": 16,
+          "direction": "up"
+        },
+        "surpriseHitRate": {
+          "quarters": 4,
+          "beats": 4,
+          "hitRate": 1,
+          "avgSurprisePct": 9
+        }
+      },
+      "deratingSignature": {
+        "signature": "none",
+        "drawdownFrom52wHigh": -11.6,
+        "change52w": 40.1,
+        "estimatesRising": true,
+        "delivering": true,
+        "note": null
+      },
+      "components": {
+        "forwardPE": {
+          "value": 36.801586,
+          "benchmark": 17.6,
+          "score": 5
+        },
+        "evRevenue": {
+          "value": 21.247,
+          "benchmark": 4.7,
+          "score": 5
+        },
+        "analystUpside": {
+          "targetPrice": 241.81519,
+          "currentPrice": 189.88,
+          "upside": 27.4,
+          "score": 1.9
+        },
+        "momentum6m": {
+          "ticker6m": 42.9,
+          "spy6m": 10.4,
+          "relative": 32.5,
+          "score": 4.1
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.26667,
+      "numberOfAnalysts": 27,
+      "fetchedAt": "2026-08-25T15:24:14.093Z"
+    },
+    {
+      "symbol": "PLTR",
+      "layer": "L1",
+      "assetClass": "equity",
+      "physicalConstraint": 1,
+      "constraintType": null,
+      "aiContribution": 0.7,
+      "timeToRealize": "mid",
+      "moatCapture": 5,
+      "moatLocks": [
+        "licensing",
+        "liability",
+        "privateData",
+        "userHabit",
+        "integration"
+      ],
+      "price": 174.405,
+      "marketCap": 419,
+      "pricingScore": 4.1,
+      "rawPricingScore": 4.1,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": 2.41,
+      "pegBand": "rich",
+      "pegStale": false,
+      "pegStaleDetail": null,
+      "pegSelf": 1.7,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": null,
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "pricingScore 4.1 > 2.8 (entry threshold)"
+      ],
+      "funnelWarnings": [],
+      "previousFunnelPass": false,
+      "inHysteresisBand": false,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": 2.31,
+          "ago90d": 2.06,
+          "meaningful": true,
+          "changePct": 12.1,
+          "direction": "up"
+        },
+        "surpriseHitRate": {
+          "quarters": 4,
+          "beats": 4,
+          "hitRate": 1,
+          "avgSurprisePct": 17.7
+        }
+      },
+      "deratingSignature": {
+        "signature": "none",
+        "drawdownFrom52wHigh": -16,
+        "change52w": 9.3,
+        "estimatesRising": true,
+        "delivering": true,
+        "note": null
+      },
+      "components": {
+        "forwardPE": {
+          "value": 75.36816,
+          "benchmark": 24.4,
+          "score": 5
+        },
+        "evRevenue": {
+          "value": 67.185,
+          "benchmark": 9.2,
+          "score": 5
+        },
+        "analystUpside": {
+          "targetPrice": 191.68,
+          "currentPrice": 174.405,
+          "upside": 9.9,
+          "score": 2.6
+        },
+        "momentum6m": {
+          "ticker6m": 30,
+          "spy6m": 10.4,
+          "relative": 19.6,
+          "score": 3.7
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.8125,
+      "numberOfAnalysts": 27,
+      "fetchedAt": "2026-08-25T15:23:16.024Z"
+    },
+    {
+      "symbol": "INTC",
+      "layer": "L5",
+      "assetClass": "equity",
+      "physicalConstraint": 4,
+      "constraintType": "tech",
+      "aiContribution": 0.3,
+      "timeToRealize": "mid",
+      "moatCapture": 3,
+      "moatLocks": [
+        "integration"
+      ],
+      "price": 88.4,
+      "marketCap": 467,
+      "pricingScore": 4.2,
+      "rawPricingScore": 4.2,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": 1.36,
+      "pegBand": "fair",
+      "pegStale": false,
+      "pegStaleDetail": null,
+      "pegSelf": 1.24,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": null,
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "pricingScore 4.2 > 2.8 (entry threshold)"
+      ],
+      "funnelWarnings": [],
+      "previousFunnelPass": false,
+      "inHysteresisBand": false,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": 2.04,
+          "ago90d": 1.51,
+          "meaningful": true,
+          "changePct": 35.1,
+          "direction": "up"
+        },
+        "surpriseHitRate": {
+          "quarters": 4,
+          "beats": 4,
+          "hitRate": 1,
+          "avgSurprisePct": 1361.8
+        }
+      },
+      "deratingSignature": {
+        "signature": "momentum-unwind",
+        "drawdownFrom52wHigh": -37.9,
+        "change52w": 258.4,
+        "estimatesRising": true,
+        "delivering": true,
+        "note": "deep drawdown but positive 12m return — unwinding a prior advance, NOT evidence of a broken thesis"
+      },
+      "components": {
+        "forwardPE": {
+          "value": 43.33793,
+          "benchmark": 19.8,
+          "score": 5
+        },
+        "evRevenue": {
+          "value": 8.356,
+          "benchmark": 2.5,
+          "score": 5
+        },
+        "analystUpside": {
+          "targetPrice": 114.87805,
+          "currentPrice": 88.4,
+          "upside": 30,
+          "score": 1.8
+        },
+        "momentum6m": {
+          "ticker6m": 88.6,
+          "spy6m": 10.4,
+          "relative": 78.2,
+          "score": 5
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 2.52083,
+      "numberOfAnalysts": 41,
+      "fetchedAt": "2026-08-25T15:24:02.627Z"
+    },
+    {
+      "symbol": "ARM",
+      "layer": "L2_5",
+      "assetClass": "equity",
+      "physicalConstraint": 4,
+      "constraintType": "tech",
+      "aiContribution": 0.6,
+      "timeToRealize": "mid",
+      "moatCapture": 5,
+      "moatLocks": [
+        "licensing",
+        "userHabit",
+        "integration"
+      ],
+      "price": 243.56,
+      "marketCap": 260,
+      "pricingScore": 4.3,
+      "rawPricingScore": 4.3,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": 2,
+      "pegBand": "rich",
+      "pegStale": false,
+      "pegStaleDetail": null,
+      "pegSelf": 2.13,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": null,
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "pricingScore 4.3 > 2.8 (entry threshold)"
+      ],
+      "funnelWarnings": [],
+      "previousFunnelPass": false,
+      "inHysteresisBand": false,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": 3.06,
+          "ago90d": 3.06,
+          "meaningful": true,
+          "changePct": 0.2,
+          "direction": "up"
+        },
+        "surpriseHitRate": {
+          "quarters": 4,
+          "beats": 4,
+          "hitRate": 1,
+          "avgSurprisePct": 9.5
+        }
+      },
+      "deratingSignature": {
+        "signature": "momentum-unwind",
+        "drawdownFrom52wHigh": -46.2,
+        "change52w": 70.2,
+        "estimatesRising": true,
+        "delivering": true,
+        "note": "deep drawdown but positive 12m return — unwinding a prior advance, NOT evidence of a broken thesis"
+      },
+      "components": {
+        "forwardPE": {
+          "value": 79.57293,
+          "benchmark": 28.4,
+          "score": 5
+        },
+        "evRevenue": {
+          "value": 48.8,
+          "benchmark": 23.9,
+          "score": 5
+        },
+        "analystUpside": {
+          "targetPrice": 285.72308,
+          "currentPrice": 243.56,
+          "upside": 17.3,
+          "score": 2.3
+        },
+        "momentum6m": {
+          "ticker6m": 84.9,
+          "spy6m": 10.4,
+          "relative": 74.5,
+          "score": 5
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.95238,
+      "numberOfAnalysts": 39,
+      "fetchedAt": "2026-08-25T15:23:25.731Z"
+    },
+    {
+      "symbol": "SCCO",
+      "layer": "L14",
+      "assetClass": "equity",
+      "physicalConstraint": 4,
+      "constraintType": "geo",
+      "aiContribution": 0.12,
+      "timeToRealize": "far",
+      "moatCapture": 2,
+      "moatLocks": [],
+      "price": 215.365,
+      "marketCap": 182,
+      "pricingScore": 4.3,
+      "rawPricingScore": 4.3,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": 5.41,
+      "pegBand": "overpriced",
+      "pegStale": false,
+      "pegStaleDetail": null,
+      "pegSelf": null,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": "growth -6.8% <= 0 — PEG undefined for expected contraction",
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "aiContribution 0.12 < 0.30",
+        "timeToRealize = far",
+        "pricingScore 4.3 > 2.8 (entry threshold)"
+      ],
+      "funnelWarnings": [
+        "supplier-trap: moatCapture 2 — moat accrues to incumbent/customer, ticker is a replaceable vendor"
+      ],
+      "previousFunnelPass": false,
+      "inHysteresisBand": false,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": 7.14,
+          "ago90d": 6.59,
+          "meaningful": true,
+          "changePct": 8.3,
+          "direction": "up"
+        },
+        "surpriseHitRate": {
+          "quarters": 4,
+          "beats": 4,
+          "hitRate": 1,
+          "avgSurprisePct": 4.8
+        }
+      },
+      "deratingSignature": {
+        "signature": "none",
+        "drawdownFrom52wHigh": -2.5,
+        "change52w": 127.6,
+        "estimatesRising": true,
+        "delivering": true,
+        "note": null
+      },
+      "components": {
+        "forwardPE": {
+          "value": 30.173223,
+          "benchmark": 15.7,
+          "score": 5
+        },
+        "evRevenue": {
+          "value": 11.545,
+          "benchmark": 3.3,
+          "score": 5
+        },
+        "analystUpside": {
+          "targetPrice": 166.76906,
+          "currentPrice": 215.365,
+          "upside": -22.6,
+          "score": 3.9
+        },
+        "momentum6m": {
+          "ticker6m": 1.1,
+          "spy6m": 10.4,
+          "relative": -9.3,
+          "score": 2.7
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 3.77778,
+      "numberOfAnalysts": 17,
+      "fetchedAt": "2026-08-25T15:25:06.510Z"
+    },
+    {
+      "symbol": "CRWD",
+      "layer": "L10",
+      "assetClass": "equity",
+      "physicalConstraint": 1,
+      "constraintType": null,
+      "aiContribution": 0.5,
+      "timeToRealize": "near",
+      "moatCapture": 4,
+      "moatLocks": [
+        "userHabit",
+        "integration",
+        "liability"
+      ],
+      "price": 188.41,
+      "marketCap": 192,
+      "pricingScore": 4.4,
+      "rawPricingScore": 4.4,
+      "pricingApplicable": true,
+      "pricingInapplicableReason": null,
+      "cyclicalTrap": null,
+      "pegRatio": 6.24,
+      "pegBand": "overpriced",
+      "pegStale": false,
+      "pegStaleDetail": null,
+      "pegSelf": 4.43,
+      "pegSelfBasis": "+1y",
+      "pegSelfUnavailableReason": null,
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "pricingScore 4.4 > 2.8 (entry threshold)"
+      ],
+      "funnelWarnings": [],
+      "previousFunnelPass": false,
+      "inHysteresisBand": false,
+      "realizationCheck": {
+        "estimateRevision": {
+          "horizon": "+1y",
+          "basis": "eps",
+          "current": 1.57,
+          "ago90d": 1.54,
+          "meaningful": true,
+          "changePct": 1.7,
+          "direction": "up"
+        },
+        "surpriseHitRate": {
+          "quarters": 4,
+          "beats": 4,
+          "hitRate": 1,
+          "avgSurprisePct": 4.7
+        }
+      },
+      "deratingSignature": {
+        "signature": "none",
+        "drawdownFrom52wHigh": -17.2,
+        "change52w": 82.6,
+        "estimatesRising": true,
+        "delivering": true,
+        "note": null
+      },
+      "components": {
+        "forwardPE": {
+          "value": 120.20237,
+          "benchmark": 63.9,
+          "score": 5
+        },
+        "evRevenue": {
+          "value": 37.39,
+          "benchmark": 21,
+          "score": 5
+        },
+        "analystUpside": {
+          "targetPrice": 210.535,
+          "currentPrice": 188.41,
+          "upside": 11.7,
+          "score": 2.5
+        },
+        "momentum6m": {
+          "ticker6m": 107.4,
+          "spy6m": 10.4,
+          "relative": 97.1,
+          "score": 5
+        }
+      },
+      "dataQuality": "good",
+      "analystRecommendMean": 1.69811,
+      "numberOfAnalysts": 50,
+      "fetchedAt": "2026-08-25T15:24:43.625Z"
+    },
+    {
+      "symbol": "RNDR",
+      "layer": "L_DCOMP",
+      "assetClass": "crypto",
+      "moatCapture": 2,
+      "physicalConstraint": 3,
+      "aiContribution": 0.65,
+      "timeToRealize": "near",
+      "price": 1.51,
+      "marketCap": 1,
+      "pricingScore": 2.3,
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "defensibility: PC=3<4 AND moatCapture=2<4"
+      ],
+      "funnelWarnings": [],
+      "components": {
+        "momentum6m": {
+          "ownReturn": -0.6,
+          "ethReturn": 22.1,
+          "relReturn": -22.7,
+          "score": 2.3
+        }
+      },
+      "dataQuality": "minimal",
+      "analystRecommendMean": null,
+      "numberOfAnalysts": null,
+      "cryptoMetrics": {
+        "tvlUSD": null,
+        "annualRevenueUSD": null,
+        "volume24hUSD": 72,
+        "priceChange6mPct": -0.6
+      },
+      "fetchedAt": "2026-08-25T15:27:34.216Z"
+    },
+    {
+      "symbol": "TAO",
+      "layer": "L_DCOMP",
+      "assetClass": "crypto",
+      "moatCapture": 2,
+      "physicalConstraint": 2,
+      "aiContribution": 0.9,
+      "timeToRealize": "mid",
+      "price": 234.66,
+      "marketCap": 2,
+      "pricingScore": 3,
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "defensibility: PC=2<4 AND moatCapture=2<4",
+        "pricing=3>2.8 (entry)"
+      ],
+      "funnelWarnings": [
+        "pricing-hysteresis-band: 3 sits in 2.8-3.2; state held at FAIL from prior session — not a fresh signal"
+      ],
+      "components": {
+        "momentum6m": {
+          "ownReturn": 23.6,
+          "ethReturn": 22.1,
+          "relReturn": 1.5,
+          "score": 3
+        }
+      },
+      "dataQuality": "minimal",
+      "analystRecommendMean": null,
+      "numberOfAnalysts": null,
+      "cryptoMetrics": {
+        "tvlUSD": null,
+        "annualRevenueUSD": null,
+        "volume24hUSD": 207,
+        "priceChange6mPct": 23.6
+      },
+      "fetchedAt": "2026-08-25T15:27:34.216Z"
+    },
+    {
+      "symbol": "FIL",
+      "layer": "L_DCOMP",
+      "assetClass": "crypto",
+      "moatCapture": 2,
+      "physicalConstraint": 3,
+      "aiContribution": 0.3,
+      "timeToRealize": "mid",
+      "price": 0.730571,
+      "marketCap": 1,
+      "pricingScore": 2.22,
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "defensibility: PC=3<4 AND moatCapture=2<4"
+      ],
+      "funnelWarnings": [],
+      "components": {
+        "pRev": {
+          "value": 443,
+          "benchmark": 443,
+          "score": 3
+        },
+        "momentum6m": {
+          "ownReturn": -33.1,
+          "ethReturn": 22.1,
+          "relReturn": -55.2,
+          "score": 1.3
+        }
+      },
+      "dataQuality": "partial",
+      "analystRecommendMean": null,
+      "numberOfAnalysts": null,
+      "cryptoMetrics": {
+        "tvlUSD": 0,
+        "annualRevenueUSD": 1,
+        "volume24hUSD": 82,
+        "priceChange6mPct": -33.1
+      },
+      "fetchedAt": "2026-08-25T15:27:34.216Z"
+    },
+    {
+      "symbol": "LINK",
+      "layer": "L_DCOMP",
+      "assetClass": "crypto",
+      "moatCapture": 4,
+      "physicalConstraint": 4,
+      "aiContribution": 0.35,
+      "timeToRealize": "near",
+      "price": 11.57,
+      "marketCap": 9,
+      "pricingScore": 2.62,
+      "funnelPass": true,
+      "funnelFailReasons": [],
+      "funnelWarnings": [],
+      "components": {
+        "pRev": {
+          "value": 149,
+          "benchmark": 443,
+          "score": 2
+        },
+        "pTvl": {
+          "value": 3.1,
+          "benchmark": 3.1,
+          "score": 3
+        },
+        "momentum6m": {
+          "ownReturn": 17.9,
+          "ethReturn": 22.1,
+          "relReturn": -4.2,
+          "score": 2.9
+        }
+      },
+      "dataQuality": "full",
+      "analystRecommendMean": null,
+      "numberOfAnalysts": null,
+      "cryptoMetrics": {
+        "tvlUSD": 2794,
+        "annualRevenueUSD": 58,
+        "volume24hUSD": 484,
+        "priceChange6mPct": 17.9
+      },
+      "fetchedAt": "2026-08-25T15:27:34.216Z"
+    },
+    {
+      "symbol": "ETH",
+      "layer": "L_DCOMP",
+      "assetClass": "crypto",
+      "moatCapture": 4,
+      "physicalConstraint": 4,
+      "aiContribution": 0.2,
+      "timeToRealize": "near",
+      "price": 2473.71,
+      "marketCap": 299,
+      "pricingScore": 4.08,
+      "funnelPass": false,
+      "funnelFailReasons": [
+        "AI=20%<30%",
+        "pricing=4.08>2.8 (entry)"
+      ],
+      "funnelWarnings": [],
+      "components": {
+        "pRev": {
+          "value": 2399,
+          "benchmark": 443,
+          "score": 5
+        },
+        "momentum6m": {
+          "ownReturn": 21.9,
+          "ethReturn": 22.1,
+          "relReturn": 0,
+          "score": 3
+        }
+      },
+      "dataQuality": "partial",
+      "analystRecommendMean": null,
+      "numberOfAnalysts": null,
+      "cryptoMetrics": {
+        "tvlUSD": 0,
+        "annualRevenueUSD": 125,
+        "volume24hUSD": 17561,
+        "priceChange6mPct": 21.9
+      },
+      "fetchedAt": "2026-08-25T15:27:34.216Z"
+    }
+  ]
+}
