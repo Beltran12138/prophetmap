@@ -4,6 +4,47 @@ All notable universe / layers / framework changes, dated.
 
 ---
 
+## 2026-08-25 — v2.9.13: key-person dependency has no home in the schema
+
+`GOVERNANCE.md` Gap #14 only. **No file added, no ticker edited, no field created, no scoring change.** `funnelPass` cannot move.
+
+### What prompted it
+
+A Tom Lee interview (2026-08-16) arguing that founder vision has become a core pricing factor in the AI era — AI copies technology, not direction — with Robinhood held substantially *because of* Vlad Tenev, "not simply on valuation."
+
+Read under `vc_pitch_source_bias`, Robinhood is the shallow book. **Lee chairs BitMine, the largest ETH treasury company**, whose model requires a share-price premium to NAV — and the support for that premium is the claim that a star principal is itself priceable. The pitch defends his own valuation mechanism, not just a position.
+
+**The claim was rejected and its inverse adopted.** Three reasons, any one sufficient:
+
+1. **Unfalsifiable by construction** — up is vision vindicated, down is the market not yet understanding, and "*truly* top-tier founder" resolves after the fact. His exemplars (Altman, Anthropic's founders, Musk) are all selected after winning; the 2021 roster in identical language held SBF, Do Kwon, Neumann, Holmes.
+2. **Universally observable, therefore not alpha** — unless one argues it is *systematically mispriced*, which the pitch never attempts.
+3. **"Not simply on valuation"** is not a pricing factor. It is a substitute for pricing.
+
+Inverted, it becomes testable: **not "how much is the vision worth" but "if this person left tomorrow, how many falsifier lines need rewriting immediately."**
+
+### What the scan found
+
+Across all 87 tickers' `thesis` / `thesisFalsification` / `moatFalsification` / `_note`:
+
+| | |
+|---|---:|
+| explicit person names | **3** (`SPCX` Musk · `OKLO` Altman · `TSLA` Musk) |
+| role-word hits (`founder`/`CEO`/`leadership`/`succession`) | 7 |
+| ...of which true positives | **0** — "process leadership", "thermal management", "Macquarie Asset Management", and three uses of "management" meaning *the disclosing party* |
+| **key-person risk acknowledged as a risk** | **1 of 87** |
+
+The three name entries use the concept three incompatible ways: `OKLO` F4 has the right form (negative, event-driven) but lacks the `MEASURE:`/`CHECK:` discipline of `GLW` F6/F7; `TSLA`'s note already states the principle — *"Musk admiration is not a thesis"* — but was never promoted to a rule; and `SPCX` carries a founder's promotional quote as evidence for the forward value-driver **undiscounted**, while `GLW` F7 explicitly discounts a CEO claim as *"a report-good source on exactly the contested point."* **The v2.6.0 source-bias rule exists; its ticker-level application is inconsistent.**
+
+Load-bearing omissions: **`PLTR`** (mc=5, three falsifiers on budget/competitor/ARR, none on Karp) and **`META`**, where the thesis rests on the Llama open-source strategy — a single-person decision under dual-class control — while F2 tests *ecosystem failure*. **Closing the weights requires no ecosystem failure. The falsifier tests the wrong variable.**
+
+### Gap #14 — proposed, not implemented
+
+One enum, `keyPersonRisk: none | operational | thesis-load-bearing`, assigned by the counterfactual rather than by any judgement of the person. **No gate reads it; zero blast radius**, same shape as Gap #12's `inefficiencyType`. `thesis-load-bearing` anchors to a public binary fact — **dual-class or super-voting control** — so the field has something outside the analyst's opinion holding it in place. Assignment belongs in a quarterly review, one ticker at a time, quoting `thesis` text as evidence.
+
+**Explicitly not doing:** any positive/credit field for founder quality, and any contact with `moatCapture`, `physicalConstraint`, or PASS/FAIL state.
+
+---
+
 ## 2026-08-17 — v2.9.12: gate A was never measurable · conditions frozen, clock restarted
 
 Two new files (`data/ab-track/frozen-2026-08-17.json`, `scripts/ab-track.js` — read-only) and `GOVERNANCE.md` Gap #13. **No ticker edited, no scoring field changed, no gate added.** `funnelPass` cannot move.
