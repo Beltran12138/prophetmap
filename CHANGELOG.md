@@ -4,7 +4,56 @@ All notable universe / layers / framework changes, dated.
 
 ---
 
-## 2026-08-25 — v2.9.13: key-person dependency has no home in the schema
+## 2026-08-29 — v2.9.14: the universe is built up the supply chain; the frame says capture moves down it
+
+`GOVERNANCE.md` Gap #15 only. **No ticker added, no field created, no scoring change.** `funnelPass` cannot move.
+
+### The gap
+
+§Conceptual Frame — Solvability × Capture (v2.6.0) states the mechanism: DeepMind solved protein folding, **open-sourced AlphaFold for free**, capture moved *downstream* to Isomorphic. **The universe is constructed in the opposite direction.**
+
+| | tickers |
+|---|---:|
+| upstream 19 layers (silicon → packaging → DC → power → materials) | **55** |
+| `L0` platform + `L1` "AI需求/应用层" | **6** |
+
+**`L1` is named for the application layer and contains no application-layer company** — its two members are `GOOG` (hyperscale platform) and `PLTR` (government systems-of-record). Of twelve pure application/SaaS names checked (`CRM · NOW · WDAY · SNOW · ADBE · TEAM · DDOG · MDB · HUBS · ZS · INTU`), **eleven are absent**; `PANW` is present under `L10` for its security identity.
+
+### The cost is measurable
+
+Six months, 2026-02-22 → 2026-08-28, equal-weight: SaaS basket **+50.9%** vs mega-cap AI **+14.4%** — a **36.5pp** spread, entirely outside what this engine can see.
+
+### A public, continuous proxy nothing here reads
+
+Comparing operating to free cash flow isolates who funds the buildout:
+
+| | P/OCF | P/FCF | ratio | FCF margin |
+|---|---:|---:|---:|---:|
+| GOOGL | 22.83 | 79.57 | **3.5×** | 11.95% |
+| MSFT | 20.84 | 56.92 | **2.7×** | 20.19% |
+| **CRM** | 13.38 | **13.90** | **1.04×** | **34.49%** |
+
+A name whose P/OCF and P/FCF nearly coincide is not paying the capex bill. **`capex` intensity is a cheap proxy for which side of the supply/capture divide a ticker sits on.**
+
+### What is new, stated narrowly
+
+The concept is **not** new — v2.6.0 argued it from AlphaFold, in the same drug-discovery domain, on 2026-06-26. New are: realised return data on both sides rather than a conceptual argument; the capex proxy; and the finding that **the universe's construction makes the frame's own central claim unobservable from inside the engine** — structurally the same defect as Gap #12.
+
+### Not fixed here
+
+Adding application-layer names is a Tier 3 ADD needing full four-dimension scoring, and **must not happen inside the frozen A/B window** (`frozen-2026-08-17.json` pins 87 names). Open item for a quarterly review after 2027-08-17 — or a deliberate decision that this engine screens the AI *supply chain* and cedes the application layer, which is a legitimate answer but should be **written down as a choice rather than left as an accident of construction**.
+
+### Provenance
+
+Surfaced by testing a widely-circulated X thread (2026-02-22) rather than rebutting it. Six months of record existed: the China-AI proxy basket returned **−19.0%** (the only negative group) and the thread's `short SaaS` leg lost **36.5pp**. Of its four grounds for "AI is a better business than SaaS," *marginal cost near zero* inverts AI and SaaS, and *data flywheel* contradicts the thread's own claim that cheap latecomers displace incumbents. Its one correct observation — capex suppresses FCF — drew the wrong conclusion twice (P/FCF is not comparable across margin structures; "capex will slow" assumes capex is optional rather than an operating cost that converts into depreciation). **The thread was mostly wrong and still located a real gap.**
+
+### Also in this release
+
+Date correction: v2.9.13 and Gap #14 were authored **2026-08-29** and initially stamped 2026-08-25 throughout. Corrected in `GOVERNANCE.md`, `CHANGELOG.md` and the mirrored memory files.
+
+---
+
+## 2026-08-29 — v2.9.13: key-person dependency has no home in the schema
 
 `GOVERNANCE.md` Gap #14 only. **No file added, no ticker edited, no field created, no scoring change.** `funnelPass` cannot move.
 

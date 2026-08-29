@@ -397,4 +397,45 @@ This is the honest state. It was previously masked: until v2.9.2 the peer-indepe
 
     **Proposed, not implemented** — same shape as Gap #12's `inefficiencyType`: one enum on the ticker, `keyPersonRisk: none | operational | thesis-load-bearing`, assigned by the counterfactual above rather than by any judgement of the person's ability. **No gate reads it; blast radius on the funnel is zero.** To keep it from decaying into the same qualitative mush it exists to replace, anchor `thesis-load-bearing` to a public, binary, checkable fact — **dual-class or super-voting control** — so the classification has something outside the analyst's opinion holding it in place. Assign at a quarterly review, one ticker at a time, quoting the `thesis` text as the evidence, per Gap #11's method. **Explicitly not doing:** adding any positive/credit field, or letting this touch `moatCapture`, `physicalConstraint`, or any PASS/FAIL state.
 
-> **Provenance (v2.9.13, 2026-08-25):** prompted by a Tom Lee interview (2026-08-16, via BlockBeats) arguing that in the AI era founder vision has become a core pricing factor — AI can copy technology but not direction — and that Fundstrat holds Robinhood substantially *because of* Vlad Tenev, "not simply on valuation or short-term data." Read under `vc_pitch_source_bias`, the Robinhood position is the shallow book. The deeper one: **Lee chairs BitMine, the largest ETH treasury company.** A DAT's model requires the share price to hold a premium to NAV, and that premium's support is precisely the claim that a star principal is itself priceable — **this is talking his own valuation mechanism, not merely his book.** His three exemplars (Altman, Anthropic's founders, Musk) are all selected after winning; the 2021 roster assembled with identical language included SBF, Do Kwon, Neumann and Holmes. **What was adopted here is the inversion, not the claim.** Per `inspired_loop` and `techpull_gate`: **documentation only — no field added, no ticker edited, no scoring change, no portfolio motion.**
+> **Provenance (v2.9.13, 2026-08-29):** prompted by a Tom Lee interview (2026-08-16, via BlockBeats) arguing that in the AI era founder vision has become a core pricing factor — AI can copy technology but not direction — and that Fundstrat holds Robinhood substantially *because of* Vlad Tenev, "not simply on valuation or short-term data." Read under `vc_pitch_source_bias`, the Robinhood position is the shallow book. The deeper one: **Lee chairs BitMine, the largest ETH treasury company.** A DAT's model requires the share price to hold a premium to NAV, and that premium's support is precisely the claim that a star principal is itself priceable — **this is talking his own valuation mechanism, not merely his book.** His three exemplars (Altman, Anthropic's founders, Musk) are all selected after winning; the 2021 roster assembled with identical language included SBF, Do Kwon, Neumann and Holmes. **What was adopted here is the inversion, not the claim.** Per `inspired_loop` and `techpull_gate`: **documentation only — no field added, no ticker edited, no scoring change, no portfolio motion.**
+
+15. **The universe is built up the supply chain while the frame says capture moves down it** (v2.9.14) — this is a **coverage** gap, not a field gap, and it contradicts a claim this document already makes. §Conceptual Frame — Solvability × Capture states the mechanism plainly: DeepMind solved protein folding, **open-sourced AlphaFold for free**, and capture moved *downstream* to Isomorphic. The universe is constructed in the opposite direction.
+
+    | | tickers |
+    |---|---:|
+    | upstream 19 layers (silicon, packaging, DC, power, materials) | **55** |
+    | `L0` platform + `L1` "AI需求/应用层" combined | **6** |
+
+    **`L1` is named for the application layer and contains no application-layer company.** Its two members are `GOOG` (hyperscale platform) and `PLTR` (government/enterprise systems-of-record). Checked against twelve pure application/SaaS names — `CRM · NOW · WDAY · SNOW · ADBE · TEAM · DDOG · MDB · HUBS · ZS · INTU` — **eleven are absent**; the twelfth, `PANW`, is present under `L10` for its security identity, not as a SaaS name.
+
+    **The cost is measurable, not hypothetical.** Over the six months 2026-02-22 → 2026-08-28, equal-weight:
+
+    | basket | return |
+    |---|---:|
+    | `CRM · ADBE · NOW · WDAY · SNOW` | **+50.9%** |
+    | `MSFT · GOOGL · META · NVDA · AMZN · AVGO` | +14.4% |
+    | **spread** | **+36.5pp** |
+
+    **A candidate mechanism, and it is observable in the financials rather than asserted:** the distribution layer holds the AI capex-race's only position that does not pay the bill. Comparing operating to free cash flow isolates it —
+
+    | | P/OCF | P/FCF | ratio | FCF margin |
+    |---|---:|---:|---:|---:|
+    | GOOGL | 22.83 | 79.57 | **3.5×** | 11.95% |
+    | MSFT | 20.84 | 56.92 | **2.7×** | 20.19% |
+    | **CRM** | 13.38 | **13.90** | **1.04×** | **34.49%** |
+
+    A name whose P/OCF and P/FCF nearly coincide is not funding the buildout. **`capex` intensity is therefore a cheap, public, continuous proxy for which side of the supply/capture divide a ticker sits on** — and no field in this repo reads it.
+
+    **Three instances across three unrelated industries** (the third is what makes this structural rather than an AI-cycle artifact):
+
+    | domain | supply / discovery side | capture side |
+    |---|---|---|
+    | drug discovery | XBI, ten-year CAGR/vol **0.36** | **LLY 1.09** — and its engine, GLP-1, is conventional pharmacology, not AI |
+    | semiconductors | fabless startups | **TSM / ASML** — already the frame's strongest quadrant |
+    | AI software | labs carrying the capex | **enterprise SaaS**, +36.5pp over six months |
+
+    **What is genuinely new here, stated narrowly.** The *concept* is not new — v2.6.0 argued it from AlphaFold, in this same drug-discovery domain, on 2026-06-26. New are (a) **realised return data** on both sides of the divide rather than a conceptual argument, (b) the **capex proxy** for locating the divide, and (c) the finding that **the universe's construction makes the frame's own central claim unobservable from inside the engine** — structurally the same defect as Gap #12, where gate B cannot generate the falsifier that would invalidate it.
+
+    **Deliberately not fixed here, and the reason matters.** Adding application-layer names is a Tier 3 ADD requiring full four-dimension scoring per ticker, and doing it in a commentary-driven commit is precisely the mid-flight edit that voided the first A-track window (Gap #13). It also **must not be done inside the frozen A/B window** — `data/ab-track/frozen-2026-08-17.json` pins an 87-name roster, and new tickers cannot join it. **Open item for a quarterly review after 2027-08-17**, or a deliberate decision that this engine screens the AI *supply chain* by design and cedes the application layer — which would be a legitimate answer, but should be written down as a choice rather than left as an accident of construction.
+
+> **Provenance (v2.9.14, 2026-08-29):** surfaced while testing a widely-circulated X thread (2026-02-22) claiming Chinese AI model exports are frictionless high-value trade, that AI is a better business than SaaS on four grounds, and — in the replies — that `long AI / short retail and legacy software` "must win." Six months of record were available, so it was measured rather than argued: the China-AI proxy basket returned **−19.0%** (the only negative group) and the short-SaaS leg lost **36.5pp**. Of the thread's four stated grounds, "marginal cost near zero" inverts AI and SaaS, and "data flywheel" contradicts the thread's own claim that cheap latecomers will displace incumbents — a flywheel that strong would forbid it. Its one correct observation, that capex suppresses FCF and compresses tech valuations, was confirmed via the P/OCF–P/FCF spread above but drew the wrong conclusion twice (P/FCF is not comparable across margin structures — the same construct error as comparing P/F across crypto categories; and "capex will slow" assumes capex is optional rather than a competitive operating cost that converts into depreciation). **The thread was mostly wrong and still located a real gap — because it was tested rather than rebutted.** Per `inspired_loop` and `techpull_gate`: **documentation only — no ticker added, no field created, no scoring change, no portfolio motion.**
