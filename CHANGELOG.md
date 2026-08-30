@@ -4,6 +4,63 @@ All notable universe / layers / framework changes, dated.
 
 ---
 
+## 2026-08-30 — v2.9.15: the engine prices rivals that want a return, and never asks how long being wrong costs
+
+**GOVERNANCE Gap #16 opened. No ticker added, no field created, no score changed, no portfolio motion.**
+
+### Prior-art check ran first and removed three of five candidate findings
+
+This is recorded because the check is the reason the entry is short.
+
+| candidate | status |
+|---|---|
+| "forward P/E is a cyclical trap" | ⛔ **already an implemented gate** — `cyclicalTrap` fires on the trailing/forward ratio; CHANGELOG v2.9.6 argued it more strongly: *"the 5.0 is arithmetically correct and economically empty — which is what a cyclical value trap is"* |
+| "MU is at a cycle top" | ⛔ **already pre-registered** — CYCLE-PEAK DETECTION opened 2026-07-29, carried in every `data/alerts/*.json` since. Its falsifier is better than the one proposed: *GM declines sequentially for two consecutive quarters from the 2026 peak **while HBM bit shipments still grow*** — which separates a pricing turn from a demand turn. First check FQ4 FY2026 |
+| "subsidy destroys scarcity" | ⛔ **already stated** in § Structurally Self-Referential Layers: *"When admission is subsidised, admission is not scarce, and the direction of the subsidy is the direction of the scarcity"* |
+| return-agnostic rival voids **effective scale** | ✅ new |
+| recovery asymmetry after the trap fires | ✅ new |
+
+### A — the rival's objective function is never stated
+
+Gap #11 lists **effective scale** as unhoused: *"a market whose total addressable economics support only a few profitable participants, so a **rational** entrant declines to enter even though nothing bars entry."* Every capture score in the book prices a return-maximising rival. A rival buying supply security is not deterred by the fourth-entrant-loses-money argument — **that outcome is the thing it is paying for.**
+
+Decade-long readout of the only natural experiment available:
+
+| | figure |
+|---|---|
+| 大基金 I + II + III registered capital | ¥987.2bn + ¥2,041.5bn + ¥3,440bn = **¥6,468.7bn** (≈ $90bn) |
+| CXMT DRAM share, Q2 2026 (revenue) | **7%**, #4 — vs Samsung 39% / SK hynix 26% / Micron 25% |
+| YMTC NAND share, Q1 2026 (revenue) | **13%**, from 8% a year earlier |
+| YMTC, Q2 2026 (bit shipments) | **#3**, ahead of Micron / Kioxia / SanDisk |
+| CXMT target | **30% by 2030**, source names *"access to advanced chipmaking tools"* as the binding constraint |
+
+**The generalisation:** the existing subsidy rule points at gatekeepers; it applies to competitors too, and nothing runs it in that direction. **The consequence inverts the usual reading** — under Solvability × Capture (*solved ≠ defensible*), supply-side solved means capture-side destroyed **for the winner as well**. "The programme succeeds" and "the programme's equities compound" are two propositions. Korea 2009 supports the second only because that price war *ended* and left three players; a participant with no return constraint is the condition under which it does not end.
+
+### B — `timeToRealize` measures when a thesis pays, not what being wrong costs
+
+Monthly closes, dot-com peak to reclaim (Yahoo, independently pulled 2026-08-30):
+
+| | 2000 peak | trough | drawdown | **years to reclaim** |
+|---|---:|---:|---:|---:|
+| MU | $81.50 | $7.99 | −90.2% | **20.5** |
+| SK hynix | ₩516,600 | ₩2,835 | **−99.5%** | **25.6** |
+| Samsung Elec | ₩7,380 | ₩2,810 | −61.9% | **1.8** |
+| NASDAQ Composite | 3,940 | 1,321 | −66.5% | 14.0 |
+
+**Same country, same industry, same crash, 14× spread between Samsung and SK hynix** — intra-sector dispersion exceeding sector-versus-index dispersion. Apparent determinant is revenue concentration in the cyclical product (Samsung carried handsets, foundry, displays; SK hynix was near-pure memory), and **no field measures it**.
+
+### Recorded, not promoted to tests
+
+- **Cycle-average denominator.** $1.05T market cap against five-year mean net income of **$12.5bn** (FY2022 $8.69bn · FY2023 **−$5.83bn** · FY2024 $0.78bn · FY2025 $8.54bn · TTM $50.47bn) = **83.8×**, vs trailing 21.0× and forward 6.49×. A minor addition to an argument v2.9.6 already makes by a different route.
+- **Peer divergence.** Korean peers topped **2026-05** and sat at −37.6% (SK hynix) / −23.1% (Samsung) on 2026-08-28 while MU was −3.9% off its 2026-03 high. **Explicitly not offered as a substitute for MU's registered falsifier** — swapping in a more convenient test mid-flight is what voided the first A-track window (Gap #13).
+- **FY2023 with the oligopoly fully in place:** revenue −49% YoY to $15.54bn, gross margin **2.67%**, operating margin **−23.00%**, net **−$5.83bn**, FCF **−$6.12bn**. Consolidation changed who goes bankrupt, not how much is lost.
+
+### Not fixed here
+
+A `returnAgnosticRival` or `cyclicalConcentration` field would re-rate members inside the frozen A/B window (`data/ab-track/frozen-2026-08-17.json`, 87 names) — barred until **2027-08-17**. Open item for the quarterly review after that date, **paired with Gap #11's effective-scale classification**, because B is the reason A is not sufficient.
+
+---
+
 ## 2026-08-29 — v2.9.14: the universe is built up the supply chain; the frame says capture moves down it
 
 `GOVERNANCE.md` Gap #15 only. **No ticker added, no field created, no scoring change.** `funnelPass` cannot move.

@@ -439,3 +439,53 @@ This is the honest state. It was previously masked: until v2.9.2 the peer-indepe
     **Deliberately not fixed here, and the reason matters.** Adding application-layer names is a Tier 3 ADD requiring full four-dimension scoring per ticker, and doing it in a commentary-driven commit is precisely the mid-flight edit that voided the first A-track window (Gap #13). It also **must not be done inside the frozen A/B window** — `data/ab-track/frozen-2026-08-17.json` pins an 87-name roster, and new tickers cannot join it. **Open item for a quarterly review after 2027-08-17**, or a deliberate decision that this engine screens the AI *supply chain* by design and cedes the application layer — which would be a legitimate answer, but should be written down as a choice rather than left as an accident of construction.
 
 > **Provenance (v2.9.14, 2026-08-29):** surfaced while testing a widely-circulated X thread (2026-02-22) claiming Chinese AI model exports are frictionless high-value trade, that AI is a better business than SaaS on four grounds, and — in the replies — that `long AI / short retail and legacy software` "must win." Six months of record were available, so it was measured rather than argued: the China-AI proxy basket returned **−19.0%** (the only negative group) and the short-SaaS leg lost **36.5pp**. Of the thread's four stated grounds, "marginal cost near zero" inverts AI and SaaS, and "data flywheel" contradicts the thread's own claim that cheap latecomers will displace incumbents — a flywheel that strong would forbid it. Its one correct observation, that capex suppresses FCF and compresses tech valuations, was confirmed via the P/OCF–P/FCF spread above but drew the wrong conclusion twice (P/FCF is not comparable across margin structures — the same construct error as comparing P/F across crypto categories; and "capex will slow" assumes capex is optional rather than a competitive operating cost that converts into depreciation). **The thread was mostly wrong and still located a real gap — because it was tested rather than rebutted.** Per `inspired_loop` and `techpull_gate`: **documentation only — no ticker added, no field created, no scoring change, no portfolio motion.**
+
+16. **Two unstated assumptions about competitors, and the first one voids the moat Gap #11 says is homeless** (v2.9.15)
+
+    **A — Every capture score assumes the rival wants a return on capital.**
+
+    Gap #11 names **effective scale** as one of two unhoused moats: *"a market whose total addressable economics support only a few profitable participants, so a **rational** entrant declines to enter even though nothing bars entry."*
+
+    The word carrying the load is **rational**. `moatCapture`, `moatLocks` and the supplier-trap flag all price a rival that maximises return on capital. **A rival optimising for supply security rather than return is not deterred by "the fourth entrant loses money" — that is the outcome it is willing to buy.** Measured readout of the one decade-long natural experiment available:
+
+    | | figure | source |
+    |---|---|---|
+    | 大基金 I + II + III registered capital | ¥987.2bn + ¥2,041.5bn + ¥3,440bn = **¥6,468.7bn** (≈ $90bn at ~7.2) | 21jingji / EEO |
+    | CXMT global DRAM share, Q2 2026 (**revenue**) | **7%**, #4 | Counterpoint |
+    | Samsung / SK hynix / Micron, same quarter | 39% / 26% / 25% | Counterpoint |
+    | YMTC global NAND share, Q1 2026 (**revenue**) | **13%**, up from 8% in Q1 2025 | Counterpoint |
+    | YMTC, Q2 2026 (**bit shipments**) | **#3**, ahead of Micron / Kioxia / SanDisk | Counterpoint |
+    | CXMT stated target | **30% by 2030**, explicitly *"bottlenecked by access to advanced chipmaking tools"* | Tom's Hardware |
+
+    **This is not the rule already recorded at § Structurally Self-Referential Layers.** That rule reads: when a *gatekeeper* subsidises admission, admission is not scarce. This one reads: when a *rival's capital* is subsidised, the industry's pricing power is not scarce. Same shape — **the direction of the subsidy is the direction of the scarcity** — different object. **The generalisation worth recording is that the subsidy rule applies to competitors, not only to gatekeepers**, and nothing in the book currently runs it in that direction.
+
+    ⭐ **The consequence inverts the conclusion people draw from it.** The Solvability × Capture frame already holds that *solved ≠ defensible* — AlphaFold was open-sourced and capture moved downstream. Applied to industrial policy the same logic reads: **supply-side solved = capture-side destroyed, for the winner too.** An entrant that does not need a return competes price to cost; the oligopoly that made memory investable after 2013 is the thing being dismantled. So "the state programme succeeds" and "the equities of that programme compound" are **two propositions, not one** — and the historical precedent usually cited for the first (Korea, 2009) supports the second only because that price war *ended* and left three players. A fourth participant with no return constraint is the condition under which it does not end.
+
+    **Where it would bite in this book:** any ticker whose defensibility rests on "only N players can be profitable here." Not scored, not surfaced, no field reads it.
+
+    **B — `cyclicalTrap` fires on the way in; nothing records the way out.**
+
+    `timeToRealize` measures how long until a thesis *pays*. **There is no field for how long capital is locked up if the thesis is wrong**, and the dispersion on that question is larger than the dispersion the engine does measure. Monthly closes, dot-com peak to reclaim (Yahoo, independently pulled 2026-08-30):
+
+    | | 2000 peak | trough | drawdown | **years to reclaim peak** |
+    |---|---:|---:|---:|---:|
+    | **MU** | $81.50 (2000-06) | $7.99 (2002-12) | −90.2% | **20.5** |
+    | **SK hynix** | ₩516,600 (2000-02) | ₩2,835 (2003-02) | **−99.5%** | **25.6** |
+    | **Samsung Elec** | ₩7,380 (2000-05) | ₩2,810 (2001-08) | −61.9% | **1.8** |
+    | NASDAQ Composite | 3,940 (1999-11) | 1,321 (2002-11) | −66.5% | 14.0 |
+
+    **Same country, same industry, same crash, and a 14× spread in recovery time between Samsung and SK hynix.** The intra-sector dispersion exceeds the sector-versus-index dispersion. The apparent determinant is diversification away from the commodity — Samsung carried handsets, foundry and displays; SK hynix was near-pure memory — and **no field in this repo measures revenue concentration in the cyclical product.** A `cyclicalTrap` flag tells a holder the entry is expensive; it says nothing about whether being wrong costs two years or twenty-five.
+
+    **What is genuinely new here, stated narrowly.** Most of what prompted this entry was already covered and is **not** claimed as new:
+    - The cyclical value trap itself is an **implemented engine gate** (`cyclicalTrap`, on the trailing/forward ratio), and CHANGELOG v2.9.6 already made the argument in stronger form — *"the 5.0 is arithmetically correct and economically empty, which is what a cyclical value trap is."*
+    - MU's cycle top is already an **open pre-registered watchlist item** (CYCLE-PEAK DETECTION, opened 2026-07-29) whose falsifier is better than anything here: *gross margin declines sequentially for two consecutive quarters from the 2026 peak **while HBM bit shipments still grow*** — which separates a pricing turn from a demand turn. First check FQ4 FY2026. **Nothing in this entry substitutes for that test.**
+    - The subsidy → non-scarcity rule already exists in its gatekeeper form.
+
+    New are (a) the subsidy rule **extended from gatekeeper to competitor**, (b) the observation that **effective scale is specifically the moat a return-agnostic entrant voids** — so housing it per Gap #11 would not make it protective, which is a reason to house it *with* that caveat rather than a reason to skip it, and (c) **recovery asymmetry as a missing axis, with measured dispersion**.
+
+    **Two observations recorded without being promoted to tests.** (i) A cycle-average denominator: market cap $1.05T against five-year mean net income of **$12.5bn** (FY2022 $8.69bn · FY2023 **−$5.83bn** · FY2024 $0.78bn · FY2025 $8.54bn · TTM $50.47bn) is **83.8×**, against trailing 21.0× and forward 6.49× — a minor addition to an argument the repo already makes by a different route. (ii) The Korean peers topped in **2026-05** and sat at **−37.6%** (SK hynix) and **−23.1%** (Samsung) on 2026-08-28 while MU was **−3.9%** from its 2026-03 high. **This is a peer-price divergence, not the registered falsifier, and is explicitly not offered as a substitute for it** — swapping in a more convenient test mid-flight is the exact failure that voided the first A-track window (Gap #13).
+
+    **Deliberately not fixed here.** No field added, no ticker touched, no score changed. Adding a `returnAgnosticRival` or `cyclicalConcentration` dimension would re-rate members inside the frozen A/B window (`data/ab-track/frozen-2026-08-17.json`, 87 names) and is barred until **2027-08-17**. Open item for the quarterly review after that date, alongside Gap #11's effective-scale classification — the two should be done together, because the second is the reason the first is not sufficient.
+
+> **Provenance (v2.9.15, 2026-08-30):** surfaced while reading an X thread (2026-05-04/06) arguing that DRAM has no long-run fair price, that Korea's state-backed counter-cyclical capex killed Qimonda and Elpida, and therefore that Chinese state capital will take the memory market within roughly a decade. The history is sound and the mechanism is correctly identified; the prediction transfers the mechanism without its initial condition — **the 2009 rivals were unfunded, while the 2026 incumbents have just banked the largest cash generation in the industry's history** (MU TTM net income $50.5bn, FCF $26.2bn). The thread also lists three failure modes — cost curve, capital endurance, ecosystem path — and then uses only one, while the cited source for the 30%-by-2030 target names tool access as the binding constraint, which state capital does not relieve. Two internal contradictions were left unresolved by the thread itself: an oligopoly is invoked to argue the sector can no longer bleed, yet **MU's FY2023 shows 2.67% gross margin, −23.0% operating margin, −$5.83bn net and −$6.1bn FCF with that oligopoly fully in place**; and the accompanying ticker list contradicts the thesis, since the mechanism it describes destroys equity capture for the winner. Per `inspired_loop` and `techpull_gate`: **documentation only — no ticker added, no field created, no scoring change, no portfolio motion.** Prior-art check ran before drafting and removed three of the five candidate findings.
+
