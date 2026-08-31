@@ -4,6 +4,72 @@ All notable universe / layers / framework changes, dated.
 
 ---
 
+## 2026-08-31 — v2.9.16: a restriction on an input is not the same as a shortage of it, and nothing asks who the marginal buyer is
+
+**GOVERNANCE Gap #17 opened. One false observation withdrawn from Gap #16. No ticker added, no field created, no score changed, no portfolio motion.**
+
+### Correction first — v2.9.15's "peer divergence" was false and pointed the wrong way
+
+Re-pulled two-year Yahoo series while building a benchmark for something else. As of the same 2026-08-28 close:
+
+| | v2.9.15 recorded | actual |
+|---|---|---|
+| SK hynix top / drawdown | 2026-05 / −37.6% | **2026-06-22** / **−43.4%** |
+| Samsung top / drawdown | 2026-05 / −23.1% | **2026-06-18** / **−29.1%** |
+| MU top / drawdown | 2026-03 / −3.9% | **2026-06-25** / **−23.1%** |
+
+**All three topped inside seven days; there is no divergence.** MU's drawdown is the shallowest, not absent, and MU has no 2026-03 high at all — its Q1 maximum was $524.60 on 2026-04-27, which the 08-28 close of $932.90 is **+77.8%** above. The −23.1% recorded as Samsung's is MU's; −3.9% and "2026-03" do not reproduce from any series.
+
+The entry was flagged when written as *"explicitly not offered as a substitute for the registered falsifier"*, so **nothing downstream consumed it** — MU's CYCLE-PEAK DETECTION (opened 2026-07-29, gross-margin falsifier, first check FQ4 FY2026) is untouched and remains the only registered test. But the withdrawn observation implied *MU is late to roll over*, and the record says the opposite.
+
+**Not doing the tempting thing:** MU is now −23.1% from its June high while the registered falsifier has not fired. Substituting price action for the registered test is exactly the mid-flight swap that voided the first A-track window (Gap #13). Recorded as context, not as the test firing.
+
+### Prior-art check removed four of six candidates; a fifth was killed by data
+
+| candidate | status |
+|---|---|
+| interested source → narrative, not chokepoint | ⛔ **already stated** — §ADD: *"Company IR self-report or press release does NOT count"* |
+| commodity moat leaks to spot pricing | ⛔ **already stated** — §Solvability × Capture, the FCX/EOG/AA cell |
+| subsidised rival destroys scarcity | ⛔ **Gap #16 A**, written one day earlier — the +1,000 t/yr add is an instance, not a rule |
+| "has new technology reduced physical scarcity?" | ⛔ **already a Tier 2 criterion** |
+| tungsten equities = memory beta in an upstream label | ⛔ **falsified by its own data** — see below |
+| export-control branch of the regulatory test | ✅ new |
+| demand-attribution check at intake | ✅ new |
+
+### A — the regulatory test only classifies permissions attached to the ticker
+
+§3 tests a rationed permission the ticker needs; §3a splits licensing into licensee/licensor. **A foreign government rationing an input the ticker consumes fits neither** — no queue exists and the restricting party is not a counterparty.
+
+Discriminator: **is the restriction aimed at the material, or at the location of the conversion step?** Test: *while the input is restricted, is downstream capacity being added anywhere?* If yes, supply has **moved**, not vanished.
+
+The prompting case answers itself — China restricted high-purity tungsten powder, two Japanese WF₆ producers (~1/4 of global supply) halted 2026-07-01, and **a Chinese producer announced +1,000 t/yr of WF₆.** That is onshoring of a value-added step, and it predicts a price window rather than a volume crisis.
+
+**Limitation, landed knowingly:** the universe has no materials or precursor ticker. A full-repo sweep for `tungsten|WF6|钨` returns one hit — an auto-ingested headline at `data/alerts/2026-05-19.json:1008`. This branch has nothing to apply to today.
+
+### B — `supplyChainEvidence` tests occupancy, never attribution
+
+A tungsten miner genuinely occupies the tungsten chokepoint. But **~2/3 of global tungsten demand is cemented carbide**, and semiconductors are a fraction of the remainder — so the price is set by manufacturing volumes and scrap recycling, both elastic in the direction the scarcity pitch denies. **AI is in the headline and is not the marginal buyer.**
+
+Test at intake: *before accepting "X is a bottleneck for AI", state what share of X's demand AI is.* Mirror of the FLNC/CATL question — that one asks who captures, this one asks whether the named demand sets the price.
+
+### Measured, and what it did to my own hypothesis
+
+Article window **2026-08-21 → 08-31**: Kanto Denka **−1.2%**, Central Glass **+1.0%**, 中钨高新 **−3.4%**, 章源钨业 **−2.2%**. Central Glass's 52-week high is **2026-08-14** — the strongest name in the sample is one of the two firms framed as casualties. The 07-01 halt is not identifiable in the cross-section: 06-25 → 07-31 Kanto Denka **−34.2%** vs SK hynix **−41.1%** and MU **−32.2%**.
+
+**Hypothesis killed:** tungsten equities as memory beta. 中钨高新/厦门钨业/SK hynix all topped **2026-06-22**, same day — but trailing-year daily log-return correlations are **0.25 / 0.28** to SK hynix and **0.18 / 0.20** to MU, against a **0.33** SK hynix—MU benchmark and **0.84** between the tungsten names. Shared risk turn, not shared cash-flow driver. *(Kept incidentally: Kanto Denka—SK hynix **0.52**, above the benchmark; Almonty—SOXX **0.40** vs Almonty—SK hynix **0.12**.)*
+
+**Equity prices are not evidence of physical availability.** No inventory figure appears anywhere in the source — the most decision-relevant number, absent.
+
+### Registered falsifier
+
+A memory maker states in a filing or on an earnings call that WF₆ availability constrained wafer output or capex (not "monitoring"); **or** WF₆ spot realises +70–90% while DRAM/NAND bit guidance is cut in the same quarter; **or** either Japanese producer discloses a material earnings impact from the halt. **None by 2027 FQ2 → price story with a scarcity headline.**
+
+### Not fixed here
+
+Both branches are intake/classification rules; enforcing either would re-rate members inside the frozen A/B window (`data/ab-track/frozen-2026-08-17.json`, 87 names) — barred until **2027-08-17**.
+
+---
+
 ## 2026-08-30 — v2.9.15: the engine prices rivals that want a return, and never asks how long being wrong costs
 
 **GOVERNANCE Gap #16 opened. No ticker added, no field created, no score changed, no portfolio motion.**
@@ -52,7 +118,7 @@ Monthly closes, dot-com peak to reclaim (Yahoo, independently pulled 2026-08-30)
 ### Recorded, not promoted to tests
 
 - **Cycle-average denominator.** $1.05T market cap against five-year mean net income of **$12.5bn** (FY2022 $8.69bn · FY2023 **−$5.83bn** · FY2024 $0.78bn · FY2025 $8.54bn · TTM $50.47bn) = **83.8×**, vs trailing 21.0× and forward 6.49×. A minor addition to an argument v2.9.6 already makes by a different route.
-- **Peer divergence.** Korean peers topped **2026-05** and sat at −37.6% (SK hynix) / −23.1% (Samsung) on 2026-08-28 while MU was −3.9% off its 2026-03 high. **Explicitly not offered as a substitute for MU's registered falsifier** — swapping in a more convenient test mid-flight is what voided the first A-track window (Gap #13).
+- **Peer divergence.** ~~Korean peers topped 2026-05 while MU had not yet rolled over.~~ **WITHDRAWN 2026-08-31 — false, and inverted in direction.** All three topped inside seven days (SK hynix **06-22**, Samsung **06-18**, MU **06-25**) and on 2026-08-28 sat at **−43.4% / −29.1% / −23.1%** — MU's drawdown was the *shallowest*, not absent. MU has no 2026-03 high (Q1 max **$524.60**, 2026-04-27; 08-28 close **$932.90** is **+77.8%** above it). See v2.9.16.
 - **FY2023 with the oligopoly fully in place:** revenue −49% YoY to $15.54bn, gross margin **2.67%**, operating margin **−23.00%**, net **−$5.83bn**, FCF **−$6.12bn**. Consolidation changed who goes bankrupt, not how much is lost.
 
 ### Not fixed here
