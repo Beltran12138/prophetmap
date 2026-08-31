@@ -4,6 +4,45 @@ All notable universe / layers / framework changes, dated.
 
 ---
 
+## 2026-08-31 — v2.9.17: the capex proxy cannot tell "downstream and not paying" from "upstream and refusing to expand"
+
+**Gap #15 addendum. No new gap, no ticker added, no field created, no score changed, no portfolio motion.**
+
+### A fourth domain instance for Gap #15
+
+| | capex / revenue | gross margin | in universe |
+|---|---:|---:|---|
+| Micron (DRAM/HBM, IDM) | **28.0%** TTM · 42.4% FY2025 | 72.6% | **yes** — `L6`, the only storage name |
+| Seagate (mass-capacity HDD) | **4.7%** FY2026 · **2.9%** FY2025 | 45.6% | no |
+| Western Digital (mass-capacity HDD) | **3.2%** FY2026 | 48.9% | no |
+
+**The engine holds the storage name that pays the buildout bill and omits the two that do not.**
+
+First-party, Seagate FQ4 FY2026 earnings call: **218 EB shipped, +34% Y/Y**, nearline **195 EB, +43%**, price per EB **+10%**, and *"in the face of sustained demand, Seagate is not adding disk drive unit manufacturing capacity"*, with nearline exabytes *"allocated into calendar 2028."* WDC: revenue +44% on *"strong exabyte growth and favorable pricing dynamics"*, price per TB "high teens."
+
+Decomposition closes against an independent figure: DC revenue +57% = volume +43% × price +9.8% vs the +10% reported. **Volume 79% of growth, price 21%.**
+
+### The caveat — and it is the point of this entry
+
+Gap #15 records capex intensity as *"a cheap, public, continuous proxy for which side of the supply/capture divide a ticker sits on."* **It is mechanism-blind.** Low intensity means either *downstream and not funding the buildout* (CRM) or *upstream and refusing to expand* (Seagate). Identical proxy reading, **opposite durability** — the first lasts as long as the layer structure, the second ends when capacity arrives or the duopoly breaks. A book that cannot separate them will hold the second believing it owns the first.
+
+### v2.9.10's rejection is corroborated by a fresh failure, and the failure was mine
+
+v2.9.10 tested four margin-capture formulations and concluded: *"gross margin conflates pricing power, cost structure and mix, and **the income statement alone cannot separate them**"* — with `price/volume decomposition calls TSM "83% price-driven"` as the worked counter-example, because TSM's COGS is mostly depreciation.
+
+That conclusion was read, quoted, and then **ignored** in this session. Annual COGS growth was used as a volume proxy across five names, producing Micron **+142% revenue on +10% COGS** and the inference that **volume was flat and the surge was ASP**. Primary operating data says the opposite: **capacity shipped grew 34–43% Y/Y.** COGS did not move because **cost per TB is falling fast** (HAMR; 3 TB → 4 TB per disk, which the CFO names as a profitability driver), not because volume was flat.
+
+**The method failed exactly where v2.9.10 predicted, and the right number was one search away in trade press that publishes exabytes shipped quarterly.** Recorded because the repo's own rejected-method list is only useful if a later reader can see it was re-tested and re-failed.
+
+### Source discipline applied to the same call
+
+- **Reported operating metrics** — 218 EB, +34% Y/Y, +10% per EB, "not adding capacity", CY2028 allocation. **Hard.**
+- **Attribution** — WDC's CEO: *"Agents generate data at every step of a workflow … we continue to view agentic AI as a structural and step function driver of capacity-oriented storage demand,"* and *"Physical AI accelerates the cycle further."* **Management narrative from the party selling the drives**, held to the same standard §ADD applies to IR self-report. Seagate's own framing is more restrained: AI demand *"builds on demand for traditional data-intensive applications, including video."*
+
+**The volume growth is a fact. Its attribution to AI is a claim by an interested party.** Both are recorded; only the first is treated as evidence.
+
+---
+
 ## 2026-08-31 — v2.9.16: a restriction on an input is not the same as a shortage of it, and nothing asks who the marginal buyer is
 
 **GOVERNANCE Gap #17 opened. One false observation withdrawn from Gap #16. No ticker added, no field created, no score changed, no portfolio motion.**

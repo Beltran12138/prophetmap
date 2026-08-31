@@ -438,6 +438,34 @@ This is the honest state. It was previously masked: until v2.9.2 the peer-indepe
 
     **Deliberately not fixed here, and the reason matters.** Adding application-layer names is a Tier 3 ADD requiring full four-dimension scoring per ticker, and doing it in a commentary-driven commit is precisely the mid-flight edit that voided the first A-track window (Gap #13). It also **must not be done inside the frozen A/B window** — `data/ab-track/frozen-2026-08-17.json` pins an 87-name roster, and new tickers cannot join it. **Open item for a quarterly review after 2027-08-17**, or a deliberate decision that this engine screens the AI *supply chain* by design and cedes the application layer — which would be a legitimate answer, but should be written down as a choice rather than left as an accident of construction.
 
+    **Addendum (v2.9.17, 2026-08-31) — a fourth domain instance, and a caveat this gap's own proxy needs.**
+
+    Mass-capacity storage. Measured capex intensity, most recent obtainable period (stockanalysis.com, pulled 2026-08-31):
+
+    | | capex / revenue | gross margin | in universe |
+    |---|---:|---:|---|
+    | **Micron** (DRAM/HBM, IDM) | **28.0%** TTM · 42.4% FY2025 | 72.6% | **yes** — `L6`, the only storage name |
+    | **Seagate** (mass-capacity HDD) | **4.7%** FY2026 · **2.9%** FY2025 | 45.6% | no |
+    | **Western Digital** (mass-capacity HDD) | **3.2%** FY2026 | 48.9% | no |
+
+    By this gap's own proxy, the engine holds the storage name that **pays** the buildout bill and omits the two that do not. Same construction bias, fourth industry.
+
+    First-party operating data behind it (Seagate FQ4 FY2026 earnings call via Blocks & Files 2026-07-30; WDC FQ4 FY2026 via the same, 2026-08-06):
+
+    | | |
+    |---|---|
+    | Seagate capacity shipped | **218 EB, +34% Y/Y**; nearline **195 EB, +43% Y/Y**; non-nearline −10% |
+    | Seagate price per EB | **+10% Y/Y**; an analyst read the September-quarter guide as implying ~20% |
+    | Seagate capacity policy | *"In the face of sustained demand, Seagate is not adding disk drive unit manufacturing capacity"* |
+    | Seagate forward book | *"the vast majority of our nearline exabytes are now allocated into calendar 2028"* |
+    | WDC | revenue **+44% Y/Y** on *"strong exabyte growth and favorable pricing dynamics"*; price per TB "high teens" |
+
+    The decomposition closes against an independently reported figure: Seagate data-centre revenue **+57%** = volume **+43%** × price **+9.8%**, against the **+10%** management reported. **Volume contributes 79% of the growth, price 21%.**
+
+    ⭐ **The caveat, and it lands on item (b) above.** `capex` intensity was recorded here as *"a cheap, public, continuous proxy for which side of the supply/capture divide a ticker sits on."* It is **mechanism-blind**. Low intensity can mean **downstream and not paying for the buildout** (CRM, P/OCF-to-P/FCF 1.04×) or **upstream and refusing to expand** (Seagate, a duopoly explicitly declining to add units while demand runs). Both print a high FCF margin; both read identically on the proxy; **their durability is opposite.** The first persists as long as the layer structure does. The second ends the quarter someone adds capacity or the duopoly breaks — and a book that cannot tell them apart will hold the second thinking it owns the first. **The proxy locates the divide but is silent on why a ticker sits on that side, and the reason is what dates it.**
+
+    **Recorded, not promoted.** Adding `STX`/`WDC` is a Tier 3 ADD barred inside the frozen A/B window (`data/ab-track/frozen-2026-08-17.json`, 87 names) until **2027-08-17** — the same bar this gap already carries for the application layer. No field added, no ticker touched, no score changed.
+
 > **Provenance (v2.9.14, 2026-08-29):** surfaced while testing a widely-circulated X thread (2026-02-22) claiming Chinese AI model exports are frictionless high-value trade, that AI is a better business than SaaS on four grounds, and — in the replies — that `long AI / short retail and legacy software` "must win." Six months of record were available, so it was measured rather than argued: the China-AI proxy basket returned **−19.0%** (the only negative group) and the short-SaaS leg lost **36.5pp**. Of the thread's four stated grounds, "marginal cost near zero" inverts AI and SaaS, and "data flywheel" contradicts the thread's own claim that cheap latecomers will displace incumbents — a flywheel that strong would forbid it. Its one correct observation, that capex suppresses FCF and compresses tech valuations, was confirmed via the P/OCF–P/FCF spread above but drew the wrong conclusion twice (P/FCF is not comparable across margin structures — the same construct error as comparing P/F across crypto categories; and "capex will slow" assumes capex is optional rather than a competitive operating cost that converts into depreciation). **The thread was mostly wrong and still located a real gap — because it was tested rather than rebutted.** Per `inspired_loop` and `techpull_gate`: **documentation only — no ticker added, no field created, no scoring change, no portfolio motion.**
 
 16. **Two unstated assumptions about competitors, and the first one voids the moat Gap #11 says is homeless** (v2.9.15)
