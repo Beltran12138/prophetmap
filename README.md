@@ -54,6 +54,16 @@ the **self-built-scoring** instance: the one where the rule is turned on its aut
 
 Cross-domain evidence → [`failure-families.md`](https://github.com/Beltran12138/decision-confidence/blob/main/docs/failure-families.md)
 
+**Since v2.9.18 the first row is no longer only a sibling — it is the instrument
+this repository is measured with.** `decision-confidence` states the rules;
+this repository is the case where they were turned on, published as
+[a case study](https://github.com/Beltran12138/decision-confidence#case-study-prophetmap)
+there. The two stay separate on purpose: the freeze's integrity check asks
+**this** repository's git history whether the frozen roster still has exactly
+one commit, so the anchor is the history itself. Merge the repositories, or
+retire this one, and the freeze ends — inside a lock its own author wrote and
+has to sit out.
+
 > **Not investment advice, and deliberately not a portfolio.** ProphetMap emits
 > screening signals, not position sizes ([`GOVERNANCE.md`](./GOVERNANCE.md) gap #5).
 > The funnel is an **entry** gate: a held name dropping out of the pass set is not a
