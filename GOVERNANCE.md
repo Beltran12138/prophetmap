@@ -373,6 +373,44 @@ This is the honest state. It was previously masked: until v2.9.2 the peer-indepe
 
 > **Provenance (v2.9.12, 2026-08-17):** surfaced while triaging a personal crypto book against this project — the question asked was whether a crypto line could be merged into ProphetMap. It cannot and need not: `RNDR/TAO/FIL/LINK/ETH` have been in the universe since 2026-05-06 with their own `update-crypto-valuations.js`, and a holdings review is a different instrument from an idea screen (that table lives outside this repo, at `~/crypto-portfolio/`). The transferable finding was methodological: **a falsifier needs two legs — a mechanism leg (does it behave like the thesis says) and a delivery leg (did it pay what the thesis implies)** — established on BTC, where the mechanism leg fired in 98.4% of rolling windows yet was far weaker evidence than the delivery leg (36-month return tied with gold at 2.2× the volatility). Applying the delivery leg to this engine is what exposed Gap #13. A scan of all **320** `thesisFalsification` entries found **23.4%** carry both a threshold and a deadline and **2.5% (8)** reference price/valuation at all — of which **7 are pricing entry gates, not thesis falsifiers**. *(That scan's mechanism/business-delivery split was discarded as unreliable: the regex missed 60.3% of entries because business metrics appear as "seat growth"/"ARPU"/"MAU"/"contracts". Only the valuation-term count is trustworthy, since that vocabulary is closed.)* Per `inspired_loop` and `techpull_gate`: **documentation and a read-only measurement script; no ticker's PASS/FAIL state moved, no scoring field changed, no portfolio motion.**
 
+> **Addendum (v2.9.18, 2026-09-03) — the freeze was a pre-registration, not an enforcement, and the gap it could not see was the one it was written to stop.**
+>
+> Gap #13 recorded one hole it knew about (`pricingScore`'s formula is not frozen). An audit of `scripts/ab-track.js` against `_meta.preRegisteredRules` found that hole is a special case of a larger one, and that **the rule most central to the freeze was the only rule the code never executed.**
+>
+> **Execution audit — 5 of 7 rules enforced, 1 partial, 1 empty:**
+>
+> | rule | enforced? | where |
+> |---|---|---|
+> | `membership` (read from that day's scores, never a later universe edit) | ✅ | `loadDays` reads only `data/scores/*.json` |
+> | `weighting` (equal) | ✅ | `basketReturns`, hard-coded |
+> | `holdingPeriod` (adjacent trading days only) | ✅ | `buildSegments`, `idx.get(d1)-idx.get(d0)===1` |
+> | `startPoint` (strictly after `frozenAt`) | ✅ | `loadDays((d) => d > freezeDate)` |
+> | `significance` (`\|t\|<2` reported, never omitted) | ✅ | `significance()` |
+> | `exitDoesNotRemove` | ⚠️ partial | unpriceable-drop is logged; "stays in the roster" is a side effect of `membership`, not a check |
+> | **`noReweighting`** | ❌ **not executed at all** | nothing compared the four pinned fields against `universe.json` |
+>
+> **Why `noReweighting` being empty is the serious one.** `membership` already blocks *retroactive* re-scoring — history is read from scores files that were written at the time. What it does not block is *forward* contamination: editing `moatCapture` today changes what **tomorrow's** scores file says about `funnelPass`, so the basket composition changes going forward and the returns still look clean. That is the exact defect the freeze was created to stop (39 in-window re-scorings), and the freeze recorded the correct values without ever comparing anything to them. **The `pricingScore` hole noted in Gap #13 is one instance of this; every scoring field is another.**
+>
+> **Three mechanisms added** (`scripts/ab-track.js`, first non-`.md` change in this gap's lineage):
+>
+> 1. **Integrity anchor — ask git, do not store a hash.** A digest written by the same process that can rewrite the file proves nothing. git already holds an external timestamped anchor: the freeze file must have **exactly one commit** and a clean worktree. Verified: `frozen-2026-08-17.json` @ `9c38e6d`, 1 commit, clean.
+> 2. **`noReweighting` enforced.** `physicalConstraint` / `moatCapture` / `aiContribution` / `timeToRealize` compared per roster member. Additions to `universe.json` are *not* violations (Gap #13 already permits them and excludes them from gate A); edits to a frozen member are.
+> 3. **Trial bookkeeping** — `data/ab-track/run-log.jsonl`, append-only, one line per run. Applying a deflated Sharpe ratio requires the number of trials, and the reason nobody supplies it is that nobody records it; self-reported counts are systematically low because a look one regretted does not feel like a trial. **Two numbers are reported and deliberately not collapsed into one**: `runs` (how often the result was looked at) and `distinctEnd` (how many genuinely different result sets existed). Which is "the" trial count is the reader's call — choosing it after seeing the returns is the error the freeze exists to prevent, so the script does not apply the correction itself.
+>
+> **Violations exit non-zero *and* are recorded.** The first implementation exited without logging — refusing the run while failing to record it, i.e. **enforcing the delete clause by breaking it**. The clause asks that a violated test be *recorded* as having failed to run.
+>
+> **Mutation-tested, per the discipline that a check which cannot fail is worse than no check** (it still occupies the "verified" slot). Breaking each protection in turn kills exactly its own check: `MSFT.moatCapture 3→4` → exit 1, `noReweighting violated` logged; an uncommitted edit to the freeze file → exit 1, `integrity` logged; unmodified → exit 0 with a full result row. Both mutations were reverted byte-for-byte against a pre-mutation copy.
+>
+> ⚠️ **The first run of the new check produced a false positive, and it was the failure family this repo documents.** `IONQ` and `RGTI` carry no `moatCapture` key in `universe.json` at all (the only two), while the frozen roster normalised that absence to `null`. A naive `JSON.stringify` comparison flagged both as reweighting violations — **a check that fires on how emptiness is spelled would be switched off within a day**. Fixed by collapsing `undefined ↔ null` only; a value going `3 → null` is still a violation, because that is removal, not spelling.
+>
+> **Scope stated plainly: this stops self-deception, not fraud.** Anyone willing to amend history can defeat all three. That is the correct scope — pre-registration in science defends against the author fooling himself, and a reader who needs more than that has the git log.
+>
+> ⚠️ **Recorded rather than cleaned:** the first four lines of `run-log.jsonl` include two mutation-test failures from building this. They are **not** removed and no `ignore` field was added, because a log with an exemption field is a log with an escape hatch, and the exemption would be used. The provenance is written here instead — **external note over internal exemption**.
+>
+> ⚠️ **Unrelated finding, worth knowing before the next commit:** `core.autocrlf=true` while `data/universe.json` is stored LF in the worktree. `git status` reported clean via its stat cache without ever comparing content; once touched, `git checkout --` rewrote all **3318** line endings to CRLF (281,769 → 285,087 bytes) with **zero content diff**. A future `git` operation will silently do the same and produce a whole-file diff that hides any real change inside it. Not fixed here — it changes no measurement and the fix is a repo-wide decision.
+>
+> **Still not fixed, and now named precisely:** the `pricingScore` *formula* remains unfrozen. Enforcing it needs a version lock on the engine, not a field comparison, and that is out of scope for a governance commit. **No ticker's PASS/FAIL state moved, no scoring field changed, no portfolio motion.**
+
 14. **Key-person dependency is not a dimension, and the one entry that treats it correctly is unreplicated** (v2.9.13) — scanning all **87** tickers' `thesis` + `thesisFalsification` + `moatFalsification` + `_note`:
 
     - **Explicit person names: 3.** `SPCX` (Musk), `OKLO` (Altman), `TSLA` (Musk).

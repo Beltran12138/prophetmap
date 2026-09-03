@@ -4,6 +4,69 @@ All notable universe / layers / framework changes, dated.
 
 ---
 
+## 2026-09-03 — v2.9.18: the freeze was a pre-registration, not an enforcement — and the rule it could not check was the one it exists for
+
+**Gap #13 addendum. No gap added, no ticker added, no field created, no score changed, no portfolio motion.**
+
+⚠️ **First entry in this lineage to change a non-`.md` file.** Every prior governance commit was documentation plus, at most, a read-only script. This one adds enforcement to `scripts/ab-track.js` and creates `data/ab-track/run-log.jsonl`. Stated up front because "documentation only" was a real constraint and this breaks it deliberately: a rule nothing checks is not a constraint, and seven pre-registered rules had been sitting in a JSON file for 17 days with one of them unexecuted.
+
+### Execution audit of `_meta.preRegisteredRules` — 5 enforced, 1 partial, 1 empty
+
+`membership` · `weighting` · `holdingPeriod` · `startPoint` · `significance` are all executed by the code. `exitDoesNotRemove` is partial. **`noReweighting` was not executed at all** — nothing ever compared `physicalConstraint`/`moatCapture`/`aiContribution`/`timeToRealize` against the frozen roster.
+
+**Why that one matters most.** `membership` blocks *retroactive* re-scoring, because history is read from scores files written at the time. It does not block *forward* contamination: editing `moatCapture` today changes what **tomorrow's** scores file says about `funnelPass`. The basket composition drifts going forward and the returns still look clean. **That is the 39-in-window-re-scorings defect the freeze was written to stop, and the freeze recorded the right values without ever comparing anything to them.** The `pricingScore` hole named in Gap #13 is one instance of this, not the whole of it.
+
+### Three mechanisms
+
+| | mechanism | design note |
+|---|---|---|
+| 1 | **Integrity anchor** | **Ask git, do not store a hash.** A digest written by the process that can rewrite the file proves nothing. The freeze must have exactly one commit and a clean worktree. Verified: `frozen-2026-08-17.json` @ `9c38e6d` |
+| 2 | **`noReweighting` enforced** | four pinned fields × 87 roster members. Additions to `universe.json` are not violations; edits to a frozen member are |
+| 3 | **Trial bookkeeping** | `run-log.jsonl`, append-only. DSR needs a trial count; nobody supplies one because nobody records one, and self-reports run low — a look you regretted does not feel like a trial |
+
+**`runs` and `distinctEnd` are reported separately and deliberately not collapsed.** Ten runs on one day is ten looks and one observation. Which is "the" trial count is the reader's call; the script does not apply the correction itself, because choosing the trial definition after seeing the returns is the error the freeze exists to prevent.
+
+### Violations now exit non-zero **and** are recorded
+
+The first implementation exited without logging — **enforcing the delete clause by breaking it.** The clause asks that a violated test be *recorded* as having failed to run.
+
+### Mutation-tested
+
+Breaking each protection kills exactly its own check. `MSFT.moatCapture 3→4` → exit 1, `noReweighting violated` logged. Uncommitted edit to the freeze → exit 1, `integrity` logged. Unmodified → exit 0 with a full result row. Both mutations reverted byte-for-byte against a pre-mutation copy.
+
+### ⚠️ The new check's first run was a false positive, from the family this repo documents
+
+`IONQ` and `RGTI` carry no `moatCapture` key in `universe.json` (the only two of 87); the frozen roster normalised that absence to `null`. A `JSON.stringify` comparison flagged both as violations. **A check that fires on how emptiness is spelled gets switched off within a day.** Fixed by collapsing `undefined ↔ null` only — `3 → null` remains a violation, because that is removal, not spelling.
+
+### Scope, stated rather than implied
+
+**This stops self-deception, not fraud.** Anyone willing to amend history defeats all three mechanisms. That is the correct scope: pre-registration defends against the author fooling himself, and a reader who needs more has the git log.
+
+⚠️ **Not cleaned:** `run-log.jsonl`'s first lines include two mutation-test failures from building this. No `ignore` field was added — **a log with an exemption field is a log with an escape hatch, and the exemption would get used.** Provenance is written in GOVERNANCE.md instead.
+
+⚠️ **Unrelated, found while reverting:** `core.autocrlf=true` while `data/universe.json` is LF in the worktree. `git status` reported clean from its stat cache without comparing content; once touched, `git checkout --` rewrote **3318** line endings (281,769 → 285,087 bytes) with **zero content diff**. A future git operation will do the same silently and produce a whole-file diff that hides real changes inside it. **Not fixed — it changes no measurement, and the fix is a repo-wide decision.**
+
+### Current reading (9 adjacent segments, n=9 — reported because omitting it is the habit this file exists to break)
+
+| basket | cum | ann/vol |
+|---|---:|---:|
+| pass-set | **−2.45%** | −1.63 |
+| FAIL-set | −0.41% | −0.45 |
+| all-universe | −0.95% | −0.91 |
+| SMH | −0.54% | −0.49 |
+
+pass-set minus all-universe **−0.165%/day, t = −1.14, n = 9, NOT SIGNIFICANT**. The pass-set is the worst of the four baskets over this span. **Nine segments settle nothing in either direction**, and that sentence is the same one that would be here if the sign were positive. Window runs to 2027-08-17.
+
+### ⚠️ A fourth gap, found by this entry's own first draft
+
+The paragraph above originally read `n=7` with a positive pass-set, computed while the local checkout was **three scoring days behind origin** (`2026-08-31`, `09-01`, `09-02` existed only on the remote). Same script, same freeze, same rules — **a different answer, because the data the tool could see was not the data that existed.**
+
+`ab-track.js` verifies the freeze against git and the roster against `universe.json`, and has **no check at all that `data/scores/` is current with the remote.** It cannot tell "the window has 9 segments" from "the window has 9 segments *here*". That is the availability failure this project documents, arriving one layer above where it was being looked for: not a missing field inside a record, but a missing record inside a directory.
+
+**Recorded, not fixed** — the fix is one `git fetch` plus a count comparison, but it belongs with a decision about whether this script may touch the network for anything other than prices, and that is a separate call.
+
+---
+
 ## 2026-08-31 — v2.9.17: the capex proxy cannot tell "downstream and not paying" from "upstream and refusing to expand"
 
 **Gap #15 addendum. No new gap, no ticker added, no field created, no score changed, no portfolio motion.**

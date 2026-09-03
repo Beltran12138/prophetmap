@@ -25,10 +25,25 @@
 
 const fs = require('fs');
 const path = require('path');
+const { execFileSync } = require('child_process');
 
 const ROOT = path.join(__dirname, '..');
 const SCORES = path.join(ROOT, 'data', 'scores');
 const ABDIR = path.join(ROOT, 'data', 'ab-track');
+const RUNLOG = path.join(ABDIR, 'run-log.jsonl');
+
+/**
+ * Fields the freeze pins. `_meta.preRegisteredRules.noReweighting` promises these
+ * are frozen at the roster values — but until 2026-09-03 nothing checked it, and
+ * the promise sat in a JSON file that any edit could contradict silently.
+ *
+ * Why these four and not the whole record: they are the inputs to funnelPass.
+ * Editing them does not rewrite history (membership is read from that day's
+ * scores file), it changes what TOMORROW's scores file will say — forward
+ * contamination, not retroactive. That is the leak the freeze was written to
+ * stop and the one it could not see.
+ */
+const PINNED_FIELDS = ['physicalConstraint', 'moatCapture', 'aiContribution', 'timeToRealize'];
 
 // ---------------------------------------------------------------- helpers
 
@@ -50,6 +65,137 @@ function loadFrozen() {
     console.log(`  Using ${f}. Repeated re-freezing invalidates the test — see _meta.deleteClause.\n`);
   }
   return { file: f, data: readJSON(path.join(ABDIR, f)) };
+}
+
+// ------------------------------------------------- enforcement (added 2026-09-03)
+//
+// Before this block the freeze was a pre-registration, not an enforcement: five of
+// the seven preRegisteredRules were executed by the code, `noReweighting` was not
+// executed at all, and nothing detected an edit to the freeze file itself. The
+// purpose line said "Nothing in this file is edited after frozenAt" — a promise,
+// not a constraint. These three checks turn the promise into a constraint.
+//
+// What they can and cannot do, stated plainly: they stop self-deception, not
+// fraud. Anyone who wants to cheat can amend the history and re-run. That is the
+// correct scope — pre-registration in science defends against the author fooling
+// himself, and the reader who needs more than that has git.
+
+function git(args) {
+  return execFileSync('git', args, { cwd: ROOT, encoding: 'utf-8', stdio: ['ignore', 'pipe', 'pipe'] }).trim();
+}
+
+/**
+ * Integrity anchor. No hash is stored anywhere, deliberately: a hash written by
+ * the same process that can rewrite the file proves nothing. git already holds an
+ * external, timestamped anchor, so the check is "ask git", not "compute a digest".
+ *
+ * A frozen file that has been committed more than once has been edited after
+ * frozenAt. Per _meta.deleteClause the correct response is to record that the test
+ * failed to run — so this exits non-zero rather than printing a warning. A warning
+ * would leave this a diagnosis; the whole point is that it is not one.
+ */
+function integrityCheck(frozenFile) {
+  const rel = path.posix.join('data', 'ab-track', frozenFile);
+  let commits, dirty;
+  try {
+    commits = git(['log', '--format=%H', '--', rel]).split('\n').filter(Boolean);
+    dirty = git(['status', '--porcelain', '--', rel]).length > 0;
+  } catch (e) {
+    // Not a git checkout, or git missing. Skip loudly: a check that silently does
+    // not run is worse than no check, because it still occupies the "verified" slot.
+    console.log('⚠ integrity: git unavailable — freeze integrity NOT verified this run.\n');
+    return { verified: false, commits: null, dirty: null };
+  }
+  if (commits.length === 0) {
+    console.log(`⚠ integrity: ${frozenFile} is not committed — nothing anchors it. NOT verified.\n`);
+    return { verified: false, commits: 0, dirty };
+  }
+  if (commits.length > 1 || dirty) {
+    const why = [
+      commits.length > 1 ? `${commits.length} commits touch it (expected exactly 1)` : null,
+      dirty ? 'uncommitted local modifications present' : null,
+    ].filter(Boolean).join('; ');
+    // Returned, not exited. The deleteClause asks that a violated test be RECORDED
+    // as having failed to run; the first version of this check exited here, which
+    // refused the run without recording it — enforcing the rule by breaking it.
+    return { verified: false, commits: commits.length, dirty, violation: why };
+  }
+  return { verified: true, commits: 1, dirty: false, sha: commits[0].slice(0, 7) };
+}
+
+/**
+ * noReweighting enforcement. The pre-existing drift block below compares the SET
+ * of symbols; this compares the VALUES of the four pinned fields for the symbols
+ * that are in both. Those are different leaks: a ticker leaving the universe is
+ * visible and already handled, a moatCapture quietly going 3 → 4 is not.
+ *
+ * Additions are not a violation — Gap #13 already allows them and excludes them
+ * from gate A. Only edits to a frozen roster member violate the rule.
+ */
+function scoreDrift(frozen) {
+  const universe = readJSON(path.join(ROOT, 'data', 'universe.json'));
+  const live = new Map(universe.tickers.map((t) => [t.symbol, t]));
+  const changed = [];
+  for (const r of frozen.data.roster) {
+    const t = live.get(r.symbol);
+    if (!t) continue; // handled by the exit/roster-drift report, not a reweighting
+    for (const f of PINNED_FIELDS) {
+      if (JSON.stringify(norm(t[f])) !== JSON.stringify(norm(r[f]))) {
+        changed.push(`${r.symbol}.${f}: frozen ${JSON.stringify(r[f])} → live ${JSON.stringify(t[f])}`);
+      }
+    }
+  }
+  return changed;
+}
+
+/**
+ * Absent key and explicit null mean the same thing in this schema, and the freeze
+ * normalised one into the other: IONQ and RGTI carry no `moatCapture` key in
+ * universe.json at all (they are the only two), while the frozen roster records
+ * `null`. The first version of this check compared JSON.stringify directly and
+ * flagged both as reweighting violations — a check that fires on a difference in
+ * how emptiness is spelled would have to be switched off within a day, and a check
+ * that gets switched off is worse than none.
+ *
+ * Deliberately narrow: only undefined↔null collapse. A field going 3 → null is
+ * still a violation, because that is a value being removed, not a spelling.
+ */
+function norm(v) {
+  return v === undefined || v === null ? null : v;
+}
+
+/**
+ * Trial bookkeeping. Applying a deflated Sharpe ratio needs the number of trials,
+ * and the reason nobody supplies it is that nobody records it — self-reported
+ * counts are systematically low because a look you regretted does not feel like a
+ * trial. So the count is taken here rather than asked for.
+ *
+ * Append-only by convention and by git: a deleted line shows up in the diff.
+ * `--diagnostic` runs are logged too but marked, because they are declared
+ * contaminated and produce no gate A evidence — counting them would inflate the
+ * trial count in the one direction that flatters the screen.
+ */
+function appendRun(entry) {
+  fs.appendFileSync(RUNLOG, JSON.stringify(entry) + '\n', 'utf-8');
+}
+
+function runLogSummary() {
+  if (!fs.existsSync(RUNLOG)) return null;
+  const rows = fs.readFileSync(RUNLOG, 'utf-8').split('\n').filter(Boolean).map((l) => {
+    try { return JSON.parse(l); } catch { return null; }
+  }).filter(Boolean);
+  const live = rows.filter((r) => r.mode === 'live');
+  // Two numbers, deliberately not collapsed into one: runs counts how often the
+  // result was looked at, distinctEnd counts how many genuinely different result
+  // sets existed. Ten runs on the same day is one observation and ten looks, and
+  // which of those is "the" trial count is the caller's call, not this script's.
+  const ok = live.filter((r) => !r.error);
+  return {
+    runs: ok.length,
+    distinctEnd: new Set(ok.map((r) => r.lastDay).filter(Boolean)).size,
+    diagnostic: rows.filter((r) => r.mode === 'diagnostic').length,
+    errors: live.length - ok.length,
+  };
 }
 
 function scoreDays() {
@@ -179,13 +325,32 @@ async function runLive(frozen) {
   console.log(`Window: ${w.start} → ${w.end}   mid-check ${w.midCheck} (does not execute)`);
   console.log(`Start rule: first scores file strictly after ${freezeDate}\n`);
 
+  // noReweighting, enforced. Checked BEFORE any price is fetched: a violated
+  // experiment should fail the same way whether or not Yahoo is reachable.
+  const drift = scoreDrift(frozen);
+  if (drift.length) {
+    console.error('=== gate A: TEST FAILED TO RUN ===\n');
+    console.error(`preRegisteredRules.noReweighting was violated — ${drift.length} pinned field(s) edited`);
+    console.error('on tickers that are in the frozen roster:\n');
+    for (const d of drift.slice(0, 20)) console.error(`  ${d}`);
+    if (drift.length > 20) console.error(`  … and ${drift.length - 20} more`);
+    console.error('\nThese fields feed funnelPass, so editing them changes which tickers enter');
+    console.error('the basket on FUTURE scoring days. The freeze cannot see that happen and');
+    console.error('the returns would look clean.\n');
+    console.error('Per _meta.deleteClause: record that the test failed to run. Do not re-freeze,');
+    console.error('and do not relax this check — the check is the experiment.');
+    // Thrown rather than exited so main() records it. See integrityCheck.
+    throw new Error(`noReweighting violated: ${drift.length} pinned field(s) edited (${drift.slice(0, 3).join('; ')}${drift.length > 3 ? '; …' : ''})`);
+  }
+  console.log(`noReweighting: ${PINNED_FIELDS.length} pinned fields × ${frozen.data.rosterN} roster tickers verified unchanged`);
+
   const days = loadDays((d) => d > freezeDate);
   if (days.length < 2) {
     console.log(`Observation days so far: ${days.length}`);
     console.log('\ngate A: NOT YET MEASURABLE — need at least 2 scoring days after the freeze.');
     console.log('This is the correct output today, not an error. The pre-freeze span is');
     console.log('deliberately excluded; run --diagnostic to see why.');
-    return;
+    return { segments: 0, note: 'not-yet-measurable' };
   }
 
   const smh = await yahooDaily(frozen.data._meta.benchmark);
@@ -193,7 +358,7 @@ async function runLive(frozen) {
   console.log(`Observation days: ${days.length}   adjacent segments: ${segs.length}   dropped (non-adjacent): ${dropped}`);
   if (!segs.length) {
     console.log('\ngate A: NOT YET MEASURABLE — no adjacent-trading-day segments yet.');
-    return;
+    return { segments: 0, note: 'no-adjacent-segments' };
   }
 
   // Membership is read from that day's scores file, never from a later universe.json edit.
@@ -220,6 +385,18 @@ async function runLive(frozen) {
   console.log(`                              added to universe: ${added.length ? added.join(', ') : 'none'}`);
   if (added.length) console.log('  ⚠ Newly added tickers are NOT in the frozen roster and must not be credited to gate A.');
   if (log.length) console.log(`\n  ${log.length} unpriceable-drop events (first 5):\n   ` + log.slice(0, 5).join('\n   '));
+
+  const t = pairedT(pass, all);
+  const ps = stats(pass), as = stats(all), bs = stats(bench);
+  return {
+    segments: segs.length,
+    lastDay: segs[segs.length - 1].d1,
+    passCumPct: ps && +ps.cumPct.toFixed(4),
+    allCumPct: as && +as.cumPct.toFixed(4),
+    benchCumPct: bs && +bs.cumPct.toFixed(4),
+    t: t && +t.t.toFixed(4),
+    n: t && t.n,
+  };
 }
 
 async function runDiagnostic(frozen) {
@@ -277,11 +454,66 @@ async function runDiagnostic(frozen) {
 (async () => {
   const frozen = loadFrozen();
   const diagnostic = process.argv.includes('--diagnostic');
-  try {
-    if (diagnostic) await runDiagnostic(frozen);
-    else await runLive(frozen);
-  } catch (e) {
-    console.error(`\nFailed: ${e.message}`);
+
+  // Integrity runs for BOTH modes: --diagnostic reads frozenAt and benchmark from
+  // the same file, so an edited freeze makes that output untrustworthy as well.
+  const integrity = integrityCheck(frozen.file);
+  if (integrity.violation) {
+    console.error('=== gate A: TEST FAILED TO RUN ===\n');
+    console.error(`The frozen conditions were modified after frozenAt: ${integrity.violation}.`);
+    console.error('\nPer _meta.deleteClause the correct action is to RECORD that the test');
+    console.error('failed to run — not to re-freeze, and not to relax this check.');
+    appendRun({
+      ts: new Date().toISOString(),
+      mode: diagnostic ? 'diagnostic' : 'live',
+      frozenFile: frozen.file,
+      integrityVerified: false,
+      error: `integrity: ${integrity.violation}`,
+    });
+    console.error('\n(recorded in run-log.jsonl)');
     process.exit(1);
+  }
+  if (integrity.verified) {
+    console.log(`Freeze integrity: ${frozen.file} @ ${integrity.sha}, 1 commit, clean — verified against git.`);
+  }
+
+  const prior = runLogSummary();
+  if (prior) {
+    console.log(`Prior runs on record: ${prior.runs} live (${prior.distinctEnd} distinct end-dates)` +
+                `, ${prior.diagnostic} diagnostic, ${prior.errors} failed.`);
+  }
+  console.log();
+
+  let result, failed = null;
+  try {
+    result = diagnostic ? await runDiagnostic(frozen) : await runLive(frozen);
+  } catch (e) {
+    failed = e.message;
+  }
+
+  appendRun({
+    ts: new Date().toISOString(),
+    mode: diagnostic ? 'diagnostic' : 'live',
+    frozenFile: frozen.file,
+    frozenSha: integrity.sha || null,
+    integrityVerified: integrity.verified,
+    ...(failed ? { error: failed } : result || {}),
+  });
+
+  if (failed) {
+    console.error(`\nFailed: ${failed}`);
+    console.error('(the attempt is still recorded in run-log.jsonl — a run that errored is');
+    console.error(' still a run, and omitting it would understate the trial count)');
+    process.exit(1);
+  }
+
+  if (!diagnostic) {
+    const now = runLogSummary();
+    console.log(`\n  trials on record: ${now.runs} live run(s), ${now.distinctEnd} distinct result set(s).`);
+    console.log('  When gate A is finally evaluated at 2027-08-17, the threshold must be raised');
+    console.log('  for the number of looks taken, not for the number remembered. That is what');
+    console.log('  this log is for; it deliberately does not apply the correction itself,');
+    console.log('  because choosing the trial definition after seeing the returns is the error');
+    console.log('  the freeze exists to prevent.');
   }
 })();
