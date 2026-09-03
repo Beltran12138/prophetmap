@@ -1,0 +1,20 @@
+# Line endings, pinned to the repository rather than to the machine.
+#
+# Why this file exists (v2.9.18, 2026-09-03). `core.autocrlf=true` was checking
+# out CRLF while `data/universe.json` sat in the worktree as LF. `git status`
+# reported the file clean for weeks — from its stat cache, without ever comparing
+# content. The first git operation to touch it rewrote all 3318 line endings
+# (281,769 -> 285,087 bytes) with a content diff of exactly zero, which is the
+# worst shape a diff can have: a whole-file change that any real edit could hide
+# inside.
+#
+# autocrlf is a per-machine git config and this repository is cloned on more than
+# one machine, so the setting drifts. .gitattributes travels with the repository.
+#
+# Verified before adding: the repository already stores LF (autocrlf=true converts
+# on commit), so this pins the worktree without rewriting a single blob and
+# without creating a normalisation commit. That matters specifically because
+# `data/ab-track/frozen-*.json` must keep exactly one commit — a repo-wide
+# renormalisation would have silently voided the gate A integrity check.
+
+* text=auto eol=lf

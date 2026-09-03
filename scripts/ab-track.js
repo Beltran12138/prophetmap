@@ -515,5 +515,9 @@ async function runDiagnostic(frozen) {
     console.log('  this log is for; it deliberately does not apply the correction itself,');
     console.log('  because choosing the trial definition after seeing the returns is the error');
     console.log('  the freeze exists to prevent.');
+    // The log is only an anchor once it is committed; an uncommitted line can be
+    // edited away without trace, which is the property the log exists to deny.
+    console.log('\n  → commit the log to anchor this run:');
+    console.log('      git add data/ab-track/run-log.jsonl && git commit -m "chore: ab-track run"');
   }
 })();

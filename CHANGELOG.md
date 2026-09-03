@@ -44,7 +44,13 @@ Breaking each protection kills exactly its own check. `MSFT.moatCapture 3→4` �
 
 ⚠️ **Not cleaned:** `run-log.jsonl`'s first lines include two mutation-test failures from building this. No `ignore` field was added — **a log with an exemption field is a log with an escape hatch, and the exemption would get used.** Provenance is written in GOVERNANCE.md instead.
 
-⚠️ **Unrelated, found while reverting:** `core.autocrlf=true` while `data/universe.json` is LF in the worktree. `git status` reported clean from its stat cache without comparing content; once touched, `git checkout --` rewrote **3318** line endings (281,769 → 285,087 bytes) with **zero content diff**. A future git operation will do the same silently and produce a whole-file diff that hides real changes inside it. **Not fixed — it changes no measurement, and the fix is a repo-wide decision.**
+### Line endings pinned to the repository — and what checking that safe revealed
+
+**Found while reverting the mutation tests:** `core.autocrlf=true` while `data/universe.json` sat LF in the worktree. `git status` reported clean **from its stat cache, without ever comparing content**; the first git operation to touch it rewrote **3318** line endings (281,769 → 285,087 bytes) with a content diff of **exactly zero** — the worst shape a diff can have, a whole-file change that any real edit could hide inside. autocrlf is per-machine and this repo is cloned on more than one, so the setting drifts; `.gitattributes` (`* text=auto eol=lf`) travels with the repository.
+
+⚠️⚠️ **Checking whether that was safe surfaced something worth more than the fix.** A repo-wide `git add --renormalize .` would have rewritten `frozen-2026-08-17.json`, given it a second commit, and **silently voided the integrity check added in this same release** — the freeze would still be byte-identical in content and the check would still fail. Verified before adding: the repository already stores LF (autocrlf converts on commit), so renormalisation touched **zero blobs** and the freeze still shows 1 commit.
+
+**But the near-miss names a weakness in the check itself: commit count is a proxy for "content unchanged", and the two come apart under any repo-wide operation** — a renormalisation, a formatter, a `filter-branch`. The robust judgement is *"parse the freeze as it stands and as it was first committed, and compare the objects"*, which is immune to line endings, indentation and encoding, and still needs no stored hash (`git show <first-commit>:<path>`). **Not changed here** — this release is already the first to touch non-`.md` files, and swapping the integrity predicate is a separate decision with its own mutation tests. **Recorded as the next thing to fix, with the mechanism named.**
 
 ### Current reading (9 adjacent segments, n=9 — reported because omitting it is the habit this file exists to break)
 
