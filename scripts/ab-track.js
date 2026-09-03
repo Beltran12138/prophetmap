@@ -25,6 +25,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
 const { execFileSync } = require('child_process');
 
 const ROOT = path.join(__dirname, '..');
@@ -189,10 +190,17 @@ function runLogSummary() {
   // result was looked at, distinctEnd counts how many genuinely different result
   // sets existed. Ten runs on the same day is one observation and ten looks, and
   // which of those is "the" trial count is the caller's call, not this script's.
+  // distinctEnd was the conservative count until 2026-09-03, when two runs on the
+  // same lastDay returned -2.45% and -6.27% because the benchmark feed served a
+  // different trading calendar over a different network route. Sharing an end
+  // date is not enough to make two runs the same look, so the calendar is counted
+  // too. Still not collapsed into one number: which of the three is "the" trial
+  // count remains the caller's call.
   const ok = live.filter((r) => !r.error);
   return {
     runs: ok.length,
     distinctEnd: new Set(ok.map((r) => r.lastDay).filter(Boolean)).size,
+    distinctCalendar: new Set(ok.map((r) => r.calSha).filter(Boolean)).size,
     diagnostic: rows.filter((r) => r.mode === 'diagnostic').length,
     errors: live.length - ok.length,
   };
@@ -254,16 +262,20 @@ function pairedT(a, b) {
 function buildSegments(days, tradingDays) {
   const idx = new Map(tradingDays.map((d, i) => [d, i]));
   const segs = [];
-  let dropped = 0;
+  let dropped = 0, droppedNoBar = 0;
   for (let i = 0; i < days.length - 1; i++) {
     const d0 = days[i].date, d1 = days[i + 1].date;
     if (idx.has(d0) && idx.has(d1) && idx.get(d1) - idx.get(d0) === 1) {
       segs.push({ d0, d1, m0: days[i].map, m1: days[i + 1].map });
     } else {
       dropped++;
+      // Two different reasons wear the same number otherwise. A calendar gap is
+      // the intended behaviour; a scoring day the benchmark has no bar for is a
+      // hole in someone else's data that silently removes a real trading day.
+      if (!idx.has(d0) || !idx.has(d1)) droppedNoBar++;
     }
   }
-  return { segs, dropped };
+  return { segs, dropped, droppedNoBar };
 }
 
 function basketReturns(segs, select, log) {
@@ -354,8 +366,32 @@ async function runLive(frozen) {
   }
 
   const smh = await yahooDaily(frozen.data._meta.benchmark);
-  const { segs, dropped } = buildSegments(days, [...smh.keys()].sort());
+  const cal = [...smh.keys()].sort();
+  const { segs, dropped, droppedNoBar } = buildSegments(days, cal);
   console.log(`Observation days: ${days.length}   adjacent segments: ${segs.length}   dropped (non-adjacent): ${dropped}`);
+
+  // The freeze pins the roster, the rules and the daily scores. It does not pin
+  // the trading calendar: that is re-fetched from the benchmark feed on every
+  // run, and a null close there deletes a day without raising anything.
+  //
+  // On 2026-09-03 the same repository produced n=9 and n=11 from identical score
+  // files. The cause was measured, not guessed: at one instant, the same URL with
+  // the same User-Agent returned a 2026-08-28 close of 553.11 over one network
+  // route and null over another. That Friday was a normal trading session — SOXX
+  // reports 508.62 for it on the same API. So the sample size of this experiment,
+  // and therefore its t-statistic and its significance verdict, depended on the
+  // egress path of whoever ran it. Recording the calendar does not fix that; it
+  // makes two runs that were never the same experiment stop looking identical.
+  const noBar = days.map((d) => d.date).filter((d) => !smh.has(d));
+  const calSpan = cal.filter((d) => d >= days[0].date && d <= days[days.length - 1].date);
+  const calSha = crypto.createHash('sha256').update(calSpan.join(',')).digest('hex').slice(0, 12);
+  console.log(`Benchmark calendar: ${calSpan.length} bars in span, sha ${calSha}`);
+  if (noBar.length) {
+    console.log(`\n  ⚠ ${noBar.length} scoring day(s) have NO ${frozen.data._meta.benchmark} bar: ${noBar.join(', ')}`);
+    console.log(`    ${droppedNoBar} segment(s) were dropped for that reason, not for being non-adjacent.`);
+    console.log('    These are real trading days in the scores; the benchmark feed is missing them.');
+    console.log('    Cross-check one against a sibling ETF before treating this n as the sample size.');
+  }
   if (!segs.length) {
     console.log('\ngate A: NOT YET MEASURABLE — no adjacent-trading-day segments yet.');
     return { segments: 0, note: 'no-adjacent-segments' };
@@ -391,6 +427,13 @@ async function runLive(frozen) {
   return {
     segments: segs.length,
     lastDay: segs[segs.length - 1].d1,
+    // Provenance for n. Without these, two runs that produced different results
+    // from identical repository state are indistinguishable in this log, and
+    // distinctEnd counts them as one look because they share a lastDay.
+    calSha,
+    calBars: calSpan.length,
+    benchNoBar: noBar,
+    droppedNoBar,
     passCumPct: ps && +ps.cumPct.toFixed(4),
     allCumPct: as && +as.cumPct.toFixed(4),
     benchCumPct: bs && +bs.cumPct.toFixed(4),
@@ -479,7 +522,8 @@ async function runDiagnostic(frozen) {
 
   const prior = runLogSummary();
   if (prior) {
-    console.log(`Prior runs on record: ${prior.runs} live (${prior.distinctEnd} distinct end-dates)` +
+    console.log(`Prior runs on record: ${prior.runs} live (${prior.distinctEnd} distinct end-dates,` +
+                ` ${prior.distinctCalendar} distinct benchmark calendars)` +
                 `, ${prior.diagnostic} diagnostic, ${prior.errors} failed.`);
   }
   console.log();
@@ -509,7 +553,10 @@ async function runDiagnostic(frozen) {
 
   if (!diagnostic) {
     const now = runLogSummary();
-    console.log(`\n  trials on record: ${now.runs} live run(s), ${now.distinctEnd} distinct result set(s).`);
+    console.log(`\n  trials on record: ${now.runs} live run(s), ${now.distinctEnd} distinct end-date(s),` +
+                ` ${now.distinctCalendar} distinct benchmark calendar(s).`);
+    console.log('  Runs sharing an end date are not necessarily the same look: on 2026-09-03');
+    console.log('  two of them returned -2.45% and -6.27% because the calendar moved.');
     console.log('  When gate A is finally evaluated at 2027-08-17, the threshold must be raised');
     console.log('  for the number of looks taken, not for the number remembered. That is what');
     console.log('  this log is for; it deliberately does not apply the correction itself,');
