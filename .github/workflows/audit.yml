@@ -86,6 +86,32 @@ jobs:
               labels: ['audit'],
             });
 
+      - name: Create issue for layer-id schema violations
+        if: ${{ steps.layers.outputs.schema_violations != '' && steps.layers.outputs.schema_violations != '0' }}
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const violations = '${{ steps.layers.outputs.schema_violations }}';
+            const affected = '${{ steps.layers.outputs.schema_affected }}';
+            const date = new Date().toISOString().slice(0, 10);
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `\u{1F534} Layer-ID integrity ${date} — ${violations} violation(s), ${affected} equities on the fallback benchmark`,
+              body: [
+                'A ticker\'s `layer` is a foreign key into `layers.json` and `sector-benchmarks.json`, and nothing validated it until Gap #20.',
+                '',
+                'Both failure modes are silent. A layer missing from `layers.json` is absent from the per-layer metrics table rather than flagged. A layer missing from `sector-benchmarks.json` falls through to `benchmarks.default` (P/E 22, EV/Rev 5) and the score is still marked `pricingApplicable` — forward P/E and EV/Revenue are 55% of the composite, so more than half the pricing score becomes deviation from a constant instead of from peers.',
+                '',
+                '**False negatives leave no trace.** A ticker wrongly scored expensive drops out of the funnel and appears in no report, so nothing prompts a review of it.',
+                '',
+                `See \`data/audit/${date}-layers.md\` for the affected tickers.`,
+                '',
+                '_Writing benchmark medians re-rates members of the frozen 2026-08-17 roster and is barred until 2027-08-17. This issue is a forced disposition, per Gap #19 — record a verdict, do not silently close._',
+              ].join('\n'),
+              labels: ['audit'],
+            });
+
       - name: Create issue for layer merge flags
         if: ${{ steps.layers.outputs.merge_flags != '' && steps.layers.outputs.merge_flags != '0' }}
         uses: actions/github-script@v7

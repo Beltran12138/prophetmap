@@ -4,6 +4,28 @@ All notable universe / layers / framework changes, dated.
 
 ---
 
+## 2026-09-09 — v2.9.20: a layer id was a foreign key into two files and nothing checked it
+
+**Gap #20 added. `audit-layers.js` gains three deterministic set comparisons; the audit workflow opens an issue on violations. No scoring field created, no existing ticker's PASS/FAIL state moved, no portfolio motion. Frozen roster untouched.**
+
+Surfaced while correcting the repository description, which claimed a 19-layer model. `layers.json` defines **27**, the universe uses **28** distinct ids, `sector-benchmarks.json` carries **22**. Three sets assumed identical, never compared.
+
+| | |
+|---|---|
+| Used by tickers but undefined in `layers.json` | `L8_OPT_MAT` (AXTI), `L9_MINER_CONVERT` (APLD, CIFR, IREN, WULF, HUT) |
+| Used by tickers but absent from `sector-benchmarks.json` | `L11_FUEL`, `L5_5`, `L8_OPT_MAT`, `L_DCOMP`, `L_EMBI`, `L_SPACE` |
+| Equities on the fallback constant (P/E 22, EV/Rev 5) | **12 of 84 — 14.3%** |
+
+Both modes are silent by construction. An undefined layer is **absent** from the per-layer metrics table rather than flagged. A missing benchmark falls through to `benchmarks.default` and the score still returns `pricingApplicable: true`, because that check looks at crypto, at whether a fundamental anchor exists, and at component coverage — never at which benchmark was used. Forward P/E is 30% of the composite and EV/Revenue 25%, so **55% of the pricing score for those twelve is deviation from a constant.**
+
+**Funnel blast radius: one name, robust.** TTMI is the only affected PASS; solving the scoring formula against its components shows the layer median would have to fall below ~13 P/E to flip it, and `L5_5` is the substrate layer in a shortage. Correcting the benchmark makes it *cheaper*.
+
+**The damage is on the invisible side.** TSLA at 169.7 forward P/E, RKLB at 1486, ASTS negative, CRCL at 61, CCJ at 39.5 — all scored 5 against a constant 22, all failing. Whether they are expensive depends on peers that do not exist in the file. **A false positive gets scrutinised; a false negative appears in no report at all.**
+
+**Not fixed here.** Six benchmark medians re-rate twelve frozen-roster members. Barred until 2027-08-17, alongside Gap #10 — the same defect at different granularity.
+
+---
+
 ## 2026-09-09 — v2.9.19: the only scheduled intake path can only find what the portfolio already resembles
 
 **Gaps #18 and #19 added. Two `watchlist` tickers added (`MKSI`, `KLIC`). No script changed, no scoring field created, no existing ticker's PASS/FAIL state moved, no portfolio motion. Frozen roster untouched.**
