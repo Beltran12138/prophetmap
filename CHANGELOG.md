@@ -4,6 +4,42 @@ All notable universe / layers / framework changes, dated.
 
 ---
 
+## 2026-09-09 — v2.9.19: the only scheduled intake path can only find what the portfolio already resembles
+
+**Gaps #18 and #19 added. Two `watchlist` tickers added (`MKSI`, `KLIC`). No script changed, no scoring field created, no existing ticker's PASS/FAIL state moved, no portfolio motion. Frozen roster untouched.**
+
+### What was found
+
+`scripts/discover-candidates.js` builds its candidate set **from the universe**: for each active equity name it pulls Yahoo peer recommendations and keeps anything mentioned by >=2 existing tickers with market cap >=$1B. The reachable set is the **one-hop peer neighbourhood of the current holdings**, and Yahoo peers encode **similarity** (sector / industry / size), not **supply-chain adjacency**. The engine's layer model is an adjacency graph; its intake runs on a different graph.
+
+| discover report | 05-08 | 05-19 | 06-01 | 07-01 | 08-01 | 09-01 |
+|---|---|---|---|---|---|---|
+| candidates | 15 | 13 | 11 | 10 | **8** | 9 |
+
+Six reports, **18 distinct symbols total**, monotone decline. That is not scarcity of opportunity - it is an **exhausted search radius**: the neighbourhood is being absorbed into the universe and the method has a fixed point.
+
+**Control.** A same-day session on ABF substrates and HBM4E produced `MKSI ONTO CAMT BESIY MTRN NVT FLEX AEIS`. **None appears in any of the six reports** - including `MKSI`, an obvious size-and-sector peer of five active members (`AMAT LRCX KLAC ENTG TER`).
+
+### The second, separate defect
+
+`KLIC` was surfaced as a fully scored candidate in **three consecutive** reports (07-01, 08-01, 09-01; peer sources `ENTG`/`AMKR`, layer corrected by the verification step, thesis and falsifiers drafted) and **triaged on none of them**. Surfacing-only is the correct boundary for the script; what was missing is any rule obliging disposition. **A surfacing-only system with no forced-disposition rule decays into a no-op, and decays in the direction that looks healthy** - the reports keep being written.
+
+### Changes
+
+| | |
+|---|---|
+| `GOVERNANCE.md` | Gap #18 (candidate-set closure), Gap #19 (no forced disposition), two Tier 2 checklist lines |
+| `data/universe.json` | `MKSI` -> `L3_5` secondary, `KLIC` -> `L4` secondary, **both `watchlist`**; `_meta.version` -> 2.9.19 |
+
+**Why both are `watchlist` and not `active`, decided by the gate rather than by preference.** The Tier 3 ADD gate requires **>=1 `supplyChainEvidence` entry that is external** - *"Company IR self-report or press release does NOT count."* For `MKSI` the only evidence of ABF occupancy is **Atotech's own product documentation**; for `KLIC` the only evidence of the HBM socket is **K&S's own December 2025 disclosure**. Both therefore fail the same gate, which itself prescribes `watchlist` in that case. `MKSI` additionally fails *"layer assignment unambiguous"* - it is simultaneously a materials supplier (Atotech chemistry, `L3_5`) and capital equipment (`L4`), and is filed under the thesis-relevant half only. **Neither passes the defensibility OR-gate**; like `MOD`, they are carried as auditable entries rather than as calls.
+
+### What was deliberately not done
+
+No change to `discover-candidates.js`. **Loosening `MIN_PEER_MENTIONS` or `MIN_MARKETCAP_B` only draws the same circle larger** - the centre is the defect. The proposed second intake path (seed from `layers.json` physical steps: *"who occupies L5_5"* rather than *"who are TTMI's peers"*) cannot be automated with a free data source and belongs in a quarterly per-layer sweep. **Adding two names by hand is a patch and is labelled one.**
+
+> **Provenance:** raised by the repo owner - *"we only ever evaluate the same few dozen tickers, how would we find anything new"* - applying a criterion the assistant had written into its own notes about half an hour earlier against a sell-side sector note, and **had not turned on this repository.** The assistant's own remedy for that class of miss (*re-scan your own current output after landing a criterion*) did not run; an outside reader ran it. **A criterion written down but not re-applied to the writer's own live systems has not been adopted, only recorded.**
+
+---
 ## 2026-09-03 — v2.9.18: the freeze was a pre-registration, not an enforcement — and the rule it could not check was the one it exists for
 
 **Gap #13 addendum. No gap added, no ticker added, no field created, no score changed, no portfolio motion.**

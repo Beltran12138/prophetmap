@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "version": "2.9.10",
-    "date": "2026-07-28",
+    "version": "2.9.19",
+    "date": "2026-09-09",
     "description": "ProphetMap stock universe — manually-defined static fields only. Dynamic pricing scores written to data/scores/YYYY-MM-DD.json by scripts/update-valuations.js",
     "fieldGuide": {
       "physicalConstraint": "1=pure software, 5=hard physical monopoly with multi-year lead times",
@@ -3313,6 +3313,70 @@
         }
       ],
       "watchlistReason": "Status rationale was ALREADY recorded in _note at addition (2026-05-26, v2.2.0) — this field was empty, not the rationale. Origin: default-watchlist per [[portfolio_decisions_2026Q2]] (Leopold/SAC narrative warning; the cohort had run +200% to +1000% through 2025). Entry triggers are stated in _note and are conjunctive. MEASURED 2026-07-29 — pricingScore 3.8 — FAILS the <=3.0 level outright, no persistence question arises (4.2-4.3 from 07-20 to 07-24). PEG NULL, so the tighter \"<1.5\" leg required of HUT cannot be evaluated. The operational leg reads \"Highrise AI revenue mix >35% of total\"; the 2026-07-20 announcement of a $9.8B / 15-year lease with an unnamed investment-grade tenant (+352MW, campus to 704MW leased, 1GW commercialised, first-cycle contracted value $19.6B) is a CONTRACT-VALUE disclosure, not a revenue-mix disclosure, and the capex denominator is unstated — $9.8B over 15 years on 352MW is $1.86M/MW/year against an unstated build cost. It does not measure the trigger. Forward PE is NEGATIVE (-34.8). Trigger does not fire, on the widest margin of the five. COHORT-WIDE CAVEAT: every member of this layer re-priced downward on 2026-07-28 because the layer benchmark was declared that day (v2.8.2 — the layer previously had NO entry and used the cross-industry default forward PE 22 / EV-Rev 5, replaced by miner peers at 77.2 / 20.6). The benchmark entry itself labels this \"A METHODOLOGY EVENT, NOT A BUY SIGNAL\". The 5-day persistence requirement written into these triggers on 2026-05-26 is therefore currently doing exactly the job it was written for: it prevents the cohort from being read as newly cheap when what changed was the yardstick. Additionally the forwardPE median 77.2 is biased — median() drops non-positive values and 4 of the 5 declared peers are loss-making, so it is the midpoint of the profitable minority."
+    },
+    {
+      "symbol": "MKSI",
+      "name": "MKS Instruments",
+      "moatCapture": 3,
+      "moatLocks": [
+        "integration"
+      ],
+      "moatFalsification": "Metallisation chemistry for build-up substrates is contested - DuPont Electronics, JCU, Uyemura and others qualify onto the same lines. The moatCapture=3 rests entirely on qualification switching cost. If any leading substrate maker publicly qualifies a second ABF metallisation chemistry on a production line inside one qualification cycle with no yield penalty, the integration lock is not real and this belongs at 2.",
+      "layer": "L3_5",
+      "layerRole": "secondary",
+      "physicalConstraint": 3,
+      "aiContribution": 0.35,
+      "timeToRealize": "mid",
+      "marketCap": 18,
+      "thesis": "Atotech (acquired by MKS in 2022 for $5.1B, now the Materials Solutions division) supplies electroless and electrolytic copper chemistry qualified onto ABF build-up substrates - Printoganth MV TP3 is documented as depositing on low-roughness ABF material, NovaBond PX-S2 as the adhesion promoter, and vPlate/Uniplate as the plating lines. MKS sells drilling lasers (ESI) and plating chemistry as one package to substrate makers. The ABF step is supply-constrained on a physical clock: utilisation above 95%, 26-week lead times, a supply gap estimated at 22% in 2027 widening to 29% in 2028, and demand area compounding at roughly 39% a year 2025-2028 as die sizes and layer counts rise. CRITICALLY, the customer-subsidy failure mode does not reach this step: NVIDIA, AMD and Intel are reported to fund roughly half of the substrate makers' expansion capex and to prepay for capacity, which converts the substrate makers themselves into contract manufacturers of that capacity (see framework note on rent attribution). The chemistry supplier is not a party to those contracts and is paid per unit of substrate area, which grows regardless of who holds the rent at the substrate step.",
+      "thesisFalsification": [
+        "MKS does not disclose Atotech / Materials Solutions revenue attributable to IC substrate and advanced packaging in any earnings release or 10-K through FY2027 - the exposure cannot be sized, and the entry stays watchlist by default rather than by judgement. This is the binding constraint today, not a market risk.",
+        "A leading substrate maker (Ibiden, Unimicron, Nan Ya PCB, Shinko) publicly qualifies a second ABF metallisation chemistry supplier on a production line within one qualification cycle - the integration lock is the whole of the moatCapture=3 argument.",
+        "ABF substrate utilisation falls below 90%, or lead times compress under 12 weeks, before 2028 - the 22%/29% supply gap closed early, the duration leg fails, and chemistry pull-through normalises with it."
+      ],
+      "status": "watchlist",
+      "watchlistReason": "Fails three Tier 3 ADD gates, all of the same kind: nobody outside the company has confirmed the position. (1) supplyChainEvidence - the only evidence of ABF occupancy is Atotech's own product documentation, which the gate explicitly excludes as company self-report. (2) Layer assignment is not unambiguous - MKS is simultaneously a materials supplier (L3_5, Atotech chemistry) and a capital equipment supplier (L4, vacuum/plasma/lasers/ESI); it is filed under L3_5 because that is the thesis-relevant half, not because the assignment is clean. (3) aiContribution 0.35 is an estimate with no segment disclosure behind it. Also fails the defensibility OR-gate (pc=3 AND mc=3, neither arm passes).",
+      "addedDate": "2026-09-09",
+      "addedVersion": "2.9.19",
+      "_note": "Found by working the ABF chain backwards from the physical step (who supplies the metallisation chemistry) rather than forwards from a holding (who are AMAT's peers) - which is exactly the intake path Gap #18 says the engine does not have. MKSI has never appeared in any of the six discover reports despite being an obvious size-and-sector peer of five active members. Recorded because the ticker is less interesting than how it was found. Separately: MKSI was examined and rejected in an unrelated 2026-09-09 session on diamond heat spreaders, on the hypothesis that MKS's ASTeX lineage made it the MPCVD equipment play - that rejection was correct (the ASTeX diamond-reactor line went to Seki Diamond Systems / Cornes, not to MKS) and is unrelated to this entry.",
+      "_changeLog": [
+        {
+          "date": "2026-09-09",
+          "version": "2.9.19",
+          "change": "Added to L3_5 secondary as watchlist. Funnel result: FAIL on the defensibility OR-gate (pc=3 AND mc=3). Entered under Gap #18 as the control case - a name with a checkable chain position that the scheduled peer-similarity intake path structurally could not surface. Held at watchlist rather than active because the Tier 3 supplyChainEvidence gate is unmet (evidence is Atotech's own product documentation) and the layer assignment is genuinely ambiguous between L3_5 and L4. Not part of the frozen 2026-08-17 A/B roster."
+        }
+      ]
+    },
+    {
+      "symbol": "KLIC",
+      "name": "Kulicke and Soffa Industries",
+      "moatCapture": 2,
+      "moatLocks": [],
+      "moatFalsification": "Thermocompression bonding is contested by ASMPT, Hanmi, Hanwha and Shinkawa, and Hanmi took an SK hynix TC Bonder order in June 2026. There is no licensing, data or habit lock, and the integration lock that equipment normally carries is weak while the process step itself is a generation from being replaced. moatCapture=2 is the honest reading, not a placeholder.",
+      "layer": "L4",
+      "layerRole": "secondary",
+      "physicalConstraint": 2,
+      "aiContribution": 0.3,
+      "timeToRealize": "near",
+      "marketCap": 4,
+      "thesis": "Thermocompression bonding equipment for HBM stacking. K&S shipped its first HBM system to a large memory customer in December 2025 and guided TCB to roughly 70% sequential growth in fiscal 2026; fiscal Q3 revenue was $330.4M against $148.4M a year earlier, though that figure carries broad cyclical recovery and is not an HBM number. The position is a bet on a delay, not on a technology: HBM4 stayed on microbumps because its roughly 10um pad pitch is the point where hybrid bonding stops beating microbumps on cost, and JEDEC was reported on 2026-04-01 to be considering relaxing HBM4E package height to about 900um, which would let MR-MUF / TC-NCF survive another generation at 16-high. This is a rare thesis whose primary falsifier is a standards-body decision - binary, externally dated, and not answerable by anything K&S does.",
+      "thesisFalsification": [
+        "JEDEC publishes the HBM4E standard WITHOUT the package-height relaxation toward ~900um - the delay that keeps TC-NCF/MR-MUF and therefore TCB alive for another generation does not happen, and hybrid bonding pulls in. This is the single load-bearing external event.",
+        "SK hynix or Samsung announces hybrid bonding in production for HBM4E while K&S TCB revenue growth falls below 20% sequential in any quarter of FY2027 - substitution arrived and the equipment socket changed hands.",
+        "A second TCB supplier (Hanmi, Hanwha, ASMPT, Shinkawa) is disclosed as qualified at the same customer for the same process step - with pc=2 and mc=2 already, dual-sourcing removes the last argument for carrying it even at watchlist."
+      ],
+      "status": "watchlist",
+      "watchlistReason": "Surfaced by scripts/discover-candidates.js on 2026-07-01, 2026-08-01 and 2026-09-01 (peer mentions 2, sources ENTG and AMKR) and triaged on none of the three - the disposition failure recorded as Gap #19. Added at watchlist rather than active for two independent reasons: it fails the defensibility OR-gate (pc=2 AND mc=2, neither arm passes), and the Tier 3 supplyChainEvidence gate is unmet - the December 2025 first-HBM-system shipment is a company disclosure, not an external fingerprint.",
+      "addedDate": "2026-09-09",
+      "addedVersion": "2.9.19",
+      "_note": "Layer differs from the discover script's drafting pass, which proposed L3_4 - an id that does not exist in layers.json. Filed at L4 for consistency with TER, which is likewise test/assembly equipment rather than wafer-fab equipment and sits at L4 secondary. The Gemini pass had correctly rejected the peer algorithm's L3_5 suggestion (chemicals) before inventing the non-existent id, so the verification step worked and the output validation did not; noted for whoever next edits that script, no change made here.",
+      "_changeLog": [
+        {
+          "date": "2026-09-09",
+          "version": "2.9.19",
+          "change": "Added to L4 secondary as watchlist, discharging three consecutive untriaged discover appearances (Gap #19). Funnel result: FAIL on the defensibility OR-gate (pc=2 AND mc=2). Carried as an auditable entry because its primary falsifier is an external, binary, dated event - the JEDEC HBM4E package-height decision - which makes it unusually cheap to resolve. Not part of the frozen 2026-08-17 A/B roster."
+        }
+      ]
     }
   ]
 }
