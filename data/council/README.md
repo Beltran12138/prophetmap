@@ -52,3 +52,34 @@ marked *asker-reported* would be treated as input and not as independent verific
 listed *"whether prophetmap is permanently private"* as missing information it needed. **The panel
 quarantined the claim correctly. The asker was the one who labelled a guess as a fact** - which is,
 with some irony, family 2 of the failure table these four projects exist to document.
+
+---
+
+## Chair pre-registration and scoring — 2026-09-09
+
+`chair-preregistration.txt` was written **before the question package was sent** and archived
+verbatim. Its purpose is narrow: a chair who reads four dissenting answers can always say
+*"that is roughly what I thought"* afterwards. Writing the position and, more importantly, four
+**falsifiable predictions about how the panel would behave** removes that escape.
+
+The same discipline this repository applies to its own A/B window - register before you look -
+applied to the person reading the panel.
+
+**Result: all four predictions were wrong, and wrong in the same direction.**
+
+| # | Prediction (written before sending) | Outcome |
+|---|---|---|
+| P1 | At least 2 of 4 will recommend merging or a monorepo, because convergence is the default answer | **0 of 4.** Several called Q1 a false binary: code, product and brand are three different questions |
+| P2 | No panelist will spontaneously flag the attribution problem in the GitHub traffic reading in Q1/Q2 | **2 of 4 flagged it in Q1.** Note the test was compromised by its own design - Q3 asked about that reading directly and was visible while they answered Q1 |
+| P3 | At least 1 of 4 will read "integration" as productisation or commercialisation | **0 of 4.** All four held the stated constraint - amateur hours, reputation not revenue |
+| P4 | The common answer on the failure mode will be "readers face four repos, cognitive load is high" | **0 of 4 said that** (Grok rejected it outright: most people never see four repos). **3 of 4 independently produced the sharper failure mode** the chair had privately marked as the one that would cost a point |
+
+**The chair also lost on substance.** Both supporting arguments for the position were overturned
+(see the correction above and Gap #18 in `GOVERNANCE.md`), and on the ranking question the chair
+was the only participant whose pair nobody shared: chair kept `prophetmap` + `agent-tool-interop`;
+all four panelists ranked `assay` first, and `agent-tool-interop` last or second-to-last.
+The diagnosis is in the transcripts: the chair ranked by **investment already made**, the panel
+ranked by **whether the finding can be restated by a stranger in one sentence.**
+
+**The verdict survived. The argument did not.** That asymmetry is the reason the transcripts are
+archived rather than summarised.
