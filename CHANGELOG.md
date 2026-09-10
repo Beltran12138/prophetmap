@@ -4,6 +4,35 @@ All notable universe / layers / framework changes, dated.
 
 ---
 
+## 2026-09-10 — v2.9.21: the delete clause covered the wrong case, and the evaluation path was never anchored
+
+**A post-freeze defect rule added to `GOVERNANCE.md`. Gap #21 added. `data/ab-track/defect-register.md` created. No script changed, no scoring field touched, no ticker moved, frozen roster untouched.**
+
+The existing delete clause fires when **pre-registered rules are violated**. Twenty-four days into the second window the opposite case arrived: zero violations, zero edits, and four defects found (#10, #18, #19, #20) that violate nothing. The clause said nothing, so the default was silence.
+
+**The rule adopted is Fable 5.1's two-question test**, because both questions are answerable from git and the code as it stands, with no counterfactual re-scoring:
+
+```
+Q1  Does the defective code run when computing the reported result from F and prices?
+Q2  Does the minimal fix change F, or the text of the seven pre-registered rules?
+
+NO            -> Rule 1  G-defect. Register, narrow citation scope, continue.
+YES + NO      -> Rule 2  E-defect. Fix, recompute from F, record before/after.
+YES + YES     -> Rule 3  "The test failed to run." No third freeze.
+```
+
+**All four defects are Q1 = NO. All Rule 1. The window continues.** Four external reviewers, unanimous: the endpoint's instrument is **price**, not the pricing score — a scoring defect contaminates the explanation of *why these 87*, never the arithmetic of *what these 87 returned*. Listing #18 and #19 alongside #10 and #20 as "instrument bias" was a classification error; `exitDoesNotRemove` means discovery cannot reach the roster at all.
+
+**The asker lost the default 4–0.** He proposed the mid-check must force an explicit continue-or-abandon verdict, both directions requiring a reason. All four: **a rule mandating a decision at a checkpoint is a door for restarting the exam.** The register forces a *record*, not a *decision*.
+
+**Gap #21 — E was never anchored.** v2.9.18 anchored F (`9c38e6d`, one commit, clean). It anchored nothing about the code that turns F into a number. `scripts/ab-track.js` changed twice inside the window, `ff6bb41` and `ffbef15`, both on day 17. Worse, **the trading calendar was never frozen and is not in the repository** — fetched per run, and `ffbef15` measured the consequence: the same repo produced **n=9 and n=11 from byte-identical score files**, `t` moving **−1.14 → −1.63**, because one network route returned a `null` close for a normal Friday session. *"The sample size of a pre-registered experiment, and with it the significance verdict, depended on the egress path of whoever ran the script."* Anchoring E today does not anchor days 1–24, and the register says so.
+
+**One false premise from the asker, corrected by verification.** He wrote that fixing the defects "all require re-scoring the frozen roster, so all are barred." That holds only for applying a fix to F. Running the corrected logic on a non-frozen copy is blocked by nothing — done here, and it settles the `12/84` vs `87` discrepancy three reviewers flagged: **both denominators are right.** 84 is today's equity count; 87 is the roster including 5 crypto lines. **All 12 affected names are inside F — 13.8%.** No truncation exists.
+
+Transcripts: `data/council/2026-09-10-AC/`, four panelists, chair pre-registration written before sending and archived byte-verified. Scored 3 of 5.
+
+---
+
 ## 2026-09-09 — v2.9.20: a layer id was a foreign key into two files and nothing checked it
 
 **Gap #20 added. `audit-layers.js` gains three deterministic set comparisons; the audit workflow opens an issue on violations. No scoring field created, no existing ticker's PASS/FAIL state moved, no portfolio motion. Frozen roster untouched.**

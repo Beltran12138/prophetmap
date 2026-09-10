@@ -1,0 +1,91 @@
+先读 `question.md`，按里面的要求直接作答。# A
+
+## A1
+
+适用规则（可直接写入）：
+
+> **Instrument defects found during a freeze**
+>
+> If a defect is recorded after the freeze commit and does **not** violate a pre-registered rule, the freeze is not void, the roster and score fields are not edited, and a replacement freeze before the registered gate is forbidden.
+>
+> The registered endpoint is still computed at the gate.
+>
+> A methods note must list each such defect. After that note exists, a gate result may be cited only as a result for (i) the frozen roster and (ii) the scoring **code as of the freeze commit**. It may not be cited as a result for later code, and it may not be cited as a result for a documented scoring definition that the methods note records as contradicted by that freeze-commit code (example: “peer-relative valuation” when a frozen name was scored against a fallback constant, or “comparable across layers” when layer assignment selected different benchmarks).
+>
+> A defect that does not change any frozen name’s frozen field values and cannot change freeze membership is post-gate work. It does not relabel the gate result.
+>
+> A freeze of **different code**, opened **after** this gate has reported its endpoint, is a new exam. A freeze that replaces this one **before** the gate is a restart and remains forbidden.
+
+判定方式：拿 freeze commit、预注册规则、缺陷记录、当场要引用的那句 claim，四件对照。规则有没有破 → 是否 void（否）。缺陷有没有改冻结字段含义 → 那句 claim 能不能引用。不同的人不应得出不同的是/否。
+
+本条**不是**第二条废弃条款。现有废弃条款继续只覆盖「预注册规则被违反、endpoint 算不出来」。
+
+## A2
+
+有第三条路，就是 A1：跑完注册 endpoint，预先把可引用范围钉死。
+
+代价：
+
+1. 从现在到 2027-08-17 产出的数字，不能用来支持「这套评分（按其文档定义）能选股」，也不能用来支持修好之后的版本。日历时间换来的是对**这一份冻结工件**的判决。
+2. 若不同时写明「门之后、不同代码、新 freeze = 新考试」，A1 + 现有「禁止第三次冻结」会被读成：永远只能考这份已知有偏的工件。这是规则陷阱，不是实验设计。
+3. 组织会不对称使用 methods note：赢了就说「construct 对不上、不算通过」；输了就说「是 bug、真身仍可期」。这和重开考试是同一结果。纪律必须是：对 freeze-commit 代码，数字算数；对文档 construct / 未来代码，数字不算数。两边都钉死。
+4. 补充敏感度（例如把 fallback 那 12 只从 endpoint 里剔除再报一次）只允许作为**额外**数字，不能替换主 endpoint。现在已经有 24 天收益，这份补充不是全盲的；人们会挑好的那个报。代价是双结果 + 选择空间。
+5. 缺：这次冻结是实盘还是纸面。若是实盘，代价还包括用已知有偏的选股器继续暴露到 2027-08-17。
+
+没有「现在废弃、立刻用修好的仪器重开」这条路。那就是第一次作废的原因，也是现有条款要禁止的事。
+
+## A3
+
+有。四个缺陷里，至少两个根本不该碰这次冻结；另外两个也不该把冻结从「这次考试」改判成「考试作废」。
+
+**#18、#19 不在本次实验对象里。** 冻结名册不因 `universe.json` 增删而改（†370）。发现入口的候选集收缩、同一候选连出三期无裁决，影响的是冻结**之外**的活筛子，不改变 87 只等权篮子，也不改变配对 t 的输入。把它们放进「仪器有偏 → 动冻结」是分类错误。
+
+**这次考的是 freeze-commit 这一版，不是文档里的柏拉图筛子。** 第一次作废是因为跑的时候改了条件（†338）。冻结的全部意义就是：这一版（含当时已存在、当时未发现的计算路径）是被测物。#10/#20 描述的是冻结日代码已经在做的事，不是实验条件被改了。未知 ≠ 条件变化。
+
+**Endpoint 的仪器是价格，不是估值分。** 篮子规则是等权，不是按分加权（†370）。分的工作在入选时已经做完。#10/#20 污染的是「为什么这 87 只在篮子里」的解释，不是「这 87 只等权收益能否计算」。解释权收缩（A1）成立；废弃不成立。
+
+**#20 的分母对不上。** 冻结是 87 只（†370），缺陷写 12/84（†649）。12 只是否在冻结名册里、84 是哪次快照，题目没给。用 #20 去重标整次冻结，证据链在这一环是断的。
+
+**A1 自己的漏洞：** 「不可引用于文档 construct」这条，会被当成赢了不算、输了归因 bug 的折扣券。若发生，A1 在效果上等于重启。能Memory flush started.
+推翻 A1 的证据：门上出现「因为 methods note，所以主结果不作数」。若纪律做不到禁止这种用法，更干净的规则是：主结果对这一版就是作数，缺陷只进 methods，不进标签。我仍保留 A1 的引用限制，是因为否则 12 只对着常数打的估值分，会被说成「同侪估值筛有效」——那是另一方向的过声称。两条滥用对称，都要禁。
+
+**缺、未补：** gate A 注册句原文是「这一版代码」还是「文档定义的筛子」；四字段如何决定入选（阈值 / top N / 一票否决）；估值分在四字段里的权重；12 只 fallback 是否 ∈ 冻结 87；冻结是实盘还是纸面。
+
+---
+
+# C
+
+## C1
+
+主承重前提：**加密资产作为可投资资产，继续有净资本流入 / 采用未停滞**（BTC 自己写的杀手：现货 ETF 净流入转负、机构与主权采用停滞，只是同一前提的可观测面）。
+
+它错时同时错的行：BTC、ETH、BNB、HYPE、TRX。组内加权 **81.3%**（58.6+8.7+7.7+3.8+2.5）。LEO/CC/其余 ~4.5% 无 thesis，不计入。STAKE 的杀手写的是牌照/赎回，不是采用停滞，不计入这个和。XAUT、XMR 不在这个和里。
+
+第二（按加权影响）：**代币是底层现金流的有效索取权**（费用Memory flush nothing to store.
+、销毁、回购真的落到币上，而不是落到股权、L2、或未解锁供给）。
+
+它错时同时错的行：ETH、BNB、HYPE。组内加权 **20.2%**。ETH 的杀手已写明 L1 只拿到应用层价值的 4.9%，且「已在发生」——这不是 ETH 私刑，是这条前提的实例。STAKE 同构（对房产的代币 claim），但底层不是交易费；要单列的话加上是 28.1%，我不当成同一条。
+
+Tether 偿付/信任会同时打 XAUT+TRX（6.5%），并大概率拖垮上面 81.3%。它是主前提的一条实现路径，不是独立的第二前提。
+
+## C2
+
+文档当成三件独立生意的是 **ETH / BNB / HYPE**（结算层 vs 交易所现金流+销毁 vs 永续 DEX 费用+回购）。
+
+实际同一风险：**交易/结算活动产生的费用，并不accrue到代币。** 可判定：ETH 已用「L2 捕获、L1 得 4.9%」当作杀手；BNB 的杀手写成销毁触顶（供给机制到期），HYPE 的杀手写成永续竞争+76.7% 待解锁。后两行都没把「费用不落到币上」写成杀手，尽管 BNB 对 Binance 股权、HYPE 对未解锁供给，和 ETH 对 L2，是同一句话。
+
+第二对，更窄、机制更硬：**XAUT 和 TRX**。文档当成黄金实物锚 vs USDT 结算轨道。XAUT 由 Tether 发行，杀手是 Tether 储备信心；TRX 的杀手写成「另一条链抢走 USDT 场景」。Tether 储备事件会让两行的 thesis 同时死，权重 6.5%。文档只把该事件写在 XAUT 上。
+
+不是「都受市场情绪影响」。第一对是价值捕获结构；第二对是同一个发行方。
+
+## C3
+
+有可能，而且 ETH 这一行已经显示它不只是可能。
+
+「完备」需要可观测指标 + 阈值 + 期限。公开日更的序列（ETF 流、链上占比、销毁量、解锁表、EU 日期）容易写出三要素；牌照进度、赎回机制、储备「信心」不容易。完备排序会跟着仪表盘走，不跟着 thesis 的因果强度走。
+
+ETH：杀手写成已在发生，仓位仍是 8.7%。完备的证伪条件没有变成退出规则。因此这个 6/3 排序量的是**文档可监测性**，不是 thesis 硬度，也不是仓位应有的置信。
+
+决策上只能当监测覆盖表用：完备 = 你有仪表，可以按周看有没有打到自己写的阈值；不完备 = 盲区，仓位应视为不可监控，而不是「thesis 较弱所以更小」。禁止用 6/3 给信念配置（自述 86–88%）当辩护。ETH 这类「完备且已触发仍持有」应从「完备」里单列成框架失效样本，否则排序在教人把写得出杀手的行当成更安全。
+
+**缺、未补：** 哪 6 行完备、哪 3 行不完备；「12% 可分析」的操作定义；ETH 在 4.9% 这个数字出现之后有没有减仓；LEO/CC/其余的拆分与 thesis。没有这张名单，不能核实 6/3 是否恰好等于「有公开数据的行」。上面 C3 是机制判断，不是对那张未给出名单的审计。

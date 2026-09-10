@@ -1,0 +1,132 @@
+## 问题 A
+
+**先给四个缺陷定位，因为它们不在同一个位置。**（我推断，置信度高）
+
+把实验拆成三段：G 是生成器（宇宙发现、分层、评分），产出冻结文件 F；F 是 `frozen-2026-08-17.json` @ 9c38e6d；E 是评估路径（价格文件 → 相邻日收益 → 等权篮子 → 配对 t 检验，†370 全文规定）。报出的数字 = E(F, 价格)，E 不再调用 G。
+
+| 缺陷 | 所在段 | 对本次冻结的影响 |
+|---|---|---|
+| #10 分层决定估值基准 | G | F 里的分数怎么来的。不影响 E |
+| #20 层外键无校验，fallback 常数 | G | 同上。且 12/84 这个数的总体是 84 只，F 是 87 只，落在 F 里的受影响名单目前**未知** |
+| #18 候选集由持仓生成 | G 上游 | 不影响 F 的分数，只影响 87 只是从什么池子里来的，即外部效度 |
+| #19 候选无裁决规则 | 运营流程 | 与本实验无关 |
+
+所以「四个缺陷」对本次实验内部效度的影响是零个；对结果解释的影响两个（#10、#20）；对结论推广范围的影响一个（#18）。
+
+**A1. 可直接写入的规则**
+
+```
+### Post-freeze defect rule (instrument found biased, no pre-registered rule violated)
+
+Definitions
+  F  = frozen-2026-08-17.json at the anchored commit (currently 9c38e6d).
+  E  = the evaluation path fully specified at L370: daily price files ->
+       adjacent-trading-day returns (gaps dropped) -> equal-weight basket ->
+       paired t-test. The reported result is E(F, prices).
+  G  = everything upstream of F: universe discovery, tiering, scoring.
+
+Classification test (two questions, both answerable from code + git)
+  Q1  Is the defective code on the execution path of E, i.e. does it run
+      when computing the reported result from F and price files?
+  Q2  Does the minimal fix change F, or the rule text at L370?
+
+Rule 0  If F fails its own schema (87 unique names, four non-null score
+        fields) -> integrity failure under L398, handled as Rule 3.
+Rule 1  Q1 = NO  ->  G-defect. This window is NOT abandoned, paused or
+        re-frozen. The defect is a property of the object under test.
+Rule 2  Q1 = YES, Q2 = NO  ->  E-defect. Fix, commit, recompute from F,
+        and record the reported number before and after the fix.
+Rule 3  Q1 = YES, Q2 = YES  ->  the test cannot be run as registered.
+        Record "the test failed to run" exactly as at L374. No third freeze.
+
+Register (append-only, one entry per G-defect, committed within 7 days)
+  - defect id and line reference
+  - the list of names in F affected, computed by running the anchored G
+    code against F's committed inputs, never by hand
+  - trading days of price data already observed at entry commit
+  - whether the defect was found by reading code or by looking at returns
+
+Secondary analysis
+  The full-F test at L370 is the only primary. A secondary analysis
+  excluding registered affected names may be reported only if its
+  registration commit predates 2027-02-17 and carries the observed-days
+  count. It can downgrade a primary pass to "pass, not robust"; it can
+  never upgrade a primary fail.
+```
+
+可判定性来自 Q1 和 Q2 都是 git 可查的是/否。套到现状：四个缺陷 Q1 全为 NO，全走 Rule 1，不废弃。
+
+一个现有治理缺口顺带指出：†398 只锚定了 F，没锚定 E 的代码。Rule 2 的「前后对照」在现状下没有基线。建议现在补一个 E 代码的 commit 作为基线，并注明是第 24 天补的。（我推断，置信度高）
+
+**A2. 第三条路存在，有两种形态**
+
+形态一，必做且便宜：现在 commit 一份「已知缺陷登记 + 适用范围声明」。范围声明写三句：结果只对版本 9c38e6d 成立；#20 受影响名单为 [机械算出]，主分析不排除它们；#18 意味着 87 只来自现有持仓邻域，结论不能推广到「筛选器能发现跑赢股」，只能说「给定这个池子，评分有无区分力」。
+
+代价：
+- 登记发生在约 17 个交易日之后，不是第 0 天。读者必须打折，所以观测天数字段是强制的。
+- 若次级分析做排除，样本从 87 降到未知数（12/84 那批不一定全在 F 里），检验力下降。
+- 最大的代价是纪律风险。第一次冻结死于 39 次编辑，而形态一本身就是在改文档。边界只有一条：动 F 或 †370 规则文本 = 禁止，append-only 登记 = 允许。守不住这条线，形态一比什么都不做更糟。
+
+形态二，可选但危险：并行冻结 v3，v2 不撤回、到期照评。代价：v3 名册与 v2 高度重叠，两次实验不独立；同时开两场考试，团队可以事后强调通过的那场，这是 †374 警告的病理换了个衣服；一年窗口、87 只、单次配对 t 检验的检验力本来就低，v2 与 v3 的差异大概率落在噪声里，形态二买到的信息很少。若要做，至少加两条：每个冻结版本都在自己的终点被评分并报告，不撤回；新冻结不得早于当前冻结的中期检查日 2027-02-17。
+
+我的立场：形态一现在做，形态二不做。（置信度中）
+
+**A3. 攻自己**
+
+1. **最强的反方，我接受。** 被测对象是版本 9c38e6d，不是「这套方法」。缺陷是被测对象的属性，发现它不改变 F、E 或价格中的任何一位。任何仪器都有未发现的缺陷，现在唯一的区别是这些被发现了。因此 Rule 1 不是妥协，是唯一正确的读法。这四个缺陷威胁的不是实验，是实验之后的决策。
+2. **但如果下游决策问的是「方法」而非「版本」**，一个 fail 无法区分是方法失败还是 fallback 常数把它拖死了。这不构成废弃理由，它构成一个现在就要写下的决策表：pass 之后做什么、fail 之后做什么，两个分支都要在 2027-02-17 前 commit。我缺 gate A 的原文，无法判断它现在是哪种定义。
+3. **对 Rule 4 的自攻**：如果 #20 是看着某只股票跑得差才去查代码发现的，那受影响名单与已观测收益相关，排除它们的次级分析已被污染。这就是登记里要求写「代码审阅发现还是收益驱动发现」的原因，也是「只能降级不能升级」的原因。这一项我不知道实情。
+4. **#10 和 #20 咬多深取决于 gate A 比的是什么。** 若是 87 只篮子对基准，只有成员资格重要，名册内排序噪声无关；若是 87 只内部通过组对落选组，排序噪声直接影响分组。缺 gate A 原文。
+5. **对提问者自述的一处推回：**「修复它们全都需要重新评分冻结名册，因此全部被规则挡住」只对「把修复应用到 F」成立。在非冻结副本上跑修复后的 G，算出受影响名单，†370 里没有任何规则挡它。「不能动 F」被混同成了「不能碰 G」。
+
+## 问题 C
+
+**C1. 承重前提**（我推断，置信度中）
+
+前提一：**受监管、机构化的加密准入持续扩张而非逆转。** 若错，同时错的行：
+
+| 行 | 权重 | 依赖方式 |
+|---|---:|---|
+| BTC | 58.6 | 采用曲线这一腿。文档自列杀手「ETF 流入转负、机构与主权采用停滞」就是这个前提的否定式；尾部期权性那一腿不依赖它 |
+| STAKE | 7.9 | 牌照落地是前提成立的一个实例 |
+| BNB | 7.7 | 交易所现金流依赖合规运营空间，部分依赖 |
+| 合计 | 74.2 | |
+
+XMR 2.3% 是该前提的显式反向仓，但 2.3 对 74.2 不构成对冲。文档自述「约 86–88% 是信念配置」与这个数字一致，那句自我描述站得住：信念配置的主体就是这一个前提。
+
+前提二：**Tether / iFinex 保持偿付能力，USDT 保持主导结算币。** 若错，thesis 层直接死的行：
+
+| 行 | 权重 | 依赖方式 |
+|---|---:|---|
+| XAUT | 4.0 | 发行方就是 Tether |
+| TRX | 2.5 | thesis 就是 USDT 轨道，USDT 本身失败则哪条链承载都无意义 |
+| LEO | ≤4.5，份额未知 | iFinex 的代币 |
+| 合计 | 6.5 到 11.0 | |
+
+价格层外溢：BTC、BNB 会重挫（USDT 是主要交易对；Tether 自身是大额 BTC 持有者，待核实），但它们的 thesis 不被证伪，ETF 流入是 USD 计价的。
+
+**C2. 被当成独立、实为同一风险的行**
+
+1. **XAUT、TRX、LEO 是同一个风险：Tether 发行方信用。** 文档只在 XAUT 行写了「Tether 储备信心事件」，TRX 行的杀手写成「另一条链出现更强的 USDT 场景」，这是链间竞争，遗漏了「USDT 本身失败」对 TRX 同样致命。可核实判据：打开 TRX 行，看杀手栏是否出现 Tether 偿付。按你给的表，没有。文档逐行看到的 Tether 暴露是 4.0，实际是 6.5 到 11.0。（置信度高）
+2. **BTC 采用腿与 STAKE 是同一制度风险的两个名字：「传统金融与加密的桥能不能建成」。** 但美国 ETF 与迪拜 VARA 是不同法域，一边逆转不机械导致另一边逆转。我判为「同一体制、不同触发器」，相关而非同一。（置信度中）
+3. 明确不计入：BNB 与 HYPE 共享「交易量」暴露，这属于题目禁止的市场情绪类；且两者是直接竞争者，份额上部分互抵。
+
+**C3. 6/3/0 排序是否是可得性产物**
+
+大概率是。（置信度中，因为我没看到文档本身的分配）
+
+我的预测：完备 6 行 = BTC（ETF 流量日频公开）、ETH（L2/L1 费用份额链上可查）、BNB（销毁计数公开）、HYPE（解锁表公开）、XMR（EU 日期固定）、TRX（USDT 分链数据公开）；不完备 3 行 = STAKE、XAUT、LEO/其余。若文档的分配与此一致，那就是可得性签名：完备的恰好是有公开仪表盘的行，不完备的恰好是对手方控制披露的行。若不一致，请告诉我，这个判断就要撤。
+
+更重要的一层：不完备的行不是「thesis 更弱」，而是杀手类型不同。Tether 储备、STAKE 赎回机制的失败模式是断点（挤兑），不是漂移，本来就无法设阈值。所以这个排序在决策上应该这样用：
+
+- 不当作 thesis 质量分。
+- 当作监控成本图：完备行可以被动监控；不完备行必须三选一：定一个代理指标并 commit 阈值（XAUT：USDT 二级市场折价超过 X bp 持续 N 日；STAKE：在日期 D 前实际赎回一个最小单位），或以「不可观测」为理由封仓位上限，或定一个日期性默认动作（到 D 日仍无可观测指标即退出）。原则是：给不了指标触发的行，必须给日期触发。
+- 「完备」行也不免检：BTC 的「ETF 净流入转负」是滞后的症状指标，一周转负与一季转负是两个世界。我缺阈值数值。
+
+## 缺失信息与两题关系
+
+**A 缺：** gate A 的假设原文（篮子对基准，还是通过组对落选组）；F 里是否记录了每只名字所用的层与基准（决定受影响名单能否从 F 直接算出，还是要重跑 G）；12/84 的总体是什么，与 87 的差 3 从哪来；#20 是读代码发现还是看收益发现；E 代码是否被 commit 锚定。
+
+**C 缺：** LEO/CC/其余 4.5% 的拆分；文档实际的 6/3 分配；各行的阈值数值；HYPE 保证金币种（我记忆是 USDC，待核实，影响它是否落入前提二）。
+
+**A 与 C 是否共享承重命题：** thesis 层面不共享，我没找到。方法层面有一个共同点：两份材料都依赖作者自己列举的清单并隐含它是完备的。A 里表现为「四个缺陷」是下界不是总数；C 里表现为杀手栏每行只有一条，而 TRX 至少有两条。这不改变我在任何一问的答案，但值得记一笔。

@@ -409,7 +409,70 @@ This is the honest state. It was previously masked: until v2.9.2 the peer-indepe
 >
 > ⚠️ **Recorded rather than cleaned:** the first four lines of `run-log.jsonl` include two mutation-test failures from building this. They are **not** removed and no `ignore` field was added, because a log with an exemption field is a log with an escape hatch, and the exemption would be used. The provenance is written here instead — **external note over internal exemption**.
 >
-> ⚠️ **Unrelated finding, worth knowing before the next commit:** `core.autocrlf=true` while `data/universe.json` is stored LF in the worktree. `git status` reported clean via its stat cache without ever comparing content; once touched, `git checkout --` rewrote all **3318** line endings to CRLF (281,769 → 285,087 bytes) with **zero content diff**. A future `git` operation will silently do the same and produce a whole-file diff that hides any real change inside it. Not fixed here — it changes no measurement and the fix is a repo-wide decision.
+> ⚠️ **Unrelated finding, worth knowing before the next commit:** `core.autocrlf=true` while `data/universe.json` is stored LF in the worktree.
+
+### Post-freeze defect rule (v2.9.21) — an instrument found biased with no rule violated
+
+The delete clause above covers one case: **pre-registered rules were violated**. Twenty-four days into the second window, the opposite case arrived — zero rules violated, zero edits, and four defects found (#10, #18, #19, #20), none of which violates anything. The clause said nothing about it, so the default was silence.
+
+```
+Definitions
+  F  frozen-2026-08-17.json at its anchored commit 9c38e6d
+  E  the evaluation path: daily score files -> adjacent-trading-day returns
+     (gaps dropped) -> equal-weight basket -> paired t. scripts/ab-track.js.
+     The reported result is E(F, prices).
+  G  everything upstream of F: discovery, tiering, scoring.
+
+Classification. Two questions, both answerable from git and the code as it
+stands. Neither requires a counterfactual re-scoring, which the freeze forbids
+and which would be circular anyway.
+
+  Q1  Does the defective code run when computing the reported result from F
+      and the price files?
+  Q2  Does the minimal fix change F, or the text of the seven pre-registered
+      rules?
+
+  Q1 = NO             -> G-defect          -> Rule 1
+  Q1 = YES, Q2 = NO   -> E-defect          -> Rule 2
+  Q1 = YES, Q2 = YES  ->                      Rule 3
+
+Rule 1  The window is NOT abandoned, paused, or re-frozen. The defect is a
+        property of the object under test. Register it, narrow the citation
+        scope, continue.
+Rule 2  Fix, commit, recompute from F, and record the reported number before
+        and after the fix in the register. Continue.
+Rule 3  The test cannot be run as registered. Record "the test failed to run"
+        per the delete clause. No third freeze.
+
+Default. Anything not satisfying its rule's conditions continues to
+2027-08-17. Continuing is the default and needs no written justification;
+abandoning does.
+
+Citation scope, once any Rule 1 entry exists.
+  A gate result may be cited only as a result for (i) the frozen roster and
+  (ii) the scoring code as of 9c38e6d. Not for later code, and not for a
+  documented scoring definition that the register records as contradicted by
+  that code -- "peer-relative valuation", say, when a frozen name was scored
+  against a fallback constant.
+  Symmetrically: a null result may NOT be attributed to the registered
+  defects. Both directions of the escape hatch are closed, or the register
+  becomes a discount coupon -- win and it counts, lose and it was a bug.
+
+Secondary analysis.
+  E(F) over the full roster is the only primary result. A secondary analysis
+  excluding registered names may be reported only if its definition is
+  committed before 2027-02-17 and carries the count of scoring days already
+  observed at that commit. It can downgrade a primary pass to "pass, not
+  robust". It can never upgrade a primary fail.
+```
+
+**Applying it to the four defects on the day the rule was written: Q1 = NO for all four. All Rule 1. The window continues.** #10 and #20 sit in `G` — they shaped which names entered F and what their pinned scores say, and neither runs again once the roster is frozen and the basket is equal-weight. #18 and #19 sit *upstream of* `G`: they govern discovery and triage, and `exitDoesNotRemove` means `universe.json` cannot change the roster at all. **Listing all four as "instrument bias" was a classification error** — corrected here.
+
+> **Provenance.** Four external reviewers, 2026-09-10, transcripts at `data/council/2026-09-10-AC/`. **4 of 4 independently concluded the window should not be abandoned**, and each supplied an argument the asker had not: that the endpoint's instrument is *price*, not the pricing score, so a defect in scoring contaminates the explanation of *why these 87* and not the arithmetic of *what these 87 returned* (Grok); the G/F/E decomposition and the two-question test adopted above (Fable 5.1); and the distinction between **measurement error**, which distorts the measured return, and **a property of the artefact under test**, which changes what the artefact is without distorting anything (DeepSeek).
+>
+> **The default was contested and the asker lost 4–0.** He proposed that the mid-check must produce an explicit continue-or-abandon verdict, with *both* directions requiring a written reason — reasoning by analogy to Gap #19, where surfacing without a forced verdict decayed into a no-op. All four rejected it on the same ground: **a rule that mandates a decision at a checkpoint is a door for restarting the exam**, which is precisely what the delete clause exists to shut. The register is the forced-disposition mechanism instead; it forces a *record*, not a *decision*.
+>
+> **One asker-supplied premise was false and is corrected here.** He stated that fixing the defects "all require re-scoring the frozen roster, so all are barred". Fable 5.1: *"that holds only for applying the fix to F. Running the corrected G on a non-frozen copy to compute the affected list is blocked by nothing in the pre-registered rules. 'Cannot touch F' had been conflated with 'cannot touch G'."* Verified by doing it — see the register. `git status` reported clean via its stat cache without ever comparing content; once touched, `git checkout --` rewrote all **3318** line endings to CRLF (281,769 → 285,087 bytes) with **zero content diff**. A future `git` operation will silently do the same and produce a whole-file diff that hides any real change inside it. Not fixed here — it changes no measurement and the fix is a repo-wide decision.
 >
 > **Still not fixed, and now named precisely:** the `pricingScore` *formula* remains unfrozen. Enforcing it needs a version lock on the engine, not a field comparison, and that is out of scope for a governance commit. **No ticker's PASS/FAIL state moved, no scoring field changed, no portfolio motion.**
 
@@ -673,4 +736,23 @@ This is the honest state. It was previously masked: until v2.9.2 the peer-indepe
     **Deliberately not fixed here.** Writing six benchmark medians means choosing peers and computing them, which re-rates twelve members of `data/ab-track/frozen-2026-08-17.json`. **Barred until 2027-08-17.** Making `pricingApplicable` false on the fallback path would change funnel results in the same window and is barred for the same reason. Both are open items for the quarterly review after that date, alongside Gap #10 — they are the same defect at different granularity: #10 is a ticker benchmarked against the wrong layer's peers, #20 is a ticker benchmarked against no peers at all.
 
     **One incidental finding, not part of this gap.** `TTMI`'s composite is driven not by the benchmark components (2.7 and 2.5, the least extreme of the four) but by `analystUpside` hitting the floor at **1.0** on 63.1% implied upside from **4 analysts**. `numberOfAnalysts` is recorded on every row and read by nothing; `funnelWarnings` was empty. Gap #14's `AXTI` thin-coverage precedent was set at 7 analysts. Recorded here rather than opened as a gap because it needs its own measurement across the book first.
+
+21. **The evaluation path was never anchored, it has already changed twice inside the window, and one of its inputs is not frozen at all** (v2.9.21)
+
+    v2.9.18 anchored **F**: exactly one commit, clean worktree, `frozen-2026-08-17.json` @ `9c38e6d`. It anchored nothing about **E** — the code that turns F and a price feed into the reported number. Surfaced by an external reviewer reading the freeze rules; confirmed from the git log.
+
+    | | |
+    |---|---|
+    | Freeze commit | `9c38e6d`, 2026-08-17 |
+    | `scripts/ab-track.js` changed inside the window | `ff6bb41` (v2.9.18 rule enforcement) and `ffbef15` (calendar bookkeeping), **both 2026-09-03, day 17** |
+    | Current blob | `057aed8` |
+    | Scoring days observed at that point | **17** (2026-08-18 → 2026-09-09) |
+
+    **The deeper half: the trading calendar was never frozen, and it is not in the repository.** It is fetched from the benchmark feed on every run, and `buildSegments` decides adjacency by index distance in whatever day list comes back. `ffbef15`'s own message records the measurement rather than inferring it: **the same repository produced n=9 and n=11 from byte-identical score files**, because the same Yahoo URL with the same User-Agent returned a 2026-08-28 close of `553.11` over one network route and `null` over another — a normal Friday session, for which SOXX reports 508.62 from the same API. Dropping it also drops the −2.9% move between the 08-27 and 08-31 closes; **t moved from −1.14 to −1.63.** In its own words: *"the sample size of a pre-registered experiment, and with it the significance verdict, depended on the egress path of whoever ran the script."*
+
+    **Classified under the post-freeze defect rule: `ffbef15` is a Rule 2 E-defect.** Q1 YES — calendar handling is on E's execution path. Q2 NO — the calendar is in neither F nor the seven rules. Rule 2 requires the number before and after; the commit recorded it (n 9→11, t −1.14→−1.63) before the rule existed. Entered in the register retroactively, labelled as such.
+
+    ⚠️ **Anchoring E now does not retroactively anchor those two commits.** The register's baseline is `057aed8` as of **day 24**, and says so. A reader must discount E's stability across the window's first 24 days. **The register states the gap rather than letting the absence say nothing** — which is what the previous 24 days did.
+
+    ⛔ **Not fixed here: the calendar stays unfrozen.** Pinning it means committing a trading-day list — a change to a running experiment's evaluation inputs. Rule 2 permits it (Q2 = NO), but doing it at day 24 with 17 scoring days already observed is **not blind**. Open item for the mid-check on 2027-02-17, where the decision is binary: pin it, or state in the final report that **n was never frozen**. Either is honest; silence is not.
 
