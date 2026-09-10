@@ -1,0 +1,70 @@
+## Q1 既有概念对照
+
+**判据 1** 是重新包装，且有两个直接出处。
+- 史学方法：Gottschalk《Understanding History》(1950/1969) 的通则「for each particular of a document the process of establishing credibility should be separately undertaken regardless of the general credibility of the author」。这与判据 1 的两句话逐字对应：逐项而非整篇判定，且作者整体可信度不为单项背书。
+- NLP 事实核查：Min et al. 2023《FActScore》(EMNLP) 的 atomic fact decomposition。把长文拆成 independent、minimal 的原子事实，逐条对照 knowledge source 判「supported / not supported」，结论只说 supported 而不说 true。判据 1 的「结论只能是未找到一手源」正是 FActScore 的 precision-against-source 定义。英文名：**atomic claim decomposition / particular-by-particular credibility**。
+- 差别：判据 1 多了一个禁令「相邻从句找到了不得提高置信度」。这不是新概念，而是对 Bayesian updating 的一个刻意偏离，见 Q2。置信：高。
+
+**判据 2** 是重新包装，三个来源叠加。
+- 抽样理论的 **coverage error / frame error**：sampling frame ≠ target population 时，估计只对 frame 有效（Kish《Survey Sampling》1965；Groves et al.《Survey Methodology》2009 ch.3）。作者自己用的词「覆盖池」就是 frame。
+- 选择理论的 **menu dependence**（Sen 1993《Internal Consistency of Choice》, Econometrica）。
+- 卖方研究自身的披露：几乎所有投行报告的 rating definitions 都写明「ratings are relative to the analyst's coverage universe」。这条判据说的事，报告尾页 boilerplate 已经自认。
+- 「设问是搜索空间、答案是从菜单选」是 Kahneman & Frederick 2002 的 **attribute substitution**（答一个更容易的问题）。
+- 差别：无实质差别，是把三个已知概念组合成一条阅读提示。置信：高。
+
+**判据 3** 是教科书内容。
+- Marshall《Principles》(1890) 的 **total revenue test**：需求弹性 <1 时，价升量降而收入升。
+- 「价格是自变量」＝ 供给冲击。P 与 Q 反向共动识别供给曲线移动，同向共动识别需求曲线移动，这是入门宏观的 identification 常识。作者自陈的适用边界（短缺／管制／补贴）就是供给冲击的枚举。
+- FP&A 的 **price-volume-mix (PVM) analysis**；任何卖方盈利模型都有 volume 行和 ASP 行。
+- 差别：无。置信：高。
+
+**判据 4** 是重新包装，两条失效各有精确出处。
+- 失效 A ＝ Marshall 的 **quasi-rent**：短期内固定资本获得的租金，按定义归于已装机产能。加上 Teece 1986《Profiting from Technological Innovation》：利润归 complementary assets（含制造能力）持有者，不归识别出机会的人。
+- 失效 B ＝ Klein, Crawford & Alchian 1978《Vertical Integration, Appropriable Rents, and the Competitive Contracting Process》的 **appropriable quasi-rent / hold-up**，以及 Williamson 1983《Credible Commitments: Using Hostages to Support Exchange》。客户出 capex 换产能锁定，就是 hostage。「预付方是否同时出了 capex」这个判别标准，Williamson 的框架里叫 asset-specific investment 的归属。
+- 差别：作者把「租金转移给下游」写成规则，但 KCA 框架里合同同时也把 hold-up 风险从供应商身上移走。谁得租金取决于议价结构，不是 capex 出资方向单边决定，见 Q2。置信：高。
+
+**判据 5** 是重新包装，且比原型弱。
+- 第一个除法 ＝ 市场规模分析里的 **implied market share sanity check**（TAM/SAM/SOM 框架，Steve Blank 等；咨询 case 方法里的 top-down vs bottom-up triangulation）。周期品研究里叫「announced capacity vs projected demand」，多晶硅、LCD、LFP 都用过。
+- 第二个除法 ＝ Kahneman / Flyvbjerg 的 **outside view / reference class check**：用自变量倒推隐含数量，对照可观察的装机现实。
+- 差别是实质的，且朝坏的方向：原型只把比值当「需要解释的异常」，作者把它写成二择一结论（TAM 假 或 过剩已写进公告）。至少漏了三种解释：产能公告本身注水未必建成；分子分母口径不同（片 vs 颗、上游售价 vs 终端模组价、AI 用途 vs 全部用途）；市场本身高度集中或尚未成形。置信：高。
+
+## Q2 反例
+
+**判据 1**。禁令「相邻从句核实不得提高不可核实从句的置信度」在一个可检验的情形下出错：当已核实的从句都是**逐字**匹配而非转述时，文章大概率在整段抄录同一份文件，剩余从句也在该文件里的概率显著高于基准。可证伪的预测：任取 100 篇与某份新闻稿有 ≥3 处逐字匹配的文章，其余从句同样出自该稿的比例会超过八成。严格照判据行事，会把这类从句留在基准置信度，并在实践中当作「挂假半句」处理，产生 Type II 错误。对本案的补充：作者表格里没有「今年 7 月」和「黄仁勋公开确认」这两个从句。检索显示 fanless 与 45°C 是 Jensen 在 2026 年 1 月 CES 主题演讲的说法，「7 月」这一从句是可证伪的，却没进表格。判据要求拆到最小从句，作者的应用漏拆了时间与归因从句。这不是判据的错，但说明判据缺一条「什么算从句」的规格（时间、归因、范围量词、比较级「全球首个」都算）。
+
+**判据 2**。覆盖池是内生的情形。2024 至 2025 年多家卖方为 AI 供应链新开 Fujikura、Furukawa、Soitec 的覆盖，覆盖本身就是先回答「下一个瓶颈在哪」之后的结果。此时候选集 ＝ 覆盖池成立，但信息量并不被「我覆盖的里面挑喜欢的」封顶。照判据打折是错的。判据把静态覆盖与内生覆盖混为一谈。另一个问题在作者的观测指标：他用「名单里没有非上市公司」作为覆盖池约束的证据，但味之素 (2802.T) 和日东纺 (3110.T) 都是上市公司，也不在名单里。真正的检验是「价值链上有没有**上市**但缺席的名字」，他用错了观测量，虽然结论方向碰巧一致。
+
+**判据 3**。反例是「值口径」与「利口径」脱节。IDC 数据已核：2026 出货 −16.7%，产值 +6.3% 至 $613B，ASP +27.6% 至 $581，驱动是 DRAM/NAND 成本同比涨超 300% 被转嫁给消费者。照判据，「你要买的标的靠价吃饭 → 看值口径 → 手机行业创纪录年」，于是做多手机 OEM。但 ASP 上涨是成本 pass-through，OEM 收入涨、毛利率反而被挤压，租金归内存厂。用 IDC 对低端 Android 的描述可判真假：$100 以下机型出货二季度同比跌近 60%，这些厂商的收入按值口径不差，利润按利口径灾难。判据只有量／值两个轴，股票估值需要的第三个轴是利润归属，本判据不覆盖。
+
+**判据 4**。失效 B 的判别「预付方是否同时出了 capex」有可核实的假阳性：ASML 2012 年 Customer Co-Investment Program，Intel、TSMC、Samsung 出资 €1.38B 支持 EUV 研发，另以 €3.85B 购入合计 23% 股权。按判据 4B，ASML 应被降级为「代工者」、租金已被合同预分配。实际结果是 ASML 随后十年成为整条链定价权最强的环节。判别标准漏掉的变量是替代性：客户出 capex 是因为供应商不可替代，这同时是强势信号。ABF 载板与 ASML 的差别不在于「有没有客户出钱」，而在于 Ibiden／欣兴之间可互相替代。失效 A 稳健，是 quasi-rent 的定义本身，但作者自己的推论违反了它：味之素 Fine-Techno 是味之素集团子公司，ABF 在集团收入中占比很小（待核实），识别出租金落点不等于能买到它，这正是失效 A 的自我应用。
+
+**判据 5**。第一个除法在两类可核实情形下给错误结论。其一，Tesla 2014 年 2 月 26 日 Gigafactory 公告：单厂 2020 年规划 35 GWh 电芯，公司自己声明这超过 2013 年全球锂电总产量（约 35 GWh）。比值 ≥1。按判据，TAM 假或过剩已写进公告。实际 2020 年全球动力电池需求约 140 GWh，错的是 TAM 太小。其二，作者判据 4 自己的例子：味之素 ABF 份额 >95%，其产能 ÷ 全球 ABF film TAM 恒 ≈1，判据 5 会判 TAM 假。两条判据在同一份文档里互相打脸。第二个除法（隐含 152 万颗 vs 龙头自述收入为零）是稳健的，因为它对照的是可观察现实而非另一个预测数。
+
+## Q3 最不值得保留：判据 5
+
+理由按重要性排序。
+
+- **有负价值而非零价值**。其余四条删掉的代价是回到教科书版本，判断质量不变。判据 5 在集中市场（味之素、ASML、TSMC 3nm）和新生市场（Tesla 2014）系统性给假阳性，删掉它判断质量反而可能上升。题目定义的「损失最小」，负损失最小。
+- **它与判据 4 的示例矛盾**。同一天同一会话产出的两条规则互相否定，且作者未察觉。这本身就是题目背景所说「观察者独立性缺失」的实证。
+- **有用的部分可被吸收**。第二个除法是标准的 outside-view 对照，它不需要「产能 ÷ TAM」这个前置步骤就能独立成立。保留第二个除法，砍掉第一个除法和二择一结论。
+- **排除清单是事后补丁**。「backlog、政府合同、在手订单不适用」是遇到反例后加的例外，而集中度与市场成熟度这两个真正决定比值含义的变量不在清单里。
+
+判据 3 是冗余度最高的一条，但冗余不是有害，排第二。
+
+**我缺的信息**
+- 判据 2：原报告及其 coverage list，无法判断名单是否严格等于覆盖池。
+- 判据 4：「NVIDIA/AMD/Intel 补贴约一半扩产 capex」的来源与口径，以及味之素集团 ABF 收入占比。
+- 判据 5：15 万片的「片」是何规格，一片出几颗，¥4 万/片与 ¥5,714/颗是否同一价值链位置。
+- 判据 1：官方域检索是否覆盖 keynote 视频与 NVIDIA 技术博客。检索显示金刚石-铜的说法出自 36Kr 一类中文供应链报道，且措辞与被核文章逐字一致，文章的实际源头是这类二手稿，不是 NVIDIA。
+
+**来源**
+- [Gottschalk 通则原文（historical-method.pdf）](https://edwardseducationblog.wordpress.com/wp-content/uploads/2013/07/historical-method.pdf)
+- [FActScore, EMNLP 2023](https://aclanthology.org/2023.emnlp-main.741/)
+- [Tesla Gigafactory 公告，IndustryWeek 2014-02-26](https://www.industryweek.com/expansion-management/article/21962344/tesla-unveils-gigafactory-to-ramp-up-mass-market-car)
+- [Tesla 35 GWh vs 2013 全球产量](https://eepower.com/news/tesla-plans-gigafactory-to-produce-gigawatt-hours-of-li-ions/)
+- [ASML Customer Co-Investment Program，Samsung 加入完成计划](https://www.asml.com/en/news/press-releases/2012/samsung-joins-asmls-customer-co-investment-program-for-innovation-completing-the-program)
+- [ASML 6-K 2012](https://www.sec.gov/Archives/edgar/data/0000937966/000119312512370598/d402810dex991.htm)
+- [IDC 2026 手机预测 −16.7%](https://www.idc.com/resource-center/blog/smartphone-shipments-set-for-record-16-7-drop-in-2026-as-the-memory-crisis-hits-full-force/)
+- [Tom's Hardware：Jensen CES 2026 确认 Rubin NVL72 fanless、100% 液冷](https://www.tomshardware.com/tech-industry/artificial-intelligence/nvidia-ceo-confirms-vera-rubin-nvl72-is-now-in-production-jensen-huang-uses-ces-keynote-to-announce-the-milestone)
+- [36Kr：金刚石-铜说法的中文来源](https://eu.36kr.com/en/p/3727739429927810)
+- [SemiAnalysis：45°C 并非 Rubin 首创](https://newsletter.semianalysis.com/p/vera-rubin-extreme-co-design-an-evolution)

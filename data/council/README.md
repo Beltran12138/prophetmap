@@ -12,6 +12,7 @@ CHANGELOG entry for the corresponding date.
 |---|---|---|---|
 | 2026-07-30 | Should PEG remain the primary pricing indicator? Arbitration between PEG and pricingScore? Should margin capture become a fifth dimension? | Grok, DeepSeek (**MiMo timed out — 2 of 3**) | Split on Q1 (Grok: demote PEG; DeepSeek: keep + veto). Agreed on Q2. **Both wrong on Q3** — both recommended adding the dimension; four candidate formulations were tested against six tickers and all four failed. |
 | 2026-09-09 | Should prophetmap / assay / decision-confidence / agent-tool-interop be merged? What is the correct unit of integration? What does the traffic reading support? | Grok, DeepSeek, Fable 5.1, Gemini 3.8 Flash (**4 of 4 answered**) | Unanimous against merging. **Both of the asker's supporting arguments were overturned** — see the correction note below. 3 of 4 independently attacked the *convergent validity* claim on the same word: **domain independence is not observer independence.** 🔴 **The asker supplied a false fact** (see below). |
+| 2026-09-09 (B) | Red-team five methodology criteria the asker generated in a single day: are they repackaged existing concepts, and what is the counterexample to each? | Grok, DeepSeek, Fable 5.1, Gemini 3.8 Flash (**4 of 4 answered**) | **4 of 4 judged all five to be repackagings, with citations.** Two panelists independently found that **criterion 4 and criterion 5 contradict each other** on the asker’s own example. The asker’s nominated *strongest* criterion was the most damaged. See scoring below. |
 
 ---
 
@@ -83,3 +84,70 @@ ranked by **whether the finding can be restated by a stranger in one sentence.**
 
 **The verdict survived. The argument did not.** That asymmetry is the reason the transcripts are
 archived rather than summarised.
+
+---
+
+## Council B scoring — 2026-09-09
+
+`2026-09-09-B/chair-preregistration.txt` was written **before the package was sent** and archived
+byte-verified. Unlike the first council that day, this one carried a deliberate design change: the
+chair’s four predictions in council A had all been of the form *"the panel will fail to notice X"*
+and all four were wrong. So three of the six predictions here were deliberately set as *"the panel
+**will** do X"*.
+
+| # | Prediction (written before sending) | Outcome |
+|---|---|---|
+| P1 | ≥2 of 4 will give criterion 1 a specific name (paltering, or atomic claim decomposition) | **4 of 4** — all landed on FActScore / FEVER. Grok additionally **rejected** the chair’s own first guess: paltering is speaker-side, this criterion is reader-side |
+| P2 | 4 of 4 will call criterion 3 commonplace **with a specific citation**, not a vague category | **4 of 4** — Marshall 1890 total-revenue test, price-volume-mix, SNA 2008 ch.15 |
+| P3 | ≥1 of 4 will cite Teece 1986 / the value-capture branch | **4 of 4** |
+| P4 | **No** panelist will identify the disjunctive-conclusion defect in criterion 5 | **Fable did** — named it *"二择一结论"* and recommended cutting it |
+| P5 | Q3 answers will be dispersed — no criterion drawing ≥3 of 4 | **3 of 4 chose criterion 3** |
+| P6 | ≥1 of 4 will note the five criteria share one underlying structure | **0 of 4** — but two independently found something sharper (below) |
+
+**3 of 6. Across both councils, every prediction of the form "the panel will not do X" failed
+(0 of 6 survived); every prediction of the form "the panel will do X" held (3 of 3).** The chair’s
+pessimistic behavioural predictions carry no information and should stop being made.
+
+### The finding the chair did not predict
+
+Grok and Fable **independently** observed that **criteria 4 and 5 contradict each other on the
+asker’s own worked example.** Criterion 4 instructs him to hunt for an irreplaceable upstream
+single point holding **>95% share** (Ajinomoto Fine-Techno, ABF film). Criterion 5 says a single
+company’s capacity divided by the claimed global TAM approaching **1** signals a fake TAM.
+Ajinomoto satisfies both and receives opposite verdicts — written the same day, in the same
+session, by the same person, and not noticed.
+
+Fable filed this as evidence for the premise stated in the question package itself: *domain
+independence is not observer independence.* The package handed the panel that sentence as
+background; the panel used it on the asker.
+
+### Substance: both of the chair’s positions were overturned
+
+- **Nominated strongest — criterion 4 — was the most damaged.** Its only operational discriminator
+  (*"did the prepaying party also fund the capex?"*) was falsified by 3 of 4 with the same case:
+  **ASML’s 2012 Customer Co-Investment Program** — Intel, TSMC and Samsung put in €1.38B of R&D
+  funding plus €3.85B of equity, exactly the criterion’s trigger, and ASML went on to hold the
+  strongest pricing power in the chain. The missing variable, named by Fable: **replaceability.**
+  Customer capex can mean the supplier is irreplaceable — the signal runs both ways. DeepSeek
+  separately broke the other half: rent accrues to the owner of the **scarce asset**, and a scarce
+  asset need not be capacity at all (mineral rights, patents, licences, spectrum).
+- **Nominated weakest — criterion 5 — drew only 1 of 4.** Three chose criterion 3, and for a
+  stronger reason than the chair had: not that it is commonplace, but that its **non-commonplace**
+  part (forcing a ticker into "lives on volume" or "lives on price") **outputs the wrong sign** —
+  operating leverage, mix-versus-price, and profit attribution each break the binary.
+
+### Convergence
+
+Four panelists, four independent searches, landing on the same counterexamples: **ASML 2012 three
+times, Tesla’s 2014 Gigafactory announcement twice, "the sole supplier *is* the market" four times,
+the 4-versus-5 contradiction twice.** Council A’s central criticism was that four self-built cases
+observed by one person do not constitute convergent validity. This time they were four observers.
+
+### One more, on the chair’s own application
+
+Fable checked the founding instance of criterion 1 and found the chair had **not decomposed his own
+sentence completely**: the clauses *"in July"* and *"Jensen Huang publicly confirmed"* never entered
+his table. Verified afterwards by the chair: the fanless / 100%-liquid-cooling claim traces to the
+**CES keynote of 6 January 2026**, not July. The criterion therefore needs a spec for what counts
+as a clause — time, attribution, scope quantifiers, and superlatives all do.
+*(Coverage denominator: one source. "Announced in January" is verified; "not repeated in July" is not.)*

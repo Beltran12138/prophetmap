@@ -1,0 +1,133 @@
+先读 `question.md`，按里面的要求直接作答。先按五条判据分别检索既有术语和出处，再独立给反例和取舍。Memory flush started.
+Memory flush nothing to store.
+## Q1
+
+### 判据 1
+是重新包装。三块都有名字，拼在一起不是新概念。
+
+1. **操作层**：把句子拆成最小可核从句、逐条对一手源。这是 **claim decomposition / atomic fact verification**。哲学祖先是 Russell 的 logical atomism（*The Philosophy of Logical Atomism*, 1918）。当代操作化：FEVER；Min et al., *FActScore*（arXiv:2305.14251, 2023）——把文本拆成 atomic facts，逐条对知识源打支持/不支持，禁止用整段打一个分。
+2. **机制层**：已核实从句把可信度漫到未核实从句。这是 **halo effect** 换了对象：Thorndike, “A Constant Error in Psychological Ratings,” *Journal of Applied Psychology* 4(1): 25–29 (1920)。原对象是人的特质，这里是同一归因下的从句。
+3. **更新规则**：「A 找到了，不得因此提高 B 的置信」。这是把合取支的默认独立性写成禁令。贝叶斯里：若无边，\(P(B\mid A,E_A)\neq P(B\mid E_A)\) 不成立。
+
+**不是同一物、不要混用的近邻**：
+
+- **Paltering**（Rogers, Zeckhauser, Gino, Norton, Schweitzer, *JPSP* 112(3): 456–473, 2017）：说话者用真陈述制造假印象。本判据是读者侧的防法，且针对的是真从句旁挂着未核/假从句，不是「全真但误导」。
+- **Half-truth doctrine**（美国证券法 Rule 10b-5；*Universal Health Services v. United States*, 136 S. Ct. 1989 (2016)）：真陈述因省略而误导。本判据是合取支里有一个找不到源，不是省略。
+
+与既有概念的差别：把「共享具名信源」写成默认禁止跨从句更新。这是 SOP，不是理论增量。实质差别小。置信：**高**。
+
+### 判据 2
+是重新包装。核心是三件旧事叠在卖方报告上。
+
+1. **Coverage error / sampling frame ≠ target population**：Kish, *Survey Sampling* (Wiley, 1965)；Groves 等人之后的 survey methodology 标准术语。名单 = 抽样框，设问里的「AI 产业链瓶颈」= 目标总体。框等于总体时，排序只对框内有定义。
+2. **WYSIATI**（What You See Is All There Is）：Kahneman, *Thinking, Fast and Slow* (2011)。把覆盖到的菜单当成空间。
+3. **Attribute substitution / question substitution**：Kahneman & Frederick, “Representativeness Revisited,” in Gilovich, Griffin & Kahneman (eds.), *Heuristics and Biases* (CUP, 2002)。难问题「空间里哪个最好」被换成易问题「菜单里我更喜欢哪个」。
+
+近邻：**streetlight effect / drunkard's search**（Kaplan, *The Conduct of Inquiry*, 1964, p.11）；**closed-world assumption**（Reiter, “On Closed World Data Bases,” 1977/78）；营销里的 **consideration set**（Hauser & Wernerfelt, *JCR* 16(4): 393–408, 1990）；金融黑话 **investable universe vs opportunity set**。
+
+「候选集＝覆盖池」是好用的口号，不是新结构。与 coverage error 的差别：后者管估计量偏差，这条管「排序的信息量上限」。差别是应用场景，不是机制。置信：**高**。
+
+### 判据 3
+是重新包装，而且是五条里最薄的一条。
+
+1. 会计恒等式 \(P\times Q=\text{Revenue}\)。
+2. **Price-volume-mix (PVM / VPM) analysis**：FP&A 把收入变动拆成量、价、mix。
+3. 国民核算 **price and volume measures**：SNA 2008 第 15 章；价值（current prices）对体积（volume）。
+4. 「价是自变量时，量与值反向」：需求价格弹性 \(|\varepsilon|<1\) 时的 **total revenue test**（Marshall 以来的本科内容）；供给约束市场里价由短缺决定。
+
+「必须说出你下注的是哪一个」是把恒等式写成检查项。「标的靠量还是靠价吃饭」是把 PVM 接到 ticker 的 revenue driver。没有新机制。作者自陈的边界（同向时本条不产生信息）等于承认：多数需求冲击下它是空转的。置信：**高**。
+
+### 判据 4
+是重新包装。两条失效分别对应已经分开命名的两支文献；合在一起是诊断树，不是新理论。
+
+**失效 A**（租金归现在就有产能的人）：
+
+- Ricardo, *On the Principles of Political Economy and Taxation* (1817)：短缺租金归 intramarginal 的存量供给，不归「正确指出了短缺」的人。
+- Teece, “Profiting from Technological Innovation,” *Research Policy* 15(6): 285–305 (1986)：利润归 complementary assets 的所有者，不归识别机会的人。
+- 宏观对应：**time-to-build**（Kydland & Prescott, *Econometrica* 50(6): 1345–1370, 1982）。
+
+**失效 B**（合同预先分配租金 → 降级为代工）：
+
+- Klein, Crawford & Alchian, “Vertical Integration, Appropriable Rents, and the Competitive Contracting Process,” *JLE* 21(2): 297–326 (1978)：**appropriable quasi-rents**；专用性投资之后租金可被合同对方抽走。
+- Porter, *Competitive Strategy* (1980)：buyer bargaining power；大客户能把供应商压成 captive。
+- Brandenburger & Stuart, “Value-Based Business Strategy,” *JEMS* 5(1): 5–24 (1996)：value created ≠ value captured；added value 是捕获上限。
+- 能源/项目融资黑话：**merchant vs contracted capacity**；tolling、take-or-pay、offtake。客户出 capex 的那一支就是 dedicated / customer-financed capacity。
+
+「预付方是否同时出了 capex」是作者加的判别启发式，文献里没有这一条作为充分条件。它有用，但不是新的租金理论。与 Teece/KCA 的差别：他们要问的是 appropriability regime、资产专用性、外部选择，不是单看 capex 有没有客户出。这个简化是实质的，而且会错（见 Q2）。置信：**高**（归名）；**中**（那条 capex 判别是否站得住）。
+
+### 判据 5
+是重新包装，而且把标准测试写窄了。
+
+1. **Adding-up constraint**：需求系统里份额加总为 1（Deaton & Muellbauer, “An Almost Ideal Demand System,” *AER* 70(3): 312–326, 1980）。一家的规划产能 / 全球 TAM → 1，就是份额加总要破。
+2. **Implied market share / implied penetration**：用宣称 TAM 反推隐含销量或份额，再跟可观察事实对。卖方和做空研究的常规 sanity check；VC 黑话 **TAM inflation / TAM theater**。
+3. 第二步（TAM ÷ 单价 = 隐含颗数，再对「尚未规模化」）：**Fermi estimate** 加 **stock-flow consistency**（Godley 一系；更一般就是流量与存量不能同时成立）。
+4. 工业组织里的 **capacity–demand ratio** 作为过剩指标。
+
+标准测试是 **\(\sum_i\) 宣布产能 / TAM**，不是 **单一公司 / TAM**。用一家来做，在集中度高的市场里会把「高份额」读成「TAM 假」。这条作为口号比标准 adding-up 更弱、更易误报。差别实质，且对作者自己的应用域（AI 供应链上的单点）是有害方向。置信：**高**。
+
+---
+
+## Q2
+
+### 判据 1
+反例：共享信源的可靠度是共同因子时，禁止从 A 更新 B 会系统性低估。
+
+2023-03-22 FOMC 声明把联邦基金目标区间上调 25bp 至 4.50–4.75%。一篇报道写：「美联储加息 25bp 至 4.50–4.75%，这是连续第九次加息，利率为 2007 年以来最高。」前半句在 FOMC statement 里逐字可核。后两句通常不在当次声明正文里，要靠历史路径加出来。按本判据，后两句「找不到一手源」，且不得因前半句已核而提高置信。
+
+后两句是已核事实的算术推论（公开的历次目标区间序列）。正确更新是：前半句为真 → 该报道在这段利率事实上可靠 → 后两句作为对同一序列的计数，置信应升。禁止转移，会把真的、紧纠缠的从句当成未证实。
+
+同一机制的形式版：Bovens & Hartmann, *Bayesian Epistemology* (OUP, 2003) 里，同一 source 的可靠度是潜变量；一条报告为真，应上调该源可靠度，从而上调其另一条报告的概率。本判据把这条边砍掉。它在「微信转述把 NVIDIA 原文和作者捏造捆在一句」时是对的；在「整句来自单一胜任一手源」时是错的。
+
+不是「无反例」。判据作为默认禁令过严。置信：**高**。
+
+### 判据 2
+反例：覆盖池与设问的搜索空间在制度上重合。
+
+一只章程限定为 S&P 500 long-only 的基金，读一篇「S&P 500 里 AI 受益排序：NVDA / AVGO / MSFT / ANET」。候选集 = 覆盖池 = 该基金可持有集合。按本判据，这个排序的信息量上限是「在我覆盖的东西里我更喜欢哪个，而不是这个空间里哪个最好」，于是去补私募、中概、未覆盖名。对这个读者，那些名不可买；「空间里最好」不是他的问题。他的问题就是菜单。照做会用不可执行的集合替换可执行的集合。
+
+同类：对「目前 FDA 已批的 X 适应症药物里，哪只 III 期数据最好」，候选集由监管批准定义，不是分析师偷懒。把完整菜单当成 coverage bias，是把约束当成缺陷。
+
+本判据在设问是开放搜索、答卷是卖方覆盖名单时成立。设问自带封闭全集时不成立。置信：**高**。
+
+### 判据 3
+反例：强制把 ticker 判成「靠量」或「靠价」，会做错边。
+
+2022 年原油：EIA 的美国产品供给（量）并非历史新高，Brent 均价约 $100。ExxonMobil 2022 年净利润 $55.7B，公司纪录。若按本判据把 Exxon 判成「靠量吃饭」（卖的是桶），再因量未创新高而否定「能源强」的值口径交易，方向反了。那一年的利润驱动是价，不是桶数。Exxon 的经营杠杆同时暴露在 P 和 Q 上，二元分类没有正确取值。
+
+同类：DRAM/NAND 上行年（如 2017、2024 的价格周期）—— bit 出货可以弱，ASP 可以翻，Micron / SK Hynix 利润跟价走。判成「存储厂靠 bit 量吃饭」再按量空，是错的。
+
+本判据假定「行业弱/强」有一个对的口径、且每个标的有一个对的口径。价格周期里两个假定都假。置信：**高**。
+
+### 判据 4
+两条失效各一个反例。
+
+**失效 A。** 2020 年 1 月，Moderna 没有可商业供应的 mRNA 疫苗产能。短缺真实。按失效 A，「租金归于现在就有产能的人」，Moderna 当时不是收租者。随后它把产能建进短缺窗口，靠 Advance Purchase Agreements 收了租。照做会把「能在窗口内把产能建出来的人」整类排除。租金归存量供给，只在产能的 time-to-build 长于短缺持续时间时成立。窗口内可建时，租金归能建的人。
+
+**失效 B（含「预付方是否出了 capex」）。** 2021–2022 动力电池短缺。整车厂与 CATL 建合资厂（客户出了 capex），并签长约锁量。按本判据，CATL 应从收租者降级为代工者。CATL 当年毛利率仍高、电芯短缺时仍有定价权，不是 tolling contractor。客户出 capex 买的是 *准入*，不是把定价权买走。TSMC 2023–2025 是同一结构的弱版：客户预付/锁量，TSMC 毛利率仍在 50%+，涨价权还在。若把「出 capex」收得更严、TSMC 被豁免，CATL 这种真出了 capex 的 JV 仍是反例。
+
+作者自陈的例外（长约本身是标的物）救的是 Cheniere 那种 contracted IRR，救不了「客户出了 capex、供应商仍有外部选择/技术缺口」的节点。判别条件不充分。置信：**高**。
+
+### 判据 5
+反例：比值接近 1 是高份额，不是 TAM 假，也不是过剩已写进公告。
+
+ASML 的 EUV 规划产能 ÷ 全球 EUV TAM \(\approx 1\)，因为它就是该市场。NVIDIA 数据中心 GPU 收入占多数「AI 加速器 TAM」估计的 70–90%，同一算术。按字面规则，应判定 TAM 假或过剩已在公告里。两者都不成立：市场真实，公司是市场。
+
+这条与判据 4 直接冲突：判据 4 要你找不可替代的上游单点（份额可以 >95%）；判据 5 见「单家规划 / TAM 接近 1」就喊 TAM 假。作者举例里有「另两家也在扩产」，但规则正文没有这个条件，也没有「只适用于非在位垄断者」。
+
+第二个反例：中国项目的 **宣布产能 ≠ 投产产能**。2018–2019 年 CATL 规划产能相对当时券商动力电池 TAM 已经很大。按本判据应判 TAM 假或过剩已宣布。随后 TAM 涨了，CATL 的规划有相当部分真的建出来了，它是赢家。把公告产能当容量，会把「规划激进的在位者」和「TAM 造假」混成一类。
+
+无「无反例」可说。置信：**高**。
+
+---
+
+## Q3
+
+**判据 3。** 删掉它，判断质量损失最小。
+
+它几乎是 \(P\times Q\) 和 PVM 的备忘录。IDC 那类表把出货、产值、ASP 打在同一页；它要防的错是「没看邻列」。其余四条都要求把两个不在同一页上的东西接起来：从句对官方域、排序对覆盖框、短缺对合同、规划产能对他人的 TAM。那些是额外动作。判据 3 常常不是。
+
+作者自己已经写了：量值同向时本条不产生信息。五条里只有这一条把「经常空转」写进边界。Q2 的反例还说明，它真正不像恒等式的那一步——「标的靠量还是靠价」的二元分类——本身会输出错边。所以删掉的不只是冗余提醒，也去掉一个假二分。
+
+不是说量值口径从不误导人。是说：会看表的人已经有这条；不会看表的人，靠一条口号也补不上。删 C1，整句归因会回来。删 C2，卖方菜单会被当成搜索结果。删 C4，会买「说对了缺口」的名字。删 C5，会吞下券商 TAM（尽管它需要加「非在位者 + 多家扩产」才不误报）。删 C3，少一张便利贴。
+
+置信：**中高**。最接近的竞争者是判据 5 的第一句公式——它在作者真正干活的集中市场里会误报，单独看「净质量」甚至可能是负的。但它的第二步（隐含装机对「尚未规模化」）没有等价替代，整条仍比 C3 更不该删。

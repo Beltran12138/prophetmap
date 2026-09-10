@@ -1,0 +1,58 @@
+## Q1：是否既有概念的重新包装（逐条）
+
+**判据1（真半句挂假半句）——是。**
+两个已有名字的东西拼在一起：
+- **原子化声明拆解 + 逐条核验**（atomic claim decomposition / claim-level verification）。出处：FActScore，Min et al., "FActScore: Fine-grained Atomic Evaluation of Factual Precision in Long Form Text Generation," EMNLP 2023（[aclanthology](https://aclanthology.org/2023.emnlp-main.741/)）。它做的正是「把长文本拆成最小原子断言，逐条对知识源核验」，同脉络还有 AVeriTeC（Schlichtkrull et al., NeurIPS 2023）。这也是新闻事实核查的行规：核验**声明**，而非核验**信源**。
+- **让可核实从句给不可核实从句提供信用**＝晕轮效应（halo effect）作用于信源可信度。出处：Thorndike, "A Constant Error in Psychological Ratings," *Journal of Applied Psychology*, 1920。叠加「归因于具名信源即接受」＝诉诸权威（appeal to authority）。
+
+作者唯一超出 FActScore 的是「禁止相邻从句借信用」这条禁令，而这条禁令正是 Q2 反例的错误来源——它不是新概念，是把标准做法写成一条更严的口令。
+
+**判据2（候选集＝覆盖池）——是。**
+多概念的拼装：
+- 核心＝**样本选择偏误/覆盖偏误**（sample selection bias / coverage bias）。出处：Heckman, "Sample Selection Bias as a Specification Error," *Econometrica* 47(5), 1979。「名单里没有非上市公司」是**幸存者偏误**（survivorship bias，Wald 二战飞机案例）的一个具体形态。
+- 「覆盖池内偏好 vs 空间内最优」＝**菜单依赖**（menu dependence）。出处：Amartya Sen, "Internal Consistency of Choice," *Econometrica* 61(3), 1993（[econometricsociety](https://jstor.econometricsociety.org/publications/econometrica/browse/1993/05/01/internal-consistency-choice)）。
+- 「设问与答案不是同一个问题」＝**属性替换/问题替换**（attribute substitution）。出处：Kahneman & Frederick, "Representativeness Revisited," 2002。
+- 方法论寓言＝**街灯效应**（streetlight effect / drunkard's search）。
+
+差别不实质。
+
+**判据3（量口径 vs 值口径）——是。**
+最基础的一条：
+- 「量 vs 值」＝经济学第一课的**实际值 vs 名义值**（real vs nominal）：名义值＝价格×数量。行业研究里的对应技术是**量/价/结构拆分**（volume–price–mix, VPM decomposition），卖方和消费品研究的标准动作。IDC 自己同时报 units 和 value，说明「两个口径都看」早就是行业惯例。
+- 「价格是自变量时量值反向」＝**需求定律**在供给冲击下的应用（短缺/管制/补贴抬价→量跌、值可能升）。
+
+差别不实质。唯一略非标准的措辞「走到实物单位也可能读反」，本质是「名义口径也可能误导」的老命题。
+
+**判据4（租金归属的两种失效）——是。**
+五条里最接近成熟理论的一条：
+- 失效 A＝**价值创造 vs 价值捕获**（value creation vs value capture）。出处：Brandenburger & Stuart, "Value-based Business Strategy," *Journal of Economics & Management Strategy* 5(1), 1996（[ideas.repec](https://ideas.repec.org/a/bla/jemstr/v5y1996i1p5-24.html)）。「你说对了哪里缺 ≠ 你能卖缺的东西」正是「识别出价值创造点 ≠ 捕获了它」。
+- 失效 B＝**敲竹杠问题 / 准租金侵占**（hold-up problem / appropriable quasi-rents）。出处：Klein, Crawford & Alchian, "Vertical Integration, Appropriable Rents, and the Competitive Contracting Process," *Journal of Law and Economics* 21(2), 1978（[uchicago](https://www.journals.uchicago.edu/toc/jle/1978/21/2)）；Williamson (1985) 的**资产专用性**（asset specificity）。买方补贴专用资产＋长约＋预付＝把准租金从供方拿走、把供方钉在「拿稼动率不拿定价权」——正是 hold-up 的教科书机制。「从收租者降级为代工者」≈ 品牌方 vs 合约制造商（branded vs toll/contract manufacturing）的利润池区分。
+
+差别不实质。
+
+**判据5（单一公司产能 ÷ 宣称 TAM）——是。**
+- 核心＝**供给侧 vs 需求侧交叉核验**（supply-side vs demand-side cross-check）＋**产能过剩分析**（overcapacity analysis）：把公告产能加总去和需求（TAM）对账，看 TAM 是否虚高、过剩是否已写进公告。半导体/光伏/锂电池/电动车卖方的常用动作；也是**自上而下 vs 自下而上 TAM 核对**（top-down vs bottom-up TAM reconciliation）的变体。
+- 第二个除法（单价反推装机量、再对龙头收入做自洽）＝**内部一致性检验/三角验证**（internal consistency check / triangulation），建模的基本 sanity check。
+
+差别：「把单一公司÷全球 TAM 当固定比值阈值（≈1＝假）」比标准做法粗糙，因为它把**规划产能**与**当期 TAM** 两个不同时点/口径的数直接相除——这是作者原创的表述，也是它最脆弱的表述（见 Q2）。
+
+## Q2：反例（逐条）
+
+**判据1 反例。** 一份公司自己发的官方财报（本身即一手源）写「本季度营收 A，毛利率 B，经营现金流 C」。你逐条核：A、B 能在官方另一处找到，C 因你只做「官方域 1 次＋通用 2 次」搜索而没被索引到（C 在未索引的附表或非英文页面）。照判据1，你「不得因 A、B 找到而提高 C 的置信度」，于是判 C 为「未找到一手源→不采信」。但 C 是真的，且 A、B 与官方完全一致恰恰是「这份文件忠实复刻官方数据」的证据，应当提高 C 为真的概率。判据1 的结构性错误：当捆绑发生在**单一一手文件内部**时，「逐从句找另一个一手源」是多余的，而「相邻从句不能互相提供证据」否定了「信源整体忠实度」这一合法证据——在单份一手源内部，相邻可核从句确实携带信息。
+
+**判据2 反例。** 一份写给「公募多头基金」的「AI 瓶颈怎么选」报告，交付 25 个上市 ticker，无一家非上市公司。判据2 会判它「候选集＝覆盖池→排序只说明覆盖池内偏好」。但如果这份报告的设问本就是「**公募资金能买的标的里**怎么选」（受可投资约束），非上市公司根本不在搜索空间内，候选集＝可投资池＝正确的搜索空间。此时「没有非上市公司」不是覆盖偏误的证据，而是问题被正确约束的证据。照判据2 行事，你会把一个正确的排名降级。判据2 的隐含前提「搜索空间 ⊃ 覆盖池」在可投资性约束下不成立。
+
+**判据3 反例。** 用判据3 读 2026 手机数据（量 −16.7%／值 +6.3%／ASP +27.6%）：它诱导你把「消费电子是弱项」当【量】陈述下注弱，并把 ASP 大涨当作「价格是自变量（短缺/补贴）」的证据。但如果 ASP +27.6% 的主因是**结构升级/高端化**（消费者换购高价旗舰、低端出货退出——需求侧现象，不是供给侧短缺），那么量跌＋值升反映的是「低端萎缩、高端创纪录」，正确判断是「高端强、低端弱」而非「行业弱」。判据3 把「价格」和「结构（mix）」混进同一个 ASP，而两者方向含义相反：供给侧抬价＝真短缺（弱），需求侧换结构＝高端强（强）。它的逃生口「只有价格是自变量时才咬合」恰恰需要 VPM 拆分才能分辨——而它没给这个拆分，照它行事会犯它想防的错。
+
+**判据4 反例（对失效 A）。** 「短缺的租金归于现在就有产能的人」在「稀缺资产是权利而非产能」时是错的。具体：一家初级矿企（junior miner）持有唯一经济可采的关键矿藏（稀缺资产＝矿权/资源），但尚未投产、没有任何「现在的产能」。短缺发生时，租金通过预付款和储量重估流入这家**无产能的权利持有人**，而非流入「现在就有产能」的存量生产商（后者的产能可能在错误的品位/区位）。照失效 A，你会买「现有产能」的存量商而错过真正收租的无产能持有人。更一般地，稀缺资产可以是专利、牌照、频谱、独家配方——都可零产能收租。失效 A 的「识别≠捕获」是对的，但它推出的「租金归于现有产能」是错的：租金归于**稀缺资产的所有者**，而稀缺资产不等于产能。
+
+**判据5 反例。** 单一公司规划产能 ÷ 全球 TAM ≈ 1 时，可能既非 TAM 假、也非过剩写进公告，而是该公司就是该市场的**唯一供应者**。具体：EUV 光刻机的独家供应商，其 EUV 规划产能 ÷「全球 EUV 光刻 TAM」≈ 1。照判据5，你会判「EUV TAM 是假的或过剩已写进公告」——但 TAM 是真的，比值≈1 反映的是独家供给，不是矛盾。此外还有**时点错配**：用 2030 年「规划产能」去除 2026 年「当期 TAM」，比值天然虚高，同样会把真实 TAM 误判为假。判据5 的「比值≈1＝假」只在「多供应商＋同期口径」下成立，而这个前提它没写进去。
+
+## Q3：最不值得保留
+
+**判据3（量口径 vs 值口径）。**
+
+理由：
+1. **它最不新鲜、最已制度化为默认动作。** 量/值（units vs value）与「实际 vs 名义」是经济学第一课，VPM 拆分是卖方和消费品研究标配，IDC 等数据商自己就同时报两个口径。删掉它，作者照旧会看两个口径——这条判据不是在防一个他会犯的错，而是在复述一个他已经在执行的行规，删掉后判断质量损失≈0。
+2. **它唯一略非标准的部分（「价格自变量时量值反向」「实物单位也可能读反」）恰恰是它最容易出错的部分**（Q2 反例：ASP 涨是结构还是价格？判据3 无法分辨却诱导下注）。也就是说，删掉它损失的是「标准、人人都会的部分」，留下的是「非标准但易错的部分」——两头都落在「不值得保留」上。
+3. **对比其余四条：** 判据1 的原子化拆解＋禁止相邻从句借信用，防的是真实而隐蔽的「信源晕轮」，且日常未必人人做到；判据2 防的是隐蔽的框架替换（候选集＝覆盖池），非默认动作；判据4 是 hold-up/价值捕获这套非平凡理论；判据5 的供给侧 TAM 核验也不是默认动作。这四条各自防一个「不刻意就不会防」的错。判据3 防的错，默认动作已经防了。
