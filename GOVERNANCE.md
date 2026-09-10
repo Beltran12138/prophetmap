@@ -473,6 +473,22 @@ Secondary analysis.
 > **The default was contested and the asker lost 4–0.** He proposed that the mid-check must produce an explicit continue-or-abandon verdict, with *both* directions requiring a written reason — reasoning by analogy to Gap #19, where surfacing without a forced verdict decayed into a no-op. All four rejected it on the same ground: **a rule that mandates a decision at a checkpoint is a door for restarting the exam**, which is precisely what the delete clause exists to shut. The register is the forced-disposition mechanism instead; it forces a *record*, not a *decision*.
 >
 > **One asker-supplied premise was false and is corrected here.** He stated that fixing the defects "all require re-scoring the frozen roster, so all are barred". Fable 5.1: *"that holds only for applying the fix to F. Running the corrected G on a non-frozen copy to compute the affected list is blocked by nothing in the pre-registered rules. 'Cannot touch F' had been conflated with 'cannot touch G'."* Verified by doing it — see the register. `git status` reported clean via its stat cache without ever comparing content; once touched, `git checkout --` rewrote all **3318** line endings to CRLF (281,769 → 285,087 bytes) with **zero content diff**. A future `git` operation will silently do the same and produce a whole-file diff that hides any real change inside it. Not fixed here — it changes no measurement and the fix is a repo-wide decision.
+
+> **⚙️ Update (v2.9.22, 2026-09-10) — measured, not assumed. The paragraph above is kept as written, because it is a true account of 2026-09-03. Its first clause now reads backwards, and that is worth stating rather than leaving a stale warning in place.**
+>
+> | | worktree | index (committed blob) |
+> |---|---|---|
+> | `data/universe.json` | **CRLF** ×3382, 294,228 B | **LF** ×3382, 290,846 B |
+> | `GOVERNANCE.md` | CRLF ×758 | LF ×758 |
+> | `data/layers.json` | CRLF ×673 | LF ×673 |
+>
+> `.gitattributes` (`* text=auto eol=lf`, added in the same version as the warning) normalises **on the way into the index**, which is where it matters: every blob here is LF, verified by `git show HEAD:<path>`. The worktree still holds CRLF because git does not retroactively rewrite files that have not been checked out since — hence the *"CRLF will be replaced by LF the next time Git touches it"* on every operation.
+>
+> **The failure mode the original warning was written about is closed.** Diffs are computed against the normalised index, so both sides are LF and a line-ending change can no longer produce a whole-file diff for a real edit to hide inside. Measured on the preceding commit: **897 insertions, 1 deletion, no file rewritten.**
+>
+> ⛔ **Do not "fix" the worktree by renormalising.** `.gitattributes` gives the reason in its own header: a repo-wide renormalisation commit would touch `data/ab-track/frozen-*.json`, and the gate A integrity anchor requires that file to have **exactly one commit**. The cosmetic inconsistency is by far the cheaper of the two.
+>
+> ⚠️ **Before writing to any file here, read the bytes.** A worktree read in text mode reports `CRLF=0`, because Python's universal-newline translation strips the `\r` before anything counts it. That false reading was produced twice while checking this, and it is the same family as every other entry in this document: **the tool did not look at the field, so the field was declared fine.**
 >
 > **Still not fixed, and now named precisely:** the `pricingScore` *formula* remains unfrozen. Enforcing it needs a version lock on the engine, not a field comparison, and that is out of scope for a governance commit. **No ticker's PASS/FAIL state moved, no scoring field changed, no portfolio motion.**
 

@@ -4,6 +4,20 @@ All notable universe / layers / framework changes, dated.
 
 ---
 
+## 2026-09-10 — v2.9.22: a stale line-ending warning, corrected by measurement
+
+**Documentation only. No script, no scoring field, no ticker, no roster change.**
+
+The v2.9.18 addendum carried a live warning that `data/universe.json` sits in the worktree as LF while `core.autocrlf=true` checks out CRLF, and that a future git operation would silently rewrite 3318 line endings with a zero content diff. That was true on 2026-09-03. It now reads backwards, and a stale warning left in place is worse than none — it points attention at a closed hole.
+
+Measured today: **worktree CRLF, index LF, for every file checked.** `.gitattributes` normalises on the way into the index, so diffs compare LF against LF and a line-ending change can no longer hide a real edit. The preceding commit landed 897 insertions and 1 deletion with no file rewritten.
+
+The original paragraph is kept verbatim; the update is appended beneath it. ⛔ The worktree is deliberately **not** renormalised: a repo-wide renormalisation commit would touch `data/ab-track/frozen-*.json`, and the gate A integrity anchor requires that file to have exactly one commit.
+
+⚠️ One method note, because it caused two false readings while checking this: **a worktree read in text mode reports `CRLF=0`** — Python's universal-newline translation strips the `\r` before anything counts it. Line endings must be read as bytes. Same family as the rest of this document: the tool did not look at the field, so the field was declared fine.
+
+---
+
 ## 2026-09-10 — v2.9.21: the delete clause covered the wrong case, and the evaluation path was never anchored
 
 **A post-freeze defect rule added to `GOVERNANCE.md`. Gap #21 added. `data/ab-track/defect-register.md` created. No script changed, no scoring field touched, no ticker moved, frozen roster untouched.**
