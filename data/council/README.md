@@ -151,3 +151,14 @@ his table. Verified afterwards by the chair: the fanless / 100%-liquid-cooling c
 **CES keynote of 6 January 2026**, not July. The criterion therefore needs a spec for what counts
 as a clause — time, attribution, scope quantifiers, and superlatives all do.
 *(Coverage denominator: one source. "Announced in January" is verified; "not repeated in July" is not.)*
+
+## 2026-10-03 — eval-awareness instance, blind classification (`2026-10-03-eval-awareness/`)
+
+One target instance (B: the emotions paper ran its blackmail experiment on an earlier snapshot because the released one is "too evaluation-aware to ever blackmail"), with a decoy (A: clean held-out benchmark) and a positive control (C: the negotiation-game probe field from the family table). Members: grok, dsh, Fable 5.1, agy. Package held only family definition sentences, not the table's examples.
+
+**Scoring against the sealed pre-registration:** decoy A → 0 by 4/4 (predicted ≥3); control C → family 6 by 4/4 (predicted ≥3); target B → sub-form 6s by 4/4 (predicted), but only 2/4 say the definition applies *literally*. The clause "adapts to any probe design; samples do not converge" is not evidenced by B (grok and Fable flagged this). No member says B forces a new family; 4/4.
+
+**What the chair missed:** 4/4, answering the falsification question, separated a layer the chair had folded into family 6. The published numbers come from a *different object*, chosen because it still misbehaves. That layer is family 4 (availability: the snapshot that has data is the one that blackmails; Fable, grok, agy as alternative) and, in the news write-up, family 2 (one name, two objects; dsh, agy, grok). Fable and agy independently put the headline "the released version rarely does this" under **family 1**: "unmeasurable" was reported as a low rate. Fable also pried a premise the package did not ask about: "evaluation-awareness" is the authors' attribution, and if the released model still blackmails ~0% in deployment-indistinguishable scenarios, the honest reading is 0 (it is simply better aligned).
+
+**Round two skipped:** the 2-vs-4 split on layer (b) resolves on reading. In the paper the substitution is disclosed, so family 4 applies; under one name in the news, family 2 applies.
+
