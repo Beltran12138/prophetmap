@@ -162,3 +162,76 @@ One target instance (B: the emotions paper ran its blackmail experiment on an ea
 
 **Round two skipped:** the 2-vs-4 split on layer (b) resolves on reading. In the paper the substitution is disclosed, so family 4 applies; under one name in the news, family 2 applies.
 
+
+## 2026-11-28 — failure families, nine instances classified one by one (`2026-11-28-failure-families-3/`)
+
+Nine instances, shuffled and unlabelled: one **positive control** (family 2's founding form — the two
+USDT vendor scores, 69 under `authority_control` and 1 under `tradability`), five instances the chair
+had already filed as new family-2 cases, two the chair had filed as **near-miss negatives** (instances
+family 2 must reject), and one whose source text carries the derived unit as its own label. Members:
+agy (Gemini 4 Argon High), Fable 5.2, dsh. The package held the eight main definition sentences, the
+two registered questions under family 2 and the one registered precondition under family 8 — no
+examples from the table, and no statement of the chair's position.
+
+**Independence, declared before dispatch and not after.** Seven of the nine instances were already
+written up in the chair's private notes, which three of the four members can read. So the round was
+registered as **non-independent for Fable and dsh** and independent only for agy, whose headless mode
+refuses every tool — the one structural blind channel. The contamination grep (`.md|SEALED|prereg|
+failure-families|CLAUDE|framework_`) returned 0 for all three voters.
+
+**grok produced no vote, and the way it did is the most useful single result.** It timed out at 900s
+having written 296 bytes, all of it an announcement that it was going to read the authority: *"I will
+first find the boundaries of these eight families and the existing rulings in the authoritative
+source"* and *"the same-day family-table discussion archive already has boundary rulings. I will read
+the authoritative source and the registered rulings first."* The same-day archive is exactly the
+chair's notes written that morning. This is the second measured confirmation that assuming an agent
+reads only its working directory is the wrong prior — and it arrived in the same sentence in which the
+agent declined to answer from the package alone. It also settles, after the fact, that declaring
+non-independence in advance was right: scored as a 4/4 blind round, everything below would be void.
+
+**Scoring against the sealed pre-registration.** Positive control → family 2 by 3/3 (so the
+disagreements below are not noise). Substantive positions: 7 written, 3.5 survived. Behavioural
+predictions: 6 written, 3 survived. Verdict-type predictions: 0 written, per the standing ban.
+Weak links: 4 claimed, 3 verified by the chair against the primary source.
+
+**What the chair had backwards.** (a) The instance where *one number carries two constructs* — the
+same figure, 133 billion, used in adjacent paragraphs for 2025 total equipment sales and for 2026
+300mm equipment spending — had been filed as "family 2's most hidden entrance". All three ruled it
+**out of table**, on the same reading: the main definition says *two numbers share a label*, and this
+is *two labels sharing a number*, which the sentence excludes on its face. The finding is therefore
+not a hidden entrance but a **mirror gap** in the table. (b) A second instance had been filed as
+family 2 and is **family 8** by 3/3; Fable and dsh independently noted that family 8's precondition
+*passes* here, because the conversion needs only `100% − x` and that quantity is in the record — which
+is family 8's own `converting changes the conclusion`. (c) **Both near-miss negatives were classified
+into family 2** (3/3 and 2/3), and the two reasons the chair had used to keep them out — "the source
+itself inserts an explicit separating clause" and "the gap between the two definitions is fully
+explained by an independent known mechanism" — are **not registered questions for family 2**. Using an
+unregistered criterion to push an instance out of a family is the mirror image of the completeness
+rule, which forbids "the main definition catches it and every question passes it".
+
+**What they pried that the package never asked.** All three independently demanded the *vintage* of
+the forecast: which publication date, which revision. Two forecasts from the **same institution** under
+the **same label** at **different release dates** are not a `vendor pair`, and no family in the table
+holds them; the three retreated to out-of-table, undecidable and a reluctant family 3 respectively.
+This is the round's highest-information output and appears nowhere in the chair's sealed positions.
+
+**One chair reading moved a verdict.** All three said they could not decide that instance without
+knowing which calendar year "this year" meant. The article's own opening sentence names it — *"SEMICON
+West returned to San Francisco in 2026"* — and the sentence carrying the figure adds *"in 2026 alone"*.
+With the year fixed, agy's "transcription year mismatch" reading is refuted, Fable's conditional branch
+collapses, and dsh's family 3 survives only as a same-year revision difference. The missing quantity was
+an artifact of the chair's own excerpting: the sentence that dates the article had been cut out of the
+package. *(Coverage denominator: one of four source clippings re-read in full for this check.)*
+
+**Behavioural predictions: the two that failed share a defect.** Both were conditioned on a
+classification outcome — "at least one member will cite the separating clause" requires first ruling the
+instance out, and "at least one will file it under family 8" is a verdict. The three that survived are
+unconditional: whether a field gets filled, whether a string appears in the output, whether anyone
+questions a quotation. A behavioural prediction whose truth depends on a verdict inherits the verdict's
+unpredictability; the existing ban covers only the explicit form.
+
+**Round two skipped.** The two live splits both reduce on reading rather than on debate: one needs the
+original market definition, which is not in the clipping, and the other's dissenting reason is flagged
+as second-order risk by the dissenter itself.
+
+**Nothing in the family table changed.** `docs/failure-families.md` was not modified in this round.
